@@ -1,6 +1,6 @@
 # Open Fibre Data Standard
 
-Welcome to the Github repository for the Open Fibre Data Standard.
+Welcome to the GitHub repository for the Open Fibre Data Standard.
 
 ## Contributing
 
@@ -12,4 +12,6 @@ The World Bank and the International Telecommunication Union are partnering to d
 
 You can read more about the project on the World Bank's blog: [Making it Possible for the World to Log On](https://www.worldbank.org/en/news/feature/2022/06/06/making-it-possible-for-the-world-to-log-on).
 
+## Contact
 
+Please direct any correspondence to [info@opentelecomdata.net](mailto:info@opentelecomdata.net)
