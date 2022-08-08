@@ -3,7 +3,7 @@
 ### Schema
 
 Schema contents of the Open Fibre Data Standard are Copyright (C)
-2022 <REPLACEME>.
+2022 Open Data Services.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@ limitations under the License.
 
 ### Documentation
 
-Documentation is Copyright (C) 2022 <REPLACEME>.
+Documentation is Copyright (C) 2022 Open Data Services.
 
 Permission is granted to copy, distribute and/or modify this document
 under the terms of the GNU Free Documentation License, Version 1.3
