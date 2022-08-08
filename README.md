@@ -8,7 +8,7 @@ To contribute to the development of the standard, check out the [discussion trac
 
 ## Background
 
-The World Bank and the International Telecommunication Union are partnering to develop an open standard for terrestrial fibre optic infrastructure data as part of their commitment to the joint declaration on cooperation on the advancement of the [2030 Agenda for Sustainable Development](https://sdgs.un.org/2030agenda).
+The [World Bank](https://worldbank.org), the [International Telecommunications Union](https://itu.int) (ITU), [Mozilla Corporation](https://mozilla.com), the [Internet Society](https://isoc.org) (ISOC), [Liquid Intelligent Technologies](https://liquid.tech), [CSquared](https://www.csquared.com), and [Digital Council Africa](https://www.digitalcouncil.africa/) are partnering to promote the collaborative development of open data standards for describing telecommunications infrastructure. The first challenge we have taken on is that of terrestrial fibre optic infrastructure.
 
 You can read more about the project on the World Bank's blog: [Making it Possible for the World to Log On](https://www.worldbank.org/en/news/feature/2022/06/06/making-it-possible-for-the-world-to-log-on).
 
