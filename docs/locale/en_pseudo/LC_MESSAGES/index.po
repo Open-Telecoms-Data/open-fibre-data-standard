@@ -1,0 +1,41 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2016-2017, Open Data Services
+# This file is distributed under the same license as the Open Data Services Sphinx Base package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Open Data Services Sphinx Base 0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-22 12:55+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: ../../index.md:0
+msgid "Open Data Services Sphinx Base"
+msgstr "[Ǿƥḗƞ Ḓȧŧȧ Şḗřṽīƈḗş Şƥħīƞẋ Ɓȧşḗ ǈϑ靐ΰ ǈςϵΰ]"
+
+#: ../../index.md:5
+msgid "Contents:"
+msgstr "[Ƈǿƞŧḗƞŧş: ϖ靐ǲϰϵǲǋϖǅ]"
+
+#: ../../index.md:0
+msgid "Indices and tables"
+msgstr "[Īƞḓīƈḗş ȧƞḓ ŧȧƀŀḗş ıΰǲϰ鶱ϕϑ ϱϖ]"
+
+#: ../../index.md:1
+msgid ":ref:`genindex`"
+msgstr "[:řḗƒ:`ɠḗƞīƞḓḗẋ` 鶱衋靐ϑẛϵǅϐϰı]"
+
+#: ../../index.md:2
+msgid ":ref:`modindex`"
+msgstr "[:řḗƒ:`ḿǿḓīƞḓḗẋ` ſẛΐ鶱ϰǅſϵϑϱ]"
+
+#: ../../index.md:3
+msgid ":ref:`search`"
+msgstr "[:řḗƒ:`şḗȧřƈħ` 衋ϐΐϵΐϐǈ靐ϕ衋ϰ]"

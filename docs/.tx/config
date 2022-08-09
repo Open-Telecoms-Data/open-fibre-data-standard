@@ -1,0 +1,8 @@
+[main]
+host = https://www.transifex.com
+
+[sphinx-base.index]
+file_filter = locale/<lang>/LC_MESSAGES/index.po
+source_file = _build/locale/index.pot
+source_lang = en
+type = PO
