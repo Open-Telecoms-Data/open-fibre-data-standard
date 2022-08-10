@@ -1,4 +1,3 @@
-(guidance)=
 Guidance
 ============
 

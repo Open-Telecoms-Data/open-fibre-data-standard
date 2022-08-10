@@ -1,4 +1,3 @@
-(reference)=
 Reference
 ============
 
