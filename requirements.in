@@ -5,3 +5,4 @@ sphinx-intl
 transifex-client
 sphinx_rtd_theme
 myst-parser
+furo
