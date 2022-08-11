@@ -1,0 +1,55 @@
+{
+    "title": "Some Object",
+    "description": "A description of an object, of some sort or kind",    
+    "type": "object",
+    "properties": {
+        "id": {
+            "title": "Identifier",
+            "description": "An identifier",
+            "type": "string"
+        },
+        "foo": {
+            "title": "Foo bar",
+            "description": "Foo bar baz bar baz bar baz bar baz. Bar foo baz foo bar. Baz bar foo bar foo bar foo bar foo.",
+            "type": "integer"
+        },
+        "markdown": {
+            "title": "Some markdown",
+            "description": "*italic* **bold** [a link](http://example.org)",
+            "type": "integer"
+        },
+        "when": {
+            "title": "When",
+            "description": "When did this thing happen",
+            "type": "string",
+            "format": "date-time"
+        },
+        "lorem": {
+            "title": "Lorem ipsum",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur porttitor urna in diam ornare luctus. Donec accumsan sit amet velit id auctor. Sed commodo elit ut tempor suscipit. Fusce volutpat malesuada felis, accumsan molestie nisi aliquet non. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.",
+            "type": "string"
+        },
+        "subthings": {
+            "type": "array",
+            "title": "SubThing",
+            "description": "Description of SubThing",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "title": "Identifier",
+                        "description": "An identifier for this subthing",
+                        "type": "string"
+                    },
+                    "example": {
+                        "title": "Example",
+                        "description": "An example field",
+                        "type": "string"
+                    }
+                },
+                "required": ["id"]
+            }
+        }
+    },
+    "required": ["id", "when"]
+}
