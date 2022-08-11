@@ -12,47 +12,9 @@ The [World Bank](https://worldbank.org), the [International Telecommunications U
 
 You can read more about the project on the World Bank's blog: [Making it Possible for the World to Log On](https://www.worldbank.org/en/news/feature/2022/06/06/making-it-possible-for-the-world-to-log-on).
 
-## Building the documentation
+## Development
 
-### Build the docs locally
-  
-Assuming a unix based system:
-
-```
-# Make sure you have python3 venv, e.g. for Ubuntu
-# If you're not sure, try creating a venv, and see if it errors
-sudo apt-get install python3-venv
-
-# Install submodules
-git submodule init
-git submodule update
-
-# Create a venv
-python3 -m venv .ve    
-
-# Enter the venv, needs to be run for every new shell
-source .ve/bin/activate
-
-# Install requirements
-pip install --upgrade pip setuptools
-pip install -r requirements.txt
-
-# Build the docs
-cd docs
-make dirhtml
-```
-
-Built docs are in `docs/_build/dirhtml`.
-
-
-Viewing the docs:
-```
-cd _build/dirhtml
-python -m http.server
-```
-
-Then go to http://localhost:8000/ in a browser.
-
+Visit the [OFDS development handbook](https://ofds-standard-development-handbook.readthedocs.io/en/latest/) for developer information about the standard.
 
 ## Contact
 

@@ -1,5 +1,4 @@
-Primer
-============
+# Primer
 
 ```{eval-rst}
 .. toctree::

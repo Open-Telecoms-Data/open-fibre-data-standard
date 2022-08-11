@@ -223,3 +223,9 @@ dummy:
 	$(SPHINXBUILD) -b dummy $(ALLSPHINXOPTS) $(BUILDDIR)/dummy
 	@echo
 	@echo "Build finished. Dummy builder generates no files."
+
+.PHONY: autobuild
+autobuild:
+	sphinx-autobuild -nW -q -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
+	@echo
+	@echo "Auto-build finished. The HTML pages are in $(BUILDDIR)/dirhtml."

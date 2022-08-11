@@ -1,6 +1,4 @@
-The Open Fibre Data Standard
-============
-
+# The Open Fibre Data Standard
 
 ## What is the Open Fibre Data Standard?
 

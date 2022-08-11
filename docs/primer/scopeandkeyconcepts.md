@@ -1,5 +1,4 @@
-Scope and key concepts
-============
+# Scope and key concepts
 
 ## The network value chain
 

@@ -1,7 +1,10 @@
-Open Fibre Data Standard (alpha)
-==============================
+# Open Fibre Data Standard
 
-Fibre optic networks are approaching the status of [essential infrastructure for a modern economy](https://manypossibilities.net/2018/05/open-telecom-data-moving-forward/). Yet, the telecom sector [lacks readily available and usable data](https://drive.google.com/drive/folders/1x6l-kg5y2y4wmuh3WTCbHu5Qcp7Byhip) on fibre optic network infrastructure.
+```{note}
+This standard and documentation is in the initial development phase
+```
+
+Fibre optic networks are approaching the status of essential infrastructure for a modern economy. Yet, the telecom sector lacks readily available and usable data on fibre optic network infrastructure.
 
 The Open Fibre Data Standard (OFDS) describes:
 - What data to publish about fibre optic networks in order to meet a range of use cases
@@ -13,6 +16,8 @@ To learn how to publish and use open fibre data, read the [guidance](guidance).
 
 For details of the OFDS data model and publication formats and for the specific rules that need to be followed to publish OFDS data, read the [reference](reference).
 
+For information about changes in each version of the OFDS, read the [history](history/index)
+
 ```{eval-rst}
 .. toctree::
    :hidden:
@@ -21,5 +26,5 @@ For details of the OFDS data model and publication formats and for the specific 
    primer/index
    guidance
    reference
-
+   history/index
 ```
