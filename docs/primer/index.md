@@ -1,15 +1,15 @@
 # Primer
 
-In his Primer, you will find resources that cover the following topics:
 
-- [Open Fibre Data](openfibredata) introduces open fibre data and helps to answer the question of why we might want to publish it.
-- [The Open Fibre Data Standard](openfibredatastandard) (OFDS) introduces the OFDS and OFDS data, and helps to answer the question of why we might want to use the OFDS.
-- [Scope and Key Concepts](scopeandkeyconcepts) introduces layers, actors and business models in fibre optic networks, and provides some definitions for key concepts in the OFDS.
+This Primer provides an introduction to:
 
-Looking to learn how to publish and use open fibre data? Read the [guidance](../guidance).
+* [Open fibre data](openfibredata) and the reasons for publishing it.
+* [The Open Fibre Data Standard](openfibredatastandard) (OFDS) and the reasons for using it.
+* [The scope of OFDS and key concepts](scopeandkeyconcepts) that you need to understand
 
-Looking for details of the OFDS data model? Read the [reference](../reference).
+Do you want to learn how to publish or use open fibre data? Read the [guidance](../guidance).
 
+Are you looking for details of the OFDS data model and the rules for publishers? Read the [reference](../reference).
 ```{eval-rst}
 .. toctree::
    :hidden:
