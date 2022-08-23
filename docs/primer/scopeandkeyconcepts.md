@@ -52,7 +52,7 @@ For more information about nodes, see the Node reference.
 ## Links
 
 OFDS defines a link as:
-: A non-directional connection between two nodes.
+: A connection between two nodes.
 
 Links can be either direct physical connections between nodes, for example in granular data about an access network, or abstract connections between nodes, for example in less granular data about a national backbone network:
 
