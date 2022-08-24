@@ -62,6 +62,6 @@ The nodes that a link connects are known as its endpoints. In addition to the en
 
 For more information about links, see the Link reference.
 
-## Geo data
+## Geospatial data
  
  To follow

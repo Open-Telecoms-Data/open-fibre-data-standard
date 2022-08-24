@@ -5,7 +5,7 @@
 Open data is data that can be freely used, modified, and shared by anyone for any purpose.
 
 Open fibre data describes fibre optic communication networks. It can cover:
-- Spatial data, such as the physical location of the links and nodes in a fibre optic communication network
+- Geospatial data, such as the physical location of the links and nodes in a fibre optic communication network
 - Technical data, such as the number and type of optical fibres in a link
 - Administrative data, such as the organisations that own passive infrastructure or operate active network infrastructure
 
