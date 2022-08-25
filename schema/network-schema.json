@@ -1,0 +1,451 @@
+{
+  "properties": {
+    "organisations": {
+      "title": "Organisations",
+      "description": "The organisations involved in this network",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Organisation"
+      }
+    },
+    "phases": {
+      "title": "Phases",
+      "description": "Information about the phases in which this network is deployed.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Phase"
+      }
+    },
+    "publicationDate": {
+      "title": "Publication date",
+      "description": "When the data was published.",
+      "format": "date"
+    },
+    "name": {
+      "title": "Network name",
+      "description": "A name for this network."
+    },
+    "nodes": {
+      "title": "Nodes",
+      "description": "Information about the nodes that belong to this network.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Node"
+      }
+    },
+    "contracts": {
+      "title": "Contracts",
+      "description": "Information about the contracts for the development of this network.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Contract"
+      }
+    },
+    "collectionDate": {
+      "title": "Collection date",
+      "description": "When the location data was collected. If a dataset was produced by digitising a map, the date that the data for the map was collected.",
+      "format": "date"
+    },
+    "investors": {
+      "title": "Investors",
+      "description": "Information about the organizations that provide financing for the development or operation of this network.\n",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Organisation"
+      }
+    },
+    "links": {
+      "title": "Links",
+      "description": "Information about the links that belong to this network.",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Link"
+      }
+    },
+    "publisher": {
+      "title": "Publisher",
+      "description": "The publisher of this network.",
+      "type": [
+        "object"
+      ],
+      "$ref": "#/definitions/Organisation"
+    },
+    "identifier": {
+      "title": "Network identifier",
+      "description": "An identifier for this network."
+    },
+    "website": {
+      "title": "Website",
+      "description": "The URL of the website for this network.",
+      "format": "iri"
+    }
+  },
+  "definitions": {
+    "Link": {
+      "title": "Link",
+      "description": "A direct physical connection between two nodes.",
+      "type": "object",
+      "properties": {
+        "accuracy": {
+          "title": "Accuracy",
+          "description": ""
+        },
+        "networkProvider": {
+          "title": "Network provider",
+          "description": "The organisation that operates the active network infrastructure, i.e. the electrical elements, such as optical transceivers, switches and routers.",
+          "type": [
+            "object"
+          ],
+          "$ref": "#/definitions/OrganisationReference"
+        },
+        "fibreType": {
+          "title": "Fibre type",
+          "description": "The type of fibre used in this link, using the fibre type codelist."
+        },
+        "readyForServiceDate": {
+          "title": "Ready for service date",
+          "description": "The date this link was ready to carry traffic.",
+          "format": "date"
+        },
+        "ownership": {
+          "title": "Ownership",
+          "description": ""
+        },
+        "fibreCount": {
+          "title": "Fibre count",
+          "description": "The number of individual optical fibres in this link."
+        },
+        "supplier": {
+          "title": "Supplier",
+          "description": "",
+          "type": [
+            "object"
+          ],
+          "$ref": "#/definitions/OrganisationReference"
+        },
+        "country": {
+          "title": "Country",
+          "description": "The country in which this link is physically located."
+        },
+        "fibreLength": {
+          "title": "Fibre length",
+          "description": "The physical length of fibre optic cable used in this link."
+        },
+        "technologies": {
+          "title": "Technologies",
+          "description": "The active technologies used on this link, using the open link technologies codelist.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "capacity": {
+          "title": "Capacity",
+          "description": "The transmission rate, or throughput, of this link, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the link."
+        },
+        "endpoints": {
+          "title": "Endpoints",
+          "description": "The nodes that this link connects.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Node"
+          }
+        },
+        "Link route": {
+          "title": "Link route",
+          "description": "",
+          "type": [
+            "object"
+          ],
+          "$ref": "#/definitions/Feature"
+        },
+        "name": {
+          "title": "Link name",
+          "description": ""
+        },
+        "transmissionMedium": {
+          "title": "Transmission medium",
+          "description": "The transmission medium of this link, using the closed transmission medium codelist",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "darkFibre": {
+          "title": "Dark fibre availability",
+          "description": "Whether access to dark fibre is available on this link."
+        },
+        "identifier": {
+          "title": "Link identifier",
+          "description": "An identifier for this link. The identifier must be unique within the scope of the network this link belongs to."
+        },
+        "physicalInfrastructureProvider": {
+          "title": "Physical infrastructure provider",
+          "description": "The organisation owns and maintains the passive network infrastructure, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
+          "type": [
+            "object"
+          ],
+          "$ref": "#/definitions/OrganisationReference"
+        },
+        "deployment": {
+          "title": "Deployment",
+          "description": "The physical deployment of this link, using the closed deployment type codelist.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "capacityDetails": {
+          "title": "Capacity details",
+          "description": ""
+        },
+        "status": {
+          "title": "Link status",
+          "description": "The status of the network infrastructure for this link."
+        }
+      },
+      "$comment": "Work in progress"
+    },
+    "Value": {
+      "title": "Value",
+      "description": "",
+      "type": "object",
+      "properties": {},
+      "$comment": "Work in progress"
+    },
+    "Address": {
+      "title": "Address",
+      "description": "",
+      "type": "object",
+      "properties": {},
+      "$comment": "Work in progress"
+    },
+    "Feature": {
+      "title": "Feature",
+      "description": "",
+      "type": "object",
+      "properties": {},
+      "$comment": "Work in progress"
+    },
+    "Phase": {
+      "title": "Phase",
+      "description": "A set of nodes and/or links deployed as a group.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Phase name",
+          "description": "A name for this phase."
+        },
+        "identifier": {
+          "title": "Phase identifier",
+          "description": "An identifier for this phase. The identifier must be unique within the scope of the network."
+        }
+      },
+      "$comment": "Ready"
+    },
+    "OrganisationReference": {
+      "title": "Organisation reference",
+      "description": "",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "",
+          "description": ""
+        },
+        "id": {
+          "title": "",
+          "description": ""
+        }
+      },
+      "$comment": "Work in progress"
+    },
+    "Node": {
+      "title": "Node",
+      "description": "An access (entry or exit) point to a network. A node consists of active or passive equipment which is capable of providing access to the network. Sites at which there are no means of access to a network are not classified as nodes. Nodes can allow for interconnections to other networks,  and/or connections to end users.",
+      "type": "object",
+      "properties": {
+        "address": {
+          "title": "Node address",
+          "description": "The physical address of this node.",
+          "type": [
+            "object"
+          ],
+          "$ref": "#/definitions/Address"
+        },
+        "rackspace": {
+          "title": "Node rackspace",
+          "description": ""
+        },
+        "identifier": {
+          "title": "Node identifier",
+          "description": "An identifier for this node. The identifier must be unique within the scope of the network this node belongs to."
+        },
+        "accessPoint": {
+          "title": "Access point",
+          "description": "Whether transmission equipment is installed at this node which is capable of providing access to the network."
+        },
+        "networkProvider": {
+          "title": "Network provider",
+          "description": ""
+        },
+        "status": {
+          "title": "Status",
+          "description": "The status of this node."
+        },
+        "technologies": {
+          "title": "Technologies",
+          "description": "The active technologies used at this node, using the open node technologies codelist."
+        },
+        "internationalConnections": {
+          "title": "International connections",
+          "description": "The international connections available at this node."
+        },
+        "type": {
+          "title": "Node type",
+          "description": "The type of this node, using the open node type codelist.",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "power": {
+          "title": "Power availability",
+          "description": "Whether power for active network equipment is available at this node."
+        },
+        "location": {
+          "title": "Node location",
+          "description": "The physical location of this node.",
+          "type": [
+            "object"
+          ],
+          "$ref": "#/definitions/Feature"
+        },
+        "name": {
+          "title": "Node name",
+          "description": "A name for this node."
+        },
+        "physicalInfrastructureProvider": {
+          "title": "Physical infrastructure provider",
+          "description": ""
+        }
+      },
+      "$comment": "Work in progress"
+    },
+    "Identifier": {
+      "title": "Identifier",
+      "description": "",
+      "type": "object",
+      "properties": {},
+      "$comment": "Work in progress"
+    },
+    "Document": {
+      "title": "Document",
+      "description": "",
+      "type": "object",
+      "properties": {},
+      "$comment": "Work in progress"
+    },
+    "Contract": {
+      "title": "Contract",
+      "description": "An agreement between the public and private sector to develop a network.",
+      "type": "object",
+      "properties": {
+        "terms": {
+          "title": "Contract terms",
+          "description": ""
+        },
+        "description": {
+          "title": "Contract description",
+          "description": "A description for this contract."
+        },
+        "type": {
+          "title": "Contract type",
+          "description": ""
+        },
+        "value": {
+          "title": "Contract value",
+          "description": "The value of this contract.",
+          "type": [
+            "object"
+          ],
+          "$ref": "#/definitions/Value"
+        },
+        "dateSigned": {
+          "title": "Date signed",
+          "description": "The date this contract was signed.",
+          "format": "date"
+        },
+        "documents": {
+          "title": "Contract documents",
+          "description": "The documents related to this contract.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Document"
+          }
+        },
+        "title": {
+          "title": "Contract title",
+          "description": "A title for this contract."
+        },
+        "identifier": {
+          "title": "Contract identifier",
+          "description": "An identifier for this contract. The identifier must be unique within the scope of the network."
+        }
+      },
+      "$comment": "Work in progress"
+    },
+    "Organisation": {
+      "title": "Organisation",
+      "description": "",
+      "type": "object",
+      "properties": {
+        "identifier": {
+          "title": "Organisation identifier",
+          "description": "An identifier for this organization.",
+          "type": [
+            "object"
+          ],
+          "$ref": "#/definitions/Identifier"
+        },
+        "listing.exchange": {
+          "title": "",
+          "description": "The market on which this organization is listed, using the ISO10383 market identifier codelist."
+        },
+        "logo": {
+          "title": "",
+          "description": "The URL of the logo for this organisation."
+        },
+        "classification": {
+          "title": "",
+          "description": ""
+        },
+        "listing.symbol": {
+          "title": "",
+          "description": "The ticker symbol for this organization's market listing."
+        },
+        "id": {
+          "title": "Local identifier",
+          "description": "A local identifier for this organisation."
+        },
+        "website": {
+          "title": "",
+          "description": "The URL of the website for this organization.",
+          "format": "iri"
+        },
+        "wikipediaURL": {
+          "title": "",
+          "description": "The URL of the Wikipedia page for this organisation."
+        },
+        "country": {
+          "title": "",
+          "description": "The country in which this organization is legally registered, using the closed country codelist."
+        },
+        "name": {
+          "title": "",
+          "description": "A name for this organization."
+        }
+      },
+      "$comment": "Work in progress"
+    }
+  }
+}
