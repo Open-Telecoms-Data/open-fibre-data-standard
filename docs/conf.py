@@ -37,6 +37,9 @@ myst_enable_extensions = [
     "deflist"
 ]
 
+# MyST heading anchors
+myst_heading_anchors = 5
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
