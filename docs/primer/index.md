@@ -1,6 +1,5 @@
 # Primer
 
-
 This Primer provides an introduction to:
 
 * [Open fibre data](openfibredata) and the reasons for publishing it.
@@ -12,7 +11,6 @@ Do you want to learn how to publish or use open fibre data? Read the [guidance](
 Are you looking for details of the OFDS data model and the rules for publishers? Read the [reference](../reference/index).
 ```{eval-rst}
 .. toctree::
-   :hidden:
    :maxdepth: 1
 
    openfibredata

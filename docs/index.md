@@ -20,7 +20,6 @@ For information about changes in each version of the OFDS, read the [history](hi
 
 ```{eval-rst}
 .. toctree::
-   :hidden:
    :maxdepth: 2
 
    primer/index
