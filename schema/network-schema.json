@@ -66,14 +66,6 @@
       "format": "date",
       "type": "string"
     },
-    "investors": {
-      "title": "Investors",
-      "description": "Information about the organizations that provide financing for the development or operation of this network.\n",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Organisation"
-      }
-    },
     "links": {
       "title": "Links",
       "description": "Information about the links that belong to this network.",
@@ -104,9 +96,23 @@
     },
     "crs": {
       "title": "Coordinate reference system",
-      "description": "The coordinate reference system used in the data.",
-      "$comment": "Work in progress",
+      "description": "The coordinate reference system used in the data. If this network includes any coordinate data (in `Node.location` or `Link.route`) then this field must be provided.",
+      "$comment": "Ready",
       "$ref": "#/definitions/CoordinateReferenceSystem"
+    },
+    "linksFile": {
+      "title": "Links file",
+      "description": "A URI to identify the array of information about the links that belong to this network. To be used in place of `links` for very large datasets.",
+      "$comment": "Work in progress",
+      "format": "uri",
+      "type": "string"
+    },
+    "nodesFile": {
+      "title": "Nodes file",
+      "description": "A URI to identify the array of information about the nodes that belong to this network. To be used in place of `nodes` for very large datasets.",
+      "$comment": "Work in progress",
+      "format": "uri",
+      "type": "string"
     }
   },
   "definitions": {
@@ -215,14 +221,6 @@
             "$ref": "#/definitions/Node"
           }
         },
-        "Link route": {
-          "title": "Link route",
-          "$comment": "Work in progress",
-          "type": [
-            "object"
-          ],
-          "$ref": "#/definitions/Geometry"
-        },
         "name": {
           "title": "Link name",
           "$comment": "Work in progress",
@@ -310,7 +308,8 @@
       },
       "$comment": "Ready",
       "required": [
-        "identifier"
+        "identifier",
+        "endpoints"
       ]
     },
     "Value": {
@@ -376,13 +375,6 @@
         }
       },
       "$comment": "Ready"
-    },
-    "Feature": {
-      "title": "Feature",
-      "description": "",
-      "type": "object",
-      "properties": {},
-      "$comment": "Work in progress"
     },
     "Phase": {
       "title": "Phase",
@@ -762,13 +754,13 @@
     "CoordinateReferenceSystem": {
       "title": "Coordinate reference system",
       "description": "The coordinate reference system used in the data.",
-      "$comment": "Work in progress",
+      "$comment": "Ready",
       "type": "object",
       "properties": {
         "name": {
           "title": "Name",
           "description": "The name of the coordinate reference system.",
-          "$comment": "Work in progress",
+          "$comment": "Ready",
           "format": "uri",
           "type": "string",
           "const": "urn:ogc:def:crs:OGC::CRS84"
@@ -776,7 +768,7 @@
         "uri": {
           "title": "Uniform Resource Identifier",
           "description": "A URI for the coordinate reference system.",
-          "$comment": "Work in progress",
+          "$comment": "Ready",
           "format": "uri",
           "type": "string",
           "const": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"

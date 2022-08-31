@@ -8,6 +8,7 @@ import os
 from ocdskit.mapping_sheet import mapping_sheet
 from pathlib import Path
 from pyairtable import Table
+from pyairtable.formulas import match
 
 AIRTABLE_API_KEY = os.environ['AIRTABLE_API_KEY']
 BASE_ID = 'apprMa4GXD05csfkW'
@@ -19,16 +20,21 @@ codelistdir = basedir / 'codelists'
 
 def set_value(source_obj, target_obj, source_field, target_field):
     """Update the value of the target object's field if the equivalent field exists in the source object."""
+    
     if source_obj.get(source_field):
         target_obj[target_field] = source_obj[source_field]
 
 
-def read_markdown(filename):
+def read_lines(filename):
+    """Read a file and return a list of lines."""
+
     with open(filename, 'r') as f:
         return f.readlines()
 
 
-def write_markdown(filename, lines):
+def write_lines(filename, lines):
+    """Write a list of lines to a file."""
+
     with open(filename, 'w') as f:
         f.writelines(lines)
 
@@ -137,7 +143,24 @@ def update_from_airtable():
                                 target["required"] = [property_fields["Property"]]
 
                         target["properties"][property_fields['Property']] = property
-        
+            
+            # Delete properties not in Airtable
+            for property in list(target["properties"]):
+                formula = match({"Property": property, "propertyOf": definition_fields["Name"]})
+                result = properties_table.first(formula=formula)
+                print(result)
+
+                if not result or result["fields"]["Status"] == "Omit":
+                    target["properties"].pop(property)
+
+    # Delete definitions not in Airtable
+    for definition in list(schema["definitions"]):
+        formula = match({"Name": definition})
+        result = definitions_table.first(formula=formula)
+
+        if not result or result["fields"]["Status"] == "Omit":
+            schema["definitions"].pop(definition)
+
     with (schemadir / 'network-schema.json').open('w') as f:
         json.dump(schema, f, indent=2)
         f.write('\n')
@@ -188,7 +211,7 @@ def pre_commit():
             writer.writerow(row)
 
     # Update schema reference
-    schema_reference = read_markdown(referencedir / 'schema.md')
+    schema_reference = read_lines(referencedir / 'schema.md')
 
     for key, value in schema["definitions"].items():
         heading = f"#### {key}\n"
@@ -204,10 +227,10 @@ def pre_commit():
                 "\n"
             ])
 
-    write_markdown(referencedir / 'schema.md', schema_reference)
+    write_lines(referencedir / 'schema.md', schema_reference)
 
     # Update codelist reference
-    codelist_reference = read_markdown(referencedir / 'codelists.md')
+    codelist_reference = read_lines(referencedir / 'codelists.md')
 
     for path in glob.glob(f"{codelistdir}/*"):
         codelist = path.split("/")[-1].split(".")[0]
@@ -225,7 +248,7 @@ def pre_commit():
                 "\n"
             ])
 
-    write_markdown(referencedir / 'codelists.md', codelist_reference)
+    write_lines(referencedir / 'codelists.md', codelist_reference)
 
 if __name__ == '__main__':
     cli()
