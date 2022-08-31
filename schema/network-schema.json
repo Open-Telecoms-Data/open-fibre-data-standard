@@ -89,12 +89,13 @@
       "description": "The URL of the website for this network.",
       "$comment": "Ready",
       "format": "iri"
-    }
+    },
+    "crs": {}
   },
   "definitions": {
     "Link": {
       "title": "Link",
-      "description": "A connection between two nodes. Links can be either direct physical connections between nodes, or abstract connections between nodes.",
+      "description": "A physical connection between two nodes.",
       "type": "object",
       "properties": {
         "accuracy": {
@@ -113,7 +114,10 @@
         "fibreType": {
           "title": "Fibre type",
           "description": "The type of fibre used in this link, using the fibre type codelist.",
-          "$comment": "Ready"
+          "$comment": "Ready",
+          "codelist": "fibreType.csv",
+          "openCodelist": false,
+          "enum": []
         },
         "readyForServiceDate": {
           "title": "Ready for service date",
@@ -125,11 +129,7 @@
           "title": "Ownership",
           "$comment": "Work in progress"
         },
-        "phase": {
-          "title": "Phase",
-          "description": "The phase to which this link belongs.",
-          "$comment": "Work in progress"
-        },
+        "phase": {},
         "fibreCount": {
           "title": "Fibre count",
           "description": "The number of individual optical fibres in this link.",
@@ -150,7 +150,10 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "codelist": "countryCode.csv",
+          "openCodelist": false,
+          "enum": []
         },
         "fibreLength": {
           "title": "Fibre length",
@@ -164,7 +167,9 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "codelist": "linkTechnologies.csv",
+          "openCodelist": true
         },
         "capacity": {
           "title": "Capacity",
@@ -199,7 +204,13 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "codelist": "transmissionMedium.csv",
+          "openCodelist": false,
+          "enum": [
+            "fibre",
+            "microwave"
+          ]
         },
         "darkFibre": {
           "title": "Dark fibre availability",
@@ -227,7 +238,15 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "codelist": "deployment.csv",
+          "openCodelist": false,
+          "enum": [
+            "aerial",
+            "underground",
+            "aboveGround",
+            "belowGround"
+          ]
         },
         "capacityDetails": {
           "title": "Capacity details",
@@ -236,21 +255,35 @@
         "status": {
           "title": "Link status",
           "description": "The status of the network infrastructure for this link.",
-          "$comment": "Ready"
+          "$comment": "Ready",
+          "codelist": "linkStatus.csv",
+          "openCodelist": false,
+          "enum": [
+            "operational",
+            "underConstruction",
+            "planned",
+            "decommissioned",
+            "proposed",
+            "unlit"
+          ]
+        },
+        "route": {
+          "title": "Link route",
+          "$comment": "Work in progress",
+          "type": [
+            "object"
+          ],
+          "$ref": "#/definitions/Geometry"
         }
       },
-      "$comment": "Work in progress"
+      "$comment": "Ready"
     },
     "Value": {
       "title": "Value",
       "description": "The total upper estimated value of the procurement.",
       "type": "object",
       "properties": {
-        "currency": {
-          "title": "Currency",
-          "description": "The currency of the amount, from the closed currency codelist.",
-          "$comment": "Ready"
-        },
+        "currency": {},
         "amount": {
           "title": "Amount",
           "description": "Amount as a number.",
@@ -284,11 +317,7 @@
           "description": "The region. For example, CA.",
           "$comment": "Ready"
         },
-        "country": {
-          "title": "Country",
-          "description": "The country in which the address is physically located, using the closed country code codelist.",
-          "$comment": "Ready"
-        }
+        "country": {}
       },
       "$comment": "Ready"
     },
@@ -309,15 +338,7 @@
           "description": "A name for this phase.",
           "$comment": "Ready"
         },
-        "funders": {
-          "title": "Funders",
-          "description": "Information about the organizations that provide financing for the development or operation of this phase, also known as investors or financers.\n",
-          "$comment": "Ready",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/OrganisationReference"
-          }
-        },
+        "funders": {},
         "identifier": {
           "title": "Phase identifier",
           "description": "An identifier for this phase. The identifier must be unique within the scope of the network.",
@@ -331,11 +352,7 @@
       "description": "The id and name of the organisation being referenced. Used to cross-reference to the organisations section.",
       "type": "object",
       "properties": {
-        "name": {
-          "title": "Name",
-          "description": "The name of the organisation being referenced. This must match the name of an entry in the organisation section.",
-          "$comment": "Ready"
-        },
+        "name": {},
         "id": {
           "title": "ID",
           "description": "The id of the organisation being referenced. This must match the id of an entry in the organisations section.",
@@ -346,7 +363,7 @@
     },
     "Node": {
       "title": "Node",
-      "description": "A single point within a network. A node may consist of active or passive equipment which is capable of providing access to the network, or in some instances may reflect a geographic point at which a link splits, aggregates, or crosses a border. Nodes can allow for interconnections to other networks,  and/or connections to end users.",
+      "description": "A point within a network. A node may be an access point or may reflect a geographic point at which a link splits, aggregates or crosses a border. Nodes can allow for interconnections to other networks or connections to end users.",
       "type": "object",
       "properties": {
         "address": {
@@ -367,14 +384,10 @@
           "description": "An identifier for this node. The identifier must be unique within the scope of the network this node belongs to.",
           "$comment": "Ready"
         },
-        "phase": {
-          "title": "Phase",
-          "description": "The phase to which this node belongs.",
-          "$comment": "Work in progress"
-        },
+        "phase": {},
         "accessPoint": {
           "title": "Access point",
-          "description": "Whether transmission equipment is installed at this node which is capable of providing access to the network.",
+          "description": "Whether active or passive transmission equipment is installed at this node which is capable of providing access to the network.",
           "$comment": "Work in progress"
         },
         "networkProvider": {
@@ -384,12 +397,24 @@
         "status": {
           "title": "Status",
           "description": "The status of this node.",
-          "$comment": "Ready"
+          "$comment": "Ready",
+          "codelist": "nodeStatus.csv",
+          "openCodelist": false,
+          "enum": [
+            "proposed",
+            "planned",
+            "underConstruction",
+            "operational",
+            "decommissioned",
+            "inactive"
+          ]
         },
         "technologies": {
           "title": "Technologies",
           "description": "The active technologies used at this node, using the open node technologies codelist.",
-          "$comment": "Ready"
+          "$comment": "Ready",
+          "codelist": "nodeTechnologies.csv",
+          "openCodelist": true
         },
         "internationalConnections": {
           "title": "International connections",
@@ -403,7 +428,9 @@
           "type": "array",
           "items": {
             "type": "string"
-          }
+          },
+          "codelist": "nodeType.csv",
+          "openCodelist": true
         },
         "power": {
           "title": "Power availability",
@@ -446,16 +473,13 @@
           "description": "The legally registered name of the organisation",
           "$comment": "Work in progress"
         },
-        "uri": {
-          "title": "URI",
-          "description": "A URI to identify the organisation, such as those provided by Open Corporates or some other relevant URI provider. This is not for listing the website of the organisation: that can be done through the URL field of the organisation contact point.",
-          "$comment": "Work in progress",
-          "format": "uri"
-        },
+        "uri": {},
         "scheme": {
           "title": "Scheme",
           "description": "Organization identifiers should be taken from an existing organization identifier list. The scheme field is used to indicate the list or register from which the identifier is taken. This value should be taken from the Organization Identifier Scheme codelist.",
-          "$comment": "Work in progress"
+          "$comment": "Work in progress",
+          "codelist": "organisationIdentifierScheme.csv",
+          "openCodelist": true
         }
       },
       "$comment": "Work in progress"
@@ -477,10 +501,7 @@
           "description": "A description for this contract.",
           "$comment": "Work in progress"
         },
-        "type": {
-          "title": "Contract type",
-          "$comment": "Work in progress"
-        },
+        "type": {},
         "value": {
           "title": "Contract value",
           "description": "The value of this contract.",
@@ -534,14 +555,18 @@
         },
         "listing.exchange": {
           "description": "The market on which this organization is listed, using the ISO10383 market identifier codelist.",
-          "$comment": "Work in progress"
+          "$comment": "Work in progress",
+          "codelist": "marketIdentifierCode.csv",
+          "openCodelist": false,
+          "enum": []
         },
         "logo": {
           "description": "The URL of the logo for this organisation.",
           "$comment": "Work in progress"
         },
         "classification": {
-          "$comment": "Work in progress"
+          "$comment": "Work in progress",
+          "codelist": "organisationClassification.csv"
         },
         "listing.symbol": {
           "description": "The ticker symbol for this organization's market listing.",
@@ -559,17 +584,12 @@
         },
         "country": {
           "description": "The country in which this organization is legally registered, using the closed country codelist.",
-          "$comment": "Work in progress"
+          "$comment": "Work in progress",
+          "codelist": "countryCode.csv",
+          "openCodelist": false,
+          "enum": []
         },
-        "role": {
-          "title": "Role",
-          "description": "The organisation roles in this network, using the open organisation role codelist.",
-          "$comment": "Ready",
-          "type": "array",
-          "items": {
-            "type": "string"
-          }
-        },
+        "role": {},
         "name": {
           "description": "A name for this organization.",
           "$comment": "Ready"
@@ -580,20 +600,35 @@
     "Geometry": {
       "title": "Geometry",
       "description": "A [GeoJSON Geometry object](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1).",
-      "$comment": "Work in progress",
+      "$comment": "Ready",
       "type": "object",
       "properties": {
         "type": {
           "title": "Type",
           "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`, using the open geometry type codelist. This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Link.route`.",
-          "$comment": "Work in progress"
+          "$comment": "Ready"
         },
-        "coordinates": {
-          "title": "Coordinates",
-          "description": "One or more [GeoJSON positions](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.1). For geometries of type 'Point', the coordinates member must be a single position. For geometries of type 'LineString' the coordinates member must be an array of positions.\n\nEach position is an array of numbers with two or more elements.  The first two elements are longitude and latitude, or easting and northing, precisely in that order. Longitude and latitude must be expressed using the World Geodetic System 1984 (WGS 84)[https://datatracker.ietf.org/doc/html/rfc7946#ref-WGS84] datum in units of decimal degrees. Altitude or elevation may be included as an optional third element and must be expressed as the height in meters above or below the WGS 84 reference ellipsoid\n\nTherefore, geometries of type 'Point' must be a single array, e.g. [longitude, latitude], and geometries of type 'LineString' must be an array of arrays, e.g. [[longitude, latitude], [longitude, latitude]].",
-          "$comment": "Work in progress"
-        }
+        "coordinates": {}
+      }
+    },
+    "CoordinateReferenceSystem": {
+      "title": "Coordinate reference system",
+      "description": "The coordinate reference system used in the data.",
+      "$comment": "Work in progress",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "The name of the coordinate reference system.",
+          "$comment": "Work in progress",
+          "format": "uri"
+        },
+        "uri": {}
       }
     }
-  }
+  },
+  "title": "Network",
+  "description": "A telecommunication network. A network consists of a set of nodes interconnected by links.",
+  "$comment": "Ready",
+  "type": "object"
 }

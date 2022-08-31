@@ -8,3 +8,4 @@ myst-parser
 furo
 sphinx-autobuild
 pyairtable
+ocdskit

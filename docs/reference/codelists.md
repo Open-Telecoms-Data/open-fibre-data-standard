@@ -19,3 +19,93 @@ Codes are case-sensitive, and are generally provided as English language camelCa
 ## Open codelists
 
 ## Closed codelists
+
+
+### transmissionMedium
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/transmissionMedium.csv
+```
+
+### ownershipStructure
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/ownershipStructure.csv
+```
+
+### nodeType
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/nodeType.csv
+```
+
+### deployment
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/deployment.csv
+```
+
+### organisationClassification
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/organisationClassification.csv
+```
+
+### nodeTechnologies
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/nodeTechnologies.csv
+```
+
+### linkTechnologies
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/linkTechnologies.csv
+```
+
+### nodeStatus
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/nodeStatus.csv
+```
+
+### linkStatus
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/linkStatus.csv
+```
+
+### geometryType
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/geometryType.csv
+```
+
+### organisationRole
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/organisationRole.csv
+```
+

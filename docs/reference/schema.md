@@ -4,7 +4,7 @@ The schema provides the authoritative definition of the structure of Open Fibre 
 
 For this version of OFDS, the canonical URL of the schema is [https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0.1-alpha/schema/network-schema.json](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0.1-alpha/schema/network-schema.json). Use the canonical URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested.
 
-This page presents the schema in an [interactive browser](#browser) and in [reference tables](#reference-tables) with additional information in paragraphs. You can also download the canonical version of the schema as [JSON Schema](../../build/network-schema.json) or download it as a [CSV spreadsheet](../../build/network-schema.csv).
+This page presents the schema in an [interactive browser](#browser) and in [reference tables](#reference-tables) with additional information in paragraphs. You can also download the canonical version of the schema as [JSON Schema](../../schema/network-schema.json) or download it as a [CSV spreadsheet](../../schema/network-schema.csv).
 
 ```{note}
    If any conflicts are found between the text on this page and the text within the schema, the text within the schema takes precedence.
@@ -34,7 +34,7 @@ The top-level object in OFDS data is a `Network`.
 
 ### Components
 
-#### CoordinateReferenceSystem
+#### CoordinateReferenceSyste
 
 Coordinates in all OFDS data must be specified in the coordinate reference system required by GeoJSON:
 
@@ -48,4 +48,99 @@ The `CoordinateReferenceSystem` object references the CRS by `name` and `uri`. I
 `urn:ogc:def:crs:OGC::CRS84` denotes WGS84 with the order longitude, latitude. It is equivalent to EPSG:4326 with reversed axes.
 
 For more information, see [How to transform coordinates to the correct coordinate reference system](../guidance/publication.md#how-to-transform-coordinates-to-the-correct-coordinate-reference-system).
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/CoordinateReferenceSystem
+:collapse: name,uri
+```
+
+#### Link
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Link
+:collapse: accuracy,networkProvider,fibreType,readyForServiceDate,ownership,phase,fibreCount,supplier,country,fibreLength,technologies,capacity,endpoints,Link route,name,transmissionMedium,darkFibre,identifier,physicalInfrastructureProvider,deployment,capacityDetails,status
+```
+
+#### Value
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Value
+:collapse: currency,amount
+```
+
+#### Address
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Address
+:collapse: postalCode,locality,streetAddress,region,country
+```
+
+#### Feature
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Feature
+:collapse: 
+```
+
+#### Phase
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Phase
+:collapse: name,funders,identifier
+```
+
+#### OrganisationReference
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/OrganisationReference
+:collapse: name,id
+```
+
+#### Node
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Node
+:collapse: address,rackspace,identifier,phase,accessPoint,networkProvider,status,technologies,internationalConnections,type,power,location,name,physicalInfrastructureProvider
+```
+
+#### Identifier
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Identifier
+:collapse: id,legalName,uri,scheme
+```
+
+#### Document
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Document
+:collapse: 
+```
+
+#### Contract
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Contract
+:collapse: description,type,value,dateSigned,documents,title,identifier
+```
+
+#### Organisation
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Organisation
+:collapse: identifier,listing.exchange,logo,classification,listing.symbol,id,website,country,role,name
+```
+
+#### Geometry
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Geometry
+:collapse: type,coordinates
+```
+#### CoordinateReferenceSystem
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/CoordinateReferenceSystem
+:collapse: name,uri
+```
 
