@@ -64,9 +64,9 @@ For more information about links, see the Link reference.
 
 ## Geospatial data
  
-Geospatial data contains information about objects and their location on Earth. A 'position' in geospatial data describes a single location. Each position contains information about longitude, latitude, and (sometimes) altitude or elevation.
+Geospatial data is information that describes objects or features with a location on or near the surface of the earth. Geospatial data typically combines location information (usually coordinates on the earth) and attribute information (the characteristics of the object concerned). 
 
-Geospatial data is one of the main elements of open fibre data. When location information is available, open fibre data represents nodes as a single position, and links as two or more positions.
+OFDS data is usually geospatial data. It can contain both location information, such as the location of nodes and links, and attribute information, such as the capacity of a link.
 
 Publishers can represent geospatial data in several formats. OFDS recommends that publishers publish geospatial data in [GeoJSON](https://geojson.org/) format. Nodes and links should be published as separate [feature collections](https://www.rfc-editor.org/rfc/rfc7946#section-3.3).
 
