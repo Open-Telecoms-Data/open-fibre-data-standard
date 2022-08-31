@@ -137,10 +137,3 @@ For more information, see [How to transform coordinates to the correct coordinat
 :pointer: /definitions/Geometry
 :collapse: type,coordinates
 ```
-#### CoordinateReferenceSystem
-
-```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/CoordinateReferenceSystem
-:collapse: name,uri
-```
-
