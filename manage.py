@@ -41,6 +41,7 @@ def cli():
 @cli.command()
 def update_from_airtable():
     """Update schema and codelists from Airtable."""
+
     top_object = 'Network'
     
     with (schemadir / 'network-schema.json').open() as f:
@@ -81,49 +82,61 @@ def update_from_airtable():
                     property_fields = property_record['fields']
                     
                     if property_fields['Status'] != 'Omit':
+                        
+                        # Add new properties or update existing properties
                         if property_fields['Property'] not in target["properties"]:
                             property = target["properties"][property_fields['Property']] = {}
                         else:
                             property = target["properties"][property_fields['Property']]
         
+                        # Set values
                         set_value(property_fields, property, "Title", "title")
                         set_value(property_fields, property, "Description", "description")
                         set_value(property_fields, property, "Status", "$comment")
                         set_value(property_fields, property, "Format", "format")
+                        set_value(property_fields, property, "Type", "type")
+                        set_value(property_fields, property, "Constant value", "const")
 
+                        # Set $ref for objects and arrays of objects
                         if 'instanceOf' in property_fields:
                             ref = definitions[property_fields['instanceOf'][0]]['fields']['Name']
 
                         if property_fields.get('Type') == 'object':
-                            property["type"] = "object",
+                            property.pop("type")
                             property['$ref'] = f'#/definitions/{ref}'
-                        elif property_fields.get('Type') == 'array (string)':
-                            property["type"] = "array"
-                            property["items"] = {"type": "string"}
-                        elif property_fields.get('Type') == 'array (object)':
-                            property["type"] = "array"
-                            property["items"] = {"$ref": f'#/definitions/{ref}'}
+                        elif property_fields.get('Type') == 'array':
+                            if property_fields.get("Items"):
+                                property["items"] = {"type": property_fields["Items"]}
+                                if property_fields.get("instanceOf"):
+                                    property["items"] = {"$ref": f'#/definitions/{ref}'}
                         
+                        # Set codelist, enum and openCodelist
                         if property_fields.get("Codelist"):
                             codelist_record = codelists_table.get(property_fields["Codelist"][0])
                             codelist_fields = codelist_record["fields"]
                             property["codelist"] = f"{codelist_fields['Name']}.csv"
+                            
                             if codelist_fields.get("Codelist type") == "Closed":
                                 property["openCodelist"] = False
                                 property["enum"] = []
+                                
                                 if codelist_fields.get("Codes"):
                                     for code_id in codelist_fields["Codes"]:
                                         code_record = codes_table.get(code_id)
                                         property["enum"].append(code_record["fields"]["Code"])
+                            
                             elif codelist_fields.get("Codelist type") == "Open":
                                 property["openCodelist"] = True
 
-                        target["properties"][property_fields['Property']] = property
+                        # Set required properties
+                        if property_fields.get("Required") == True:
+                            if target.get("required"):
+                                if property_fields["Property"] not in target["required"]:
+                                    target["required"].append(property_fields["Property"])
+                            else:
+                                target["required"] = [property_fields["Property"]]
 
-                # Delete keys not in Airtable
-                for key in list(property):
-                    if key not in property_fields:
-                        del(property[key])
+                        target["properties"][property_fields['Property']] = property
         
     with (schemadir / 'network-schema.json').open('w') as f:
         json.dump(schema, f, indent=2)
