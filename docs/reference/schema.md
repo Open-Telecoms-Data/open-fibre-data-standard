@@ -48,3 +48,4 @@ The `CoordinateReferenceSystem` object references the CRS by `name` and `uri`. I
 `urn:ogc:def:crs:OGC::CRS84` denotes WGS84 with the order longitude, latitude. It is equivalent to EPSG:4326 with reversed axes.
 
 For more information, see [How to transform coordinates to the correct coordinate reference system](../guidance/publication.md#how-to-transform-coordinates-to-the-correct-coordinate-reference-system).
+
