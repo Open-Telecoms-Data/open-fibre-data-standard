@@ -6,7 +6,7 @@
 
 The [schema reference](schema.md) is the canonical reference for the structure of Open Fibre Data Standard (OFDS) data, the meaning of each field, and the rules that must be followed to publish OFDS data.
 
-The [codelists reference](codelists.md) is the canonical reference for meaning of the codes used to limit and standardise the possible values of fields in OFDS data.
+The [codelists reference](codelists.md) is the canonical reference for the meaning of the codes used to limit and standardise the possible values of fields in OFDS data.
 
 The [publication formats reference](publication_formats.md) is the canonical reference for the formats in which OFDS can be published and the rules for transforming OFDS data from one publication format to another.
 
