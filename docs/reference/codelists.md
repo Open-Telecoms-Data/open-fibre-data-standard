@@ -14,7 +14,7 @@ If you use new codes outside those in an open codelist, please create an issue i
 
 The [schema](schema.md) has a `codelist` property to indicate the CSV File that defines the codes in the codelist (shown as tables below). It also has an `openCodelist` property, to indicate whether the codelist is open or closed.
 
-Codes are case-sensitive, and are generally provided as English language camelCase. Codes must not be translated, though the OFDS team will work with publishers to translate code titles and definitions.
+Codes are case-sensitive, and are generally provided as English language camelCase. Codes must not be translated.
 
 ## Open codelists
 
