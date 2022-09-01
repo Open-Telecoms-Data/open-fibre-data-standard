@@ -214,8 +214,10 @@ def pre_commit():
     schema_table = mapping_sheet(schema, include_codelist=True, include_definitions=True)
 
     with (schemadir / 'network-schema.csv').open('w') as f:
-        writer = csv.writer(f)
-        for row in schema_table:
+        writer = csv.DictWriter(f, fieldnames=schema_table[0])
+        
+        writer.writeheader()
+        for row in schema_table[1]:
             writer.writerow(row)
 
     # Load schema reference
