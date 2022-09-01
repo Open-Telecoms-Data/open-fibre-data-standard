@@ -16,10 +16,7 @@ The [schema](schema.md) has a `codelist` property to indicate the CSV File that 
 
 Codes are case-sensitive, and are generally provided as English language camelCase. Codes must not be translated, though the OFDS team will work with publishers to translate code titles and definitions.
 
-## Open codelists
-
-## Closed codelists
-
+## Codelists
 
 ### transmissionMedium
 

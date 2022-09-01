@@ -210,12 +210,13 @@ def pre_commit():
         for row in schema_table:
             writer.writerow(row)
 
-    # Update schema reference
+    # Load schema reference
     schema_reference = read_lines(referencedir / 'schema.md')
+
+    # Get components from schema reference, drop any not in schema definitions
     components_index = schema_reference.index("### Components\n")
     components = {}
 
-    # Get components from schema reference, drop any not in schema definitions
     for i in range(components_index, len(schema_reference)):
         line = schema_reference[i]       
         
@@ -234,7 +235,7 @@ def pre_commit():
                         components[component].append(schema_reference[j])
                     j += 1
 
-    # Add new definitions
+    # Add components for new definitions
     for key, value in schema["definitions"].items():
         if key not in components:
             components[key] = [
@@ -248,31 +249,55 @@ def pre_commit():
         
     # Update schema reference
     schema_reference = schema_reference[:components_index+1]
-
+    schema_reference.append("\n")
+    
     for component, content in components.items():
         schema_reference.append(f"#### {component}\n")
         schema_reference.extend(content)
 
     write_lines(referencedir / 'schema.md', schema_reference)
 
-    # Update codelist reference
+    # Load codelist reference
     codelist_reference = read_lines(referencedir / 'codelists.md')
 
+    # Get codelists from the codelist directory
+    codelists = {}
     for path in glob.glob(f"{codelistdir}/*"):
-        codelist = path.split("/")[-1].split(".")[0]
-        heading = f"### {codelist}\n"
+        codelists[(path.split("/")[-1].split(".")[0])] = []
 
-        if heading not in codelist_reference:
-            codelist_reference.extend([
-                heading,
+    # Get codelists from codelist reference, drop any missing from the codelist directory
+    codelists_index = codelist_reference.index("## Codelists\n")
+    for i in range(0, len(codelist_reference)):
+        line = codelist_reference[i]       
+        
+        if line[:4] == "### ":
+            codelist = line[4:-1]
+            
+            if codelist in codelists:
+                j = i+1
+                
+                while j < len(codelist_reference) and codelist_reference[j][:4] != "### ":
+                    codelists[codelist].append(codelist_reference[j])
+                    j += 1
+
+    # Add new codelists and update codelist reference
+    codelist_reference = codelist_reference[:codelists_index+1]
+    codelist_reference.append("\n")
+
+    for codelist, content in codelists.items():
+        if content == []:
+            content.append([
+                f"### {codelist}\n",
                 "\n",
                 "```{csv-table-no-translate}\n",
                 ":header-rows: 1\n",
                 ":widths: auto\n",
                 f":file: ../../codelists/{codelist}.csv\n",
                 "```\n",
-                "\n"
+                "\n"       
             ])
+        codelist_reference.append(f"### {codelist}\n")
+        codelist_reference.extend(content)
 
     write_lines(referencedir / 'codelists.md', codelist_reference)
 

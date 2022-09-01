@@ -33,6 +33,7 @@ The top-level object in OFDS data is a `Network`.
 #### Organisations
 
 ### Components
+
 #### CoordinateReferenceSystem
 
 Coordinates in all OFDS data must be specified in the coordinate reference system required by GeoJSON:
