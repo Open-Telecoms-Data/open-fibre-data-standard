@@ -148,7 +148,6 @@ def update_from_airtable():
             for property in list(target["properties"]):
                 formula = match({"Property": property, "propertyOf": definition_fields["Name"]})
                 result = properties_table.first(formula=formula)
-                print(result)
 
                 if not result or result["fields"]["Status"] == "Omit":
                     target["properties"].pop(property)
@@ -166,13 +165,22 @@ def update_from_airtable():
         f.write('\n')
     
     # Update codelists
+    files = glob.glob(f"{codelistdir}/*/*.csv")
+    for file in files:
+        os.remove(file)
+    
     for codelist in codelists_table.all():
         codelist_fields = codelist["fields"]
         
         if codelist_fields["Status"] != "Omit" and codelist_fields.get("Codes"):
             filename = f"{codelist_fields['Name']}.csv"
             
-            with open(codelistdir / filename, 'w', newline='') as f:
+            if codelist_fields.get("Codelist type") == "Closed":
+                subdir = "closed"
+            else:
+                subdir = "open"
+
+            with open(codelistdir / subdir / filename, 'w', newline='') as f:
                 fieldnames = ['code', 'title', 'description']
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
                 writer.writeheader()
@@ -214,7 +222,7 @@ def pre_commit():
     schema_reference = read_lines(referencedir / 'schema.md')
 
     # Get components from schema reference, drop any not in schema definitions
-    components_index = schema_reference.index("### Components\n")
+    components_index = schema_reference.index("### Components\n") + 3
     components = {}
 
     for i in range(components_index, len(schema_reference)):
@@ -262,11 +270,11 @@ def pre_commit():
 
     # Get codelists from the codelist directory
     codelists = {}
-    for path in glob.glob(f"{codelistdir}/*"):
-        codelists[(path.split("/")[-1].split(".")[0])] = []
+    for path in glob.glob(f"{codelistdir}/*/*.csv"):
+        codelists[(path.split("/")[-1].split(".")[0])] = {"type": path.split("/")[-2], "reference": []}
 
     # Get codelists from codelist reference, drop any missing from the codelist directory
-    codelists_index = codelist_reference.index("## Codelists\n")
+    codelists_index = codelist_reference.index("## Open codelists\n")
     for i in range(0, len(codelist_reference)):
         line = codelist_reference[i]       
         
@@ -276,28 +284,36 @@ def pre_commit():
             if codelist in codelists:
                 j = i+1
                 
-                while j < len(codelist_reference) and codelist_reference[j][:4] != "### ":
-                    codelists[codelist].append(codelist_reference[j])
+                while j < len(codelist_reference) and codelist_reference[j][:2] != "##":
+                    codelists[codelist]["reference"].append(codelist_reference[j])
                     j += 1
 
     # Add new codelists and update codelist reference
-    codelist_reference = codelist_reference[:codelists_index+1]
+    codelist_reference = codelist_reference[:codelists_index-1]
     codelist_reference.append("\n")
-
-    for codelist, content in codelists.items():
-        if content == []:
-            content.append([
-                f"### {codelist}\n",
+    open_reference = ["## Open codelists\n", "\n"]
+    closed_reference = ["## Closed codelists\n", "\n"]
+    
+    for key, value in codelists.items():
+        if value["type"] == "closed":
+            target = closed_reference
+        else:
+            target = open_reference
+        if value["reference"] == []:
+            value["reference"].extend([
                 "\n",
                 "```{csv-table-no-translate}\n",
                 ":header-rows: 1\n",
                 ":widths: auto\n",
-                f":file: ../../codelists/{codelist}.csv\n",
+                f":file: ../../codelists/{value['type']}/{key}.csv\n",
                 "```\n",
                 "\n"       
             ])
-        codelist_reference.append(f"### {codelist}\n")
-        codelist_reference.extend(content)
+        target.append(f"### {key}\n")
+        target.extend(value["reference"])
+    
+    codelist_reference.extend(open_reference)
+    codelist_reference.extend(closed_reference)
 
     write_lines(referencedir / 'codelists.md', codelist_reference)
 

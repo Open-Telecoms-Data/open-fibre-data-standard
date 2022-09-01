@@ -113,6 +113,14 @@
       "description": "The coordinate reference system used in the data. If this network includes any coordinate data (in `Node.location` or `Link.route`) then this field must be provided.",
       "$comment": "Ready",
       "$ref": "#/definitions/CoordinateReferenceSystem"
+    },
+    "language": {
+      "title": "Language",
+      "description": "The default language of the data, from the open language codelist. A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
+      "$comment": "Work in progress",
+      "type": "string",
+      "codelist": "language.csv",
+      "openCodelist": true
     }
   },
   "definitions": {
@@ -366,27 +374,27 @@
           "type": "number"
         },
         "technologies": {
-            "title": "Technologies",
-            "description": "The active technologies used on this link, using the open link technologies codelist.",
-            "$comment": "Ready",
-            "type": "array",
-            "items": {
-              "type": [
-                "string"
-              ]
-            },
-            "codelist": "linkTechnologies.csv",
-            "openCodelist": true
+          "title": "Technologies",
+          "description": "The active technologies used on this link, using the open link technologies codelist.",
+          "$comment": "Ready",
+          "type": "array",
+          "items": {
+            "type": [
+              "string"
+            ]
+          },
+          "codelist": "linkTechnologies.csv",
+          "openCodelist": true
         },
         "capacity": {
-            "title": "Capacity",
-            "description": "The transmission rate, or throughput, of this link, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the link.",
-            "$comment": "Ready",
-            "type": "number"
+          "title": "Capacity",
+          "description": "The transmission rate, or throughput, of this link, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the link.",
+          "$comment": "Ready",
+          "type": "number"
         },
         "capacityDetails": {
-            "title": "Capacity details",
-            "$comment": "Work in progress"
+          "title": "Capacity details",
+          "$comment": "Work in progress"
         },
         "accuracy": {
           "title": "Accuracy",

@@ -70,60 +70,61 @@ For information on the fields that can be provided for each contract, see [Contr
 
 This section lists each component in the OFDS schema. Some components are reused in multiple places in the schema. For information on how the components fit together, see the [structure](#structure) section or the [schema browser](#browser).
 
+
 #### Node
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Node
-:collapse: address,rackspace,identifier,phase,accessPoint,networkProvider,status,technologies,internationalConnections,type,power,location,name,physicalInfrastructureProvider
+:collapse: identifier,name,status,location,address,internationalConnections,accessPoint,physicalInfrastructureProvider,networkProvider,type,technologies,power,rackspace,phase
 ```
 
 #### Link
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Link
-:collapse: accuracy,networkProvider,fibreType,readyForServiceDate,ownership,phase,fibreCount,supplier,country,fibreLength,technologies,capacity,endpoints,name,transmissionMedium,darkFibre,identifier,physicalInfrastructureProvider,deployment,capacityDetails,status,route
+:collapse: identifier,name,status,endpoints,route,physicalInfrastructureProvider,networkProvider,supplier,ownership,transmissionMedium,deployment,darkFibre,fibreType,fibreCount,fibreLength,technologies,capacity,capacityDetails,accuracy,readyForServiceDate,phase,country
 ```
 
 #### Phase
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Phase
-:collapse: name,funders,identifier
+:collapse: identifier,name,funders
 ```
 
 #### Organisation
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Organisation
-:collapse: identifier,listing.exchange,logo,classification,listing.symbol,id,website,country,role,name
+:collapse: id,name,identifier,role,classification,country,listing.exchange,listing.symbol,website,logo
 ```
 
 #### OrganisationReference
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/OrganisationReference
-:collapse: name,id
+:collapse: id,name
 ```
 
 #### Value
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Value
-:collapse: currency,amount
+:collapse: amount,currency
 ```
 
 #### Address
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Address
-:collapse: postalCode,locality,streetAddress,region,country
+:collapse: streetAddress,locality,region,country,postalCode
 ```
 
 #### Identifier
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Identifier
-:collapse: id,legalName,uri,scheme
+:collapse: scheme,id,legalName,uri
 ```
 
 #### Document
@@ -137,7 +138,7 @@ This section lists each component in the OFDS schema. Some components are reused
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Contract
-:collapse: description,type,value,dateSigned,documents,title,identifier
+:collapse: identifier,title,description,type,value,dateSigned,documents
 ```
 
 #### Geometry

@@ -16,22 +16,14 @@ The [schema](schema.md) has a `codelist` property to indicate the CSV File that 
 
 Codes are case-sensitive, and are generally provided as English language camelCase. Codes must not be translated, though the OFDS team will work with publishers to translate code titles and definitions.
 
-## Codelists
-
-### transmissionMedium
-
-```{csv-table-no-translate}
-:header-rows: 1
-:widths: auto
-:file: ../../codelists/transmissionMedium.csv
-```
+## Open codelists
 
 ### ownershipStructure
 
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/ownershipStructure.csv
+:file: ../../codelists/open/ownershipStructure.csv
 ```
 
 ### nodeType
@@ -39,15 +31,7 @@ Codes are case-sensitive, and are generally provided as English language camelCa
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/nodeType.csv
-```
-
-### deployment
-
-```{csv-table-no-translate}
-:header-rows: 1
-:widths: auto
-:file: ../../codelists/deployment.csv
+:file: ../../codelists/open/nodeType.csv
 ```
 
 ### organisationClassification
@@ -55,7 +39,7 @@ Codes are case-sensitive, and are generally provided as English language camelCa
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/organisationClassification.csv
+:file: ../../codelists/open/organisationClassification.csv
 ```
 
 ### nodeTechnologies
@@ -63,7 +47,7 @@ Codes are case-sensitive, and are generally provided as English language camelCa
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/nodeTechnologies.csv
+:file: ../../codelists/open/nodeTechnologies.csv
 ```
 
 ### linkTechnologies
@@ -71,23 +55,7 @@ Codes are case-sensitive, and are generally provided as English language camelCa
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/linkTechnologies.csv
-```
-
-### nodeStatus
-
-```{csv-table-no-translate}
-:header-rows: 1
-:widths: auto
-:file: ../../codelists/nodeStatus.csv
-```
-
-### linkStatus
-
-```{csv-table-no-translate}
-:header-rows: 1
-:widths: auto
-:file: ../../codelists/linkStatus.csv
+:file: ../../codelists/open/linkTechnologies.csv
 ```
 
 ### geometryType
@@ -95,7 +63,7 @@ Codes are case-sensitive, and are generally provided as English language camelCa
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/geometryType.csv
+:file: ../../codelists/open/geometryType.csv
 ```
 
 ### organisationRole
@@ -103,6 +71,40 @@ Codes are case-sensitive, and are generally provided as English language camelCa
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/organisationRole.csv
+:file: ../../codelists/open/organisationRole.csv
+```
+
+## Closed codelists
+
+### transmissionMedium
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/closed/transmissionMedium.csv
+```
+
+### deployment
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/closed/deployment.csv
+```
+
+### nodeStatus
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/closed/nodeStatus.csv
+```
+
+### linkStatus
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/closed/linkStatus.csv
 ```
 
