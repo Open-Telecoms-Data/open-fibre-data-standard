@@ -18,21 +18,57 @@ Click on schema elements to expand the tree, or use the '+' icon to expand all e
 
 ## Reference tables
 
+This section presents each field in the schema in tables with additional information in paragraphs. Required fields are indicated in the **Required** column. For fields that reference components, a link is provided to a table with details of the component.
+
 ### Structure
 
-The top-level object in OFDS data is a `Network`.
+This section describes the overall structure of the OFDS schema. The top-level object in OFDS data is a `Network`. A network has the following sections:
+
+* [Nodes](#nodes)
+* [Links](#links)
+* [Phases](#phases)
+* [Organisations](#organisations)
+* [Contracts](#contracts)
+
+In addition to the above sections, there are several top-level metadata fields:
+
+```{jsonschema} ../../schema/network-schema.json
+:collapse: nodes,links,phases,organisations,contracts,publisher,crs
+```
 
 #### Nodes
 
+The nodes section contains information on the nodes in the network.
+
+For information on the fields that can be provided for each node, see [Node](#node).
+
 #### Links
+
+The links section contains information on the links in the network.
+
+For information on the fields that can be provided for each link, see [Link](#link).
 
 #### Phases
 
+The phases section contains information on the phases in which nodes and links are deployed.
+
+For information on the fields that can be provided for each phase, see [Phase](#phase).
+
 #### Organisations
+
+Each organisation referenced in a network must be included in the organisations section.
+
+For information on the fields that can be provided for each organisation, see [Organisation](#organisation).
 
 #### Contracts
 
+The contracts section contains information on contracts relating to the network.
+
+For information on the fields that can be provided for each contract, see [Contract](#contract).
+
 ### Components
+
+This section lists each component in the OFDS schema. Some components are reused in multiple places in the schema. For information on how the components fit together, see the [structure](#structure) section or the [schema browser](#browser).
 
 #### Node
 
