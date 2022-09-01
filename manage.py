@@ -212,20 +212,46 @@ def pre_commit():
 
     # Update schema reference
     schema_reference = read_lines(referencedir / 'schema.md')
+    components_index = schema_reference.index("### Components\n")
+    components = {}
 
-    for key, value in schema["definitions"].items():
-        heading = f"#### {key}\n"
+    # Get components from schema reference, drop any not in schema definitions
+    for i in range(components_index, len(schema_reference)):
+        line = schema_reference[i]       
         
-        if heading not in schema_reference:
-            schema_reference.extend([
-                heading,
+        if line[:5] == "#### ":
+            component = line[5:-1]
+            
+            if component in schema["definitions"]:
+                components[component] = []
+                j = i+1
+                
+                while j < len(schema_reference) and schema_reference[j][:5] != "#### ":
+                    # Update keys to collapse
+                    if schema_reference[j][:10] == ":collapse:":
+                        components[component].append(f":collapse: {','.join(schema['definitions'][component]['properties'].keys())}\n")
+                    else:
+                        components[component].append(schema_reference[j])
+                    j += 1
+
+    # Add new definitions
+    for key, value in schema["definitions"].items():
+        if key not in components:
+            components[key] = [
                 "\n", 
                 "```{jsonschema} ../../schema/network-schema.json\n",
                 f":pointer: /definitions/{key}\n",
                 f":collapse: {','.join(value['properties'].keys())}\n"
                 "```\n",
                 "\n"
-            ])
+            ]
+        
+    # Update schema reference
+    schema_reference = schema_reference[:components_index+1]
+
+    for component, content in components.items():
+        schema_reference.append(f"#### {component}\n")
+        schema_reference.extend(content)
 
     write_lines(referencedir / 'schema.md', schema_reference)
 

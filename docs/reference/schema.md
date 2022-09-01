@@ -33,7 +33,6 @@ The top-level object in OFDS data is a `Network`.
 #### Organisations
 
 ### Components
-
 #### CoordinateReferenceSystem
 
 Coordinates in all OFDS data must be specified in the coordinate reference system required by GeoJSON:
@@ -58,7 +57,7 @@ For more information, see [How to transform coordinates to the correct coordinat
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Link
-:collapse: accuracy,networkProvider,fibreType,readyForServiceDate,ownership,phase,fibreCount,supplier,country,fibreLength,technologies,capacity,endpoints,Link route,name,transmissionMedium,darkFibre,identifier,physicalInfrastructureProvider,deployment,capacityDetails,status
+:collapse: accuracy,networkProvider,fibreType,readyForServiceDate,ownership,phase,fibreCount,supplier,country,fibreLength,technologies,capacity,endpoints,name,transmissionMedium,darkFibre,identifier,physicalInfrastructureProvider,deployment,capacityDetails,status,route
 ```
 
 #### Value
@@ -73,13 +72,6 @@ For more information, see [How to transform coordinates to the correct coordinat
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Address
 :collapse: postalCode,locality,streetAddress,region,country
-```
-
-#### Feature
-
-```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Feature
-:collapse: 
 ```
 
 #### Phase
