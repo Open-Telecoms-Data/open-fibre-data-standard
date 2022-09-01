@@ -4,7 +4,7 @@
    Throughout the reference documentation, the key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" are to be interpreted as described in [RFC2119](https://datatracker.ietf.org/doc/html/rfc2119).
 ```
 
-The [schema reference](schema.md) is the canonical reference for the structure of Open Fibre Data Standard (OFDS) data, the meaning of each field and the rules that must be followed to publish OFDS data.
+The [schema reference](schema.md) is the canonical reference for the structure of Open Fibre Data Standard (OFDS) data, the meaning of each field, and the rules that must be followed to publish OFDS data.
 
 The [codelists reference](codelists.md) is the canonical reference for meaning of the codes used to limit and standardise the possible values of fields in OFDS data.
 
