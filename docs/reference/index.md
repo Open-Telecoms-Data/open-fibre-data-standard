@@ -8,7 +8,7 @@ The [schema reference](schema.md) is the canonical reference for the structure o
 
 The [codelists reference](codelists.md) is the canonical reference for the meaning of the codes used to limit and standardise the possible values of fields in OFDS data.
 
-The [publication formats reference](publication_formats.md) is the canonical reference for the formats in which OFDS can be published and the rules for transforming OFDS data from one publication format to another.
+The [publication formats reference](publication_formats.md) is the canonical reference for the formats in which OFDS can be published, and the rules for transforming OFDS data from one publication format to another.
 
 ```{eval-rst}
 .. toctree::
