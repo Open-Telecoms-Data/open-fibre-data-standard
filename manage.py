@@ -46,7 +46,12 @@ def cli():
 
 @cli.command()
 def update_from_airtable():
-    """Update schema and codelists from Airtable."""
+    """Update schema and codelists from Airtable.
+    
+    * Add new definitions and properties
+    * Update existing definitions and properties
+    * Delete definitions and properties that do not exist in Airtable or are marked as 'Omit' 
+    """
 
     top_object = 'Network'
     
