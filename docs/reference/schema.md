@@ -28,30 +28,17 @@ The top-level object in OFDS data is a `Network`.
 
 #### Phases
 
-#### Contracts
-
 #### Organisations
+
+#### Contracts
 
 ### Components
 
-#### CoordinateReferenceSystem
-
-Coordinates in all OFDS data must be specified in the coordinate reference system required by GeoJSON:
-
-> The coordinate reference system for all GeoJSON coordinates is a geographic coordinate reference system, using the World Geodetic System 1984 (WGS 84) [WGS84] datum, with longitude and latitude units of decimal degrees.  This is equivalent to the coordinate reference system identified by the Open Geospatial Consortium (OGC) URN urn:ogc:def:crs:OGC::CRS84.
-
-The `CoordinateReferenceSystem` object references the CRS by `name` and `uri`. Its properties must be set to the following values:
-
-* `name`: urn:ogc:def:crs:OGC::CRS84
-* `uri`: http://www.opengis.net/def/crs/OGC/1.3/CRS84
-
-`urn:ogc:def:crs:OGC::CRS84` denotes WGS84 with the order longitude, latitude. It is equivalent to EPSG:4326 with reversed axes.
-
-For more information, see [How to transform coordinates to the correct coordinate reference system](../guidance/publication.md#how-to-transform-coordinates-to-the-correct-coordinate-reference-system).
+#### Node
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/CoordinateReferenceSystem
-:collapse: name,uri
+:pointer: /definitions/Node
+:collapse: address,rackspace,identifier,phase,accessPoint,networkProvider,status,technologies,internationalConnections,type,power,location,name,physicalInfrastructureProvider
 ```
 
 #### Link
@@ -59,6 +46,27 @@ For more information, see [How to transform coordinates to the correct coordinat
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Link
 :collapse: accuracy,networkProvider,fibreType,readyForServiceDate,ownership,phase,fibreCount,supplier,country,fibreLength,technologies,capacity,endpoints,name,transmissionMedium,darkFibre,identifier,physicalInfrastructureProvider,deployment,capacityDetails,status,route
+```
+
+#### Phase
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Phase
+:collapse: name,funders,identifier
+```
+
+#### Organisation
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Organisation
+:collapse: identifier,listing.exchange,logo,classification,listing.symbol,id,website,country,role,name
+```
+
+#### OrganisationReference
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/OrganisationReference
+:collapse: name,id
 ```
 
 #### Value
@@ -73,27 +81,6 @@ For more information, see [How to transform coordinates to the correct coordinat
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Address
 :collapse: postalCode,locality,streetAddress,region,country
-```
-
-#### Phase
-
-```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Phase
-:collapse: name,funders,identifier
-```
-
-#### OrganisationReference
-
-```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/OrganisationReference
-:collapse: name,id
-```
-
-#### Node
-
-```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Node
-:collapse: address,rackspace,identifier,phase,accessPoint,networkProvider,status,technologies,internationalConnections,type,power,location,name,physicalInfrastructureProvider
 ```
 
 #### Identifier
@@ -117,16 +104,30 @@ For more information, see [How to transform coordinates to the correct coordinat
 :collapse: description,type,value,dateSigned,documents,title,identifier
 ```
 
-#### Organisation
-
-```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Organisation
-:collapse: identifier,listing.exchange,logo,classification,listing.symbol,id,website,country,role,name
-```
-
 #### Geometry
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Geometry
 :collapse: type,coordinates
 ```
+
+#### CoordinateReferenceSystem
+
+Coordinates in all OFDS data must be specified in the coordinate reference system required by GeoJSON:
+
+> The coordinate reference system for all GeoJSON coordinates is a geographic coordinate reference system, using the World Geodetic System 1984 (WGS 84) [WGS84] datum, with longitude and latitude units of decimal degrees.  This is equivalent to the coordinate reference system identified by the Open Geospatial Consortium (OGC) URN urn:ogc:def:crs:OGC::CRS84.
+
+The `CoordinateReferenceSystem` object references the CRS by `name` and `uri`. Its properties must be set to the following values:
+
+* `name`: urn:ogc:def:crs:OGC::CRS84
+* `uri`: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+
+`urn:ogc:def:crs:OGC::CRS84` denotes WGS84 with the order longitude, latitude. It is equivalent to EPSG:4326 with reversed axes.
+
+For more information, see [How to transform coordinates to the correct coordinate reference system](../guidance/publication.md#how-to-transform-coordinates-to-the-correct-coordinate-reference-system).
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/CoordinateReferenceSystem
+:collapse: name,uri
+```
+
