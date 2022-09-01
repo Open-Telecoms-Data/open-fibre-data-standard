@@ -1,6 +1,6 @@
 # Schema reference
 
-The schema provides the authoritative definition of the structure of Open Fibre Data Standard (OFDS) data, the meaning of each field and the rules that must be followed to publish OFDS data. It is used to validate the structure and format of OFDS data.
+The schema provides the authoritative definition of the structure of Open Fibre Data Standard (OFDS) data, the meaning of each field, and the rules that must be followed to publish OFDS data. It is used to validate the structure and format of OFDS data.
 
 For this version of OFDS, the canonical URL of the schema is [https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0.1.0-alpha/schema/network-schema.json](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0.1.0-alpha/schema/network-schema.json). Use the canonical URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested.
 
