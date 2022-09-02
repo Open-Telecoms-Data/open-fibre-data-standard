@@ -13,7 +13,6 @@ The [publication formats reference](publication_formats.md) is the canonical ref
 ```{eval-rst}
 .. toctree::
    :maxdepth: 1
-
    schema
    codelists
    publication_formats

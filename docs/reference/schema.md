@@ -167,4 +167,3 @@ For more information, see [How to transform coordinates to the correct coordinat
 :pointer: /definitions/CoordinateReferenceSystem
 :collapse: name,uri
 ```
-

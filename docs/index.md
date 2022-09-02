@@ -12,9 +12,9 @@ The Open Fibre Data Standard (OFDS) describes:
 
 To get an introduction to open fibre data, the data standard and the key concepts behind it, read the [primer](primer/index).
 
-To learn how to publish and use open fibre data, read the [guidance](guidance/index.md).
+To learn how to publish and use open fibre data, read the [guidance](guidance/index).
 
-For details of the OFDS data model and publication formats and for the specific rules that need to be followed to publish OFDS data, read the [reference](reference/index.md).
+For details of the OFDS data model and publication formats and for the specific rules that need to be followed to publish OFDS data, read the [reference](reference/index).
 
 For information about changes in each version of the OFDS, read the [history](history/index)
 

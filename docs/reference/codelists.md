@@ -107,4 +107,3 @@ Codes are case-sensitive, and are generally provided as English language camelCa
 :widths: auto
 :file: ../../codelists/closed/linkStatus.csv
 ```
-
