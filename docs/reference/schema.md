@@ -14,7 +14,7 @@ This page presents the schema in an [interactive browser](#browser) and in [refe
 
 Click on schema elements to expand the tree, or use the '+' icon to expand all elements. Use { } to view the underlying schema for any section. Required fields are indicated in **bold**.
 
- <script src="/_static/docson/widget.js" data-schema="/_static/network-schema.json"></script> 
+ <script src="../_static/docson/widget.js" data-schema="../_static/network-schema.json"></script> 
 
 ## Reference tables
 
