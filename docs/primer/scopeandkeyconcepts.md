@@ -110,4 +110,4 @@ Examples of OFDS node and link location data are given below.
 
 ::::
 
-OFDS supports publishing geospatial data in several formats, for more information read the [publication format reference](../reference).
+OFDS supports publishing geospatial data in several formats, for more information read the [publication format reference](../reference/index.md).
