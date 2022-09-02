@@ -26,4 +26,5 @@ For information about changes in each version of the OFDS, read the [history](hi
    guidance/index
    reference/index
    history/index
+   governance/index
 ```

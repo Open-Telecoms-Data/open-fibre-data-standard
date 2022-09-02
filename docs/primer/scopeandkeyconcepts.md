@@ -64,4 +64,50 @@ For more information about links, see the Link reference.
 
 ## Geospatial data
  
- To follow
+Geospatial data is information that describes objects or features with a location on or near the surface of the earth. Geospatial data typically combines location information (usually coordinates on the earth) and attribute information (the characteristics of the object concerned). 
+
+OFDS data is usually geospatial data. It can contain both location information, such as the location of nodes and links, and attribute information, such as the capacity of a link.
+
+OFDS data uses [GeoJSON geometry objects](https://www.rfc-editor.org/rfc/rfc7946#section-3.1) to represent location information. Nodes occupy single locations in space, so OFDS data uses the GeoJSON ['Point' geometry type](https://www.rfc-editor.org/rfc/rfc7946#section-3.1.2) to represent them. Links are connected paths, so OFDS data uses the GeoJSON ['LineString' geometry type](https://www.rfc-editor.org/rfc/rfc7946#section-3.1.4) to represent them.
+
+Examples of OFDS node and link location data are given below.
+
+::::{tab-set}
+
+:::{tab-item} Node
+```json
+{
+    "geometry": {
+        "type": "Point",
+        "coordinates": [
+            26.081,
+            -24.405
+        ]
+    }
+}
+```
+:::
+
+:::{tab-item} Link
+```json
+{
+    "geometry": {
+        "type": "LineString",
+        "coordinates": [
+            [
+                26.081,
+                -24.405
+            ],
+            [
+                26.09,
+                -24.416
+            ]
+        ]
+    }
+}
+```
+:::
+
+::::
+
+OFDS supports publishing geospatial data in several formats, for more information read the [publication format reference](../reference/index.md).

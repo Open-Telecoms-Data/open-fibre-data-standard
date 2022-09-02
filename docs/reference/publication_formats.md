@@ -1,4 +1,4 @@
-# Publication format reference
+# Publication formats reference
 
 ## JSON
 

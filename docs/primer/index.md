@@ -9,6 +9,7 @@ This Primer provides an introduction to:
 Do you want to learn how to publish or use open fibre data? Read the [guidance](../guidance/index).
 
 Are you looking for details of the OFDS data model and the rules for publishers? Read the [reference](../reference/index).
+
 ```{eval-rst}
 .. toctree::
    :maxdepth: 1
