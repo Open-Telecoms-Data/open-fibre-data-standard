@@ -72,85 +72,128 @@ This section lists each component in the OFDS schema. Some components are reused
 
 
 #### Node
-
+A `Node` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Node/description
+```
+Each `Node` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Node
 :collapse: identifier,name,status,location,address,internationalConnections,accessPoint,physicalInfrastructureProvider,networkProvider,type,technologies,power,rackspace,phase
 ```
 
 #### Link
-
+A `Link` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Link/description
+```
+Each `Link` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Link
 :collapse: identifier,name,status,endpoints,route,physicalInfrastructureProvider,networkProvider,supplier,ownership,transmissionMedium,deployment,darkFibre,fibreType,fibreCount,fibreLength,technologies,capacity,capacityDetails,accuracy,readyForServiceDate,phase,country
 ```
 
 #### Phase
-
+A `Phase` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Phase/description
+```
+Each `Phase` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Phase
 :collapse: identifier,name,funders
 ```
 
 #### Organisation
-
+A `Organisation` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Organisation/description
+```
+Each `Organisation` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Organisation
 :collapse: id,name,identifier,role,classification,country,listing.exchange,listing.symbol,website,logo
 ```
 
 #### OrganisationReference
-
+A `OrganisationReference` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/OrganisationReference/description
+```
+Each `OrganisationReference` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/OrganisationReference
 :collapse: id,name
 ```
 
 #### Value
-
+A `Value` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Value/description
+```
+Each `Value` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Value
 :collapse: amount,currency
 ```
 
 #### Address
-
+A `Address` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Address/description
+```
+Each `Address` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Address
 :collapse: streetAddress,locality,region,country,postalCode
 ```
 
 #### Identifier
-
+A `Identifier` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Identifier/description
+```
+Each `Identifier` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Identifier
 :collapse: scheme,id,legalName,uri
 ```
 
 #### Document
-
+A `Document` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Document/description
+```
+Each `Document` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Document
 :collapse: 
 ```
 
 #### Contract
-
+A `Contract` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Contract/description
+```
+Each `Contract` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Contract
 :collapse: identifier,title,description,type,value,dateSigned,documents
 ```
 
 #### Geometry
-
+A `Geometry` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Geometry/description
+```
+Each `Geometry` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Geometry
 :collapse: type,coordinates
 ```
 
 #### CoordinateReferenceSystem
-
-Coordinates in all OFDS data must be specified in the coordinate reference system required by GeoJSON:
+Coordinates in all OFDS data must be specified in the coordinate reference system [required by GeoJSON](https://datatracker.ietf.org/doc/html/rfc7946#section-4):
 
 > The coordinate reference system for all GeoJSON coordinates is a geographic coordinate reference system, using the World Geodetic System 1984 (WGS 84) [WGS84] datum, with longitude and latitude units of decimal degrees.  This is equivalent to the coordinate reference system identified by the Open Geospatial Consortium (OGC) URN urn:ogc:def:crs:OGC::CRS84.
 
@@ -163,7 +206,13 @@ The `CoordinateReferenceSystem` object references the CRS by `name` and `uri`. I
 
 For more information, see [How to transform coordinates to the correct coordinate reference system](../guidance/publication.md#how-to-transform-coordinates-to-the-correct-coordinate-reference-system).
 
+A `CoordinateReferenceSystem` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/CoordinateReferenceSystem/description
+```
+Each `CoordinateReferenceSystem` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/CoordinateReferenceSystem
 :collapse: name,uri
 ```
+
