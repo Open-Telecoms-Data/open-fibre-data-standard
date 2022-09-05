@@ -1,5 +1,7 @@
 # Scope and key concepts
 
+This page explains the scope of the Open Fibre Data Standard (OFDS) in context of the three-layer [network value chain](#the-network-value-chain). It also introduces [key concepts](#key-concepts) that you need to understand in order to implement OFDS.
+
 ## The network value chain
 
 Fibre optic networks broadly consist of three [layers](https://digital-strategy.ec.europa.eu/en/policies/broadband-network-layers-and-business-roles):
@@ -12,7 +14,7 @@ Fibre optic networks broadly consist of three [layers](https://digital-strategy.
 
 The primary focus of OFDS is to describe the passive network infrastructure. The standard also accommodates some details about the active infrastructure. The services that are delivered using the infrastructure are out of scope.
 
-## Actors
+### Actors
 
 Based on the layers in the network value chain, there are three main actors in a fibre optic network:
 
@@ -38,7 +40,7 @@ In open [business models](#network-business-models), the network provider provid
 
 Service providers are organisations that deliver digital services across a network. For example, internet, e-health, elderly care, TV, phone, video-conferencing, entertainment, teleworking, smart monitoring etc. Service providers are out of scope.
 
-## Network business models
+### Network business models
 
 The actors in a fibre network can take on different roles depending on the business model(s) used in the network.
 
@@ -46,7 +48,9 @@ In a fully integrated model, one actor takes on all three roles, whilst in open 
 
 ![Business models for an open network](../../_assets/networkBusinessModels.svg)
 
-## Networks
+## Key concepts
+
+### Networks
 
 OFDS defines a network as:
 ```{jsoninclude-quote} ../../schema/network-schema.json
@@ -55,7 +59,7 @@ OFDS defines a network as:
 
 ![An example network](../../_assets/networkExample.svg)
 
-## Nodes
+### Nodes
 
 OFDS defines a node as:
 ```{jsoninclude-quote} ../../schema/network-schema.json
@@ -66,7 +70,7 @@ Nodes can represent different elements in a fibre network and the type of each n
 
 For more information about nodes, see the [Node reference](../reference/schema.md#node).
 
-## Links
+### Links
 
 OFDS defines a link as:
 ```{jsoninclude-quote} ../../schema/network-schema.json
@@ -79,7 +83,7 @@ The nodes that a link connects are known as its endpoints. In addition to the en
 
 For more information about links, see the [Link reference](../reference/schema.md#link).
 
-## Geospatial data
+### Geospatial data
  
 Geospatial data is information that describes objects or features with a location on or near the surface of the earth. Geospatial data typically combines location information (usually coordinates on the earth) and attribute information (the characteristics of the object concerned). 
 
