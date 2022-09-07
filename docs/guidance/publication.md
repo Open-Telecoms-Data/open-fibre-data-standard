@@ -6,11 +6,11 @@ To publish OFDS data, you need to specify coordinates in the `urn:ogc:def:crs:OG
 
 If your data pipeline includes a Geographic Information System such as ArcGIS or QGIS, these tools can transform coordinates from one CRS to another. If you are writing your own software, or if you prefer to use the command line, several libraries and tools are available, for example:
 
-* [PROJ](https://proj.org/) is a generic coordinate transformation software that transforms geospatial coordinates from one coordinate reference system (CRS) to another. It includes command-line applications and an application programming interface.
-* [PYPROJ](https://pyproj4.github.io/pyproj/stable/) is a Python interface to PROJ.
-* [PROJ4JS](http://proj4js.org/) is a Javascript library based on PROJ.
+* [PROJ](https://proj.org/) and its associated Python interface ([PYPROJ](https://pyproj4.github.io/pyproj/stable/)) and Javascript implementation ([PROJ4JS](http://proj4js.org/) are generic coordinate transformation tools that transform geospatial coordinates from one coordinate reference system (CRS) to another. They include command-line applications and an application programming interface. 
+* [GDAL](https://gdal.org/) is a translator library for raster and vector geospatial data formats. It also comes with a variety of useful command line utilities for data translation and processing.
+* [Apache SIS](https://sis.apache.org/) is a free software, Java language library for developing geospatial applications. SIS provides data structures for geographic features and associated metadata along with methods to manipulate those data structures.
 
-If you prefer to use a graphical user interface, several web-based tools are available:
+If you prefer to use a graphical user interface, several web-based tools are available, for example:
 
 * [MyGeodata Cloud](https://mygeodata.cloud/cs2cs/)
 * [epsg.io](https://epsg.io/transform)
