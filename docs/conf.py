@@ -33,7 +33,8 @@
 extensions = ['myst_parser',
 'sphinxcontrib.opendataservices',
 'sphinxcontrib.jsonschema',
-'sphinx_design']
+'sphinx_design',
+'sphinx_rtd_theme']
 
 #MyST extenions
 myst_enable_extensions = [
@@ -137,9 +138,7 @@ todo_include_todos = False
 import os
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-
-import furo
-html_theme = 'furo'
+html_theme = 'sphinx_rtd_theme'
     
 # otherwise, readthedocs.org uses their theme by default, so no need to specify it
 
