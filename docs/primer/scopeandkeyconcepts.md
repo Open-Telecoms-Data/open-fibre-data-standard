@@ -1,5 +1,7 @@
 # Scope and key concepts
 
+This page explains the scope of the Open Fibre Data Standard (OFDS) in context of the three-layer [network value chain](#the-network-value-chain). It also introduces [key concepts](#key-concepts) that you need to understand in order to implement OFDS.
+
 ## The network value chain
 
 Fibre optic networks broadly consist of three [layers](https://digital-strategy.ec.europa.eu/en/policies/broadband-network-layers-and-business-roles):
@@ -12,20 +14,33 @@ Fibre optic networks broadly consist of three [layers](https://digital-strategy.
 
 The primary focus of OFDS is to describe the passive network infrastructure. The standard also accommodates some details about the active infrastructure. The services that are delivered using the infrastructure are out of scope.
 
-## Actors
+### Actors
 
 Based on the layers in the network value chain, there are three main actors in a fibre optic network:
 
-- The passive infrastructure provider is an organization that owns, maintains and/or provides access to the passive network infrastructure, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.
-- The active network provider is an organization that operates the active network infrastructure, i.e. the electrical elements, such as lit fiber, access node switches and broadband remote access servers. The network provider delivers service providers' services to end users. It can own or lease the active network infrastructure.
-- The service provider is an organisation which delivers the digital services. For example: for e-health, elderly care, TV, Internet, phone, video-conferencing, entertainment, teleworking, smart monitoring and so on.
-
 ![The actors in fibre optic networks](../../_assets/actors.svg)
 
-Other actors in fibre networks include investors in network infrastructure, end users of network services and wholesale customers of network providers.
-OFDS covers passive infrastructure providers, active network providers and investors. However, service providers, end users and wholesale customers are out of scope.
+**Physical infrastructure providers**
 
-## Network business models
+OFDS defines a physical infrastructure provider as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Link/properties/physicalInfrastructureProvider/description
+```
+
+**Network provider**
+
+OFDS defines a network provider as:
+
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Link/properties/networkProvider/description
+```
+In open [business models](#network-business-models), the network provider provides wholesale access to service providers such as retail internet service providers (ISPs). Network providers can own or lease the active network infrastructure.
+
+**Service provider**
+
+Service providers are organisations that deliver digital services across a network. For example, internet, e-health, elderly care, TV, phone, video-conferencing, entertainment, teleworking, smart monitoring etc. Service providers are out of scope of OFDS.
+
+### Network business models
 
 The actors in a fibre network can take on different roles depending on the business model(s) used in the network.
 
@@ -33,36 +48,42 @@ In a fully integrated model, one actor takes on all three roles, whilst in open 
 
 ![Business models for an open network](../../_assets/networkBusinessModels.svg)
 
-## Networks
+## Key concepts
+
+### Networks
 
 OFDS defines a network as:
-: A telecommunication network. A network consists of a set of nodes interconnected by links.
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /description
+```
 
 ![An example network](../../_assets/networkExample.svg)
 
-## Nodes
+### Nodes
 
 OFDS defines a node as:
-: An access (entry or exit) point to a network. A node consists of active or passive equipment which is capable of providing access to the network. Sites at which there are no means of access to a network are not classified as nodes. Nodes can allow for interconnections to other networks and/or connections to end users.
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Node/description
+```
 
 Nodes can represent different elements in a fibre network and the type of each node can be specified in the data, for example a node could be a point of presence, an internet exchange point and/or a cable landing.
 
-For more information about nodes, see the Node reference.
+For more information about nodes, see the [Node reference](../reference/schema.md#node).
 
-## Links
+### Links
 
 OFDS defines a link as:
-: A connection between two nodes.
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Link/description
+```
 
-Links can be either direct physical connections between nodes, for example in granular data about an access network, or abstract connections between nodes, for example in less granular data about a national backbone network:
-
-The nodes that a link connects are known as its endpoints. In addition to the endpoints, the physical route of the link can also be specified as a polyline. This allows for the detailed route of a link to be published even when granular data on node locations along the link is unavailable, for example in a dataset describing a national backbone network.
+The nodes that a link connects are known as its endpoints. In addition to the endpoints, the physical route of the link can also be specified as a LineString. This allows for the detailed route of a link to be published even when granular data on node locations along the link is unavailable, for example in a dataset describing a national backbone network.
 
 ![An example link](../../_assets/linkExample.svg)
 
-For more information about links, see the Link reference.
+For more information about links, see the [Link reference](../reference/schema.md#link).
 
-## Geospatial data
+### Geospatial data
  
 Geospatial data is information that describes objects or features with a location on or near the surface of the earth. Geospatial data typically combines location information (usually coordinates on the earth) and attribute information (the characteristics of the object concerned). 
 

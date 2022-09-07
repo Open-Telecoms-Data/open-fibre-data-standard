@@ -258,7 +258,11 @@ def pre_commit():
     for key, value in schema["definitions"].items():
         if key not in components:
             components[key] = [
-                "\n", 
+                f"A `{key}` is defined as:\n",
+                "```{jsoninclude-quote} ../../schema/network-schema.json\n",
+                f":jsonpointer: /definitions/{key}/description\n",
+                "```\n",
+                f"Each `{key}` has the following fields:\n", 
                 "```{jsonschema} ../../schema/network-schema.json\n",
                 f":pointer: /definitions/{key}\n",
                 f":collapse: {','.join(value['properties'].keys())}\n"
