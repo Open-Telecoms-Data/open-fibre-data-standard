@@ -18,14 +18,6 @@ Codes are case-sensitive, and are generally provided as English language camelCa
 
 ## Open codelists
 
-### ownershipStructure
-
-```{csv-table-no-translate}
-:header-rows: 1
-:widths: auto
-:file: ../../codelists/open/ownershipStructure.csv
-```
-
 ### nodeType
 
 ```{csv-table-no-translate}
@@ -48,6 +40,14 @@ Codes are case-sensitive, and are generally provided as English language camelCa
 :header-rows: 1
 :widths: auto
 :file: ../../codelists/open/nodeTechnologies.csv
+```
+
+### contractType
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/contractType.csv
 ```
 
 ### linkTechnologies

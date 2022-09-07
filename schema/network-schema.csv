@@ -8,18 +8,19 @@ section,path,title,description,type,range,values,links,deprecated,deprecationNot
 ,linksFile,Links file,A URI to identify the array of information about the links that belong to this network. To be used in place of `links` for very large datasets.,string,0..1,uri,,,,
 ,phases,Phases,Information about the phases in which this network is deployed.,array,0..n,,,,,
 ,organisations,Organisations,The organisations involved in this network. Organisation references elsewhere in the schema are used to refer back to this entries in this list.,array,0..n,,,,,
-,contracts,Contracts,Information about the contracts for the development of this network.,array,0..n,,,,,
+,contracts,Contracts,Information about contracts related to this network.,array,0..n,,,,,
 ,publicationDate,Publication date,When the data was published.,string,0..1,date,,,,
 ,collectionDate,Collection date,"When the location data was collected. If a dataset was produced by digitising a map, the date that the data for the map was collected.",string,0..1,date,,,,
 ,publisher,Publisher,The publisher of this network.,unknown,0..1,,,,,
-,crs,Coordinate reference system,The coordinate reference system used in the data. If this network includes any coordinate data (in `Node.location` or `Link.route`) then this field must be provided.,unknown,1..1,,,,,
+,crs,Coordinate reference system,The coordinate reference system used in the data. If this network includes any coordinate data (in `Node.location` or `Link.route`) then this field must be provided.,unknown,0..1,,,,,
 ,language,Language,"The default language of the data, from the open language codelist. A BCP47 language tag is allowed, if there is a user need for the additional information.",string,0..1,,https://www.w3.org/International/articles/language-tags/,,,language.csv
-Node,identifier,Node identifier,An identifier for this node. The identifier must be unique within the scope of the network this node belongs to.,string,1..1,,,,,
+,accuracyDetails,Accuracy details,"Further details about the accuracy specified in `accuracy`. For example, the confidence level of the accuracy measurement, the methodology used to calculate the accuracy, or a local classification of accuracy.",string,0..1,,,,,
+,accuracy,Accuracy,"The horizontal uncertainty, in metres, of the coordinates in this dataset relative to the datum of the coordinate reference system specified in `crs`.",number,0..1,,,,,
 Node,name,Node name,A name for this node.,string,0..1,,,,,
 Node,status,Status,The status of this node.,string,0..1,"Enum: proposed, planned, underConstruction, operational, decommissioned, inactive",,,,nodeStatus.csv
 Node,location,Node location,The physical location of this node.,unknown,0..1,,,,,
 Node,address,Node address,The physical address of this node.,unknown,0..1,,,,,
-Node,internationalConnections,International connections,The international connections available at this node.,unknown,0..1,,,,,
+Node,internationalConnections,International connections,"The international connections available at this node. For all connections, `.country` is required.",array,0..n,,,,,
 Node,accessPoint,Access point,Whether active or passive transmission equipment is installed at this node which is capable of providing access to the network.,boolean,0..1,,,,,
 Node,physicalInfrastructureProvider,Physical infrastructure provider,,unknown,0..1,,,,,
 Node,networkProvider,Network provider,,unknown,0..1,,,,,
@@ -27,17 +28,16 @@ Node,type,Node type,"The type of this node, using the open node type codelist.",
 Node,technologies,Technologies,"The active technologies used at this node, using the open node technologies codelist.",array,0..n,,,,,nodeTechnologies.csv
 Node,power,Power availability,Whether power for active network equipment is available at this node.,boolean,0..1,,,,,
 Node,rackspace,Node rackspace,,unknown,0..1,,,,,
-Node,phase,Phase,The phase to which this node belongs.,array,0..n,,,,,
-Link,identifier,Link identifier,An identifier for this link. The identifier must be unique within the scope of the network this link belongs to.,string,1..1,,,,,
+Node,phase,Phase,The phase to which this node belongs.,unknown,0..1,,,,,
+Node,id,Identifier,An identifier for this node. The identifier must be unique within the scope of the network this node belongs to.,string,1..1,,,,,
 Link,name,Link name,,string,0..1,,,,,
 Link,status,Link status,The status of the network infrastructure for this link.,string,0..1,"Enum: operational, underConstruction, planned, decommissioned, proposed, unlit",,,,linkStatus.csv
-Link,endpoints,Endpoints,The nodes that this link connects.,array,1..n,,,,,
 Link,route,Link route,,unknown,0..1,,,,,
 Link,physicalInfrastructureProvider,Physical infrastructure provider,"The organisation that owns and maintains the passive network infrastructure, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",unknown,0..1,,,,,
 Link,networkProvider,Network provider,"The organisation that operates the active network infrastructure, i.e. the electrical elements, such as optical transceivers, switches and routers.",unknown,0..1,,,,,
 Link,supplier,Supplier,,unknown,0..1,,,,,
 Link,ownership,Ownership,,unknown,0..1,,,,,
-Link,transmissionMedium,Transmission medium,"The transmission medium of this link, using the closed transmission medium codelist",array,0..n,"Enum: fibre, microwave",,,,transmissionMedium.csv
+Link,transmissionMedium,Transmission medium,"The physical media of this link, using the closed transmission medium codelist",array,0..n,"Enum: fibre, microwave, copper, coaxial",,,,transmissionMedium.csv
 Link,deployment,Deployment,"The physical deployment of this link, using the closed deployment type codelist.",array,0..n,"Enum: aerial, underground, aboveGround, belowGround",,,,deployment.csv
 Link,darkFibre,Dark fibre availability,Whether access to dark fibre is available on this link.,boolean,0..1,,,,,
 Link,fibreType,Fibre type,"The type of fibre used in this link, using the fibre type codelist.",string,0..1,Enum: ,,,,fibreType.csv
@@ -46,14 +46,16 @@ Link,fibreLength,Fibre length,The physical length of fibre optic cable used in t
 Link,technologies,Technologies,"The active technologies used on this link, using the open link technologies codelist.",array,0..n,,,,,linkTechnologies.csv
 Link,capacity,Capacity,"The transmission rate, or throughput, of this link, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the link.",number,0..1,,,,,
 Link,capacityDetails,Capacity details,,unknown,0..1,,,,,
-Link,accuracy,Accuracy,,unknown,0..1,,,,,
 Link,readyForServiceDate,Ready for service date,The date this link was ready to carry traffic.,string,0..1,date,,,,
-Link,phase,Phase,The phases to which this link belongs.,array,0..n,,,,,
+Link,phase,Phase,The phase to which this link belongs.,unknown,0..1,,,,,
 Link,country,Country,"The countries in which this link is physically located, using the closed country code codelist.",array,0..n,Enum: ,,,,countryCode.csv
-Phase,identifier,Phase identifier,An identifier for this phase. The identifier must be unique within the scope of the network.,string,1..1,,,,,
+Link,id,Identifier,An identifier for this link. The identifier must be unique within the scope of the network this link belongs to.,string,1..1,,,,,
+Link,start,Start,"The identifier of one of two nodes that this link connects. If `directed == true` this, represents the starting point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",string,0..1,,,,,
+Link,end,End,"The identifier of one of two nodes that this link connects. If `directed == true` this, represents the end point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",string,0..1,,,,,
 Phase,name,Phase name,A name for this phase.,string,0..1,,,,,
 Phase,funders,Funders,"Information about the organizations that provide financing for the development or operation of this phase, also known as investors or financers.
 ",array,0..n,,,,,
+Phase,id,Identifier,An identifier for this phase. The identifier must be unique within the scope of the network.,string,1..1,,,,,
 Organisation,id,Local identifier,A local identifier for this organisation.,string,1..1,,,,,
 Organisation,name,name*,A name for this organization.,string,0..1,,,,,
 Organisation,identifier,Organisation identifier,An identifier for this organization.,unknown,0..1,,,,,
@@ -77,13 +79,14 @@ Identifier,scheme,Scheme,Organization identifiers should be taken from an existi
 Identifier,id,ID,The identifier of the organisation in the selected scheme.,string,0..1,,,,,
 Identifier,legalName,Legal name,The legally registered name of the organisation,string,0..1,,,,,
 Identifier,uri,URI,"A URI to identify the organisation, such as those provided by Open Corporates or some other relevant URI provider. This is not for listing the website of the organisation: that can be done through the URL field of the organisation contact point.",string,0..1,uri,,,,
-Contract,identifier,Contract identifier,An identifier for this contract. The identifier must be unique within the scope of the network.,string,1..1,,,,,
 Contract,title,Contract title,A title for this contract.,string,0..1,,,,,
 Contract,description,Contract description,A description for this contract.,string,0..1,,,,,
-Contract,type,Contract type,,string,0..1,,,,,ownershipStructure.csv
+Contract,type,Contract type,"The type of the contract, from the open contract type codelist.",string,0..1,,,,,contractType.csv
 Contract,value,Contract value,The value of this contract.,unknown,0..1,,,,,
 Contract,dateSigned,Date signed,The date this contract was signed.,string,0..1,date,,,,
 Contract,documents,Contract documents,The documents related to this contract.,array,0..n,,,,,
+Contract,id,Contract identifier,An identifier for this contract. The identifier must be unique within the scope of the network.,string,1..1,,,,,
+Contract,relatedPhases,Related phases,The identifiers of the phases to which this contract relates.,array,0..n,,,,,
 Geometry,type,Type,"The GeoJSON geometry type that is described by `.coordinates`, using the open geometry type codelist. This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Link.route`.",string,0..1,,https://datatracker.ietf.org/doc/html/rfc7946#section-1.4,,,
 Geometry,coordinates,Coordinates,"One or more GeoJSON positions. For geometries of type 'Point', the coordinates member must be a single position. For geometries of type 'LineString' the coordinates member must be an array of positions.
 
@@ -92,3 +95,5 @@ Each position is an array of numbers with two or more elements.  The first two e
 Therefore, geometries of type 'Point' must be a single array, e.g. [longitude, latitude], and geometries of type 'LineString' must be an array of arrays, e.g. [[longitude, latitude], [longitude, latitude]].",array,0..n,,https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.1,,,
 CoordinateReferenceSystem,name,Name,The name of the coordinate reference system.,string,1..1,uri,,,,
 CoordinateReferenceSystem,uri,Uniform Resource Identifier,A URI for the coordinate reference system.,string,1..1,uri,,,,
+PhaseReference,id,ID,The id of the phase being referenced. This must match the id of an entry in the phases section.,string,0..1,,,,,
+PhaseReference,name,Name,The name of the phase being referenced. This must match the name of an entry in the phase section.,string,0..1,,,,,

@@ -6,8 +6,7 @@
   "$comment": "Ready",
   "type": "object",
   "required": [
-    "identifier",
-    "crs"
+    "identifier"
   ],
   "properties": {
     "identifier": {
@@ -81,8 +80,8 @@
     },
     "contracts": {
       "title": "Contracts",
-      "description": "Information about the contracts for the development of this network.",
-      "$comment": "Work in progress",
+      "description": "Information about contracts related to this network.",
+      "$comment": "Ready",
       "type": "array",
       "items": {
         "$ref": "#/definitions/Contract"
@@ -117,10 +116,22 @@
     "language": {
       "title": "Language",
       "description": "The default language of the data, from the open language codelist. A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
-      "$comment": "Work in progress",
+      "$comment": "Ready",
       "type": "string",
       "codelist": "language.csv",
       "openCodelist": true
+    },
+    "accuracyDetails": {
+      "title": "Accuracy details",
+      "description": "Further details about the accuracy specified in `accuracy`. For example, the confidence level of the accuracy measurement, the methodology used to calculate the accuracy, or a local classification of accuracy.",
+      "$comment": "Work in progress",
+      "type": "string"
+    },
+    "accuracy": {
+      "title": "Accuracy",
+      "description": "The horizontal uncertainty, in metres, of the coordinates in this dataset relative to the datum of the coordinate reference system specified in `crs`.",
+      "$comment": "Work in progress",
+      "type": "number"
     }
   },
   "definitions": {
@@ -129,12 +140,6 @@
       "description": "A point within a network. A node may be an access point or may reflect a geographic point at which a link splits, aggregates or crosses a border. Nodes can allow for interconnections to other networks or connections to end users.",
       "type": "object",
       "properties": {
-        "identifier": {
-          "title": "Node identifier",
-          "description": "An identifier for this node. The identifier must be unique within the scope of the network this node belongs to.",
-          "$comment": "Ready",
-          "type": "string"
-        },
         "name": {
           "title": "Node name",
           "description": "A name for this node.",
@@ -171,8 +176,12 @@
         },
         "internationalConnections": {
           "title": "International connections",
-          "description": "The international connections available at this node.",
-          "$comment": "Work in progress"
+          "description": "The international connections available at this node. For all connections, `.country` is required.",
+          "$comment": "Work in progress",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Address"
+          }
         },
         "accessPoint": {
           "title": "Access point",
@@ -230,17 +239,23 @@
           "title": "Phase",
           "description": "The phase to which this node belongs.",
           "$comment": "Work in progress",
-          "type": "array",
           "items": {
             "type": [
               "string"
             ]
-          }
+          },
+          "$ref": "#/definitions/PhaseReference"
+        },
+        "id": {
+          "title": "Identifier",
+          "description": "An identifier for this node. The identifier must be unique within the scope of the network this node belongs to.",
+          "$comment": "Ready",
+          "type": "string"
         }
       },
       "$comment": "Work in progress",
       "required": [
-        "identifier"
+        "id"
       ]
     },
     "Link": {
@@ -248,12 +263,6 @@
       "description": "A physical connection between two nodes.",
       "type": "object",
       "properties": {
-        "identifier": {
-          "title": "Link identifier",
-          "description": "An identifier for this link. The identifier must be unique within the scope of the network this link belongs to.",
-          "$comment": "Work in progress",
-          "type": "string"
-        },
         "name": {
           "title": "Link name",
           "$comment": "Work in progress",
@@ -274,15 +283,6 @@
             "unlit"
           ],
           "type": "string"
-        },
-        "endpoints": {
-          "title": "Endpoints",
-          "description": "The nodes that this link connects.",
-          "$comment": "Work in progress",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Node"
-          }
         },
         "route": {
           "title": "Link route",
@@ -312,7 +312,7 @@
         },
         "transmissionMedium": {
           "title": "Transmission medium",
-          "description": "The transmission medium of this link, using the closed transmission medium codelist",
+          "description": "The physical media of this link, using the closed transmission medium codelist",
           "$comment": "Ready",
           "type": "array",
           "items": {
@@ -324,7 +324,9 @@
           "openCodelist": false,
           "enum": [
             "fibre",
-            "microwave"
+            "microwave",
+            "copper",
+            "coaxial"
           ]
         },
         "deployment": {
@@ -396,10 +398,6 @@
           "title": "Capacity details",
           "$comment": "Work in progress"
         },
-        "accuracy": {
-          "title": "Accuracy",
-          "$comment": "Work in progress"
-        },
         "readyForServiceDate": {
           "title": "Ready for service date",
           "description": "The date this link was ready to carry traffic.",
@@ -409,14 +407,14 @@
         },
         "phase": {
           "title": "Phase",
-          "description": "The phases to which this link belongs.",
+          "description": "The phase to which this link belongs.",
           "$comment": "Work in progress",
-          "type": "array",
           "items": {
             "type": [
               "string"
             ]
-          }
+          },
+          "$ref": "#/definitions/PhaseReference"
         },
         "country": {
           "title": "Country",
@@ -431,12 +429,29 @@
           "codelist": "countryCode.csv",
           "openCodelist": false,
           "enum": []
+        },
+        "id": {
+          "title": "Identifier",
+          "description": "An identifier for this link. The identifier must be unique within the scope of the network this link belongs to.",
+          "$comment": "Work in progress",
+          "type": "string"
+        },
+        "start": {
+          "title": "Start",
+          "description": "The identifier of one of two nodes that this link connects. If `directed == true` this, represents the starting point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",
+          "$comment": "Ready",
+          "type": "string"
+        },
+        "end": {
+          "title": "End",
+          "description": "The identifier of one of two nodes that this link connects. If `directed == true` this, represents the end point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",
+          "$comment": "Ready",
+          "type": "string"
         }
       },
       "$comment": "Ready",
       "required": [
-        "identifier",
-        "endpoints"
+        "id"
       ]
     },
     "Phase": {
@@ -444,12 +459,6 @@
       "description": "A set of nodes and/or links deployed as a group.",
       "type": "object",
       "properties": {
-        "identifier": {
-          "title": "Phase identifier",
-          "description": "An identifier for this phase. The identifier must be unique within the scope of the network.",
-          "$comment": "Work in progress",
-          "type": "string"
-        },
         "name": {
           "title": "Phase name",
           "description": "A name for this phase.",
@@ -464,11 +473,17 @@
           "items": {
             "$ref": "#/definitions/OrganisationReference"
           }
+        },
+        "id": {
+          "title": "Identifier",
+          "description": "An identifier for this phase. The identifier must be unique within the scope of the network.",
+          "$comment": "Work in progress",
+          "type": "string"
         }
       },
       "$comment": "Ready",
       "required": [
-        "identifier"
+        "id"
       ]
     },
     "Organisation": {
@@ -552,7 +567,7 @@
     },
     "OrganisationReference": {
       "title": "Organisation reference",
-      "description": "The id and name of the organisation being referenced. Used to cross-reference to the organisations section.",
+      "description": "The ID and name of the organisation being referenced. Used to cross-reference to the organisations section.",
       "type": "object",
       "properties": {
         "id": {
@@ -671,7 +686,7 @@
     },
     "Document": {
       "title": "Document",
-      "description": "",
+      "description": "A piece of electronic or physical matter that provides information or evidence or that serves as an official record.",
       "type": "object",
       "properties": {},
       "$comment": "Work in progress"
@@ -681,56 +696,67 @@
       "description": "An agreement between the public and private sector to develop a network.",
       "type": "object",
       "properties": {
-        "identifier": {
-          "title": "Contract identifier",
-          "description": "An identifier for this contract. The identifier must be unique within the scope of the network.",
-          "$comment": "Work in progress",
-          "type": "string"
-        },
         "title": {
           "title": "Contract title",
           "description": "A title for this contract.",
-          "$comment": "Work in progress",
+          "$comment": "Ready",
           "type": "string"
         },
         "description": {
           "title": "Contract description",
           "description": "A description for this contract.",
-          "$comment": "Work in progress",
+          "$comment": "Ready",
           "type": "string"
         },
         "type": {
           "title": "Contract type",
-          "$comment": "Work in progress",
+          "$comment": "Ready",
           "type": "string",
-          "codelist": "ownershipStructure.csv"
+          "codelist": "contractType.csv",
+          "description": "The type of the contract, from the open contract type codelist.",
+          "openCodelist": true
         },
         "value": {
           "title": "Contract value",
           "description": "The value of this contract.",
-          "$comment": "Work in progress",
+          "$comment": "Ready",
           "$ref": "#/definitions/Value"
         },
         "dateSigned": {
           "title": "Date signed",
           "description": "The date this contract was signed.",
-          "$comment": "Work in progress",
+          "$comment": "Ready",
           "format": "date",
           "type": "string"
         },
         "documents": {
           "title": "Contract documents",
           "description": "The documents related to this contract.",
-          "$comment": "Work in progress",
+          "$comment": "Ready",
           "type": "array",
           "items": {
             "$ref": "#/definitions/Document"
           }
+        },
+        "id": {
+          "title": "Contract identifier",
+          "description": "An identifier for this contract. The identifier must be unique within the scope of the network.",
+          "$comment": "Ready",
+          "type": "string"
+        },
+        "relatedPhases": {
+          "title": "Related phases",
+          "description": "The identifiers of the phases to which this contract relates.",
+          "$comment": "Ready",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PhaseReference"
+          }
         }
       },
-      "$comment": "Work in progress",
+      "$comment": "Ready",
       "required": [
-        "identifier"
+        "id"
       ]
     },
     "Geometry": {
@@ -786,6 +812,26 @@
         "name",
         "uri"
       ]
+    },
+    "PhaseReference": {
+      "title": "Phase reference",
+      "description": "The ID and name of the phase being referenced. Used for cross-referencing.",
+      "$comment": "Work in progress",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "ID",
+          "description": "The id of the phase being referenced. This must match the id of an entry in the phases section.",
+          "$comment": "Work in progress",
+          "type": "string"
+        },
+        "name": {
+          "title": "Name",
+          "description": "The name of the phase being referenced. This must match the name of an entry in the phase section.",
+          "$comment": "Work in progress",
+          "type": "string"
+        }
+      }
     }
   }
 }
