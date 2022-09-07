@@ -79,7 +79,7 @@ A `Node` is defined as:
 Each `Node` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Node
-:collapse: identifier,name,status,location,address,internationalConnections,accessPoint,physicalInfrastructureProvider,networkProvider,type,technologies,power,rackspace,phase
+:collapse: name,status,location,address,internationalConnections,accessPoint,physicalInfrastructureProvider,networkProvider,type,technologies,power,rackspace,phase,id
 ```
 
 #### Link
@@ -90,7 +90,7 @@ A `Link` is defined as:
 Each `Link` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Link
-:collapse: identifier,name,status,endpoints,route,physicalInfrastructureProvider,networkProvider,supplier,ownership,transmissionMedium,deployment,darkFibre,fibreType,fibreCount,fibreLength,technologies,capacity,capacityDetails,accuracy,readyForServiceDate,phase,country
+:collapse: name,status,route,physicalInfrastructureProvider,networkProvider,supplier,ownership,transmissionMedium,deployment,darkFibre,fibreType,fibreCount,fibreLength,technologies,capacity,capacityDetails,readyForServiceDate,phase,country,id,start,end
 ```
 
 #### Phase
@@ -101,7 +101,7 @@ A `Phase` is defined as:
 Each `Phase` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Phase
-:collapse: identifier,name,funders
+:collapse: name,funders,id
 ```
 
 #### Organisation
@@ -178,7 +178,7 @@ A `Contract` is defined as:
 Each `Contract` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Contract
-:collapse: identifier,title,description,type,value,dateSigned,documents
+:collapse: title,description,type,value,dateSigned,documents,id,relatedPhases
 ```
 
 #### Geometry
@@ -214,5 +214,12 @@ Each `CoordinateReferenceSystem` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/CoordinateReferenceSystem
 :collapse: name,uri
+```
+
+#### PhaseReference
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/PhaseReference
+:collapse: id,name
 ```
 

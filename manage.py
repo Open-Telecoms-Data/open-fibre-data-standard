@@ -86,6 +86,10 @@ def update_from_airtable():
             # Update properties
             if not target.get("properties"):
                 target["properties"] = {}
+            
+            # Clear required fields
+            if target.get("required"):
+                target["required"] = []
 
             if definition_fields.get('Properties'):
                 for property_id in definition_fields['Properties']:
