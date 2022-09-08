@@ -8,7 +8,7 @@
 
 To transform a JSON-format OFDS network to GeoJSON format, you must:
 
-* Create an empty JSON object for the nodes feature collection and set it's `.type` to 'FeatureCollection'.
+* Create an empty JSON object for the nodes feature collection and set its `.type` to 'FeatureCollection'.
 * Create an empty JSON object for the links feature collection and set it's `.type` to 'FeatureCollection'.
 * For each contract in `contracts`, [dereference the phase references](#dereference-a-phase-reference) in `.relatedPhases`.
 * For each node in `nodes`:
