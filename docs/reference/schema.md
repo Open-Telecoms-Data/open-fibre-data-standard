@@ -74,10 +74,10 @@ This section lists each component in the OFDS schema. Some components are reused
 #### Node
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
-* `Node`, `.accessPoint`: [#60 Node definition (access points)](https://api.github.com/repos/Open-Telecoms-Data/open-fibre-data-standard/issues/60)
-* `.location`: [#10 Coordinates modelling](https://api.github.com/repos/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
-* `.internationalConnections`: [#72 International connections](https://api.github.com/repos/Open-Telecoms-Data/open-fibre-data-standard/issues/72)
-* `.physicalInfrastructureProvider`, `.networkProvider`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://api.github.com/repos/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
+* `Node`, `.accessPoint`: [#60 Node definition (access points)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/60)
+* `.location`: [#10 Coordinates modelling](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
+* `.internationalConnections`: [#72 International connections](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/72)
+* `.physicalInfrastructureProvider`, `.networkProvider`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
 ```
 `Node` is defined as:
 ```{jsoninclude-quote} ../../schema/network-schema.json
@@ -92,11 +92,11 @@ Each `Node` has the following fields:
 #### Link
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
-* `Link`, `.endpoints`: [#25 Link endpoints](https://api.github.com/repos/Open-Telecoms-Data/open-fibre-data-standard/issues/25)
-* `.route`: [#10 Coordinates modelling](https://api.github.com/repos/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
-* `.route`: [#12 Geometry types for link routes](https://api.github.com/repos/Open-Telecoms-Data/open-fibre-data-standard/issues/12)
-* `.physicalInfrastructureProvider`, `.networkProvider`, `.ownership`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://api.github.com/repos/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
-* `.capacityDetails`: [#24 Link capacity](https://api.github.com/repos/Open-Telecoms-Data/open-fibre-data-standard/issues/24)
+* `Link`, `.endpoints`: [#25 Link endpoints](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25)
+* `.route`: [#10 Coordinates modelling](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
+* `.route`: [#12 Geometry types for link routes](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/12)
+* `.physicalInfrastructureProvider`, `.networkProvider`, `.ownership`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
+* `.capacityDetails`: [#24 Link capacity](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24)
 ```
 `Link` is defined as:
 ```{jsoninclude-quote} ../../schema/network-schema.json
@@ -188,7 +188,7 @@ Each `Document` has the following fields:
 #### Contract
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
-* `Contract`: [#71 Contracts](https://api.github.com/repos/Open-Telecoms-Data/open-fibre-data-standard/issues/71)
+* `Contract`: [#71 Contracts](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/71)
 ```
 `Contract` is defined as:
 ```{jsoninclude-quote} ../../schema/network-schema.json
@@ -227,7 +227,7 @@ For more information, see [How to transform coordinates to the correct coordinat
 
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
-* `CoordinateReferenceSystem`: [#9 Coordinate reference system](https://api.github.com/repos/Open-Telecoms-Data/open-fibre-data-standard/issues/9)
+* `CoordinateReferenceSystem`: [#9 Coordinate reference system](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/9)
 ```
 `CoordinateReferenceSystem` is defined as:
 ```{jsoninclude-quote} ../../schema/network-schema.json
