@@ -46,9 +46,9 @@ def dereference_object(ref, list):
     Return from list the object referenced by ref. Otherwise, return ref.
     """
 
-    if "id" in ref:
+    if "id" in ref: # Can remove, `id` is required
         for item in list:
-            if item.get("id") == ref["id"]:
+            if item.get("id") == ref["id"]: # Can simplify, `id` is required
                 return item
 
     return ref
@@ -84,10 +84,11 @@ def convert_to_feature(object, organisation_references, network, organisations, 
     for endpoint in ["start", "end"]:
         if endpoint in properties:
             for node in nodes:
-                if "id" in node and node["id"] == properties[endpoint]:
+                if "id" in node and node["id"] == properties[endpoint]: # Can simplify, `.id` is required
                     properties["endpoint"] = node
 
     # Embed network-level data
+    # TO-DO: Handle case when publishers add an additional `network` field to `Node` or `Link`.
     feature["properties"]["network"] = network
 
     return feature
