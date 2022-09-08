@@ -5,6 +5,7 @@ import glob
 import json
 import os
 
+from github import Github
 from ocdskit.mapping_sheet import mapping_sheet
 from pathlib import Path
 from pyairtable import Table
@@ -12,6 +13,7 @@ from pyairtable.formulas import match
 
 AIRTABLE_API_KEY = os.environ['AIRTABLE_API_KEY']
 BASE_ID = 'apprMa4GXD05csfkW'
+GITHUB_ACCESS_TOKEN = os.environ['GITHUB_ACCESS_TOKEN']
 
 basedir = Path(__file__).resolve().parent
 schemadir = basedir / 'schema'
@@ -80,9 +82,11 @@ def update_from_airtable():
 
             set_value(definition_fields, target, "Title", "title")
             set_value(definition_fields, target, "Description", "description")
-            set_value(definition_fields, target, "Status", "$comment")
             target["type"] = "object"
             
+            # Add links to related Github issues
+            target['$comment'] = ",".join(definition_fields.get("Github issues",""))
+
             # Update properties
             if not target.get("properties"):
                 target["properties"] = {}
@@ -107,10 +111,13 @@ def update_from_airtable():
                         # Set values
                         set_value(property_fields, property, "Title", "title")
                         set_value(property_fields, property, "Description", "description")
-                        set_value(property_fields, property, "Status", "$comment")
+                        set_value(property_fields, property, "Github issues", "$comment")
                         set_value(property_fields, property, "Format", "format")
                         set_value(property_fields, property, "Type", "type")
                         set_value(property_fields, property, "Constant value", "const")
+
+                        # Add links to related Github issues
+                        property['$comment'] = ",".join(property_fields.get("Github issues",""))
 
                         # Set $ref for objects and arrays of objects
                         if 'instanceOf' in property_fields:
@@ -206,6 +213,18 @@ def update_from_airtable():
                             'description': code_fields.get("Description", "")
                         })
 
+def get_issues(issue_urls):
+    """
+    Accepts a comma-separated list of issue urls and returns issues from the Github API.
+    """
+    github = Github(GITHUB_ACCESS_TOKEN)
+    repo = github.get_repo("Open-Telecoms-Data/open-fibre-data-standard")
+    issues = []
+
+    for issue_url in set(issue_urls.split(",")):
+        issues.append(repo.get_issue(number=int(issue_url.split("/")[-1])))
+    
+    return issues
 
 @cli.command()
 def pre_commit():
@@ -214,7 +233,7 @@ def pre_commit():
       - docs/reference/schema.md
       - docs/reference/codelists.md
     """
-    
+
     # Load schema
     with (schemadir / 'network-schema.json').open() as f:
         schema = json.load(f)
@@ -232,51 +251,75 @@ def pre_commit():
     # Load schema reference
     schema_reference = read_lines(referencedir / 'schema.md')
 
-    # Get components from schema reference, drop any not in schema definitions
+    # Get content from components section of schema reference
     components_index = schema_reference.index("### Components\n") + 3
-    components = {}
 
     for i in range(components_index, len(schema_reference)):
-        line = schema_reference[i]       
-        
-        if line[:5] == "#### ":
-            component = line[5:-1]
+        if schema_reference[i][:5] == "#### ":
+            defn = schema_reference[i][5:-1]
             
-            if component in schema["definitions"]:
-                components[component] = []
+            if defn in schema["definitions"]:
+                schema["definitions"][defn]["content"] = []
                 j = i+1
-                
-                while j < len(schema_reference) and schema_reference[j][:5] != "#### ":
-                    # Update keys to collapse
-                    if schema_reference[j][:10] == ":collapse:":
-                        components[component].append(f":collapse: {','.join(schema['definitions'][component]['properties'].keys())}\n")
-                    else:
-                        components[component].append(schema_reference[j])
-                    j += 1
 
-    # Add components for new definitions
-    for key, value in schema["definitions"].items():
-        if key not in components:
-            components[key] = [
-                f"A `{key}` is defined as:\n",
-                "```{jsoninclude-quote} ../../schema/network-schema.json\n",
-                f":jsonpointer: /definitions/{key}/description\n",
-                "```\n",
-                f"Each `{key}` has the following fields:\n", 
-                "```{jsonschema} ../../schema/network-schema.json\n",
-                f":pointer: /definitions/{key}\n",
-                f":collapse: {','.join(value['properties'].keys())}\n"
-                "```\n",
-                "\n"
-            ]
+                # Drop auto-generated reference content
+                while j < len(schema_reference) and not schema_reference[j].startswith("```{admonition}") and not schema_reference[j].startswith(f"`{defn}"):
+                    schema["definitions"][defn]["content"].append(schema_reference[j])
+                    j = j+1
+
+    # Generate standard reference content for each definition
+    for defn, definition in schema["definitions"].items():
+        definition["content"] = definition.get("content", [])
         
+        # Add heading
+        definition["content"].insert(0, f"#### {defn}\n")
+        
+        # Get Github issues and list related definitions and properties
+        definition["issues"] = {}
+        if definition.get("$comment"):
+            for issue in get_issues(definition["$comment"]):
+                definition["issues"][issue.url] = {"issue": issue, "relatedTo": [defn]}
+        
+        for prop, property in definition["properties"].items():
+            if property.get("$comment"):
+                for issue in get_issues(property["$comment"]):
+                    if issue.url in definition["issues"]:
+                        definition["issues"][issue.url]["relatedTo"].append(f".{prop}")
+                    else:
+                        definition["issues"][issue.url] = {"issue": issue, "relatedTo": [f".{prop}"]}
+          
+        # Add admonition with list of related Github issues
+        if len(definition["issues"]) > 0:
+            definition["content"].extend([
+                "```{admonition} Alpha consultation\n",
+                "The following issues relate to this component or its fields:\n"
+            ])
+            for issue in definition["issues"].values():
+                definition["content"].extend([
+                    f"* `{'`, `'.join(issue['relatedTo'])}`: [#{issue['issue'].number} {issue['issue'].title}]({issue['issue'].url})\n"
+                ])
+            definition["content"].append("```\n")
+
+        # Add definition and schema table
+        definition["content"].extend([
+            f"`{defn}` is defined as:\n",
+            "```{jsoninclude-quote} ../../schema/network-schema.json\n",
+            f":jsonpointer: /definitions/{defn}/description\n",
+            "```\n",
+            f"Each `{defn}` has the following fields:\n", 
+            "```{jsonschema} ../../schema/network-schema.json\n",
+            f":pointer: /definitions/{defn}\n",
+            f":collapse: {','.join(definition['properties'].keys())}\n"
+            "```\n",
+            "\n"
+        ])
+      
     # Update schema reference
     schema_reference = schema_reference[:components_index+1]
     schema_reference.append("\n")
     
-    for component, content in components.items():
-        schema_reference.append(f"#### {component}\n")
-        schema_reference.extend(content)
+    for definition in schema["definitions"].values():
+        schema_reference.extend(definition["content"])
 
     write_lines(referencedir / 'schema.md', schema_reference)
 
