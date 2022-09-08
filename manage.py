@@ -296,7 +296,7 @@ def pre_commit():
             ])
             for issue in definition["issues"].values():
                 definition["content"].extend([
-                    f"* `{'`, `'.join(issue['relatedTo'])}`: [#{issue['issue'].number} {issue['issue'].title}]({issue['issue'].url})\n"
+                    f"* `{'`, `'.join(issue['relatedTo'])}`: [#{issue['issue'].number} {issue['issue'].title}]({issue['issue'].html_url})\n"
                 ])
             definition["content"].append("```\n")
 
