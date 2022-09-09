@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from copy import deepcopy
 import click
 import csv
 import glob
@@ -16,9 +17,10 @@ BASE_ID = 'apprMa4GXD05csfkW'
 GITHUB_ACCESS_TOKEN = os.environ['GITHUB_ACCESS_TOKEN']
 
 basedir = Path(__file__).resolve().parent
-schemadir = basedir / 'schema'
-referencedir = basedir / 'docs' / 'reference'
 codelistdir = basedir / 'codelists'
+examplesdir = basedir / 'examples'
+referencedir = basedir / 'docs' / 'reference'
+schemadir = basedir / 'schema'
 
 def set_value(source_obj, target_obj, source_field, target_field):
     """Update the value of the target object's field if the equivalent field exists in the source object."""
@@ -39,6 +41,59 @@ def write_lines(filename, lines):
 
     with open(filename, 'w') as f:
         f.writelines(lines)
+
+
+def dereference_object(ref, list):
+    """
+    Return from list the object referenced by ref. Otherwise, return ref.
+    """
+
+    if "id" in ref: # Can remove, `id` is required
+        for item in list:
+            if item.get("id") == ref["id"]: # Can simplify, `id` is required
+                return item
+
+    return ref
+
+
+def convert_to_feature(object, organisation_references, network, organisations, phases, nodes):
+    """
+    Convert a node or link to a GeoJSON feature.
+    """
+    feature = {"type": "Feature"}
+
+    # Set `.geometry`
+    # TO-DO: Handle case when publishers add an additional `location` or `route` field to links and nodes, respectively.
+    if "location" in object:
+        feature["geometry"] = object.pop("location")
+    elif "route" in object:
+        feature["geometry"] = object.pop("route")
+    else:
+        feature["geometry"] = None
+    
+    properties = feature["properties"] = object
+    
+    # Dereference organisation references
+    for organisationReference in organisation_references:
+        if organisationReference in properties:
+            properties[organisationReference] == dereference_object(properties[organisationReference], organisations)
+    
+    # Dereference phase references
+    if "phase" in properties:
+        properties["phase"] == dereference_object(properties["phase"], phases)
+
+    # Dereference endpoints
+    for endpoint in ["start", "end"]:
+        if endpoint in properties:
+            for node in nodes:
+                if "id" in node and node["id"] == properties[endpoint]: # Can simplify, `.id` is required
+                    properties["endpoint"] = node
+
+    # Embed network-level data
+    # TO-DO: Handle case when publishers add an additional `network` field to `Node` or `Link`.
+    feature["properties"]["network"] = network
+
+    return feature
 
 
 @click.group()
@@ -82,6 +137,10 @@ def update_from_airtable():
 
             set_value(definition_fields, target, "Title", "title")
             set_value(definition_fields, target, "Description", "description")
+            set_value(definition_fields, target, "Status", "$comment")
+            if "additionalFields" in definition_fields:
+                target["additionalFields"] = bool(definition_fields["additionalFields"])
+            
             target["type"] = "object"
             
             # Add links to related Github issues
@@ -374,6 +433,55 @@ def pre_commit():
     codelist_reference.extend(closed_reference)
 
     write_lines(referencedir / 'codelists.md', codelist_reference)
+
+@cli.command()
+@click.argument('filename', type=click.Path(exists=True))
+def convert_to_geojson(filename):
+    """
+    Convert a JSON-format OFDS network to two GeoJSON files: nodes.geojson and links.geojson.
+    """
+
+    # Load data
+    with open(filename, 'r') as f:
+        network = json.load(f)
+    
+    nodes = network.pop("nodes", [])
+    links = network.pop("links", [])
+    # TO-DO: Consider how to handle unreferenced phases and organisations. Currently, they are dropped from the geoJSON output
+    phases = network.pop("phases", [])
+    organisations = network.pop("organisations", [])
+
+    nodeFeatures = []
+    linkFeatures = []
+
+    # Dereference `contracts.relatedPhases`
+    if "contracts" in network:
+        for contract in network["contracts"]:
+            if "relatedPhases" in contract:
+                for phase in contract["relatedPhases"]:
+                    phase = dereference_object(phase, phases)
+
+    # Convert nodes to features
+    for node in nodes:
+        nodeFeatures.append(convert_to_feature(node, ['physicalInfrastructureProvider', 'networkProvider'], network, organisations, phases, nodes))
+
+    # Convert links to features
+    for link in links:
+        linkFeatures.append(convert_to_feature(link, ['physicalInfrastructureProvider', 'networkProvider'], network, organisations, phases, nodes))
+
+    with open('nodes.geojson', 'w') as f:
+        featureCollection = {
+            "type": "FeatureCollection",
+            "features": nodeFeatures
+        }
+        json.dump(featureCollection, f, indent=2)
+
+    with open('links.geojson', 'w') as f:
+        featureCollection = {
+            "type": "FeatureCollection",
+            "features": linkFeatures
+        }
+        json.dump(featureCollection, f, indent=2)
 
 if __name__ == '__main__':
     cli()
