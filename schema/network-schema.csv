@@ -52,6 +52,7 @@ Link,country,Country,"The countries in which this link is physically located, us
 Link,id,Identifier,An identifier for this link. The identifier must be unique within the scope of the network this link belongs to.,string,1..1,,,,,
 Link,start,Start,"The identifier of one of two nodes that this link connects. If `directed == true` this, represents the starting point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",string,0..1,,,,,
 Link,end,End,"The identifier of one of two nodes that this link connects. If `directed == true` this, represents the end point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",string,0..1,,,,,
+Link,endpoints,Endpoints,The nodes that this link connects.,array,1..n,,,,,
 Phase,name,Phase name,A name for this phase.,string,0..1,,,,,
 Phase,funders,Funders,"Information about the organizations that provide financing for the development or operation of this phase, also known as investors or financers.
 ",array,0..n,,,,,
@@ -86,7 +87,7 @@ Contract,value,Contract value,The value of this contract.,unknown,0..1,,,,,
 Contract,dateSigned,Date signed,The date this contract was signed.,string,0..1,date,,,,
 Contract,documents,Contract documents,The documents related to this contract.,array,0..n,,,,,
 Contract,id,Contract identifier,An identifier for this contract. The identifier must be unique within the scope of the network.,string,1..1,,,,,
-Contract,relatedPhases,Related phases,The identifiers of the phases to which this contract relates.,array,0..n,,,,,
+Contract,relatedPhases,Related phases,The phases to which this contract relates.,array,0..n,,,,,
 Geometry,type,Type,"The GeoJSON geometry type that is described by `.coordinates`, using the open geometry type codelist. This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Link.route`.",string,0..1,,https://datatracker.ietf.org/doc/html/rfc7946#section-1.4,,,
 Geometry,coordinates,Coordinates,"One or more GeoJSON positions. For geometries of type 'Point', the coordinates member must be a single position. For geometries of type 'LineString' the coordinates member must be an array of positions.
 
@@ -95,5 +96,5 @@ Each position is an array of numbers with two or more elements.  The first two e
 Therefore, geometries of type 'Point' must be a single array, e.g. [longitude, latitude], and geometries of type 'LineString' must be an array of arrays, e.g. [[longitude, latitude], [longitude, latitude]].",array,0..n,,https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.1,,,
 CoordinateReferenceSystem,name,Name,The name of the coordinate reference system.,string,1..1,uri,,,,
 CoordinateReferenceSystem,uri,Uniform Resource Identifier,A URI for the coordinate reference system.,string,1..1,uri,,,,
-PhaseReference,id,ID,The id of the phase being referenced. This must match the id of an entry in the phases section.,string,0..1,,,,,
+PhaseReference,id,ID,The ID of the phase being referenced. This must match the ID of an entry in the phases section.,string,0..1,,,,,
 PhaseReference,name,Name,The name of the phase being referenced. This must match the name of an entry in the phase section.,string,0..1,,,,,
