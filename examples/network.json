@@ -1,0 +1,183 @@
+{
+    "identifier": "ullamco eiusmod mollit occaecat in",
+    "language": "ex anim occaecat sed",
+    "contracts": [
+      {
+        "id": "proident",
+        "relatedPhases": [
+          {
+            "id": "laboris ad id",
+            "name": "Excepteur quis in qui",
+            "enim_7": "dolor",
+            "ut7c": "consequat enim laborum"
+          }
+        ],
+        "title": "eu",
+        "value": {
+          "currency": null,
+          "sint_": 76573854
+        },
+        "documents": [
+          {
+            "minim_1": "non",
+            "do_7b4": false
+          },
+          {
+            "ut6": 5521727.84443976
+          },
+          {
+            "cillum1": 19961553.435848683
+          },
+          {
+            "tempore6b": false
+          }
+        ],
+        "type": "ipsum Excepteur",
+        "description": "officia cillum in reprehenderit"
+      }
+    ],
+    "crs": {
+      "name": "urn:ogc:def:crs:OGC::CRS84",
+      "uri": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+    },
+    "organisations": [],
+    "links": [
+      {
+        "id": "in est Lorem",
+        "capacity": 65027666.72739151,
+        "ownership": {
+          "title": "Ownership",
+          "$comment": "Work in progress"
+        },
+        "readyForServiceDate": "2007-07-29",
+        "darkFibre": false,
+        "status": "proposed",
+        "supplier": {
+          "name": "qui",
+          "id": "dolore elit eu sint",
+          "quis559": false
+        },
+        "fibreLength": -7882241.099844724,
+        "capacityDetails": {
+          "title": "Capacity details",
+          "$comment": "Work in progress"
+        },
+        "technologies": [
+          "sunt non occaecat elit enim",
+          "qui reprehenderit sint enim",
+          "amet ut ullamco",
+          "sit aute nisi"
+        ],
+        "end": "Lorem in",
+        "deployment": "belowGround",
+        "country": null,
+        "fibreCount": 61818760,
+        "networkProvider": {
+          "id": "est velit aute nulla",
+          "name": "est id dolor nostrud"
+        }
+      },
+      {
+        "id": "dolore",
+        "supplier": {
+          "name": "in",
+          "id": "voluptate nulla sunt irure do",
+          "fugiat0": 30056113.613429964
+        },
+        "transmissionMedium": "microwave",
+        "phase": {
+          "occaecat_f6": true
+        }
+      },
+      {
+        "id": "eiusmod dolor commodo ut",
+        "start": "in elit id eu",
+        "status": "operational",
+        "route": {
+          "type": "dolor proident",
+          "coordinates": [
+            [],
+            []
+          ],
+          "Duisd7": "enim officia magna",
+          "nulla_f": 79707577
+        },
+        "country": null,
+        "physicalInfrastructureProvider": {
+          "id": "pariatur nulla voluptate sed",
+          "name": "fugiat in"
+        },
+        "technologies": [
+          "quis",
+          "culpa consectetur ullamco officia ipsum",
+          "nisi sed",
+          "in magna consequat laborum dolor",
+          "minim dolor fugiat magna nostrud"
+        ],
+        "supplier": {
+          "name": "voluptate in magna",
+          "dolor5": 87693292.69140774,
+          "nulla_b": "pariatur",
+          "ut_f": -99279607,
+          "cupidatat_e59": 87396229.22938937
+        }
+      }
+    ],
+    "name": "minim",
+    "accuracyDetails": "nulla",
+    "collectionDate": "2014-06-22",
+    "accuracy": -8557076.28308025,
+    "publisher": {
+      "id": "sit commodo",
+      "listing.symbol": "aliqua commodo",
+      "role": [
+        "Duis",
+        "quis elit sunt"
+      ],
+      "classification": "tempor",
+      "listing.exchange": null,
+      "logo": "https://TpMgpkwTJwkbQjVIEkPUIYqXKRE.rdvmK54YlyOGJ6-z39Vu+z",
+      "name": "proident reprehenderit cupidatat labore ut",
+      "website": "https://fUjMQRln.iallzj-b81TrBkN31DSC9Vq",
+      "identifier": {
+        "uri": "http://xasIfEgWXaI.hfwKP-c-I45vyMfKZnhcq76Waq9ZlRyPb4,7i-LA5qHsxWfAIzXLPlxUF8JZKzy",
+        "id": "pariatur",
+        "legalName": "in",
+        "Excepteur7": -73661482
+      },
+      "country": null
+    },
+    "nodes": [
+      {
+        "id": "Excepteur",
+        "accessPoint": true,
+        "rackspace": {
+          "title": "Node rackspace",
+          "$comment": "Work in progress"
+        },
+        "address": {
+          "streetAddress": "et amet dolor",
+          "locality": "ad est elit"
+        },
+        "status": "underConstruction",
+        "phase": {
+          "id": "nisi dolore ad proident officia",
+          "name": "qui esse ut veniam"
+        },
+        "internationalConnections": []
+      },
+      {
+        "id": "adipisicing ut eu",
+        "power": false,
+        "rackspace": {
+          "title": "Node rackspace",
+          "$comment": "Work in progress"
+        },
+        "name": "laboris",
+        "networkProvider": {
+          "id": "veniam",
+          "name": "voluptate"
+        }
+      }
+    ]
+  }

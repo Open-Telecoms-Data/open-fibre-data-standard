@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
+from copy import deepcopy
 import click
 import csv
 import glob
 import json
 import os
 
+from github import Github
 from ocdskit.mapping_sheet import mapping_sheet
 from pathlib import Path
 from pyairtable import Table
@@ -12,11 +14,13 @@ from pyairtable.formulas import match
 
 AIRTABLE_API_KEY = os.environ['AIRTABLE_API_KEY']
 BASE_ID = 'apprMa4GXD05csfkW'
+GITHUB_ACCESS_TOKEN = os.environ['GITHUB_ACCESS_TOKEN']
 
 basedir = Path(__file__).resolve().parent
-schemadir = basedir / 'schema'
-referencedir = basedir / 'docs' / 'reference'
 codelistdir = basedir / 'codelists'
+examplesdir = basedir / 'examples'
+referencedir = basedir / 'docs' / 'reference'
+schemadir = basedir / 'schema'
 
 def set_value(source_obj, target_obj, source_field, target_field):
     """Update the value of the target object's field if the equivalent field exists in the source object."""
@@ -37,6 +41,59 @@ def write_lines(filename, lines):
 
     with open(filename, 'w') as f:
         f.writelines(lines)
+
+
+def dereference_object(ref, list):
+    """
+    Return from list the object referenced by ref. Otherwise, return ref.
+    """
+
+    if "id" in ref: # Can remove, `id` is required
+        for item in list:
+            if item.get("id") == ref["id"]: # Can simplify, `id` is required
+                return item
+
+    return ref
+
+
+def convert_to_feature(object, organisation_references, network, organisations, phases, nodes):
+    """
+    Convert a node or link to a GeoJSON feature.
+    """
+    feature = {"type": "Feature"}
+
+    # Set `.geometry`
+    # TO-DO: Handle case when publishers add an additional `location` or `route` field to links and nodes, respectively.
+    if "location" in object:
+        feature["geometry"] = object.pop("location")
+    elif "route" in object:
+        feature["geometry"] = object.pop("route")
+    else:
+        feature["geometry"] = None
+    
+    properties = feature["properties"] = object
+    
+    # Dereference organisation references
+    for organisationReference in organisation_references:
+        if organisationReference in properties:
+            properties[organisationReference] == dereference_object(properties[organisationReference], organisations)
+    
+    # Dereference phase references
+    if "phase" in properties:
+        properties["phase"] == dereference_object(properties["phase"], phases)
+
+    # Dereference endpoints
+    for endpoint in ["start", "end"]:
+        if endpoint in properties:
+            for node in nodes:
+                if "id" in node and node["id"] == properties[endpoint]: # Can simplify, `.id` is required
+                    properties["endpoint"] = node
+
+    # Embed network-level data
+    # TO-DO: Handle case when publishers add an additional `network` field to `Node` or `Link`.
+    feature["properties"]["network"] = network
+
+    return feature
 
 
 @click.group()
@@ -81,8 +138,14 @@ def update_from_airtable():
             set_value(definition_fields, target, "Title", "title")
             set_value(definition_fields, target, "Description", "description")
             set_value(definition_fields, target, "Status", "$comment")
+            if "additionalFields" in definition_fields:
+                target["additionalFields"] = bool(definition_fields["additionalFields"])
+            
             target["type"] = "object"
             
+            # Add links to related Github issues
+            target['$comment'] = ",".join(definition_fields.get("Github issues",""))
+
             # Update properties
             if not target.get("properties"):
                 target["properties"] = {}
@@ -107,10 +170,13 @@ def update_from_airtable():
                         # Set values
                         set_value(property_fields, property, "Title", "title")
                         set_value(property_fields, property, "Description", "description")
-                        set_value(property_fields, property, "Status", "$comment")
+                        set_value(property_fields, property, "Github issues", "$comment")
                         set_value(property_fields, property, "Format", "format")
                         set_value(property_fields, property, "Type", "type")
                         set_value(property_fields, property, "Constant value", "const")
+
+                        # Add links to related Github issues
+                        property['$comment'] = ",".join(property_fields.get("Github issues",""))
 
                         # Set $ref for objects and arrays of objects
                         if 'instanceOf' in property_fields:
@@ -206,6 +272,18 @@ def update_from_airtable():
                             'description': code_fields.get("Description", "")
                         })
 
+def get_issues(issue_urls):
+    """
+    Accepts a comma-separated list of issue urls and returns issues from the Github API.
+    """
+    github = Github(GITHUB_ACCESS_TOKEN)
+    repo = github.get_repo("Open-Telecoms-Data/open-fibre-data-standard")
+    issues = []
+
+    for issue_url in set(issue_urls.split(",")):
+        issues.append(repo.get_issue(number=int(issue_url.split("/")[-1])))
+    
+    return issues
 
 @cli.command()
 def pre_commit():
@@ -214,7 +292,7 @@ def pre_commit():
       - docs/reference/schema.md
       - docs/reference/codelists.md
     """
-    
+
     # Load schema
     with (schemadir / 'network-schema.json').open() as f:
         schema = json.load(f)
@@ -232,51 +310,75 @@ def pre_commit():
     # Load schema reference
     schema_reference = read_lines(referencedir / 'schema.md')
 
-    # Get components from schema reference, drop any not in schema definitions
+    # Get content from components section of schema reference
     components_index = schema_reference.index("### Components\n") + 3
-    components = {}
 
     for i in range(components_index, len(schema_reference)):
-        line = schema_reference[i]       
-        
-        if line[:5] == "#### ":
-            component = line[5:-1]
+        if schema_reference[i][:5] == "#### ":
+            defn = schema_reference[i][5:-1]
             
-            if component in schema["definitions"]:
-                components[component] = []
+            if defn in schema["definitions"]:
+                schema["definitions"][defn]["content"] = []
                 j = i+1
-                
-                while j < len(schema_reference) and schema_reference[j][:5] != "#### ":
-                    # Update keys to collapse
-                    if schema_reference[j][:10] == ":collapse:":
-                        components[component].append(f":collapse: {','.join(schema['definitions'][component]['properties'].keys())}\n")
-                    else:
-                        components[component].append(schema_reference[j])
-                    j += 1
 
-    # Add components for new definitions
-    for key, value in schema["definitions"].items():
-        if key not in components:
-            components[key] = [
-                f"A `{key}` is defined as:\n",
-                "```{jsoninclude-quote} ../../schema/network-schema.json\n",
-                f":jsonpointer: /definitions/{key}/description\n",
-                "```\n",
-                f"Each `{key}` has the following fields:\n", 
-                "```{jsonschema} ../../schema/network-schema.json\n",
-                f":pointer: /definitions/{key}\n",
-                f":collapse: {','.join(value['properties'].keys())}\n"
-                "```\n",
-                "\n"
-            ]
+                # Drop auto-generated reference content
+                while j < len(schema_reference) and not schema_reference[j].startswith("```{admonition}") and not schema_reference[j].startswith(f"`{defn}"):
+                    schema["definitions"][defn]["content"].append(schema_reference[j])
+                    j = j+1
+
+    # Generate standard reference content for each definition
+    for defn, definition in schema["definitions"].items():
+        definition["content"] = definition.get("content", [])
         
+        # Add heading
+        definition["content"].insert(0, f"#### {defn}\n")
+        
+        # Get Github issues and list related definitions and properties
+        definition["issues"] = {}
+        if definition.get("$comment"):
+            for issue in get_issues(definition["$comment"]):
+                definition["issues"][issue.url] = {"issue": issue, "relatedTo": [defn]}
+        
+        for prop, property in definition["properties"].items():
+            if property.get("$comment"):
+                for issue in get_issues(property["$comment"]):
+                    if issue.url in definition["issues"]:
+                        definition["issues"][issue.url]["relatedTo"].append(f".{prop}")
+                    else:
+                        definition["issues"][issue.url] = {"issue": issue, "relatedTo": [f".{prop}"]}
+          
+        # Add admonition with list of related Github issues
+        if len(definition["issues"]) > 0:
+            definition["content"].extend([
+                "```{admonition} Alpha consultation\n",
+                "The following issues relate to this component or its fields:\n"
+            ])
+            for issue in definition["issues"].values():
+                definition["content"].extend([
+                    f"* `{'`, `'.join(issue['relatedTo'])}`: [#{issue['issue'].number} {issue['issue'].title}]({issue['issue'].html_url})\n"
+                ])
+            definition["content"].append("```\n")
+
+        # Add definition and schema table
+        definition["content"].extend([
+            f"`{defn}` is defined as:\n",
+            "```{jsoninclude-quote} ../../schema/network-schema.json\n",
+            f":jsonpointer: /definitions/{defn}/description\n",
+            "```\n",
+            f"Each `{defn}` has the following fields:\n", 
+            "```{jsonschema} ../../schema/network-schema.json\n",
+            f":pointer: /definitions/{defn}\n",
+            f":collapse: {','.join(definition['properties'].keys())}\n"
+            "```\n",
+            "\n"
+        ])
+      
     # Update schema reference
     schema_reference = schema_reference[:components_index+1]
     schema_reference.append("\n")
     
-    for component, content in components.items():
-        schema_reference.append(f"#### {component}\n")
-        schema_reference.extend(content)
+    for definition in schema["definitions"].values():
+        schema_reference.extend(definition["content"])
 
     write_lines(referencedir / 'schema.md', schema_reference)
 
@@ -331,6 +433,55 @@ def pre_commit():
     codelist_reference.extend(closed_reference)
 
     write_lines(referencedir / 'codelists.md', codelist_reference)
+
+@cli.command()
+@click.argument('filename', type=click.Path(exists=True))
+def convert_to_geojson(filename):
+    """
+    Convert a JSON-format OFDS network to two GeoJSON files: nodes.geojson and links.geojson.
+    """
+
+    # Load data
+    with open(filename, 'r') as f:
+        network = json.load(f)
+    
+    nodes = network.pop("nodes", [])
+    links = network.pop("links", [])
+    # TO-DO: Consider how to handle unreferenced phases and organisations. Currently, they are dropped from the geoJSON output
+    phases = network.pop("phases", [])
+    organisations = network.pop("organisations", [])
+
+    nodeFeatures = []
+    linkFeatures = []
+
+    # Dereference `contracts.relatedPhases`
+    if "contracts" in network:
+        for contract in network["contracts"]:
+            if "relatedPhases" in contract:
+                for phase in contract["relatedPhases"]:
+                    phase = dereference_object(phase, phases)
+
+    # Convert nodes to features
+    for node in nodes:
+        nodeFeatures.append(convert_to_feature(node, ['physicalInfrastructureProvider', 'networkProvider'], network, organisations, phases, nodes))
+
+    # Convert links to features
+    for link in links:
+        linkFeatures.append(convert_to_feature(link, ['physicalInfrastructureProvider', 'networkProvider'], network, organisations, phases, nodes))
+
+    with open('nodes.geojson', 'w') as f:
+        featureCollection = {
+            "type": "FeatureCollection",
+            "features": nodeFeatures
+        }
+        json.dump(featureCollection, f, indent=2)
+
+    with open('links.geojson', 'w') as f:
+        featureCollection = {
+            "type": "FeatureCollection",
+            "features": linkFeatures
+        }
+        json.dump(featureCollection, f, indent=2)
 
 if __name__ == '__main__':
     cli()
