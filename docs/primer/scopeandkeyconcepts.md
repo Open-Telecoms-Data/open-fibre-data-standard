@@ -34,7 +34,6 @@ OFDS defines a network provider as:
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Link/properties/networkProvider/description
 ```
-In open [business models](#network-business-models), the network provider provides wholesale access to service providers such as retail internet service providers (ISPs). Network providers can own or lease the active network infrastructure.
 
 **Service provider**
 
