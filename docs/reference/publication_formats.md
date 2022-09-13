@@ -66,8 +66,8 @@ The streaming option is a [JSON Lines](https://jsonlines.org/) file in which eac
 The following example shows a JSON Lines file containing two networks:
 
 ```
-{"id": "1"}
-{"id": "2"}
+{"id":"fd7b30d6-f514-4cd0-a5ac-29a774f53a43","name":"Ghana Fibre Network"}
+{"id":"acafe566-7ffa-416a-b3b4-84a52386a586","name":"Togo Fibre Network"}
 ```
 
 ## GeoJSON
@@ -138,8 +138,8 @@ The streaming option for GeoJSON is separate [Newline-delimited GeoJSON](https:/
 The following example shows a newline-delimited GeoJSON file containing two features:
 
 ```
-{"type": "Feature"}
-{"type": "Feature"}
+{"type":"Feature","properties":{"id":"1","name":"Accra POP","network":{"id":"fd7b30d6-f514-4cd0-a5ac-29a774f53a43","name":"Ghana Fibre Network"}}}
+{"type":"Feature","properties":{"id":"2","name":"Kumasi POP","network":{"id":"fd7b30d6-f514-4cd0-a5ac-29a774f53a43","name":"Ghana Fibre Network"}}}
 ```
 
 ### GeoJSON transformation specification

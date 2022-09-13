@@ -1,8 +1,28 @@
 {
   "type": "FeatureCollection",
   "features": [
-    {},
-    {}
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "1",
+        "name": "Accra POP",
+        "network": {
+          "id": "fd7b30d6-f514-4cd0-a5ac-29a774f53a43",
+          "name": "Ghana Fibre Network"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "2",
+        "name": "Kumasi POP",
+        "network": {
+          "id": "fd7b30d6-f514-4cd0-a5ac-29a774f53a43",
+          "name": "Ghana Fibre Network"
+        }
+      }
+    }
   ],
   "pages": {
     "next": "http://example.com/nodes?cursor=100",
