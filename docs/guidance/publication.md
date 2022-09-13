@@ -19,6 +19,52 @@ The `urn:ogc:def:crs:OGC::CRS84` CRS is equivalent to EPSG:4326 with reversed ax
 
 ## How to format data for publication
 
+```{admonition} Alpha consultation
+There are [open issues](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues?q=is%3Aopen+is%3Aissue+label%3ATooling) related to tooling for transforming data between publication formats.
+```
+
+OFDS data can be published in three [publication formats](../reference/publication_formats.md):
+
+* The [JSON format](../reference/publication_formats.md#json) reflects the structure of the [schema](../reference/schema.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
+* The [GeoJSON format](../reference/publication_formats.md#geojson) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
+* The [CSV format](../reference/publication_formats.md#csv) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to less technical users who want to explore the data in spreadsheet tools.
+
+To meet the widest range of use cases, you ought to publish data in all three formats. The suggested approach is to export your data in the JSON format and to use the following tools to transform it to the GeoJSON and CSV formats:
+
+::::{tab-set}
+
+:::{tab-item} JSON to GeoJSON
+The standard repository's [`manage.py`](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/blob/main/manage.py) file provides a command-line interface for transforming OFDS data from JSON to GeoJSON format.
+
+To convert a network to GeoJSON format:
+
+* Check out the [repository](https://github.com/Open-Telecoms-Data/open-fibre-data-standard)
+* Run the [get started commands](https://ofds-standard-development-handbook.readthedocs.io/en/latest/technical/build.html#get-started)
+* Run the following command:
+
+```bash
+./manage.py convert-to-geojson network.json
+```
+
+:::
+
+:::{tab-item} JSON to CSV
+[Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/) provides a command-line interface for transforming OFDS data from JSON to CSV format.
+
+To convert data to CSV format:
+
+* [Install Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/getting-started/#getting-started)
+* Download the [network schema](../../schema/network-schema.json)
+* If your data is a [JSON Lines file](../reference/publication_formats.md#streaming-option), segment it into appropriately sized [network packages](../reference/publication_formats.md#small-files-and-api-responses-option)
+* Run the following command for each network package:
+
+```bash
+flatten-tool flatten --truncation-length=9 --root-list-path=networks --main-sheet-name=networks --schema=network-schema.json network-package.json -f csv
+```
+:::
+
+::::
+
 ### How to publish large networks
 
 This section describes how to:
