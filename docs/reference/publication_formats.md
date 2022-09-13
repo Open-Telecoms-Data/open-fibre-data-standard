@@ -11,7 +11,7 @@ OFDS data must be published using at least one of the formats described on this 
 * [GeoJSON](#geojson)
 * [CSV](#csv)
 
-Each format provides containers for publishing one or more networks and options to support pagination and streaming. For guidance on paginating or streaming individual networks, see [how to publish large networks](../guidance/publication.md#how-to-publish-large-networks).
+Each format provides containers for publishing one or more networks and options to support pagination and streaming.
 
 To support the widest range of use cases, you should publish your data in all three formats. For more information on choosing a publication format and on publishing data in multiple formats, see [how to format data for publication](../guidance/publication.md#how-to-format-data-for-publication).
 
@@ -20,6 +20,8 @@ To support the widest range of use cases, you should publish your data in all th
 This section describes how to publish data in JSON format.
 
 If your data is small enough to fit into memory or if you are publishing data via an API, you should use the [small files and API responses option](#small-files-and-api-responses-option). If your data is too large to fit into memory, you should use the [streaming option](#streaming-option).
+
+For guidance on paginating or streaming individual networks, see [how to publish large networks](../guidance/publication.md#how-to-publish-large-networks).
 
 ### Small files and API responses option
 
@@ -41,14 +43,14 @@ Click on schema elements to expand the tree, or use the '+' icon to expand all e
 
 :::{tab-item} Small file example
 The following example shows a network package containing two networks:
-```{jsoninclude} ../../examples/network-package.json
+```{jsoninclude} ../../examples/json/network-package.json
 :jsonpointer:
 ```
 :::
 
 :::{tab-item} API response example
 The following example shows a network package containing two networks with links to the next and previous pages of results.
-```{jsoninclude} ../../examples/api-response.json
+```{jsoninclude} ../../examples/json/api-response.json
 :jsonpointer:
 ```
 :::
@@ -82,14 +84,14 @@ Publish separate GeoJSON [feature collections](https://datatracker.ietf.org/doc/
 
 :::{tab-item} Nodes feature collection
 The following example shows a GeoJSON feature collection containing nodes:
-```{jsoninclude} ../../examples/nodes.geojson
+```{jsoninclude} ../../examples/geojson/nodes.geojson
 :jsonpointer:
 ```
 :::
 
 :::{tab-item} Links feature collection
 The following example shows a GeoJSON feature collection containing links:
-```{jsoninclude} ../../examples/links.geojson
+```{jsoninclude} ../../examples/geojson/links.geojson
 :jsonpointer:
 ```
 :::
@@ -100,7 +102,7 @@ Each feature collection may contain features from one or more networks. The netw
 
 The following example shows a GeoJSON feature collection containing features from two networks:
 
-```{jsoninclude} ../../examples/multiple-networks.geojson
+```{jsoninclude} ../../examples/geojson/multiple-networks.geojson
 :jsonpointer:
 ```
 
@@ -116,7 +118,7 @@ For data published via a paginated API, you should add a top-level `pages` objec
 
 :::{tab-item} API response example
 The following example shows a GeoJSON feature collection containing two features with links to the next and previous pages of results.
-```{jsoninclude} ../../examples/api-response.geojson
+```{jsoninclude} ../../examples/geojson/api-response.geojson
 :jsonpointer:
 ```
 :::

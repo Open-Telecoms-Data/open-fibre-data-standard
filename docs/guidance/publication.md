@@ -38,28 +38,28 @@ The preferred approach is to publish embedded nodes and links in `.nodes` and `.
 
 :::{tab-item} Embedded data
 The following example shows a network with embedded nodes and links:
-```{jsoninclude} ../../examples/network-embedded.json
+```{jsoninclude} ../../examples/json/network-embedded.json
 :jsonpointer:
 ```
 :::
 
 :::{tab-item} Links to endpoints
 The following example shows a network with links to separate endpoints for nodes and links:
-```{jsoninclude} ../../examples/network-separate-endpoints.json
+```{jsoninclude} ../../examples/json/network-separate-endpoints.json
 :jsonpointer:
 ```
 :::
 
 :::{tab-item} Nodes endpoint
 The following example shows the response returned by the nodes endpoint with links to the next and previous pages of results.
-```{jsoninclude} ../../examples/nodes-endpoint.json
+```{jsoninclude} ../../examples/json/nodes-endpoint.json
 :jsonpointer:
 ```
 :::
 
 :::{tab-item} Links endpoint
 The following example shows the response returned by the links endpoint with links to the next and previous pages of results.
-```{jsoninclude} ../../examples/links-endpoint.json
+```{jsoninclude} ../../examples/json/links-endpoint.json
 :jsonpointer:
 ```
 :::
@@ -74,14 +74,14 @@ The preferred approach is to publish embedded nodes and links. If your network i
 
 :::{tab-item} Embedded data
 The following example shows a network with embedded nodes and links:
-```{jsoninclude} ../../examples/network-embedded.json
+```{jsoninclude} ../../examples/json/network-embedded.json
 :jsonpointer:
 ```
 :::
 
 :::{tab-item} Links to files
 The following example shows a network with links to separate files for nodes and links:
-```{jsoninclude} ../../examples/network-separate-files.json
+```{jsoninclude} ../../examples/json/network-separate-files.json
 :jsonpointer:
 ```
 :::
