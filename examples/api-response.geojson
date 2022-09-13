@@ -1,0 +1,11 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {},
+    {}
+  ],
+  "pages": {
+    "next": "http://example.com/nodes?cursor=100",
+    "prev": "http://example.com/nodes?cursor=96"
+  }
+}

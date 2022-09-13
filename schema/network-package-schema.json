@@ -1,0 +1,40 @@
+{
+    "id": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0.1.0-alpha/schema/network-package-schema.json",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Network package",
+    "description": "A container for publishing Open Fibre Data Standard networks.",
+    "type": "object",
+    "required": [
+        "networks"
+    ],
+    "properties": {
+        "networks": {
+            "title": "Networks",
+            "description": "One or more OFDS networks.",
+            "type": "array",
+            "minItems": 1,
+            "items": {
+                "$ref": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0.1.0-alpha/schema/network-schema.json"
+            }
+        },
+        "pages": {
+            "title": "Pages",
+            "description": "Links to the next and previous sequential packages, to support pagination.",
+            "type": "object",
+            "properties": {
+                "next": {
+                    "title": "Next",
+                    "description": "A URL to the next sequential package.",
+                    "type": "string",
+                    "format": "iri"
+                },
+                "prev": {
+                    "title": "Previous",
+                    "description": "A URL to the previous sequential package.",
+                    "type": "string",
+                    "format": "iri"
+                }
+            }
+        }
+    }
+}
