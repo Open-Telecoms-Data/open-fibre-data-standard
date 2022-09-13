@@ -69,8 +69,8 @@ flatten-tool flatten --truncation-length=9 --root-list-path=networks --main-shee
 
 This section describes how to:
 
-* use [pagination](#pagination) to publish an **individual** network that is too large to return in a single API response
-* use [streaming](#streaming) to publish an **individual** network that is too large to load into memory.
+* Use [pagination](#pagination) to publish an **individual** network that is too large to return in a single API response
+* Use [streaming](#streaming) to publish an **individual** network that is too large to load into memory.
 
 For information on how to use pagination and streaming to publish **multiple** networks, see the [publication formats reference](../reference/publication_formats.md).
 
@@ -78,7 +78,7 @@ This guidance is applicable to the [JSON publication format](../reference/public
 
 #### Pagination
 
-The preferred approach is to publish embedded nodes and links in `.nodes` and `.links`, respectively. If your network is too large to return in a single API response, you ought to use `.relatedResources` to provide links to separate endpoints for nodes and links. Each endpoint ought to return a top-level JSON object with a `nodes` or a `links` array, respectively, and a `pages` object with links to the next and previous pages of results:
+The preferred approach is to publish embedded nodes and links in `.nodes` and `.links`, respectively. If your network is too large to return in a single API response, you ought to use `.relatedResources` to point to separate endpoints for nodes and links. Each endpoint ought to return a top-level JSON object with a `nodes` or a `links` array, respectively, and a `pages` object with links to the next and previous pages of results:
 
 ::::{tab-set}
 
