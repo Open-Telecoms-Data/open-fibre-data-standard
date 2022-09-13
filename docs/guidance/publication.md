@@ -29,6 +29,7 @@ If you are writing your own software or if you prefer to use the command line, s
 * Java - [java.util.UUID](https://docs.oracle.com/javase/7/docs/api/java/util/UUID.html)
 * C# - [System.Guid](https://docs.microsoft.com/en-us/dotnet/api/system.guid)
 * Javascript - [Crypto.randomUUID](https://www.moreonfew.com/how-to-generate-uuid-in-javascript/)
+* R - [uuid](https://cran.r-project.org/web/packages/uuid/index.html)
 
 If you prefer to use a graphical user interface, several web-based tools are available, for example [Online UUID Generator](https://www.uuidgenerator.net/).
 

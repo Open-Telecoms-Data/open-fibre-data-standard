@@ -43,6 +43,6 @@ The `.identifier.scheme` field ensures that the identifier is globally unique, e
 
 ## Local identifiers
 
-Most identifiers in OFDS need only be unique among the identifiers used for the same type of object within the same scope. For example, node identifiers need only be unique with the scope of the `.nodes` array. Uniqueness constraints are specified in the description of each identifier.
+Most identifiers in OFDS only need to be unique among the identifiers used for the same type of object within the same scope. For example, node identifiers only need to be unique with the scope of the `.nodes` array. Uniqueness constraints are specified in the description of each identifier.
 
 Some local identifiers are used for cross-referencing. For example, an organisation's `.id` is a local identifier used for cross-referencing from fields such as `Node.physicalInfrastructureProvider.id`.
