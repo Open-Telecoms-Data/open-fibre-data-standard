@@ -87,7 +87,7 @@ This guidance is applicable to the [JSON publication format](../reference/public
 
 #### Pagination
 
-The preferred approach is to publish embedded nodes and links in `.nodes` and `.links`, respectively. If your network is too large to return in a single API response, you ought to use `.relatedResources` to point to separate endpoints for nodes and links. Each endpoint ought to return a top-level JSON object with a `nodes` or a `links` array, respectively, and a `pages` object with links to the next and previous pages of results:
+The preferred approach is to publish embedded nodes and links in `.nodes` and `.links`, respectively. If your network is too large to return in a single API response, you ought to use `.relatedResources` to reference separate endpoints for nodes and links. Each endpoint ought to return a top-level JSON object with a `nodes` or a `links` array, respectively, and a `pages` object with URLs for the next and previous pages of results:
 
 ::::{tab-set}
 
@@ -98,22 +98,22 @@ The following example shows a network with embedded nodes and links:
 ```
 :::
 
-:::{tab-item} Links to endpoints
-The following example shows a network with links to separate endpoints for nodes and links:
+:::{tab-item} References to endpoints
+The following example shows a network with references to separate endpoints for nodes and links:
 ```{jsoninclude} ../../examples/json/network-separate-endpoints.json
 :jsonpointer:
 ```
 :::
 
 :::{tab-item} Nodes endpoint
-The following example shows the response returned by the nodes endpoint with links to the next and previous pages of results.
+The following example shows the response returned by the nodes endpoint with URLs for the next and previous pages of results.
 ```{jsoninclude} ../../examples/json/nodes-endpoint.json
 :jsonpointer:
 ```
 :::
 
 :::{tab-item} Links endpoint
-The following example shows the response returned by the links endpoint with links to the next and previous pages of results.
+The following example shows the response returned by the links endpoint with URLs for the next and previous pages of results.
 ```{jsoninclude} ../../examples/json/links-endpoint.json
 :jsonpointer:
 ```
