@@ -17,6 +17,21 @@ If you prefer to use a graphical user interface, several web-based tools are ava
 
 The `urn:ogc:def:crs:OGC::CRS84` CRS is equivalent to EPSG:4326 with reversed axes so, if it is not supported by your chosen transformation tool, you can instead transform your coordinates to EPSG:4326 and manually order your coordinates in longitude, latitude order.
 
+## How to generate universally unique identifiers
+
+If you are writing your own software or if you prefer to use the command line, several libraries and tools are available to generate universally unique identifiers (UUIDS), for example:
+
+* Golang - [google/uuid](https://pkg.go.dev/github.com/google/uuid)
+* PHP - [ramsey/uuid](https://github.com/ramsey/uuid)
+* C++ - [Boost UUID](https://www.boost.org/doc/libs/1_65_0/libs/uuid/uuid.html)
+* Linux or C - [libuuid](https://linux.die.net/man/3/libuuid)
+* Python - [uuid.py](https://docs.python.org/3/library/uuid.html)
+* Java - [java.util.UUID](https://docs.oracle.com/javase/7/docs/api/java/util/UUID.html)
+* C# - [System.Guid](https://docs.microsoft.com/en-us/dotnet/api/system.guid)
+* Javascript - [Crypto.randomUUID](https://www.moreonfew.com/how-to-generate-uuid-in-javascript/)
+
+If you prefer to use a graphical user interface, several web-based tools are available, for example [Online UUID Generator](https://www.uuidgenerator.net/).
+
 ## How to format data for publication
 
 ## How to provide access to data
