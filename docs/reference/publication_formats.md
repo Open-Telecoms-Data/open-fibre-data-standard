@@ -31,7 +31,7 @@ For this version of OFDS, the canonical URL of the schema is [https://raw.github
 
 This page presents the schema in an interactive browser. You can also download the canonical version of the schema as [JSON Schema](../../schema/network-package-schema.json).
 
-A network package is a JSON object that must include `.networks`: an array of `Network` objects as described by the [network schema](schema.md). For data published via a paginated API, the optional `.pages` object should be used to provide links to the next and previous pages of results.
+A network package is a JSON object that must include `.networks`: an array of `Network` objects as described by the [network schema](schema.md). For data published via a paginated API, the optional `.pages` object should be used to provide URLs for the next and previous pages of results.
 
 ::::{tab-set}
 
@@ -49,7 +49,7 @@ The following example shows a network package containing two networks:
 :::
 
 :::{tab-item} API response example
-The following example shows a network package containing two networks with links to the next and previous pages of results.
+The following example shows a network package containing two networks with URLs for the next and previous pages of results.
 ```{jsoninclude} ../../examples/json/api-response.json
 :jsonpointer:
 ```
@@ -110,7 +110,7 @@ The following example shows a GeoJSON feature collection containing features fro
 :jsonpointer:
 ```
 
-For data published via a paginated API, you should add a top-level `pages` object to the feature collection to provide links to the next and previous pages of results:
+For data published via a paginated API, you should add a top-level `pages` object to the feature collection to provide URLs for the next and previous pages of results:
 
 ::::{tab-set}
 
@@ -121,7 +121,7 @@ For data published via a paginated API, you should add a top-level `pages` objec
 :::
 
 :::{tab-item} API response example
-The following example shows a GeoJSON feature collection containing two features with links to the next and previous pages of results.
+The following example shows a GeoJSON feature collection containing two features with URLS for the next and previous pages of results.
 ```{jsoninclude} ../../examples/geojson/api-response.geojson
 :jsonpointer:
 ```

@@ -123,7 +123,7 @@ The following example shows the response returned by the links endpoint with URL
 
 #### Streaming
 
-The preferred approach is to publish embedded nodes and links. If your network is too large to load into memory, you ought to use `.relatedResources`to provide links to separate files for nodes and links. Each file ought to be formatted as a [JSON Lines](https://jsonlines.org/) file in which each line is a valid [`Node`](../reference/schema.md#node) or [`Link`](../reference/schema.md#link), respectively.
+The preferred approach is to publish embedded nodes and links. If your network is too large to load into memory, you ought to use `.relatedResources` to reference separate files for nodes and links. Each file ought to be formatted as a [JSON Lines](https://jsonlines.org/) file in which each line is a valid [`Node`](../reference/schema.md#node) or [`Link`](../reference/schema.md#link), respectively.
 
 ::::{tab-set}
 
@@ -134,8 +134,8 @@ The following example shows a network with embedded nodes and links:
 ```
 :::
 
-:::{tab-item} Links to files
-The following example shows a network with links to separate files for nodes and links:
+:::{tab-item} References to files
+The following example shows a network with references to separate files for nodes and links:
 ```{jsoninclude} ../../examples/json/network-separate-files.json
 :jsonpointer:
 ```
