@@ -72,6 +72,10 @@ The following example shows a JSON Lines file containing two networks:
 
 ## GeoJSON
 
+```{admonition} Alpha consultation
+This section has [open issues](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues?q=is%3Aopen+is%3Aissue+label%3A%22GeoJSON+format%22+).
+```
+
 This section describes how to publish data in GeoJSON format.
 
 If your data is small enough to fit into memory or if you are publishing data via an API, you should use the [small files and API responses option](#small-files-and-api-responses-option-1). If your data is too large to fit into memory, you should use the [streaming option](#streaming-option-1).
@@ -190,6 +194,10 @@ Get the `Node` object in `nodes` whose `.id` is equal to the ID.
 A reference implementation of the transformation is [available in Python on Github](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/blob/main/manage.py). We strongly encourage any re-implementations to read its commented code, to ensure correctness.
 
 ## CSV
+
+```{admonition} Alpha consultation
+This section has [open issues](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues?q=is%3Aopen+is%3Aissue+label%3A%22CSV+format%22).
+```
 
 This section describes how to publish data in CSV format.
 
