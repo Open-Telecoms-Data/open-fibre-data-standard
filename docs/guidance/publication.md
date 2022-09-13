@@ -39,7 +39,16 @@ The standard repository's [`manage.py`](https://github.com/Open-Telecoms-Data/op
 To convert a network to GeoJSON format:
 
 * Check out the [repository](https://github.com/Open-Telecoms-Data/open-fibre-data-standard)
-* Run the [get started commands](https://ofds-standard-development-handbook.readthedocs.io/en/latest/technical/build.html#get-started)
+* Create a virtual environment:
+```bash
+sudo apt-get install python3-venv
+python3 -m venv .ve    
+source .ve/bin/activate
+```
+* Install requirements
+```bash
+pip install -r requirements.txt
+```
 * Run the following command:
 
 ```bash
