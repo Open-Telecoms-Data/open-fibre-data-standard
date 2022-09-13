@@ -1,0 +1,10 @@
+{
+  "links": [
+    {},
+    {}
+  ],
+  "pages": {
+    "next": "http://example.com/network/1/links?cursor=100",
+    "prev": "http://example.com/network/1/links?cursor=96"
+  }
+}
