@@ -27,7 +27,7 @@ OFDS data can be published in three [publication formats](../reference/publicati
 
 * The [JSON format](../reference/publication_formats.md#json) reflects the structure of the [schema](../reference/schema.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
 * The [GeoJSON format](../reference/publication_formats.md#geojson) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
-* The [CSV format](../reference/publication_formats.md#csv) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to less technical users who want to explore the data in spreadsheet tools.
+* The [CSV format](../reference/publication_formats.md#csv) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to users who want to explore the data in spreadsheet tools.
 
 To meet the widest range of use cases, you ought to publish data in all three formats. The suggested approach is to export your data in the JSON format and to use the following tools to transform it to the GeoJSON and CSV formats:
 
