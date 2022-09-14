@@ -43,8 +43,8 @@ In addition to the above sections, there are several top-level metadata fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer:
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0
    :title: Example
 ```
 :::
@@ -111,8 +111,8 @@ Each `Node` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /nodes
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/nodes
    :title: Example
 ```
 :::
@@ -148,8 +148,8 @@ Each `Link` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /links
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/links
 ```
 :::
 
@@ -173,8 +173,8 @@ Each `Phase` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /phases
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/phases
    :title: Example
 ```
 :::
@@ -203,8 +203,8 @@ Each `Organisation` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /organisations
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/organisations
    :title: Example
 ```
 :::
@@ -233,8 +233,8 @@ Each `Contract` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /contracts
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/contracts
    :title: Example
 ```
 :::
@@ -259,12 +259,12 @@ Each `Geometry` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /nodes/0/location
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/nodes/0/location
    :title: Node
 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /links/0/route
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/links/0/route
    :title: Link
 ```
 :::
@@ -289,8 +289,8 @@ Each `OrganisationReference` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /links/0/physicalInfrastructureProvider
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/links/0/physicalInfrastructureProvider
    :title: Example
 ```
 :::
@@ -314,8 +314,8 @@ Each `PhaseReference` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /contracts/0/relatedPhases
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/contracts/0/relatedPhases
    :title: Example
 ```
 :::
@@ -340,8 +340,8 @@ Each `Address` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /nodes/0/address
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/nodes/0/address
    :title: Example
 ```
 :::
@@ -365,8 +365,8 @@ Each `Value` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /contracts/0/value
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/contracts/0/value
    :title: Example
 ```
 :::
@@ -391,8 +391,8 @@ Each `Document` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /contracts/0/documents
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/contracts/0/documents
    :title: Example
 ```
 :::
@@ -417,8 +417,8 @@ Each `Identifier` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /organisations/0/identifier
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/organisations/0/identifier
    :title: Example
 ```
 :::
@@ -460,8 +460,8 @@ Each `CoordinateReferenceSystem` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /crs
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/crs
    :title: Example
 ```
 :::
@@ -521,8 +521,8 @@ Each `FibreTypeDetails` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /links/0/fibreTypeDetails
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/links/0/fibreTypeDetails
    :title: Example
 ```
 :::
@@ -552,8 +552,8 @@ Each `DeploymentDetails` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /links/0/deploymentDetails
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/links/0/deploymentDetails
    :title: Example
 ```
 :::
@@ -582,10 +582,11 @@ Each `CapacityDetails` has the following fields:
 
 :::{tab-item} Example
 ```{eval-rst} 
-.. jsoninclude:: ../../examples/json/network.json
-   :jsonpointer: /links/0/capacityDetails
+.. jsoninclude:: ../../examples/json/network-package.json
+   :jsonpointer: /networks/0/links/0/capacityDetails
    :title: Example
 ```
 :::
 
 ::::
+ 

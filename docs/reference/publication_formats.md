@@ -43,7 +43,7 @@ Click on schema elements to expand the tree, or use the '+' icon to expand all e
 
 :::{tab-item} Small file example
 The following example shows a network package containing two networks:
-```{jsoninclude} ../../examples/json/network-package.json
+```{jsoninclude} ../../examples/json/multiple-networks.json
 :jsonpointer:
 ```
 :::
