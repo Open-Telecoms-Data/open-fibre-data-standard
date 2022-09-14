@@ -15,6 +15,7 @@ from pyairtable.formulas import match
 AIRTABLE_API_KEY = os.environ['AIRTABLE_API_KEY']
 BASE_ID = 'apprMa4GXD05csfkW'
 GITHUB_ACCESS_TOKEN = os.environ['GITHUB_ACCESS_TOKEN']
+EXTERNAL_CODELISTS = ['country.csv', 'currency.csv', 'language.csv', 'mediaType.csv']
 
 basedir = Path(__file__).resolve().parent
 codelistdir = basedir / 'codelists'
@@ -242,6 +243,9 @@ def update_from_airtable():
     # Update codelists
     files = glob.glob(f"{codelistdir}/*/*.csv")
     for file in files:
+      
+      # Don't delete codelists that are managed outside of Airtable
+      if file.split("/")[-1] not in EXTERNAL_CODELISTS:
         os.remove(file)
     
     for codelist in codelists_table.all():
@@ -264,7 +268,7 @@ def update_from_airtable():
                     code_record = codes_table.get(code_id)
                     code_fields = code_record['fields']
 
-                    if code_fields["Status"] != "Omit":
+                    if code_fields["Status"] not in ["Omit","Further clarification needed"]:
 
                         writer.writerow({
                             'code': code_fields.get("Code", ""),

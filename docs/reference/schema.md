@@ -86,16 +86,19 @@ The following issues relate to this component or its fields:
 Each `Node` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Node
-:collapse: name,status,location,address,internationalConnections,accessPoint,physicalInfrastructureProvider,networkProvider,type,technologies,power,rackspace,phase,id
+:collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,physicalInfrastructureProvider,networkProvider
 ```
 
 #### Link
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
-* `Link`, `.endpoints`: [#25 Link endpoints](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25)
-* `.route`: [#10 Coordinates modelling](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
+* `Link`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
+* `.start`, `.end`: [#25 Link endpoints](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25)
 * `.route`: [#12 Geometry types for link routes](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/12)
-* `.physicalInfrastructureProvider`, `.networkProvider`, `.ownership`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
+* `.route`: [#10 Coordinates modelling](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
+* `.physicalInfrastructureProvider`, `.networkProvider`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
+* `.supplier`: [#87 Clarify semantics around link supplier](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/87)
+* `.deployment`, `.deploymentDetails`: [#26 Link deployment](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26)
 * `.capacityDetails`: [#24 Link capacity](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24)
 ```
 `Link` is defined as:
@@ -105,7 +108,7 @@ The following issues relate to this component or its fields:
 Each `Link` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Link
-:collapse: name,status,route,physicalInfrastructureProvider,networkProvider,supplier,ownership,transmissionMedium,deployment,darkFibre,fibreType,fibreCount,fibreLength,technologies,capacity,capacityDetails,readyForServiceDate,phase,country,id,start,end,endpoints
+:collapse: id,name,phase,status,readyForServiceDate,start,end,route,physicalInfrastructureProvider,networkProvider,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
 ```
 
 #### Phase
@@ -116,10 +119,14 @@ Each `Link` has the following fields:
 Each `Phase` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Phase
-:collapse: name,funders,id
+:collapse: id,name,description,funders
 ```
 
 #### Organisation
+```{admonition} Alpha consultation
+The following issues relate to this component or its fields:
+* `.roleDetails`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
+```
 `Organisation` is defined as:
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Organisation/description
@@ -127,62 +134,7 @@ Each `Phase` has the following fields:
 Each `Organisation` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Organisation
-:collapse: id,name,identifier,role,classification,country,listing.exchange,listing.symbol,website,logo
-```
-
-#### OrganisationReference
-`OrganisationReference` is defined as:
-```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/OrganisationReference/description
-```
-Each `OrganisationReference` has the following fields:
-```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/OrganisationReference
-:collapse: id,name
-```
-
-#### Value
-`Value` is defined as:
-```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Value/description
-```
-Each `Value` has the following fields:
-```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Value
-:collapse: amount,currency
-```
-
-#### Address
-`Address` is defined as:
-```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Address/description
-```
-Each `Address` has the following fields:
-```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Address
-:collapse: streetAddress,locality,region,country,postalCode
-```
-
-#### Identifier
-`Identifier` is defined as:
-```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Identifier/description
-```
-Each `Identifier` has the following fields:
-```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Identifier
-:collapse: scheme,id,legalName,uri
-```
-
-#### Document
-`Document` is defined as:
-```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Document/description
-```
-Each `Document` has the following fields:
-```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Document
-:collapse: 
+:collapse: id,name,identifier,country,roles,roleDetails,website,logo
 ```
 
 #### Contract
@@ -197,7 +149,7 @@ The following issues relate to this component or its fields:
 Each `Contract` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Contract
-:collapse: title,description,type,value,dateSigned,documents,id,relatedPhases
+:collapse: id,title,description,type,value,dateSigned,documents,relatedPhases
 ```
 
 #### Geometry
@@ -209,6 +161,72 @@ Each `Geometry` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Geometry
 :collapse: type,coordinates
+```
+
+#### OrganisationReference
+`OrganisationReference` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/OrganisationReference/description
+```
+Each `OrganisationReference` has the following fields:
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/OrganisationReference
+:collapse: id,name
+```
+
+#### PhaseReference
+`PhaseReference` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/PhaseReference/description
+```
+Each `PhaseReference` has the following fields:
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/PhaseReference
+:collapse: id,name
+```
+
+#### Address
+`Address` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Address/description
+```
+Each `Address` has the following fields:
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Address
+:collapse: streetAddress,locality,region,postalCode,country
+```
+
+#### Value
+`Value` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Value/description
+```
+Each `Value` has the following fields:
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Value
+:collapse: amount,currency
+```
+
+#### Document
+`Document` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Document/description
+```
+Each `Document` has the following fields:
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Document
+:collapse: title,description,url,format
+```
+
+#### Identifier
+`Identifier` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/Identifier/description
+```
+Each `Identifier` has the following fields:
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/Identifier
+:collapse: id,scheme,legalName,uri
 ```
 
 #### CoordinateReferenceSystem
@@ -239,14 +257,60 @@ Each `CoordinateReferenceSystem` has the following fields:
 :collapse: name,uri
 ```
 
-#### PhaseReference
-`PhaseReference` is defined as:
-```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/PhaseReference/description
+#### RelatedResourceReference
+```{admonition} Alpha consultation
+The following issues relate to this component or its fields:
+* `RelatedResourceReference`: [#75 Paginating and streaming nodes and links](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75)
+* `RelatedResourceReference`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
 ```
-Each `PhaseReference` has the following fields:
+`RelatedResourceReference` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/RelatedResourceReference/description
+```
+Each `RelatedResourceReference` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/PhaseReference
-:collapse: id,name
+:pointer: /definitions/RelatedResourceReference
+:collapse: href,rel
+```
+
+#### FibreTypeDetails
+`FibreTypeDetails` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/FibreTypeDetails/description
+```
+Each `FibreTypeDetails` has the following fields:
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/FibreTypeDetails
+:collapse: description
+```
+
+#### DeploymentDetails
+```{admonition} Alpha consultation
+The following issues relate to this component or its fields:
+* `DeploymentDetails`: [#26 Link deployment](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26)
+```
+`DeploymentDetails` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/DeploymentDetails/description
+```
+Each `DeploymentDetails` has the following fields:
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/DeploymentDetails
+:collapse: description
+```
+
+#### CapacityDetails
+```{admonition} Alpha consultation
+The following issues relate to this component or its fields:
+* `CapacityDetails`: [#24 Link capacity](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24)
+```
+`CapacityDetails` is defined as:
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /definitions/CapacityDetails/description
+```
+Each `CapacityDetails` has the following fields:
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /definitions/CapacityDetails
+:collapse: description
 ```
 
