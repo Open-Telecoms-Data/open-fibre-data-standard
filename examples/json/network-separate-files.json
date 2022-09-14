@@ -1,0 +1,13 @@
+{
+  "id": "1",
+  "relatedResources": [
+    {
+      "href": "http://example.com/network/1/nodes.jsonl",
+      "rel": "tag:opentelecomdata.net,2022:nodesFile"
+    },
+    {
+      "href": "http://example.com/network/1/links.jsonl",
+      "rel": "tag:opentelecomdata.net,2022:linksFile"
+    }    
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "1",
+        "name": "Accra POP",
+        "network": {
+          "id": "fd7b30d6-f514-4cd0-a5ac-29a774f53a43",
+          "name": "Ghana Fibre Network"
+        }
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "id": "1",
+        "name": "Lomé POP",
+        "network": {
+          "id": "acafe566-7ffa-416a-b3b4-84a52386a586",
+          "name": "Togo Fibre Network"
+        }
+      }
+    }
+  ]
+}
