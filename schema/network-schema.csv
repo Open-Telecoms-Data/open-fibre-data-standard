@@ -1,100 +1,117 @@
 section,path,title,description,type,range,values,links,deprecated,deprecationNotes,codelist
-,identifier,Network identifier,A unique identifier for this network.,string,1..1,,,,,
+,id,Identifier,"A universally unique identifier for this network, as defined by RFC 4122. For more information, see the identifier reference.",string,1..1,uuid,"https://datatracker.ietf.org/doc/html/rfc4122, https://open-fibre-data-standard.readthedocs.io/en/latest/reference/identifiers.html",,,
 ,name,Network name,A name for this network.,string,0..1,,,,,
-,website,Website,The URL of the website for this network.,string,0..1,iri,,,,
-,nodes,Nodes,Information about the nodes that belong to this network.,array,0..n,,,,,
-,nodesFile,Nodes file,A URI to identify the array of information about the nodes that belong to this network. To be used in place of `nodes` for very large datasets.,string,0..1,uri,,,,
-,links,Links,Information about the links that belong to this network.,array,0..n,,,,,
-,linksFile,Links file,A URI to identify the array of information about the links that belong to this network. To be used in place of `links` for very large datasets.,string,0..1,uri,,,,
+,nodes,Nodes,"Information about the nodes that belong to this network. Information about nodes should be embedded in this field unless:
+
+* The network is too large to load in to memory, in which case a link to a streamable bulk nodes file may be provided in `.relatedResources`
+* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated nodes endpoint may be provided in `.relatedResources`.
+
+For more information, see how to format data for publication.",array,0..n,,https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication,,,
+,links,Links,"Information about the links that belong to this network. Information about links should be embedded in this field unless:
+
+* The network is too large to load in to memory, in which case a link to a streamable bulk links file may be provided in `.relatedResources`
+* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated links endpoint may be provided in `.relatedResources`.
+
+For more information, see how to format data for publication.",array,0..n,,https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication,,,
 ,phases,Phases,Information about the phases in which this network is deployed.,array,0..n,,,,,
-,organisations,Organisations,The organisations involved in this network. Organisation references elsewhere in the schema are used to refer back to this entries in this list.,array,0..n,,,,,
+,organisations,Organisations,Information about the organisations involved in this network. Organisation references elsewhere in the schema are used to refer back to this entries in this list.,array,0..n,,,,,
 ,contracts,Contracts,Information about contracts related to this network.,array,0..n,,,,,
-,publicationDate,Publication date,When the data was published.,string,0..1,date,,,,
-,collectionDate,Collection date,"When the location data was collected. If a dataset was produced by digitising a map, the date that the data for the map was collected.",string,0..1,date,,,,
-,publisher,Publisher,The publisher of this network.,unknown,0..1,,,,,
-,crs,Coordinate reference system,The coordinate reference system used in the data. If this network includes any coordinate data (in `Node.location` or `Link.route`) then this field must be provided.,unknown,0..1,,,,,
-,language,Language,"The default language of the data, from the open language codelist. A BCP47 language tag is allowed, if there is a user need for the additional information.",string,0..1,,https://www.w3.org/International/articles/language-tags/,,,language.csv
-,accuracyDetails,Accuracy details,"Further details about the accuracy specified in `accuracy`. For example, the confidence level of the accuracy measurement, the methodology used to calculate the accuracy, or a local classification of accuracy.",string,0..1,,,,,
+,website,Website,The URL of the website for this network.,string,0..1,iri,,,,
+,publisher,Publisher,The organisation that published this network.,unknown,0..1,,,,,
+,publicationDate,Publication date,The date when this network was published.,string,0..1,date,,,,
+,collectionDate,Collection date,"The date when the location data was collected. If a dataset was produced by digitising a map, the date that the data for the map was collected.",string,0..1,date,,,,
+,crs,Coordinate reference system,The coordinate reference system used in this network. If this network includes any coordinate data (in `Node.location` or `Link.route`) then this field must be provided.,unknown,0..1,,,,,
 ,accuracy,Accuracy,"The horizontal uncertainty, in metres, of the coordinates in this dataset relative to the datum of the coordinate reference system specified in `crs`.",number,0..1,,,,,
+,accuracyDetails,Accuracy details,"Further details about the accuracy specified in `accuracy`. For example, the confidence level of the accuracy measurement, the methodology used to calculate the accuracy, or a local classification of accuracy.",string,0..1,,,,,
+,language,Language,"The default language of this network,from the open language codelist. A BCP47 language tag is allowed, if there is a user need for the additional information.",string,0..1,,"https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#language, https://www.w3.org/International/articles/language-tags/",,,language.csv
+,relatedResources,Related resources,References to related resources such as API endpoints or bulk files for nodes and links. References to API endpoints should be provided when a network is too large to return in a single API response. References to bulk files should be provided when a network is too large to load into memory.,array,0..n,,,,,
+Node,id,Identifier,An identifier for this node. The identifier must be unique within the scope of the `nodes` array.,string,1..1,,,,,
 Node,name,Node name,A name for this node.,string,0..1,,,,,
-Node,status,Status,The status of this node.,string,0..1,"Enum: proposed, planned, underConstruction, operational, decommissioned, inactive",,,,nodeStatus.csv
-Node,location,Node location,The physical location of this node.,unknown,0..1,,,,,
-Node,address,Node address,The physical address of this node.,unknown,0..1,,,,,
-Node,internationalConnections,International connections,"The international connections available at this node. For all connections, `.country` is required.",array,0..n,,,,,
-Node,accessPoint,Access point,Whether active or passive transmission equipment is installed at this node which is capable of providing access to the network.,boolean,0..1,,,,,
-Node,physicalInfrastructureProvider,Physical infrastructure provider,,unknown,0..1,,,,,
-Node,networkProvider,Network provider,,unknown,0..1,,,,,
-Node,type,Node type,"The type of this node, using the open node type codelist.",array,0..n,,,,,nodeType.csv
-Node,technologies,Technologies,"The active technologies used at this node, using the open node technologies codelist.",array,0..n,,,,,nodeTechnologies.csv
-Node,power,Power availability,Whether power for active network equipment is available at this node.,boolean,0..1,,,,,
-Node,rackspace,Node rackspace,,unknown,0..1,,,,,
 Node,phase,Phase,The phase to which this node belongs.,unknown,0..1,,,,,
-Node,id,Identifier,An identifier for this node. The identifier must be unique within the scope of the network this node belongs to.,string,1..1,,,,,
-Link,name,Link name,,string,0..1,,,,,
-Link,status,Link status,The status of the network infrastructure for this link.,string,0..1,"Enum: operational, underConstruction, planned, decommissioned, proposed, unlit",,,,linkStatus.csv
-Link,route,Link route,,unknown,0..1,,,,,
-Link,physicalInfrastructureProvider,Physical infrastructure provider,"The organisation that owns and maintains the passive network infrastructure, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",unknown,0..1,,,,,
-Link,networkProvider,Network provider,"The organisation that operates the active network infrastructure, i.e. the electrical elements, such as optical transceivers, switches and routers.",unknown,0..1,,,,,
-Link,supplier,Supplier,,unknown,0..1,,,,,
-Link,ownership,Ownership,,unknown,0..1,,,,,
-Link,transmissionMedium,Transmission medium,"The physical media of this link, using the closed transmission medium codelist",array,0..n,"Enum: fibre, microwave, copper, coaxial",,,,transmissionMedium.csv
-Link,deployment,Deployment,"The physical deployment of this link, using the closed deployment type codelist.",array,0..n,"Enum: aerial, underground, aboveGround, belowGround",,,,deployment.csv
-Link,darkFibre,Dark fibre availability,Whether access to dark fibre is available on this link.,boolean,0..1,,,,,
-Link,fibreType,Fibre type,"The type of fibre used in this link, using the fibre type codelist.",string,0..1,Enum: ,,,,fibreType.csv
-Link,fibreCount,Fibre count,The number of individual optical fibres in this link.,integer,0..1,,,,,
-Link,fibreLength,Fibre length,The physical length of fibre optic cable used in this link.,number,0..1,,,,,
-Link,technologies,Technologies,"The active technologies used on this link, using the open link technologies codelist.",array,0..n,,,,,linkTechnologies.csv
-Link,capacity,Capacity,"The transmission rate, or throughput, of this link, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the link.",number,0..1,,,,,
-Link,capacityDetails,Capacity details,,unknown,0..1,,,,,
-Link,readyForServiceDate,Ready for service date,The date this link was ready to carry traffic.,string,0..1,date,,,,
+Node,status,Status,"The status of this node, from the closed nodeStatus codelist.",string,0..1,"Enum: proposed, planned, underConstruction, operational, decommissioned, inactive",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodeStatus,,,nodeStatus.csv
+Node,location,Node location,A GeoJSON Point geometry describing the physical location of this node.,unknown,0..1,,https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4,,,
+Node,address,Node address,The physical address of this node.,unknown,0..1,,,,,
+Node,type,Node type,"The type of this node, from the open nodeType codelist.",array,0..n,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodeType,,,nodeType.csv
+Node,accessPoint,Access point,Whether active or passive transmission equipment is installed at this node which is capable of providing access to the network.,boolean,0..1,,,,,
+Node,internationalConnections,International connections,"The international connections available at this node. For all connections, `.country` is required.",array,0..n,,,,,
+Node,power,Power availability,Whether power for active network equipment is available at this node.,boolean,0..1,,,,,
+Node,technologies,Technologies,"The active technologies used at this node, from the open nodeTechnologies codelist.",array,0..n,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodeTechnologies,,,nodeTechnologies.csv
+Node,physicalInfrastructureProvider,Physical infrastructure provider,"The organisation that owns the passive network infrastructure for this node, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",unknown,0..1,,,,,
+Node,networkProvider,Network provider,"The organisation that operates the active network infrastructure for this node, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",unknown,0..1,,,,,
+Link,id,Identifier,An identifier for this link. The identifier must be unique within the scope of the `links` array.,string,1..1,,,,,
+Link,name,Link name,A name for this link.,string,0..1,,,,,
 Link,phase,Phase,The phase to which this link belongs.,unknown,0..1,,,,,
-Link,country,Country,"The countries in which this link is physically located, using the closed country code codelist.",array,0..n,Enum: ,,,,countryCode.csv
-Link,id,Identifier,An identifier for this link. The identifier must be unique within the scope of the network this link belongs to.,string,1..1,,,,,
+Link,status,Link status,"The status of the network infrastructure for this link, from the closed linkStatus codelist.",string,0..1,"Enum: operational, underConstruction, planned, decommissioned, proposed, inactive",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkStatus,,,linkStatus.csv
+Link,readyForServiceDate,Ready for service date,The date this link was ready to carry traffic.,string,0..1,date,,,,
 Link,start,Start,"The identifier of one of two nodes that this link connects. If `directed == true` this, represents the starting point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",string,0..1,,,,,
 Link,end,End,"The identifier of one of two nodes that this link connects. If `directed == true` this, represents the end point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",string,0..1,,,,,
-Link,endpoints,Endpoints,The nodes that this link connects.,array,1..n,,,,,
-Phase,name,Phase name,A name for this phase.,string,0..1,,,,,
+Link,route,Link route,A GeoJSON LineString geometry describing the route of this link.,unknown,0..1,,https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4,,,
+Link,physicalInfrastructureProvider,Physical infrastructure provider,"The organisation that owns the passive network infrastructure for this link, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",unknown,0..1,,,,,
+Link,networkProvider,Network provider,"The organisation that operates the active network infrastructure for this link, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",unknown,0..1,,,,,
+Link,supplier,Supplier,The organisation responsible for installing the cable for this link.,unknown,0..1,,,,,
+Link,transmissionMedium,Transmission medium,"The physical media of this link, from the closed transmissionMedium codelist.",array,0..n,"Enum: fibre, microwave, copper, coaxial",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#transmissionMedium,,,transmissionMedium.csv
+Link,deployment,Deployment,"The physical deployment of this link, from the closed deployment codelist.. Further details of the link's deployment can be provided in `.deploymentDetails`.",array,0..n,"Enum: aerial, underground, aboveGround, belowGround",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment,,,deployment.csv
+Link,deploymentDetails,Deployment details,Further details of this link's deployment.,unknown,0..1,,,,,
+Link,darkFibre,Dark fibre availability,Whether access to dark fibre is available on this link.,boolean,0..1,,,,,
+Link,fibreType,Fibre type,"The type of fibre used in this link, from the closed fibreType codelist. Further details of the link's fibre type can be provided in `.fibreTypeDetails`.",string,0..1,"Enum: G.651.1, G.652, G.653, G.654, G.655, G.656, G.657",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#fibreType,,,fibreType.csv
+Link,fibreTypeDetails,Fibre type details,Further details about this link's fibre type.,unknown,0..1,,,,,
+Link,fibreCount,Fibre count,The number of individual optical fibres in this link.,integer,0..1,,,,,
+Link,fibreLength,Fibre length,The physical length of fibre optic cable used in this link.,number,0..1,,,,,
+Link,technologies,Technologies,"The active technologies used on this link,from the open linkTechnologies codelist.",array,0..n,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkTechnologies,,,linkTechnologies.csv
+Link,capacity,Capacity,"The transmission rate, or throughput, of this link, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the link. Further details of this link's capacity can be provided in `.capacityDetails`.",number,0..1,,,,,
+Link,capacityDetails,Capacity details,Further details about this link's capacity,unknown,0..1,,,,,
+Link,countries,Countries,"The countries in which this link is physically located, from the closed country codelist.",array,0..n,Enum: ,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country,,,country.csv
+Link,directed,Directed,"Whether this link is directed. If `True`, then `.start` represents the start of the link and `.end` represents the end. Otherwise, `.start` and `.end` reference this link's endpoints with no direction implied.",boolean,0..1,,,,,
+Phase,id,Identifier,An identifier for this phase. The identifier must be unique within the scope of the `phases` array.,string,1..1,,,,,
+Phase,name,Name,A name for this phase.,string,0..1,,,,,
+Phase,description,Description,A description for this phase.,string,0..1,,,,,
 Phase,funders,Funders,"Information about the organizations that provide financing for the development or operation of this phase, also known as investors or financers.
 ",array,0..n,,,,,
-Phase,id,Identifier,An identifier for this phase. The identifier must be unique within the scope of the network.,string,1..1,,,,,
-Organisation,id,Local identifier,A local identifier for this organisation.,string,1..1,,,,,
-Organisation,name,name*,A name for this organization.,string,0..1,,,,,
+Organisation,id,Local identifier,A local identifier for this organisation. The identifier must be unique within the scope of the `organisations` array.,string,1..1,,,,,
+Organisation,name,Name,A name for this organization.,string,0..1,,,,,
 Organisation,identifier,Organisation identifier,An identifier for this organization.,unknown,0..1,,,,,
-Organisation,role,Role,"The organisation roles in this network, using the open organisation role codelist.",array,0..n,,,,,organisationRole.csv
-Organisation,classification,classification*,,string,0..1,,,,,organisationClassification.csv
-Organisation,country,country*,"The country in which this organization is legally registered, using the closed country codelist.",string,0..1,Enum: ,,,,countryCode.csv
-Organisation,listing.exchange,listing.exchange*,"The market on which this organization is listed, using the ISO10383 market identifier codelist.",string,0..1,Enum: ,,,,marketIdentifierCode.csv
-Organisation,listing.symbol,listing.symbol*,The ticker symbol for this organization's market listing.,string,0..1,,,,,
-Organisation,website,website*,The URL of the website for this organization.,string,0..1,iri,,,,
-Organisation,logo,logo*,The URL of the logo for this organisation.,string,0..1,uri,,,,
-OrganisationReference,id,ID,The id of the organisation being referenced. This must match the id of an entry in the organisations section.,string,0..1,,,,,
-OrganisationReference,name,Name,The name of the organisation being referenced. This must match the name of an entry in the organisation section.,string,0..1,,,,,
-Value,amount,Amount,Amount as a number.,number,0..1,,,,,
-Value,currency,Currency,"The currency of the amount, from the closed currency codelist.",string,0..1,Enum: ,,,,currency.csv
-Address,streetAddress,Street address,"The street address. For example, 1600 Amphitheatre Pkwy.",string,0..1,,,,,
-Address,locality,Locality,"The locality. For example, Mountain View.",string,0..1,,,,,
-Address,region,Region,"The region. For example, CA.",string,0..1,,,,,
-Address,country,Country,"The country in which the address is physically located, using the closed country code codelist.",string,0..1,Enum: ,,,,countryCode.csv
-Address,postalCode,Postal code,"The postal code. For example, 94043.",string,0..1,,,,,
-Identifier,scheme,Scheme,Organization identifiers should be taken from an existing organization identifier list. The scheme field is used to indicate the list or register from which the identifier is taken. This value should be taken from the Organization Identifier Scheme codelist.,string,0..1,,,,,organisationIdentifierScheme.csv
-Identifier,id,ID,The identifier of the organisation in the selected scheme.,string,0..1,,,,,
-Identifier,legalName,Legal name,The legally registered name of the organisation,string,0..1,,,,,
-Identifier,uri,URI,"A URI to identify the organisation, such as those provided by Open Corporates or some other relevant URI provider. This is not for listing the website of the organisation: that can be done through the URL field of the organisation contact point.",string,0..1,uri,,,,
+Organisation,country,Country,"The country in which this organization is legally registered, from the closed country codelist.",string,0..1,Enum: ,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country,,,country.csv
+Organisation,roles,Roles,"This organisation's roles in this network, from the open organisationRole codelist.",array,0..n,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationRole,,,organisationRole.csv
+Organisation,roleDetails,Role details,Further details about this organisation's roles in the network,string,0..1,,,,,
+Organisation,website,Website,The URL of the website for this organization.,string,0..1,iri,,,,
+Organisation,logo,Logo,The URL of the logo for this organisation.,string,0..1,iri,,,,
+Contract,id,Identifier,An identifier for this contract. The identifier must be unique within the scope of the `contracts` array.,string,1..1,,,,,
 Contract,title,Contract title,A title for this contract.,string,0..1,,,,,
 Contract,description,Contract description,A description for this contract.,string,0..1,,,,,
-Contract,type,Contract type,"The type of the contract, from the open contract type codelist.",string,0..1,,,,,contractType.csv
+Contract,type,Contract type,"The type of this contract, from the open contractType codelist.",string,0..1,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#contractType,,,contractType.csv
 Contract,value,Contract value,The value of this contract.,unknown,0..1,,,,,
 Contract,dateSigned,Date signed,The date this contract was signed.,string,0..1,date,,,,
 Contract,documents,Contract documents,The documents related to this contract.,array,0..n,,,,,
-Contract,id,Contract identifier,An identifier for this contract. The identifier must be unique within the scope of the network.,string,1..1,,,,,
 Contract,relatedPhases,Related phases,The phases to which this contract relates.,array,0..n,,,,,
-Geometry,type,Type,"The GeoJSON geometry type that is described by `.coordinates`, using the open geometry type codelist. This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Link.route`.",string,0..1,,https://datatracker.ietf.org/doc/html/rfc7946#section-1.4,,,
+Geometry,type,Type,"The GeoJSON geometry type that is described by `.coordinates`, from the closed geometryType codelist. This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Link.route`.",string,1..1,"Enum: LineString, Point","https://datatracker.ietf.org/doc/html/rfc7946#section-1.4, https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#geometryType",,,geometryType.csv
 Geometry,coordinates,Coordinates,"One or more GeoJSON positions. For geometries of type 'Point', the coordinates member must be a single position. For geometries of type 'LineString' the coordinates member must be an array of positions.
 
 Each position is an array of numbers with two or more elements.  The first two elements are longitude and latitude, or easting and northing, precisely in that order. Longitude and latitude must be expressed using the World Geodetic System 1984 (WGS 84)[https://datatracker.ietf.org/doc/html/rfc7946#ref-WGS84] datum in units of decimal degrees. Altitude or elevation may be included as an optional third element and must be expressed as the height in meters above or below the WGS 84 reference ellipsoid
 
-Therefore, geometries of type 'Point' must be a single array, e.g. [longitude, latitude], and geometries of type 'LineString' must be an array of arrays, e.g. [[longitude, latitude], [longitude, latitude]].",array,0..n,,https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.1,,,
+Therefore, geometries of type 'Point' must be a single array, e.g. [longitude, latitude], and geometries of type 'LineString' must be an array of arrays, e.g. [[longitude, latitude], [longitude, latitude]].",array,1..n,,https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.1,,,
+OrganisationReference,id,Local identifier,The local identifier of the organisation being referenced. This must match the `.id` of an organisation in the `organisations` array.,string,1..1,,,,,
+OrganisationReference,name,Name,The name of the organisation being referenced. This must match the `.name` of the organisation in the `organisations` array whose `.id` matches the `.id` of this organisation reference.,string,0..1,,,,,
+PhaseReference,id,Identifier,The identifier of the phase being referenced. This must match the `.id` of a phase in the `phases` array.,string,1..1,,,,,
+PhaseReference,name,Name,The name of the phase being referenced. This must match the `.name` of the phase in the `phases` array whose `.id` matches the `.id` of this phase reference.,string,0..1,,,,,
+Address,streetAddress,Street address,"The street address. For example, 1600 Amphitheatre Pkwy.",string,0..1,,,,,
+Address,locality,Locality,"The locality. For example, Mountain View.",string,0..1,,,,,
+Address,region,Region,"The region. For example, CA.",string,0..1,,,,,
+Address,postalCode,Postal code,"The postal code. For example, 94043.",string,0..1,,,,,
+Address,country,Country,"The country in which the address is physically located, from the closed country codelist.",string,0..1,Enum: ,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country,,,country.csv
+Value,amount,Amount,The amount of this value.,number,0..1,,,,,
+Value,currency,Currency,"The currency of this value, from the closed currency codelist.",string,0..1,Enum: ,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#currency,,,currency.csv
+Document,title,Title,A title for this document.,string,0..1,,,,,
+Document,description,Description,"A description of this document. Descriptions should not exceed 250 words. If the document is not accessible online, the description should describe how to access a copy of the document.",string,0..1,,,,,
+Document,url,URL,A web address for accessing this document.,string,0..1,iri,,,,
+Document,format,Format,"The format of this document, from the open mediaType codelist.",string,0..1,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#mediaType,,,mediaType.csv
+Identifier,id,Identifier,The identifier assigned to the organisation in the register identified in `.scheme`.,string,0..1,,,,,
+Identifier,scheme,Scheme,"The register from which the identifier in `.id` is drawn, from the open organisationIdentifierScheme codelist.",string,0..1,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationIdentifierScheme,,,organisationIdentifierScheme.csv
+Identifier,legalName,Legal name,The legally registered name of the organisation,string,0..1,,,,,
+Identifier,uri,URI,"A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.",string,0..1,iri,,,,
 CoordinateReferenceSystem,name,Name,The name of the coordinate reference system.,string,1..1,uri,,,,
 CoordinateReferenceSystem,uri,Uniform Resource Identifier,A URI for the coordinate reference system.,string,1..1,uri,,,,
-PhaseReference,id,ID,The ID of the phase being referenced. This must match the ID of an entry in the phases section.,string,0..1,,,,,
-PhaseReference,name,Name,The name of the phase being referenced. This must match the name of an entry in the phase section.,string,0..1,,,,,
+RelatedResourceReference,href,Reference target,The URL of this related resource.,string,1..1,iri,,,,
+RelatedResourceReference,rel,Reference relation type,"The relationship with this related resource, from the open referenceRelationType codelist.",string,1..1,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#referenceRelationType,,,referenceRelationType.csv
+FibreTypeDetails,description,Description,A description of this link's fibre type.,string,0..1,,,,,
+DeploymentDetails,description,Description,A description of this link's deployment.,string,0..1,,,,,
+CapacityDetails,description,Description,A description of this link's capacity.,string,0..1,,,,,

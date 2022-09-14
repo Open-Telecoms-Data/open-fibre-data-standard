@@ -9,7 +9,7 @@
   ],
   "properties": {
     "id": {
-      "title": "Network identifier",
+      "title": "Identifier",
       "description": "A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/identifiers.html).",
       "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/58",
       "format": "uuid",
@@ -19,7 +19,63 @@
       "title": "Network name",
       "description": "A name for this network.",
       "type": "string",
-      "$comment": ""
+      "$comment": "",
+      "minLength": 1
+    },
+    "nodes": {
+      "title": "Nodes",
+      "description": "Information about the nodes that belong to this network. Information about nodes should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk nodes file may be provided in `.relatedResources`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated nodes endpoint may be provided in `.relatedResources`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Node"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "links": {
+      "title": "Links",
+      "description": "Information about the links that belong to this network. Information about links should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk links file may be provided in `.relatedResources`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated links endpoint may be provided in `.relatedResources`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75,https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Link"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "phases": {
+      "title": "Phases",
+      "description": "Information about the phases in which this network is deployed.",
+      "type": "array",
+      "$comment": "",
+      "items": {
+        "$ref": "#/definitions/Phase"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "organisations": {
+      "title": "Organisations",
+      "description": "Information about the organisations involved in this network. Organisation references elsewhere in the schema are used to refer back to this entries in this list.",
+      "type": "array",
+      "$comment": "",
+      "items": {
+        "$ref": "#/definitions/Organisation"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "contracts": {
+      "title": "Contracts",
+      "description": "Information about contracts related to this network.",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/71",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Contract"
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
     "website": {
       "title": "Website",
@@ -28,127 +84,98 @@
       "type": "string",
       "$comment": ""
     },
-    "nodes": {
-      "title": "Nodes",
-      "description": "Information about the nodes that belong to this network.",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Node"
-      },
-      "$comment": ""
-    },
-    "nodesFile": {
-      "title": "Nodes file",
-      "description": "A URI to identify the array of information about the nodes that belong to this network. To be used in place of `nodes` for very large datasets.",
-      "format": "uri",
-      "type": "string",
-      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75"
-    },
-    "links": {
-      "title": "Links",
-      "description": "Information about the links that belong to this network.",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Link"
-      },
-      "$comment": ""
-    },
-    "linksFile": {
-      "title": "Links file",
-      "description": "A URI to identify the array of information about the links that belong to this network. To be used in place of `links` for very large datasets.",
-      "format": "uri",
-      "type": "string",
-      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75"
-    },
-    "phases": {
-      "title": "Phases",
-      "description": "Information about the phases in which this network is deployed.",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Phase"
-      },
-      "$comment": ""
-    },
-    "organisations": {
-      "title": "Organisations",
-      "description": "The organisations involved in this network. Organisation references elsewhere in the schema are used to refer back to this entries in this list.",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Organisation"
-      },
-      "$comment": ""
-    },
-    "contracts": {
-      "title": "Contracts",
-      "description": "Information about contracts related to this network.",
-      "type": "array",
-      "items": {
-        "$ref": "#/definitions/Contract"
-      },
-      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/71"
+    "publisher": {
+      "title": "Publisher",
+      "description": "The organisation that published this network.",
+      "$comment": "",
+      "$ref": "#/definitions/Organisation"
     },
     "publicationDate": {
       "title": "Publication date",
-      "description": "When the data was published.",
+      "description": "The date when this network was published.",
       "format": "date",
       "type": "string",
       "$comment": ""
     },
     "collectionDate": {
       "title": "Collection date",
-      "description": "When the location data was collected. If a dataset was produced by digitising a map, the date that the data for the map was collected.",
+      "description": "The date when the location data was collected. If a dataset was produced by digitising a map, the date that the data for the map was collected.",
       "format": "date",
       "type": "string",
       "$comment": ""
     },
-    "publisher": {
-      "title": "Publisher",
-      "description": "The publisher of this network.",
-      "$ref": "#/definitions/Organisation",
-      "$comment": ""
-    },
     "crs": {
       "title": "Coordinate reference system",
-      "description": "The coordinate reference system used in the data. If this network includes any coordinate data (in `Node.location` or `Link.route`) then this field must be provided.",
-      "$ref": "#/definitions/CoordinateReferenceSystem",
-      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/9"
+      "description": "The coordinate reference system used in this network. If this network includes any coordinate data (in `Node.location` or `Link.route`) then this field must be provided.",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/9",
+      "$ref": "#/definitions/CoordinateReferenceSystem"
     },
-    "language": {
-      "title": "Language",
-      "description": "The default language of the data, from the open language codelist. A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
-      "type": "string",
-      "codelist": "language.csv",
-      "openCodelist": true,
-      "$comment": ""
+    "accuracy": {
+      "title": "Accuracy",
+      "description": "The horizontal uncertainty, in metres, of the coordinates in this dataset relative to the datum of the coordinate reference system specified in `crs`. Further details about the accuracy of coordinates in this dataset can be provided in `.accuracyDetails`.",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/70",
+      "type": "number"
     },
     "accuracyDetails": {
       "title": "Accuracy details",
       "description": "Further details about the accuracy specified in `accuracy`. For example, the confidence level of the accuracy measurement, the methodology used to calculate the accuracy, or a local classification of accuracy.",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/70",
       "type": "string",
-      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/70"
+      "minLength": 1
     },
-    "accuracy": {
-      "title": "Accuracy",
-      "description": "The horizontal uncertainty, in metres, of the coordinates in this dataset relative to the datum of the coordinate reference system specified in `crs`.",
-      "type": "number",
-      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/70"
+    "language": {
+      "title": "Language",
+      "description": "The default language of this network,from the open [language codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#language). A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
+      "type": "string",
+      "$comment": "",
+      "codelist": "language.csv",
+      "openCodelist": true,
+      "minLength": 1
+    },
+    "relatedResources": {
+      "title": "Related resources",
+      "description": "References to related resources such as API endpoints or bulk files for nodes and links. References to API endpoints should be provided when a network is too large to return in a single API response. References to bulk files should be provided when a network is too large to load into memory.",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75,https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83",
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/RelatedResourceReference"
+      },
+      "minItems": 1,
+      "uniqueItems": true
     }
   },
   "definitions": {
     "Node": {
       "title": "Node",
       "description": "A point within a network. A node may be an access point or may reflect a geographic point at which a link splits, aggregates or crosses a border. Nodes can allow for interconnections to other networks or connections to end users.",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/60",
       "type": "object",
       "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "An identifier for this node. The identifier must be unique within the scope of the `nodes` array.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
         "name": {
           "title": "Node name",
           "description": "A name for this node.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
+        },
+        "phase": {
+          "title": "Phase",
+          "description": "The phase to which this node belongs.",
+          "$comment": "",
+          "$ref": "#/definitions/PhaseReference"
         },
         "status": {
           "title": "Status",
-          "description": "The status of this node.",
+          "description": "The status of this node, from the closed [nodeStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodeStatus).",
+          "type": "string",
+          "$comment": "",
           "codelist": "nodeStatus.csv",
           "openCodelist": false,
           "enum": [
@@ -158,73 +185,52 @@
             "operational",
             "decommissioned",
             "inactive"
-          ],
-          "type": "string",
-          "$comment": ""
+          ]
         },
         "location": {
           "title": "Node location",
-          "description": "The physical location of this node.",
-          "$ref": "#/definitions/Geometry",
-          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10"
+          "description": "A GeoJSON [Point](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the physical location of this node.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10",
+          "$ref": "#/definitions/Geometry"
         },
         "address": {
           "title": "Node address",
           "description": "The physical address of this node.",
-          "$ref": "#/definitions/Address",
-          "$comment": ""
+          "$comment": "",
+          "$ref": "#/definitions/Address"
         },
-        "internationalConnections": {
-          "title": "International connections",
-          "description": "The international connections available at this node. For all connections, `.country` is required.",
+        "type": {
+          "title": "Node type",
+          "description": "The type of this node, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodeType).",
           "type": "array",
+          "$comment": "",
           "items": {
-            "$ref": "#/definitions/Address"
+            "type": [
+              "string"
+            ],
+            "minLength": 1
           },
-          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/72"
+          "codelist": "nodeType.csv",
+          "openCodelist": true,
+          "minItems": 1,
+          "uniqueItems": true
         },
         "accessPoint": {
           "title": "Access point",
           "description": "Whether active or passive transmission equipment is installed at this node which is capable of providing access to the network.",
-          "type": "boolean",
-          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/60"
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/60",
+          "type": "boolean"
         },
-        "physicalInfrastructureProvider": {
-          "title": "Physical infrastructure provider",
-          "$ref": "#/definitions/OrganisationReference",
-          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47"
-        },
-        "networkProvider": {
-          "title": "Network provider",
-          "$ref": "#/definitions/OrganisationReference",
-          "description": "The organisation that operates the active network infrastructure, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",
-          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47"
-        },
-        "type": {
-          "title": "Node type",
-          "description": "The type of this node, using the open node type codelist.",
+        "internationalConnections": {
+          "title": "International connections",
+          "description": "The international connections available at this node. For all connections, `.country` is required.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/72",
           "type": "array",
           "items": {
-            "type": [
-              "string"
-            ]
+            "$ref": "#/definitions/Address"
           },
-          "codelist": "nodeType.csv",
-          "openCodelist": true,
-          "$comment": ""
-        },
-        "technologies": {
-          "title": "Technologies",
-          "description": "The active technologies used at this node, using the open node technologies codelist.",
-          "codelist": "nodeTechnologies.csv",
-          "openCodelist": true,
-          "type": "array",
-          "items": {
-            "type": [
-              "string"
-            ]
-          },
-          "$comment": ""
+          "minItems": 1,
+          "uniqueItems": true
         },
         "power": {
           "title": "Power availability",
@@ -232,46 +238,71 @@
           "type": "boolean",
           "$comment": ""
         },
-        "rackspace": {
-          "title": "Node rackspace",
-          "$comment": ""
-        },
-        "phase": {
-          "title": "Phase",
-          "description": "The phase to which this node belongs.",
+        "technologies": {
+          "title": "Technologies",
+          "description": "The active technologies used at this node, from the open [nodeTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodeTechnologies).",
+          "type": "array",
+          "$comment": "",
           "items": {
             "type": [
               "string"
-            ]
+            ],
+            "minLength": 1
           },
-          "$ref": "#/definitions/PhaseReference",
-          "$comment": ""
+          "codelist": "nodeTechnologies.csv",
+          "openCodelist": true,
+          "minItems": 1,
+          "uniqueItems": true
         },
-        "id": {
-          "title": "Identifier",
-          "description": "An identifier for this node. The identifier must be unique within the scope of the network this node belongs to.",
-          "type": "string",
-          "$comment": ""
+        "physicalInfrastructureProvider": {
+          "title": "Physical infrastructure provider",
+          "description": "The organisation that owns the passive network infrastructure for this node, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
+          "$ref": "#/definitions/OrganisationReference"
+        },
+        "networkProvider": {
+          "title": "Network provider",
+          "description": "The organisation that operates the active network infrastructure for this node, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
+          "$ref": "#/definitions/OrganisationReference"
         }
       },
       "required": [
         "id"
       ],
-      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/60"
+      "minProperties": 1
     },
     "Link": {
       "title": "Link",
       "description": "A physical connection between two nodes.",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83",
       "type": "object",
       "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "An identifier for this link. The identifier must be unique within the scope of the `links` array.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
         "name": {
           "title": "Link name",
+          "description": "A name for this link.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
+        },
+        "phase": {
+          "title": "Phase",
+          "description": "The phase to which this link belongs.",
+          "$comment": "",
+          "$ref": "#/definitions/PhaseReference"
         },
         "status": {
           "title": "Link status",
-          "description": "The status of the network infrastructure for this link.",
+          "description": "The status of the network infrastructure for this link, from the closed [linkStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkStatus).",
+          "type": "string",
+          "$comment": "",
           "codelist": "linkStatus.csv",
           "openCodelist": false,
           "enum": [
@@ -280,74 +311,109 @@
             "planned",
             "decommissioned",
             "proposed",
-            "unlit"
-          ],
+            "inactive"
+          ]
+        },
+        "readyForServiceDate": {
+          "title": "Ready for service date",
+          "description": "The date this link was ready to carry traffic.",
+          "format": "date",
           "type": "string",
+          "$comment": ""
+        },
+        "start": {
+          "title": "Start",
+          "description": "The identifier of one of two nodes that this link connects. If `directed == true` this, represents the starting point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25",
+          "type": "string",
+          "minLength": 1
+        },
+        "end": {
+          "title": "End",
+          "description": "The identifier of one of two nodes that this link connects. If `directed == true` this, represents the end point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25",
+          "type": "string",
+          "minLength": 1
+        },
+        "directed": {
+          "title": "Directed",
+          "description": "Whether this link is directed. If `True`, then `.start` represents the start of the link and `.end` represents the end. Otherwise, `.start` and `.end` reference this link's endpoints with no direction implied.",
+          "type": "boolean",
           "$comment": ""
         },
         "route": {
           "title": "Link route",
-          "$ref": "#/definitions/Geometry",
-          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/12,https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/12,https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10"
+          "description": "A GeoJSON [LineString](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the route of this link.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/12,https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/12,https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10,https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10",
+          "$ref": "#/definitions/Geometry"
         },
         "physicalInfrastructureProvider": {
           "title": "Physical infrastructure provider",
-          "description": "The organisation that owns and maintains the passive network infrastructure, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
-          "$ref": "#/definitions/OrganisationReference",
-          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47"
+          "description": "The organisation that owns the passive network infrastructure for this link, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
+          "$ref": "#/definitions/OrganisationReference"
         },
         "networkProvider": {
           "title": "Network provider",
-          "description": "The organisation that operates the active network infrastructure, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",
-          "$ref": "#/definitions/OrganisationReference",
-          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47"
+          "description": "The organisation that operates the active network infrastructure for this link, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
+          "$ref": "#/definitions/OrganisationReference"
         },
         "supplier": {
           "title": "Supplier",
-          "$ref": "#/definitions/OrganisationReference",
-          "$comment": ""
-        },
-        "ownership": {
-          "title": "Ownership",
-          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47"
+          "description": "The organisation responsible for installing the cable for this link.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/87",
+          "$ref": "#/definitions/OrganisationReference"
         },
         "transmissionMedium": {
           "title": "Transmission medium",
-          "description": "The physical media of this link, using the closed transmission medium codelist",
+          "description": "The physical media of this link, from the closed [transmissionMedium codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#transmissionMedium).",
           "type": "array",
+          "$comment": "",
           "items": {
             "type": [
               "string"
-            ]
+            ],
+            "enum": [
+              "fibre",
+              "microwave",
+              "copper",
+              "coaxial"
+            ],
+            "minLength": 1
           },
           "codelist": "transmissionMedium.csv",
           "openCodelist": false,
-          "enum": [
-            "fibre",
-            "microwave",
-            "copper",
-            "coaxial"
-          ],
-          "$comment": ""
+          "minItems": 1,
+          "uniqueItems": true
         },
         "deployment": {
           "title": "Deployment",
-          "description": "The physical deployment of this link, using the closed deployment type codelist.",
+          "description": "The physical deployment of this link, from the closed [deployment codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment). Further details of this link's deployment can be provided in `.deploymentDetails`.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26",
           "type": "array",
           "items": {
             "type": [
               "string"
-            ]
+            ],
+            "enum": [
+              "aerial",
+              "underground",
+              "aboveGround",
+              "belowGround"
+            ],
+            "minLength": 1
           },
           "codelist": "deployment.csv",
           "openCodelist": false,
-          "enum": [
-            "aerial",
-            "underground",
-            "aboveGround",
-            "belowGround"
-          ],
-          "$comment": ""
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "deploymentDetails": {
+          "title": "Deployment details",
+          "description": "Further details of this link's deployment.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26",
+          "$ref": "#/definitions/DeploymentDetails"
         },
         "darkFibre": {
           "title": "Dark fibre availability",
@@ -357,12 +423,26 @@
         },
         "fibreType": {
           "title": "Fibre type",
-          "description": "The type of fibre used in this link, using the fibre type codelist.",
+          "description": "The type of fibre used in this link, from the closed [fibreType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#fibreType). Further details of the link's fibre type can be provided in `.fibreTypeDetails`.",
+          "type": "string",
+          "$comment": "",
           "codelist": "fibreType.csv",
           "openCodelist": false,
-          "enum": [],
-          "type": "string",
-          "$comment": ""
+          "enum": [
+            "G.651.1",
+            "G.652",
+            "G.653",
+            "G.654",
+            "G.655",
+            "G.656",
+            "G.657"
+          ]
+        },
+        "fibreTypeDetails": {
+          "title": "Fibre type details",
+          "description": "Further details about this link's fibre type.",
+          "$comment": "",
+          "$ref": "#/definitions/FibreTypeDetails"
         },
         "fibreCount": {
           "title": "Fibre count",
@@ -378,195 +458,670 @@
         },
         "technologies": {
           "title": "Technologies",
-          "description": "The active technologies used on this link, using the open link technologies codelist.",
+          "description": "The active technologies used on this link,from the open [linkTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkTechnologies).",
           "type": "array",
+          "$comment": "",
           "items": {
             "type": [
               "string"
-            ]
+            ],
+            "minLength": 1
           },
           "codelist": "linkTechnologies.csv",
           "openCodelist": true,
-          "$comment": ""
+          "minItems": 1,
+          "uniqueItems": true
         },
         "capacity": {
           "title": "Capacity",
-          "description": "The transmission rate, or throughput, of this link, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the link.",
+          "description": "The transmission rate, or throughput, of this link, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the link. Further details of this link's capacity can be provided in `.capacityDetails`.",
           "type": "number",
           "$comment": ""
         },
         "capacityDetails": {
           "title": "Capacity details",
-          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24"
+          "description": "Further details about this link's capacity",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24",
+          "$ref": "#/definitions/FibreTypeDetails"
         },
-        "readyForServiceDate": {
-          "title": "Ready for service date",
-          "description": "The date this link was ready to carry traffic.",
-          "format": "date",
-          "type": "string",
-          "$comment": ""
-        },
-        "phase": {
-          "title": "Phase",
-          "description": "The phase to which this link belongs.",
-          "items": {
-            "type": [
-              "string"
-            ]
-          },
-          "$ref": "#/definitions/PhaseReference",
-          "$comment": ""
-        },
-        "country": {
-          "title": "Country",
-          "description": "The countries in which this link is physically located, using the closed country code codelist.",
+        "countries": {
+          "title": "Countries",
+          "description": "The countries in which this link is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",
           "type": "array",
+          "$comment": "",
           "items": {
             "type": [
               "string"
-            ]
+            ],
+            "enum": [
+              "AD",
+              "AE",
+              "AF",
+              "AG",
+              "AI",
+              "AL",
+              "AM",
+              "AO",
+              "AQ",
+              "AR",
+              "AS",
+              "AT",
+              "AU",
+              "AW",
+              "AX",
+              "AZ",
+              "BA",
+              "BB",
+              "BD",
+              "BE",
+              "BF",
+              "BG",
+              "BH",
+              "BI",
+              "BJ",
+              "BL",
+              "BM",
+              "BN",
+              "BO",
+              "BQ",
+              "BR",
+              "BS",
+              "BT",
+              "BV",
+              "BW",
+              "BY",
+              "BZ",
+              "CA",
+              "CC",
+              "CD",
+              "CF",
+              "CG",
+              "CH",
+              "CI",
+              "CK",
+              "CL",
+              "CM",
+              "CN",
+              "CO",
+              "CR",
+              "CU",
+              "CV",
+              "CW",
+              "CX",
+              "CY",
+              "CZ",
+              "DE",
+              "DJ",
+              "DK",
+              "DM",
+              "DO",
+              "DZ",
+              "EC",
+              "EE",
+              "EG",
+              "EH",
+              "ER",
+              "ES",
+              "ET",
+              "FI",
+              "FJ",
+              "FK",
+              "FM",
+              "FO",
+              "FR",
+              "GA",
+              "GB",
+              "GD",
+              "GE",
+              "GF",
+              "GG",
+              "GH",
+              "GI",
+              "GL",
+              "GM",
+              "GN",
+              "GP",
+              "GQ",
+              "GR",
+              "GS",
+              "GT",
+              "GU",
+              "GW",
+              "GY",
+              "HK",
+              "HM",
+              "HN",
+              "HR",
+              "HT",
+              "HU",
+              "ID",
+              "IE",
+              "IL",
+              "IM",
+              "IN",
+              "IO",
+              "IQ",
+              "IR",
+              "IS",
+              "IT",
+              "JE",
+              "JM",
+              "JO",
+              "JP",
+              "KE",
+              "KG",
+              "KH",
+              "KI",
+              "KM",
+              "KN",
+              "KP",
+              "KR",
+              "KW",
+              "KY",
+              "KZ",
+              "LA",
+              "LB",
+              "LC",
+              "LI",
+              "LK",
+              "LR",
+              "LS",
+              "LT",
+              "LU",
+              "LV",
+              "LY",
+              "MA",
+              "MC",
+              "MD",
+              "ME",
+              "MF",
+              "MG",
+              "MH",
+              "MK",
+              "ML",
+              "MM",
+              "MN",
+              "MO",
+              "MP",
+              "MQ",
+              "MR",
+              "MS",
+              "MT",
+              "MU",
+              "MV",
+              "MW",
+              "MX",
+              "MY",
+              "MZ",
+              "NA",
+              "NC",
+              "NE",
+              "NF",
+              "NG",
+              "NI",
+              "NL",
+              "NO",
+              "NP",
+              "NR",
+              "NU",
+              "NZ",
+              "OM",
+              "PA",
+              "PE",
+              "PF",
+              "PG",
+              "PH",
+              "PK",
+              "PL",
+              "PM",
+              "PN",
+              "PR",
+              "PS",
+              "PT",
+              "PW",
+              "PY",
+              "QA",
+              "RE",
+              "RO",
+              "RS",
+              "RU",
+              "RW",
+              "SA",
+              "SB",
+              "SC",
+              "SD",
+              "SE",
+              "SG",
+              "SH",
+              "SI",
+              "SJ",
+              "SK",
+              "SL",
+              "SM",
+              "SN",
+              "SO",
+              "SR",
+              "SS",
+              "ST",
+              "SV",
+              "SX",
+              "SY",
+              "SZ",
+              "TC",
+              "TD",
+              "TF",
+              "TG",
+              "TH",
+              "TJ",
+              "TK",
+              "TL",
+              "TM",
+              "TN",
+              "TO",
+              "TR",
+              "TT",
+              "TV",
+              "TW",
+              "TZ",
+              "UA",
+              "UG",
+              "UM",
+              "US",
+              "UY",
+              "UZ",
+              "VA",
+              "VC",
+              "VE",
+              "VG",
+              "VI",
+              "VN",
+              "VU",
+              "WF",
+              "WS",
+              "XK",
+              "YE",
+              "YT",
+              "ZA",
+              "ZM",
+              "ZW"
+            ],
+            "minLength": 1
           },
-          "codelist": "countryCode.csv",
+          "codelist": "country.csv",
           "openCodelist": false,
-          "enum": [],
-          "$comment": ""
-        },
-        "id": {
-          "title": "Identifier",
-          "description": "An identifier for this link. The identifier must be unique within the scope of the network this link belongs to.",
-          "type": "string",
-          "$comment": ""
-        },
-        "start": {
-          "title": "Start",
-          "description": "The identifier of one of two nodes that this link connects. If `directed == true` this, represents the starting point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",
-          "type": "string",
-          "$comment": ""
-        },
-        "end": {
-          "title": "End",
-          "description": "The identifier of one of two nodes that this link connects. If `directed == true` this, represents the end point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",
-          "type": "string",
-          "$comment": ""
-        },
-        "endpoints": {
-          "title": "Endpoints",
-          "description": "The nodes that this link connects.",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/Node"
-          },
-          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25"
-        }
-      },
-      "required": [
-        "id",
-        "endpoints"
-      ],
-      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25"
-    },
-    "Phase": {
-      "title": "Phase",
-      "description": "A set of nodes and/or links deployed as a group.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "title": "Phase name",
-          "description": "A name for this phase.",
-          "type": "string",
-          "$comment": ""
-        },
-        "funders": {
-          "title": "Funders",
-          "description": "Information about the organizations that provide financing for the development or operation of this phase, also known as investors or financers.\n",
-          "type": "array",
-          "items": {
-            "$ref": "#/definitions/OrganisationReference"
-          },
-          "$comment": ""
-        },
-        "id": {
-          "title": "Identifier",
-          "description": "An identifier for this phase. The identifier must be unique within the scope of the network.",
-          "type": "string",
-          "$comment": ""
+          "minItems": 1,
+          "uniqueItems": true
         }
       },
       "required": [
         "id"
       ],
-      "$comment": ""
+      "minProperties": 1
+    },
+    "Phase": {
+      "title": "Phase",
+      "description": "A set of nodes and/or links deployed as a group.",
+      "$comment": "",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "An identifier for this phase. The identifier must be unique within the scope of the `phases` array.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
+        "name": {
+          "title": "Name",
+          "description": "A name for this phase.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description for this phase.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
+        "funders": {
+          "title": "Funders",
+          "description": "Information about the organizations that provide financing for the development or operation of this phase, also known as investors or financers.\n",
+          "type": "array",
+          "$comment": "",
+          "items": {
+            "$ref": "#/definitions/OrganisationReference"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "minProperties": 1
     },
     "Organisation": {
       "title": "Organisation",
       "description": "An organisation.",
+      "$comment": "",
       "type": "object",
       "properties": {
         "id": {
           "title": "Local identifier",
-          "description": "A local identifier for this organisation.",
+          "description": "A local identifier for this organisation. The identifier must be unique within the scope of the `organisations` array.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "name": {
+          "title": "Name",
           "description": "A name for this organization.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "identifier": {
           "title": "Organisation identifier",
           "description": "An identifier for this organization.",
-          "$ref": "#/definitions/Identifier",
-          "$comment": ""
+          "$comment": "",
+          "$ref": "#/definitions/Identifier"
         },
-        "role": {
-          "title": "Role",
-          "description": "The organisation roles in this network, using the open organisation role codelist.",
+        "country": {
+          "title": "Country",
+          "description": "The country in which this organization is legally registered, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",
+          "type": "string",
+          "$comment": "",
+          "codelist": "country.csv",
+          "openCodelist": false,
+          "enum": [
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AI",
+            "AL",
+            "AM",
+            "AO",
+            "AQ",
+            "AR",
+            "AS",
+            "AT",
+            "AU",
+            "AW",
+            "AX",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BI",
+            "BJ",
+            "BL",
+            "BM",
+            "BN",
+            "BO",
+            "BQ",
+            "BR",
+            "BS",
+            "BT",
+            "BV",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CC",
+            "CD",
+            "CF",
+            "CG",
+            "CH",
+            "CI",
+            "CK",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CV",
+            "CW",
+            "CX",
+            "CY",
+            "CZ",
+            "DE",
+            "DJ",
+            "DK",
+            "DM",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "EH",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FK",
+            "FM",
+            "FO",
+            "FR",
+            "GA",
+            "GB",
+            "GD",
+            "GE",
+            "GF",
+            "GG",
+            "GH",
+            "GI",
+            "GL",
+            "GM",
+            "GN",
+            "GP",
+            "GQ",
+            "GR",
+            "GS",
+            "GT",
+            "GU",
+            "GW",
+            "GY",
+            "HK",
+            "HM",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IM",
+            "IN",
+            "IO",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JE",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KY",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MF",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MO",
+            "MP",
+            "MQ",
+            "MR",
+            "MS",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NC",
+            "NE",
+            "NF",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NR",
+            "NU",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PF",
+            "PG",
+            "PH",
+            "PK",
+            "PL",
+            "PM",
+            "PN",
+            "PR",
+            "PS",
+            "PT",
+            "PW",
+            "PY",
+            "QA",
+            "RE",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SH",
+            "SI",
+            "SJ",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "SS",
+            "ST",
+            "SV",
+            "SX",
+            "SY",
+            "SZ",
+            "TC",
+            "TD",
+            "TF",
+            "TG",
+            "TH",
+            "TJ",
+            "TK",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TR",
+            "TT",
+            "TV",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "UM",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VG",
+            "VI",
+            "VN",
+            "VU",
+            "WF",
+            "WS",
+            "XK",
+            "YE",
+            "YT",
+            "ZA",
+            "ZM",
+            "ZW"
+          ]
+        },
+        "roles": {
+          "title": "Roles",
+          "description": "This organisation's roles in this network, from the open [organisationRole codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationRole). Further details about this organisation's roles can be provided in `.roleDetails`.",
           "type": "array",
+          "$comment": "",
           "items": {
             "type": [
               "string"
-            ]
+            ],
+            "minLength": 1
           },
           "codelist": "organisationRole.csv",
           "openCodelist": true,
-          "$comment": ""
+          "minItems": 1,
+          "uniqueItems": true
         },
-        "classification": {
-          "codelist": "organisationClassification.csv",
+        "roleDetails": {
+          "title": "Role details",
+          "description": "Further details about this organisation's roles in the network",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
           "type": "string",
-          "$comment": ""
-        },
-        "country": {
-          "description": "The country in which this organization is legally registered, using the closed country codelist.",
-          "codelist": "countryCode.csv",
-          "openCodelist": false,
-          "enum": [],
-          "type": "string",
-          "$comment": ""
-        },
-        "listing.exchange": {
-          "description": "The market on which this organization is listed, using the ISO10383 market identifier codelist.",
-          "codelist": "marketIdentifierCode.csv",
-          "openCodelist": false,
-          "enum": [],
-          "type": "string",
-          "$comment": ""
-        },
-        "listing.symbol": {
-          "description": "The ticker symbol for this organization's market listing.",
-          "type": "string",
-          "$comment": ""
+          "minLength": 1
         },
         "website": {
+          "title": "Website",
           "description": "The URL of the website for this organization.",
           "format": "iri",
           "type": "string",
           "$comment": ""
         },
         "logo": {
+          "title": "Logo",
           "description": "The URL of the logo for this organisation.",
-          "format": "uri",
+          "format": "iri",
           "type": "string",
           "$comment": ""
         }
@@ -574,164 +1129,49 @@
       "required": [
         "id"
       ],
-      "$comment": ""
-    },
-    "OrganisationReference": {
-      "title": "Organisation reference",
-      "description": "The ID and name of the organisation being referenced. Used to cross-reference to the organisations section.",
-      "type": "object",
-      "properties": {
-        "id": {
-          "title": "ID",
-          "description": "The id of the organisation being referenced. This must match the id of an entry in the organisations section.",
-          "type": "string",
-          "$comment": ""
-        },
-        "name": {
-          "title": "Name",
-          "description": "The name of the organisation being referenced. This must match the name of an entry in the organisation section.",
-          "type": "string",
-          "$comment": ""
-        }
-      },
-      "$comment": ""
-    },
-    "Value": {
-      "title": "Value",
-      "description": "The total upper estimated value of the procurement.",
-      "type": "object",
-      "properties": {
-        "amount": {
-          "title": "Amount",
-          "description": "Amount as a number.",
-          "type": "number",
-          "$comment": ""
-        },
-        "currency": {
-          "title": "Currency",
-          "description": "The currency of the amount, from the closed currency codelist.",
-          "type": "string",
-          "codelist": "currency.csv",
-          "openCodelist": false,
-          "enum": [],
-          "$comment": ""
-        }
-      },
-      "$comment": ""
-    },
-    "Address": {
-      "title": "Address",
-      "description": "An address.",
-      "type": "object",
-      "properties": {
-        "streetAddress": {
-          "title": "Street address",
-          "description": "The street address. For example, 1600 Amphitheatre Pkwy.",
-          "type": "string",
-          "$comment": ""
-        },
-        "locality": {
-          "title": "Locality",
-          "description": "The locality. For example, Mountain View.",
-          "type": "string",
-          "$comment": ""
-        },
-        "region": {
-          "title": "Region",
-          "description": "The region. For example, CA.",
-          "type": "string",
-          "$comment": ""
-        },
-        "country": {
-          "title": "Country",
-          "description": "The country in which the address is physically located, using the closed country code codelist.",
-          "type": "string",
-          "codelist": "countryCode.csv",
-          "openCodelist": false,
-          "enum": [],
-          "$comment": ""
-        },
-        "postalCode": {
-          "title": "Postal code",
-          "description": "The postal code. For example, 94043.",
-          "type": "string",
-          "$comment": ""
-        }
-      },
-      "$comment": ""
-    },
-    "Identifier": {
-      "title": "Identifier",
-      "description": "",
-      "type": "object",
-      "properties": {
-        "scheme": {
-          "title": "Scheme",
-          "description": "Organization identifiers should be taken from an existing organization identifier list. The scheme field is used to indicate the list or register from which the identifier is taken. This value should be taken from the Organization Identifier Scheme codelist.",
-          "codelist": "organisationIdentifierScheme.csv",
-          "openCodelist": true,
-          "type": "string",
-          "$comment": ""
-        },
-        "id": {
-          "title": "ID",
-          "description": "The identifier of the organisation in the selected scheme.",
-          "type": "string",
-          "$comment": ""
-        },
-        "legalName": {
-          "title": "Legal name",
-          "description": "The legally registered name of the organisation",
-          "type": "string",
-          "$comment": ""
-        },
-        "uri": {
-          "title": "URI",
-          "description": "A URI to identify the organisation, such as those provided by Open Corporates or some other relevant URI provider. This is not for listing the website of the organisation: that can be done through the URL field of the organisation contact point.",
-          "format": "uri",
-          "type": "string",
-          "$comment": ""
-        }
-      },
-      "$comment": ""
-    },
-    "Document": {
-      "title": "Document",
-      "description": "A piece of electronic or physical matter that provides information or evidence or that serves as an official record.",
-      "type": "object",
-      "properties": {},
-      "$comment": ""
+      "minProperties": 1
     },
     "Contract": {
       "title": "Contract",
-      "description": "An agreement between the public and private sector to develop a network.",
+      "description": "An agreement between the public and private sectors to develop a network.",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/71",
       "type": "object",
       "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "An identifier for this contract. The identifier must be unique within the scope of the `contracts` array.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
         "title": {
           "title": "Contract title",
           "description": "A title for this contract.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "description": {
           "title": "Contract description",
           "description": "A description for this contract.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "type": {
           "title": "Contract type",
+          "description": "The type of this contract, from the open [contractType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#contractType).",
           "type": "string",
+          "$comment": "",
           "codelist": "contractType.csv",
-          "description": "The type of the contract, from the open contract type codelist.",
           "openCodelist": true,
-          "$comment": ""
+          "minLength": 1
         },
         "value": {
           "title": "Contract value",
           "description": "The value of this contract.",
-          "$ref": "#/definitions/Value",
-          "$comment": ""
+          "$comment": "",
+          "$ref": "#/definitions/Value"
         },
         "dateSigned": {
           "title": "Date signed",
@@ -744,61 +1184,827 @@
           "title": "Contract documents",
           "description": "The documents related to this contract.",
           "type": "array",
+          "$comment": "",
           "items": {
             "$ref": "#/definitions/Document"
           },
-          "$comment": ""
-        },
-        "id": {
-          "title": "Contract identifier",
-          "description": "An identifier for this contract. The identifier must be unique within the scope of the network.",
-          "type": "string",
-          "$comment": ""
+          "minItems": 1,
+          "uniqueItems": true
         },
         "relatedPhases": {
           "title": "Related phases",
           "description": "The phases to which this contract relates.",
           "type": "array",
+          "$comment": "",
           "items": {
             "$ref": "#/definitions/PhaseReference"
           },
-          "$comment": ""
+          "minItems": 1,
+          "uniqueItems": true
         }
       },
       "required": [
         "id"
       ],
-      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/71"
+      "minProperties": 1
     },
     "Geometry": {
       "title": "Geometry",
       "description": "A [GeoJSON Geometry object](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1).",
+      "$comment": "",
       "type": "object",
       "properties": {
         "type": {
           "title": "Type",
-          "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`, using the open geometry type codelist. This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Link.route`.",
+          "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`, from the closed [geometryType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#geometryType). This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Link.route`.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "codelist": "geometryType.csv",
+          "openCodelist": false,
+          "enum": [
+            "LineString",
+            "Point"
+          ]
         },
         "coordinates": {
           "title": "Coordinates",
           "description": "One or more [GeoJSON positions](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.1). For geometries of type 'Point', the coordinates member must be a single position. For geometries of type 'LineString' the coordinates member must be an array of positions.\n\nEach position is an array of numbers with two or more elements.  The first two elements are longitude and latitude, or easting and northing, precisely in that order. Longitude and latitude must be expressed using the World Geodetic System 1984 (WGS 84)[https://datatracker.ietf.org/doc/html/rfc7946#ref-WGS84] datum in units of decimal degrees. Altitude or elevation may be included as an optional third element and must be expressed as the height in meters above or below the WGS 84 reference ellipsoid\n\nTherefore, geometries of type 'Point' must be a single array, e.g. [longitude, latitude], and geometries of type 'LineString' must be an array of arrays, e.g. [[longitude, latitude], [longitude, latitude]].",
           "type": "array",
+          "$comment": "",
           "items": {
             "type": [
               "number",
               "array"
-            ]
+            ],
+            "minItems": 1
           },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "minProperties": 1
+    },
+    "OrganisationReference": {
+      "title": "Organisation reference",
+      "description": "The local identifier and name of the organisation being referenced. Used to cross-reference to the `organisations` array.",
+      "$comment": "",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Local identifier",
+          "description": "The local identifier of the organisation being referenced. This must match the `.id` of an organisation in the `organisations` array.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
+        "name": {
+          "title": "Name",
+          "description": "The name of the organisation being referenced. This must match the `.name` of the organisation in the `organisations` array whose `.id` matches the `.id` of this organisation reference.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "minProperties": 1
+    },
+    "PhaseReference": {
+      "title": "Phase reference",
+      "description": "The identifier and name of the phase being referenced. Used for cross-referencing.",
+      "$comment": "",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "The identifier of the phase being referenced. This must match the `.id` of a phase in the `phases` array.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
+        "name": {
+          "title": "Name",
+          "description": "The name of the phase being referenced. This must match the `.name` of the phase in the `phases` array whose `.id` matches the `.id` of this phase reference.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "minProperties": 1
+    },
+    "Address": {
+      "title": "Address",
+      "description": "An address.",
+      "$comment": "",
+      "type": "object",
+      "properties": {
+        "streetAddress": {
+          "title": "Street address",
+          "description": "The street address. For example, 1600 Amphitheatre Pkwy.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
+        "locality": {
+          "title": "Locality",
+          "description": "The locality. For example, Mountain View.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
+        "region": {
+          "title": "Region",
+          "description": "The region. For example, CA.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
+        "postalCode": {
+          "title": "Postal code",
+          "description": "The postal code. For example, 94043.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
+        "country": {
+          "title": "Country",
+          "description": "The country in which the address is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",
+          "type": "string",
+          "$comment": "",
+          "codelist": "country.csv",
+          "openCodelist": false,
+          "enum": [
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AI",
+            "AL",
+            "AM",
+            "AO",
+            "AQ",
+            "AR",
+            "AS",
+            "AT",
+            "AU",
+            "AW",
+            "AX",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BI",
+            "BJ",
+            "BL",
+            "BM",
+            "BN",
+            "BO",
+            "BQ",
+            "BR",
+            "BS",
+            "BT",
+            "BV",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CC",
+            "CD",
+            "CF",
+            "CG",
+            "CH",
+            "CI",
+            "CK",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CV",
+            "CW",
+            "CX",
+            "CY",
+            "CZ",
+            "DE",
+            "DJ",
+            "DK",
+            "DM",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "EH",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FK",
+            "FM",
+            "FO",
+            "FR",
+            "GA",
+            "GB",
+            "GD",
+            "GE",
+            "GF",
+            "GG",
+            "GH",
+            "GI",
+            "GL",
+            "GM",
+            "GN",
+            "GP",
+            "GQ",
+            "GR",
+            "GS",
+            "GT",
+            "GU",
+            "GW",
+            "GY",
+            "HK",
+            "HM",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IM",
+            "IN",
+            "IO",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JE",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KY",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MF",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MO",
+            "MP",
+            "MQ",
+            "MR",
+            "MS",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NC",
+            "NE",
+            "NF",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NR",
+            "NU",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PF",
+            "PG",
+            "PH",
+            "PK",
+            "PL",
+            "PM",
+            "PN",
+            "PR",
+            "PS",
+            "PT",
+            "PW",
+            "PY",
+            "QA",
+            "RE",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SH",
+            "SI",
+            "SJ",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "SS",
+            "ST",
+            "SV",
+            "SX",
+            "SY",
+            "SZ",
+            "TC",
+            "TD",
+            "TF",
+            "TG",
+            "TH",
+            "TJ",
+            "TK",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TR",
+            "TT",
+            "TV",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "UM",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VG",
+            "VI",
+            "VN",
+            "VU",
+            "WF",
+            "WS",
+            "XK",
+            "YE",
+            "YT",
+            "ZA",
+            "ZM",
+            "ZW"
+          ]
+        }
+      },
+      "minProperties": 1
+    },
+    "Value": {
+      "title": "Value",
+      "description": "A financial value.",
+      "$comment": "",
+      "type": "object",
+      "properties": {
+        "amount": {
+          "title": "Amount",
+          "description": "The amount of this value.",
+          "type": "number",
+          "$comment": ""
+        },
+        "currency": {
+          "title": "Currency",
+          "description": "The currency of this value, from the closed [currency codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#currency).",
+          "type": "string",
+          "$comment": "",
+          "codelist": "currency.csv",
+          "openCodelist": false,
+          "enum": [
+            "AED",
+            "AFN",
+            "ALL",
+            "AMD",
+            "ANG",
+            "AOA",
+            "ARS",
+            "AUD",
+            "AWG",
+            "AZN",
+            "BAM",
+            "BBD",
+            "BDT",
+            "BGN",
+            "BHD",
+            "BIF",
+            "BMD",
+            "BND",
+            "BOB",
+            "BOV",
+            "BRL",
+            "BSD",
+            "BTN",
+            "BWP",
+            "BYN",
+            "BZD",
+            "CAD",
+            "CDF",
+            "CHE",
+            "CHF",
+            "CHW",
+            "CLF",
+            "CLP",
+            "CNY",
+            "COP",
+            "COU",
+            "CRC",
+            "CUC",
+            "CUP",
+            "CVE",
+            "CZK",
+            "DJF",
+            "DKK",
+            "DOP",
+            "DZD",
+            "EGP",
+            "ERN",
+            "ETB",
+            "EUR",
+            "FJD",
+            "FKP",
+            "GBP",
+            "GEL",
+            "GHS",
+            "GIP",
+            "GMD",
+            "GNF",
+            "GTQ",
+            "GYD",
+            "HKD",
+            "HNL",
+            "HRK",
+            "HTG",
+            "HUF",
+            "IDR",
+            "ILS",
+            "INR",
+            "IQD",
+            "IRR",
+            "ISK",
+            "JMD",
+            "JOD",
+            "JPY",
+            "KES",
+            "KGS",
+            "KHR",
+            "KMF",
+            "KPW",
+            "KRW",
+            "KWD",
+            "KYD",
+            "KZT",
+            "LAK",
+            "LBP",
+            "LKR",
+            "LRD",
+            "LSL",
+            "LYD",
+            "MAD",
+            "MDL",
+            "MGA",
+            "MKD",
+            "MMK",
+            "MNT",
+            "MOP",
+            "MRU",
+            "MUR",
+            "MVR",
+            "MWK",
+            "MXN",
+            "MXV",
+            "MYR",
+            "MZN",
+            "NAD",
+            "NGN",
+            "NIO",
+            "NOK",
+            "NPR",
+            "NZD",
+            "OMR",
+            "PAB",
+            "PEN",
+            "PGK",
+            "PHP",
+            "PKR",
+            "PLN",
+            "PYG",
+            "QAR",
+            "RON",
+            "RSD",
+            "RUB",
+            "RWF",
+            "SAR",
+            "SBD",
+            "SCR",
+            "SDG",
+            "SEK",
+            "SGD",
+            "SHP",
+            "SLL",
+            "SOS",
+            "SRD",
+            "SSP",
+            "STN",
+            "SVC",
+            "SYP",
+            "SZL",
+            "THB",
+            "TJS",
+            "TMT",
+            "TND",
+            "TOP",
+            "TRY",
+            "TTD",
+            "TWD",
+            "TZS",
+            "UAH",
+            "UGX",
+            "USD",
+            "USN",
+            "UYI",
+            "UYU",
+            "UYW",
+            "UZS",
+            "VES",
+            "VND",
+            "VUV",
+            "WST",
+            "XAF",
+            "XAG",
+            "XAU",
+            "XBA",
+            "XBB",
+            "XBC",
+            "XBD",
+            "XCD",
+            "XDR",
+            "XOF",
+            "XPD",
+            "XPF",
+            "XPT",
+            "XSU",
+            "XTS",
+            "XUA",
+            "XXX",
+            "YER",
+            "ZAR",
+            "ZMW",
+            "ZWL",
+            "ADP",
+            "AFA",
+            "ALK",
+            "AOK",
+            "AON",
+            "AOR",
+            "ARA",
+            "ARP",
+            "ARY",
+            "ATS",
+            "AYM",
+            "AZM",
+            "BAD",
+            "BEC",
+            "BEF",
+            "BEL",
+            "BGJ",
+            "BGK",
+            "BGL",
+            "BOP",
+            "BRB",
+            "BRC",
+            "BRE",
+            "BRN",
+            "BRR",
+            "BUK",
+            "BYB",
+            "BYR",
+            "CHC",
+            "CSD",
+            "CSJ",
+            "CSK",
+            "CYP",
+            "DDM",
+            "DEM",
+            "ECS",
+            "ECV",
+            "EEK",
+            "ESA",
+            "ESB",
+            "ESP",
+            "FIM",
+            "FRF",
+            "GEK",
+            "GHC",
+            "GHP",
+            "GNE",
+            "GNS",
+            "GQE",
+            "GRD",
+            "GWE",
+            "GWP",
+            "HRD",
+            "IEP",
+            "ILP",
+            "ILR",
+            "ISJ",
+            "ITL",
+            "LAJ",
+            "LSM",
+            "LTL",
+            "LTT",
+            "LUC",
+            "LUF",
+            "LUL",
+            "LVL",
+            "LVR",
+            "MGF",
+            "MLF",
+            "MRO",
+            "MTL",
+            "MTP",
+            "MVQ",
+            "MXP",
+            "MZE",
+            "MZM",
+            "NIC",
+            "NLG",
+            "PEH",
+            "PEI",
+            "PES",
+            "PLZ",
+            "PTE",
+            "RHD",
+            "ROK",
+            "ROL",
+            "RUR",
+            "SDD",
+            "SDP",
+            "SIT",
+            "SKK",
+            "SRG",
+            "STD",
+            "SUR",
+            "TJR",
+            "TMM",
+            "TPE",
+            "TRL",
+            "UAK",
+            "UGS",
+            "UGW",
+            "USS",
+            "UYN",
+            "UYP",
+            "VEB",
+            "VEF",
+            "VNC",
+            "XEU",
+            "XFO",
+            "XFU",
+            "XRE",
+            "YDD",
+            "YUD",
+            "YUM",
+            "YUN",
+            "ZAL",
+            "ZMK",
+            "ZRN",
+            "ZRZ",
+            "ZWC",
+            "ZWD",
+            "ZWN",
+            "ZWR"
+          ]
+        }
+      },
+      "minProperties": 1
+    },
+    "Document": {
+      "title": "Document",
+      "description": "A piece of electronic or physical matter that provides information or evidence or that serves as an official record.",
+      "$comment": "",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "description": "A title for this document.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of this document. Descriptions should not exceed 250 words. If the document is not accessible online, the description should describe how to access a copy of the document.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
+        "url": {
+          "title": "URL",
+          "description": "A web address for accessing this document.",
+          "format": "iri",
+          "type": "string",
+          "$comment": ""
+        },
+        "format": {
+          "title": "Format",
+          "description": "The format of this document, from the open [mediaType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#mediaType).",
+          "type": "string",
+          "$comment": "",
+          "codelist": "mediaType.csv",
+          "openCodelist": true,
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Identifier": {
+      "title": "Organisation identifier",
+      "description": "An organisation identifier.",
+      "$comment": "",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "The identifier assigned to the organisation in the register identified in `.scheme`.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
+        "scheme": {
+          "title": "Scheme",
+          "description": "The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationIdentifierScheme).",
+          "type": "string",
+          "$comment": "",
+          "codelist": "organisationIdentifierScheme.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "legalName": {
+          "title": "Legal name",
+          "description": "The legally registered name of the organisation",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
+        "uri": {
+          "title": "URI",
+          "description": "A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.",
+          "format": "iri",
+          "type": "string",
           "$comment": ""
         }
       },
-      "$comment": ""
+      "minProperties": 1
     },
     "CoordinateReferenceSystem": {
       "title": "Coordinate reference system",
       "description": "The coordinate reference system used in the data.",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/9",
       "type": "object",
       "properties": {
         "name": {
@@ -822,28 +2028,86 @@
         "name",
         "uri"
       ],
-      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/9"
+      "minProperties": 1
     },
-    "PhaseReference": {
-      "title": "Phase reference",
-      "description": "The ID and name of the phase being referenced. Used for cross-referencing.",
+    "RelatedResourceReference": {
+      "title": "Related resource reference",
+      "description": "A reference to a related resource.",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75,https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83",
       "type": "object",
       "properties": {
-        "id": {
-          "title": "ID",
-          "description": "The ID of the phase being referenced. This must match the ID of an entry in the phases section.",
+        "href": {
+          "title": "Reference target",
+          "description": "The URL of this related resource.",
+          "format": "iri",
           "type": "string",
           "$comment": ""
         },
-        "name": {
-          "title": "Name",
-          "description": "The name of the phase being referenced. This must match the name of an entry in the phase section.",
+        "rel": {
+          "title": "Reference relation type",
+          "description": "The relationship with this related resource, from the open [referenceRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#referenceRelationType).",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "codelist": "referenceRelationType.csv",
+          "openCodelist": true,
+          "minLength": 1
         }
       },
-      "$comment": ""
+      "required": [
+        "href",
+        "rel"
+      ],
+      "minProperties": 1
+    },
+    "FibreTypeDetails": {
+      "title": "Fibre type details",
+      "description": "Further details about a link's fibre type.",
+      "$comment": "",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "A description of this link's fibre type.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "DeploymentDetails": {
+      "title": "Deployment details",
+      "description": "Further details about a link's deployment.",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "A description of this link's deployment.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "CapacityDetails": {
+      "title": "Capacity details",
+      "description": "Further details about a link's capacity.",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "A description of this link's capacity.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
     }
   },
-  "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75"
+  "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75",
+  "minProperties": 1
 }
