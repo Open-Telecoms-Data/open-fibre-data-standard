@@ -52,7 +52,7 @@ To meet the widest range of use cases, you ought to publish data in all three fo
 :::{tab-item} JSON to GeoJSON
 The standard repository's [`manage.py`](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/blob/main/manage.py) file provides a command-line interface for transforming OFDS data from JSON to GeoJSON format.
 
-To convert a network to GeoJSON format:
+To convert a network package to GeoJSON format:
 
 * Clone the [repository](https://github.com/Open-Telecoms-Data/open-fibre-data-standard)
 * Create a virtual environment:
@@ -68,7 +68,7 @@ pip install -r requirements.txt
 * Run the following command:
 
 ```bash
-./manage.py convert-to-geojson network.json
+./manage.py convert-to-geojson network-package.json
 ```
 
 :::
