@@ -48,6 +48,47 @@
         "id": "GH-RGD-CS222222222",
         "name": "FastWeb"
       }
+    },
+    {
+      "id": "2",
+      "name": "Kumasi",
+      "phase": {
+        "id": "1",
+        "name": "NextGen Phase 1"
+      },
+      "status": "operational",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          [
+            -1.628,
+            6.711
+          ]
+        ]
+      },
+      "address": {
+        "streetAddress": "Kejetia Road",
+        "locality": "Bantama",
+        "region": "Kumasi",
+        "postalCode": "00000",
+        "country": "GH"
+      },
+      "type": [
+        "pop"
+      ],
+      "accessPoint": true,
+      "power": true,
+      "technologies": [
+        "ip"
+      ],
+      "physicalInfrastructureProvider": {
+        "id": "GH-RGD-CS111111111",
+        "name": "FibreCo"
+      },
+      "networkProvider": {
+        "id": "GH-RGD-CS222222222",
+        "name": "FastWeb"
+      }
     }],
   "links": [
     {
