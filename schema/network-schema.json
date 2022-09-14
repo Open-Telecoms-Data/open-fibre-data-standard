@@ -5,14 +5,15 @@
   "description": "A telecommunication network. A network consists of a set of nodes interconnected by links.",
   "type": "object",
   "required": [
-    "identifier"
+    "id"
   ],
   "properties": {
-    "identifier": {
+    "id": {
       "title": "Network identifier",
-      "description": "A unique identifier for this network.",
-      "type": "string",
-      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/58"
+      "description": "A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/identifiers.html).",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/58",
+      "format": "uuid",
+      "type": "string"
     },
     "name": {
       "title": "Network name",
