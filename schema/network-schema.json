@@ -5,14 +5,15 @@
   "description": "A telecommunication network. A network consists of a set of nodes interconnected by links.",
   "type": "object",
   "required": [
-    "identifier"
+    "id"
   ],
   "properties": {
-    "identifier": {
+    "id": {
       "title": "Network identifier",
-      "description": "A unique identifier for this network.",
-      "type": "string",
-      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/58"
+      "description": "A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/identifiers.html).",
+      "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/58",
+      "format": "uuid",
+      "type": "string"
     },
     "name": {
       "title": "Network name",
@@ -196,6 +197,7 @@
         "networkProvider": {
           "title": "Network provider",
           "$ref": "#/definitions/OrganisationReference",
+          "description": "The organisation that operates the active network infrastructure, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47"
         },
         "type": {
@@ -296,7 +298,7 @@
         },
         "networkProvider": {
           "title": "Network provider",
-          "description": "The organisation that operates the active network infrastructure, i.e. the electrical elements, such as optical transceivers, switches and routers.",
+          "description": "The organisation that operates the active network infrastructure, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",
           "$ref": "#/definitions/OrganisationReference",
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47"
         },

@@ -17,4 +17,5 @@ The [publication formats reference](publication_formats.md) is the canonical ref
    schema
    codelists
    publication_formats
+   identifiers
 ```
