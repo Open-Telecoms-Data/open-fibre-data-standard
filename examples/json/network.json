@@ -13,10 +13,8 @@
       "location": {
         "type": "Point",
         "coordinates": [
-          [
-            -0.174,
-            5.625
-          ]
+          -0.174,
+          5.625
         ]
       },
       "address": {
@@ -60,10 +58,8 @@
       "location": {
         "type": "Point",
         "coordinates": [
-          [
-            -1.628,
-            6.711
-          ]
+          -1.628,
+          6.711
         ]
       },
       "address": {
@@ -89,7 +85,8 @@
         "id": "GH-RGD-CS222222222",
         "name": "FastWeb"
       }
-    }],
+    }
+  ],
   "links": [
     {
       "id": "1",
