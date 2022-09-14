@@ -452,6 +452,12 @@
           "codelist": "country.csv",
           "openCodelist": false,
           "enum": []
+        },
+        "directed": {
+          "title": "Directed",
+          "description": "Whether this link is directed. If `True`, then `.start` represents the start of the link and `.end` represents the end. Otherwise, `.start` and `.end` reference this link's endpoints with no direction implied.",
+          "type": "boolean",
+          "$comment": ""
         }
       },
       "required": [

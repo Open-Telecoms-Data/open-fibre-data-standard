@@ -61,6 +61,7 @@ Link,technologies,Technologies,"The active technologies used on this link,from t
 Link,capacity,Capacity,"The transmission rate, or throughput, of this link, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the link. Further details of this link's capacity can be provided in `.capacityDetails`.",number,0..1,,,,,
 Link,capacityDetails,Capacity details,Further details about this link's capacity,unknown,0..1,,,,,
 Link,countries,Countries,"The countries in which this link is physically located, from the closed country codelist.",array,0..n,Enum: ,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country,,,country.csv
+Link,directed,Directed,"Whether this link is directed. If `True`, then `.start` represents the start of the link and `.end` represents the end. Otherwise, `.start` and `.end` reference this link's endpoints with no direction implied.",boolean,0..1,,,,,
 Phase,id,Identifier,An identifier for this phase. The identifier must be unique within the scope of the `phases` array.,string,1..1,,,,,
 Phase,name,Name,A name for this phase.,string,0..1,,,,,
 Phase,description,Description,A description for this phase.,string,0..1,,,,,

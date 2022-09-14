@@ -108,7 +108,7 @@ The following issues relate to this component or its fields:
 Each `Link` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Link
-:collapse: id,name,phase,status,readyForServiceDate,start,end,route,physicalInfrastructureProvider,networkProvider,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
+:collapse: id,name,phase,status,readyForServiceDate,start,end,route,physicalInfrastructureProvider,networkProvider,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries,directed
 ```
 
 #### Phase
