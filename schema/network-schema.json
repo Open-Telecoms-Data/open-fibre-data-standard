@@ -19,7 +19,8 @@
       "title": "Network name",
       "description": "A name for this network.",
       "type": "string",
-      "$comment": ""
+      "$comment": "",
+      "minLength": 1
     },
     "nodes": {
       "title": "Nodes",
@@ -28,7 +29,9 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/Node"
-      }
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
     "links": {
       "title": "Links",
@@ -37,7 +40,9 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/Link"
-      }
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
     "phases": {
       "title": "Phases",
@@ -46,7 +51,9 @@
       "$comment": "",
       "items": {
         "$ref": "#/definitions/Phase"
-      }
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
     "organisations": {
       "title": "Organisations",
@@ -55,7 +62,9 @@
       "$comment": "",
       "items": {
         "$ref": "#/definitions/Organisation"
-      }
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
     "contracts": {
       "title": "Contracts",
@@ -64,7 +73,9 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/Contract"
-      }
+      },
+      "minItems": 1,
+      "uniqueItems": true
     },
     "website": {
       "title": "Website",
@@ -109,7 +120,8 @@
       "title": "Accuracy details",
       "description": "Further details about the accuracy specified in `accuracy`. For example, the confidence level of the accuracy measurement, the methodology used to calculate the accuracy, or a local classification of accuracy.",
       "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/70",
-      "type": "string"
+      "type": "string",
+      "minLength": 1
     },
     "language": {
       "title": "Language",
@@ -117,7 +129,8 @@
       "type": "string",
       "$comment": "",
       "codelist": "language.csv",
-      "openCodelist": true
+      "openCodelist": true,
+      "minLength": 1
     },
     "relatedResources": {
       "title": "Related resources",
@@ -126,7 +139,9 @@
       "type": "array",
       "items": {
         "$ref": "#/definitions/RelatedResourceReference"
-      }
+      },
+      "minItems": 1,
+      "uniqueItems": true
     }
   },
   "definitions": {
@@ -140,13 +155,15 @@
           "title": "Identifier",
           "description": "An identifier for this node. The identifier must be unique within the scope of the `nodes` array.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "name": {
           "title": "Node name",
           "description": "A name for this node.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "phase": {
           "title": "Phase",
@@ -190,10 +207,13 @@
           "items": {
             "type": [
               "string"
-            ]
+            ],
+            "minLength": 1
           },
           "codelist": "nodeType.csv",
-          "openCodelist": true
+          "openCodelist": true,
+          "minItems": 1,
+          "uniqueItems": true
         },
         "accessPoint": {
           "title": "Access point",
@@ -208,7 +228,9 @@
           "type": "array",
           "items": {
             "$ref": "#/definitions/Address"
-          }
+          },
+          "minItems": 1,
+          "uniqueItems": true
         },
         "power": {
           "title": "Power availability",
@@ -224,10 +246,13 @@
           "items": {
             "type": [
               "string"
-            ]
+            ],
+            "minLength": 1
           },
           "codelist": "nodeTechnologies.csv",
-          "openCodelist": true
+          "openCodelist": true,
+          "minItems": 1,
+          "uniqueItems": true
         },
         "physicalInfrastructureProvider": {
           "title": "Physical infrastructure provider",
@@ -244,7 +269,8 @@
       },
       "required": [
         "id"
-      ]
+      ],
+      "minProperties": 1
     },
     "Link": {
       "title": "Link",
@@ -256,13 +282,15 @@
           "title": "Identifier",
           "description": "An identifier for this link. The identifier must be unique within the scope of the `links` array.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "name": {
           "title": "Link name",
           "description": "A name for this link.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "phase": {
           "title": "Phase",
@@ -297,13 +325,15 @@
           "title": "Start",
           "description": "The identifier of one of two nodes that this link connects. If `directed == true` this, represents the starting point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25",
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "end": {
           "title": "End",
           "description": "The identifier of one of two nodes that this link connects. If `directed == true` this, represents the end point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25",
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "route": {
           "title": "Link route",
@@ -337,7 +367,8 @@
           "items": {
             "type": [
               "string"
-            ]
+            ],
+            "minLength": 1
           },
           "codelist": "transmissionMedium.csv",
           "openCodelist": false,
@@ -346,7 +377,9 @@
             "microwave",
             "copper",
             "coaxial"
-          ]
+          ],
+          "minItems": 1,
+          "uniqueItems": true
         },
         "deployment": {
           "title": "Deployment",
@@ -356,7 +389,8 @@
           "items": {
             "type": [
               "string"
-            ]
+            ],
+            "minLength": 1
           },
           "codelist": "deployment.csv",
           "openCodelist": false,
@@ -365,7 +399,9 @@
             "underground",
             "aboveGround",
             "belowGround"
-          ]
+          ],
+          "minItems": 1,
+          "uniqueItems": true
         },
         "deploymentDetails": {
           "title": "Deployment details",
@@ -422,10 +458,13 @@
           "items": {
             "type": [
               "string"
-            ]
+            ],
+            "minLength": 1
           },
           "codelist": "linkTechnologies.csv",
-          "openCodelist": true
+          "openCodelist": true,
+          "minItems": 1,
+          "uniqueItems": true
         },
         "capacity": {
           "title": "Capacity",
@@ -447,11 +486,14 @@
           "items": {
             "type": [
               "string"
-            ]
+            ],
+            "minLength": 1
           },
           "codelist": "country.csv",
           "openCodelist": false,
-          "enum": []
+          "enum": [],
+          "minItems": 1,
+          "uniqueItems": true
         },
         "directed": {
           "title": "Directed",
@@ -462,7 +504,8 @@
       },
       "required": [
         "id"
-      ]
+      ],
+      "minProperties": 1
     },
     "Phase": {
       "title": "Phase",
@@ -474,19 +517,22 @@
           "title": "Identifier",
           "description": "An identifier for this phase. The identifier must be unique within the scope of the `phases` array.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "name": {
           "title": "Name",
           "description": "A name for this phase.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "description": {
           "title": "Description",
           "description": "A description for this phase.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "funders": {
           "title": "Funders",
@@ -495,12 +541,15 @@
           "$comment": "",
           "items": {
             "$ref": "#/definitions/OrganisationReference"
-          }
+          },
+          "minItems": 1,
+          "uniqueItems": true
         }
       },
       "required": [
         "id"
-      ]
+      ],
+      "minProperties": 1
     },
     "Organisation": {
       "title": "Organisation",
@@ -512,13 +561,15 @@
           "title": "Local identifier",
           "description": "A local identifier for this organisation. The identifier must be unique within the scope of the `organisations` array.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "name": {
           "title": "Name",
           "description": "A name for this organization.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "identifier": {
           "title": "Organisation identifier",
@@ -543,16 +594,20 @@
           "items": {
             "type": [
               "string"
-            ]
+            ],
+            "minLength": 1
           },
           "codelist": "organisationRole.csv",
-          "openCodelist": true
+          "openCodelist": true,
+          "minItems": 1,
+          "uniqueItems": true
         },
         "roleDetails": {
           "title": "Role details",
           "description": "Further details about this organisation's roles in the network",
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "website": {
           "title": "Website",
@@ -571,7 +626,8 @@
       },
       "required": [
         "id"
-      ]
+      ],
+      "minProperties": 1
     },
     "Contract": {
       "title": "Contract",
@@ -583,19 +639,22 @@
           "title": "Identifier",
           "description": "An identifier for this contract. The identifier must be unique within the scope of the `contracts` array.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "title": {
           "title": "Contract title",
           "description": "A title for this contract.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "description": {
           "title": "Contract description",
           "description": "A description for this contract.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "type": {
           "title": "Contract type",
@@ -603,7 +662,8 @@
           "type": "string",
           "$comment": "",
           "codelist": "contractType.csv",
-          "openCodelist": true
+          "openCodelist": true,
+          "minLength": 1
         },
         "value": {
           "title": "Contract value",
@@ -625,7 +685,9 @@
           "$comment": "",
           "items": {
             "$ref": "#/definitions/Document"
-          }
+          },
+          "minItems": 1,
+          "uniqueItems": true
         },
         "relatedPhases": {
           "title": "Related phases",
@@ -634,12 +696,15 @@
           "$comment": "",
           "items": {
             "$ref": "#/definitions/PhaseReference"
-          }
+          },
+          "minItems": 1,
+          "uniqueItems": true
         }
       },
       "required": [
         "id"
-      ]
+      ],
+      "minProperties": 1
     },
     "Geometry": {
       "title": "Geometry",
@@ -668,14 +733,17 @@
             "type": [
               "number",
               "array"
-            ]
-          }
+            ],
+            "minItems": 1
+          },
+          "minItems": 1
         }
       },
       "required": [
         "type",
         "coordinates"
-      ]
+      ],
+      "minProperties": 1
     },
     "OrganisationReference": {
       "title": "Organisation reference",
@@ -687,18 +755,21 @@
           "title": "Local identifier",
           "description": "The local identifier of the organisation being referenced. This must match the `.id` of an organisation in the `organisations` array.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "name": {
           "title": "Name",
           "description": "The name of the organisation being referenced. This must match the `.name` of the organisation in the `organisations` array whose `.id` matches the `.id` of this organisation reference.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         }
       },
       "required": [
         "id"
-      ]
+      ],
+      "minProperties": 1
     },
     "PhaseReference": {
       "title": "Phase reference",
@@ -710,18 +781,21 @@
           "title": "Identifier",
           "description": "The identifier of the phase being referenced. This must match the `.id` of a phase in the `phases` array.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "name": {
           "title": "Name",
           "description": "The name of the phase being referenced. This must match the `.name` of the phase in the `phases` array whose `.id` matches the `.id` of this phase reference.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         }
       },
       "required": [
         "id"
-      ]
+      ],
+      "minProperties": 1
     },
     "Address": {
       "title": "Address",
@@ -733,25 +807,29 @@
           "title": "Street address",
           "description": "The street address. For example, 1600 Amphitheatre Pkwy.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "locality": {
           "title": "Locality",
           "description": "The locality. For example, Mountain View.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "region": {
           "title": "Region",
           "description": "The region. For example, CA.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "postalCode": {
           "title": "Postal code",
           "description": "The postal code. For example, 94043.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "country": {
           "title": "Country",
@@ -762,7 +840,8 @@
           "openCodelist": false,
           "enum": []
         }
-      }
+      },
+      "minProperties": 1
     },
     "Value": {
       "title": "Value",
@@ -785,7 +864,8 @@
           "openCodelist": false,
           "enum": []
         }
-      }
+      },
+      "minProperties": 1
     },
     "Document": {
       "title": "Document",
@@ -797,13 +877,15 @@
           "title": "Title",
           "description": "A title for this document.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "description": {
           "title": "Description",
           "description": "A description of this document. Descriptions should not exceed 250 words. If the document is not accessible online, the description should describe how to access a copy of the document.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "url": {
           "title": "URL",
@@ -818,9 +900,11 @@
           "type": "string",
           "$comment": "",
           "codelist": "mediaType.csv",
-          "openCodelist": true
+          "openCodelist": true,
+          "minLength": 1
         }
-      }
+      },
+      "minProperties": 1
     },
     "Identifier": {
       "title": "Organisation identifier",
@@ -832,7 +916,8 @@
           "title": "Identifier",
           "description": "The identifier assigned to the organisation in the register identified in `.scheme`.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "scheme": {
           "title": "Scheme",
@@ -840,13 +925,15 @@
           "type": "string",
           "$comment": "",
           "codelist": "organisationIdentifierScheme.csv",
-          "openCodelist": true
+          "openCodelist": true,
+          "minLength": 1
         },
         "legalName": {
           "title": "Legal name",
           "description": "The legally registered name of the organisation",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         },
         "uri": {
           "title": "URI",
@@ -855,7 +942,8 @@
           "type": "string",
           "$comment": ""
         }
-      }
+      },
+      "minProperties": 1
     },
     "CoordinateReferenceSystem": {
       "title": "Coordinate reference system",
@@ -883,7 +971,8 @@
       "required": [
         "name",
         "uri"
-      ]
+      ],
+      "minProperties": 1
     },
     "RelatedResourceReference": {
       "title": "Related resource reference",
@@ -904,13 +993,15 @@
           "type": "string",
           "$comment": "",
           "codelist": "referenceRelationType.csv",
-          "openCodelist": true
+          "openCodelist": true,
+          "minLength": 1
         }
       },
       "required": [
         "href",
         "rel"
-      ]
+      ],
+      "minProperties": 1
     },
     "FibreTypeDetails": {
       "title": "Fibre type details",
@@ -922,9 +1013,11 @@
           "title": "Description",
           "description": "A description of this link's fibre type.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         }
-      }
+      },
+      "minProperties": 1
     },
     "DeploymentDetails": {
       "title": "Deployment details",
@@ -936,9 +1029,11 @@
           "title": "Description",
           "description": "A description of this link's deployment.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         }
-      }
+      },
+      "minProperties": 1
     },
     "CapacityDetails": {
       "title": "Capacity details",
@@ -950,10 +1045,13 @@
           "title": "Description",
           "description": "A description of this link's capacity.",
           "type": "string",
-          "$comment": ""
+          "$comment": "",
+          "minLength": 1
         }
-      }
+      },
+      "minProperties": 1
     }
   },
-  "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75"
+  "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75",
+  "minProperties": 1
 }
