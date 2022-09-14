@@ -516,7 +516,6 @@ Each `FibreTypeDetails` has the following fields:
 :pointer: /definitions/FibreTypeDetails
 :collapse: description
 ```
-```
 :::
 
 :::{tab-item} Example
@@ -546,7 +545,6 @@ Each `DeploymentDetails` has the following fields:
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/DeploymentDetails
 :collapse: description
-```
 ```
 :::
 
