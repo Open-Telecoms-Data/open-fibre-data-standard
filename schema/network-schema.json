@@ -112,7 +112,7 @@
     },
     "accuracy": {
       "title": "Accuracy",
-      "description": "The horizontal uncertainty, in metres, of the coordinates in this dataset relative to the datum of the coordinate reference system specified in `crs`.",
+      "description": "The horizontal uncertainty, in metres, of the coordinates in this dataset relative to the datum of the coordinate reference system specified in `crs`. Further details about the accuracy of coordinates in this dataset can be provided in `.accuracyDetails`.",
       "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/70",
       "type": "number"
     },
@@ -383,7 +383,7 @@
         },
         "deployment": {
           "title": "Deployment",
-          "description": "The physical deployment of this link, from the closed [deployment codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment).. Further details of the link's deployment can be provided in `.deploymentDetails`.",
+          "description": "The physical deployment of this link, from the closed [deployment codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment). Further details of this link's deployment can be provided in `.deploymentDetails`.",
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26",
           "type": "array",
           "items": {
@@ -588,7 +588,7 @@
         },
         "roles": {
           "title": "Roles",
-          "description": "This organisation's roles in this network, from the open [organisationRole codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationRole).",
+          "description": "This organisation's roles in this network, from the open [organisationRole codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationRole). Further details about this organisation's roles can be provided in `.roleDetails`.",
           "type": "array",
           "$comment": "",
           "items": {
