@@ -45,6 +45,7 @@ Click on schema elements to expand the tree, or use the '+' icon to expand all e
 The following example shows a network package containing two networks:
 ```{jsoninclude} ../../examples/json/multiple-networks.json
 :jsonpointer:
+:expand: networks
 ```
 :::
 
@@ -52,6 +53,7 @@ The following example shows a network package containing two networks:
 The following example shows a network package containing two networks with URLs for the next and previous pages of results.
 ```{jsoninclude} ../../examples/json/api-response.json
 :jsonpointer:
+:expand: networks,pages
 ```
 :::
 
@@ -90,6 +92,7 @@ Publish separate GeoJSON [feature collections](https://datatracker.ietf.org/doc/
 The following example shows a GeoJSON feature collection containing nodes:
 ```{jsoninclude} ../../examples/geojson/nodes.geojson
 :jsonpointer:
+:expand: features
 ```
 :::
 
@@ -97,6 +100,7 @@ The following example shows a GeoJSON feature collection containing nodes:
 The following example shows a GeoJSON feature collection containing links:
 ```{jsoninclude} ../../examples/geojson/links.geojson
 :jsonpointer:
+:expand: features
 ```
 :::
 
@@ -108,6 +112,7 @@ The following example shows a GeoJSON feature collection containing features fro
 
 ```{jsoninclude} ../../examples/geojson/multiple-networks.geojson
 :jsonpointer:
+:expand: features
 ```
 
 For data published via a paginated API, you should add a top-level `pages` object to the feature collection to provide URLs for the next and previous pages of results:

@@ -492,11 +492,11 @@ Each `RelatedResourceReference` has the following fields:
 :::{tab-item} Example
 ```{eval-rst} 
 .. jsoninclude:: ../../examples/json/network-separate-endpoints.json
-   :jsonpointer: /relatedResources
+   :jsonpointer: /networks/0/relatedResources
    :title: Pagination
 
 .. jsoninclude:: ../../examples/json/network-separate-files.json
-   :jsonpointer: /relatedResources
+   :jsonpointer: /networks/0/relatedResources
    :title: Streaming
 ```
 :::

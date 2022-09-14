@@ -109,15 +109,17 @@ The preferred approach is to publish embedded nodes and links in `.nodes` and `.
 
 :::{tab-item} Embedded data
 The following example shows a network with embedded nodes and links:
-```{jsoninclude} ../../examples/json/network-embedded.json
-:jsonpointer:
+```{jsoninclude} ../../examples/json/network-package.json
+:jsonpointer: /networks/0
+:expand: nodes,links
 ```
 :::
 
 :::{tab-item} References to endpoints
 The following example shows a network with references to separate endpoints for nodes and links:
 ```{jsoninclude} ../../examples/json/network-separate-endpoints.json
-:jsonpointer:
+:jsonpointer: /networks/0
+:expand: relatedResources
 ```
 :::
 
@@ -145,15 +147,16 @@ The preferred approach is to publish embedded nodes and links. If your network i
 
 :::{tab-item} Embedded data
 The following example shows a network with embedded nodes and links:
-```{jsoninclude} ../../examples/json/network-embedded.json
-:jsonpointer:
+```{jsoninclude} ../../examples/json/network-package.json
+:jsonpointer: /networks/0
 ```
 :::
 
 :::{tab-item} References to files
 The following example shows a network with references to separate files for nodes and links:
 ```{jsoninclude} ../../examples/json/network-separate-files.json
-:jsonpointer:
+:jsonpointer: /networks/0
+:expand: relatedResources
 ```
 :::
 
