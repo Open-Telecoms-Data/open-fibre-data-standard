@@ -150,6 +150,7 @@ Each `Link` has the following fields:
 ```{eval-rst} 
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/links
+   :title: Example
 ```
 :::
 
