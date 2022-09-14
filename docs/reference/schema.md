@@ -32,9 +32,24 @@ This section describes the overall structure of the OFDS schema. The top-level o
 
 In addition to the above sections, there are several top-level metadata fields:
 
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :collapse: nodes,links,phases,organisations,contracts,publisher,crs
 ```
+
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer:
+   :title: Example
+```
+:::
+
+::::
 
 #### Nodes
 
@@ -83,11 +98,27 @@ The following issues relate to this component or its fields:
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Node/description
 ```
+
 Each `Node` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Node
 :collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,physicalInfrastructureProvider,networkProvider
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /nodes
+   :title: Example
+```
+:::
+
+::::
+
 
 #### Link
 ```{admonition} Alpha consultation
@@ -106,10 +137,24 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/Link/description
 ```
 Each `Link` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Link
 :collapse: id,name,phase,status,readyForServiceDate,start,end,route,physicalInfrastructureProvider,networkProvider,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries,directed
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /links
+```
+:::
+
+::::
+
 
 #### Phase
 `Phase` is defined as:
@@ -117,10 +162,25 @@ Each `Link` has the following fields:
 :jsonpointer: /definitions/Phase/description
 ```
 Each `Phase` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Phase
 :collapse: id,name,description,funders
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /phases
+   :title: Example
+```
+:::
+
+::::
+
 
 #### Organisation
 ```{admonition} Alpha consultation
@@ -132,10 +192,25 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/Organisation/description
 ```
 Each `Organisation` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Organisation
 :collapse: id,name,identifier,country,roles,roleDetails,website,logo
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /organisations
+   :title: Example
+```
+:::
+
+::::
+
 
 #### Contract
 ```{admonition} Alpha consultation
@@ -147,10 +222,25 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/Contract/description
 ```
 Each `Contract` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Contract
 :collapse: id,title,description,type,value,dateSigned,documents,relatedPhases
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /contracts
+   :title: Example
+```
+:::
+
+::::
+
 
 #### Geometry
 `Geometry` is defined as:
@@ -158,10 +248,29 @@ Each `Contract` has the following fields:
 :jsonpointer: /definitions/Geometry/description
 ```
 Each `Geometry` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Geometry
 :collapse: type,coordinates
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /nodes/0/location
+   :title: Node
+
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /links/0/route
+   :title: Link
+```
+:::
+
+::::
+
 
 #### OrganisationReference
 `OrganisationReference` is defined as:
@@ -169,10 +278,24 @@ Each `Geometry` has the following fields:
 :jsonpointer: /definitions/OrganisationReference/description
 ```
 Each `OrganisationReference` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/OrganisationReference
 :collapse: id,name
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /links/0/physicalInfrastructureProvider
+   :title: Example
+```
+:::
+
+::::
 
 #### PhaseReference
 `PhaseReference` is defined as:
@@ -180,10 +303,25 @@ Each `OrganisationReference` has the following fields:
 :jsonpointer: /definitions/PhaseReference/description
 ```
 Each `PhaseReference` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/PhaseReference
 :collapse: id,name
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /contracts/0/relatedPhases
+   :title: Example
+```
+:::
+
+::::
+
 
 #### Address
 `Address` is defined as:
@@ -191,10 +329,24 @@ Each `PhaseReference` has the following fields:
 :jsonpointer: /definitions/Address/description
 ```
 Each `Address` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Address
 :collapse: streetAddress,locality,region,postalCode,country
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /nodes/0/address
+   :title: Example
+```
+:::
+
+::::
 
 #### Value
 `Value` is defined as:
@@ -202,10 +354,25 @@ Each `Address` has the following fields:
 :jsonpointer: /definitions/Value/description
 ```
 Each `Value` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Value
 :collapse: amount,currency
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /contracts/0/value
+   :title: Example
+```
+:::
+
+::::
+
 
 #### Document
 `Document` is defined as:
@@ -213,10 +380,25 @@ Each `Value` has the following fields:
 :jsonpointer: /definitions/Document/description
 ```
 Each `Document` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Document
 :collapse: title,description,url,format
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /contracts/0/documents
+   :title: Example
+```
+:::
+
+::::
+
 
 #### Identifier
 `Identifier` is defined as:
@@ -224,10 +406,25 @@ Each `Document` has the following fields:
 :jsonpointer: /definitions/Identifier/description
 ```
 Each `Identifier` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Identifier
 :collapse: id,scheme,legalName,uri
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /organisations/0/identifier
+   :title: Example
+```
+:::
+
+::::
+
 
 #### CoordinateReferenceSystem
 Coordinates in all OFDS data must be specified in the coordinate reference system [required by GeoJSON](https://datatracker.ietf.org/doc/html/rfc7946#section-4):
@@ -252,10 +449,24 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/CoordinateReferenceSystem/description
 ```
 Each `CoordinateReferenceSystem` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/CoordinateReferenceSystem
 :collapse: name,uri
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /crs
+   :title: Example
+```
+:::
+
+::::
 
 #### RelatedResourceReference
 ```{admonition} Alpha consultation
@@ -268,10 +479,29 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/RelatedResourceReference/description
 ```
 Each `RelatedResourceReference` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/RelatedResourceReference
 :collapse: href,rel
 ```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network-separate-endpoints.json
+   :jsonpointer: /relatedResources
+   :title: Pagination
+
+.. jsoninclude:: ../../examples/json/network-separate-files.json
+   :jsonpointer: /relatedResources
+   :title: Streaming
+```
+:::
+
+::::
+
 
 #### FibreTypeDetails
 `FibreTypeDetails` is defined as:
@@ -279,10 +509,26 @@ Each `RelatedResourceReference` has the following fields:
 :jsonpointer: /definitions/FibreTypeDetails/description
 ```
 Each `FibreTypeDetails` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/FibreTypeDetails
 :collapse: description
 ```
+```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /links/0/fibreTypeDetails
+   :title: Example
+```
+:::
+
+::::
+
 
 #### DeploymentDetails
 ```{admonition} Alpha consultation
@@ -294,10 +540,26 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/DeploymentDetails/description
 ```
 Each `DeploymentDetails` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/DeploymentDetails
 :collapse: description
 ```
+```
+:::
+
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /links/0/deploymentDetails
+   :title: Example
+```
+:::
+
+::::
+
 
 #### CapacityDetails
 ```{admonition} Alpha consultation
@@ -309,8 +571,21 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/CapacityDetails/description
 ```
 Each `CapacityDetails` has the following fields:
+::::{tab-set}
+
+:::{tab-item} Schema
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/CapacityDetails
 :collapse: description
 ```
+:::
 
+:::{tab-item} Example
+```{eval-rst} 
+.. jsoninclude:: ../../examples/json/network.json
+   :jsonpointer: /links/0/capacityDetails
+   :title: Example
+```
+:::
+
+::::
