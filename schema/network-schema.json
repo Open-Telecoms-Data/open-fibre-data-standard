@@ -335,6 +335,12 @@
           "type": "string",
           "minLength": 1
         },
+        "directed": {
+          "title": "Directed",
+          "description": "Whether this link is directed. If `True`, then `.start` represents the start of the link and `.end` represents the end. Otherwise, `.start` and `.end` reference this link's endpoints with no direction implied.",
+          "type": "boolean",
+          "$comment": ""
+        },
         "route": {
           "title": "Link route",
           "description": "A GeoJSON [LineString](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the route of this link.",
@@ -745,12 +751,6 @@
           ],
           "minItems": 1,
           "uniqueItems": true
-        },
-        "directed": {
-          "title": "Directed",
-          "description": "Whether this link is directed. If `True`, then `.start` represents the start of the link and `.end` represents the end. Otherwise, `.start` and `.end` reference this link's endpoints with no direction implied.",
-          "type": "boolean",
-          "$comment": ""
         }
       },
       "required": [
