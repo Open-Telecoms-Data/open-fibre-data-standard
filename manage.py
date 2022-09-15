@@ -442,36 +442,37 @@ def pre_commit():
 @click.argument('filename', type=click.Path(exists=True))
 def convert_to_geojson(filename):
     """
-    Convert a JSON-format OFDS network to two GeoJSON files: nodes.geojson and links.geojson.
+    Convert a network package to two GeoJSON files: nodes.geojson and links.geojson.
     """
 
     # Load data
     with open(filename, 'r') as f:
-        network = json.load(f)
-    
-    nodes = network.pop("nodes", [])
-    links = network.pop("links", [])
-    # TO-DO: Consider how to handle unreferenced phases and organisations. Currently, they are dropped from the geoJSON output
-    phases = network.pop("phases", [])
-    organisations = network.pop("organisations", [])
+        package = json.load(f)
 
     nodeFeatures = []
     linkFeatures = []
+    
+    for network in package["networks"]:
+      nodes = network.pop("nodes", [])
+      links = network.pop("links", [])
+      # TO-DO: Consider how to handle unreferenced phases and organisations. Currently, they are dropped from the geoJSON output
+      phases = network.pop("phases", [])
+      organisations = network.pop("organisations", [])
 
-    # Dereference `contracts.relatedPhases`
-    if "contracts" in network:
-        for contract in network["contracts"]:
-            if "relatedPhases" in contract:
-                for phase in contract["relatedPhases"]:
-                    phase = dereference_object(phase, phases)
+      # Dereference `contracts.relatedPhases`
+      if "contracts" in network:
+          for contract in network["contracts"]:
+              if "relatedPhases" in contract:
+                  for phase in contract["relatedPhases"]:
+                      phase = dereference_object(phase, phases)
 
-    # Convert nodes to features
-    for node in nodes:
-        nodeFeatures.append(convert_to_feature(node, ['physicalInfrastructureProvider', 'networkProvider'], network, organisations, phases, nodes))
+      # Convert nodes to features
+      for node in nodes:
+          nodeFeatures.append(convert_to_feature(node, ['physicalInfrastructureProvider', 'networkProvider'], network, organisations, phases, nodes))
 
-    # Convert links to features
-    for link in links:
-        linkFeatures.append(convert_to_feature(link, ['physicalInfrastructureProvider', 'networkProvider'], network, organisations, phases, nodes))
+      # Convert links to features
+      for link in links:
+          linkFeatures.append(convert_to_feature(link, ['physicalInfrastructureProvider', 'networkProvider'], network, organisations, phases, nodes))
 
     with open('nodes.geojson', 'w') as f:
         featureCollection = {
