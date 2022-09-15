@@ -206,3 +206,175 @@ This section has [open issues](https://github.com/Open-Telecoms-Data/open-fibre-
 
 This section describes how to publish data in CSV format.
 
+The CSV format has 10 tables, reflecting the structure of the [schema](schema.md). Arrays of objects in the schema are represented as separate tables:
+
+* [Networks](#table-structure)
+  * [Nodes](#nodes)
+    * [International connections](#international-connections)
+  * [Links](#links)
+  * [Phases](#phases)
+    * [Funders](#funders)
+  * [Organisations](#organisations)
+  * [Contracts](#contracts)
+    * [Documents](#documents)
+    * [Related phases](#related-phases)
+
+The field in the schema that each column represents is identified by the field's [JSON Pointer](https://tools.ietf.org/html/rfc6901). Rows in child tables are related to rows in parent tables using the parent object's `id` field.
+
+The following example shows a network with two nodes represented in JSON format and as tables. Note how the network's `.id` appears in both tables.
+
+::::{tab-set}
+
+:::{tab-item} JSON
+```{jsoninclude} ../../examples/json/network-package.json
+:jsonpointer: /networks/0
+:exclude: links,phases,organisations,contracts
+```
+:::
+
+:::{tab-item} Networks table
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../examples/csv/networks.csv
+```
+:::
+
+:::{tab-item} Nodes table
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../examples/csv/nodes.csv
+```
+:::
+
+::::
+
+### Table structure
+
+This section describes the structure of the tables in the CSV format and the relationship between the tables. Example CSV files and blank templates are provided for each table.
+
+The networks table is the main table. It is related to the following tables:
+
+* [Nodes](#nodes): one-to-many by `id`
+* [Links](#links): one-to-many by `id`
+* [Phases](#phases): one-to-many by `id`
+* [Organisations](#organisations): one-to-many by `id`
+* [Contracts](#contracts): one-to-many by `id`
+
+The fields in this table are listed below. You can also download an [example CSV file](../../examples/csv/networks.csv) or a [blank template](../../examples/csv/template/networks.csv) for this table.
+
+```{jsonschema} ../../schema/network-schema.json
+:include: id,name,website,publisher,publicationDate,collectionDate,crs,accuracy,accuracyDetails,language
+```
+
+#### Nodes
+
+This table is related to the following tables:
+
+* [Networks](#table-structure): many-to-one by `id`
+* [International connections](#international-connections): one-to-many by `nodes/0/id`
+
+The fields in this table are listed below. You can also download an [example CSV file](../../examples/csv/nodes.csv) or a [blank template](../../examples/csv/template/nodes.csv).
+
+```{jsonschema} ../../schema/network-schema.json
+:include: id,nodes/0/id,nodes/0/name,nodes/0/phase,nodes/0/status,nodes/0/location,nodes/0/address,nodes/0/type,nodes/0/accessPoint,nodes/0/power,nodes/0/technologies,nodes/0/physicalInfrastructureProvider,nodes/0/networkProvider
+```
+
+##### International connections
+
+This table is related to the following tables:
+
+* [Nodes](#nodes): many-to-one by `nodes/0/id`
+
+The fields in this table are listed below. You can also download an [example CSV file](../../examples/csv/nodes_internationalConnections.csv) or a [blank template](../../examples/csv/template/nodes_internationalConnections.csv).
+
+```{jsonschema} ../../schema/network-schema.json
+:include: id,nodes/0/id,nodes/0/internationalConnections/0/streetAddress,nodes/0/internationalConnections/0/locality,nodes/0/internationalConnections/0/region,nodes/0/internationalConnections/0/postalCode,nodes/0/internationalConnections/0/country
+```
+
+#### Links
+
+This table is related to the following tables:
+
+* [Networks](#table-structure): many-to-one by `id`
+
+The fields in this table are listed below. You can also download an [example CSV file](../../examples/csv/links.csv) or a [blank template](../../examples/csv/template/links.csv).
+
+```{jsonschema} ../../schema/network-schema.json
+:include: id,links/0/id,links/0/name,links/0/phase,links/0/status,links/0/readyForServiceDate,links/0/start,links/0/end,links/0/route,links/0/physicalInfrastructureProvider,links/0/networkProvider,links/0/supplier,links/0/transmissionMedium,links/0/deployment,links/0/deploymentDetails,links/0/darkFibre,links/0/fibreType,links/0/fibreTypeDetails,links/0/fibreCount,links/0/fibreLength,links/0/technologies,links/0/capacity,links/0/capacityDetails,links/0/countries,links/0/directed
+```
+
+#### Phases
+
+This table is related to the following tables:
+
+* [Networks](#table-structure): many-to-one by `id`
+* [Funders](#funders): one-to-many by `phases/0/id`
+
+The fields in this table are listed below. You can also download an [example CSV file](../../examples/csv/phases.csv) or a [blank template](../../examples/csv/template/phases.csv).
+
+```{jsonschema} ../../schema/network-schema.json
+:include: id,phases/0/name,phases/0/description
+```
+
+##### Funders
+
+This table is related to the following tables:
+
+* [Phases](#phases): many-to-one by `phase/0/id`
+
+The fields in this table are listed below. You can also download an [example CSV file](../../examples/csv/phases_funders.csv) or a [blank template](../../examples/csv/template/phases_funders.csv).
+
+```{jsonschema} ../../schema/network-schema.json
+:include: id,phases/0/id,phases/0/funders/0/id,phases/0/funders/0/name
+```
+
+#### Organisations
+
+This table is related to the following tables:
+
+* [Network](#table-structure): many-to-one by `id`
+
+The fields in this table are listed below. You can also download an [example CSV file](../../examples/csv/organisations.csv) or a [blank template](../../examples/csv/template/organisations.csv).
+
+```{jsonschema} ../../schema/network-schema.json
+:include: id,organisations/0/id,organisations/0/name,organisations/0/identifier,organisations/0/country,organisations/0/roles,organisations/0/roleDetails,organisations/0/website,organisations/0/logo
+```
+
+#### Contracts
+
+This table is related to the following tables:
+
+* [Network](#table-structure): many-to-one by `id`
+* [Documents](#documents): one-to-many by `contracts/0/id`
+
+The fields in this table are listed below. You can also download an [example CSV file](../../examples/csv/contracts.csv) or a [blank template](../../examples/csv/template/contracts.csv).
+
+```{jsonschema} ../../schema/network-schema.json
+:include: id,contracts/0/id,contracts/0/title,contracts/0/description,contracts/0/type,contracts/0/value,contracts/0/dateSigned
+```
+
+##### Documents
+
+This table is related to the following tables:
+
+* [Contracts](#contracts): many-to-one by `contracts/0/id`
+
+The fields in this table are listed below. You can also download an [example CSV file](../../examples/csv/contracts_documents.csv) or a [blank template](../../examples/csv/template/contracts_documents.csv).
+
+```{jsonschema} ../../schema/network-schema.json
+:include: id,contracts/0/id,contracts/0/documents/0/title,contracts/0/documents/0/description,contracts/0/documents/0/url,contracts/0/documents/0/format
+```
+
+##### Related phases
+
+This table is related to the following tables:
+
+* [Contracts](#contracts): many-to-one by `contracts/0/id`
+
+The fields in this table are listed below. You can also download an [example CSV file](../../examples/csv/contracts_relatedPhases.csv) or a [blank template](../../examples/csv/template/contracts_relatedPhases.csv).
+
+```{jsonschema} ../../schema/network-schema.json
+:include: id,contracts/0/id,contracts/0/relatedPhases/0/id,contracts/0/relatedPhases/0/name
+```
