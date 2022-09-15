@@ -23,7 +23,7 @@ Standards can also ensure that key information is included in a dataset. If data
 
 OFDS data is open fibre data that validates against the OFDS [schema](../reference/index.md). The 'base' format for OFDS data is [JSON](https://www.json.org/json-en.html), as this reflects the structure of the schema. OFDS data in JSON format is a list of network objects. Each object contains the geospatial, technical and administrative data about a single network.
 
-OFDS data can also be published in [GeoJSON](https://geojson.org/) format to be useful for analysts who want to use GIS tools, and in CSV format to be useful to analysts who want to use spreadsheet tools. The tabs below contains examples of OFDS data in each of these three formats.
+OFDS data can also be published in [GeoJSON](https://geojson.org/) format to be useful for analysts who want to use GIS tools, and in CSV format to be useful to analysts who want to use spreadsheet tools. The tabs below contain examples of OFDS data in each of these three formats.
 
 ::::{tab-set}
 
