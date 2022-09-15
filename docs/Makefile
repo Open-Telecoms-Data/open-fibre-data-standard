@@ -226,6 +226,6 @@ dummy:
 
 .PHONY: autobuild
 autobuild:
-	sphinx-autobuild -nW -q -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
+	sphinx-autobuild -E --watch ../examples --watch ../schema --watch ../_assets --watch ../codelists -nW -q -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
 	@echo
 	@echo "Auto-build finished. The HTML pages are in $(BUILDDIR)/dirhtml."
