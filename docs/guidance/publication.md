@@ -1,6 +1,76 @@
 # How to publish OFDS data
 
-## How to transform coordinates to the correct coordinate reference system
+This page provides an [overview](#overview) of the process for publishing OFDS data and [how-to guides](#how-to-guides) for specific topics.
+
+## Overview
+
+The process for publishing OFDS data can be divided into three phases:
+
+* [Plan](#plan)
+* [Prepare](#prepare)
+* [Publish](#publish)
+
+### Plan
+
+#### Identify your priority use cases
+
+There are many [use cases](../primer/openfibredata.md#why-publish-open-fibre-data) for OFDS data, each with their own data needs. You ought to decide which use cases to prioritise so that you can make sure that your data includes the necessary fields and that it is available via suitable publication formats and access methods.
+
+#### Decide what data to publish
+
+Bearing in mind your priority use cases, you ought to review the OFDS [schema](../reference/schema.md) and decide which fields you want to publish.
+
+Most fields in the OFDS schema are optional. However, the more fields you publish, the more useful your data will be.
+
+#### Identify your data sources
+
+Once you have decided what data to publish, you ought to identify your data sources, i.e. the systems, databases or documents that contain the data that you will convert to OFDS format for publication.
+
+### Prepare
+
+#### Map your data to OFDS
+
+Once you have identified your data sources, you ought to map your data to the OFDS schema, that is, identify which data elements within your data sources match which OFDS [fields](../reference/schema.md) and [codes](../reference/codelists.md).
+
+Your mapping acts as a blueprint for preparing your data. It will help you to identify the steps involved in converting your data to OFDS format.
+
+#### Collect missing data
+
+Your mapping might identify fields that you want to publish but that are missing from your data sources. If so, you'll need to collect the missing data.
+
+#### Choose your publication formats and access methods
+
+Bearing in mind your priority use cases, you ought to decide which publication formats and access methods you will use to publish your OFDS data.
+
+For more information, see [how to format data for publication](#how-to-format-data-for-publication) and [how to provide access to data](#how-to-provide-access-to-data).
+
+### Publish
+
+#### Prepare your data
+
+Once you have completed your mapping and decided on your publication formats and access methods, the next step is to convert your data to OFDS format.
+
+The suggested approach is to develop a reproducible data pipeline so that you can easily update your OFDS publication when the data in your data sources is updated. However, you can prepare your data using whichever tools you are most comfortable with. 
+
+#### Check your data
+
+```{admonition} Alpha consultation
+An online tool for checking the structure and format of OFDS data is under development and will be released with the Beta version of the standard. In the meantime, you can use a generic tool, like [JSON Schema Validator](https://www.jsonschemavalidator.net/) to check the structure and format of OFDS data.
+```
+
+Once you have prepared your data, the next step is to check that it is correctly structured and formatted according to the OFDS schema.
+
+#### Publish your data
+
+Once any issues with the structure and format of your data have been resolved, the next step is to publish your data using your chosen access methods.
+
+For your data to be open, you need to publish it using an open license. For more information, see [how to license your data](#how-to-license-your-data).
+
+## How-to guides
+
+This section contains how-to guides for specific topics. To learn about the process for publishing OFDS data, see the [overview](#overview).
+
+### How to transform coordinates to the correct coordinate reference system
 
 To publish OFDS data, you need to specify coordinates in the `urn:ogc:def:crs:OGC::CRS84` [coordinate reference system](../reference/schema.md#coordinatereferencesystem) (CRS). If the coordinates in your data sources are specified in a different CRS, before publishing your data in OFDS format, you first need to transform the coordinates to the correct CRS.
 
@@ -17,7 +87,7 @@ If you prefer to use a graphical user interface, several web-based tools are ava
 
 The `urn:ogc:def:crs:OGC::CRS84` CRS is equivalent to EPSG:4326 with reversed axes so, if it is not supported by your chosen transformation tool, you can instead transform your coordinates to EPSG:4326 and manually order your coordinates in longitude, latitude order.
 
-## How to generate universally unique identifiers
+### How to generate universally unique identifiers
 
 If you are writing your own software or if you prefer to use the command line, several libraries and tools are available to generate universally unique identifiers (UUIDS), for example:
 
@@ -33,7 +103,7 @@ If you are writing your own software or if you prefer to use the command line, s
 
 If you prefer to use a graphical user interface, several web-based tools are available, for example [Online UUID Generator](https://www.uuidgenerator.net/).
 
-## How to format data for publication
+### How to format data for publication
 
 ```{admonition} Alpha consultation
 There are [open issues](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues?q=is%3Aopen+is%3Aissue+label%3ATooling) related to tooling for transforming data between publication formats.
@@ -90,7 +160,7 @@ flatten-tool flatten --truncation-length=9 --root-list-path=networks --main-shee
 
 ::::
 
-### How to publish large networks
+#### How to publish large networks
 
 This section describes how to:
 
@@ -101,7 +171,7 @@ For information on how to use pagination and streaming to publish **multiple** n
 
 This guidance is applicable to the [JSON publication format](../reference/publication_formats.md#json), for information on pagination and streaming for the GeoJSON format see the [GeoJSON publication format reference](../reference/publication_formats.md#geojson).
 
-#### Pagination
+##### Pagination
 
 The preferred approach is to publish embedded nodes and links in `.nodes` and `.links`, respectively. If your network is too large to return in a single API response, you ought to use `.relatedResources` to reference separate endpoints for nodes and links. Each endpoint ought to return a top-level JSON object with a `nodes` or a `links` array, respectively, and a `pages` object with URLs for the next and previous pages of results:
 
@@ -137,7 +207,7 @@ The following example shows the response returned by the links endpoint with URL
 
 ::::
 
-#### Streaming
+##### Streaming
 
 The preferred approach is to publish embedded nodes and links. If your network is too large to load into memory, you ought to use `.relatedResources` to reference separate files for nodes and links. Each file ought to be formatted as a [JSON Lines](https://jsonlines.org/) file in which each line is a valid [`Node`](../reference/schema.md#node) or [`Link`](../reference/schema.md#link), respectively.
 
@@ -175,8 +245,10 @@ The following example shows a links file in JSON Lines format.
 
 ::::
 
-## How to provide access to data
+### How to provide access to data
 
-## How to add additional fields
+### How to add additional fields
 
-## How to write a data user guide
+### How to write a data user guide
+
+### How to license your data
