@@ -69,48 +69,99 @@
         },
         "status": "operational",
         "readyForServiceDate": "2018-01-01",
-        "start": "1",
-        "end": "2",
-        "directed": false,
-        "physicalInfrastructureProvider": {
-          "id": "GH-RGD-CS111111111",
-          "name": "FibreCo"
+        "start": {
+          "id": "1",
+          "name": "Accra",
+          "phase": {
+            "id": "1",
+            "name": "NextGen Phase 1"
+          },
+          "status": "operational",
+          "address": {
+            "streetAddress": "Boundary Rd",
+            "locality": "Shiashie",
+            "region": "Accra",
+            "postalCode": "12345",
+            "country": "GH"
+          },
+          "type": [
+            "pop"
+          ],
+          "accessPoint": true,
+          "internationalConnections": [
+            {
+              "region": "Lom\u00e9",
+              "country": "TG"
+            }
+          ],
+          "power": true,
+          "technologies": [
+            "ip"
+          ],
+          "physicalInfrastructureProvider": {
+            "id": "GH-RGD-CS111111111",
+            "name": "FibreCo"
+          },
+          "networkProvider": {
+            "id": "GH-RGD-CS222222222",
+            "name": "FastWeb"
+          },
+          "network": {
+            "id": "a096d627-72e1-4f9b-b129-951b1737bff4",
+            "name": "Ghana Fibre Network",
+            "contracts": [
+              {
+                "id": "1",
+                "title": "NextGen Phase 1 Construction Contract",
+                "description": "Contract for the construction of phase 1 of the NextGen network.",
+                "type": "private",
+                "value": {
+                  "amount": 1537459500.0,
+                  "currency": "GHS"
+                },
+                "dateSigned": "2016-06-30",
+                "documents": [
+                  {
+                    "title": "NextGen Phase 1 Construction Contract",
+                    "description": "Signed contract.",
+                    "url": "http://example.com/contracts/nextgen-phase1-construction.pdf",
+                    "format": "application/pdf"
+                  }
+                ],
+                "relatedPhases": [
+                  {
+                    "id": "1",
+                    "name": "NextGen Phase 1"
+                  }
+                ]
+              }
+            ],
+            "website": "http://example.com/network",
+            "publisher": {
+              "id": "GH-RGD-CS111111111",
+              "name": "FibreCo",
+              "identifier": {
+                "id": "CS111111111",
+                "scheme": "GH-RGD",
+                "legalName": "FibreCo Ghana Limited",
+                "uri": "https://example.com/companies/CS111111111"
+              },
+              "country": "GH",
+              "website": "https://www.example.com",
+              "logo": "https://www.example.com/logo.png"
+            },
+            "publicationDate": "2022-01-01",
+            "collectionDate": "2021-09-30",
+            "crs": {
+              "name": "urn:ogc:def:crs:OGC::CRS84",
+              "uri": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+            },
+            "accuracy": 250,
+            "accuracyDetails": "Measured according to the US National Standard for Spatial Data Accuracy.",
+            "language": "en"
+          }
         },
-        "networkProvider": {
-          "id": "GH-RGD-CS222222222",
-          "name": "FastWeb"
-        },
-        "supplier": {
-          "id": "GH-RGD-CS333333333",
-          "name": "ProjectCo"
-        },
-        "transmissionMedium": [
-          "fibre"
-        ],
-        "deployment": [
-          "belowGround"
-        ],
-        "deploymentDetails": {
-          "description": "Buried in ducts"
-        },
-        "darkFibre": true,
-        "fibreType": "G.652",
-        "fibreTypeDetails": {
-          "description": "CABLED STANDARD ENHANCED SINGLEMODE FIBRE ESMF, LOW WATER PEAK SINGLE MODE FIBRE G.652.D, OS2"
-        },
-        "fibreCount": 24,
-        "fibreLength": 276000,
-        "technologies": [
-          "sdh"
-        ],
-        "capacity": 4.976,
-        "capacityDetails": {
-          "description": "2xSTM-16"
-        },
-        "countries": [
-          "GH"
-        ],
-        "endpoint": {
+        "end": {
           "id": "2",
           "name": "Kumasi",
           "phase": {
@@ -196,6 +247,45 @@
             "language": "en"
           }
         },
+        "directed": false,
+        "physicalInfrastructureProvider": {
+          "id": "GH-RGD-CS111111111",
+          "name": "FibreCo"
+        },
+        "networkProvider": {
+          "id": "GH-RGD-CS222222222",
+          "name": "FastWeb"
+        },
+        "supplier": {
+          "id": "GH-RGD-CS333333333",
+          "name": "ProjectCo"
+        },
+        "transmissionMedium": [
+          "fibre"
+        ],
+        "deployment": [
+          "belowGround"
+        ],
+        "deploymentDetails": {
+          "description": "Buried in ducts"
+        },
+        "darkFibre": true,
+        "fibreType": "G.652",
+        "fibreTypeDetails": {
+          "description": "CABLED STANDARD ENHANCED SINGLEMODE FIBRE ESMF, LOW WATER PEAK SINGLE MODE FIBRE G.652.D, OS2"
+        },
+        "fibreCount": 24,
+        "fibreLength": 276000,
+        "technologies": [
+          "sdh"
+        ],
+        "capacity": 4.976,
+        "capacityDetails": {
+          "description": "2xSTM-16"
+        },
+        "countries": [
+          "GH"
+        ],
         "network": {
           "id": "a096d627-72e1-4f9b-b129-951b1737bff4",
           "name": "Ghana Fibre Network",
