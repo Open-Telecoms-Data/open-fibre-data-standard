@@ -21,13 +21,11 @@ Standards can also ensure that key information is included in a dataset. If data
 
 ## What does OFDS data look like?
 
-OFDS data is open fibre data that validates against the OFDS [schema](../reference/index.md). The 'base' format for OFDS data is [JSON](https://www.json.org/json-en.html), as this reflects the structure of the schema. OFDS data in JSON format is a list of network objects. Each object contains the geospatial, technical and administrative data about a single network.
-
-OFDS data can also be published in [GeoJSON](https://geojson.org/) format to be useful for analysts who want to use GIS tools, and in CSV format to be useful to analysts who want to use spreadsheet tools. The tabs below contain examples of OFDS data in each of these three formats.
+To meet the needs of different users, OFDS data can be published in three formats: JSON, GeoJSON and CSV. The tabs below provide examples of OFDS data in each format:
 
 ::::{tab-set}
 
-:::{tab-item} JSON format
+:::{tab-item} JSON
 The following example shows OFDS data containing a single network in JSON format:
 
 ```{eval-rst} 
@@ -38,7 +36,7 @@ The following example shows OFDS data containing a single network in JSON format
 ```
 :::
 
-:::{tab-item} GeoJSON format
+:::{tab-item} GeoJSON
 The following example shows OFDS data containing a single network in GeoJSON format. OFDS GeoJSON data consists of separate files for nodes and links. Use the dropdown menu to explore these two examples:
 
 ```{eval-rst} 
@@ -55,7 +53,7 @@ The following example shows OFDS data containing a single network in GeoJSON for
 ```
 :::
 
-:::{tab-item} CSV Format
+:::{tab-item} CSV
 The following example shows OFDS data containing a single network in CSV format. OFDS CSV data consists of multiple files to reflect the nested nature of the schema. Only the network level data are shown here:
 
 ```{csv-table-no-translate}
@@ -63,9 +61,8 @@ The following example shows OFDS data containing a single network in CSV format.
 :widths: auto
 :file: ../../examples/csv/networks.csv
 ```
-```
 :::
 
 ::::
 
-You can find out more about how to publish and use OFDS data in the [guidance](../guidance/index.md). You can read the rules and specifications for publishing OFDS data in different formats in the [publication formats reference](../reference/publication_formats.md).
+To learn more about the use cases for each format, read the [guidance on how to format data for publication](../guidance/publication/md#how-to-format-data-for-publication). For details of the structure of the OFDS schema, read the [schema reference](../reference/schema.md). For details of the rules and specifications for publishing OFDS data in different formats, read the [publication formats reference](../reference/publication_formats.md).
