@@ -185,7 +185,7 @@ var module;
     //Added by timgdavies
     renderjson.set_default_open = function(node_list) { renderjson.default_open = node_list ? node_list : [] ; return renderjson; };
     
-    renderjson.set_icons('⊕', '⊖');
+    renderjson.set_icons('▹', '▾');
     renderjson.set_show_by_default(false);
     renderjson.set_sort_objects(false);
     renderjson.set_max_string_length("none");

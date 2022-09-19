@@ -1,12 +1,331 @@
 {
   "networks": [
     {
-      "id": "fd7b30d6-f514-4cd0-a5ac-29a774f53a43",
-      "name": "Ghana Fibre Network"
-    },
-    {
-      "id": "acafe566-7ffa-416a-b3b4-84a52386a586",
-      "name": "Togo Fibre Network"
+      "id": "a096d627-72e1-4f9b-b129-951b1737bff4",
+      "name": "Ghana Fibre Network",
+      "nodes": [
+        {
+          "id": "1",
+          "name": "Accra",
+          "phase": {
+            "id": "1",
+            "name": "NextGen Phase 1"
+          },
+          "status": "operational",
+          "location": {
+            "type": "Point",
+            "coordinates": [
+              -0.174,
+              5.625
+            ]
+          },
+          "address": {
+            "streetAddress": "Boundary Rd",
+            "locality": "Shiashie",
+            "region": "Accra",
+            "postalCode": "12345",
+            "country": "GH"
+          },
+          "type": [
+            "pop"
+          ],
+          "accessPoint": true,
+          "internationalConnections": [
+            {
+              "region": "Lomé",
+              "country": "TG"
+            }
+          ],
+          "power": true,
+          "technologies": [
+            "ip"
+          ],
+          "physicalInfrastructureProvider": {
+            "id": "GH-RGD-CS111111111",
+            "name": "FibreCo"
+          },
+          "networkProvider": {
+            "id": "GH-RGD-CS222222222",
+            "name": "FastWeb"
+          }
+        },
+        {
+          "id": "2",
+          "name": "Kumasi",
+          "phase": {
+            "id": "1",
+            "name": "NextGen Phase 1"
+          },
+          "status": "operational",
+          "location": {
+            "type": "Point",
+            "coordinates": [
+              -1.628,
+              6.711
+            ]
+          },
+          "address": {
+            "streetAddress": "Kejetia Road",
+            "locality": "Bantama",
+            "region": "Kumasi",
+            "postalCode": "00000",
+            "country": "GH"
+          },
+          "type": [
+            "pop"
+          ],
+          "accessPoint": true,
+          "power": true,
+          "technologies": [
+            "ip"
+          ],
+          "physicalInfrastructureProvider": {
+            "id": "GH-RGD-CS111111111",
+            "name": "FibreCo"
+          },
+          "networkProvider": {
+            "id": "GH-RGD-CS222222222",
+            "name": "FastWeb"
+          }
+        }
+      ],
+      "links": [
+        {
+          "id": "1",
+          "name": "Accra to Kumasi",
+          "phase": {
+            "id": "1",
+            "name": "NextGen Phase 1"
+          },
+          "status": "operational",
+          "readyForServiceDate": "2018-01-01",
+          "start": "1",
+          "end": "2",
+          "directed": false,
+          "route": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                -0.173,
+                5.626
+              ],
+              [
+                -0.178,
+                5.807
+              ],
+              [
+                -0.112,
+                5.971
+              ],
+              [
+                -0.211,
+                5.963
+              ],
+              [
+                -0.321,
+                6.170
+              ],
+              [
+                -0.488,
+                6.290
+              ],
+              [
+                -0.560,
+                6.421
+              ],
+              [
+                -0.752,
+                6.533
+              ],
+              [
+                -0.867,
+                6.607
+              ],
+              [
+                -1.101,
+                6.585
+              ],
+              [
+                -1.304,
+                6.623
+              ],
+              [
+                -1.461,
+                6.727
+              ],
+              [
+                -1.628,
+                6.713
+              ]
+            ]
+          },
+          "physicalInfrastructureProvider": {
+            "id": "GH-RGD-CS111111111",
+            "name": "FibreCo"
+          },
+          "networkProvider": {
+            "id": "GH-RGD-CS222222222",
+            "name": "FastWeb"
+          },
+          "supplier": {
+            "id": "GH-RGD-CS333333333",
+            "name": "ProjectCo"
+          },
+          "transmissionMedium": [
+            "fibre"
+          ],
+          "deployment": [
+            "belowGround"
+          ],
+          "deploymentDetails": {
+            "description": "Buried in ducts"
+          },
+          "darkFibre": true,
+          "fibreType": "G.652",
+          "fibreTypeDetails": {
+            "description": "CABLED STANDARD ENHANCED SINGLEMODE FIBRE ESMF, LOW WATER PEAK SINGLE MODE FIBRE G.652.D, OS2"
+          },
+          "fibreCount": 24,
+          "fibreLength": 276000,
+          "technologies": [
+            "sdh"
+          ],
+          "capacity": 4.976,
+          "capacityDetails": {
+            "description": "2xSTM-16"
+          },
+          "countries": [
+            "GH"
+          ]
+        }
+      ],
+      "phases": [
+        {
+          "id": "1",
+          "name": "NextGen Phase 1",
+          "description": "The first phase of the Ghana Fibre Network NextGen roll-out.",
+          "funders": [
+            {
+              "id": "1",
+              "name": "Ghana Infrastructure Investment Fund"
+            }
+          ]
+        }
+      ],
+      "organisations": [
+        {
+          "id": "GH-RGD-CS111111111",
+          "name": "FibreCo",
+          "identifier": {
+            "id": "CS111111111",
+            "scheme": "GH-RGD",
+            "legalName": "FibreCo Ghana Limited",
+            "uri": "https://example.com/companies/CS111111111"
+          },
+          "country": "GH",
+          "roles": [
+            "physicalInfrastructureProvider"
+          ],
+          "roleDetails": "FibreCo owns and maintains the physical infrastructure.",
+          "website": "https://www.example.com",
+          "logo": "https://www.example.com/logo.png"
+        },
+        {
+          "id": "GH-RGD-CS222222222",
+          "name": "FastWeb",
+          "identifier": {
+            "id": "CS222222222",
+            "scheme": "GH-RGD",
+            "legalName": "FastWeb Ghana Limited",
+            "uri": "https://example.com/companies/CS222222222"
+          },
+          "country": "GH",
+          "roles": [
+            "networkProvider"
+          ],
+          "roleDetails": "FastWeb provides wholesale services to service providers and dark fibre access to other network providers.",
+          "website": "https://www.example.com",
+          "logo": "https://www.example.com/logo.png"
+        },
+        {
+          "id": "GH-RGD-CS333333333",
+          "name": "ProjectCo",
+          "identifier": {
+            "id": "CS333333333",
+            "scheme": "GH-RGD",
+            "legalName": "ProjectCo Ghana Limited",
+            "uri": "https://example.com/companies/CS333333333"
+          },
+          "country": "GH",
+          "roles": [
+            "supplier"
+          ],
+          "roleDetails": "ProjectCo was responsible for the construction of phase 1 of the NextGen network.",
+          "website": "https://www.example.com",
+          "logo": "https://www.example.com/logo.png"
+        },
+        {
+          "id": "1",
+          "name": "Ghana Infrastructure Investment Fund",
+          "country": "GH",
+          "roles": [
+            "funder"
+          ],
+          "roleDetails": "The Ghana Infrastructure Investment Fund provided equity financing for the construction of phase 1 of the NextGen network.",
+          "website": "https://www.example.com",
+          "logo": "https://www.example.com/logo.png"
+        }
+      ],
+      "contracts": [
+        {
+          "id": "1",
+          "title": "NextGen Phase 1 Construction Contract",
+          "description": "Contract for the construction of phase 1 of the NextGen network.",
+          "type": "private",
+          "value": {
+            "amount": 1537459500.00,
+            "currency": "GHS"
+          },
+          "dateSigned": "2016-06-30",
+          "documents": [
+            {
+              "title": "NextGen Phase 1 Construction Contract",
+              "description": "Signed contract.",
+              "url": "http://example.com/contracts/nextgen-phase1-construction.pdf",
+              "format": "application/pdf"
+            }
+          ],
+          "relatedPhases": [
+            {
+              "id": "1",
+              "name": "NextGen Phase 1"
+            }
+          ]
+        }
+      ],
+      "website": "http://example.com/network",
+      "publisher": {
+        "id": "GH-RGD-CS111111111",
+        "name": "FibreCo",
+        "identifier": {
+          "id": "CS111111111",
+          "scheme": "GH-RGD",
+          "legalName": "FibreCo Ghana Limited",
+          "uri": "https://example.com/companies/CS111111111"
+        },
+        "country": "GH",
+        "website": "https://www.example.com",
+        "logo": "https://www.example.com/logo.png"
+      },
+      "publicationDate": "2022-01-01",
+      "collectionDate": "2021-09-30",
+      "crs": {
+        "name": "urn:ogc:def:crs:OGC::CRS84",
+        "uri": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+      },
+      "accuracy": 250,
+      "accuracyDetails": "Measured according to the US National Standard for Spatial Data Accuracy.",
+      "language": "en"
     }
   ]
 }

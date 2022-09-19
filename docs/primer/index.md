@@ -3,8 +3,8 @@
 This Primer provides an introduction to:
 
 * [Open fibre data](openfibredata) and the reasons for publishing it.
-* [The Open Fibre Data Standard](openfibredatastandard) (OFDS) and the reasons for using it.
-* [The scope of OFDS and key concepts](scopeandkeyconcepts) that you need to understand
+* [The Open Fibre Data Standard](openfibredatastandard) (OFDS), the reasons for using it and what OFDS data looks like.
+* [The scope of OFDS and key concepts](scopeandkeyconcepts) that you need to understand.
 
 Do you want to learn how to publish or use open fibre data? Read the [guidance](../guidance/index).
 

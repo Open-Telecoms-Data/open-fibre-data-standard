@@ -32,8 +32,8 @@ To ensure that an organisation's `.identifier` is globally unique, it has two co
 
 :::{tab-item} Example
 The following example shows the `.identifier` for an organisation registered at Ghana's Registrar General's Department, the scheme code for which is [GH-RGD](https://org-id.guide/list/GH-RGD):
-```{jsoninclude} ../../examples/json/network.json
-:jsonpointer: /organisations/0/identifier
+```{jsoninclude} ../../examples/json/network-package.json
+:jsonpointer: /networks/0/organisations/0/identifier
 ```
 :::
 

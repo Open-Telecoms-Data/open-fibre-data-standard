@@ -3,293 +3,252 @@
   "features": [
     {
       "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "id": "in est Lorem",
-        "capacity": 65027666.72739151,
-        "ownership": {
-          "title": "Ownership",
-          "$comment": "Work in progress"
-        },
-        "readyForServiceDate": "2007-07-29",
-        "darkFibre": false,
-        "status": "proposed",
-        "supplier": {
-          "name": "qui",
-          "id": "dolore elit eu sint",
-          "quis559": false
-        },
-        "fibreLength": -7882241.099844724,
-        "capacityDetails": {
-          "title": "Capacity details",
-          "$comment": "Work in progress"
-        },
-        "technologies": [
-          "sunt non occaecat elit enim",
-          "qui reprehenderit sint enim",
-          "amet ut ullamco",
-          "sit aute nisi"
-        ],
-        "end": "Lorem in",
-        "deployment": "belowGround",
-        "country": null,
-        "fibreCount": 61818760,
-        "networkProvider": {
-          "id": "est velit aute nulla",
-          "name": "est id dolor nostrud"
-        },
-        "network": {
-          "identifier": "ullamco eiusmod mollit occaecat in",
-          "language": "ex anim occaecat sed",
-          "contracts": [
-            {
-              "id": "proident",
-              "relatedPhases": [
-                {
-                  "id": "laboris ad id",
-                  "name": "Excepteur quis in qui",
-                  "enim_7": "dolor",
-                  "ut7c": "consequat enim laborum"
-                }
-              ],
-              "title": "eu",
-              "value": {
-                "currency": null,
-                "sint_": 76573854
-              },
-              "documents": [
-                {
-                  "minim_1": "non",
-                  "do_7b4": false
-                },
-                {
-                  "ut6": 5521727.84443976
-                },
-                {
-                  "cillum1": 19961553.435848683
-                },
-                {
-                  "tempore6b": false
-                }
-              ],
-              "type": "ipsum Excepteur",
-              "description": "officia cillum in reprehenderit"
-            }
-          ],
-          "crs": {
-            "name": "urn:ogc:def:crs:OGC::CRS84",
-            "uri": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
-          },
-          "name": "minim",
-          "accuracyDetails": "nulla",
-          "collectionDate": "2014-06-22",
-          "accuracy": -8557076.28308025,
-          "publisher": {
-            "id": "sit commodo",
-            "listing.symbol": "aliqua commodo",
-            "role": [
-              "Duis",
-              "quis elit sunt"
-            ],
-            "classification": "tempor",
-            "listing.exchange": null,
-            "logo": "https://TpMgpkwTJwkbQjVIEkPUIYqXKRE.rdvmK54YlyOGJ6-z39Vu+z",
-            "name": "proident reprehenderit cupidatat labore ut",
-            "website": "https://fUjMQRln.iallzj-b81TrBkN31DSC9Vq",
-            "identifier": {
-              "uri": "http://xasIfEgWXaI.hfwKP-c-I45vyMfKZnhcq76Waq9ZlRyPb4,7i-LA5qHsxWfAIzXLPlxUF8JZKzy",
-              "id": "pariatur",
-              "legalName": "in",
-              "Excepteur7": -73661482
-            },
-            "country": null
-          }
-        }
-      }
-    },
-    {
-      "type": "Feature",
-      "geometry": null,
-      "properties": {
-        "id": "dolore",
-        "supplier": {
-          "name": "in",
-          "id": "voluptate nulla sunt irure do",
-          "fugiat0": 30056113.613429964
-        },
-        "transmissionMedium": "microwave",
-        "phase": {
-          "occaecat_f6": true
-        },
-        "network": {
-          "identifier": "ullamco eiusmod mollit occaecat in",
-          "language": "ex anim occaecat sed",
-          "contracts": [
-            {
-              "id": "proident",
-              "relatedPhases": [
-                {
-                  "id": "laboris ad id",
-                  "name": "Excepteur quis in qui",
-                  "enim_7": "dolor",
-                  "ut7c": "consequat enim laborum"
-                }
-              ],
-              "title": "eu",
-              "value": {
-                "currency": null,
-                "sint_": 76573854
-              },
-              "documents": [
-                {
-                  "minim_1": "non",
-                  "do_7b4": false
-                },
-                {
-                  "ut6": 5521727.84443976
-                },
-                {
-                  "cillum1": 19961553.435848683
-                },
-                {
-                  "tempore6b": false
-                }
-              ],
-              "type": "ipsum Excepteur",
-              "description": "officia cillum in reprehenderit"
-            }
-          ],
-          "crs": {
-            "name": "urn:ogc:def:crs:OGC::CRS84",
-            "uri": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
-          },
-          "name": "minim",
-          "accuracyDetails": "nulla",
-          "collectionDate": "2014-06-22",
-          "accuracy": -8557076.28308025,
-          "publisher": {
-            "id": "sit commodo",
-            "listing.symbol": "aliqua commodo",
-            "role": [
-              "Duis",
-              "quis elit sunt"
-            ],
-            "classification": "tempor",
-            "listing.exchange": null,
-            "logo": "https://TpMgpkwTJwkbQjVIEkPUIYqXKRE.rdvmK54YlyOGJ6-z39Vu+z",
-            "name": "proident reprehenderit cupidatat labore ut",
-            "website": "https://fUjMQRln.iallzj-b81TrBkN31DSC9Vq",
-            "identifier": {
-              "uri": "http://xasIfEgWXaI.hfwKP-c-I45vyMfKZnhcq76Waq9ZlRyPb4,7i-LA5qHsxWfAIzXLPlxUF8JZKzy",
-              "id": "pariatur",
-              "legalName": "in",
-              "Excepteur7": -73661482
-            },
-            "country": null
-          }
-        }
-      }
-    },
-    {
-      "type": "Feature",
       "geometry": {
-        "type": "dolor proident",
+        "type": "LineString",
         "coordinates": [
-          [],
-          []
-        ],
-        "Duisd7": "enim officia magna",
-        "nulla_f": 79707577
+          [
+            -0.173,
+            5.626
+          ],
+          [
+            -0.178,
+            5.807
+          ],
+          [
+            -0.112,
+            5.971
+          ],
+          [
+            -0.211,
+            5.963
+          ],
+          [
+            -0.321,
+            6.17
+          ],
+          [
+            -0.488,
+            6.29
+          ],
+          [
+            -0.56,
+            6.421
+          ],
+          [
+            -0.752,
+            6.533
+          ],
+          [
+            -0.867,
+            6.607
+          ],
+          [
+            -1.101,
+            6.585
+          ],
+          [
+            -1.304,
+            6.623
+          ],
+          [
+            -1.461,
+            6.727
+          ],
+          [
+            -1.628,
+            6.713
+          ]
+        ]
       },
       "properties": {
-        "id": "eiusmod dolor commodo ut",
-        "start": "in elit id eu",
-        "status": "operational",
-        "country": null,
-        "physicalInfrastructureProvider": {
-          "id": "pariatur nulla voluptate sed",
-          "name": "fugiat in"
+        "id": "1",
+        "name": "Accra to Kumasi",
+        "phase": {
+          "id": "1",
+          "name": "NextGen Phase 1"
         },
-        "technologies": [
-          "quis",
-          "culpa consectetur ullamco officia ipsum",
-          "nisi sed",
-          "in magna consequat laborum dolor",
-          "minim dolor fugiat magna nostrud"
-        ],
+        "status": "operational",
+        "readyForServiceDate": "2018-01-01",
+        "start": "1",
+        "end": "2",
+        "directed": false,
+        "physicalInfrastructureProvider": {
+          "id": "GH-RGD-CS111111111",
+          "name": "FibreCo"
+        },
+        "networkProvider": {
+          "id": "GH-RGD-CS222222222",
+          "name": "FastWeb"
+        },
         "supplier": {
-          "name": "voluptate in magna",
-          "dolor5": 87693292.69140774,
-          "nulla_b": "pariatur",
-          "ut_f": -99279607,
-          "cupidatat_e59": 87396229.22938937
+          "id": "GH-RGD-CS333333333",
+          "name": "ProjectCo"
+        },
+        "transmissionMedium": [
+          "fibre"
+        ],
+        "deployment": [
+          "belowGround"
+        ],
+        "deploymentDetails": {
+          "description": "Buried in ducts"
+        },
+        "darkFibre": true,
+        "fibreType": "G.652",
+        "fibreTypeDetails": {
+          "description": "CABLED STANDARD ENHANCED SINGLEMODE FIBRE ESMF, LOW WATER PEAK SINGLE MODE FIBRE G.652.D, OS2"
+        },
+        "fibreCount": 24,
+        "fibreLength": 276000,
+        "technologies": [
+          "sdh"
+        ],
+        "capacity": 4.976,
+        "capacityDetails": {
+          "description": "2xSTM-16"
+        },
+        "countries": [
+          "GH"
+        ],
+        "endpoint": {
+          "id": "2",
+          "name": "Kumasi",
+          "phase": {
+            "id": "1",
+            "name": "NextGen Phase 1"
+          },
+          "status": "operational",
+          "address": {
+            "streetAddress": "Kejetia Road",
+            "locality": "Bantama",
+            "region": "Kumasi",
+            "postalCode": "00000",
+            "country": "GH"
+          },
+          "type": [
+            "pop"
+          ],
+          "accessPoint": true,
+          "power": true,
+          "technologies": [
+            "ip"
+          ],
+          "physicalInfrastructureProvider": {
+            "id": "GH-RGD-CS111111111",
+            "name": "FibreCo"
+          },
+          "networkProvider": {
+            "id": "GH-RGD-CS222222222",
+            "name": "FastWeb"
+          },
+          "network": {
+            "id": "a096d627-72e1-4f9b-b129-951b1737bff4",
+            "name": "Ghana Fibre Network",
+            "contracts": [
+              {
+                "id": "1",
+                "title": "NextGen Phase 1 Construction Contract",
+                "description": "Contract for the construction of phase 1 of the NextGen network.",
+                "type": "private",
+                "value": {
+                  "amount": 1537459500.0,
+                  "currency": "GHS"
+                },
+                "dateSigned": "2016-06-30",
+                "documents": [
+                  {
+                    "title": "NextGen Phase 1 Construction Contract",
+                    "description": "Signed contract.",
+                    "url": "http://example.com/contracts/nextgen-phase1-construction.pdf",
+                    "format": "application/pdf"
+                  }
+                ],
+                "relatedPhases": [
+                  {
+                    "id": "1",
+                    "name": "NextGen Phase 1"
+                  }
+                ]
+              }
+            ],
+            "website": "http://example.com/network",
+            "publisher": {
+              "id": "GH-RGD-CS111111111",
+              "name": "FibreCo",
+              "identifier": {
+                "id": "CS111111111",
+                "scheme": "GH-RGD",
+                "legalName": "FibreCo Ghana Limited",
+                "uri": "https://example.com/companies/CS111111111"
+              },
+              "country": "GH",
+              "website": "https://www.example.com",
+              "logo": "https://www.example.com/logo.png"
+            },
+            "publicationDate": "2022-01-01",
+            "collectionDate": "2021-09-30",
+            "crs": {
+              "name": "urn:ogc:def:crs:OGC::CRS84",
+              "uri": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
+            },
+            "accuracy": 250,
+            "accuracyDetails": "Measured according to the US National Standard for Spatial Data Accuracy.",
+            "language": "en"
+          }
         },
         "network": {
-          "identifier": "ullamco eiusmod mollit occaecat in",
-          "language": "ex anim occaecat sed",
+          "id": "a096d627-72e1-4f9b-b129-951b1737bff4",
+          "name": "Ghana Fibre Network",
           "contracts": [
             {
-              "id": "proident",
-              "relatedPhases": [
-                {
-                  "id": "laboris ad id",
-                  "name": "Excepteur quis in qui",
-                  "enim_7": "dolor",
-                  "ut7c": "consequat enim laborum"
-                }
-              ],
-              "title": "eu",
+              "id": "1",
+              "title": "NextGen Phase 1 Construction Contract",
+              "description": "Contract for the construction of phase 1 of the NextGen network.",
+              "type": "private",
               "value": {
-                "currency": null,
-                "sint_": 76573854
+                "amount": 1537459500.0,
+                "currency": "GHS"
               },
+              "dateSigned": "2016-06-30",
               "documents": [
                 {
-                  "minim_1": "non",
-                  "do_7b4": false
-                },
-                {
-                  "ut6": 5521727.84443976
-                },
-                {
-                  "cillum1": 19961553.435848683
-                },
-                {
-                  "tempore6b": false
+                  "title": "NextGen Phase 1 Construction Contract",
+                  "description": "Signed contract.",
+                  "url": "http://example.com/contracts/nextgen-phase1-construction.pdf",
+                  "format": "application/pdf"
                 }
               ],
-              "type": "ipsum Excepteur",
-              "description": "officia cillum in reprehenderit"
+              "relatedPhases": [
+                {
+                  "id": "1",
+                  "name": "NextGen Phase 1"
+                }
+              ]
             }
           ],
+          "website": "http://example.com/network",
+          "publisher": {
+            "id": "GH-RGD-CS111111111",
+            "name": "FibreCo",
+            "identifier": {
+              "id": "CS111111111",
+              "scheme": "GH-RGD",
+              "legalName": "FibreCo Ghana Limited",
+              "uri": "https://example.com/companies/CS111111111"
+            },
+            "country": "GH",
+            "website": "https://www.example.com",
+            "logo": "https://www.example.com/logo.png"
+          },
+          "publicationDate": "2022-01-01",
+          "collectionDate": "2021-09-30",
           "crs": {
             "name": "urn:ogc:def:crs:OGC::CRS84",
             "uri": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"
           },
-          "name": "minim",
-          "accuracyDetails": "nulla",
-          "collectionDate": "2014-06-22",
-          "accuracy": -8557076.28308025,
-          "publisher": {
-            "id": "sit commodo",
-            "listing.symbol": "aliqua commodo",
-            "role": [
-              "Duis",
-              "quis elit sunt"
-            ],
-            "classification": "tempor",
-            "listing.exchange": null,
-            "logo": "https://TpMgpkwTJwkbQjVIEkPUIYqXKRE.rdvmK54YlyOGJ6-z39Vu+z",
-            "name": "proident reprehenderit cupidatat labore ut",
-            "website": "https://fUjMQRln.iallzj-b81TrBkN31DSC9Vq",
-            "identifier": {
-              "uri": "http://xasIfEgWXaI.hfwKP-c-I45vyMfKZnhcq76Waq9ZlRyPb4,7i-LA5qHsxWfAIzXLPlxUF8JZKzy",
-              "id": "pariatur",
-              "legalName": "in",
-              "Excepteur7": -73661482
-            },
-            "country": null
-          }
+          "accuracy": 250,
+          "accuracyDetails": "Measured according to the US National Standard for Spatial Data Accuracy.",
+          "language": "en"
         }
       }
     }
