@@ -1,8 +1,10 @@
 # The Open Fibre Data Standard
 
+This page provides an introduction to the Open Fibre Data Standard (OFDS), the reasons for using it and what OFDS data looks like.
+
 ## What is the Open Fibre Data Standard?
 
-The Open Fibre Data Standard (OFDS) is a data standard for the publication of open fibre data. It describes what data to publish about fibre optic networks in order to meet a range of use cases and how to structure and format that data for publication and use.
+The Open Fibre Data Standard is a data standard for the publication of open fibre data. It describes what data to publish about fibre optic networks in order to meet a range of use cases and how to structure and format that data for publication and use.
 
 The OFDS provides:
 - A common structured data model, including a schema, codelists, definitions and rules that need to be followed.
@@ -37,7 +39,7 @@ The following example shows OFDS data containing a single network in JSON format
 :::
 
 :::{tab-item} GeoJSON
-The following example shows OFDS data containing a single network in GeoJSON format. OFDS GeoJSON data consists of separate files for nodes and links. Use the dropdown menu to explore these two examples:
+The following example shows OFDS data containing a single network in GeoJSON format. OFDS GeoJSON data consists of separate files for nodes and links. Use the dropdown menu to explore an example nodes file and an example links file:
 
 ```{eval-rst} 
 .. jsoninclude:: ../../examples/geojson/nodes.geojson
@@ -54,7 +56,7 @@ The following example shows OFDS data containing a single network in GeoJSON for
 :::
 
 :::{tab-item} CSV
-The following example shows OFDS data containing a single network in CSV format. OFDS CSV data consists of multiple files to reflect the nested nature of the schema. Only the network level data are shown here:
+The following example shows OFDS data containing a single network in CSV format. OFDS CSV data consists of multiple tables to reflect the nested nature of the schema. Only the network table is shown here:
 
 ```{csv-table-no-translate}
 :header-rows: 1
@@ -65,4 +67,4 @@ The following example shows OFDS data containing a single network in CSV format.
 
 ::::
 
-To learn more about the use cases for each format, read the [guidance on how to format data for publication](../guidance/publication/md#how-to-format-data-for-publication). For details of the structure of the OFDS schema, read the [schema reference](../reference/schema.md). For details of the rules and specifications for publishing OFDS data in different formats, read the [publication formats reference](../reference/publication_formats.md).
+To learn more about the use cases for each format, read the [guidance on how to format data for publication](../guidance/publication.md#how-to-format-data-for-publication). For details of the structure of the OFDS schema, read the [schema reference](../reference/schema.md). For details of the rules and specifications for publishing OFDS data in each format, read the [publication formats reference](../reference/publication_formats.md).
