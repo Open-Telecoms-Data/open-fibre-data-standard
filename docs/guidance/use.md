@@ -26,6 +26,12 @@ To recreate the example file:
    * nodes: `accessPoint`
 1. Add a vector tile layer using the OpenStreetMap [XYZ Tile service](https://docs.qgis.org/3.22/en/docs/user_manual/managing_data_source/opening_data.html#using-xyz-tile-services).
 
+### Leaflet
+
+The [example Leaflet notebook](../../examples/leaflet/leaflet.ipynb) shows how to use [Python](https://www.python.org/), [Folium](http://python-visualization.github.io/folium/index.html) and [Leaflet](https://leafletjs.com/) to visualise the example OFDS GeoJSON data on a map.
+
+![The example network as a Leaflet map](../../_assets/leaflet_example.png)
+
 ## How to guides
 
 ## How to plot coordinates accurately
