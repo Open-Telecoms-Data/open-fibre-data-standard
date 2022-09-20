@@ -34,7 +34,7 @@ The example Leaflet notebook shows how to use [Python](https://www.python.org/),
 
 ## How to guides
 
-## How to plot coordinates accurately
+### How to plot coordinates accurately
 
 Coordinates in OFDS data are specified in the `urn:ogc:def:crs:OGC::CRS84` [coordinate reference system](../reference/schema.md#coordinatereferencesystem) (CRS). To create accurate maps, you need need to set the correct coordinate reference system when using OFDS data. 
 
