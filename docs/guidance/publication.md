@@ -26,7 +26,7 @@ Most fields in the OFDS schema are optional. However, the more fields you publis
 
 #### Identify your data sources
 
-Once you have decided what data to publish, you ought to identify your data sources, i.e. the systems, databases or documents that contain the data that you will convert to OFDS format for publication.
+Once you have decided what data to publish, you ought to identify your data sources. These will be the systems, databases and documents that contain the data that you will convert to OFDS format for publication.
 
 ### Prepare
 
@@ -85,9 +85,9 @@ This section contains how-to guides for specific topics. To learn about the proc
 
 The OFDS schema does not restrict the use of additional fields. If there is a data element that you wish to publish for which you cannot identify a suitable mapping in OFDS, you can add an additional field to your data.
 
-Before adding an additional field, you ought to search the [standard issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) to see if a similar concept has already been discussed. If there are no existing discussions, you should open a new issue and describe the concept that you want to publish and your proposed modelling.
+Before adding an additional field, you ought to search the [standard issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) to see if a similar concept has already been discussed. If there are no existing discussions, you ought to open a new issue and describe the concept that you want to publish and your proposed modelling.
 
-If you add an additional field, you should describe its structure, format and meaning in your data user guide. For more information, see [how to write a data user guide](#how-to-write-a-data-user-guide).
+If you add an additional field, you ought to describe its structure, format and meaning in your data user guide. For more information, see [how to write a data user guide](#how-to-write-a-data-user-guide).
 
 ### How to format data for publication
 
@@ -339,7 +339,7 @@ If you prefer to use a graphical user interface, several web-based tools are ava
 
 Publishing OFDS data involves making choices about what data to include and exclude, and how to map existing data elements to the fields in OFDS.
 
-In order for users to interpret data correctly and make effective use of it, it's important to describe your decisions and to provide guidance to data users. Your data user guide should include:
+In order for users to interpret data correctly and make effective use of it, it's important to describe your decisions and to provide guidance to data users. Your data user guide ought to include:
 
 * [why you are publishing the data](../primer/openfibredata.md#why-publish-open-fibre-data)
 * [how you prepared the data](#prepare-your-data) and how frequently it is updated
@@ -350,7 +350,7 @@ In order for users to interpret data correctly and make effective use of it, it'
 * any plans for changes to your publication
 * your contact details
 
-Your data user guide ought to be made available as a public web page. You should link to the web page wherever you publish links to your data.
+Your data user guide ought to be made available as a public web page. You ought to link to the web page wherever you publish links to your data.
 
 ### How to license your data
 
