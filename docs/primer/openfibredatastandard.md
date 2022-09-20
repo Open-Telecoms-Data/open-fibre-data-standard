@@ -4,7 +4,7 @@ This page provides an introduction to the Open Fibre Data Standard (OFDS), the r
 
 ## What is the Open Fibre Data Standard?
 
-The Open Fibre Data Standard is a data standard for the publication of open fibre data. It describes what data to publish about fibre optic networks in order to meet a range of use cases and how to structure and format that data for publication and use.
+The OFDS is a data standard for the publication of open fibre data. It describes what data to publish about fibre optic networks in order to meet a range of use cases and how to structure and format that data for publication and use.
 
 The OFDS provides:
 - A common structured data model, including a schema, codelists, definitions and rules that need to be followed.
@@ -18,6 +18,12 @@ Data standards resolve ambiguity by defining the structure and meaning of data. 
 - Without standards, data users or intermediaries have to do the hard work of making sense of different datasets and developing dataset-specific methodologies and tools.
 
 - With standards, users have access to information about the structure and meaning of data and can develop reusable tools and methodologies that can be applied to many different datasets.
+
+```{admonition} Standardisation in the fibre context
+The [supply-side research](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/5) identified a variety of units and notations for specifying the capacity of a fibre-optic link: Mbps, Gbps, STM notation and E-carrier notation. This lack of standardisation presents a challenge to users who want to compare the capacity of different links and networks.
+
+Since all of the above units can be converted into Gbps, OFDS requires that publishers specify link capacity in Gbps. This approach places the effort of conversion onto the data publisher, where it only needs to happen once, rather than onto data users, each of whom would need to convert the data if it were not standardised.
+```
 
 Standards can also ensure that key information is included in a dataset. If data owners do not share key information in their data, then users need to negotiate with each data owner individually.
 
