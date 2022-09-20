@@ -1,12 +1,12 @@
 # How to use OFDS data
 
-This page provides [examples](#examples) to demonstrate how to use OFDS data in common tools and [how-to guides](#how-to-guides) for specific topics.
+This page provides [examples](#examples) that demonstrate how to use OFDS data in common tools and [how-to guides](#how-to-guides) for specific topics.
 
 ## Examples
 
 ### QGIS
 
-The example QGIS file shows how to use the example OFDS GeoJSON data in [QGIS](https://qgis.org/).
+The example QGIS file shows how to use [QGIS](https://qgis.org/) to visualise the example OFDS GeoJSON data.
 
 ![The example network in QGIS](../../_assets/qgis_example.png)
 
@@ -28,7 +28,7 @@ To recreate the example file:
 
 ### Leaflet
 
-The [example Leaflet notebook](../../examples/leaflet/leaflet.ipynb) shows how to use [Python](https://www.python.org/), [Folium](http://python-visualization.github.io/folium/index.html) and [Leaflet](https://leafletjs.com/) to visualise the example OFDS GeoJSON data on a map.
+The example Leaflet notebook shows how to use [Python](https://www.python.org/), [Folium](http://python-visualization.github.io/folium/index.html) and [Leaflet](https://leafletjs.com/) to visualise the example OFDS GeoJSON data on a map. You can [download the notebook as an .ipynb file](../../examples/leaflet/leaflet.ipynb) or [view it in Deepnote](https://deepnote.com/viewer/github/Open-Telecoms-Data/open-fibre-data-standard/blob/main/examples/leaflet/leaflet.ipynb).
 
 ![The example network as a Leaflet map](../../_assets/leaflet_example.png)
 
