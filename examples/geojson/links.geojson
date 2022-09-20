@@ -179,7 +179,7 @@
           "type": [
             "pop"
           ],
-          "accessPoint": true,
+          "accessPoint": false,
           "power": true,
           "technologies": [
             "ip"
