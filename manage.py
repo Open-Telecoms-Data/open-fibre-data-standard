@@ -88,7 +88,7 @@ def convert_to_feature(object, organisation_references, network, organisations, 
         if endpoint in properties:
             for node in nodes:
                 if "id" in node and node["id"] == properties[endpoint]: # Can simplify, `.id` is required
-                    properties["endpoint"] = node
+                    properties[endpoint] = node
 
     # Embed network-level data
     # TO-DO: Handle case when publishers add an additional `network` field to `Node` or `Link`.
