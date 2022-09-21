@@ -1,5 +1,4 @@
-History
-============
+# History
 
 ```{eval-rst}
 .. toctree::

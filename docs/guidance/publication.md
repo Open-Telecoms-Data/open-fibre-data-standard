@@ -112,15 +112,19 @@ To convert a network package to GeoJSON format:
 
 * Clone the [repository](https://github.com/Open-Telecoms-Data/open-fibre-data-standard)
 * Create a virtual environment:
+
 ```bash
 sudo apt-get install python3-venv
 python3 -m venv .ve    
 source .ve/bin/activate
 ```
+
 * Install requirements
+
 ```bash
 pip install -r requirements.txt
 ```
+
 * Run the following command:
 
 ```bash
@@ -142,6 +146,7 @@ To convert data to CSV format:
 ```bash
 flatten-tool flatten --truncation-length=9 --root-list-path=networks --main-sheet-name=networks --schema=network-schema.json network-package.json -f csv
 ```
+
 :::
 
 ::::
@@ -165,32 +170,40 @@ The preferred approach is to publish embedded nodes and links in `.nodes` and `.
 
 :::{tab-item} Embedded data
 The following example shows a network with embedded nodes and links:
+
 ```{jsoninclude} ../../examples/json/network-package.json
 :jsonpointer: /networks/0
 :expand: nodes,links
 ```
+
 :::
 
 :::{tab-item} References to endpoints
 The following example shows a network with references to separate endpoints for nodes and links:
+
 ```{jsoninclude} ../../examples/json/network-separate-endpoints.json
 :jsonpointer: /networks/0
 :expand: relatedResources
 ```
+
 :::
 
 :::{tab-item} Nodes endpoint
 The following example shows the response returned by the nodes endpoint with URLs for the next and previous pages of results.
+
 ```{jsoninclude} ../../examples/json/nodes-endpoint.json
 :jsonpointer:
 ```
+
 :::
 
 :::{tab-item} Links endpoint
 The following example shows the response returned by the links endpoint with URLs for the next and previous pages of results.
+
 ```{jsoninclude} ../../examples/json/links-endpoint.json
 :jsonpointer:
 ```
+
 :::
 
 ::::
@@ -203,33 +216,41 @@ The preferred approach is to publish embedded nodes and links. If your network i
 
 :::{tab-item} Embedded data
 The following example shows a network with embedded nodes and links:
+
 ```{jsoninclude} ../../examples/json/network-package.json
 :jsonpointer: /networks/0
 ```
+
 :::
 
 :::{tab-item} References to files
 The following example shows a network with references to separate files for nodes and links:
+
 ```{jsoninclude} ../../examples/json/network-separate-files.json
 :jsonpointer: /networks/0
 :expand: relatedResources
 ```
+
 :::
 
 :::{tab-item} Nodes file
 The following example shows a nodes file in JSON Lines format.
+
 ```
 {}
 {}
 ```
+
 :::
 
 :::{tab-item} Links file
 The following example shows a links file in JSON Lines format.
+
 ```
 {}
 {}
 ```
+
 :::
 
 ::::
@@ -244,7 +265,7 @@ With respect to your OFDS publication, which best practices are most important w
 
 If you are publishing only one network, or a small number of networks, you ought to use the approach described in the small file option for each [publication format](../reference/publication_formats.md).
 
-If you are publishing a large number of networks, you ought to use the approach to streaming multiple networks described in the streaming option for each [publication format](../reference/publication_formats.md). 
+If you are publishing a large number of networks, you ought to use the approach to streaming multiple networks described in the streaming option for each [publication format](../reference/publication_formats.md).
 
 If you are publishing a network that is very large, you ought to use the approach to streaming nodes and links described in [how to publish large networks](#how-to-publish-large-networks).
 
@@ -285,7 +306,7 @@ If access controls are necessary, do not use access tokens that need to be refre
 If the API implements rate limits (throttling):
 
 * Document the rate limits in the API documentation ([example](https://developer.twitter.com/en/docs/twitter-api/rate-limits)).
-* When a user exceeds a rate limit, return a [HTTP 429 'Too Many Requests' response status code, ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429)and set the [Retry-After](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After) HTTP header to indicate how long to wait before making a new request.
+* When a user exceeds a rate limit, return a [HTTP 429 'Too Many Requests' response status code,](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) and set the [Retry-After](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After) HTTP header to indicate how long to wait before making a new request.
 
 ##### Completeness
 
@@ -308,7 +329,7 @@ To publish OFDS data, you need to specify coordinates in the `urn:ogc:def:crs:OG
 
 If your data pipeline includes a Geographic Information System such as ArcGIS or QGIS, these tools can transform coordinates from one CRS to another. If you are writing your own software, or if you prefer to use the command line, several libraries and tools are available, for example:
 
-* [PROJ](https://proj.org/) and its associated Python interface ([PYPROJ](https://pyproj4.github.io/pyproj/stable/)) and Javascript implementation ([PROJ4JS](http://proj4js.org/) are generic coordinate transformation tools that transform geospatial coordinates from one coordinate reference system (CRS) to another. They include command-line applications and an application programming interface. 
+* [PROJ](https://proj.org/) and its associated Python interface ([PYPROJ](https://pyproj4.github.io/pyproj/stable/)) and Javascript implementation ([PROJ4JS](http://proj4js.org/) are generic coordinate transformation tools that transform geospatial coordinates from one coordinate reference system (CRS) to another. They include command-line applications and an application programming interface.
 * [GDAL](https://gdal.org/) is a translator library for raster and vector geospatial data formats. It also comes with a variety of useful command line utilities for data translation and processing.
 * [Apache SIS](https://sis.apache.org/) is a free software, Java language library for developing geospatial applications. SIS provides data structures for geographic features and associated metadata along with methods to manipulate those data structures.
 

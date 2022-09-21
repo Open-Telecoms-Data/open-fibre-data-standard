@@ -7,6 +7,7 @@ This standard and documentation is in the initial development phase
 Fibre optic networks are approaching the status of essential infrastructure for a modern economy. Yet, the telecom sector lacks readily available and usable data on fibre optic network infrastructure.
 
 The Open Fibre Data Standard (OFDS) describes:
+
 - What data to publish about fibre optic networks in order to meet a range of use cases
 - How to structure and format data for publication and use
 

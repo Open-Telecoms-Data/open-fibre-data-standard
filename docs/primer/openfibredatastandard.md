@@ -7,6 +7,7 @@ This page provides an introduction to the Open Fibre Data Standard (OFDS), the r
 The OFDS is a data standard for the publication of open fibre data. It describes what data to publish about fibre optic networks in order to meet a range of use cases and how to structure and format that data for publication and use.
 
 The OFDS provides:
+
 - A common structured data model, including a schema, codelists, definitions and rules that need to be followed.
 - Publication formats to meet a range of use cases.
 - Guidance and tooling to support the publication and use of data
@@ -36,18 +37,19 @@ To meet the needs of different users, OFDS data can be published in three format
 :::{tab-item} JSON
 The following example shows OFDS data containing a single network in JSON format:
 
-```{eval-rst} 
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
     :jsonpointer:
     :expand: networks
     :title: JSON
 ```
+
 :::
 
 :::{tab-item} GeoJSON
 The following example shows OFDS data containing a single network in GeoJSON format. OFDS GeoJSON data consists of separate files for nodes and links. Use the dropdown menu to explore an example nodes file and an example links file:
 
-```{eval-rst} 
+```{eval-rst}
 .. jsoninclude:: ../../examples/geojson/nodes.geojson
     :jsonpointer:
     :expand: features
@@ -59,6 +61,7 @@ The following example shows OFDS data containing a single network in GeoJSON for
     :title: Links
 
 ```
+
 :::
 
 :::{tab-item} CSV
@@ -69,6 +72,7 @@ The following example shows OFDS data containing a single network in CSV format.
 :widths: auto
 :file: ../../examples/csv/networks.csv
 ```
+
 :::
 
 ::::

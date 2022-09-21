@@ -38,23 +38,27 @@ A network package is a JSON object that must include `.networks`: an array of `N
 :::{tab-item} Schema browser
 Click on schema elements to expand the tree, or use the '+' icon to expand all elements. Use { } to view the underlying schema for any section. Required fields are indicated in **bold**.
 
- <script src="../_static/docson/widget.js" data-schema="../network-schema.json"></script> 
+ <script src="../_static/docson/widget.js" data-schema="../network-schema.json"></script>
 :::
 
 :::{tab-item} Small file example
 The following example shows a network package containing two networks:
+
 ```{jsoninclude} ../../examples/json/multiple-networks.json
 :jsonpointer:
 :expand: networks
 ```
+
 :::
 
 :::{tab-item} API response example
 The following example shows a network package containing two networks with URLs for the next and previous pages of results.
+
 ```{jsoninclude} ../../examples/json/api-response.json
 :jsonpointer:
 :expand: networks,pages
 ```
+
 :::
 
 ::::
@@ -90,18 +94,22 @@ Publish separate GeoJSON [feature collections](https://datatracker.ietf.org/doc/
 
 :::{tab-item} Nodes feature collection
 The following example shows a GeoJSON feature collection containing nodes:
+
 ```{jsoninclude} ../../examples/geojson/nodes.geojson
 :jsonpointer:
 :expand: features
 ```
+
 :::
 
 :::{tab-item} Links feature collection
 The following example shows a GeoJSON feature collection containing links:
+
 ```{jsoninclude} ../../examples/geojson/links.geojson
 :jsonpointer:
 :expand: features
 ```
+
 :::
 
 ::::
@@ -120,16 +128,20 @@ For data published via a paginated API, you should add a top-level `pages` objec
 ::::{tab-set}
 
 :::{tab-item} Pages object schema
+
 ```{jsonschema} ../../schema/network-package-schema.json
 :pointer: /properties/pages
 ```
+
 :::
 
 :::{tab-item} API response example
 The following example shows a GeoJSON feature collection containing two features with URLS for the next and previous pages of results.
+
 ```{jsoninclude} ../../examples/geojson/api-response.geojson
 :jsonpointer:
 ```
+
 :::
 
 ::::
@@ -157,28 +169,28 @@ To transform an OFDS network from JSON format to GeoJSON format, you must:
 * Create an empty JSON object for the links feature collection and set its `.type` to 'FeatureCollection'.
 * For each contract in `contracts`, [dereference the phase references](#dereference-a-phase-reference) in `.relatedPhases`.
 * For each node in `nodes`:
-    * Convert the node to a GeoJSON feature:
-        * Create an empty JSON object for the feature.
-        * Set the feature's:
-        * `.type` to 'Feature'.
-        * `.geometry` to the node's `.location`, if it exists. Otherwise, set `.geometry` to `Null`.
-        * `.properties` to the properties of the node, excluding `.location`.
-        * [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProvider`.
-        * [Dereference the phase reference](#dereference-a-phase-reference) in the feature's `.phase` property.
-        * Set `.properties.network` to the properties of the network, excluding `.nodes`, `.links`, `.phases` and `.organisations`.
-    * Add the feature to the nodes feature collection.
+  * Convert the node to a GeoJSON feature:
+    * Create an empty JSON object for the feature.
+    * Set the feature's:
+    * `.type` to 'Feature'.
+    * `.geometry` to the node's `.location`, if it exists. Otherwise, set `.geometry` to `Null`.
+    * `.properties` to the properties of the node, excluding `.location`.
+    * [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProvider`.
+    * [Dereference the phase reference](#dereference-a-phase-reference) in the feature's `.phase` property.
+    * Set `.properties.network` to the properties of the network, excluding `.nodes`, `.links`, `.phases` and `.organisations`.
+  * Add the feature to the nodes feature collection.
 * For each link in `links`:
-    * Convert the link to a GeoJSON Feature:
-        * Create an empty JSON object for the feature.
-        * Set the feature's:
-        * `.type` to 'Feature'.
-        * `.geometry` to the link's `.route`, if it exists. Otherwise, set `.geometry` to `Null`.
-        * `.properties` to the properties of the link, excluding `.route`.
-        * [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProvider`.
-        * [Dereference the phase reference](#dereference-a-phase-reference) in `.properties.phase`.
-        * [Dereference the node ids](#dereference-a-node-id) in `properties.start` and `properties.end`.
-        * Set `.properties.network` to the properties of the network, excluding `.nodes`, `.links`, `.phases` and `.organisations`.
-    * Add the feature to the links feature collection.
+  * Convert the link to a GeoJSON Feature:
+    * Create an empty JSON object for the feature.
+    * Set the feature's:
+    * `.type` to 'Feature'.
+    * `.geometry` to the link's `.route`, if it exists. Otherwise, set `.geometry` to `Null`.
+    * `.properties` to the properties of the link, excluding `.route`.
+    * [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProvider`.
+    * [Dereference the phase reference](#dereference-a-phase-reference) in `.properties.phase`.
+    * [Dereference the node ids](#dereference-a-node-id) in `properties.start` and `properties.end`.
+    * Set `.properties.network` to the properties of the network, excluding `.nodes`, `.links`, `.phases` and `.organisations`.
+  * Add the feature to the links feature collection.
 
 #### Common operations
 
@@ -226,26 +238,32 @@ The following example shows a network with two nodes represented in JSON format 
 ::::{tab-set}
 
 :::{tab-item} JSON
+
 ```{jsoninclude} ../../examples/json/network-package.json
 :jsonpointer: /networks/0
 :exclude: links,phases,organisations,contracts
 ```
+
 :::
 
 :::{tab-item} Networks table
+
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
 :file: ../../examples/csv/networks.csv
 ```
+
 :::
 
 :::{tab-item} Nodes table
+
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
 :file: ../../examples/csv/nodes.csv
 ```
+
 :::
 
 ::::

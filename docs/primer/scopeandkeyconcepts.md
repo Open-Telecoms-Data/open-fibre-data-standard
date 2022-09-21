@@ -23,6 +23,7 @@ Based on the layers in the network value chain, there are three main actors in a
 **Physical infrastructure providers**
 
 OFDS defines a physical infrastructure provider as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Link/properties/physicalInfrastructureProvider/description
 ```
@@ -52,6 +53,7 @@ In a fully integrated model, one actor takes on all three roles, whilst in open 
 ### Networks
 
 OFDS defines a network as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /description
 ```
@@ -61,6 +63,7 @@ OFDS defines a network as:
 ### Nodes
 
 OFDS defines a node as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Node/description
 ```
@@ -72,6 +75,7 @@ For more information about nodes, see the [Node reference](../reference/schema.m
 ### Links
 
 OFDS defines a link as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Link/description
 ```
@@ -83,8 +87,8 @@ The nodes that a link connects are known as its endpoints. In addition to the en
 For more information about links, see the [Link reference](../reference/schema.md#link).
 
 ### Geospatial data
- 
-Geospatial data is information that describes objects or features with a location on or near the surface of the earth. Geospatial data typically combines location information (usually coordinates on the earth) and attribute information (the characteristics of the object concerned). 
+
+Geospatial data is information that describes objects or features with a location on or near the surface of the earth. Geospatial data typically combines location information (usually coordinates on the earth) and attribute information (the characteristics of the object concerned).
 
 OFDS data is usually geospatial data. It can contain both location information, such as the location of nodes and links, and attribute information, such as the capacity of a link.
 
@@ -95,6 +99,7 @@ Examples of OFDS node and link location data are given below.
 ::::{tab-set}
 
 :::{tab-item} Node
+
 ```json
 {
     "geometry": {
@@ -106,9 +111,11 @@ Examples of OFDS node and link location data are given below.
     }
 }
 ```
+
 :::
 
 :::{tab-item} Link
+
 ```json
 {
     "geometry": {
@@ -126,6 +133,7 @@ Examples of OFDS node and link location data are given below.
     }
 }
 ```
+
 :::
 
 ::::
