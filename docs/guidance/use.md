@@ -12,7 +12,7 @@ The example QGIS file shows how to use [QGIS](https://qgis.org/) to visualise th
 
 To explore the example file:
 
-1. Clone the [OFDS Github repository](https://github.com/Open-Telecoms-Data/open-fibre-data-standard).
+1. Clone the [OFDS GitHub repository](https://github.com/Open-Telecoms-Data/open-fibre-data-standard).
 2. Open `examples/qgis/geojson.qgs` in QGIS.
 3. Explore the [attribute table](https://docs.qgis.org/3.22/en/docs/user_manual/working_with_vector/attribute_table.html) for the nodes and links layers and use the [schema reference](../reference/schema.md) to look up the meaning of each attribute.
 
@@ -36,7 +36,7 @@ The example Leaflet notebook shows how to use [Python](https://www.python.org/),
 
 ### How to plot coordinates accurately
 
-Coordinates in OFDS data are specified in the `urn:ogc:def:crs:OGC::CRS84` [coordinate reference system](../reference/schema.md#coordinatereferencesystem) (CRS). To create accurate maps, you need need to set the correct coordinate reference system when using OFDS data. 
+Coordinates in OFDS data are specified in the `urn:ogc:def:crs:OGC::CRS84` [coordinate reference system](../reference/schema.md#coordinatereferencesystem) (CRS). To create accurate maps, you need need to set the correct coordinate reference system when using OFDS data.
 
 If you are using OFDS data published in GeoJSON format, then the tool that you are using is likely to default to the correct CRS because `urn:ogc:def:crs:OGC::CRS84` is the default CRS for GeoJSON data.
 

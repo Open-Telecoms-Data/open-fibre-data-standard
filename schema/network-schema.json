@@ -787,7 +787,7 @@
         },
         "funders": {
           "title": "Funders",
-          "description": "Information about the organizations that provide financing for the development or operation of this phase, also known as investors or financers.\n",
+          "description": "Information about the organisations that provide financing for the development or operation of this phase, also known as investors or financers.\n",
           "type": "array",
           "$comment": "",
           "items": {
@@ -817,20 +817,20 @@
         },
         "name": {
           "title": "Name",
-          "description": "A name for this organization.",
+          "description": "A name for this organisation.",
           "type": "string",
           "$comment": "",
           "minLength": 1
         },
         "identifier": {
           "title": "Organisation identifier",
-          "description": "An identifier for this organization.",
+          "description": "An identifier for this organisation.",
           "$comment": "",
           "$ref": "#/definitions/Identifier"
         },
         "country": {
           "title": "Country",
-          "description": "The country in which this organization is legally registered, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",
+          "description": "The country in which this organisation is legally registered, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",
           "type": "string",
           "$comment": "",
           "codelist": "country.csv",
@@ -1113,7 +1113,7 @@
         },
         "website": {
           "title": "Website",
-          "description": "The URL of the website for this organization.",
+          "description": "The URL of the website for this organisation.",
           "format": "iri",
           "type": "string",
           "$comment": ""

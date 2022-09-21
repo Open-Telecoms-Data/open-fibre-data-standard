@@ -112,15 +112,19 @@ To convert a network package to GeoJSON format:
 
 * Clone the [repository](https://github.com/Open-Telecoms-Data/open-fibre-data-standard)
 * Create a virtual environment:
+
 ```bash
 sudo apt-get install python3-venv
 python3 -m venv .ve    
 source .ve/bin/activate
 ```
+
 * Install requirements
+
 ```bash
 pip install -r requirements.txt
 ```
+
 * Run the following command:
 
 ```bash
@@ -142,6 +146,7 @@ To convert data to CSV format:
 ```bash
 flatten-tool flatten --truncation-length=9 --root-list-path=networks --main-sheet-name=networks --schema=network-schema.json network-package.json -f csv
 ```
+
 :::
 
 ::::
@@ -165,32 +170,40 @@ The preferred approach is to publish embedded nodes and links in `.nodes` and `.
 
 :::{tab-item} Embedded data
 The following example shows a network with embedded nodes and links:
+
 ```{jsoninclude} ../../examples/json/network-package.json
 :jsonpointer: /networks/0
 :expand: nodes,links
 ```
+
 :::
 
 :::{tab-item} References to endpoints
 The following example shows a network with references to separate endpoints for nodes and links:
+
 ```{jsoninclude} ../../examples/json/network-separate-endpoints.json
 :jsonpointer: /networks/0
 :expand: relatedResources
 ```
+
 :::
 
 :::{tab-item} Nodes endpoint
 The following example shows the response returned by the nodes endpoint with URLs for the next and previous pages of results.
+
 ```{jsoninclude} ../../examples/json/nodes-endpoint.json
 :jsonpointer:
 ```
+
 :::
 
 :::{tab-item} Links endpoint
 The following example shows the response returned by the links endpoint with URLs for the next and previous pages of results.
+
 ```{jsoninclude} ../../examples/json/links-endpoint.json
 :jsonpointer:
 ```
+
 :::
 
 ::::
@@ -203,33 +216,41 @@ The preferred approach is to publish embedded nodes and links. If your network i
 
 :::{tab-item} Embedded data
 The following example shows a network with embedded nodes and links:
+
 ```{jsoninclude} ../../examples/json/network-package.json
 :jsonpointer: /networks/0
 ```
+
 :::
 
 :::{tab-item} References to files
 The following example shows a network with references to separate files for nodes and links:
+
 ```{jsoninclude} ../../examples/json/network-separate-files.json
 :jsonpointer: /networks/0
 :expand: relatedResources
 ```
+
 :::
 
 :::{tab-item} Nodes file
 The following example shows a nodes file in JSON Lines format.
+
 ```
 {}
 {}
 ```
+
 :::
 
 :::{tab-item} Links file
 The following example shows a links file in JSON Lines format.
+
 ```
 {}
 {}
 ```
+
 :::
 
 ::::
@@ -244,7 +265,7 @@ With respect to your OFDS publication, which best practices are most important w
 
 If you are publishing only one network, or a small number of networks, you ought to use the approach described in the small file option for each [publication format](../reference/publication_formats.md).
 
-If you are publishing a large number of networks, you ought to use the approach to streaming multiple networks described in the streaming option for each [publication format](../reference/publication_formats.md). 
+If you are publishing a large number of networks, you ought to use the approach to streaming multiple networks described in the streaming option for each [publication format](../reference/publication_formats.md).
 
 If you are publishing a network that is very large, you ought to use the approach to streaming nodes and links described in [how to publish large networks](#how-to-publish-large-networks).
 
@@ -278,14 +299,14 @@ Provide API documentation, with at least the lists of endpoints, methods and par
 
 ##### Access control and rate limiting
 
-Avoid adding access controls (like user registration or API keys), in order to maximize the ease of access to the publication.
+Avoid adding access controls (like user registration or API keys), in order to maximise the ease of access to the publication.
 
 If access controls are necessary, do not use access tokens that need to be refreshed regularly. For example, every two hours is too frequent.
 
 If the API implements rate limits (throttling):
 
 * Document the rate limits in the API documentation ([example](https://developer.twitter.com/en/docs/twitter-api/rate-limits)).
-* When a user exceeds a rate limit, return a [HTTP 429 'Too Many Requests' response status code, ](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429)and set the [Retry-After](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After) HTTP header to indicate how long to wait before making a new request.
+* When a user exceeds a rate limit, return a [HTTP 429 'Too Many Requests' response status code,](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) and set the [Retry-After](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After) HTTP header to indicate how long to wait before making a new request.
 
 ##### Completeness
 
@@ -294,7 +315,7 @@ Ensure that all OFDS data can be accessed via the API.
 ##### Response format
 
 * Put the network package or GeoJSON feature collection at the top-level of the JSON data. For example, do not embed it under a results array.
-* Use a JSON library instead of implementing JSON serialization yourself. This also guarantees that the encoding is UTF-8.
+* Use a JSON library instead of implementing JSON serialisation yourself. This also guarantees that the encoding is UTF-8.
 * Remove NULL characters (\u0000) from the JSON response. These characters cannot be imported by users into some SQL databases.
 * If results cannot be returned, use an appropriate HTTP error code (400-599); do not return a JSON object with an error message and a 200 HTTP status code. That said, if a search request returns no results, it is appropriate to use a 200 HTTP status code, with an empty result set.
 
@@ -308,7 +329,7 @@ To publish OFDS data, you need to specify coordinates in the `urn:ogc:def:crs:OG
 
 If your data pipeline includes a Geographic Information System such as ArcGIS or QGIS, these tools can transform coordinates from one CRS to another. If you are writing your own software, or if you prefer to use the command line, several libraries and tools are available, for example:
 
-* [PROJ](https://proj.org/) and its associated Python interface ([PYPROJ](https://pyproj4.github.io/pyproj/stable/)) and Javascript implementation ([PROJ4JS](http://proj4js.org/) are generic coordinate transformation tools that transform geospatial coordinates from one coordinate reference system (CRS) to another. They include command-line applications and an application programming interface. 
+* [PROJ](https://proj.org/) and its associated Python interface ([PYPROJ](https://pyproj4.github.io/pyproj/stable/)) and JavaScript implementation ([PROJ4JS](http://proj4js.org/) are generic coordinate transformation tools that transform geospatial coordinates from one coordinate reference system (CRS) to another. They include command-line applications and an application programming interface.
 * [GDAL](https://gdal.org/) is a translator library for raster and vector geospatial data formats. It also comes with a variety of useful command line utilities for data translation and processing.
 * [Apache SIS](https://sis.apache.org/) is a free software, Java language library for developing geospatial applications. SIS provides data structures for geographic features and associated metadata along with methods to manipulate those data structures.
 
@@ -330,7 +351,7 @@ If you are writing your own software or if you prefer to use the command line, s
 * Python - [uuid.py](https://docs.python.org/3/library/uuid.html)
 * Java - [java.util.UUID](https://docs.oracle.com/javase/7/docs/api/java/util/UUID.html)
 * C# - [System.Guid](https://docs.microsoft.com/en-us/dotnet/api/system.guid)
-* Javascript - [Crypto.randomUUID](https://www.moreonfew.com/how-to-generate-uuid-in-javascript/)
+* JavaScript - [Crypto.randomUUID](https://www.moreonfew.com/how-to-generate-uuid-in-javascript/)
 * R - [uuid](https://cran.r-project.org/web/packages/uuid/index.html)
 
 If you prefer to use a graphical user interface, several web-based tools are available, for example [Online UUID Generator](https://www.uuidgenerator.net/).

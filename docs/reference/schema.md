@@ -14,7 +14,7 @@ This page presents the schema in an [interactive browser](#browser) and in [refe
 
 Click on schema elements to expand the tree, or use the '+' icon to expand all elements. Use { } to view the underlying schema for any section. Required fields are indicated in **bold**.
 
- <script src="../_static/docson/widget.js" data-schema="../network-schema.json"></script> 
+ <script src="../_static/docson/widget.js" data-schema="../network-schema.json"></script>
 
 ## Reference tables
 
@@ -35,6 +35,7 @@ In addition to the above sections, there are several top-level metadata fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :collapse: nodes,links,phases,organisations,contracts,publisher,crs
 ```
@@ -42,11 +43,13 @@ In addition to the above sections, there are several top-level metadata fields:
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0
    :title: Example
 ```
+
 :::
 
 ::::
@@ -85,8 +88,8 @@ For information on the fields that can be provided for each contract, see [Contr
 
 This section lists each component in the OFDS schema. Some components are reused in multiple places in the schema. For information on how the components fit together, see the [structure](#structure) section or the [schema browser](#browser).
 
-
 #### Node
+
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
 * `Node`, `.accessPoint`: [#60 Node definition (access points)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/60)
@@ -94,7 +97,9 @@ The following issues relate to this component or its fields:
 * `.internationalConnections`: [#72 International connections](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/72)
 * `.physicalInfrastructureProvider`, `.networkProvider`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
 ```
+
 `Node` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Node/description
 ```
@@ -103,24 +108,28 @@ Each `Node` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Node
 :collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,physicalInfrastructureProvider,networkProvider
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/nodes
    :title: Example
 ```
+
 :::
 
 ::::
 
-
 #### Link
+
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
 * `Link`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
@@ -132,134 +141,166 @@ The following issues relate to this component or its fields:
 * `.deployment`, `.deploymentDetails`: [#26 Link deployment](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26)
 * `.capacityDetails`: [#24 Link capacity](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24)
 ```
+
 `Link` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Link/description
 ```
+
 Each `Link` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Link
 :collapse: id,name,phase,status,readyForServiceDate,start,end,route,physicalInfrastructureProvider,networkProvider,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries,directed
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/links
    :title: Example
 ```
+
 :::
 
 ::::
 
-
 #### Phase
+
 `Phase` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Phase/description
 ```
+
 Each `Phase` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Phase
 :collapse: id,name,description,funders
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/phases
    :title: Example
 ```
+
 :::
 
 ::::
 
-
 #### Organisation
+
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
 * `.roleDetails`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
 ```
+
 `Organisation` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Organisation/description
 ```
+
 Each `Organisation` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Organisation
 :collapse: id,name,identifier,country,roles,roleDetails,website,logo
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/organisations
    :title: Example
 ```
+
 :::
 
 ::::
 
-
 #### Contract
+
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
 * `Contract`: [#71 Contracts](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/71)
 ```
+
 `Contract` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Contract/description
 ```
+
 Each `Contract` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Contract
 :collapse: id,title,description,type,value,dateSigned,documents,relatedPhases
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/contracts
    :title: Example
 ```
+
 :::
 
 ::::
 
-
 #### Geometry
+
 `Geometry` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Geometry/description
 ```
+
 Each `Geometry` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Geometry
 :collapse: type,coordinates
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/nodes/0/location
    :title: Node
@@ -268,166 +309,205 @@ Each `Geometry` has the following fields:
    :jsonpointer: /networks/0/links/0/route
    :title: Link
 ```
+
 :::
 
 ::::
 
-
 #### OrganisationReference
+
 `OrganisationReference` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/OrganisationReference/description
 ```
+
 Each `OrganisationReference` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/OrganisationReference
 :collapse: id,name
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/links/0/physicalInfrastructureProvider
    :title: Example
 ```
+
 :::
 
 ::::
 
 #### PhaseReference
+
 `PhaseReference` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/PhaseReference/description
 ```
+
 Each `PhaseReference` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/PhaseReference
 :collapse: id,name
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/contracts/0/relatedPhases
    :title: Example
 ```
+
 :::
 
 ::::
 
-
 #### Address
+
 `Address` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Address/description
 ```
+
 Each `Address` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Address
 :collapse: streetAddress,locality,region,postalCode,country
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/nodes/0/address
    :title: Example
 ```
+
 :::
 
 ::::
 
 #### Value
+
 `Value` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Value/description
 ```
+
 Each `Value` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Value
 :collapse: amount,currency
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/contracts/0/value
    :title: Example
 ```
+
 :::
 
 ::::
 
-
 #### Document
+
 `Document` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Document/description
 ```
+
 Each `Document` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Document
 :collapse: title,description,url,format
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/contracts/0/documents
    :title: Example
 ```
+
 :::
 
 ::::
 
-
 #### Identifier
+
 `Identifier` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/Identifier/description
 ```
+
 Each `Identifier` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Identifier
 :collapse: id,scheme,legalName,uri
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/organisations/0/identifier
    :title: Example
 ```
+
 :::
 
 ::::
 
-
 #### CoordinateReferenceSystem
+
 Coordinates in all OFDS data must be specified in the coordinate reference system [required by GeoJSON](https://datatracker.ietf.org/doc/html/rfc7946#section-4):
 
 > The coordinate reference system for all GeoJSON coordinates is a geographic coordinate reference system, using the World Geodetic System 1984 (WGS 84) [WGS84] datum, with longitude and latitude units of decimal degrees.  This is equivalent to the coordinate reference system identified by the Open Geospatial Consortium (OGC) URN urn:ogc:def:crs:OGC::CRS84.
@@ -435,7 +515,7 @@ Coordinates in all OFDS data must be specified in the coordinate reference syste
 The `CoordinateReferenceSystem` object references the CRS by `name` and `uri`. Its properties must be set to the following values:
 
 * `name`: urn:ogc:def:crs:OGC::CRS84
-* `uri`: http://www.opengis.net/def/crs/OGC/1.3/CRS84
+* `uri`: <http://www.opengis.net/def/crs/OGC/1.3/CRS84>
 
 `urn:ogc:def:crs:OGC::CRS84` denotes WGS84 with the order longitude, latitude. It is equivalent to EPSG:4326 with reversed axes.
 
@@ -445,52 +525,66 @@ For more information, see [How to transform coordinates to the correct coordinat
 The following issues relate to this component or its fields:
 * `CoordinateReferenceSystem`: [#9 Coordinate reference system](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/9)
 ```
+
 `CoordinateReferenceSystem` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/CoordinateReferenceSystem/description
 ```
+
 Each `CoordinateReferenceSystem` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/CoordinateReferenceSystem
 :collapse: name,uri
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/crs
    :title: Example
 ```
+
 :::
 
 ::::
 
 #### RelatedResourceReference
+
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
 * `RelatedResourceReference`: [#75 Paginating and streaming nodes and links](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75)
 * `RelatedResourceReference`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
 ```
+
 `RelatedResourceReference` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/RelatedResourceReference/description
 ```
+
 Each `RelatedResourceReference` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/RelatedResourceReference
 :collapse: href,rel
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-separate-endpoints.json
    :jsonpointer: /networks/0/relatedResources
    :title: Pagination
@@ -499,93 +593,113 @@ Each `RelatedResourceReference` has the following fields:
    :jsonpointer: /networks/0/relatedResources
    :title: Streaming
 ```
+
 :::
 
 ::::
 
-
 #### FibreTypeDetails
+
 `FibreTypeDetails` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/FibreTypeDetails/description
 ```
+
 Each `FibreTypeDetails` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/FibreTypeDetails
 :collapse: description
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/links/0/fibreTypeDetails
    :title: Example
 ```
+
 :::
 
 ::::
 
-
 #### DeploymentDetails
+
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
 * `DeploymentDetails`: [#26 Link deployment](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26)
 ```
+
 `DeploymentDetails` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/DeploymentDetails/description
 ```
+
 Each `DeploymentDetails` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/DeploymentDetails
 :collapse: description
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/links/0/deploymentDetails
    :title: Example
 ```
+
 :::
 
 ::::
 
-
 #### CapacityDetails
+
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
 * `CapacityDetails`: [#24 Link capacity](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24)
 ```
+
 `CapacityDetails` is defined as:
+
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /definitions/CapacityDetails/description
 ```
+
 Each `CapacityDetails` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
+
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/CapacityDetails
 :collapse: description
 ```
+
 :::
 
 :::{tab-item} Example
-```{eval-rst} 
+
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
    :jsonpointer: /networks/0/links/0/capacityDetails
    :title: Example
 ```
+
 :::
 
 ::::
- 
