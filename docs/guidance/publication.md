@@ -299,7 +299,7 @@ Provide API documentation, with at least the lists of endpoints, methods and par
 
 ##### Access control and rate limiting
 
-Avoid adding access controls (like user registration or API keys), in order to maximize the ease of access to the publication.
+Avoid adding access controls (like user registration or API keys), in order to maximise the ease of access to the publication.
 
 If access controls are necessary, do not use access tokens that need to be refreshed regularly. For example, every two hours is too frequent.
 
@@ -315,7 +315,7 @@ Ensure that all OFDS data can be accessed via the API.
 ##### Response format
 
 * Put the network package or GeoJSON feature collection at the top-level of the JSON data. For example, do not embed it under a results array.
-* Use a JSON library instead of implementing JSON serialization yourself. This also guarantees that the encoding is UTF-8.
+* Use a JSON library instead of implementing JSON serialisation yourself. This also guarantees that the encoding is UTF-8.
 * Remove NULL characters (\u0000) from the JSON response. These characters cannot be imported by users into some SQL databases.
 * If results cannot be returned, use an appropriate HTTP error code (400-599); do not return a JSON object with an error message and a 200 HTTP status code. That said, if a search request returns no results, it is appropriate to use a 200 HTTP status code, with an empty result set.
 
@@ -329,7 +329,7 @@ To publish OFDS data, you need to specify coordinates in the `urn:ogc:def:crs:OG
 
 If your data pipeline includes a Geographic Information System such as ArcGIS or QGIS, these tools can transform coordinates from one CRS to another. If you are writing your own software, or if you prefer to use the command line, several libraries and tools are available, for example:
 
-* [PROJ](https://proj.org/) and its associated Python interface ([PYPROJ](https://pyproj4.github.io/pyproj/stable/)) and Javascript implementation ([PROJ4JS](http://proj4js.org/) are generic coordinate transformation tools that transform geospatial coordinates from one coordinate reference system (CRS) to another. They include command-line applications and an application programming interface.
+* [PROJ](https://proj.org/) and its associated Python interface ([PYPROJ](https://pyproj4.github.io/pyproj/stable/)) and JavaScript implementation ([PROJ4JS](http://proj4js.org/) are generic coordinate transformation tools that transform geospatial coordinates from one coordinate reference system (CRS) to another. They include command-line applications and an application programming interface.
 * [GDAL](https://gdal.org/) is a translator library for raster and vector geospatial data formats. It also comes with a variety of useful command line utilities for data translation and processing.
 * [Apache SIS](https://sis.apache.org/) is a free software, Java language library for developing geospatial applications. SIS provides data structures for geographic features and associated metadata along with methods to manipulate those data structures.
 
@@ -351,7 +351,7 @@ If you are writing your own software or if you prefer to use the command line, s
 * Python - [uuid.py](https://docs.python.org/3/library/uuid.html)
 * Java - [java.util.UUID](https://docs.oracle.com/javase/7/docs/api/java/util/UUID.html)
 * C# - [System.Guid](https://docs.microsoft.com/en-us/dotnet/api/system.guid)
-* Javascript - [Crypto.randomUUID](https://www.moreonfew.com/how-to-generate-uuid-in-javascript/)
+* JavaScript - [Crypto.randomUUID](https://www.moreonfew.com/how-to-generate-uuid-in-javascript/)
 * R - [uuid](https://cran.r-project.org/web/packages/uuid/index.html)
 
 If you prefer to use a graphical user interface, several web-based tools are available, for example [Online UUID Generator](https://www.uuidgenerator.net/).

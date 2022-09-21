@@ -65,15 +65,15 @@ Link,directed,Directed,"Whether this link is directed. If `True`, then `.start` 
 Phase,id,Identifier,An identifier for this phase. The identifier must be unique within the scope of the `phases` array.,string,1..1,,,,,
 Phase,name,Name,A name for this phase.,string,0..1,,,,,
 Phase,description,Description,A description for this phase.,string,0..1,,,,,
-Phase,funders,Funders,"Information about the organizations that provide financing for the development or operation of this phase, also known as investors or financers.
+Phase,funders,Funders,"Information about the organisations that provide financing for the development or operation of this phase, also known as investors or financers.
 ",array,0..n,,,,,
 Organisation,id,Local identifier,A local identifier for this organisation. The identifier must be unique within the scope of the `organisations` array.,string,1..1,,,,,
-Organisation,name,Name,A name for this organization.,string,0..1,,,,,
-Organisation,identifier,Organisation identifier,An identifier for this organization.,unknown,0..1,,,,,
-Organisation,country,Country,"The country in which this organization is legally registered, from the closed country codelist.",string,0..1,Enum: ,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country,,,country.csv
+Organisation,name,Name,A name for this organisation.,string,0..1,,,,,
+Organisation,identifier,Organisation identifier,An identifier for this organisation.,unknown,0..1,,,,,
+Organisation,country,Country,"The country in which this organisations is legally registered, from the closed country codelist.",string,0..1,Enum: ,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country,,,country.csv
 Organisation,roles,Roles,"This organisation's roles in this network, from the open organisationRole codelist.",array,0..n,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationRole,,,organisationRole.csv
 Organisation,roleDetails,Role details,Further details about this organisation's roles in the network,string,0..1,,,,,
-Organisation,website,Website,The URL of the website for this organization.,string,0..1,iri,,,,
+Organisation,website,Website,The URL of the website for this organisation.,string,0..1,iri,,,,
 Organisation,logo,Logo,The URL of the logo for this organisation.,string,0..1,iri,,,,
 Contract,id,Identifier,An identifier for this contract. The identifier must be unique within the scope of the `contracts` array.,string,1..1,,,,,
 Contract,title,Contract title,A title for this contract.,string,0..1,,,,,
