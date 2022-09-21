@@ -1,5 +1,11 @@
 # How to publish OFDS data
 
+```{admonition} Alpha consultation
+Welcome to the alpha release of the Open Fibre Data Standard.
+
+We want to hear your feedback on the standard and its documentation. To find out how you can provide feedback, read the [alpha release announcement](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/115).
+```
+
 This page provides an [overview](#overview) of the process for publishing Open Fibre Data Standard (OFDS) data and [how-to guides](#how-to-guides) for specific topics.
 
 ## Overview

@@ -1,5 +1,11 @@
 # How to use OFDS data
 
+```{admonition} Alpha consultation
+Welcome to the alpha release of the Open Fibre Data Standard.
+
+We want to hear your feedback on the standard and its documentation. To find out how you can provide feedback, read the [alpha release announcement](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/115).
+```
+
 This page provides [examples](#examples) that demonstrate how to use OFDS data in common tools and [how-to guides](#how-to-guides) for specific topics.
 
 ## Examples
