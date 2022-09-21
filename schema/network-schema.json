@@ -1,5 +1,5 @@
 {
-  "id": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0.1.0-alpha/schema/network-schema.json",
+  "id": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__alpha/schema/network-schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Network",
   "description": "A telecommunication network. A network consists of a set of nodes interconnected by links.",
