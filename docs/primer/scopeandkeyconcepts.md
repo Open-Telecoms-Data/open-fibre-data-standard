@@ -1,5 +1,11 @@
 # Scope and key concepts
 
+```{admonition} Alpha consultation
+Welcome to the alpha release of the Open Fibre Data Standard.
+
+We want to hear your feedback on the standard and its documentation. To find out how you can provide feedback, read the [alpha release announcement](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/115).
+```
+
 This page explains the scope of the Open Fibre Data Standard (OFDS) in context of the three-layer [network value chain](#the-network-value-chain). It also introduces [key concepts](#key-concepts) that you need to understand in order to implement OFDS.
 
 ## The network value chain

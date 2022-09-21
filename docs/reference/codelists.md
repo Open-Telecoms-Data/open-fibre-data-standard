@@ -1,5 +1,11 @@
 # Codelists reference
 
+```{admonition} Alpha consultation
+Welcome to the alpha release of the Open Fibre Data Standard.
+
+We want to hear your feedback on the standard and its documentation. To find out how you can provide feedback, read the [alpha release announcement](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/115).
+```
+
 Some schema fields refer to codelists, to limit and standardise the possible values of the fields, in order to promote data interoperability.
 
 Codelists can either be open or closed. **Closed codelists** are intended to be comprehensive; for example, the currency codelist covers all currencies in the world. **Open codelists** are intended to be representative, but not comprehensive.
