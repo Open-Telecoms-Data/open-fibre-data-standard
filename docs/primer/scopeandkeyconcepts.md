@@ -20,7 +20,7 @@ Based on the layers in the network value chain, there are three main actors in a
 
 ![The actors in fibre optic networks](../../_assets/actors.svg)
 
-**Physical infrastructure providers**
+#### Physical infrastructure provider
 
 OFDS defines a physical infrastructure provider as:
 
@@ -28,7 +28,7 @@ OFDS defines a physical infrastructure provider as:
 :jsonpointer: /definitions/Link/properties/physicalInfrastructureProvider/description
 ```
 
-**Network provider**
+#### Network provider
 
 OFDS defines a network provider as:
 
@@ -36,7 +36,7 @@ OFDS defines a network provider as:
 :jsonpointer: /definitions/Link/properties/networkProvider/description
 ```
 
-**Service provider**
+#### Service provider
 
 Service providers are organisations that deliver digital services across a network. For example, internet, e-health, elderly care, TV, phone, video-conferencing, entertainment, teleworking, smart monitoring etc. Service providers are out of scope of OFDS.
 
