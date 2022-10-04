@@ -157,7 +157,7 @@ sphinxcontrib-htmlhelp==2.0.0
     # via sphinx
 sphinxcontrib-jsmath==1.0.1
     # via sphinx
-sphinxcontrib-opendataservices==0.4.0
+sphinxcontrib-opendataservices==0.5.0
     # via -r requirements.in
 sphinxcontrib-opendataservices-jsonschema==0.5.0
     # via
