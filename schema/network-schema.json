@@ -2045,7 +2045,7 @@
         },
         "rel": {
           "title": "Reference relation type",
-          "description": "The relationship with this related resource, from the open [referenceRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#referenceRelationType).",
+          "description": "The relationship with this related resource, from the open [referenceRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#referencerelationtype).",
           "type": "string",
           "$comment": "",
           "codelist": "referenceRelationType.csv",
