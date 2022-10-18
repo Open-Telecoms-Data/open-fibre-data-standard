@@ -2065,6 +2065,13 @@
       "$comment": "",
       "type": "object",
       "properties": {
+        "fibreSubtype": {
+          "title": "Fibre subtype",
+          "description": "The sub-category of the fibre type. For example, G.652.B.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
         "description": {
           "title": "Description",
           "description": "A description of this link's fibre type.",
