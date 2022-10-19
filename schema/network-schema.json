@@ -1245,7 +1245,10 @@
         "type",
         "coordinates"
       ],
-      "minProperties": 1
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "\b(?!properties|features\b).+"
+      }
     },
     "OrganisationReference": {
       "title": "Organisation reference",
