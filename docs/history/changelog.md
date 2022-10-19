@@ -5,5 +5,20 @@ Welcome to the alpha release of the Open Fibre Data Standard.
 
 We want to hear your feedback on the standard and its documentation. To find out how you can provide feedback, read the [alpha release announcement](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/115).
 ```
+This page lists the changes in each version of the Open Fibre Data Standard.
 
-All notable changes to this project will be documented here.
+## 0.1.0-beta - YYYY-MM-DD
+
+### Schema
+
+* [#144](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/144) - Clarify norms in the description of `links.start` and `links.end`
+
+### Codelists
+
+### Normative documentation
+
+### Non-normative documentation
+
+## 0.1.0-alpha - 2022-09-22
+
+`0.1.0-alpha` was the first version of the standard.
