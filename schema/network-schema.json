@@ -323,14 +323,14 @@
         },
         "start": {
           "title": "Start",
-          "description": "The identifier of one of two nodes that this link connects. If `directed == true` this, represents the starting point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",
+          "description": "The identifier of one of two nodes that this link connects. It must match the `.id` of a node in the `nodes` array. If `directed == true`, it represents the starting point of the link. Otherwise, the distinction between `start` and `end` is arbitrary.",
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25",
           "type": "string",
           "minLength": 1
         },
         "end": {
           "title": "End",
-          "description": "The identifier of one of two nodes that this link connects. If `directed == true` this, represents the end point of the link. Otherwise the distinction between `start` and `end` is arbitrary.",
+          "description": "The identifier of one of two nodes that this link connects. It must match the `.id` of a node in the `nodes` array. If `directed == true`, it represents the end point of the link. Otherwise, the distinction between `start` and `end` is arbitrary.",
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25",
           "type": "string",
           "minLength": 1
