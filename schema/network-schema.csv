@@ -110,8 +110,8 @@ Identifier,legalName,Legal name,The legally registered name of the organisation,
 Identifier,uri,URI,"A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.",string,0..1,iri,,,,
 CoordinateReferenceSystem,name,Name,The name of the coordinate reference system.,string,1..1,uri,,,,
 CoordinateReferenceSystem,uri,Uniform Resource Identifier,A URI for the coordinate reference system.,string,1..1,uri,,,,
-Link,href,Reference target,The URL of this related resource.,string,1..1,iri,,,,
-Link,rel,Reference relation type,"The relationship with this related resource, from the open linkRelationType codelist.",string,1..1,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype,,,linkRelationType.csv
+Link,href,Link target,The URL of this related resource.,string,1..1,iri,,,,
+Link,rel,Link relation type,"The relationship with this related resource, from the open linkRelationType codelist.",string,1..1,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype,,,linkRelationType.csv
 FibreTypeDetails,description,Description,A description of this span's fibre type.,string,0..1,,,,,
 DeploymentDetails,description,Description,A description of this span's deployment.,string,0..1,,,,,
 CapacityDetails,description,Description,A description of this span's capacity.,string,0..1,,,,,

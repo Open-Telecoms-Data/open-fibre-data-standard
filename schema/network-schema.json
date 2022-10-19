@@ -2037,14 +2037,14 @@
       "type": "object",
       "properties": {
         "href": {
-          "title": "Reference target",
+          "title": "Link target",
           "description": "The URL of this related resource.",
           "format": "iri",
           "type": "string",
           "$comment": ""
         },
         "rel": {
-          "title": "Reference relation type",
+          "title": "Link relation type",
           "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype).",
           "type": "string",
           "$comment": "",
