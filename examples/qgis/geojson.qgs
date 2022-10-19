@@ -27,7 +27,7 @@
         <Option/>
       </customproperties>
     </layer-tree-layer>
-    <layer-tree-layer id="links_31b1c3a6_3474_42fb_96b9_1c53cdd1956a" patch_size="-1,-1" providerKey="ogr" legend_split_behavior="0" legend_exp="" checked="Qt::Checked" source="../geojson/links.geojson|option:FLATTEN_NESTED_ATTRIBUTES=YES" expanded="1" name="links">
+    <layer-tree-layer id="spans_31b1c3a6_3474_42fb_96b9_1c53cdd1956a" patch_size="-1,-1" providerKey="ogr" legend_split_behavior="0" legend_exp="" checked="Qt::Checked" source="../geojson/spans.geojson|option:FLATTEN_NESTED_ATTRIBUTES=YES" expanded="1" name="spans">
       <customproperties>
         <Option/>
       </customproperties>
@@ -42,12 +42,12 @@
     <custom-order enabled="0">
       <item>OpenStreetMap_38409d0e_6312_474b_a31d_14043d3659fc</item>
       <item>nodes_5a0123f7_497f_43fd_bc75_e615ee5337fa</item>
-      <item>links_31b1c3a6_3474_42fb_96b9_1c53cdd1956a</item>
+      <item>spans_31b1c3a6_3474_42fb_96b9_1c53cdd1956a</item>
     </custom-order>
   </layer-tree-group>
   <snapping-settings enabled="0" intersection-snapping="0" maxScale="0" tolerance="12" unit="1" self-snapping="0" mode="2" type="1" scaleDependencyMode="0" minScale="0">
     <individual-layer-settings>
-      <layer-setting enabled="0" id="links_31b1c3a6_3474_42fb_96b9_1c53cdd1956a" maxScale="0" tolerance="12" type="1" units="1" minScale="0"/>
+      <layer-setting enabled="0" id="spans_31b1c3a6_3474_42fb_96b9_1c53cdd1956a" maxScale="0" tolerance="12" type="1" units="1" minScale="0"/>
       <layer-setting enabled="0" id="nodes_5a0123f7_497f_43fd_bc75_e615ee5337fa" maxScale="0" tolerance="12" type="1" units="1" minScale="0"/>
     </individual-layer-settings>
   </snapping-settings>
@@ -85,9 +85,9 @@
         <legendlayerfile isInOverview="0" layerid="nodes_5a0123f7_497f_43fd_bc75_e615ee5337fa" visible="1"/>
       </filegroup>
     </legendlayer>
-    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" showFeatureCount="0" name="links">
+    <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" showFeatureCount="0" name="spans">
       <filegroup open="true" hidden="false">
-        <legendlayerfile isInOverview="0" layerid="links_31b1c3a6_3474_42fb_96b9_1c53cdd1956a" visible="1"/>
+        <legendlayerfile isInOverview="0" layerid="spans_31b1c3a6_3474_42fb_96b9_1c53cdd1956a" visible="1"/>
       </filegroup>
     </legendlayer>
     <legendlayer drawingOrder="-1" open="true" checked="Qt::Checked" showFeatureCount="0" name="OpenStreetMap">
@@ -280,12 +280,12 @@
         <xmax>-0.112</xmax>
         <ymax>6.72700000000000031</ymax>
       </wgs84extent>
-      <id>links_31b1c3a6_3474_42fb_96b9_1c53cdd1956a</id>
-      <datasource>../geojson/links.geojson|option:FLATTEN_NESTED_ATTRIBUTES=YES</datasource>
+      <id>spans_31b1c3a6_3474_42fb_96b9_1c53cdd1956a</id>
+      <datasource>../geojson/spans.geojson|option:FLATTEN_NESTED_ATTRIBUTES=YES</datasource>
       <keywordList>
         <value></value>
       </keywordList>
-      <layername>links</layername>
+      <layername>spans</layername>
       <srs>
         <spatialrefsys>
           <wkt>GEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],CS[ellipsoidal,2],AXIS["geodetic latitude (Lat)",north,ORDER[1],ANGLEUNIT["degree",0.0174532925199433]],AXIS["geodetic longitude (Lon)",east,ORDER[2],ANGLEUNIT["degree",0.0174532925199433]],USAGE[SCOPE["Horizontal component of 3D system."],AREA["World."],BBOX[-90,-180,90,180]],ID["EPSG",4326]]</wkt>
@@ -2909,7 +2909,7 @@
   <layerorder>
     <layer id="OpenStreetMap_38409d0e_6312_474b_a31d_14043d3659fc"/>
     <layer id="nodes_5a0123f7_497f_43fd_bc75_e615ee5337fa"/>
-    <layer id="links_31b1c3a6_3474_42fb_96b9_1c53cdd1956a"/>
+    <layer id="spans_31b1c3a6_3474_42fb_96b9_1c53cdd1956a"/>
   </layerorder>
   <properties>
     <Digitizing>

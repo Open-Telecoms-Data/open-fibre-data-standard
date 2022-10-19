@@ -170,26 +170,26 @@ This guidance is applicable to the [JSON publication format](../reference/public
 
 ##### Pagination
 
-The preferred approach is to publish embedded nodes and links in `.nodes` and `.links`, respectively. If your network is too large to return in a single API response, you ought to use `.relatedResources` to reference separate endpoints for nodes and links. Each endpoint ought to return a top-level JSON object with a `nodes` or a `links` array, respectively, and a `pages` object with URLs for the next and previous pages of results:
+The preferred approach is to publish embedded nodes and spans in `.nodes` and `.spans`, respectively. If your network is too large to return in a single API response, you ought to use `.links` to reference separate endpoints for nodes and spans. Each endpoint ought to return a top-level JSON object with a `nodes` or a `spans` array, respectively, and a `links` object with URLs for the next and previous pages of results:
 
 ::::{tab-set}
 
 :::{tab-item} Embedded data
-The following example shows a network with embedded nodes and links:
+The following example shows a network with embedded nodes and spans:
 
 ```{jsoninclude} ../../examples/json/network-package.json
 :jsonpointer: /networks/0
-:expand: nodes,links
+:expand: nodes,spans
 ```
 
 :::
 
 :::{tab-item} References to endpoints
-The following example shows a network with references to separate endpoints for nodes and links:
+The following example shows a network with references to separate endpoints for nodes and spans:
 
 ```{jsoninclude} ../../examples/json/network-separate-endpoints.json
 :jsonpointer: /networks/0
-:expand: relatedResources
+:expand: links
 ```
 
 :::
@@ -203,10 +203,10 @@ The following example shows the response returned by the nodes endpoint with URL
 
 :::
 
-:::{tab-item} Links endpoint
-The following example shows the response returned by the links endpoint with URLs for the next and previous pages of results.
+:::{tab-item} Spans endpoint
+The following example shows the response returned by the spans endpoint with URLs for the next and previous pages of results.
 
-```{jsoninclude} ../../examples/json/links-endpoint.json
+```{jsoninclude} ../../examples/json/spans-endpoint.json
 :jsonpointer:
 ```
 
@@ -216,12 +216,12 @@ The following example shows the response returned by the links endpoint with URL
 
 ##### Streaming
 
-The preferred approach is to publish embedded nodes and links. If your network is too large to load into memory, you ought to use `.relatedResources` to reference separate files for nodes and links. Each file ought to be formatted as a [JSON Lines](https://jsonlines.org/) file in which each line is a valid [`Node`](../reference/schema.md#node) or [`Link`](../reference/schema.md#link), respectively.
+The preferred approach is to publish embedded nodes and spans. If your network is too large to load into memory, you ought to use `.links` to reference separate files for nodes and spans. Each file ought to be formatted as a [JSON Lines](https://jsonlines.org/) file in which each line is a valid [`Node`](../reference/schema.md#node) or [`Span`](../reference/schema.md#span), respectively.
 
 ::::{tab-set}
 
 :::{tab-item} Embedded data
-The following example shows a network with embedded nodes and links:
+The following example shows a network with embedded nodes and spans:
 
 ```{jsoninclude} ../../examples/json/network-package.json
 :jsonpointer: /networks/0
@@ -230,11 +230,11 @@ The following example shows a network with embedded nodes and links:
 :::
 
 :::{tab-item} References to files
-The following example shows a network with references to separate files for nodes and links:
+The following example shows a network with references to separate files for nodes and spans:
 
 ```{jsoninclude} ../../examples/json/network-separate-files.json
 :jsonpointer: /networks/0
-:expand: relatedResources
+:expand: links
 ```
 
 :::
@@ -249,8 +249,8 @@ The following example shows a nodes file in JSON Lines format.
 
 :::
 
-:::{tab-item} Links file
-The following example shows a links file in JSON Lines format.
+:::{tab-item} Spans file
+The following example shows a spans file in JSON Lines format.
 
 ```
 {}
@@ -273,7 +273,7 @@ If you are publishing only one network, or a small number of networks, you ought
 
 If you are publishing a large number of networks, you ought to use the approach to streaming multiple networks described in the streaming option for each [publication format](../reference/publication_formats.md).
 
-If you are publishing a network that is very large, you ought to use the approach to streaming nodes and links described in [how to publish large networks](#how-to-publish-large-networks).
+If you are publishing a network that is very large, you ought to use the approach to streaming nodes and spans described in [how to publish large networks](#how-to-publish-large-networks).
 
 ##### Compression
 
@@ -291,7 +291,7 @@ Also, publishers ought to ensure that the data export is completed successfully,
 
 If you are publishing data via an API, you need to consider pagination. If you are publishing multiple networks, you ought to use the pagination method described in the API response option for each [publication format](../reference/publication_formats.md).
 
-If you are publishing a network that is very large, you ought to use the approach to paginating nodes and links described in [how to publish large networks](#how-to-publish-large-networks).
+If you are publishing a network that is very large, you ought to use the approach to paginating nodes and spans described in [how to publish large networks](#how-to-publish-large-networks).
 
 API design is a deep topic. As such, the following guidance is not intended to be comprehensive or prescriptive. Wherever possible, you ought to carry out your own user research.
 

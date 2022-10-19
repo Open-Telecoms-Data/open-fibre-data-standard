@@ -2,4 +2,4 @@ code,title,description
 physicalInfrastructureProvider,Physical infrastructure provider,"An organisation that owns and maintains passive network infrastructure, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites."
 networkProvider,Network provider,"An organisation that operates the active network infrastructure, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure."
 funder,Funder,An organisation that provides financing for the development or operation of a phase or network.
-supplier,Supplier,The organisation responsible for installing the cable for a link.
+supplier,Supplier,The organisation responsible for installing the cable for a span.

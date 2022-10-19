@@ -42,7 +42,7 @@
       }
     }
   ],
-  "links": [
+  "spans": [
     {
       "id": "",
       "name": "",
@@ -183,7 +183,7 @@
   "accuracyDetails": "",
   "accuracy": 0,
   "language": "",
-  "relatedResources": [
+  "links": [
     {
       "href": "",
       "rel": ""

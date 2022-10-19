@@ -1,0 +1,10 @@
+{
+  "spans": [
+    {},
+    {}
+  ],
+  "links": {
+    "next": "http://example.com/network/1/spans?cursor=100",
+    "prev": "http://example.com/network/1/spans?cursor=96"
+  }
+}

@@ -74,14 +74,14 @@ The contract type codelist is used to categorise contracts based on the World Ba
 :file: ../../codelists/open/contractType.csv
 ```
 
-### linkTechnologies
+### spanTechnologies
 
-The link technologies codelist is used to indicate the technologies used on a link.
+The span technologies codelist is used to indicate the technologies used on a span.
 
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/linkTechnologies.csv
+:file: ../../codelists/open/spanTechnologies.csv
 ```
 
 ### organisationRole
@@ -112,7 +112,7 @@ The organisation identifier scheme codelist uses the codes from [org-id.guide](h
 
 ### transmissionMedium
 
-The transmission medium codelist is used to categorise the physical media of a link.
+The transmission medium codelist is used to categorise the physical media of a span.
 
 ```{csv-table-no-translate}
 :header-rows: 1
@@ -142,7 +142,7 @@ The currency codelist uses uppercase 3-letter codes from [ISO4217](https://www.i
 
 ### deployment
 
-The deployment codelist is used to categorise the deployment of links.
+The deployment codelist is used to categorise the deployment of spans.
 
 ```{csv-table-no-translate}
 :header-rows: 1
@@ -152,7 +152,7 @@ The deployment codelist is used to categorise the deployment of links.
 
 ### fibreType
 
-The fibre type codelist is a subset of [ITU-T recommendations](https://www.itu.int/rec/T-REC-G/en) that describe characteristics of optical fibre and cables. It is used to categorise the type of fibre used in a link.
+The fibre type codelist is a subset of [ITU-T recommendations](https://www.itu.int/rec/T-REC-G/en) that describe characteristics of optical fibre and cables. It is used to categorise the type of fibre used in a span.
 
 ```{csv-table-no-translate}
 :header-rows: 1
@@ -170,14 +170,14 @@ The node status codelist is used to identify the operational status of a node.
 :file: ../../codelists/closed/nodeStatus.csv
 ```
 
-### linkStatus
+### spanStatus
 
-The link status codelist is used to indicate the operational status of a link.
+The span status codelist is used to indicate the operational status of a span.
 
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/linkStatus.csv
+:file: ../../codelists/closed/spanStatus.csv
 ```
 
 ### geometryType

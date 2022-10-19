@@ -37,7 +37,7 @@ For this version of OFDS, the canonical URL of the schema is [https://raw.github
 
 This page presents the schema in an interactive browser. You can also download the canonical version of the schema as [JSON Schema](../../schema/network-package-schema.json).
 
-A network package is a JSON object that must include `.networks`: an array of `Network` objects as described by the [network schema](schema.md). For data published via a paginated API, the optional `.pages` object should be used to provide URLs for the next and previous pages of results.
+A network package is a JSON object that must include `.networks`: an array of `Network` objects as described by the [network schema](schema.md). For data published via a paginated API, the optional `.links` object should be used to provide URLs for the next and previous pages of results.
 
 ::::{tab-set}
 
@@ -62,7 +62,7 @@ The following example shows a network package containing two networks with URLs 
 
 ```{jsoninclude} ../../examples/json/api-response.json
 :jsonpointer:
-:expand: networks,pages
+:expand: networks,links
 ```
 
 :::
@@ -94,7 +94,7 @@ If your data is small enough to fit into memory or if you are publishing data vi
 
 ### Small files and API responses option
 
-Publish separate GeoJSON [feature collections](https://datatracker.ietf.org/doc/html/rfc7946#section-3.3) for nodes and links, according to the [GeoJSON transformation specification](#geojson-transformation-specification).
+Publish separate GeoJSON [feature collections](https://datatracker.ietf.org/doc/html/rfc7946#section-3.3) for nodes and spans, according to the [GeoJSON transformation specification](#geojson-transformation-specification).
 
 ::::{tab-set}
 
@@ -108,10 +108,10 @@ The following example shows a GeoJSON feature collection containing nodes:
 
 :::
 
-:::{tab-item} Links feature collection
-The following example shows a GeoJSON feature collection containing links:
+:::{tab-item} Spans feature collection
+The following example shows a GeoJSON feature collection containing spans:
 
-```{jsoninclude} ../../examples/geojson/links.geojson
+```{jsoninclude} ../../examples/geojson/spans.geojson
 :jsonpointer:
 :expand: features
 ```
@@ -129,14 +129,14 @@ The following example shows a GeoJSON feature collection containing features fro
 :expand: features
 ```
 
-For data published via a paginated API, you should add a top-level `pages` object to the feature collection to provide URLs for the next and previous pages of results:
+For data published via a paginated API, you should add a top-level `links` object to the feature collection to provide URLs for the next and previous pages of results:
 
 ::::{tab-set}
 
-:::{tab-item} Pages object schema
+:::{tab-item} Links object schema
 
 ```{jsonschema} ../../schema/network-package-schema.json
-:pointer: /properties/pages
+:pointer: /properties/links
 ```
 
 :::
@@ -156,7 +156,7 @@ The following example shows a GeoJSON feature collection containing two features
 
 The streaming option describes how to publish multiple networks in GeoJSON format with support for streaming. You should only use this option if your data is too large to load into memory.
 
-The streaming option for GeoJSON is separate [Newline-delimited GeoJSON](https://stevage.github.io/ndgeojson/) files for nodes and links, in which each line is a GeoJSON feature structured according to the [GeoJSON transformation specification](#geojson-transformation-specification).
+The streaming option for GeoJSON is separate [Newline-delimited GeoJSON](https://stevage.github.io/ndgeojson/) files for nodes and spans, in which each line is a GeoJSON feature structured according to the [GeoJSON transformation specification](#geojson-transformation-specification).
 
 The following example shows a newline-delimited GeoJSON file containing two features:
 
@@ -172,7 +172,7 @@ This section describes the rules for transforming an OFDS network from JSON form
 To transform an OFDS network from JSON format to GeoJSON format, you must:
 
 * Create an empty JSON object for the nodes feature collection and set its `.type` to 'FeatureCollection'.
-* Create an empty JSON object for the links feature collection and set its `.type` to 'FeatureCollection'.
+* Create an empty JSON object for the spans feature collection and set its `.type` to 'FeatureCollection'.
 * For each contract in `contracts`, [dereference the phase references](#dereference-a-phase-reference) in `.relatedPhases`.
 * For each node in `nodes`:
   * Convert the node to a GeoJSON feature:
@@ -183,20 +183,20 @@ To transform an OFDS network from JSON format to GeoJSON format, you must:
     * `.properties` to the properties of the node, excluding `.location`.
     * [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProvider`.
     * [Dereference the phase reference](#dereference-a-phase-reference) in the feature's `.phase` property.
-    * Set `.properties.network` to the properties of the network, excluding `.nodes`, `.links`, `.phases` and `.organisations`.
+    * Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
   * Add the feature to the nodes feature collection.
-* For each link in `links`:
-  * Convert the link to a GeoJSON Feature:
+* For each span in `spans`:
+  * Convert the span to a GeoJSON Feature:
     * Create an empty JSON object for the feature.
     * Set the feature's:
     * `.type` to 'Feature'.
-    * `.geometry` to the link's `.route`, if it exists. Otherwise, set `.geometry` to `Null`.
-    * `.properties` to the properties of the link, excluding `.route`.
+    * `.geometry` to the span's `.route`, if it exists. Otherwise, set `.geometry` to `Null`.
+    * `.properties` to the properties of the span, excluding `.route`.
     * [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProvider`.
     * [Dereference the phase reference](#dereference-a-phase-reference) in `.properties.phase`.
     * [Dereference the node ids](#dereference-a-node-id) in `properties.start` and `properties.end`.
-    * Set `.properties.network` to the properties of the network, excluding `.nodes`, `.links`, `.phases` and `.organisations`.
-  * Add the feature to the links feature collection.
+    * Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
+  * Add the feature to the spans feature collection.
 
 #### Common operations
 
@@ -229,7 +229,7 @@ The CSV format has 10 tables, reflecting the structure of the [schema](schema.md
 * [Networks](#table-structure)
   * [Nodes](#nodes)
     * [International connections](#international-connections)
-  * [Links](#links)
+  * [Spans](#spans)
   * [Phases](#phases)
     * [Funders](#funders)
   * [Organisations](#organisations)
@@ -247,7 +247,7 @@ The following example shows a network with two nodes represented in JSON format 
 
 ```{jsoninclude} ../../examples/json/network-package.json
 :jsonpointer: /networks/0
-:exclude: links,phases,organisations,contracts
+:exclude: spans,phases,organisations,contracts
 ```
 
 :::
@@ -281,7 +281,7 @@ This section describes the structure of the tables in the CSV format and the rel
 The networks table is the main table. It is related to the following tables:
 
 * [Nodes](#nodes): one-to-many by `id`
-* [Links](#links): one-to-many by `id`
+* [Spans](#spans): one-to-many by `id`
 * [Phases](#phases): one-to-many by `id`
 * [Organisations](#organisations): one-to-many by `id`
 * [Contracts](#contracts): one-to-many by `id`
@@ -317,16 +317,16 @@ The fields in this table are listed below. You can also download an [example CSV
 :include: id,nodes/0/id,nodes/0/internationalConnections/0/streetAddress,nodes/0/internationalConnections/0/locality,nodes/0/internationalConnections/0/region,nodes/0/internationalConnections/0/postalCode,nodes/0/internationalConnections/0/country
 ```
 
-#### Links
+#### Spans
 
 This table is related to the following tables:
 
 * [Networks](#table-structure): many-to-one by `id`
 
-The fields in this table are listed below. You can also download an [example CSV file](../../examples/csv/links.csv) or a [blank template](../../examples/csv/template/links.csv).
+The fields in this table are listed below. You can also download an [example CSV file](../../examples/csv/spans.csv) or a [blank template](../../examples/csv/template/spans.csv).
 
 ```{jsonschema} ../../schema/network-schema.json
-:include: id,links/0/id,links/0/name,links/0/phase,links/0/status,links/0/readyForServiceDate,links/0/start,links/0/end,links/0/route,links/0/physicalInfrastructureProvider,links/0/networkProvider,links/0/supplier,links/0/transmissionMedium,links/0/deployment,links/0/deploymentDetails,links/0/darkFibre,links/0/fibreType,links/0/fibreTypeDetails,links/0/fibreCount,links/0/fibreLength,links/0/technologies,links/0/capacity,links/0/capacityDetails,links/0/countries,links/0/directed
+:include: id,spans/0/id,spans/0/name,spans/0/phase,spans/0/status,spans/0/readyForServiceDate,spans/0/start,spans/0/end,spans/0/route,spans/0/physicalInfrastructureProvider,spans/0/networkProvider,spans/0/supplier,spans/0/transmissionMedium,spans/0/deployment,spans/0/deploymentDetails,spans/0/darkFibre,spans/0/fibreType,spans/0/fibreTypeDetails,spans/0/fibreCount,spans/0/fibreLength,spans/0/technologies,spans/0/capacity,spans/0/capacityDetails,spans/0/countries,spans/0/directed
 ```
 
 #### Phases

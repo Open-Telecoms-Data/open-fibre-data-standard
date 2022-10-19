@@ -31,7 +31,7 @@ Based on the layers in the network value chain, there are three main actors in a
 OFDS defines a physical infrastructure provider as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Link/properties/physicalInfrastructureProvider/description
+:jsonpointer: /definitions/Span/properties/physicalInfrastructureProvider/description
 ```
 
 #### Network provider
@@ -39,7 +39,7 @@ OFDS defines a physical infrastructure provider as:
 OFDS defines a network provider as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Link/properties/networkProvider/description
+:jsonpointer: /definitions/Span/properties/networkProvider/description
 ```
 
 #### Service provider
@@ -78,29 +78,29 @@ Nodes can represent different elements in a fibre network and the type of each n
 
 For more information about nodes, see the [Node reference](../reference/schema.md#node).
 
-### Links
+### Spans
 
-OFDS defines a link as:
+OFDS defines a span as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Link/description
+:jsonpointer: /definitions/Span/description
 ```
 
-The nodes that a link connects are known as its endpoints. In addition to the endpoints, the physical route of the link can also be specified as a LineString. This allows for the detailed route of a link to be published even when granular data on node locations along the link is unavailable, for example in a dataset describing a national backbone network.
+The nodes that a span connects are known as its endpoints. In addition to the endpoints, the physical route of the span can also be specified as a LineString. This allows for the detailed route of a span to be published even when granular data on node locations along the span is unavailable, for example in a dataset describing a national backbone network.
 
-![An example link](../../_assets/linkExample.svg)
+![An example span](../../_assets/spanExample.svg)
 
-For more information about links, see the [Link reference](../reference/schema.md#link).
+For more information about spans, see the [Span reference](../reference/schema.md#span).
 
 ### Geospatial data
 
 Geospatial data is information that describes objects or features with a location on or near the surface of the earth. Geospatial data typically combines location information (usually coordinates on the earth) and attribute information (the characteristics of the object concerned).
 
-OFDS data is usually geospatial data. It can contain both location information, such as the location of nodes and links, and attribute information, such as the capacity of a link.
+OFDS data is usually geospatial data. It can contain both location information, such as the location of nodes and spans, and attribute information, such as the capacity of a span.
 
-OFDS data uses [GeoJSON geometry objects](https://www.rfc-editor.org/rfc/rfc7946#section-3.1) to represent location information. Nodes occupy single locations in space, so OFDS data uses the GeoJSON ['Point' geometry type](https://www.rfc-editor.org/rfc/rfc7946#section-3.1.2) to represent them. Links are connected paths, so OFDS data uses the GeoJSON ['LineString' geometry type](https://www.rfc-editor.org/rfc/rfc7946#section-3.1.4) to represent them.
+OFDS data uses [GeoJSON geometry objects](https://www.rfc-editor.org/rfc/rfc7946#section-3.1) to represent location information. Nodes occupy single locations in space, so OFDS data uses the GeoJSON ['Point' geometry type](https://www.rfc-editor.org/rfc/rfc7946#section-3.1.2) to represent them. Spans are connected paths, so OFDS data uses the GeoJSON ['LineString' geometry type](https://www.rfc-editor.org/rfc/rfc7946#section-3.1.4) to represent them.
 
-Examples of OFDS node and link location data are given below.
+Examples of OFDS node and span location data are given below.
 
 ::::{tab-set}
 
@@ -120,7 +120,7 @@ Examples of OFDS node and link location data are given below.
 
 :::
 
-:::{tab-item} Link
+:::{tab-item} Span
 
 ```json
 {

@@ -1,7 +1,0 @@
-code,title,description
-operational,Operational,The active network infrastructure for the link is live and carrying traffic.
-underConstruction,Under construction,Construction of the passive physical infrastructure for the link is in progress.
-planned,Planned,Planning for the link is at an advanced stage and financing for its construction is finalised.
-decommissioned,Decommissioned,The link is no longer operational.
-proposed,Proposed,Planning for the link is at an early stage and financing for its construction is not yet finalised.
-inactive,Inactive,"Construction of the passive network infrastructure is complete, but the link is not yet operational."

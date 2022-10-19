@@ -59,12 +59,12 @@ def dereference_object(ref, list):
 
 def convert_to_feature(object, organisation_references, network, organisations, phases, nodes):
     """
-    Convert a node or link to a GeoJSON feature.
+    Convert a node or span to a GeoJSON feature.
     """
     feature = {"type": "Feature"}
 
     # Set `.geometry`
-    # TO-DO: Handle case when publishers add an additional `location` or `route` field to links and nodes, respectively.
+    # TO-DO: Handle case when publishers add an additional `location` or `route` field to spans and nodes, respectively.
     if "location" in object:
         feature["geometry"] = object.pop("location")
     elif "route" in object:
@@ -91,7 +91,7 @@ def convert_to_feature(object, organisation_references, network, organisations, 
                     properties[endpoint] = node
 
     # Embed network-level data
-    # TO-DO: Handle case when publishers add an additional `network` field to `Node` or `Link`.
+    # TO-DO: Handle case when publishers add an additional `network` field to `Node` or `Span`.
     feature["properties"]["network"] = network
 
     return feature
@@ -442,7 +442,7 @@ def pre_commit():
 @click.argument('filename', type=click.Path(exists=True))
 def convert_to_geojson(filename):
     """
-    Convert a network package to two GeoJSON files: nodes.geojson and links.geojson.
+    Convert a network package to two GeoJSON files: nodes.geojson and spans.geojson.
     """
 
     # Load data
@@ -450,11 +450,11 @@ def convert_to_geojson(filename):
         package = json.load(f)
 
     nodeFeatures = []
-    linkFeatures = []
+    spanFeatures = []
     
     for network in package["networks"]:
       nodes = network.pop("nodes", [])
-      links = network.pop("links", [])
+      spans = network.pop("spans", [])
       # TO-DO: Consider how to handle unreferenced phases and organisations. Currently, they are dropped from the geoJSON output
       phases = network.pop("phases", [])
       organisations = network.pop("organisations", [])
@@ -470,9 +470,9 @@ def convert_to_geojson(filename):
       for node in nodes:
           nodeFeatures.append(convert_to_feature(node, ['physicalInfrastructureProvider', 'networkProvider'], network, organisations, phases, nodes))
 
-      # Convert links to features
-      for link in links:
-          linkFeatures.append(convert_to_feature(link, ['physicalInfrastructureProvider', 'networkProvider'], network, organisations, phases, nodes))
+      # Convert spans to features
+      for span in spans:
+          spanFeatures.append(convert_to_feature(span, ['physicalInfrastructureProvider', 'networkProvider'], network, organisations, phases, nodes))
 
     with open('nodes.geojson', 'w') as f:
         featureCollection = {
@@ -481,10 +481,10 @@ def convert_to_geojson(filename):
         }
         json.dump(featureCollection, f, indent=2)
 
-    with open('links.geojson', 'w') as f:
+    with open('spans.geojson', 'w') as f:
         featureCollection = {
             "type": "FeatureCollection",
-            "features": linkFeatures
+            "features": spanFeatures
         }
         json.dump(featureCollection, f, indent=2)
 
