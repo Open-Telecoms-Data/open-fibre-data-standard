@@ -11,6 +11,8 @@ This page lists the changes in each version of the Open Fibre Data Standard.
 
 ### Schema
 
+* [#140](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/140) - Update actor definitions in the primer, and include translatable text in SVGs
+
 * [#144](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/144) - Clarify norms in the description of `links.start` and `links.end`
 
 ### Codelists

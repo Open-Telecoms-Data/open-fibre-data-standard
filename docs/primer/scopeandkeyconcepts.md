@@ -22,25 +22,23 @@ The primary focus of OFDS is to describe the passive network infrastructure. The
 
 ### Actors
 
-Based on the layers in the network value chain, there are three main actors in a fibre optic network:
+Based on the layers in the network value chain, there are three main groups of actors in a fibre optic network:
 
 ![The actors in fibre optic networks](../../_assets/actors.svg)
+
+Depending on the [business model](#network-business-models) used in a network, there can be one or more of each type of actor involved in a single network.
 
 #### Physical infrastructure provider
 
 OFDS defines a physical infrastructure provider as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Span/properties/physicalInfrastructureProvider/description
-```
+>An organisation that owns and maintains passive network infrastructure, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.
 
 #### Network provider
 
 OFDS defines a network provider as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Span/properties/networkProvider/description
-```
+>An organisation that operates the active network infrastructure, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.
 
 #### Service provider
 
