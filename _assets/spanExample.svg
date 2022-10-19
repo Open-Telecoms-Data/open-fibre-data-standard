@@ -259,7 +259,7 @@
          id="tspan294"
          x="290.29663"
          y="30.315786"
-         style="fill:#000000">Link with endpoints</tspan></text>
+         style="fill:#000000">Span with endpoints</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:17.3333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
@@ -270,7 +270,7 @@
          id="tspan294-1"
          x="368.08231"
          y="90.895668"
-         style="fill:#000000">Link with endpoints and route (polyline)</tspan></text>
+         style="fill:#000000">Span with endpoints and route (polyline)</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:17.3333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
@@ -281,6 +281,6 @@
          id="tspan294-5"
          x="325.82394"
          y="151.46709"
-         style="fill:#000000">Multiple links with endpoints</tspan></text>
+         style="fill:#000000">Multiple spans with endpoints</tspan></text>
   </g>
 </svg>
