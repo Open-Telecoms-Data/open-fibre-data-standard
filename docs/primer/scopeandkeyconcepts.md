@@ -26,6 +26,8 @@ Based on the layers in the network value chain, there are three main groups of a
 
 ![The actors in fibre optic networks](../../_assets/actors.svg)
 
+Depending on the [business model](#network-business-models) used in a network, there can be one or more of each type of actor involved in a single network.
+
 #### Physical infrastructure provider
 
 OFDS defines a physical infrastructure provider as:

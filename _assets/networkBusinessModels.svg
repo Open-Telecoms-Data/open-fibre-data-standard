@@ -1,22 +1,29 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
    version="1.1"
-   viewBox="0 0 844 359"
+   viewBox="0 0 1100 350"
    fill="none"
    stroke="none"
    stroke-linecap="square"
    stroke-miterlimit="10"
    id="svg109"
    sodipodi:docname="networkBusinessModels.svg"
-   width="844"
-   height="359"
+   width="1100"
+   height="350"
    inkscape:version="1.2 (dc2aeda, 2022-05-15)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <defs
-     id="defs113" />
+     id="defs113">
+    <rect
+       x="1034.4115"
+       y="314.18182"
+       width="368.38275"
+       height="124.01913"
+       id="rect1343" />
+  </defs>
   <sodipodi:namedview
      id="namedview111"
      pagecolor="#ffffff"
@@ -28,396 +35,420 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="1.0885417"
-     inkscape:cx="502.96649"
-     inkscape:cy="385.37798"
+     inkscape:cx="494.69855"
+     inkscape:cy="155.25358"
      inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="1"
-     inkscape:window-y="25"
+     inkscape:window-height="1056"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
      inkscape:window-maximized="0"
-     inkscape:current-layer="g107" />
-  <clipPath
-     id="p.0">
-    <path
-       d="M 0,0 H 1024 V 768 H 0 Z"
-       clip-rule="nonzero"
-       id="path2" />
-  </clipPath>
+     inkscape:current-layer="svg109" />
   <g
-     clip-path="url(#p.0)"
-     id="g107">
-    <path
-       fill="#000000"
-       fill-opacity="0"
-       d="M 0,0 H 1024 V 768 H 0 Z"
-       fill-rule="evenodd"
-       id="path5" />
-    <path
-       fill="#aab147"
-       d="M 0.05956019,194.86346 H 141.08962 V 303.38232 H 0.05956019 Z"
-       fill-rule="evenodd"
-       id="path7" />
-    <path
-       fill="#4571a7"
-       d="M 0.15799408,124.08923 H 141.18803 v 58.25314 H 0.15799408 Z"
-       fill-rule="evenodd"
-       id="path11" />
-    <path
-       fill="#8bd1f0"
-       d="M -2.2047245e-5,50.296562 H 141.03002 V 114.57552 H -2.2047245e-5 Z"
-       fill-rule="evenodd"
-       id="path15" />
-    <path
-       fill="#8bd1f0"
-       d="m 301.51968,50.29659 h 92.59961 v 64.27896 h -92.59961 z"
-       fill-rule="evenodd"
-       id="path23" />
-    <path
-       fill="#8bd1f0"
-       d="M 152.00002,50.29659 H 293.19687 V 303.39896 H 152.00002 Z"
-       fill-rule="evenodd"
-       id="path29" />
-    <path
-       fill="#4571a7"
-       d="m 301.73715,124.08923 h 92.92635 v 179.3071 h -92.92635 z"
-       fill-rule="evenodd"
-       id="path35"
-       style="stroke-width:0.690504" />
-    <path
-       fill="#4571a7"
-       d="m 403.68035,123.47563 h 92.92635 v 179.3071 h -92.92635 z"
-       fill-rule="evenodd"
-       id="path35-9"
-       style="stroke-width:0.690504" />
-    <path
-       fill="#8bd1f0"
-       d="m 404.03937,50.29659 h 92.59842 v 64.28346 h -92.59842 z"
-       fill-rule="evenodd"
-       id="path39" />
-    <path
-       fill="#4571a7"
-       d="m 678.45154,124.09712 h 164.5669 v 58.2677 h -164.5669 z"
-       fill-rule="evenodd"
-       id="path45" />
-    <path
-       fill="#8bd1f0"
-       d="m 678.45154,50.304462 h 77.76373 v 64.283458 h -77.76373 z"
-       fill-rule="evenodd"
-       id="path51" />
-    <path
-       fill="#aab147"
-       d="m 505.06824,194.87138 h 337.9522 v 108.51884 h -337.9522 z"
-       fill-rule="evenodd"
-       id="path57" />
-    <path
-       fill="#8bd1f0"
-       d="m 504.96844,50.304462 h 77.7489 V 182.36299 h -77.7489 z"
-       fill-rule="evenodd"
-       id="path63" />
-    <path
-       fill="#8bd1f0"
-       d="m 591.643,50.304462 h 77.76373 V 182.36745 H 591.643 Z"
-       fill-rule="evenodd"
-       id="path69" />
-    <path
-       fill="#8bd1f0"
-       d="m 765.2599,50.304462 h 77.76379 V 114.58792 H 765.2599 Z"
-       fill-rule="evenodd"
-       id="path75" />
-    <path
-       fill="#000000"
-       fill-opacity="0"
-       d="M 158.30708,324.83466 H 841.23622"
-       fill-rule="evenodd"
-       id="path81" />
+     id="g1631"
+     transform="translate(0.62029254,-12)">
     <path
        stroke="#b7b7b7"
-       stroke-width="4"
+       stroke-width="4.67379"
        stroke-linejoin="round"
        stroke-linecap="butt"
-       d="M 158.30708,324.83466 H 817.23622"
+       d="M 174.84296,324.83466 H 1074.4611"
        fill-rule="evenodd"
-       id="path83" />
+       id="path83"
+       style="stroke:#000000;stroke-opacity:1" />
     <path
        fill="#b7b7b7"
        stroke="#b7b7b7"
        stroke-width="4"
        stroke-linecap="butt"
-       d="m 817.2362,331.4416 18.15241,-6.60693 -18.15241,-6.60694 z"
+       d="m 1075.3797,331.4416 18.1524,-6.60693 -18.1524,-6.60694 z"
        fill-rule="evenodd"
-       id="path85" />
+       id="path85"
+       style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-opacity:1" />
+  </g>
+  <path
+     fill="#aab147"
+     d="M 0,182.86346 H 141.03006 V 291.38232 H 0 Z"
+     fill-rule="evenodd"
+     id="path7"
+     style="fill:#20344e;fill-opacity:1" />
+  <path
+     fill="#4571a7"
+     d="m 0,112.08923 h 141.03004 v 58.25314 H 0 Z"
+     fill-rule="evenodd"
+     id="path11" />
+  <path
+     fill="#8bd1f0"
+     d="M 0,38.296562 H 141.03004 V 102.57552 H 0 Z"
+     fill-rule="evenodd"
+     id="path15"
+     style="fill:#89a7ce;fill-opacity:1" />
+  <text
+     xml:space="preserve"
+     style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="69.968124"
+     y="75.266777"
+     id="text271-9-0"><tspan
+       sodipodi:role="line"
+       x="69.968124"
+       y="75.266777"
+       id="tspan273-6-9">Service layer</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="70.559082"
+     y="145.9326"
+     id="text271-9-0-3"><tspan
+       sodipodi:role="line"
+       x="70.559082"
+       y="145.9326"
+       id="tspan273-6-9-8">Active layer</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="69.726936"
+     y="241.83969"
+     id="text271-9-0-4"><tspan
+       sodipodi:role="line"
+       x="69.726936"
+       y="241.83969"
+       id="tspan273-6-9-80">Passive layer</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="637.87744"
+     y="338.62109"
+     id="text271-9-0-4-4"><tspan
+       sodipodi:role="line"
+       x="637.87744"
+       y="338.62109"
+       id="tspan273-6-9-80-3"
+       style="fill:#000000">Greater openness and competition</tspan></text>
+  <path
+     fill="#8bd1f0"
+     d="M 175.12163,38.29659 H 316.31848 V 291.39896 H 175.12163 Z"
+     fill-rule="evenodd"
+     id="path29"
+     style="fill:#89a7ce;fill-opacity:1" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="244.76498"
+     y="156.19934"
+     id="text271"><tspan
+       sodipodi:role="line"
+       id="tspan269"
+       x="244.76498"
+       y="156.19934">Service</tspan><tspan
+       sodipodi:role="line"
+       x="244.76498"
+       y="186.19934"
+       id="tspan273">provider</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="245.62891"
+     y="23.255905"
+     id="text271-9-0-4-4-8"><tspan
+       sodipodi:role="line"
+       x="245.62891"
+       y="23.255905"
+       id="tspan273-6-9-80-3-2"
+       style="fill:#000000">Fully integrated</tspan></text>
+  <path
+     fill="#4571a7"
+     d="m 350.52777,112.08923 h 193.97898 v 179.3071 H 350.52777 Z"
+     fill-rule="evenodd"
+     id="path35"
+     style="stroke-width:0.997641" />
+  <path
+     fill="#8bd1f0"
+     d="m 350.3103,38.29659 h 92.59961 v 64.27896 H 350.3103 Z"
+     fill-rule="evenodd"
+     id="path23"
+     style="fill:#89a7ce;fill-opacity:1" />
+  <path
+     fill="#8bd1f0"
+     d="m 452.82999,38.29659 h 92.59842 v 64.28346 h -92.59842 z"
+     fill-rule="evenodd"
+     id="path39"
+     style="fill:#89a7ce;fill-opacity:1" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="446.84277"
+     y="194.90227"
+     id="text271-1"><tspan
+       sodipodi:role="line"
+       id="tspan269-3"
+       x="446.84277"
+       y="194.90227">Network</tspan><tspan
+       sodipodi:role="line"
+       x="446.84277"
+       y="224.90227"
+       id="tspan273-8">provider</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="395.86728"
+     y="63.709496"
+     id="text271-9"><tspan
+       sodipodi:role="line"
+       id="tspan269-8"
+       x="395.86728"
+       y="63.709496">Service</tspan><tspan
+       sodipodi:role="line"
+       x="395.86728"
+       y="87.04287"
+       id="tspan273-6">provider</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="498.38635"
+     y="63.711746"
+     id="text271-9-7"><tspan
+       sodipodi:role="line"
+       id="tspan269-8-0"
+       x="498.38635"
+       y="63.711746">Service</tspan><tspan
+       sodipodi:role="line"
+       x="498.38635"
+       y="87.04512"
+       id="tspan273-6-3">provider</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="448.5256"
+     y="23.032597"
+     id="text271-9-0-4-4-8-1"><tspan
+       sodipodi:role="line"
+       x="448.5256"
+       y="23.032597"
+       id="tspan273-6-9-80-3-2-8"
+       style="fill:#000000">Active-layer open</tspan></text>
+  <path
+     fill="#aab147"
+     d="M 579.52004,182.87138 H 744.76411 V 291.39022 H 579.52004 Z"
+     fill-rule="evenodd"
+     id="path57"
+     style="fill:#20344e;fill-opacity:1;stroke-width:0.699255" />
+  <path
+     fill="#8bd1f0"
+     d="m 579.42024,39.223122 h 77.7489 V 171.28165 h -77.7489 z"
+     fill-rule="evenodd"
+     id="path63"
+     style="fill:#89a7ce;fill-opacity:1" />
+  <path
+     fill="#8bd1f0"
+     d="m 666.0948,39.223122 h 77.76373 V 171.28611 H 666.0948 Z"
+     fill-rule="evenodd"
+     id="path69"
+     style="fill:#89a7ce;fill-opacity:1" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="661.90961"
+     y="218.62361"
+     id="text271-1-8"><tspan
+       sodipodi:role="line"
+       id="tspan269-3-78"
+       x="661.90961"
+       y="218.62361">Physical</tspan><tspan
+       sodipodi:role="line"
+       x="661.90961"
+       y="241.95699"
+       id="tspan9555">infrastructure</tspan><tspan
+       sodipodi:role="line"
+       x="661.90961"
+       y="265.29037"
+       id="tspan273-8-7">provider</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="617.55182"
+     y="97.607147"
+     id="text271-9-7-1"><tspan
+       sodipodi:role="line"
+       id="tspan269-8-0-3"
+       x="617.55182"
+       y="97.607147">Service</tspan><tspan
+       sodipodi:role="line"
+       x="617.55182"
+       y="120.94052"
+       id="tspan273-6-3-7">provider</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="704.23383"
+     y="97.609383"
+     id="text271-9-7-1-4"><tspan
+       sodipodi:role="line"
+       id="tspan269-8-0-3-3"
+       x="704.23383"
+       y="97.609383">Service</tspan><tspan
+       sodipodi:role="line"
+       x="704.23383"
+       y="120.94276"
+       id="tspan273-6-3-7-6">provider</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="661.56189"
+     y="22.113934"
+     id="text271-9-0-4-4-8-1-6"><tspan
+       sodipodi:role="line"
+       x="661.56189"
+       y="22.113934"
+       id="tspan273-6-9-80-3-2-8-4"
+       style="fill:#000000">Passive-layer open</tspan></text>
+  <g
+     id="g1352"
+     transform="translate(100,-12)">
     <path
-       fill="#000000"
-       fill-opacity="0"
-       d="M 271.063,323.92126 H 728.4803 V 362.6929 H 271.063 Z"
+       fill="#aab147"
+       d="M 678.75593,195.61617 H 999.25358 V 302.29769 H 678.75593 Z"
        fill-rule="evenodd"
-       id="path87" />
-    <path
-       fill="#000000"
-       fill-opacity="0"
-       d="M 151.90027,1.6220472 H 292.15222 V 40.393699 H 151.90027 Z"
-       fill-rule="evenodd"
-       id="path91" />
-    <path
-       fill="#000000"
-       fill-opacity="0"
-       d="m 303.90027,0 h 190.4567 v 38.771652 h -190.4567 z"
-       fill-rule="evenodd"
-       id="path95" />
-    <path
-       fill="#000000"
-       fill-opacity="0"
-       d="M 506.10498,0 H 667.36481 V 38.771652 H 506.10498 Z"
-       fill-rule="evenodd"
-       id="path99" />
-    <path
-       fill="#000000"
-       fill-opacity="0"
-       d="M 679.11285,0 H 840.37268 V 38.771652 H 679.11285 Z"
-       fill-rule="evenodd"
-       id="path103" />
+       id="path57-4"
+       style="fill:#20344e;fill-opacity:1;stroke-width:0.965555" />
     <text
        xml:space="preserve"
-       style="font-size:24px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="225.14575"
-       y="165.35886"
-       id="text271"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff"
+       x="838.77234"
+       y="230.44974"
+       id="text271-1-8-9"><tspan
          sodipodi:role="line"
-         id="tspan269"
-         x="225.14575"
-         y="165.35886">Service</tspan><tspan
+         id="tspan269-3-78-1"
+         x="838.77234"
+         y="230.44974">Physical</tspan><tspan
          sodipodi:role="line"
-         x="225.14575"
-         y="195.35886"
-         id="tspan273">provider</tspan></text>
+         x="838.77234"
+         y="253.78311"
+         id="tspan9555-7">infrastructure</tspan><tspan
+         sodipodi:role="line"
+         x="838.77234"
+         y="277.11649"
+         id="tspan273-8-7-5">provider</tspan></text>
+  </g>
+  <g
+     id="g1362"
+     transform="translate(100,-9.645625)">
+    <path
+       fill="#4571a7"
+       d="m 680,124.09712 h 155 v 58.2677 H 680 Z"
+       fill-rule="evenodd"
+       id="path45"
+       style="stroke-width:0.970498" />
     <text
        xml:space="preserve"
-       style="font-size:21.33333333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="347.84412"
-       y="205.3994"
-       id="text271-1"><tspan
-         sodipodi:role="line"
-         id="tspan269-3"
-         x="347.84412"
-         y="205.3994">Network</tspan><tspan
-         sodipodi:role="line"
-         x="347.84412"
-         y="235.3994"
-         id="tspan273-8">provider</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:21.3333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="447.53537"
-       y="204.39282"
-       id="text271-1-86"><tspan
-         sodipodi:role="line"
-         id="tspan269-3-5"
-         x="447.53537"
-         y="204.39282">Network</tspan><tspan
-         sodipodi:role="line"
-         x="447.53537"
-         y="231.05945"
-         id="tspan273-8-76">provider</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:24px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="670.29382"
-       y="240.162"
-       id="text271-1-8"><tspan
-         sodipodi:role="line"
-         id="tspan269-3-78"
-         x="670.29382"
-         y="240.162">Physical infrastructure</tspan><tspan
-         sodipodi:role="line"
-         x="670.29382"
-         y="270.16199"
-         id="tspan273-8-7">provider</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:21.33333333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="756.64795"
-       y="145.54001"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff"
+       x="756.8255"
+       y="146.39046"
        id="text271-1-6"><tspan
          sodipodi:role="line"
          id="tspan269-3-7"
-         x="756.64795"
-         y="145.54001">Network</tspan><tspan
+         x="756.8255"
+         y="146.39046">Network</tspan><tspan
          sodipodi:role="line"
-         x="756.64795"
-         y="175.54001"
+         x="756.8255"
+         y="169.72383"
          id="tspan273-8-8">provider</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="346.79071"
-       y="77.193787"
-       id="text271-9"><tspan
-         sodipodi:role="line"
-         id="tspan269-8"
-         x="346.79071"
-         y="77.193787">Service</tspan><tspan
-         sodipodi:role="line"
-         x="346.79071"
-         y="100.52716"
-         id="tspan273-6">provider</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="65.400703"
-       y="86.976776"
-       id="text271-9-0"><tspan
-         sodipodi:role="line"
-         x="65.400703"
-         y="86.976776"
-         id="tspan273-6-9">Service layer</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="447.9462"
-       y="76.779633"
-       id="text271-9-7"><tspan
-         sodipodi:role="line"
-         id="tspan269-8-0"
-         x="447.9462"
-         y="76.779633">Service</tspan><tspan
-         sodipodi:role="line"
-         x="447.9462"
-         y="100.11301"
-         id="tspan273-6-3">provider</tspan></text>
     <path
-       style="fill:#ffffff"
-       d="m 370.22008,225.07176 0.91866,-1.83732"
-       id="path452" />
+       fill="#4571a7"
+       d="m 844.8349,124.28241 h 154.99997 v 58.2677 H 844.8349 Z"
+       fill-rule="evenodd"
+       id="path45-9"
+       style="stroke-width:0.970498" />
     <text
        xml:space="preserve"
-       style="font-size:17.3333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="542.67303"
-       y="109.94328"
-       id="text271-9-7-1"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff"
+       x="921.6604"
+       y="146.57576"
+       id="text271-1-6-1"><tspan
          sodipodi:role="line"
-         id="tspan269-8-0-3"
-         x="542.67303"
-         y="109.94328">Service</tspan><tspan
+         id="tspan269-3-7-7"
+         x="921.6604"
+         y="146.57576">Network</tspan><tspan
          sodipodi:role="line"
-         x="542.67303"
-         y="131.60991"
-         id="tspan273-6-3-7">provider</tspan></text>
+         x="921.6604"
+         y="169.90913"
+         id="tspan273-8-8-2">provider</tspan></text>
+  </g>
+  <g
+     id="g1376"
+     transform="translate(100,-12)">
+    <path
+       fill="#4571a7"
+       d="M 845.00003,51.708253 H 1000 V 115.48791 H 845.00003 Z"
+       fill-rule="evenodd"
+       id="path45-9-8"
+       style="fill:#89a7ce;fill-opacity:1;stroke-width:1.01536" />
     <text
        xml:space="preserve"
-       style="font-size:17.3333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="630.88263"
-       y="110.42377"
-       id="text271-9-7-1-4"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff"
+       x="921.82556"
+       y="76.757576"
+       id="text271-1-6-1-0"><tspan
          sodipodi:role="line"
-         id="tspan269-8-0-3-3"
-         x="630.88263"
-         y="110.42377">Service</tspan><tspan
+         id="tspan269-3-7-7-4"
+         x="921.82556"
+         y="76.757576">Service</tspan><tspan
          sodipodi:role="line"
-         x="630.88263"
-         y="132.09039"
-         id="tspan273-6-3-7-6">provider</tspan></text>
+         x="921.82556"
+         y="100.09095"
+         id="tspan273-8-8-2-6">provider</tspan></text>
+    <path
+       fill="#8bd1f0"
+       d="m 680.28886,51.223122 h 73.17043 v 64.283458 h -73.17043 z"
+       fill-rule="evenodd"
+       id="path51"
+       style="fill:#89a7ce;fill-opacity:1;stroke-width:0.970017" />
+    <path
+       fill="#8bd1f0"
+       d="m 760.81189,51.456354 h 73.17043 v 64.283456 h -73.17043 z"
+       fill-rule="evenodd"
+       id="path51-4"
+       style="fill:#89a7ce;fill-opacity:1;stroke-width:0.970017" />
     <text
        xml:space="preserve"
-       style="font-size:17.3333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="717.23669"
-       y="77.352005"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.3333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff"
+       x="716.18427"
+       y="77.118767"
        id="text271-9-7-1-9"><tspan
          sodipodi:role="line"
          id="tspan269-8-0-3-1"
-         x="717.23669"
-         y="77.352005">Service</tspan><tspan
+         x="716.18427"
+         y="77.118767">Service</tspan><tspan
          sodipodi:role="line"
-         x="717.23669"
-         y="99.018631"
+         x="716.18427"
+         y="98.785393"
          id="tspan273-6-3-7-7">provider</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:17.3333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="803.59076"
-       y="77.352005"
-       id="text271-9-7-1-8"><tspan
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.3333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#ffffff"
+       x="796.70734"
+       y="77.351997"
+       id="text271-9-7-1-9-7"><tspan
          sodipodi:role="line"
-         id="tspan269-8-0-3-8"
-         x="803.59076"
-         y="77.352005">Service</tspan><tspan
+         id="tspan269-8-0-3-1-1"
+         x="796.70734"
+         y="77.351997">Service</tspan><tspan
          sodipodi:role="line"
-         x="803.59076"
-         y="99.018631"
-         id="tspan273-6-3-7-3">provider</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="68.352646"
-       y="158.24699"
-       id="text271-9-0-3"><tspan
-         sodipodi:role="line"
-         x="68.352646"
-         y="158.24699"
-         id="tspan273-6-9-8">Active layer</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="65.596664"
-       y="251.95035"
-       id="text271-9-0-4"><tspan
-         sodipodi:role="line"
-         x="65.596664"
-         y="251.95035"
-         id="tspan273-6-9-80">Passive layer</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="497.06619"
-       y="344.62109"
-       id="text271-9-0-4-4"><tspan
-         sodipodi:role="line"
-         x="497.06619"
-         y="344.62109"
-         id="tspan273-6-9-80-3"
-         style="fill:#000000">Greater openness and competition</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="223.38028"
-       y="35.255905"
-       id="text271-9-0-4-4-8"><tspan
-         sodipodi:role="line"
-         x="223.38028"
-         y="35.255905"
-         id="tspan273-6-9-80-3-2"
-         style="fill:#000000">Fully integrated</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="403.20071"
-       y="35.032597"
-       id="text271-9-0-4-4-8-1"><tspan
-         sodipodi:role="line"
-         x="403.20071"
-         y="35.032597"
-         id="tspan273-6-9-80-3-2-8"
-         style="fill:#000000">Active-layer open</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="583.08685"
-       y="34.113934"
-       id="text271-9-0-4-4-8-1-6"><tspan
-         sodipodi:role="line"
-         x="583.08685"
-         y="34.113934"
-         id="tspan273-6-9-80-3-2-8-4"
-         style="fill:#000000">Passive-layer open</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
-       x="759.4696"
-       y="35.951256"
-       id="text271-9-0-4-4-8-1-7"><tspan
-         sodipodi:role="line"
-         x="759.4696"
-         y="35.951256"
-         id="tspan273-6-9-80-3-2-8-5"
-         style="fill:#000000">Three-layer open</tspan></text>
+         x="796.70734"
+         y="99.018623"
+         id="tspan273-6-3-7-7-3">provider</tspan></text>
   </g>
+  <text
+     xml:space="preserve"
+     style="font-size:18.6667px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#ffffff"
+     x="940.56824"
+     y="23.951256"
+     id="text271-9-0-4-4-8-1-7"><tspan
+       sodipodi:role="line"
+       x="940.56824"
+       y="23.951256"
+       id="tspan273-6-9-80-3-2-8-5"
+       style="fill:#000000">Three-layer open</tspan></text>
+  <text
+     xml:space="preserve"
+     id="text1341"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:17.3333px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;white-space:pre;shape-inside:url(#rect1343);display:inline;fill:#89a7ce;fill-opacity:1;stroke:#000000" />
 </svg>

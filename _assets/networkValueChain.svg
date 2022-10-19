@@ -28,11 +28,11 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="1.0885417"
-     inkscape:cx="499.29185"
-     inkscape:cy="372.51674"
-     inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="0"
+     inkscape:cx="335.31099"
+     inkscape:cy="224.61243"
+     inkscape:window-width="1513"
+     inkscape:window-height="1003"
+     inkscape:window-x="28"
      inkscape:window-y="25"
      inkscape:window-maximized="0"
      inkscape:current-layer="g27" />
@@ -47,91 +47,100 @@
      clip-path="url(#p.0)"
      id="g27">
     <path
-       fill="#000000"
-       fill-opacity="0"
-       d="M 0,0 H 1024 V 768 H 0 Z"
-       fill-rule="evenodd"
-       id="path5" />
-    <path
        fill="#aab147"
-       d="M 0.35586208,144.56688 H 842.41516 V 253.08572 H 0.35586208 Z"
+       d="M 0.35586208,153 H 842.41516 V 253 H 0.35586208 Z"
        fill-rule="evenodd"
-       id="path7" />
+       id="path7"
+       style="fill:#20344e;fill-opacity:1;stroke-width:0.959947" />
     <path
        fill="#4571a7"
-       d="M 0.9435891,73.79264 H 843.00286 v 58.25315 H 0.9435891 Z"
+       d="M 0.9435891,76.499987 H 843.00286 V 141.49999 H 0.9435891 Z"
        fill-rule="evenodd"
-       id="path13" />
+       id="path13"
+       style="stroke-width:1.05632" />
     <path
        fill="#8bd1f0"
-       d="M 1.0971128e-4,-2.711811e-5 H 842.05938 V 64.278943 H 1.0971128e-4 Z"
+       d="M 1.0971128e-4,-2.711811e-5 H 842.05938 V 64.999973 H 1.0971128e-4 Z"
        fill-rule="evenodd"
-       id="path19" />
-    <text
-       xml:space="preserve"
-       style="font-size:21.3333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000"
-       x="421.66507"
-       y="25.722488"
-       id="text231"><tspan
-         sodipodi:role="line"
-         id="tspan229"
+       id="path19"
+       style="fill:#89a7ce;fill-opacity:1;stroke-width:1.00559" />
+    <g
+       id="g15328"
+       transform="translate(3.500931,2.0619377)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000"
          x="421.66507"
          y="25.722488"
-         style="font-weight:bold;fill:#ffffff">Service layer</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:21.3333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000"
-       x="417.46957"
-       y="48.697853"
-       id="text231-2"><tspan
-         sodipodi:role="line"
-         id="tspan229-3"
+         id="text231"><tspan
+           sodipodi:role="line"
+           id="tspan229"
+           x="421.66507"
+           y="25.722488"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff">Service layer</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000"
          x="417.46957"
          y="48.697853"
-         style="font-weight:normal;fill:#ffffff">Internet, phone, TV, video conferencing etc.</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:21.3333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000"
-       x="412.41074"
-       y="219.56866"
-       id="text231-2-5"><tspan
-         sodipodi:role="line"
-         id="tspan229-3-2"
-         x="412.41074"
-         y="219.56866"
-         style="font-weight:normal;fill:#ffffff">Fibre and ducting</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:21.3333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000"
-       x="415.99164"
-       y="120.5485"
-       id="text231-2-5-5"><tspan
-         sodipodi:role="line"
-         id="tspan229-3-2-5"
+         id="text231-2"><tspan
+           sodipodi:role="line"
+           id="tspan229-3"
+           x="417.46957"
+           y="48.697853"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff">Internet, phone, TV, video conferencing etc</tspan></text>
+    </g>
+    <g
+       id="g15334"
+       transform="translate(6.194477,8.8094327)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000"
          x="415.99164"
          y="120.5485"
-         style="font-weight:normal;fill:#ffffff">Electronics</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:21.3333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000"
-       x="415.63226"
-       y="96.793549"
-       id="text231-1"><tspan
-         sodipodi:role="line"
-         id="tspan229-5"
+         id="text231-2-5-5"><tspan
+           sodipodi:role="line"
+           id="tspan229-3-2-5"
+           x="415.99164"
+           y="120.5485"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff">Electronics</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000"
          x="415.63226"
          y="96.793549"
-         style="font-weight:bold;fill:#ffffff">Active layer</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:21.3333px;font-family:Arial;-inkscape-font-specification:Arial;text-align:center;text-anchor:middle;fill:#000000"
-       x="412.87628"
-       y="192.92752"
-       id="text231-4"><tspan
-         sodipodi:role="line"
-         id="tspan229-9"
+         id="text231-1"><tspan
+           sodipodi:role="line"
+           id="tspan229-5"
+           x="415.63226"
+           y="96.793549"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff">Active layer</tspan></text>
+    </g>
+    <g
+       id="g15340"
+       transform="translate(8.1912197,3.3775548)">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000"
+         x="412.41074"
+         y="219.56866"
+         id="text231-2-5"><tspan
+           sodipodi:role="line"
+           id="tspan229-3-2"
+           x="412.41074"
+           y="219.56866"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.6667px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff">Fibre and ducting</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:center;text-anchor:middle;fill:#000000"
          x="412.87628"
          y="192.92752"
-         style="font-weight:bold;fill:#ffffff">Passive layer</tspan></text>
+         id="text231-4"><tspan
+           sodipodi:role="line"
+           id="tspan229-9"
+           x="412.87628"
+           y="192.92752"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:'Arial, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#ffffff">Passive layer</tspan></text>
+    </g>
   </g>
 </svg>

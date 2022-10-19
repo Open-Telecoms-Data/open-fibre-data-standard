@@ -28,12 +28,12 @@
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="0.95843375"
-     inkscape:cx="381.35135"
-     inkscape:cy="219.62916"
-     inkscape:window-width="1920"
-     inkscape:window-height="1027"
-     inkscape:window-x="0"
-     inkscape:window-y="25"
+     inkscape:cx="246.23507"
+     inkscape:cy="235.27969"
+     inkscape:window-width="1729"
+     inkscape:window-height="1003"
+     inkscape:window-x="119"
+     inkscape:window-y="31"
      inkscape:window-maximized="0"
      inkscape:current-layer="g37"
      inkscape:pageshadow="0">
@@ -52,106 +52,106 @@
      clip-path="url(#p.0)"
      id="g37">
     <path
-       fill="#000000"
-       fill-opacity="0"
-       d="M 0,0 H 1024 V 768 H 0 Z"
-       fill-rule="evenodd"
-       id="path5" />
-    <path
-       fill="#aab147"
-       d="M 0.06811821,144.56688 H 161.09269 V 253.08572 H 0.06811821 Z"
-       fill-rule="evenodd"
-       id="path7" />
-    <path
-       fill="#4571a7"
-       d="M 0.18050756,73.79264 H 161.20508 v 58.25315 H 0.18050756 Z"
-       fill-rule="evenodd"
-       id="path11" />
-    <path
        fill="#8bd1f0"
-       d="M 8.871391e-5,-2.711811e-5 H 161.02466 V 64.278943 H 8.871391e-5 Z"
+       d="M 8.871391e-5,0 H 161.02466 V 60 H 8.871391e-5 Z"
        fill-rule="evenodd"
-       id="path15" />
-    <path
-       fill="#aab147"
-       d="m 176.27756,144.56738 h 656.7798 v 108.51885 h -656.7798 z"
-       fill-rule="evenodd"
-       id="path19" />
-    <path
-       fill="#4571a7"
-       d="m 176.73596,73.79291 h 656.7798 v 58.25316 h -656.7798 z"
-       fill-rule="evenodd"
-       id="path25" />
-    <path
-       fill="#8bd1f0"
-       d="m 176.00008,-1.1572179e-5 h 656.7798 V 64.278958 h -656.7798 z"
-       fill-rule="evenodd"
-       id="path31" />
+       id="path15"
+       style="stroke-width:0.966142;fill:#89a7ce;fill-opacity:1" />
     <text
        xml:space="preserve"
-       style="font-size:24px;fill:#000000"
-       x="379.78629"
-       y="39.648018"
-       id="text233"><tspan
-         id="tspan231"
-         x="379.78629"
-         y="39.648018"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffffff"
-         sodipodi:role="line">Service providers (SP)</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:24px;fill:#000000"
-       x="7.095006"
-       y="37.512005"
+       style="font-size:21.3333px;fill:#000000"
+       x="18.236433"
+       y="35.520824"
        id="text233-8"><tspan
          id="tspan231-0"
-         x="7.095006"
-         y="37.512005"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffffff"
+         x="18.236433"
+         y="35.520824"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffffff"
          sodipodi:role="line">Service layer</tspan></text>
+    <path
+       fill="#4571a7"
+       d="M 0.18050756,72.240435 H 161.20508 V 132.24044 H 0.18050756 Z"
+       fill-rule="evenodd"
+       id="path11"
+       style="stroke-width:1.01488" />
     <text
        xml:space="preserve"
-       style="font-size:24px;fill:#000000"
-       x="3.6042356"
-       y="204.45102"
-       id="text233-8-0"><tspan
-         id="tspan231-0-5"
-         x="3.6042356"
-         y="204.45102"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffffff"
-         sodipodi:role="line">Passive layer</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:24px;fill:#000000"
-       x="13.85348"
-       y="109.35798"
+       style="font-size:21.3333px;fill:#000000"
+       x="25.432463"
+       y="107.63106"
        id="text233-8-0-9"><tspan
          id="tspan231-0-5-7"
-         x="13.85348"
-         y="109.35798"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffffff"
+         x="25.432463"
+         y="107.63106"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffffff"
          sodipodi:role="line">Active layer</tspan></text>
+    <path
+       fill="#aab147"
+       d="M 0.06811821,144.48116 H 161.09269 V 253 H 0.06811821 Z"
+       fill-rule="evenodd"
+       id="path7"
+       style="fill:#20344e;fill-opacity:1" />
     <text
        xml:space="preserve"
-       style="font-size:24px;fill:#000000"
-       x="375.03467"
-       y="108.4611"
+       style="font-size:21.3333px;fill:#000000"
+       x="16.179462"
+       y="204.1312"
+       id="text233-8-0"><tspan
+         id="tspan231-0-5"
+         x="16.179462"
+         y="204.1312"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.3333px;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffffff"
+         sodipodi:role="line">Passive layer</tspan></text>
+    <path
+       fill="#8bd1f0"
+       d="m 176.00008,0 h 656.7798 v 60 h -656.7798 z"
+       fill-rule="evenodd"
+       id="path31"
+       style="stroke-width:0.966142;fill:#89a7ce;fill-opacity:1" />
+    <text
+       xml:space="preserve"
+       style="font-size:26.6667px;fill:#000000"
+       x="401.30392"
+       y="37.057301"
+       id="text233"><tspan
+         id="tspan231"
+         x="401.30392"
+         y="37.057301"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffffff"
+         sodipodi:role="line">Service providers</tspan></text>
+    <path
+       fill="#4571a7"
+       d="m 176.73596,72.240705 h 656.7798 v 60.000005 h -656.7798 z"
+       fill-rule="evenodd"
+       id="path25"
+       style="stroke-width:1.01488" />
+    <text
+       xml:space="preserve"
+       style="font-size:26.6667px;fill:#000000"
+       x="397.18301"
+       y="109.13525"
        id="text233-2"><tspan
          id="tspan231-7"
-         x="375.03467"
-         y="108.4611"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffffff"
-         sodipodi:role="line">Network providers (NP)</tspan></text>
+         x="397.18301"
+         y="109.13525"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffffff"
+         sodipodi:role="line">Network providers</tspan></text>
+    <path
+       fill="#aab147"
+       d="m 176.27756,144.48114 h 656.7798 V 253 h -656.7798 z"
+       fill-rule="evenodd"
+       id="path19"
+       style="fill:#20344e;fill-opacity:1" />
     <text
        xml:space="preserve"
-       style="font-size:24px;fill:#000000"
-       x="292.06561"
-       y="204.45102"
+       style="font-size:26.6667px;fill:#000000"
+       x="314.45236"
+       y="205.64162"
        id="text233-2-7"><tspan
          id="tspan231-7-1"
-         x="292.06561"
-         y="204.45102"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:24px;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffffff"
-         sodipodi:role="line">Physical infrastructure providers (PIP)</tspan></text>
+         x="314.45236"
+         y="205.64162"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:26.6667px;font-family:Arial;-inkscape-font-specification:Arial;fill:#ffffff"
+         sodipodi:role="line">Physical infrastructure providers</tspan></text>
   </g>
 </svg>
