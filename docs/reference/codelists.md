@@ -24,44 +24,14 @@ Codes are case-sensitive, and are generally provided as English language camelCa
 
 ## Open codelists
 
-### nodeTechnologies
+### mediaType
 
-The node technologies codelist is used to indicate the technologies used in a node.
-
-```{csv-table-no-translate}
-:header-rows: 1
-:widths: auto
-:file: ../../codelists/open/nodeTechnologies.csv
-```
-
-### organisationRole
-
-The organisation role codelist is used to identify an organisation's roles in a network. An organisation can have one or more roles.
+The mediaType codelist is based on the [IANA Media Types list](https://www.iana.org/assignments/media-types/media-types.xhtml). The media type codelist adds an exceptional code for printed documents ('offline/print'), and omits any media type that is marked as deprecated or obsolete by IANA.
 
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/organisationRole.csv
-```
-
-### language
-
-The language codelist is used to provide the default language used in text fields and the language of linked documents, using two-letter codes from ISO639-1.
-
-```{csv-table-no-translate}
-:header-rows: 1
-:widths: auto
-:file: ../../codelists/open/language.csv
-```
-
-### linkTechnologies
-
-The link technologies codelist is used to indicate the technologies used on a link.
-
-```{csv-table-no-translate}
-:header-rows: 1
-:widths: auto
-:file: ../../codelists/open/linkTechnologies.csv
+:file: ../../codelists/open/mediaType.csv
 ```
 
 ### nodeType
@@ -74,24 +44,24 @@ The node type codelist is used to categorise the nodes in a network.
 :file: ../../codelists/open/nodeType.csv
 ```
 
-### referenceRelationType
+### language
 
-The reference relation type codelist consists of extensions to the [IANA Link Relationship Types](https://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1) constructed according to the [tag URI scheme](https://www.rfc-editor.org/rfc/rfc4151).
+The language codelist is used to provide the default language used in text fields and the language of linked documents, using two-letter codes from ISO639-1.
 
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/referenceRelationType.csv
+:file: ../../codelists/open/language.csv
 ```
 
-### mediaType
+### nodeTechnologies
 
-The mediaType codelist is based on the [IANA Media Types list](https://www.iana.org/assignments/media-types/media-types.xhtml). The media type codelist adds an exceptional code for printed documents ('offline/print'), and omits any media type that is marked as deprecated or obsolete by IANA.
+The node technologies codelist is used to indicate the technologies used in a node.
 
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/mediaType.csv
+:file: ../../codelists/open/nodeTechnologies.csv
 ```
 
 ### contractType
@@ -104,17 +74,42 @@ The contract type codelist is used to categorise contracts based on the World Ba
 :file: ../../codelists/open/contractType.csv
 ```
 
-## Closed codelists
+### linkTechnologies
 
-### geometryType
-
-The geometry type codelist is used to categorise the type of geometry represented by the geometry object.
+The link technologies codelist is used to indicate the technologies used on a link.
 
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/geometryType.csv
+:file: ../../codelists/open/linkTechnologies.csv
 ```
+
+### organisationRole
+
+The organisation role codelist is used to identify an organisation's roles in a network. An organisation can have one or more roles.
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/organisationRole.csv
+```
+
+### referenceRelationType
+
+The reference relation type codelist consists of extensions to the [IANA Link Relationship Types](https://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1) constructed according to the [tag URI scheme](https://www.rfc-editor.org/rfc/rfc4151).
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/referenceRelationType.csv
+```
+
+### organisationIdentifierScheme
+
+The organisation identifier scheme codelist uses the codes from [org-id.guide](http://org-id.guide/) to identify the register from which an organisation's identifier is drawn. You can search for codes by browsing the website or you can download the latest version of the codelist as a [CSV file](http://org-id.guide/download.csv).
+
+## Closed codelists
+
 ### transmissionMedium
 
 The transmission medium codelist is used to categorise the physical media of a link.
@@ -123,6 +118,26 @@ The transmission medium codelist is used to categorise the physical media of a l
 :header-rows: 1
 :widths: auto
 :file: ../../codelists/closed/transmissionMedium.csv
+```
+
+### country
+
+The country codelist uses uppercase two-letter codes from [ISO3166-1](https://www.iso.org/iso-3166-country-codes.html). The country codelist adds a user-assigned code for Kosovo ('XK').
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/closed/country.csv
+```
+
+### currency
+
+The currency codelist uses uppercase 3-letter codes from [ISO4217](https://www.iso.org/iso-4217-currency-codes.html).
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/closed/currency.csv
 ```
 
 ### deployment
@@ -135,14 +150,14 @@ The deployment codelist is used to categorise the deployment of links.
 :file: ../../codelists/closed/deployment.csv
 ```
 
-### currency
+### fibreType
 
-The currency codelist uses uppercase 3-letter codes from [ISO4217](https://www.iso.org/iso-4217-currency-codes.html).
+The fibre type codelist is a subset of [ITU-T recommendations](https://www.itu.int/rec/T-REC-G/en) that describe characteristics of optical fibre and cables. It is used to categorise the type of fibre used in a link.
 
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/currency.csv
+:file: ../../codelists/closed/fibreType.csv
 ```
 
 ### nodeStatus
@@ -165,23 +180,12 @@ The link status codelist is used to indicate the operational status of a link.
 :file: ../../codelists/closed/linkStatus.csv
 ```
 
-### country
+### geometryType
 
-The country codelist uses uppercase two-letter codes from [ISO3166-1](https://www.iso.org/iso-3166-country-codes.html). The country codelist adds a user-assigned code for Kosovo ('XK').
-
-```{csv-table-no-translate}
-:header-rows: 1
-:widths: auto
-:file: ../../codelists/closed/country.csv
-```
-
-### fibreType
-
-The fibre type codelist is a subset of [ITU-T recommendations](https://www.itu.int/rec/T-REC-G/en) that describe characteristics of optical fibre and cables. It is used to categorise the type of fibre used in a link.
+The geometry type codelist is used to categorise the type of geometry represented by the geometry object.
 
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/fibreType.csv
+:file: ../../codelists/closed/geometryType.csv
 ```
-

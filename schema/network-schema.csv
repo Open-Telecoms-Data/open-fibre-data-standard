@@ -112,7 +112,6 @@ CoordinateReferenceSystem,name,Name,The name of the coordinate reference system.
 CoordinateReferenceSystem,uri,Uniform Resource Identifier,A URI for the coordinate reference system.,string,1..1,uri,,,,
 RelatedResourceReference,href,Reference target,The URL of this related resource.,string,1..1,iri,,,,
 RelatedResourceReference,rel,Reference relation type,"The relationship with this related resource, from the open referenceRelationType codelist.",string,1..1,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#referencerelationtype,,,referenceRelationType.csv
-FibreTypeDetails,fibreSubtype,Fibre subtype,"The sub-category of the fibre type. For example, G.652.B.",string,0..1,,,,,
 FibreTypeDetails,description,Description,A description of this link's fibre type.,string,0..1,,,,,
 DeploymentDetails,description,Description,A description of this link's deployment.,string,0..1,,,,,
 CapacityDetails,description,Description,A description of this link's capacity.,string,0..1,,,,,
