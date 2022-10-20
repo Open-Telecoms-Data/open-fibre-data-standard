@@ -94,14 +94,14 @@ The organisation role codelist is used to identify an organisation's roles in a 
 :file: ../../codelists/open/organisationRole.csv
 ```
 
-### referenceRelationType
+### linkRelationType
 
-The reference relation type codelist consists of extensions to the [IANA Link Relationship Types](https://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1) constructed according to the [tag URI scheme](https://www.rfc-editor.org/rfc/rfc4151).
+The link relation type codelist consists of extensions to the [IANA Link Relationship Types](https://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1) constructed according to the [tag URI scheme](https://www.rfc-editor.org/rfc/rfc4151).
 
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/referenceRelationType.csv
+:file: ../../codelists/open/linkRelationType.csv
 ```
 
 ### organisationIdentifierScheme
