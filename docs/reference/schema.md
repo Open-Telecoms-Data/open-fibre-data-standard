@@ -31,7 +31,7 @@ This section presents each field in the schema in tables with additional informa
 This section describes the overall structure of the OFDS schema. The top-level object in OFDS data is a `Network`. A network has the following sections:
 
 * [Nodes](#nodes)
-* [Links](#links)
+* [Spans](#spans)
 * [Phases](#phases)
 * [Organisations](#organisations)
 * [Contracts](#contracts)
@@ -43,7 +43,7 @@ In addition to the above sections, there are several top-level metadata fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:collapse: nodes,links,phases,organisations,contracts,publisher,crs
+:collapse: nodes,spans,phases,organisations,contracts,publisher,crs
 ```
 
 :::
@@ -66,15 +66,15 @@ The nodes section contains information on the nodes in the network.
 
 For information on the fields that can be provided for each node, see [Node](#node).
 
-#### Links
+#### Spans
 
-The links section contains information on the links in the network.
+The spans section contains information on the spans in the network.
 
-For information on the fields that can be provided for each link, see [Link](#link).
+For information on the fields that can be provided for each span, see [Span](#span).
 
 #### Phases
 
-The phases section contains information on the phases in which nodes and links are deployed.
+The phases section contains information on the phases in which nodes and spans are deployed.
 
 For information on the fields that can be provided for each phase, see [Phase](#phase).
 
@@ -134,7 +134,7 @@ Each `Node` has the following fields:
 
 ::::
 
-#### Link
+#### Span
 
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
@@ -148,19 +148,19 @@ The following issues relate to this component or its fields:
 * `.capacityDetails`: [#24 Link capacity](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24)
 ```
 
-`Link` is defined as:
+`Span` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Link/description
+:jsonpointer: /definitions/Span/description
 ```
 
-Each `Link` has the following fields:
+Each `Span` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Link
+:pointer: /definitions/Span
 :collapse: id,name,phase,status,readyForServiceDate,start,end,route,physicalInfrastructureProvider,networkProvider,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries,directed
 ```
 
@@ -170,7 +170,7 @@ Each `Link` has the following fields:
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/links
+   :jsonpointer: /networks/0/spans
    :title: Example
 ```
 
@@ -312,8 +312,8 @@ Each `Geometry` has the following fields:
    :title: Node
 
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/links/0/route
-   :title: Link
+   :jsonpointer: /networks/0/spans/0/route
+   :title: span
 ```
 
 :::
@@ -344,7 +344,7 @@ Each `OrganisationReference` has the following fields:
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/links/0/physicalInfrastructureProvider
+   :jsonpointer: /networks/0/spans/0/physicalInfrastructureProvider
    :title: Example
 ```
 
@@ -562,27 +562,27 @@ Each `CoordinateReferenceSystem` has the following fields:
 
 ::::
 
-#### RelatedResourceReference
+#### Link
 
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
-* `RelatedResourceReference`: [#75 Paginating and streaming nodes and links](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75)
-* `RelatedResourceReference`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
+* `RelatedResourceReference`: [#75 Paginating and streaming nodes and spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75)
+* `RelatedResourceReference`: [#83 Consider renaming spans to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
 ```
 
-`RelatedResourceReference` is defined as:
+`Link` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/RelatedResourceReference/description
+:jsonpointer: /definitions/Link/description
 ```
 
-Each `RelatedResourceReference` has the following fields:
+Each `Link` has the following fields:
 ::::{tab-set}
 
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/RelatedResourceReference
+:pointer: /definitions/Link
 :collapse: href,rel
 ```
 
@@ -592,11 +592,11 @@ Each `RelatedResourceReference` has the following fields:
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-separate-endpoints.json
-   :jsonpointer: /networks/0/relatedResources
+   :jsonpointer: /networks/0/links
    :title: Pagination
 
 .. jsoninclude:: ../../examples/json/network-separate-files.json
-   :jsonpointer: /networks/0/relatedResources
+   :jsonpointer: /networks/0/links
    :title: Streaming
 ```
 
@@ -628,7 +628,7 @@ Each `FibreTypeDetails` has the following fields:
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/links/0/fibreTypeDetails
+   :jsonpointer: /networks/0/spans/0/fibreTypeDetails
    :title: Example
 ```
 
@@ -665,7 +665,7 @@ Each `DeploymentDetails` has the following fields:
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/links/0/deploymentDetails
+   :jsonpointer: /networks/0/spans/0/deploymentDetails
    :title: Example
 ```
 
@@ -702,7 +702,7 @@ Each `CapacityDetails` has the following fields:
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/links/0/capacityDetails
+   :jsonpointer: /networks/0/spans/0/capacityDetails
    :title: Example
 ```
 
