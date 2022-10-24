@@ -5,7 +5,9 @@ import csv
 import glob
 import json
 import os
+import shutil
 
+from flattentool import create_template, flatten
 from github import Github
 from ocdskit.mapping_sheet import mapping_sheet
 from pathlib import Path
@@ -95,6 +97,21 @@ def convert_to_feature(object, organisation_references, network, organisations, 
     feature["properties"]["network"] = network
 
     return feature
+
+
+def delete_directory_contents(directory_path):
+  """
+  Deletes the contents of a directory on disk.
+  """
+  for filename in os.listdir(directory_path):
+    file_path = os.path.join(directory_path, filename)
+    try:
+        if os.path.isfile(file_path) or os.path.islink(file_path):
+            os.unlink(file_path)
+        elif os.path.isdir(file_path):
+            shutil.rmtree(file_path)
+    except Exception as e:
+        print('Failed to delete %s. Reason: %s' % (file_path, e))
 
 
 @click.group()
@@ -287,7 +304,8 @@ def get_issues(issue_urls):
     for issue_url in set(issue_urls.split(",")):
         issues.append(repo.get_issue(number=int(issue_url.split("/")[-1])))
     
-    return issues
+    return issues 
+
 
 @cli.command()
 def pre_commit():
@@ -310,6 +328,28 @@ def pre_commit():
         writer.writeheader()
         for row in schema_table[1]:
             writer.writerow(row)
+    
+    # Update examples/csv
+    delete_directory_contents('examples/csv')
+    flatten(
+      input_name='examples/json/network-package.json',
+      schema='schema/network-schema.json',
+      output_name='examples/csv',
+      output_format='csv',
+      main_sheet_name="networks",
+      truncation_length=9,
+      root_list_path='networks'
+    )
+
+    # Update examples/csv/template
+    create_template(
+      schema='schema/network-schema.json',
+      output_name='examples/csv/template',
+      output_format="csv",
+      main_sheet_name="networks",
+      truncation_length=9,
+      no_deprecated_fields=True
+    )
 
     # Load schema reference
     schema_reference = read_lines(referencedir / 'schema.md')
