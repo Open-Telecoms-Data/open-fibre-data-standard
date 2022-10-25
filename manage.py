@@ -4,6 +4,7 @@ import click
 import csv
 import glob
 import json
+import jsonref
 import os
 import shutil
 
@@ -113,6 +114,36 @@ def delete_directory_contents(directory_path):
     except Exception as e:
         print('Failed to delete %s. Reason: %s' % (file_path, e))
 
+
+def json_load(filename, library=json):
+    """
+    Loads JSON data from the given filename.
+    """
+    with (schemadir / filename).open() as f:
+        return library.load(f)
+
+
+def get_dereferenced_schema(schema, output=None):
+    """
+    Returns the dereferenced schema.
+    """
+    # Without a deepcopy, changes to referenced objects are copied across referring objects. However, the deepcopy does
+    # not retain the `__reference__` property.
+    if not output:
+        output = deepcopy(schema)
+
+    if isinstance(schema, list):
+        for index, item in enumerate(schema):
+            get_dereferenced_schema(item, output[index])
+    elif isinstance(schema, dict):
+        for key, value in schema.items():
+            get_dereferenced_schema(value, output[key])
+        if hasattr(schema, '__reference__'):
+            for prop in schema.__reference__:
+                if prop != '$ref':
+                    output[prop] = schema.__reference__[prop]
+
+    return output
 
 @click.group()
 def cli():
@@ -307,17 +338,107 @@ def get_issues(issue_urls):
     return issues 
 
 
+def update_csv_docs():
+  """Update docs/reference/publication_formats/csv.md"""
+
+  jsonref_schema = json_load('network-schema.json', jsonref)
+  dereferenced_schema = get_dereferenced_schema(jsonref_schema)
+
+  markdown = generate_csv_reference_markdown('networks', dereferenced_schema)
+
+  static_content = []
+
+  with open(referencedir / 'publication_formats' / 'csv.md', 'r') as f:
+    for line in f:
+      if line == '## Networks\n':
+        break
+      else:
+        static_content.append(line)
+
+  with open(referencedir / 'publication_formats' / 'csv.md', 'w') as f:
+    f.writelines(static_content)
+
+    for key, value in markdown.items():
+      f.write(f"\n{'#'*value['depth']} {key}\n\n")
+      f.writelines(value['content'])
+
+
+def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
+  """
+  Recursive function to generate reference documentation for each table in the CSV publication format.
+  
+  :param table: the name of the table
+  :param schema: the schema for the object represented by the table
+  :param parents: a list of the parents of the object represented by the table
+  :param depth: the depth in the JSON schema hierarchy of the object represented by the table
+  """
+
+  markdown = {}
+  markdown[table] = {'depth': depth, 'content': []}
+  
+  include_pointers = []
+
+  if parents is None:
+    parents = []
+
+  if schema['type'] == 'object':
+    properties = schema['properties']
+  elif schema['type'] == 'array':
+    properties = schema['items']['properties']
+  
+  markdown[table]['content'] = ["This table is related to the following tables:\n\n"]
+
+  # Generate JSON pointer to parent and link to parent table
+  parent_ref= ''
+  if parents:
+    if len(parents) > 1:
+      parent_ref = f"{'/0/'.join([parent for parent in parents[1:]])}"
+ 
+    markdown[table]['content'].append(
+      f" * [{parents[-1]}](#{parents[-1].lower()}): many-to-one by `{parent_ref + '/0/' if len(parent_ref) > 0 else ''}id`\n"
+    )
+
+  # Add references to parent object ids to list of pointers for jsonschema directive
+  if len(parents) == 1:
+    include_pointers.extend(['id'])
+  elif len(parents) > 0:
+    include_pointers.extend(['id', f"{parent_ref}/0/id"])
+
+  # Generate list of links to child tables and populate list of pointers for jsonschema directive
+  for key,value in properties.items():
+    if value['type'] == 'array' and value['items']['type'] == 'object':     
+      markdown[table]['content'].append(
+        f" * [{key}](#{key.lower()}): one-to-many by `{'id' if table == 'networks' else '/0/'.join(parents[1:] + [table, 'id'])}`\n"
+      )
+      markdown.update(generate_csv_reference_markdown(key, value, parents + [table], depth + 1))
+    else:
+      include_pointers.append(f"{parent_ref}{'/0/' if len(parent_ref) > 0 else ''}{table+'/0/' if len(parents)>0 else ''}{key}")
+
+  # Generate links to examples and templates
+  table_name = '_'.join(parents[1:] + [table])
+  markdown[table]['content'].append(f"\nThe fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/{table_name}.csv) or a [blank template](../../../examples/csv/template/{table_name}.csv) for this table.\n\n")
+
+  # Generate jsonschema directive
+  markdown[table]['content'].extend([
+    "```{jsonschema} ../../../schema/network-schema.json\n"
+    f":include: {','.join(include_pointers)}\n"
+    "```\n"
+  ])
+
+  return markdown
+
+
 @cli.command()
 def pre_commit():
-    """Update the following files based on the network-schema.json and codelist CSVs:
+    """Update derivative schema files, examples and reference documentation:
       - network-schema.csv
-      - docs/reference/schema.md
-      - docs/reference/codelists.md
+      - examples/csv/template
+      - examples/csv
+      - reference/publication_formats/csv.md
     """
 
     # Load schema
-    with (schemadir / 'network-schema.json').open() as f:
-        schema = json.load(f)
+    schema = json_load('network-schema.json')
      
     # Generate network-schema.csv
     schema_table = mapping_sheet(schema, include_codelist=True, include_definitions=True)
@@ -350,6 +471,20 @@ def pre_commit():
       truncation_length=9,
       no_deprecated_fields=True
     )
+
+    # Update docs/reference/publication_formats/csv.md
+    update_csv_docs()
+
+
+@cli.command()
+def update_reference_docs():
+    """Update reference documentation:
+      - docs/reference/schema.md
+      - docs/reference/codelists.md
+    """    
+    
+    # Load schema
+    schema = json_load('network-schema.json')
 
     # Load schema reference
     schema_reference = read_lines(referencedir / 'schema.md')
