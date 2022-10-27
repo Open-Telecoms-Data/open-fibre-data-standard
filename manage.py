@@ -146,185 +146,6 @@ def get_dereferenced_schema(schema, output=None):
 
     return output
 
-@click.group()
-def cli():
-    pass
-
-
-@cli.command()
-def update_from_airtable():
-    """Update schema and codelists from Airtable.
-    
-    * Add new definitions and properties
-    * Update existing definitions and properties
-    * Delete definitions and properties that do not exist in Airtable or are marked as 'Omit' 
-    """
-
-    top_object = 'Network'
-    
-    with (schemadir / 'network-schema.json').open() as f:
-        schema = json.load(f)
-    
-    # Get data from Airtable
-    definitions_table = Table(AIRTABLE_API_KEY, BASE_ID, 'Classes')
-    properties_table = Table(AIRTABLE_API_KEY, BASE_ID, 'Properties')
-    codelists_table = Table(AIRTABLE_API_KEY, BASE_ID, 'Codelists')
-    codes_table = Table(AIRTABLE_API_KEY, BASE_ID, 'Codes')  
-
-    # Update schema
-    definitions = {record['id']: record for record in definitions_table.all()}
-    for definition_record in definitions.values():
-        definition_fields = definition_record['fields']
-        
-        if definition_fields['Status'] != 'Omit':
-            if definition_fields['Name'] == top_object:
-                target = schema
-            else:
-                if definition_fields['Name'] not in schema['definitions']:
-                    target = schema['definitions'][definition_fields['Name']] = {}
-                else:
-                    target = schema['definitions'][definition_fields['Name']]
-
-            set_value(definition_fields, target, "Title", "title")
-            set_value(definition_fields, target, "Description", "description")
-            set_value(definition_fields, target, "Status", "$comment")
-            if "additionalFields" in definition_fields:
-                target["additionalFields"] = bool(definition_fields["additionalFields"])
-            
-            target["type"] = "object"
-            
-            # Add links to related Github issues
-            target['$comment'] = ",".join(definition_fields.get("Github issues",""))
-
-            # Update properties
-            if not target.get("properties"):
-                target["properties"] = {}
-            
-            # Clear required fields
-            if target.get("required"):
-                target["required"] = []
-
-            if definition_fields.get('Properties'):
-                for property_id in definition_fields['Properties']:
-                    property_record = properties_table.get(property_id)
-                    property_fields = property_record['fields']
-                    
-                    if property_fields['Status'] != 'Omit':
-                        
-                        # Add new properties or update existing properties
-                        if property_fields['Property'] not in target["properties"]:
-                            property = target["properties"][property_fields['Property']] = {}
-                        else:
-                            property = target["properties"][property_fields['Property']]
-        
-                        # Set values
-                        set_value(property_fields, property, "Title", "title")
-                        set_value(property_fields, property, "Description", "description")
-                        set_value(property_fields, property, "Github issues", "$comment")
-                        set_value(property_fields, property, "Format", "format")
-                        set_value(property_fields, property, "Type", "type")
-                        set_value(property_fields, property, "Constant value", "const")
-
-                        # Add links to related Github issues
-                        property['$comment'] = ",".join(property_fields.get("Github issues",""))
-
-                        # Set $ref for objects and arrays of objects
-                        if 'instanceOf' in property_fields:
-                            ref = definitions[property_fields['instanceOf'][0]]['fields']['Name']
-
-                        if property_fields.get('Type') == 'object':
-                            property.pop("type")
-                            property['$ref'] = f'#/definitions/{ref}'
-                        elif property_fields.get('Type') == 'array':
-                            if property_fields.get("Items"):
-                                property["items"] = {"type": property_fields["Items"]}
-                                if property_fields.get("instanceOf"):
-                                    property["items"] = {"$ref": f'#/definitions/{ref}'}
-                        
-                        # Set codelist, enum and openCodelist
-                        if property_fields.get("Codelist"):
-                            codelist_record = codelists_table.get(property_fields["Codelist"][0])
-                            codelist_fields = codelist_record["fields"]
-                            property["codelist"] = f"{codelist_fields['Name']}.csv"
-                            
-                            if codelist_fields.get("Codelist type") == "Closed":
-                                property["openCodelist"] = False
-                                property["enum"] = []
-                                
-                                if codelist_fields.get("Codes"):
-                                    for code_id in codelist_fields["Codes"]:
-                                        code_record = codes_table.get(code_id)
-                                        property["enum"].append(code_record["fields"]["Code"])
-                            
-                            elif codelist_fields.get("Codelist type") == "Open":
-                                property["openCodelist"] = True
-
-                        # Set required properties
-                        if property_fields.get("Required") == True:
-                            if target.get("required"):
-                                if property_fields["Property"] not in target["required"]:
-                                    target["required"].append(property_fields["Property"])
-                            else:
-                                target["required"] = [property_fields["Property"]]
-
-                        target["properties"][property_fields['Property']] = property
-            
-            # Delete properties not in Airtable
-            for property in list(target["properties"]):
-                formula = match({"Property": property, "propertyOf": definition_fields["Name"]})
-                result = properties_table.first(formula=formula)
-
-                if not result or result["fields"]["Status"] == "Omit":
-                    target["properties"].pop(property)
-
-    # Delete definitions not in Airtable
-    for definition in list(schema["definitions"]):
-        formula = match({"Name": definition})
-        result = definitions_table.first(formula=formula)
-
-        if not result or result["fields"]["Status"] == "Omit":
-            schema["definitions"].pop(definition)
-
-    with (schemadir / 'network-schema.json').open('w') as f:
-        json.dump(schema, f, indent=2)
-        f.write('\n')
-    
-    # Update codelists
-    files = glob.glob(f"{codelistdir}/*/*.csv")
-    for file in files:
-      
-      # Don't delete codelists that are managed outside of Airtable
-      if file.split("/")[-1] not in EXTERNAL_CODELISTS:
-        os.remove(file)
-    
-    for codelist in codelists_table.all():
-        codelist_fields = codelist["fields"]
-        
-        if codelist_fields["Status"] != "Omit" and codelist_fields.get("Codes"):
-            filename = f"{codelist_fields['Name']}.csv"
-            
-            if codelist_fields.get("Codelist type") == "Closed":
-                subdir = "closed"
-            else:
-                subdir = "open"
-
-            with open(codelistdir / subdir / filename, 'w', newline='') as f:
-                fieldnames = ['code', 'title', 'description']
-                writer = csv.DictWriter(f, fieldnames=fieldnames)
-                writer.writeheader()
-
-                for code_id in codelist_fields['Codes']:
-                    code_record = codes_table.get(code_id)
-                    code_fields = code_record['fields']
-
-                    if code_fields["Status"] not in ["Omit","Further clarification needed"]:
-
-                        writer.writerow({
-                            'code': code_fields.get("Code", ""),
-                            'title': code_fields.get("Title", ""),
-                            'description': code_fields.get("Description", "")
-                        })
-
 
 def get_issues(issue_urls):
     """
@@ -343,26 +164,21 @@ def get_issues(issue_urls):
 def update_csv_docs(jsonref_schema):
   """Update docs/reference/publication_formats/csv.md"""
 
+  # Load csv reference
+  csv_reference = read_lines(referencedir / 'publication_formats' / 'csv.md')
+
+  # Preserve introductory content up to the ## networks heading
+  csv_reference = csv_reference[:csv_reference.index("## networks\n") - 1]
+
+  # Generate CSV reference
   dereferenced_schema = get_dereferenced_schema(jsonref_schema)
-
   markdown = generate_csv_reference_markdown('networks', dereferenced_schema)
+ 
+  for key, value in markdown.items():
+    csv_reference.append(f"\n{'#'*value['depth']} {key}\n\n")
+    csv_reference.extend(value['content'])
 
-  static_content = []
-
-  with open(referencedir / 'publication_formats' / 'csv.md', 'r') as f:
-    for line in f:
-      if line == '## networks\n':
-        break
-      else:
-        static_content.append(line)
-
-  with open(referencedir / 'publication_formats' / 'csv.md', 'w') as f:
-    f.writelines(static_content)
-
-    for key, value in markdown.items():
-      f.write(f"\n{'#'*value['depth']} {key}\n\n")
-      f.writelines(value['content'])
-
+  write_lines(referencedir / 'publication_formats' / 'csv.md', csv_reference)
 
 def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
   """
@@ -559,14 +375,14 @@ def update_codelist_docs(schema):
   # Sort codelists alphabetically
   codelists = OrderedDict(sorted(codelists.items()))
 
-  # Preserve text that appears before the generated reference content for each codelist 
+  # Preserve content that appears before the generated reference content for each codelist 
   for i in range(0, len(codelist_reference)):
       line = codelist_reference[i]       
       
       if line[:4] == "### ":
           codelist = line[4:-1]
           
-          # Drop that don't appear in the codelists directory 
+          # Drop codelists that don't appear in the codelists directory 
           if codelist in codelists:
               j = i+1
               
@@ -591,7 +407,317 @@ def update_codelist_docs(schema):
   codelist_reference.extend(closed_codelist_reference)
 
   write_lines(referencedir / 'codelists.md', codelist_reference)
-  
+
+
+def update_schema_docs(schema):
+  """Update docs/reference/schema.md"""    
+
+  # Load schema reference
+  schema_reference = read_lines(referencedir / 'schema.md')
+
+  # Get list of references for each definition
+  references = {}
+  for defn in schema['definitions']:
+    references[defn] = get_definition_references(schema, defn)
+
+  # Preserve content that appears before the generated reference content for each component
+  components_index = schema_reference.index("### Components\n") + 3
+
+  for i in range(components_index, len(schema_reference)):
+      if schema_reference[i][:5] == "#### ":
+          defn = schema_reference[i][5:-1]
+          
+          # Drop definitions that don't appear in the schema
+          if defn in schema["definitions"]:
+              schema["definitions"][defn]["content"] = []
+              j = i+1
+
+              # while j < len(schema_reference) and not schema_reference[j].startswith("```{admonition}") and schema_reference[j] != 'This component is referenced by the following properties:\n':
+              while j < len(schema_reference) and not schema_reference[j].startswith("```{admonition}") and schema_reference[j] != f"`{defn}` is defined as:\n":
+                schema["definitions"][defn]["content"].append(schema_reference[j])
+                j = j+1
+
+  # Preserve introductory content up to and including the sentence below the ### Components heading
+  schema_reference = schema_reference[:components_index]
+  schema_reference.append("\n")
+    
+  # Generate standard reference content for each definition
+  for defn, definition in schema["definitions"].items():
+      definition["content"] = definition.get("content", [])
+      
+      # Add heading
+      definition["content"].insert(0, f"#### {defn}\n")
+      
+      # Get Github issues and list related definitions and properties
+      definition["issues"] = {}
+      if definition.get("$comment"):
+          for issue in get_issues(definition["$comment"]):
+              definition["issues"][issue.url] = {"issue": issue, "relatedTo": [defn]}
+      
+      for prop, property in definition["properties"].items():
+          if property.get("$comment"):
+              for issue in get_issues(property["$comment"]):
+                  if issue.url in definition["issues"]:
+                      definition["issues"][issue.url]["relatedTo"].append(f".{prop}")
+                  else:
+                      definition["issues"][issue.url] = {"issue": issue, "relatedTo": [f".{prop}"]}
+        
+      # Add admonition with list of related Github issues
+      if len(definition["issues"]) > 0:
+          definition["content"].extend([
+              "```{admonition} Alpha consultation\n",
+              "The following issues relate to this component or its fields:\n"
+          ])
+          for issue in definition["issues"].values():
+              definition["content"].extend([
+                  f"* `{'`, `'.join(issue['relatedTo'])}`: [#{issue['issue'].number} {issue['issue'].title}]({issue['issue'].html_url})\n"
+              ])
+          definition["content"].append("```\n\n")
+             
+      # Add definition
+      definition["content"].extend([
+          f"`{defn}` is defined as:\n\n",
+          "```{jsoninclude-quote} ../../schema/network-schema.json\n",
+          f":jsonpointer: /definitions/{defn}/description\n",
+          "```\n\n"
+      ])
+
+      # Add a list of references.
+      definition["content"].append("This component is referenced by the following properties:\n")
+
+      for ref in references[defn]:
+          # Remove array indices because they do not appear in the HTML anchors generated by the json schema directive
+          ref = [part for part in ref if part != '0']
+
+          # Ideally, these would be relative links - see https://github.com/OpenDataServices/sphinxcontrib-opendataservices/issues/43
+          url = 'https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,'
+          
+          # Omit nested references
+          if ref[0] in schema['definitions'] and len(ref) == 2:
+            url += '/definitions/'
+          elif len(ref) == 1:
+            url += ','
+          else:
+            continue
+    
+          url += ','.join(ref)
+          definition["content"].append(f"* [`{'/'.join(ref)}`]({url})\n")
+
+      # Add schema table
+      definition["content"].extend([
+          f"\nEach `{defn}` has the following fields:\n\n", 
+          "::::{tab-set}\n\n",
+          ":::{tab-item} Schema\n\n",
+          "```{jsonschema} ../../schema/network-schema.json\n",
+          f":pointer: /definitions/{defn}\n",
+          f":collapse: {','.join(definition['properties'].keys())}\n"
+          "```\n\n",
+          ":::\n\n",
+          ":::{tab-item} Examples\n\n"
+      ])
+
+      # Add examples
+      for ref in references[defn]:
+        if ref[0] not in schema['definitions']:
+          if ref[-1] == '0':
+            ref.pop(-1)
+          
+          definition["content"].extend([
+            "```{eval-rst}\n",
+            ".. jsoninclude:: ../../examples/json/network-package.json\n",
+            f" :jsonpointer: /networks/0/{'/'.join(ref)}\n",
+            f" :title: {'/'.join(ref)}\n",
+            "```\n\n"
+          ])
+
+      definition["content"].extend([          
+          ":::\n\n",
+          "::::\n\n"
+      ])
+
+      schema_reference.extend(definition["content"])     
+
+  write_lines(referencedir / 'schema.md', schema_reference) 
+
+@click.group()
+def cli():
+    pass
+
+
+@cli.command()
+def update_from_airtable():
+    """Update schema and codelists from Airtable.
+    
+    * Add new definitions and properties
+    * Update existing definitions and properties
+    * Delete definitions and properties that do not exist in Airtable or are marked as 'Omit' 
+    """
+
+    top_object = 'Network'
+    
+    with (schemadir / 'network-schema.json').open() as f:
+        schema = json.load(f)
+    
+    # Get data from Airtable
+    definitions_table = Table(AIRTABLE_API_KEY, BASE_ID, 'Classes')
+    properties_table = Table(AIRTABLE_API_KEY, BASE_ID, 'Properties')
+    codelists_table = Table(AIRTABLE_API_KEY, BASE_ID, 'Codelists')
+    codes_table = Table(AIRTABLE_API_KEY, BASE_ID, 'Codes')  
+
+    # Update schema
+    definitions = {record['id']: record for record in definitions_table.all()}
+    for definition_record in definitions.values():
+        definition_fields = definition_record['fields']
+        
+        if definition_fields['Status'] != 'Omit':
+            if definition_fields['Name'] == top_object:
+                target = schema
+            else:
+                if definition_fields['Name'] not in schema['definitions']:
+                    target = schema['definitions'][definition_fields['Name']] = {}
+                else:
+                    target = schema['definitions'][definition_fields['Name']]
+
+            set_value(definition_fields, target, "Title", "title")
+            set_value(definition_fields, target, "Description", "description")
+            set_value(definition_fields, target, "Status", "$comment")
+            if "additionalFields" in definition_fields:
+                target["additionalFields"] = bool(definition_fields["additionalFields"])
+            
+            target["type"] = "object"
+            
+            # Add links to related Github issues
+            target['$comment'] = ",".join(definition_fields.get("Github issues",""))
+
+            # Update properties
+            if not target.get("properties"):
+                target["properties"] = {}
+            
+            # Clear required fields
+            if target.get("required"):
+                target["required"] = []
+
+            if definition_fields.get('Properties'):
+                for property_id in definition_fields['Properties']:
+                    property_record = properties_table.get(property_id)
+                    property_fields = property_record['fields']
+                    
+                    if property_fields['Status'] != 'Omit':
+                        
+                        # Add new properties or update existing properties
+                        if property_fields['Property'] not in target["properties"]:
+                            property = target["properties"][property_fields['Property']] = {}
+                        else:
+                            property = target["properties"][property_fields['Property']]
+        
+                        # Set values
+                        set_value(property_fields, property, "Title", "title")
+                        set_value(property_fields, property, "Description", "description")
+                        set_value(property_fields, property, "Github issues", "$comment")
+                        set_value(property_fields, property, "Format", "format")
+                        set_value(property_fields, property, "Type", "type")
+                        set_value(property_fields, property, "Constant value", "const")
+
+                        # Add links to related Github issues
+                        property['$comment'] = ",".join(property_fields.get("Github issues",""))
+
+                        # Set $ref for objects and arrays of objects
+                        if 'instanceOf' in property_fields:
+                            ref = definitions[property_fields['instanceOf'][0]]['fields']['Name']
+
+                        if property_fields.get('Type') == 'object':
+                            property.pop("type")
+                            property['$ref'] = f'#/definitions/{ref}'
+                        elif property_fields.get('Type') == 'array':
+                            if property_fields.get("Items"):
+                                property["items"] = {"type": property_fields["Items"]}
+                                if property_fields.get("instanceOf"):
+                                    property["items"] = {"$ref": f'#/definitions/{ref}'}
+                        
+                        # Set codelist, enum and openCodelist
+                        if property_fields.get("Codelist"):
+                            codelist_record = codelists_table.get(property_fields["Codelist"][0])
+                            codelist_fields = codelist_record["fields"]
+                            property["codelist"] = f"{codelist_fields['Name']}.csv"
+                            
+                            if codelist_fields.get("Codelist type") == "Closed":
+                                property["openCodelist"] = False
+                                property["enum"] = []
+                                
+                                if codelist_fields.get("Codes"):
+                                    for code_id in codelist_fields["Codes"]:
+                                        code_record = codes_table.get(code_id)
+                                        property["enum"].append(code_record["fields"]["Code"])
+                            
+                            elif codelist_fields.get("Codelist type") == "Open":
+                                property["openCodelist"] = True
+
+                        # Set required properties
+                        if property_fields.get("Required") == True:
+                            if target.get("required"):
+                                if property_fields["Property"] not in target["required"]:
+                                    target["required"].append(property_fields["Property"])
+                            else:
+                                target["required"] = [property_fields["Property"]]
+
+                        target["properties"][property_fields['Property']] = property
+            
+            # Delete properties not in Airtable
+            for property in list(target["properties"]):
+                formula = match({"Property": property, "propertyOf": definition_fields["Name"]})
+                result = properties_table.first(formula=formula)
+
+                if not result or result["fields"]["Status"] == "Omit":
+                    target["properties"].pop(property)
+
+    # Delete definitions not in Airtable
+    for definition in list(schema["definitions"]):
+        formula = match({"Name": definition})
+        result = definitions_table.first(formula=formula)
+
+        if not result or result["fields"]["Status"] == "Omit":
+            schema["definitions"].pop(definition)
+
+    with (schemadir / 'network-schema.json').open('w') as f:
+        json.dump(schema, f, indent=2)
+        f.write('\n')
+    
+    # Update codelists
+    files = glob.glob(f"{codelistdir}/*/*.csv")
+    for file in files:
+      
+      # Don't delete codelists that are managed outside of Airtable
+      if file.split("/")[-1] not in EXTERNAL_CODELISTS:
+        os.remove(file)
+    
+    for codelist in codelists_table.all():
+        codelist_fields = codelist["fields"]
+        
+        if codelist_fields["Status"] != "Omit" and codelist_fields.get("Codes"):
+            filename = f"{codelist_fields['Name']}.csv"
+            
+            if codelist_fields.get("Codelist type") == "Closed":
+                subdir = "closed"
+            else:
+                subdir = "open"
+
+            with open(codelistdir / subdir / filename, 'w', newline='') as f:
+                fieldnames = ['code', 'title', 'description']
+                writer = csv.DictWriter(f, fieldnames=fieldnames)
+                writer.writeheader()
+
+                for code_id in codelist_fields['Codes']:
+                    code_record = codes_table.get(code_id)
+                    code_fields = code_record['fields']
+
+                    if code_fields["Status"] not in ["Omit","Further clarification needed"]:
+
+                        writer.writerow({
+                            'code': code_fields.get("Code", ""),
+                            'title': code_fields.get("Title", ""),
+                            'description': code_fields.get("Description", "")
+                        })
+
 
 @cli.command()
 def pre_commit():
@@ -645,127 +771,8 @@ def pre_commit():
     # Update docs/reference/codelists.md
     update_codelist_docs(schema)
 
-
-@cli.command()
-def update_reference_docs():
-    """Update reference documentation:
-      - docs/reference/schema.md
-      - docs/reference/codelists.md
-    """    
-    
-    # Load schema
-    schema = json_load('network-schema.json')
-
-    # Get list of references 
-    references = {}
-    for defn in schema['definitions']:
-      references[defn] = get_definition_references(schema, defn)
-
-    # Load schema reference
-    schema_reference = read_lines(referencedir / 'schema.md')
-
-    # Get content from components section of schema reference
-    components_index = schema_reference.index("### Components\n") + 3
-
-    for i in range(components_index, len(schema_reference)):
-        if schema_reference[i][:5] == "#### ":
-            defn = schema_reference[i][5:-1]
-            
-            if defn in schema["definitions"]:
-                schema["definitions"][defn]["content"] = []
-                j = i+1
-
-                # Drop auto-generated reference content
-                while j < len(schema_reference) and not schema_reference[j].startswith("```{admonition}") and not schema_reference[j].startswith(f"`{defn}"):
-                    schema["definitions"][defn]["content"].append(schema_reference[j])
-                    j = j+1
-
-    # Generate standard reference content for each definition
-    for defn, definition in schema["definitions"].items():
-        definition["content"] = definition.get("content", [])
-        
-        # Add heading
-        definition["content"].insert(0, f"#### {defn}\n")
-        
-        # Get Github issues and list related definitions and properties
-        definition["issues"] = {}
-        if definition.get("$comment"):
-            for issue in get_issues(definition["$comment"]):
-                definition["issues"][issue.url] = {"issue": issue, "relatedTo": [defn]}
-        
-        for prop, property in definition["properties"].items():
-            if property.get("$comment"):
-                for issue in get_issues(property["$comment"]):
-                    if issue.url in definition["issues"]:
-                        definition["issues"][issue.url]["relatedTo"].append(f".{prop}")
-                    else:
-                        definition["issues"][issue.url] = {"issue": issue, "relatedTo": [f".{prop}"]}
-          
-        # Add admonition with list of related Github issues
-        if len(definition["issues"]) > 0:
-            definition["content"].extend([
-                "```{admonition} Alpha consultation\n",
-                "The following issues relate to this component or its fields:\n"
-            ])
-            for issue in definition["issues"].values():
-                definition["content"].extend([
-                    f"* `{'`, `'.join(issue['relatedTo'])}`: [#{issue['issue'].number} {issue['issue'].title}]({issue['issue'].html_url})\n"
-                ])
-            definition["content"].append("```\n\n")
-
-        # Add a list of references.
-        definition["content"].append("This component is referenced by the following properties:\n")
-
-        for ref in references[defn]:
-            # Remove array indices because they do not appear in the HTML anchors generated by the json schema directive
-            ref = [part for part in ref if part != '0']
-            # Ideally, these would be relative links - see https://github.com/OpenDataServices/sphinxcontrib-opendataservices/issues/43
-            definition["content"].append(f"* [`{'/'.join(ref)}`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,{'/definitions/' if len(ref) > 1 else ','}{','.join(ref)})\n")
-                
-        # Add definition and schema table
-        definition["content"].extend([
-            f"\n\n`{defn}` is defined as:\n\n",
-            "```{jsoninclude-quote} ../../schema/network-schema.json\n",
-            f":jsonpointer: /definitions/{defn}/description\n",
-            "```\n\n",
-            f"Each `{defn}` has the following fields:\n\n", 
-            "::::{tab-set}\n\n",
-            ":::{tab-item} Schema\n\n",
-            "```{jsonschema} ../../schema/network-schema.json\n",
-            f":pointer: /definitions/{defn}\n",
-            f":collapse: {','.join(definition['properties'].keys())}\n"
-            "```\n\n",
-            ":::\n\n",
-            ":::{tab-item} Examples\n\n"
-        ])
-
-        # Add examples
-        for ref in references[defn]:
-          if ref[0] not in schema['definitions']:
-            if ref[-1] == '0':
-              ref.pop(-1)
-            
-            definition["content"].extend([
-              "```{eval-rst}\n",
-              ".. jsoninclude:: ../../examples/json/network-package.json\n",
-              f" :jsonpointer: /networks/0/{'/'.join(ref)}\n",
-              f" :title: {'/'.join(ref)}\n",
-              "```\n\n"
-            ])
-
-        definition["content"].extend([          
-            ":::\n\n",
-            "::::\n\n"
-        ])
-      
-    # Update schema reference
-    schema_reference = schema_reference[:components_index+1]
-    schema_reference.append("\n")
-    
-    for definition in schema["definitions"].values():
-        schema_reference.extend(definition["content"])
-
-    write_lines(referencedir / 'schema.md', schema_reference)
+    # Update docs/reference/schema.md
+    update_schema_docs(schema)
 
 
 @cli.command()

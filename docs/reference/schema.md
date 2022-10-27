@@ -99,7 +99,7 @@ This section lists each component in the OFDS schema. Some components are reused
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
 * `Node`, `.accessPoint`: [#60 Node definition (access points)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/60)
-* `.location`: [#10 Coordinates modelling](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
+* `.location`: [#10 Coordinates modelling (add support for WKT to Flatten Tool)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
 * `.internationalConnections`: [#72 International connections](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/72)
 * `.physicalInfrastructureProvider`, `.networkProvider`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
 ```
@@ -110,7 +110,11 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/Node/description
 ```
 
+This component is referenced by the following properties:
+* [`nodes`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,nodes)
+
 Each `Node` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -122,12 +126,12 @@ Each `Node` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/nodes
-   :title: Example
+ :jsonpointer: /networks/0/nodes
+ :title: nodes
 ```
 
 :::
@@ -138,10 +142,10 @@ Each `Node` has the following fields:
 
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
-* `Link`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
+* `Span`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
 * `.start`, `.end`: [#25 Link endpoints](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25)
+* `.route`: [#10 Coordinates modelling (add support for WKT to Flatten Tool)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
 * `.route`: [#12 Geometry types for link routes](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/12)
-* `.route`: [#10 Coordinates modelling](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
 * `.physicalInfrastructureProvider`, `.networkProvider`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
 * `.supplier`: [#87 Clarify semantics around link supplier](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/87)
 * `.deployment`, `.deploymentDetails`: [#26 Link deployment](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26)
@@ -154,24 +158,28 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/Span/description
 ```
 
+This component is referenced by the following properties:
+* [`spans`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,spans)
+
 Each `Span` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Span
-:collapse: id,name,phase,status,readyForServiceDate,start,end,route,physicalInfrastructureProvider,networkProvider,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries,directed
+:collapse: id,name,phase,status,readyForServiceDate,start,end,directed,route,physicalInfrastructureProvider,networkProvider,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
 ```
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/spans
-   :title: Example
+ :jsonpointer: /networks/0/spans
+ :title: spans
 ```
 
 :::
@@ -186,7 +194,11 @@ Each `Span` has the following fields:
 :jsonpointer: /definitions/Phase/description
 ```
 
+This component is referenced by the following properties:
+* [`phases`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,phases)
+
 Each `Phase` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -198,12 +210,12 @@ Each `Phase` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/phases
-   :title: Example
+ :jsonpointer: /networks/0/phases
+ :title: phases
 ```
 
 :::
@@ -223,7 +235,12 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/Organisation/description
 ```
 
+This component is referenced by the following properties:
+* [`organisations`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,organisations)
+* [`publisher`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,publisher)
+
 Each `Organisation` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -235,12 +252,18 @@ Each `Organisation` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/organisations
-   :title: Example
+ :jsonpointer: /networks/0/organisations
+ :title: organisations
+```
+
+```{eval-rst}
+.. jsoninclude:: ../../examples/json/network-package.json
+ :jsonpointer: /networks/0/publisher
+ :title: publisher
 ```
 
 :::
@@ -260,7 +283,11 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/Contract/description
 ```
 
+This component is referenced by the following properties:
+* [`contracts`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,contracts)
+
 Each `Contract` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -272,12 +299,12 @@ Each `Contract` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/contracts
-   :title: Example
+ :jsonpointer: /networks/0/contracts
+ :title: contracts
 ```
 
 :::
@@ -292,7 +319,12 @@ Each `Contract` has the following fields:
 :jsonpointer: /definitions/Geometry/description
 ```
 
+This component is referenced by the following properties:
+* [`Node/location`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,location)
+* [`Span/route`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,route)
+
 Each `Geometry` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -304,16 +336,18 @@ Each `Geometry` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/nodes/0/location
-   :title: Node
+ :jsonpointer: /networks/0/nodes/0/location
+ :title: nodes/0/location
+```
 
+```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/spans/0/route
-   :title: span
+ :jsonpointer: /networks/0/spans/0/route
+ :title: spans/0/route
 ```
 
 :::
@@ -328,7 +362,16 @@ Each `Geometry` has the following fields:
 :jsonpointer: /definitions/OrganisationReference/description
 ```
 
+This component is referenced by the following properties:
+* [`Node/physicalInfrastructureProvider`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,physicalInfrastructureProvider)
+* [`Node/networkProvider`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,networkProvider)
+* [`Span/physicalInfrastructureProvider`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,physicalInfrastructureProvider)
+* [`Span/networkProvider`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,networkProvider)
+* [`Span/supplier`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,supplier)
+* [`Phase/funders`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Phase,funders)
+
 Each `OrganisationReference` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -340,12 +383,42 @@ Each `OrganisationReference` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/spans/0/physicalInfrastructureProvider
-   :title: Example
+ :jsonpointer: /networks/0/nodes/0/physicalInfrastructureProvider
+ :title: nodes/0/physicalInfrastructureProvider
+```
+
+```{eval-rst}
+.. jsoninclude:: ../../examples/json/network-package.json
+ :jsonpointer: /networks/0/nodes/0/networkProvider
+ :title: nodes/0/networkProvider
+```
+
+```{eval-rst}
+.. jsoninclude:: ../../examples/json/network-package.json
+ :jsonpointer: /networks/0/spans/0/physicalInfrastructureProvider
+ :title: spans/0/physicalInfrastructureProvider
+```
+
+```{eval-rst}
+.. jsoninclude:: ../../examples/json/network-package.json
+ :jsonpointer: /networks/0/spans/0/networkProvider
+ :title: spans/0/networkProvider
+```
+
+```{eval-rst}
+.. jsoninclude:: ../../examples/json/network-package.json
+ :jsonpointer: /networks/0/spans/0/supplier
+ :title: spans/0/supplier
+```
+
+```{eval-rst}
+.. jsoninclude:: ../../examples/json/network-package.json
+ :jsonpointer: /networks/0/phases/0/funders
+ :title: phases/0/funders
 ```
 
 :::
@@ -360,7 +433,13 @@ Each `OrganisationReference` has the following fields:
 :jsonpointer: /definitions/PhaseReference/description
 ```
 
+This component is referenced by the following properties:
+* [`Node/phase`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,phase)
+* [`Span/phase`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,phase)
+* [`Contract/relatedPhases`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Contract,relatedPhases)
+
 Each `PhaseReference` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -372,12 +451,24 @@ Each `PhaseReference` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/contracts/0/relatedPhases
-   :title: Example
+ :jsonpointer: /networks/0/nodes/0/phase
+ :title: nodes/0/phase
+```
+
+```{eval-rst}
+.. jsoninclude:: ../../examples/json/network-package.json
+ :jsonpointer: /networks/0/spans/0/phase
+ :title: spans/0/phase
+```
+
+```{eval-rst}
+.. jsoninclude:: ../../examples/json/network-package.json
+ :jsonpointer: /networks/0/contracts/0/relatedPhases
+ :title: contracts/0/relatedPhases
 ```
 
 :::
@@ -392,7 +483,12 @@ Each `PhaseReference` has the following fields:
 :jsonpointer: /definitions/Address/description
 ```
 
+This component is referenced by the following properties:
+* [`Node/address`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,address)
+* [`Node/internationalConnections`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,internationalConnections)
+
 Each `Address` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -404,12 +500,18 @@ Each `Address` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/nodes/0/address
-   :title: Example
+ :jsonpointer: /networks/0/nodes/0/address
+ :title: nodes/0/address
+```
+
+```{eval-rst}
+.. jsoninclude:: ../../examples/json/network-package.json
+ :jsonpointer: /networks/0/nodes/0/internationalConnections
+ :title: nodes/0/internationalConnections
 ```
 
 :::
@@ -424,7 +526,11 @@ Each `Address` has the following fields:
 :jsonpointer: /definitions/Value/description
 ```
 
+This component is referenced by the following properties:
+* [`Contract/value`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Contract,value)
+
 Each `Value` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -436,12 +542,12 @@ Each `Value` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/contracts/0/value
-   :title: Example
+ :jsonpointer: /networks/0/contracts/0/value
+ :title: contracts/0/value
 ```
 
 :::
@@ -456,7 +562,11 @@ Each `Value` has the following fields:
 :jsonpointer: /definitions/Document/description
 ```
 
+This component is referenced by the following properties:
+* [`Contract/documents`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Contract,documents)
+
 Each `Document` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -468,12 +578,12 @@ Each `Document` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/contracts/0/documents
-   :title: Example
+ :jsonpointer: /networks/0/contracts/0/documents
+ :title: contracts/0/documents
 ```
 
 :::
@@ -488,7 +598,11 @@ Each `Document` has the following fields:
 :jsonpointer: /definitions/Identifier/description
 ```
 
+This component is referenced by the following properties:
+* [`Organisation/identifier`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Organisation,identifier)
+
 Each `Identifier` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -500,12 +614,18 @@ Each `Identifier` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/organisations/0/identifier
-   :title: Example
+ :jsonpointer: /networks/0/organisations/0/identifier
+ :title: organisations/0/identifier
+```
+
+```{eval-rst}
+.. jsoninclude:: ../../examples/json/network-package.json
+ :jsonpointer: /networks/0/publisher/identifier
+ :title: publisher/identifier
 ```
 
 :::
@@ -538,7 +658,11 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/CoordinateReferenceSystem/description
 ```
 
+This component is referenced by the following properties:
+* [`crs`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,crs)
+
 Each `CoordinateReferenceSystem` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -550,12 +674,12 @@ Each `CoordinateReferenceSystem` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/crs
-   :title: Example
+ :jsonpointer: /networks/0/crs
+ :title: crs
 ```
 
 :::
@@ -566,8 +690,8 @@ Each `CoordinateReferenceSystem` has the following fields:
 
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
-* `RelatedResourceReference`: [#75 Paginating and streaming nodes and spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75)
-* `RelatedResourceReference`: [#83 Consider renaming spans to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
+* `Link`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
+* `Link`: [#75 Paginating and streaming nodes and links](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75)
 ```
 
 `Link` is defined as:
@@ -576,7 +700,11 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/Link/description
 ```
 
+This component is referenced by the following properties:
+* [`links`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,links)
+
 Each `Link` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -588,16 +716,12 @@ Each `Link` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
-.. jsoninclude:: ../../examples/json/network-separate-endpoints.json
-   :jsonpointer: /networks/0/links
-   :title: Pagination
-
-.. jsoninclude:: ../../examples/json/network-separate-files.json
-   :jsonpointer: /networks/0/links
-   :title: Streaming
+.. jsoninclude:: ../../examples/json/network-package.json
+ :jsonpointer: /networks/0/links
+ :title: links
 ```
 
 :::
@@ -612,7 +736,11 @@ Each `Link` has the following fields:
 :jsonpointer: /definitions/FibreTypeDetails/description
 ```
 
+This component is referenced by the following properties:
+* [`Span/fibreTypeDetails`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,fibreTypeDetails)
+
 Each `FibreTypeDetails` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -624,12 +752,12 @@ Each `FibreTypeDetails` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/spans/0/fibreTypeDetails
-   :title: Example
+ :jsonpointer: /networks/0/spans/0/fibreTypeDetails
+ :title: spans/0/fibreTypeDetails
 ```
 
 :::
@@ -649,7 +777,11 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/DeploymentDetails/description
 ```
 
+This component is referenced by the following properties:
+* [`Span/deploymentDetails`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,deploymentDetails)
+
 Each `DeploymentDetails` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -661,12 +793,12 @@ Each `DeploymentDetails` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/spans/0/deploymentDetails
-   :title: Example
+ :jsonpointer: /networks/0/spans/0/deploymentDetails
+ :title: spans/0/deploymentDetails
 ```
 
 :::
@@ -686,7 +818,11 @@ The following issues relate to this component or its fields:
 :jsonpointer: /definitions/CapacityDetails/description
 ```
 
+This component is referenced by the following properties:
+* [`Span/capacityDetails`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,capacityDetails)
+
 Each `CapacityDetails` has the following fields:
+
 ::::{tab-set}
 
 :::{tab-item} Schema
@@ -698,14 +834,15 @@ Each `CapacityDetails` has the following fields:
 
 :::
 
-:::{tab-item} Example
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-   :jsonpointer: /networks/0/spans/0/capacityDetails
-   :title: Example
+ :jsonpointer: /networks/0/spans/0/capacityDetails
+ :title: spans/0/capacityDetails
 ```
 
 :::
 
 ::::
+
