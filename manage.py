@@ -7,6 +7,7 @@ import json
 import jsonref
 import os
 import shutil
+import subprocess
 
 from collections import OrderedDict
 from flattentool import create_template, flatten
@@ -727,6 +728,9 @@ def pre_commit():
       - examples/csv
       - reference/publication_formats/csv.md
       - reference/codelists.md
+      - reference/schema.md
+      - examples/geojson/nodes.geojson
+      - examples/geojson/spans.geojson
     """
 
     # Load schema
@@ -774,6 +778,8 @@ def pre_commit():
     # Update docs/reference/schema.md
     update_schema_docs(schema)
 
+    # Update examples/geojson/nodes.geojson and examples/geojson/spans.geojson
+    subprocess.run(['ofdskit', 'jsontogeojson', 'examples/json/network-package.json', 'examples/geojson/nodes.geojson', 'examples/geojson/spans.geojson'])
 
 @cli.command()
 @click.argument('filename', type=click.Path(exists=True))
