@@ -144,8 +144,8 @@ Each `Node` has the following fields:
 The following issues relate to this component or its fields:
 * `Span`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
 * `.start`, `.end`: [#25 Link endpoints](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25)
-* `.route`: [#10 Coordinates modelling (add support for WKT to Flatten Tool)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
 * `.route`: [#12 Geometry types for link routes](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/12)
+* `.route`: [#10 Coordinates modelling (add support for WKT to Flatten Tool)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
 * `.physicalInfrastructureProvider`, `.networkProvider`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
 * `.supplier`: [#87 Clarify semantics around link supplier](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/87)
 * `.deployment`, `.deploymentDetails`: [#26 Link deployment](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26)
@@ -690,8 +690,8 @@ Each `CoordinateReferenceSystem` has the following fields:
 
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
-* `Link`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
 * `Link`: [#75 Paginating and streaming nodes and links](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75)
+* `Link`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
 ```
 
 `Link` is defined as:
