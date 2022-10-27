@@ -351,7 +351,7 @@ def update_csv_docs(jsonref_schema):
 
   with open(referencedir / 'publication_formats' / 'csv.md', 'r') as f:
     for line in f:
-      if line == '## Networks\n':
+      if line == '## networks\n':
         break
       else:
         static_content.append(line)

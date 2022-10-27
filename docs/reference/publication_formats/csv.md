@@ -51,30 +51,6 @@ The following example shows a network with two nodes represented in JSON format 
 ::::
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ## networks
 
 This table is related to the following tables:
