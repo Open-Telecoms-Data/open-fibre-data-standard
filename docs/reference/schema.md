@@ -10,7 +10,7 @@ The schema provides the authoritative definition of the structure of Open Fibre 
 
 For this version of OFDS, the canonical URL of the schema is [https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__alpha/schema/network-schema.json](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__alpha/schema/network-schema.json). Use the canonical URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested.
 
-This page presents the schema in an [interactive browser](#browser) and in [reference tables](#reference-tables) with additional information in paragraphs. You can also download the canonical version of the schema as [JSON Schema](../../schema/network-schema.json) or download it as a [CSV spreadsheet](../../schema/network-schema.csv).
+This page presents the schema in an [interactive browser](#browser) and in [reference tables](#reference-tables) with additional information in paragraphs. You can also download the canonical version of the schema as [JSON Schema](../_build/dirhtml/_schema/network-schema.json) or download it as a [CSV spreadsheet](../../schema/network-schema.csv).
 
 ```{note}
    If any conflicts are found between the text on this page and the text within the schema, the text within the schema takes precedence.
@@ -20,7 +20,7 @@ This page presents the schema in an [interactive browser](#browser) and in [refe
 
 Click on schema elements to expand the tree, or use the '+' icon to expand all elements. Use { } to view the underlying schema for any section. Required fields are indicated in **bold**.
 
- <script src="../_static/docson/widget.js" data-schema="../network-schema.json"></script>
+ <script src="../_static/docson/widget.js" data-schema="../../_schema/network-schema.json"></script>
 
 ## Reference tables
 
@@ -42,7 +42,7 @@ In addition to the above sections, there are several top-level metadata fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :collapse: nodes,spans,phases,organisations,contracts,publisher,crs
 ```
 
@@ -106,7 +106,7 @@ The following issues relate to this component or its fields:
 
 `Node` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/Node/description
 ```
 
@@ -115,7 +115,7 @@ Each `Node` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/Node
 :collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,physicalInfrastructureProvider,networkProvider
 ```
@@ -150,7 +150,7 @@ The following issues relate to this component or its fields:
 
 `Span` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/Span/description
 ```
 
@@ -159,7 +159,7 @@ Each `Span` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/Span
 :collapse: id,name,phase,status,readyForServiceDate,start,end,route,physicalInfrastructureProvider,networkProvider,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries,directed
 ```
@@ -182,7 +182,7 @@ Each `Span` has the following fields:
 
 `Phase` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/Phase/description
 ```
 
@@ -191,7 +191,7 @@ Each `Phase` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/Phase
 :collapse: id,name,description,funders
 ```
@@ -219,7 +219,7 @@ The following issues relate to this component or its fields:
 
 `Organisation` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/Organisation/description
 ```
 
@@ -228,7 +228,7 @@ Each `Organisation` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/Organisation
 :collapse: id,name,identifier,country,roles,roleDetails,website,logo
 ```
@@ -256,7 +256,7 @@ The following issues relate to this component or its fields:
 
 `Contract` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/Contract/description
 ```
 
@@ -265,7 +265,7 @@ Each `Contract` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/Contract
 :collapse: id,title,description,type,value,dateSigned,documents,relatedPhases
 ```
@@ -288,7 +288,7 @@ Each `Contract` has the following fields:
 
 `Geometry` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/Geometry/description
 ```
 
@@ -297,7 +297,7 @@ Each `Geometry` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/Geometry
 :collapse: type,coordinates
 ```
@@ -324,7 +324,7 @@ Each `Geometry` has the following fields:
 
 `OrganisationReference` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/OrganisationReference/description
 ```
 
@@ -333,7 +333,7 @@ Each `OrganisationReference` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/OrganisationReference
 :collapse: id,name
 ```
@@ -356,7 +356,7 @@ Each `OrganisationReference` has the following fields:
 
 `PhaseReference` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/PhaseReference/description
 ```
 
@@ -365,7 +365,7 @@ Each `PhaseReference` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/PhaseReference
 :collapse: id,name
 ```
@@ -388,7 +388,7 @@ Each `PhaseReference` has the following fields:
 
 `Address` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/Address/description
 ```
 
@@ -397,7 +397,7 @@ Each `Address` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/Address
 :collapse: streetAddress,locality,region,postalCode,country
 ```
@@ -420,7 +420,7 @@ Each `Address` has the following fields:
 
 `Value` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/Value/description
 ```
 
@@ -429,7 +429,7 @@ Each `Value` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/Value
 :collapse: amount,currency
 ```
@@ -452,7 +452,7 @@ Each `Value` has the following fields:
 
 `Document` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/Document/description
 ```
 
@@ -461,7 +461,7 @@ Each `Document` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/Document
 :collapse: title,description,url,format
 ```
@@ -484,7 +484,7 @@ Each `Document` has the following fields:
 
 `Identifier` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/Identifier/description
 ```
 
@@ -493,7 +493,7 @@ Each `Identifier` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/Identifier
 :collapse: id,scheme,legalName,uri
 ```
@@ -534,7 +534,7 @@ The following issues relate to this component or its fields:
 
 `CoordinateReferenceSystem` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/CoordinateReferenceSystem/description
 ```
 
@@ -543,7 +543,7 @@ Each `CoordinateReferenceSystem` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/CoordinateReferenceSystem
 :collapse: name,uri
 ```
@@ -572,7 +572,7 @@ The following issues relate to this component or its fields:
 
 `Link` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/Link/description
 ```
 
@@ -581,7 +581,7 @@ Each `Link` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/Link
 :collapse: href,rel
 ```
@@ -608,7 +608,7 @@ Each `Link` has the following fields:
 
 `FibreTypeDetails` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/FibreTypeDetails/description
 ```
 
@@ -617,7 +617,7 @@ Each `FibreTypeDetails` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/FibreTypeDetails
 :collapse: description
 ```
@@ -645,7 +645,7 @@ The following issues relate to this component or its fields:
 
 `DeploymentDetails` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/DeploymentDetails/description
 ```
 
@@ -654,7 +654,7 @@ Each `DeploymentDetails` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/DeploymentDetails
 :collapse: description
 ```
@@ -682,7 +682,7 @@ The following issues relate to this component or its fields:
 
 `CapacityDetails` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json
 :jsonpointer: /definitions/CapacityDetails/description
 ```
 
@@ -691,7 +691,7 @@ Each `CapacityDetails` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_build/dirhtml/_schema/network-schema.json
 :pointer: /definitions/CapacityDetails
 :collapse: description
 ```
