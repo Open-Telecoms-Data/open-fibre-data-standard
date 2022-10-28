@@ -180,7 +180,7 @@ html_static_path = ['_static', '../schema']
 # .htaccess) here, relative to this directory. These files are copied
 # directly to the root of the documentation.
 #
-# html_extra_path = []
+html_extra_path = ['../_temp']
 
 # If not None, a 'Last updated on:' timestamp is inserted at every page
 # bottom, using the given strftime format.
@@ -363,14 +363,24 @@ locale_dirs = ['locale/']   # path is example but recommended.
 gettext_compact = False     # optional.
 
 # Replace branch placeholders in schema files
+import os
+
 from pygit2 import Repository
 
+## Create tmp/schema directory
+path = '../_temp/_schema'
+if not os.path.exists(path):
+  os.makedirs(path)
+
+## Get branch name
 branch = Repository('.').head.shorthand
 
-with open('../schema/network-schema.json', 'r') as f:
-  content = f.read()
+for schema_file in ['network-schema.json', 'network-package-schema.json']:
+  with open(f"../schema/{schema_file}", 'r') as f:
+    content = f.read()
 
-content = content.replace('{{branch}}', f"{branch}")
+  content = content.replace('{{branch}}', f"{branch}")
 
-with open('_build/dirhtml/network-schema.json', 'w') as f:
-  f.write(content)
+  with open(f"../_temp/_schema/{schema_file}", 'w') as f:
+    f.write(content)
+
