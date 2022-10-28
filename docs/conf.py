@@ -373,7 +373,7 @@ if not os.path.exists(path):
   os.makedirs(path)
 
 ## Get branch name
-branch = Repository('.').head.shorthand
+branch = Repository('../').head.shorthand
 
 print(f"Branch: {branch}")
 
