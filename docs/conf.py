@@ -361,3 +361,16 @@ texinfo_documents = [
 
 locale_dirs = ['locale/']   # path is example but recommended.
 gettext_compact = False     # optional.
+
+# Replace branch placeholders in schema files
+from pygit2 import Repository
+
+branch = Repository('.').head.shorthand
+
+with open('../schema/network-schema.json', 'r') as f:
+  content = f.read()
+
+content = content.replace('/latest/', f"/{branch}/")
+
+with open('_build/dirhtml/network-schema.json', 'w') as f:
+  f.write(content)
