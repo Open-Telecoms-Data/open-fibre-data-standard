@@ -370,7 +370,7 @@ branch = Repository('.').head.shorthand
 with open('../schema/network-schema.json', 'r') as f:
   content = f.read()
 
-content = content.replace('/latest/', f"/{branch}/")
+content = content.replace('{{branch}}', f"{branch}")
 
 with open('_build/dirhtml/network-schema.json', 'w') as f:
   f.write(content)

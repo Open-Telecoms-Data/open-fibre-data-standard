@@ -10,7 +10,7 @@
   "properties": {
     "id": {
       "title": "Identifier",
-      "description": "A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/identifiers.html).",
+      "description": "A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/identifiers.html).",
       "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/58",
       "format": "uuid",
       "type": "string"
@@ -24,7 +24,7 @@
     },
     "nodes": {
       "title": "Nodes",
-      "description": "Information about the nodes that belong to this network. Information about nodes should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk nodes file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated nodes endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
+      "description": "Information about the nodes that belong to this network. Information about nodes should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk nodes file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated nodes endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/guidance/publication.html#how-to-format-data-for-publication).",
       "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75",
       "type": "array",
       "items": {
@@ -35,7 +35,7 @@
     },
     "spans": {
       "title": "Spans",
-      "description": "Information about the spans that belong to this network. Information about spans should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk spans file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated spans endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
+      "description": "Information about the spans that belong to this network. Information about spans should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk spans file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated spans endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/guidance/publication.html#how-to-format-data-for-publication).",
       "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75,https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83",
       "type": "array",
       "items": {
@@ -125,7 +125,7 @@
     },
     "language": {
       "title": "Language",
-      "description": "The default language of this network,from the open [language codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#language). A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
+      "description": "The default language of this network,from the open [language codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#language). A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
       "type": "string",
       "$comment": "",
       "codelist": "language.csv",
@@ -173,7 +173,7 @@
         },
         "status": {
           "title": "Status",
-          "description": "The status of this node, from the closed [nodeStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodeStatus).",
+          "description": "The status of this node, from the closed [nodeStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#nodeStatus).",
           "type": "string",
           "$comment": "",
           "codelist": "nodeStatus.csv",
@@ -201,7 +201,7 @@
         },
         "type": {
           "title": "Node type",
-          "description": "The type of this node, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodeType).",
+          "description": "The type of this node, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#nodeType).",
           "type": "array",
           "$comment": "",
           "items": {
@@ -240,7 +240,7 @@
         },
         "technologies": {
           "title": "Technologies",
-          "description": "The active technologies used at this node, from the open [nodeTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodeTechnologies).",
+          "description": "The active technologies used at this node, from the open [nodeTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#nodeTechnologies).",
           "type": "array",
           "$comment": "",
           "items": {
@@ -300,7 +300,7 @@
         },
         "status": {
           "title": "Span status",
-          "description": "The status of the network infrastructure for this span, from the closed [spanStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spanStatus).",
+          "description": "The status of the network infrastructure for this span, from the closed [spanStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#spanStatus).",
           "type": "string",
           "$comment": "",
           "codelist": "spanStatus.csv",
@@ -367,7 +367,7 @@
         },
         "transmissionMedium": {
           "title": "Transmission medium",
-          "description": "The physical media of this span, from the closed [transmissionMedium codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#transmissionMedium).",
+          "description": "The physical media of this span, from the closed [transmissionMedium codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#transmissionMedium).",
           "type": "array",
           "$comment": "",
           "items": {
@@ -389,7 +389,7 @@
         },
         "deployment": {
           "title": "Deployment",
-          "description": "The physical deployment of this span, from the closed [deployment codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment). Further details of this span's deployment can be provided in `.deploymentDetails`.",
+          "description": "The physical deployment of this span, from the closed [deployment codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#deployment). Further details of this span's deployment can be provided in `.deploymentDetails`.",
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26",
           "type": "array",
           "items": {
@@ -423,7 +423,7 @@
         },
         "fibreType": {
           "title": "Fibre type",
-          "description": "The type of fibre used in this span, from the closed [fibreType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#fibreType). Further details of the span's fibre type can be provided in `.fibreTypeDetails`.",
+          "description": "The type of fibre used in this span, from the closed [fibreType codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#fibreType). Further details of the span's fibre type can be provided in `.fibreTypeDetails`.",
           "type": "string",
           "$comment": "",
           "codelist": "fibreType.csv",
@@ -458,7 +458,7 @@
         },
         "technologies": {
           "title": "Technologies",
-          "description": "The active technologies used on this span,from the open [spanTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spanTechnologies).",
+          "description": "The active technologies used on this span,from the open [spanTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#spanTechnologies).",
           "type": "array",
           "$comment": "",
           "items": {
@@ -486,7 +486,7 @@
         },
         "countries": {
           "title": "Countries",
-          "description": "The countries in which this span is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",
+          "description": "The countries in which this span is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#country).",
           "type": "array",
           "$comment": "",
           "items": {
@@ -830,7 +830,7 @@
         },
         "country": {
           "title": "Country",
-          "description": "The country in which this organisation is legally registered, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",
+          "description": "The country in which this organisation is legally registered, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#country).",
           "type": "string",
           "$comment": "",
           "codelist": "country.csv",
@@ -1090,7 +1090,7 @@
         },
         "roles": {
           "title": "Roles",
-          "description": "This organisation's roles in this network, from the open [organisationRole codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationRole). Further details about this organisation's roles can be provided in `.roleDetails`.",
+          "description": "This organisation's roles in this network, from the open [organisationRole codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#organisationRole). Further details about this organisation's roles can be provided in `.roleDetails`.",
           "type": "array",
           "$comment": "",
           "items": {
@@ -1160,7 +1160,7 @@
         },
         "type": {
           "title": "Contract type",
-          "description": "The type of this contract, from the open [contractType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#contractType).",
+          "description": "The type of this contract, from the open [contractType codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#contractType).",
           "type": "string",
           "$comment": "",
           "codelist": "contractType.csv",
@@ -1216,7 +1216,7 @@
       "properties": {
         "type": {
           "title": "Type",
-          "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`, from the closed [geometryType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#geometryType). This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Span.route`.",
+          "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`, from the closed [geometryType codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#geometryType). This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Span.route`.",
           "type": "string",
           "$comment": "",
           "codelist": "geometryType.csv",
@@ -1335,7 +1335,7 @@
         },
         "country": {
           "title": "Country",
-          "description": "The country in which the address is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",
+          "description": "The country in which the address is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#country).",
           "type": "string",
           "$comment": "",
           "codelist": "country.csv",
@@ -1610,7 +1610,7 @@
         },
         "currency": {
           "title": "Currency",
-          "description": "The currency of this value, from the closed [currency codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#currency).",
+          "description": "The currency of this value, from the closed [currency codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#currency).",
           "type": "string",
           "$comment": "",
           "codelist": "currency.csv",
@@ -1952,7 +1952,7 @@
         },
         "format": {
           "title": "Format",
-          "description": "The format of this document, from the open [mediaType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#mediaType).",
+          "description": "The format of this document, from the open [mediaType codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#mediaType).",
           "type": "string",
           "$comment": "",
           "codelist": "mediaType.csv",
@@ -1977,7 +1977,7 @@
         },
         "scheme": {
           "title": "Scheme",
-          "description": "The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationIdentifierScheme).",
+          "description": "The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#organisationIdentifierScheme).",
           "type": "string",
           "$comment": "",
           "codelist": "organisationIdentifierScheme.csv",
@@ -2045,7 +2045,7 @@
         },
         "rel": {
           "title": "Link relation type",
-          "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype).",
+          "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/{{branch}}/reference/codelists.html#linkrelationtype).",
           "type": "string",
           "$comment": "",
           "codelist": "linkRelationType.csv",
