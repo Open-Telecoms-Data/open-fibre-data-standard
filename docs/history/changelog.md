@@ -13,14 +13,39 @@ This page lists the changes in each version of the Open Fibre Data Standard.
 
 * [#144](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/144) - Clarify norms in the description of `links.start` and `links.end`.
 * [#154](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/154) - Rename links to spans, related resources to links and pages to links.
+* [#158](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/158) - Correct erroneous reference in `Span.capacityDetails`.
 
 ### Codelists
 
+* [#158](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/158) - Add CSV file for organisationIdentifierScheme.
+
 ### Normative documentation
 
+* [#158](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/158):
+  * Refactor publication formats reference to reduce page length.
+  * Update schema reference:
+    * Add list of referencing properties for each component.
+    * Add more examples to schema reference.
+    * Update for latest schema.
+  * Add list of referencing properties for each codelist in codelist reference
+  * 
 ### Non-normative documentation
 
 * [#140](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/140) - Update actor definitions in the primer, and include translatable text in SVGs.
+* [#158](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/158):
+  * Update CSV template and examples to match latest schema.
+  * Update network package for latest schema.
+  * Update GeoJSON examples.
+  * Remove unused blank JSON example.
+
+### Build
+
+* [#158](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/158) - Update `manage.py`:
+  * Generate CSV publication format reference docs.
+  * Generate CSV template and examples.
+  * Generate schema reference documentation.
+  * Refactor
+  * Use OFDS Kit to generate GeoJSON examples.
 
 ## 0.1.0-alpha - 2022-09-22
 
