@@ -375,6 +375,7 @@ if not os.path.exists(path):
 ## Get branch name
 branch = Repository('../').head.shorthand
 
+print(os.getcwd())
 print(f"Branch: {branch}")
 
 for schema_file in ['network-schema.json', 'network-package-schema.json']:
