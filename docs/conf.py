@@ -373,9 +373,13 @@ if not os.path.exists(path):
   os.makedirs(path)
 
 ## Get branch name
-branch = Repository('../').head.shorthand
+cwd = os.getcwd()
 
-print(os.getcwd())
+if 'readthedocs.org' in cwd:
+  branch = cwd.split('/')[-2]
+else:
+  branch = Repository('../').head.shorthand
+
 print(f"Branch: {branch}")
 
 for schema_file in ['network-schema.json', 'network-package-schema.json']:
