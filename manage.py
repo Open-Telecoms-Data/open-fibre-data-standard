@@ -366,11 +366,11 @@ def pre_commit():
         # Add definition and schema table
         definition["content"].extend([
             f"`{defn}` is defined as:\n",
-            "```{jsoninclude-quote} ../../schema/network-schema.json\n",
+            "```{jsoninclude-quote} ../_build/dirhtml/_schema/network-schema.json\n",
             f":jsonpointer: /definitions/{defn}/description\n",
             "```\n",
             f"Each `{defn}` has the following fields:\n", 
-            "```{jsonschema} ../../schema/network-schema.json\n",
+            "```{jsonschema} ../_build/dirhtml/_schema/network-schema.json\n",
             f":pointer: /definitions/{defn}\n",
             f":collapse: {','.join(definition['properties'].keys())}\n"
             "```\n",
