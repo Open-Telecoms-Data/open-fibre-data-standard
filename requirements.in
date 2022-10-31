@@ -1,3 +1,4 @@
+jsonref
 sphinx
 sphinxcontrib-opendataservices
 sphinxcontrib-opendataservices-jsonschema
@@ -10,3 +11,4 @@ pyairtable
 PyGithub
 ocdskit
 sphinx-design
+ofdskit

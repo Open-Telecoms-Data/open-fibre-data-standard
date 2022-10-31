@@ -482,7 +482,7 @@
           "title": "Capacity details",
           "description": "Further details about this span's capacity",
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24",
-          "$ref": "#/definitions/FibreTypeDetails"
+          "$ref": "#/definitions/CapacityDetails"
         },
         "countries": {
           "title": "Countries",
