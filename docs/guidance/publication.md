@@ -101,11 +101,11 @@ If you add an additional field, you ought to describe its structure, format and 
 There are [open issues](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues?q=is%3Aopen+is%3Aissue+label%3ATooling) related to tooling for transforming data between publication formats.
 ```
 
-OFDS data can be published in three [publication formats](../reference/publication_formats.md):
+OFDS data can be published in three [publication formats](../reference/publication_formats/index.md):
 
-* The [JSON format](../reference/publication_formats.md#json) reflects the structure of the [schema](../reference/schema.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
-* The [GeoJSON format](../reference/publication_formats.md#geojson) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
-* The [CSV format](../reference/publication_formats.md#csv) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to users who want to explore the data in spreadsheet tools.
+* The [JSON format](../reference/publication_formats/json.md) reflects the structure of the [schema](../reference/schema.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
+* The [GeoJSON format](../reference/publication_formats/geojson.md) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
+* The [CSV format](../reference/publication_formats/csv.md) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to users who want to explore the data in spreadsheet tools.
 
 To meet the widest range of use cases, you ought to publish data in all three formats. The suggested approach is to export your data in the JSON format and to use the following tools to transform it to the GeoJSON and CSV formats:
 
@@ -146,7 +146,7 @@ To convert data to CSV format:
 
 * [Install Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/getting-started/#getting-started)
 * Download the [network schema](../../schema/network-schema.json)
-* If your data is a [JSON Lines file](../reference/publication_formats.md#streaming-option), segment it into appropriately sized [network packages](../reference/publication_formats.md#small-files-and-api-responses-option)
+* If your data is a [JSON Lines file](../reference/publication_formats/json.md#streaming-option), segment it into appropriately sized [network packages](../reference/publication_formats/json.md#small-files-and-api-responses-option)
 * Run the following command for each network package:
 
 ```bash
@@ -164,9 +164,9 @@ This section describes how to:
 * Use [pagination](#pagination) to publish an **individual** network that is too large to return in a single API response
 * Use [streaming](#streaming) to publish an **individual** network that is too large to load into memory.
 
-For information on how to use pagination and streaming to publish **multiple** networks, see the [publication formats reference](../reference/publication_formats.md).
+For information on how to use pagination and streaming to publish **multiple** networks, see the [publication formats reference](../reference/publication_formats/index.md).
 
-This guidance is applicable to the [JSON publication format](../reference/publication_formats.md#json), for information on pagination and streaming for the GeoJSON format see the [GeoJSON publication format reference](../reference/publication_formats.md#geojson).
+This guidance is applicable to the [JSON publication format](../reference/publication_formats/json.md), for information on pagination and streaming for the GeoJSON format see the [GeoJSON publication format reference](../reference/publication_formats/geojson.md).
 
 ##### Pagination
 
@@ -269,9 +269,9 @@ With respect to your OFDS publication, which best practices are most important w
 
 #### Bulk downloads
 
-If you are publishing only one network, or a small number of networks, you ought to use the approach described in the small file option for each [publication format](../reference/publication_formats.md).
+If you are publishing only one network, or a small number of networks, you ought to use the approach described in the small file option for each [publication format](../reference/publication_formats/index.md).
 
-If you are publishing a large number of networks, you ought to use the approach to streaming multiple networks described in the streaming option for each [publication format](../reference/publication_formats.md).
+If you are publishing a large number of networks, you ought to use the approach to streaming multiple networks described in the streaming option for each [publication format](../reference/publication_formats/index.md).
 
 If you are publishing a network that is very large, you ought to use the approach to streaming nodes and spans described in [how to publish large networks](#how-to-publish-large-networks).
 
@@ -289,7 +289,7 @@ Also, publishers ought to ensure that the data export is completed successfully,
 
 #### API access
 
-If you are publishing data via an API, you need to consider pagination. If you are publishing multiple networks, you ought to use the pagination method described in the API response option for each [publication format](../reference/publication_formats.md).
+If you are publishing data via an API, you need to consider pagination. If you are publishing multiple networks, you ought to use the pagination method described in the API response option for each [publication format](../reference/publication_formats/index.md).
 
 If you are publishing a network that is very large, you ought to use the approach to paginating nodes and spans described in [how to publish large networks](#how-to-publish-large-networks).
 

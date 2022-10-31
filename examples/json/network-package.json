@@ -326,7 +326,13 @@
       },
       "accuracy": 250,
       "accuracyDetails": "Measured according to the US National Standard for Spatial Data Accuracy.",
-      "language": "en"
+      "language": "en",
+      "links": [
+        {
+          "rel": "describedby",
+          "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-schema.json"
+        }
+      ]
     }
   ]
 }
