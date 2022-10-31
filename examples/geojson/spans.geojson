@@ -211,6 +211,7 @@
                 "darkFibre": true,
                 "fibreType": "G.652",
                 "fibreTypeDetails": {
+                    "fibreSubtype": "G.652.D",
                     "description": "CABLED STANDARD ENHANCED SINGLEMODE FIBRE ESMF, LOW WATER PEAK SINGLE MODE FIBRE G.652.D, OS2"
                 },
                 "fibreCount": 24,
