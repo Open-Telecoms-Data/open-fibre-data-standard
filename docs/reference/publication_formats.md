@@ -44,7 +44,7 @@ A network package is a JSON object that must include `.networks`: an array of `N
 :::{tab-item} Schema browser
 Click on schema elements to expand the tree, or use the '+' icon to expand all elements. Use { } to view the underlying schema for any section. Required fields are indicated in **bold**.
 
- <script src="../_static/docson/widget.js" data-schema="../network-schema.json"></script>
+ <script src="../_static/docson/widget.js" data-schema="../network-package-schema.json"></script>
 :::
 
 :::{tab-item} Small file example
