@@ -89,7 +89,7 @@
           }
         }
       ],
-      "links": [
+      "spans": [
         {
           "id": "1",
           "name": "Accra to Kumasi",
@@ -183,6 +183,7 @@
           "darkFibre": true,
           "fibreType": "G.652",
           "fibreTypeDetails": {
+            "fibreSubtype": "G.652.D",
             "description": "CABLED STANDARD ENHANCED SINGLEMODE FIBRE ESMF, LOW WATER PEAK SINGLE MODE FIBRE G.652.D, OS2"
           },
           "fibreCount": 24,
@@ -325,7 +326,13 @@
       },
       "accuracy": 250,
       "accuracyDetails": "Measured according to the US National Standard for Spatial Data Accuracy.",
-      "language": "en"
+      "language": "en",
+      "links": [
+        {
+          "rel": "describedby",
+          "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-schema.json"
+        }
+      ]
     }
   ]
 }

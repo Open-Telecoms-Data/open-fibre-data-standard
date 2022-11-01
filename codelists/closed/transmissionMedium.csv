@@ -1,5 +1,5 @@
 code,title,description
-fibre,Fibre optic cable,The physical media of this link is fibre optic cable.
-microwave,Microwave radio,The physical media of this link is microwave radio.
-copper,Copper wire,The physical media of this link is copper wire.
-coaxial,Coaxial cable,The physical media of this link is coaxial cable.
+fibre,Fibre optic cable,The physical media of this span is fibre optic cable.
+microwave,Microwave radio,The physical media of this span is microwave radio.
+copper,Copper wire,The physical media of this span is copper wire.
+coaxial,Coaxial cable,The physical media of this span is coaxial cable.

@@ -17,8 +17,8 @@
         "$ref": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__alpha/schema/network-schema.json"
       }
     },
-    "pages": {
-      "title": "Pages",
+    "links": {
+      "title": "Links",
       "description": "Links to the next and previous sequential packages, to support pagination.",
       "type": "object",
       "properties": {
