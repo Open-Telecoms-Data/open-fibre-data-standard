@@ -498,7 +498,7 @@
           "title": "Capacity details",
           "description": "Further details about this span's capacity",
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24",
-          "$ref": "#/definitions/FibreTypeDetails"
+          "$ref": "#/definitions/CapacityDetails"
         },
         "countries": {
           "title": "Countries",
@@ -2082,6 +2082,13 @@
       "$comment": "",
       "type": "object",
       "properties": {
+        "fibreSubtype": {
+          "title": "Fibre subtype",
+          "description": "The sub-category of the fibre type. For example, G.652.B.",
+          "type": "string",
+          "$comment": "",
+          "minLength": 1
+        },
         "description": {
           "title": "Description",
           "description": "A description of this span's fibre type.",
