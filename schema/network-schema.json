@@ -2067,7 +2067,7 @@
           "codelist": "linkRelationType.csv",
           "openCodelist": true,
           "minLength": 1,
-          "pattern": "\b(?!describedby\b).+"
+          "pattern": "^(?!(describedby))"
         }
       },
       "required": [

@@ -111,7 +111,7 @@ Identifier,uri,URI,"A canonical URI for this identifier, such as those provided 
 CoordinateReferenceSystem,name,Name,The name of the coordinate reference system.,string,1..1,uri,,,,
 CoordinateReferenceSystem,uri,Uniform Resource Identifier,A URI for the coordinate reference system.,string,1..1,uri,,,,
 Link,href,Link target,The URL of this related resource.,string,1..1,iri,,,,
-Link,rel,Link relation type,"The relationship with this related resource, from the open linkRelationType codelist. The 'describedby' code must only be used in the first item in the `links` array to link to the schema that describes the structure of the data.",string,1..1,Pattern: (?!describedby).+,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype,,,linkRelationType.csv
+Link,rel,Link relation type,"The relationship with this related resource, from the open linkRelationType codelist. The 'describedby' code must only be used in the first item in the `links` array to link to the schema that describes the structure of the data.",string,1..1,Pattern: ^(?!(describedby)),https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype,,,linkRelationType.csv
 FibreTypeDetails,fibreSubtype,Fibre subtype,"The sub-category of the fibre type. For example, G.652.B.",string,0..1,,,,,
 FibreTypeDetails,description,Description,A description of this span's fibre type.,string,0..1,,,,,
 DeploymentDetails,description,Description,A description of this span's deployment.,string,0..1,,,,,
