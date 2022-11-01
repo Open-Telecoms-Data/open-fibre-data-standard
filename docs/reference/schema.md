@@ -690,8 +690,8 @@ Each `CoordinateReferenceSystem` has the following fields:
 
 ```{admonition} Alpha consultation
 The following issues relate to this component or its fields:
-* `Link`: [#75 Paginating and streaming nodes and links](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75)
 * `Link`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
+* `Link`: [#75 Paginating and streaming nodes and links](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75)
 ```
 
 `Link` is defined as:
@@ -747,7 +747,7 @@ Each `FibreTypeDetails` has the following fields:
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/FibreTypeDetails
-:collapse: description
+:collapse: fibreSubtype,description
 ```
 
 :::
