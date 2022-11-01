@@ -1247,7 +1247,7 @@
       ],
       "minProperties": 1,
       "propertyNames": {
-        "pattern": "\b(?!properties|features\b).+"
+        "pattern": "^(?!(properties$|^features$))"
       }
     },
     "OrganisationReference": {
