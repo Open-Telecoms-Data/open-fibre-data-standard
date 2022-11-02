@@ -18,6 +18,8 @@ babel==2.10.3
     #   sphinx-intl
 backports-datetime-fromisoformat==1.0.0
     # via flattentool
+beautifulsoup4==4.11.1
+    # via furo
 btrees==4.10.1
     # via zodb
 cattrs==22.1.0
@@ -52,6 +54,8 @@ et-xmlfile==1.1.0
 exceptiongroup==1.0.0rc9
     # via cattrs
 flattentool==0.18.1
+    # via -r requirements.in
+furo==2022.9.29
     # via -r requirements.in
 gitdb==4.0.9
     # via gitpython
@@ -129,7 +133,9 @@ pycparser==2.21
 pygithub==1.55
     # via -r requirements.in
 pygments==2.12.0
-    # via sphinx
+    # via
+    #   furo
+    #   sphinx
 pyjwt==2.4.0
     # via pygithub
 pynacl==1.5.0
@@ -167,17 +173,23 @@ smmap==5.0.0
     # via gitdb
 snowballstemmer==2.2.0
     # via sphinx
+soupsieve==2.3.2.post1
+    # via beautifulsoup4
 sphinx==4.5.0
     # via
     #   -r requirements.in
+    #   furo
     #   myst-parser
     #   sphinx-autobuild
+    #   sphinx-basic-ng
     #   sphinx-design
     #   sphinx-intl
     #   sphinx-rtd-theme
     #   sphinxcontrib-opendataservices
 sphinx-autobuild==2021.3.14
     # via -r requirements.in
+sphinx-basic-ng==1.0.0b1
+    # via furo
 sphinx-design==0.3.0
     # via -r requirements.in
 sphinx-intl==2.0.1
