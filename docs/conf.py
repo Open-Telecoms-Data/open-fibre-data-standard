@@ -138,16 +138,19 @@ todo_include_todos = False
 import os
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'furo'
     
 # otherwise, readthedocs.org uses their theme by default, so no need to specify it
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
-#
-html_theme_options = {'navigation_depth': 5}
 
+html_theme_options = {
+    "light_css_variables": {
+        "color-table-border": "#9d9d9e",
+    },
+}
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
 
