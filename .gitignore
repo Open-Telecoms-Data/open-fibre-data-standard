@@ -2,3 +2,5 @@
 *.swp
 *~
 _build
+.pyest*
+__pycache__
