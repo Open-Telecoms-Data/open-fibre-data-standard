@@ -1,0 +1,14 @@
+# .github/workflows/mdformat.yml
+name: Mdformat Action
+on:
+  - [push, pull_request]
+jobs:
+  mdformat:
+    name: Mdformat Action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Mdformat Action
+        uses: ydah/mdformat-action@main
+        with:
+          number: true
