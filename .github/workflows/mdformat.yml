@@ -1,7 +1,6 @@
-# .github/workflows/mdformat.yml
-name: Mdformat Action
-on:
-  - [push, pull_request]
+name: MD Format
+on: [push, pull_request]
+
 jobs:
   mdformat:
     name: Mdformat Action
