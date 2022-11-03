@@ -1,14 +1,16 @@
 # Schema reference
 
-```{admonition} Alpha consultation
-Welcome to the alpha release of the Open Fibre Data Standard.
+```{admonition} Beta development version
+Welcome to the development version of the Open Fibre Data Standard beta.
 
-We want to hear your feedback on the standard and its documentation. To find out how you can provide feedback, read the [alpha release announcement](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/115).
+We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues linked in the documentation or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
+
+To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
 
 The schema provides the authoritative definition of the structure of Open Fibre Data Standard (OFDS) data, the meaning of each field, and the rules that must be followed to publish OFDS data. It is used to validate the structure and format of OFDS data.
 
-For this version of OFDS, the canonical URL of the schema is [https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__alpha/schema/network-schema.json](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__alpha/schema/network-schema.json). Use the canonical URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested.
+For this version of OFDS, the canonical URL of the schema is [https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-schema.json](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-schema.json). Use the canonical URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested.
 
 This page presents the schema in an [interactive browser](#browser) and in [reference tables](#reference-tables) with additional information in paragraphs. You can also download the canonical version of the schema as [JSON Schema](../../schema/network-schema.json) or download it as a [CSV spreadsheet](../../schema/network-schema.csv).
 
@@ -96,7 +98,7 @@ This section lists each component in the OFDS schema. Some components are reused
 
 #### Node
 
-```{admonition} Alpha consultation
+```{admonition} Consultation
 The following issues relate to this component or its fields:
 * `Node`, `.accessPoint`: [#60 Node definition (access points)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/60)
 * `.location`: [#10 Coordinates modelling (add support for WKT to Flatten Tool)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
@@ -140,7 +142,7 @@ Each `Node` has the following fields:
 
 #### Span
 
-```{admonition} Alpha consultation
+```{admonition} Consultation
 The following issues relate to this component or its fields:
 * `Span`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
 * `.start`, `.end`: [#25 Link endpoints](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25)
@@ -224,7 +226,7 @@ Each `Phase` has the following fields:
 
 #### Organisation
 
-```{admonition} Alpha consultation
+```{admonition} Consultation
 The following issues relate to this component or its fields:
 * `.roleDetails`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
 ```
@@ -272,7 +274,7 @@ Each `Organisation` has the following fields:
 
 #### Contract
 
-```{admonition} Alpha consultation
+```{admonition} Consultation
 The following issues relate to this component or its fields:
 * `Contract`: [#71 Contracts](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/71)
 ```
@@ -647,7 +649,7 @@ The `CoordinateReferenceSystem` object references the CRS by `name` and `uri`. I
 
 For more information, see [How to transform coordinates to the correct coordinate reference system](../guidance/publication.md#how-to-transform-coordinates-to-the-correct-coordinate-reference-system).
 
-```{admonition} Alpha consultation
+```{admonition} Consultation
 The following issues relate to this component or its fields:
 * `CoordinateReferenceSystem`: [#9 Coordinate reference system](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/9)
 ```
@@ -688,7 +690,7 @@ Each `CoordinateReferenceSystem` has the following fields:
 
 #### Link
 
-```{admonition} Alpha consultation
+```{admonition} Consultation
 The following issues relate to this component or its fields:
 * `Link`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
 * `Link`: [#75 Paginating and streaming nodes and links](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75)
@@ -766,7 +768,7 @@ Each `FibreTypeDetails` has the following fields:
 
 #### DeploymentDetails
 
-```{admonition} Alpha consultation
+```{admonition} Consultation
 The following issues relate to this component or its fields:
 * `DeploymentDetails`: [#26 Link deployment](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26)
 ```
@@ -807,7 +809,7 @@ Each `DeploymentDetails` has the following fields:
 
 #### CapacityDetails
 
-```{admonition} Alpha consultation
+```{admonition} Consultation
 The following issues relate to this component or its fields:
 * `CapacityDetails`: [#24 Link capacity](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24)
 ```

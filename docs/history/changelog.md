@@ -1,9 +1,11 @@
 # Changelog
 
-```{admonition} Alpha consultation
-Welcome to the alpha release of the Open Fibre Data Standard.
+```{admonition} Beta development version
+Welcome to the development version of the Open Fibre Data Standard beta.
 
-We want to hear your feedback on the standard and its documentation. To find out how you can provide feedback, read the [alpha release announcement](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/115).
+We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues linked in the documentation or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
+
+To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
 This page lists the changes in each version of the Open Fibre Data Standard.
 
@@ -15,6 +17,7 @@ This page lists the changes in each version of the Open Fibre Data Standard.
 * [#154](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/154) - Rename links to spans, related resources to links and pages to links.
 * [#158](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/158) - Correct erroneous reference in `Span.capacityDetails`.
 * [#145](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/145) - Add validation rule for additional properties of `Geometry`.
+* [#168](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/168) - Update schema URLs.
 
 ### Codelists
 
@@ -43,6 +46,7 @@ This page lists the changes in each version of the Open Fibre Data Standard.
   * Update network package for latest schema.
   * Update GeoJSON examples.
   * Remove unused blank JSON example.
+* [#168](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/168) - Update release and issue admonitions.
 
 ### Build
 
@@ -52,6 +56,7 @@ This page lists the changes in each version of the Open Fibre Data Standard.
   * Generate schema reference documentation.
   * Refactor
   * Use OFDS Kit to generate GeoJSON examples.
+* [#168](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/168) - Update version in `conf.py`.
 
 ## 0.1.0-alpha - 2022-09-22
 
