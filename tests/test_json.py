@@ -12,7 +12,8 @@ import json
 
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
-absolute_path_to_source_schema_dir = this_dir + '/../schema/'
+absolute_source_schema_dir = this_dir + '/../schema/'
+absolute_source_codelist_dir = this_dir + '/../codelists/'
 
 
 def test_empty():
@@ -35,7 +36,7 @@ def test_invalid_json():
     )
 
 
-schemas = [(path, name, data) for path, name, _, data in walk_json_data(top=absolute_path_to_source_schema_dir) if is_json_schema(data) and not path.endswith('tests/schema/meta-schema.json')]
+schemas = [(path, name, data) for path, name, _, data in walk_json_data(top=absolute_source_schema_dir) if is_json_schema(data) and not path.endswith('tests/schema/meta-schema.json')]
 # with open(os.path.join(this_dir, 'schema', 'meta-schema.json')) as fp:
 #     metaschema = json.load(fp)
 
@@ -80,7 +81,9 @@ def test_codelist_enums(path, name, data):
 
 
 def test_codelists_used():
-    codelist_files = collect_codelist_files(absolute_path_to_source_schema_dir)
+    codelist_files = collect_codelist_files(absolute_source_codelist_dir)
+
+    print('potato', codelist_files)
 
     codelists = set()
     for path, name, data in schemas:
@@ -157,7 +160,7 @@ def collect_codelist_codes():
     Walk through all the codelist CSV files and get just the codes
     """
     codelist_codes = {}
-    codelist_csvs = walk_csv_data(top=absolute_path_to_source_schema_dir)
+    codelist_csvs = walk_csv_data(top=absolute_source_codelist_dir)
     # (file path, file name, text content, fieldnames, rows)
     for _, codelist_file, _, _, rows in codelist_csvs:
         codes = []
