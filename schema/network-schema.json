@@ -5,7 +5,8 @@
   "description": "A telecommunication network. A network consists of a set of nodes interconnected by spans.",
   "type": "object",
   "required": [
-    "id"
+    "id",
+    "links"
   ],
   "properties": {
     "id": {
@@ -134,9 +135,24 @@
     },
     "links": {
       "title": "Links",
-      "description": "Links to related resources such as API endpoints or bulk files for nodes and spans. Links to API endpoints should be provided when a network is too large to return in a single API response. Links to bulk files should be provided when a network is too large to load into memory.",
+      "description": "Links to related resources. The first item in the links array must be a link to the canonical JSON schema that describes the structure of the data. Links to API endpoints for nodes and spans should be provided when a network is too large to return in a single API response and links to bulk files should be provided when a network is too large to load into memory, for more information, see [how to publish large networks](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-publish-large-networks).",
       "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75,https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83",
       "type": "array",
+      "prefixItems": [
+        {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "const": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-schema.json"
+            },
+            "rel": {
+              "type": "string",
+              "const": "describedby"
+            }
+          }
+        }
+      ],
       "items": {
         "$ref": "#/definitions/Link"
       },
@@ -2048,12 +2064,13 @@
         },
         "rel": {
           "title": "Link relation type",
-          "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype).",
+          "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype). The 'describedby' code must only be used in the first item in the `links` array to link to the schema that describes the structure of the data." ,
           "type": "string",
           "$comment": "",
           "codelist": "linkRelationType.csv",
           "openCodelist": true,
-          "minLength": 1
+          "minLength": 1,
+          "pattern": "^(?!(describedby))"
         }
       },
       "required": [
