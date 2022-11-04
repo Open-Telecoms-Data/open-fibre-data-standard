@@ -19,8 +19,8 @@ The example QGIS file shows how to use [QGIS](https://qgis.org/) to visualise th
 To explore the example file:
 
 1. Clone the [OFDS GitHub repository](https://github.com/Open-Telecoms-Data/open-fibre-data-standard).
-2. Open `examples/qgis/geojson.qgs` in QGIS.
-3. Explore the [attribute table](https://docs.qgis.org/3.22/en/docs/user_manual/working_with_vector/attribute_table.html) for the nodes and spans layers and use the [schema reference](../reference/schema.md) to look up the meaning of each attribute.
+1. Open `examples/qgis/geojson.qgs` in QGIS.
+1. Explore the [attribute table](https://docs.qgis.org/3.22/en/docs/user_manual/working_with_vector/attribute_table.html) for the nodes and spans layers and use the [schema reference](../reference/schema.md) to look up the meaning of each attribute.
 
 Alternatively, you can download the [example QGIS file](../../examples/qgis/geojson.qgs) and the example [nodes.geojson](../../examples/geojson/nodes.geojson) and [spans.geojson](../../examples/geojson/spans.geojson) files separately. However, when you open the example QGIS file you will need to use the [Handle Unavailable Layers](https://docs.qgis.org/3.22/en/docs/user_manual/introduction/project_files.html#handling-broken-file-paths) dialog to locate the nodes and spans files.
 
@@ -28,8 +28,8 @@ To recreate the example file:
 
 1. [Load the `.geojson` files as vector data sources](https://docs.qgis.org/3.22/en/docs/user_manual/managing_data_source/opening_data.html#loading-a-layer-from-a-file) with the `FLATTEN_NESTED_ATTRIBUTES` option enabled. For more information on the options for loading GeoJSON data, see the [GDAL GeoJSON driver documentation](https://gdal.org/drivers/vector/geojson.html).
 1. In the [symbology properties](https://docs.qgis.org/3.22/en/docs/user_manual/working_with_vector/vector_properties.html#symbology-properties) for each layer, choose the [categorized renderer](https://docs.qgis.org/3.22/en/docs/user_manual/working_with_vector/vector_properties.html#categorized-renderer) with the following classification values:
-   * spans: `darkFibre`
-   * nodes: `accessPoint`
+   - spans: `darkFibre`
+   - nodes: `accessPoint`
 1. Add a vector tile layer using the OpenStreetMap [XYZ Tile service](https://docs.qgis.org/3.22/en/docs/user_manual/managing_data_source/opening_data.html#using-xyz-tile-services).
 
 ### Leaflet
