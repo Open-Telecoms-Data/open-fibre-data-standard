@@ -19,6 +19,7 @@ This page lists the changes in each version of the Open Fibre Data Standard.
 * [#157](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/157) - Use `links` to identify the version of the standard that describes the structure of the data.
 * [#145](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/145) - Add validation rule for additional properties of `Geometry`.
 * [#168](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/168) - Update schema URLs.
+* [#173](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/173) - Update schema URLs for dev versions.
 
 ### Codelists
 
