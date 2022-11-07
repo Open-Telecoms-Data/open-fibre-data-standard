@@ -1,0 +1,52 @@
+{
+  "networks": [
+    {
+      "id": "1",
+      "name": "",
+      "nodes": [],
+      "spans": [
+        {
+          "status": "open",
+          "route": {
+            "type": "LineString",
+            "properties": ""
+          },
+          "transmissionMedium": ["cable"],
+          "directed": "yes",
+          "fibreCount": "52"
+        }
+      ],
+      "phases": [
+        {
+          "id": "1"
+        },
+        {
+          "id": "1"
+        }
+      ],
+      "contracts": {},
+      "organisations": [
+        {}
+      ],
+      "publicationDate": "January",
+      "website": "example.com",
+      "crs": {
+        "name": "WGS84",
+        "uri": "www.opengis.net/def/crs/OGC/1.3/CRS84"
+      },
+      "accuracy": "medium",
+      "accuracyDetails": 100,
+      "publisher": "FibreCo",
+      "links": [
+        {
+          "href": "http://example.com/networks/a096d627-72e1-4f9b-b129-951b1737bff4/nodes",
+          "rel": "tag:opentelecomdata.net,2022:nodesAPI"
+        },
+        {
+          "href": "http://example.com/schema.json",
+          "rel": "describedBy"
+        }
+      ]
+    }
+  ]
+}
