@@ -19,6 +19,10 @@
     - [ ] `api-response.geojson`
     - [ ] `multiple-networks.geojson`
 - [ ] Run `./manage.py pre-commit` to update derivative schema files, reference documentation and examples
+- [ ] If you used a validation keyword, type or format that is not [already used in the schema](schema.md#json-schema-usage):
+  - [ ] Update the list of validation keywords, types or formats in [JSON Schema usage](schema.md#json-schema-usage).
+  - [ ] Add a field that fails validation against the new keyword, type or format to [`network-package-invalid.json`](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/blob/0.1-dev/examples/json/network-package-invalid.json).
+  - [ ] Check that [OFDS CoVE](https://ofds.cove.opendataservices.coop/) reports an appropriate validation error.
 - [ ] If there are changes to `examples/geojson/nodes.geojson` or `examples/geojson/spans.geojson`, check and update the data use examples:
   - [ ] `examples/leaflet/leaflet.ipynb`
   - [ ] `examples/qgis/geojson.qgs`
