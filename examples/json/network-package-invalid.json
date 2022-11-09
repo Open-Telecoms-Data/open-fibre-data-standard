@@ -44,7 +44,7 @@
         },
         {
           "href": "http://example.com/schema.json",
-          "rel": "describedBy"
+          "rel": "describedby"
         }
       ]
     }
