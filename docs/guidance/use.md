@@ -36,7 +36,7 @@ To recreate the example file:
 
 ### Leaflet
 
-The example Leaflet notebook shows how to use [Python](https://www.python.org/), [Folium](http://python-visualization.github.io/folium/index.html) and [Leaflet](https://leafletjs.com/) to visualise the example OFDS GeoJSON data on a map. You can [download the notebook as an .ipynb file](../../examples/leaflet/leaflet.ipynb) or [view it in Deepnote](https://deepnote.com/viewer/github/Open-Telecoms-Data/open-fibre-data-standard/blob/main/examples/leaflet/leaflet.ipynb).
+The example Leaflet notebook shows how to use [Python](https://www.python.org/), [Folium](http://python-visualization.github.io/folium/index.html) and [Leaflet](https://leafletjs.com/) to visualise the example OFDS GeoJSON data on a map. You can [download the notebook as an .ipynb file](../../examples/leaflet/leaflet.ipynb) or [view it in your browser](https://nbviewer.org/github/Open-Telecoms-Data/open-fibre-data-standard/blob/0__1__0__beta/examples/leaflet/leaflet.ipynb).
 
 ![The example network as a Leaflet map](../../_assets/leaflet_example.png)
 
