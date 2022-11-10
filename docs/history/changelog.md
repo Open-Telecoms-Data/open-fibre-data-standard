@@ -9,7 +9,7 @@ To comment on or create discussions and issues, you need to [sign up for a free 
 ```
 This page lists the changes in each version of the Open Fibre Data Standard.
 
-## 0.1.0-beta - YYYY-MM-DD
+## 0.1.0-beta - 2022-11-10
 
 ### Schema
 * [#141](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/141) - Add `Span.fibreTypeDetails.fibreSubtype` field.
@@ -18,8 +18,7 @@ This page lists the changes in each version of the Open Fibre Data Standard.
 * [#158](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/158) - Correct erroneous reference in `Span.capacityDetails`.
 * [#157](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/157) - Use `links` to identify the version of the standard that describes the structure of the data.
 * [#145](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/145) - Add validation rule for additional properties of `Geometry`.
-* [#168](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/168) - Update schema URLs.
-* [#173](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/173) - Update schema URLs for dev versions.
+* [#168](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/168), [#173](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/173), [#180](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/180) - Update schema URLs.
 
 ### Codelists
 
@@ -35,6 +34,7 @@ This page lists the changes in each version of the Open Fibre Data Standard.
     * Add more examples to schema reference.
     * Update for latest schema.
   * Add list of referencing properties for each codelist in codelist reference
+* [#180](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/180) - Collapse links in top-level schema reference table.
 
 ### Non-normative documentation
 
@@ -49,6 +49,7 @@ This page lists the changes in each version of the Open Fibre Data Standard.
   * Update GeoJSON examples.
   * Remove unused blank JSON example.
 * [#168](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/168) - Update release and issue admonitions.
+* [#180](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/180) - Update release admonition, fix notebook viewer link, fix links in Leaflet notebook.
 
 ### Build
 
