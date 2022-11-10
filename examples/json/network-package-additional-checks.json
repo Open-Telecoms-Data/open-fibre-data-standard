@@ -1,0 +1,129 @@
+{
+  "networks": [
+    {
+      "id": "a096d627-72e1-4f9b-b129-951b1737bff4",
+      "spans": [
+        {
+          "id": "1",
+          "start": "Accra",
+          "end": "Kumasi",
+          "route": {
+            "type": "Point",
+            "coordinates": [
+              0,
+              0
+            ]
+          },
+          "phase": {
+            "id": "Phase 1"
+          },
+          "physicalInfrastructureProvider": {
+            "id": "FibreCo"
+          },
+          "networkProvider": {
+            "id": "FibreCo"
+          },
+          "supplier": {
+            "id": "ProjectCo"
+          }
+        },
+        {
+          "id": "1"
+        }
+      ],
+      "nodes": [
+        {
+          "id": "1",
+          "location": {
+            "type": "LineString",
+            "coordinates": [
+              [
+                0,
+                0
+              ],
+              [
+                0,
+                0
+              ]              
+            ]
+          },
+          "phase": {
+            "id": "Phase 1"
+          },
+          "physicalInfrastructureProvider": {
+            "id": "FibreCo"
+          },
+          "networkProvider": {
+            "id": "FibreCo"
+          },
+          "internationalConnections": [
+            {
+              "streetAddress": "Togo"
+            }
+          ]
+        },
+        {
+          "id": "1"
+        }
+      ],
+      "contracts": [
+        {
+          "id": "1",
+          "relatedPhases": [
+            {
+              "id": "Phase 1"
+            },
+            {
+              "id": "1",
+              "name": "Phase 2"
+            }
+          ]
+        },
+        {
+          "id": "1"
+        }
+      ],
+      "phases": [
+        {
+          "id": "1",
+          "name": "Phase 1",
+          "funders": [
+            {
+              "id": "Ghana Infrastructure Investment Fund"
+            },
+            {
+              "id": "1",
+              "name": "Investment Fund"
+            }
+          ]
+        },
+        {
+          "id": "1"
+        }
+      ],
+      "organisations": [
+        {
+          "id": "1",
+          "name": "Ghana Infrastructure Investment Fund"
+        },
+        {
+          "id": "1"
+        }
+      ],
+      "links": [
+        {
+          "rel": "describedby",
+          "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-schema.json"
+        },
+        {
+          "href": "http://example.com/networks/a096d627-72e1-4f9b-b129-951b1737bff4/nodes",
+          "rel": "tag:opentelecomdata.net,2022:nodesAPI"
+        },
+        {
+          "href": "http://example.com/networks/a096d627-72e1-4f9b-b129-951b1737bff4/spans",
+          "rel": "tag:opentelecomdata.net,2022:spansAPI"
+        }
+      ]
+    }
+  ]
+}

@@ -49,6 +49,9 @@ This page lists the changes in each version of the Open Fibre Data Standard.
   * Update GeoJSON examples.
   * Remove unused blank JSON example.
 * [#168](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/168) - Update release and issue admonitions.
+* [#177](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/177):
+  * Add an invalid network package that fails validation against an instance of each validation keyword, type and format used in the schema
+  * Add a network package that does not conform to each normative rule that is not encoded in the schema
 * [#180](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/180) - Update release admonition, fix notebook viewer link, fix links in Leaflet notebook.
 
 ### Build
