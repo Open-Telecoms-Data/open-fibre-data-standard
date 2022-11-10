@@ -3,7 +3,7 @@
     {},
     {}
   ],
-  "pages": {
+  "links": {
     "next": "http://example.com/network/1/nodes?cursor=100",
     "prev": "http://example.com/network/1/nodes?cursor=96"
   }

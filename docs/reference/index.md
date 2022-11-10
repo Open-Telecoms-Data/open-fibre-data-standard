@@ -1,9 +1,11 @@
 # Reference
 
-```{admonition} Alpha consultation
-Welcome to the alpha release of the Open Fibre Data Standard.
+```{admonition} 0.1.0-beta release
+Welcome to the Open Fibre Data Standard 0.1.0-beta release.
 
-We want to hear your feedback on the standard and its documentation. To find out how you can provide feedback, read the [alpha release announcement](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/115).
+We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues linked in the documentation or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
+
+To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
 
 ```{note}
@@ -14,7 +16,7 @@ The [schema reference](schema.md) is the canonical reference for the structure o
 
 The [codelists reference](codelists.md) is the canonical reference for the meaning of the codes used to limit and standardise the possible values of fields in OFDS data.
 
-The [publication formats reference](publication_formats.md) is the canonical reference for the formats in which OFDS can be published, and the rules for transforming OFDS data from one publication format to another.
+The [publication formats reference](publication_formats/index.md) is the canonical reference for the formats in which OFDS can be published, and the rules for transforming OFDS data from one publication format to another.
 
 ```{eval-rst}
 .. toctree::
@@ -22,6 +24,6 @@ The [publication formats reference](publication_formats.md) is the canonical ref
    
    schema
    codelists
-   publication_formats
+   publication_formats/index.md
    identifiers
 ```

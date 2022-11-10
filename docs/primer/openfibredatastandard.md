@@ -1,9 +1,11 @@
 # The Open Fibre Data Standard
 
-```{admonition} Alpha consultation
-Welcome to the alpha release of the Open Fibre Data Standard.
+```{admonition} 0.1.0-beta release
+Welcome to the Open Fibre Data Standard 0.1.0-beta release.
 
-We want to hear your feedback on the standard and its documentation. To find out how you can provide feedback, read the [alpha release announcement](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/115).
+We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues linked in the documentation or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
+
+To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
 
 This page provides an introduction to the Open Fibre Data Standard (OFDS), the reasons for using it and what OFDS data looks like.
@@ -27,9 +29,9 @@ Data standards resolve ambiguity by defining the structure and meaning of data. 
 - With standards, users have access to information about the structure and meaning of data and can develop reusable tools and methodologies that can be applied to many different datasets.
 
 ```{admonition} Standardisation in the fibre context
-The [supply-side research](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/5) identified a variety of units and notations for specifying the capacity of a fibre-optic link: Mbps, Gbps, STM notation and E-carrier notation. This lack of standardisation presents a challenge to users who want to compare the capacity of different links and networks.
+The [supply-side research](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/5) identified a variety of units and notations for specifying the capacity of a fibre-optic span: Mbps, Gbps, STM notation and E-carrier notation. This lack of standardisation presents a challenge to users who want to compare the capacity of different spans and networks.
 
-Since all of the above units can be converted into Gbps, OFDS requires that publishers specify link capacity in Gbps. This approach places the effort of conversion onto the data publisher, where it only needs to happen once, rather than onto data users, each of whom would need to convert the data if it were not standardised.
+Since all of the above units can be converted into Gbps, OFDS requires that publishers specify span capacity in Gbps. This approach places the effort of conversion onto the data publisher, where it only needs to happen once, rather than onto data users, each of whom would need to convert the data if it were not standardised.
 ```
 
 Standards can also ensure that key information is included in a dataset. If data owners do not share key information in their data, then users need to negotiate with each data owner individually.
@@ -53,7 +55,7 @@ The following example shows OFDS data containing a single network in JSON format
 :::
 
 :::{tab-item} GeoJSON
-The following example shows OFDS data containing a single network in GeoJSON format. OFDS GeoJSON data consists of separate files for nodes and links. Use the dropdown menu to explore an example nodes file and an example links file:
+The following example shows OFDS data containing a single network in GeoJSON format. OFDS GeoJSON data consists of separate files for nodes and spans. Use the dropdown menu to explore an example nodes file and an example spans file:
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/geojson/nodes.geojson
@@ -61,10 +63,10 @@ The following example shows OFDS data containing a single network in GeoJSON for
     :expand: features
     :title: Nodes
 
-.. jsoninclude:: ../../examples/geojson/links.geojson
+.. jsoninclude:: ../../examples/geojson/spans.geojson
     :jsonpointer:
     :expand: features
-    :title: Links
+    :title: Spans
 
 ```
 
@@ -83,4 +85,4 @@ The following example shows OFDS data containing a single network in CSV format.
 
 ::::
 
-To learn more about the use cases for each format, read the [guidance on how to format data for publication](../guidance/publication.md#how-to-format-data-for-publication). For details of the structure of the OFDS schema, read the [schema reference](../reference/schema.md). For details of the rules and specifications for publishing OFDS data in each format, read the [publication formats reference](../reference/publication_formats.md).
+To learn more about the use cases for each format, read the [guidance on how to format data for publication](../guidance/publication.md#how-to-format-data-for-publication). For details of the structure of the OFDS schema, read the [schema reference](../reference/schema.md). For details of the rules and specifications for publishing OFDS data in each format, read the [publication formats reference](../reference/publication_formats/index.md).

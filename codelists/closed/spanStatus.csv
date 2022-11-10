@@ -1,0 +1,7 @@
+code,title,description
+operational,Operational,The active network infrastructure for the span is live and carrying traffic.
+underConstruction,Under construction,Construction of the passive physical infrastructure for the span is in progress.
+planned,Planned,Planning for the span is at an advanced stage and financing for its construction is finalised.
+decommissioned,Decommissioned,The span is no longer operational.
+proposed,Proposed,Planning for the span is at an early stage and financing for its construction is not yet finalised.
+inactive,Inactive,"Construction of the passive network infrastructure is complete, but the span is not yet operational."

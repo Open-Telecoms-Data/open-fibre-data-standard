@@ -1,9 +1,11 @@
 # Scope and key concepts
 
-```{admonition} Alpha consultation
-Welcome to the alpha release of the Open Fibre Data Standard.
+```{admonition} 0.1.0-beta release
+Welcome to the Open Fibre Data Standard 0.1.0-beta release.
 
-We want to hear your feedback on the standard and its documentation. To find out how you can provide feedback, read the [alpha release announcement](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/115).
+We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues linked in the documentation or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
+
+To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
 
 This page explains the scope of the Open Fibre Data Standard (OFDS) in context of the three-layer [network value chain](#the-network-value-chain). It also introduces [key concepts](#key-concepts) that you need to understand in order to implement OFDS.
@@ -22,25 +24,23 @@ The primary focus of OFDS is to describe the passive network infrastructure. The
 
 ### Actors
 
-Based on the layers in the network value chain, there are three main actors in a fibre optic network:
+Based on the layers in the network value chain, there are three main groups of actors in a fibre optic network:
 
 ![The actors in fibre optic networks](../../_assets/actors.svg)
+
+Depending on the [business model](#network-business-models) used in a network, there can be one or more of each type of actor involved in a single network.
 
 #### Physical infrastructure provider
 
 OFDS defines a physical infrastructure provider as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Link/properties/physicalInfrastructureProvider/description
-```
+>An organisation that owns and maintains passive network infrastructure, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.
 
 #### Network provider
 
 OFDS defines a network provider as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Link/properties/networkProvider/description
-```
+>An organisation that operates the active network infrastructure, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.
 
 #### Service provider
 
@@ -78,29 +78,29 @@ Nodes can represent different elements in a fibre network and the type of each n
 
 For more information about nodes, see the [Node reference](../reference/schema.md#node).
 
-### Links
+### Spans
 
-OFDS defines a link as:
+OFDS defines a span as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Link/description
+:jsonpointer: /definitions/Span/description
 ```
 
-The nodes that a link connects are known as its endpoints. In addition to the endpoints, the physical route of the link can also be specified as a LineString. This allows for the detailed route of a link to be published even when granular data on node locations along the link is unavailable, for example in a dataset describing a national backbone network.
+The nodes that a span connects are known as its endpoints. In addition to the endpoints, the physical route of the span can also be specified as a LineString. This allows for the detailed route of a span to be published even when granular data on node locations along the span is unavailable, for example in a dataset describing a national backbone network.
 
-![An example link](../../_assets/linkExample.svg)
+![An example span](../../_assets/spanExample.svg)
 
-For more information about links, see the [Link reference](../reference/schema.md#link).
+For more information about spans, see the [Span reference](../reference/schema.md#span).
 
 ### Geospatial data
 
 Geospatial data is information that describes objects or features with a location on or near the surface of the earth. Geospatial data typically combines location information (usually coordinates on the earth) and attribute information (the characteristics of the object concerned).
 
-OFDS data is usually geospatial data. It can contain both location information, such as the location of nodes and links, and attribute information, such as the capacity of a link.
+OFDS data is usually geospatial data. It can contain both location information, such as the location of nodes and spans, and attribute information, such as the capacity of a span.
 
-OFDS data uses [GeoJSON geometry objects](https://www.rfc-editor.org/rfc/rfc7946#section-3.1) to represent location information. Nodes occupy single locations in space, so OFDS data uses the GeoJSON ['Point' geometry type](https://www.rfc-editor.org/rfc/rfc7946#section-3.1.2) to represent them. Links are connected paths, so OFDS data uses the GeoJSON ['LineString' geometry type](https://www.rfc-editor.org/rfc/rfc7946#section-3.1.4) to represent them.
+OFDS data uses [GeoJSON geometry objects](https://www.rfc-editor.org/rfc/rfc7946#section-3.1) to represent location information. Nodes occupy single locations in space, so OFDS data uses the GeoJSON ['Point' geometry type](https://www.rfc-editor.org/rfc/rfc7946#section-3.1.2) to represent them. Spans are connected paths, so OFDS data uses the GeoJSON ['LineString' geometry type](https://www.rfc-editor.org/rfc/rfc7946#section-3.1.4) to represent them.
 
-Examples of OFDS node and link location data are given below.
+Examples of OFDS node and span location data are given below.
 
 ::::{tab-set}
 
@@ -120,7 +120,7 @@ Examples of OFDS node and link location data are given below.
 
 :::
 
-:::{tab-item} Link
+:::{tab-item} Span
 
 ```json
 {

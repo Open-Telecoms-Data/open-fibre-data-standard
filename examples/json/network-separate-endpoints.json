@@ -3,14 +3,18 @@
     {
       "id": "a096d627-72e1-4f9b-b129-951b1737bff4",
       "name": "Ghana Fibre Network",
-      "relatedResources": [
+      "links": [
+        {
+          "rel": "describedby",
+          "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-schema.json"
+        },
         {
           "href": "http://example.com/networks/a096d627-72e1-4f9b-b129-951b1737bff4/nodes",
           "rel": "tag:opentelecomdata.net,2022:nodesAPI"
         },
         {
-          "href": "http://example.com/networks/a096d627-72e1-4f9b-b129-951b1737bff4/links",
-          "rel": "tag:opentelecomdata.net,2022:linksAPI"
+          "href": "http://example.com/networks/a096d627-72e1-4f9b-b129-951b1737bff4/spans",
+          "rel": "tag:opentelecomdata.net,2022:spansAPI"
         }
       ]
     }

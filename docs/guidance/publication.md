@@ -1,9 +1,11 @@
 # How to publish OFDS data
 
-```{admonition} Alpha consultation
-Welcome to the alpha release of the Open Fibre Data Standard.
+```{admonition} 0.1.0-beta release
+Welcome to the Open Fibre Data Standard 0.1.0-beta release.
 
-We want to hear your feedback on the standard and its documentation. To find out how you can provide feedback, read the [alpha release announcement](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/115).
+We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues linked in the documentation or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
+
+To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
 
 This page provides an [overview](#overview) of the process for publishing Open Fibre Data Standard (OFDS) data and [how-to guides](#how-to-guides) for specific topics.
@@ -97,15 +99,15 @@ If you add an additional field, you ought to describe its structure, format and 
 
 ### How to format data for publication
 
-```{admonition} Alpha consultation
+```{admonition} Consultation
 There are [open issues](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues?q=is%3Aopen+is%3Aissue+label%3ATooling) related to tooling for transforming data between publication formats.
 ```
 
-OFDS data can be published in three [publication formats](../reference/publication_formats.md):
+OFDS data can be published in three [publication formats](../reference/publication_formats/index.md):
 
-* The [JSON format](../reference/publication_formats.md#json) reflects the structure of the [schema](../reference/schema.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
-* The [GeoJSON format](../reference/publication_formats.md#geojson) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
-* The [CSV format](../reference/publication_formats.md#csv) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to users who want to explore the data in spreadsheet tools.
+* The [JSON format](../reference/publication_formats/json.md) reflects the structure of the [schema](../reference/schema.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
+* The [GeoJSON format](../reference/publication_formats/geojson.md) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
+* The [CSV format](../reference/publication_formats/csv.md) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to users who want to explore the data in spreadsheet tools.
 
 To meet the widest range of use cases, you ought to publish data in all three formats. The suggested approach is to export your data in the JSON format and to use the following tools to transform it to the GeoJSON and CSV formats:
 
@@ -146,7 +148,7 @@ To convert data to CSV format:
 
 * [Install Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/getting-started/#getting-started)
 * Download the [network schema](../../schema/network-schema.json)
-* If your data is a [JSON Lines file](../reference/publication_formats.md#streaming-option), segment it into appropriately sized [network packages](../reference/publication_formats.md#small-files-and-api-responses-option)
+* If your data is a [JSON Lines file](../reference/publication_formats/json.md#streaming-option), segment it into appropriately sized [network packages](../reference/publication_formats/json.md#small-files-and-api-responses-option)
 * Run the following command for each network package:
 
 ```bash
@@ -164,32 +166,32 @@ This section describes how to:
 * Use [pagination](#pagination) to publish an **individual** network that is too large to return in a single API response
 * Use [streaming](#streaming) to publish an **individual** network that is too large to load into memory.
 
-For information on how to use pagination and streaming to publish **multiple** networks, see the [publication formats reference](../reference/publication_formats.md).
+For information on how to use pagination and streaming to publish **multiple** networks, see the [publication formats reference](../reference/publication_formats/index.md).
 
-This guidance is applicable to the [JSON publication format](../reference/publication_formats.md#json), for information on pagination and streaming for the GeoJSON format see the [GeoJSON publication format reference](../reference/publication_formats.md#geojson).
+This guidance is applicable to the [JSON publication format](../reference/publication_formats/json.md), for information on pagination and streaming for the GeoJSON format see the [GeoJSON publication format reference](../reference/publication_formats/geojson.md).
 
 ##### Pagination
 
-The preferred approach is to publish embedded nodes and links in `.nodes` and `.links`, respectively. If your network is too large to return in a single API response, you ought to use `.relatedResources` to reference separate endpoints for nodes and links. Each endpoint ought to return a top-level JSON object with a `nodes` or a `links` array, respectively, and a `pages` object with URLs for the next and previous pages of results:
+The preferred approach is to publish embedded nodes and spans in `.nodes` and `.spans`, respectively. If your network is too large to return in a single API response, you ought to use `.links` to reference separate endpoints for nodes and spans. Each endpoint ought to return a top-level JSON object with a `nodes` or a `spans` array, respectively, and a `links` object with URLs for the next and previous pages of results:
 
 ::::{tab-set}
 
 :::{tab-item} Embedded data
-The following example shows a network with embedded nodes and links:
+The following example shows a network with embedded nodes and spans:
 
 ```{jsoninclude} ../../examples/json/network-package.json
 :jsonpointer: /networks/0
-:expand: nodes,links
+:expand: nodes,spans
 ```
 
 :::
 
 :::{tab-item} References to endpoints
-The following example shows a network with references to separate endpoints for nodes and links:
+The following example shows a network with references to separate endpoints for nodes and spans:
 
 ```{jsoninclude} ../../examples/json/network-separate-endpoints.json
 :jsonpointer: /networks/0
-:expand: relatedResources
+:expand: links
 ```
 
 :::
@@ -203,10 +205,10 @@ The following example shows the response returned by the nodes endpoint with URL
 
 :::
 
-:::{tab-item} Links endpoint
-The following example shows the response returned by the links endpoint with URLs for the next and previous pages of results.
+:::{tab-item} Spans endpoint
+The following example shows the response returned by the spans endpoint with URLs for the next and previous pages of results.
 
-```{jsoninclude} ../../examples/json/links-endpoint.json
+```{jsoninclude} ../../examples/json/spans-endpoint.json
 :jsonpointer:
 ```
 
@@ -216,12 +218,12 @@ The following example shows the response returned by the links endpoint with URL
 
 ##### Streaming
 
-The preferred approach is to publish embedded nodes and links. If your network is too large to load into memory, you ought to use `.relatedResources` to reference separate files for nodes and links. Each file ought to be formatted as a [JSON Lines](https://jsonlines.org/) file in which each line is a valid [`Node`](../reference/schema.md#node) or [`Link`](../reference/schema.md#link), respectively.
+The preferred approach is to publish embedded nodes and spans. If your network is too large to load into memory, you ought to use `.links` to reference separate files for nodes and spans. Each file ought to be formatted as a [JSON Lines](https://jsonlines.org/) file in which each line is a valid [`Node`](../reference/schema.md#node) or [`Span`](../reference/schema.md#span), respectively.
 
 ::::{tab-set}
 
 :::{tab-item} Embedded data
-The following example shows a network with embedded nodes and links:
+The following example shows a network with embedded nodes and spans:
 
 ```{jsoninclude} ../../examples/json/network-package.json
 :jsonpointer: /networks/0
@@ -230,11 +232,11 @@ The following example shows a network with embedded nodes and links:
 :::
 
 :::{tab-item} References to files
-The following example shows a network with references to separate files for nodes and links:
+The following example shows a network with references to separate files for nodes and spans:
 
 ```{jsoninclude} ../../examples/json/network-separate-files.json
 :jsonpointer: /networks/0
-:expand: relatedResources
+:expand: links
 ```
 
 :::
@@ -249,8 +251,8 @@ The following example shows a nodes file in JSON Lines format.
 
 :::
 
-:::{tab-item} Links file
-The following example shows a links file in JSON Lines format.
+:::{tab-item} Spans file
+The following example shows a spans file in JSON Lines format.
 
 ```
 {}
@@ -269,11 +271,11 @@ With respect to your OFDS publication, which best practices are most important w
 
 #### Bulk downloads
 
-If you are publishing only one network, or a small number of networks, you ought to use the approach described in the small file option for each [publication format](../reference/publication_formats.md).
+If you are publishing only one network, or a small number of networks, you ought to use the approach described in the small file option for each [publication format](../reference/publication_formats/index.md).
 
-If you are publishing a large number of networks, you ought to use the approach to streaming multiple networks described in the streaming option for each [publication format](../reference/publication_formats.md).
+If you are publishing a large number of networks, you ought to use the approach to streaming multiple networks described in the streaming option for each [publication format](../reference/publication_formats/index.md).
 
-If you are publishing a network that is very large, you ought to use the approach to streaming nodes and links described in [how to publish large networks](#how-to-publish-large-networks).
+If you are publishing a network that is very large, you ought to use the approach to streaming nodes and spans described in [how to publish large networks](#how-to-publish-large-networks).
 
 ##### Compression
 
@@ -289,9 +291,9 @@ Also, publishers ought to ensure that the data export is completed successfully,
 
 #### API access
 
-If you are publishing data via an API, you need to consider pagination. If you are publishing multiple networks, you ought to use the pagination method described in the API response option for each [publication format](../reference/publication_formats.md).
+If you are publishing data via an API, you need to consider pagination. If you are publishing multiple networks, you ought to use the pagination method described in the API response option for each [publication format](../reference/publication_formats/index.md).
 
-If you are publishing a network that is very large, you ought to use the approach to paginating nodes and links described in [how to publish large networks](#how-to-publish-large-networks).
+If you are publishing a network that is very large, you ought to use the approach to paginating nodes and spans described in [how to publish large networks](#how-to-publish-large-networks).
 
 API design is a deep topic. As such, the following guidance is not intended to be comprehensive or prescriptive. Wherever possible, you ought to carry out your own user research.
 

@@ -1,0 +1,6 @@
+code,title,description
+describedby,Described by,Refers to the canonical JSON schema that describes the structure of the data.
+"tag:opentelecomdata.net,2022:nodesAPI",Nodes API,An API endpoint that returns a paginated list of `Node` objects.
+"tag:opentelecomdata.net,2022:nodesFile",Nodes file,A JSON Lines file containing one `Node` object per line. The file may be compressed using ZIP or GZIP.
+"tag:opentelecomdata.net,2022:spansAPI",Spans API,An API endpoint that returns a paginated list of `Span` objects.
+"tag:opentelecomdata.net,2022:spansFile",Spans file,A JSON Lines file containing one `Span` object per line. The file may be compressed using ZIP or GZIP.
