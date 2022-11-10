@@ -9,6 +9,12 @@ To comment on or create discussions and issues, you need to [sign up for a free 
 ```
 This page lists the changes in each version of the Open Fibre Data Standard.
 
+## Iterative improvements
+
+Iterative improvements are made outside of the release cycle. They do not involve changes to normative content. For more information, see [normative and non-normative content](../governance/index.md#normative-and-non-normative-content).
+
+* [#184](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/184) - Fix broken schema browser.
+
 ## 0.1.0-beta - 2022-11-10
 
 ### Schema
