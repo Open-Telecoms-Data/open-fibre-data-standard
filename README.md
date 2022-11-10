@@ -4,7 +4,12 @@ Welcome to the GitHub repository for the Open Fibre Data Standard.
 
 ## Contributing
 
-To contribute to the development of the standard, check out the [discussion tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions).
+To contribute to the development of the standard, check out the [discussion tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions). To facilitate discussions, we have prepared a number of [consultation topics](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/categories/consultation-topics) with accompanying documents to act as starting points for discussion. These are:
+  * Data stewardship, publication formats and access methods | [Document](https://docs.google.com/document/d/1ZDx69xTU7fjGP-6WRYV2FpGreGRk4JQlpkubObf6q2c/edit#heading=h.1qzjnvoo169a) | [Discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/3)
+  * Demand side research: Use cases | [Document](https://docs.google.com/document/d/1ignwppM9d3CqKSbeMz-_fLg5dmhKSm5w43SvsGDfeQc/edit#heading=h.o0gouj4ezdu3) | [Discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/4)
+  * Supply side research: Common concepts and standardisation | [Document](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/5) | [Discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/5)
+  * Conceptual model | [Document](https://docs.google.com/document/d/1lEaoUmGr9RATMo_wuM9hLF2oOu22bh_M03JiPXbj-Iw/edit#heading=h.8t7oceczb459) | [Discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/22)
+
 
 ## Background
 
