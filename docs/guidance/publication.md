@@ -73,11 +73,7 @@ For guidance on common steps in converting your data to OFDS format, see the fol
 
 #### Check your data
 
-Once you have prepared your data, the next step is to check that it is correctly structured and formatted according to the OFDS schema.
-
-```{admonition} Data Review Tool
-An online tool for checking the structure and format of OFDS data is under development and will be released with the Beta version of the standard. In the meantime, you can use a generic tool, like [JSON Schema Validator](https://www.jsonschemavalidator.net/) to check the structure and format of OFDS data.
-```
+Once you have prepared your data, the next step is to use the [OFDS Convert, Validate, Explore tool (CoVE)](https://ofds.cove.opendataservices.coop/) to check that your data is correctly structured and formatted according to the OFDS schema.
 
 #### Publish your data
 
