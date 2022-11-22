@@ -11,7 +11,6 @@
 <!-- Complete the checklist before requesting a review. -->
 
 - [ ] Update the changelog ([style guide](https://ofds-standard-development-handbook.readthedocs.io/en/latest/style/changelog_style_guide.html))
-
 - [ ] Run `./manage.py pre-commit` to update derivative schema files, reference documentation and examples
 
 If there are changes to `network-schema.json`, `network-package-schema.json`, `reference/publication_formats/json.md`, `reference/publication_formats/geojson.md` or `guidance/publication.md#how-to-publish-large-networks`, update the relevant manually authored examples:
