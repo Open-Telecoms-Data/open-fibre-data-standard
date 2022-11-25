@@ -23,5 +23,6 @@ Visit the [OFDS development handbook](https://ofds-standard-development-handbook
 
 ## Contact
 
-Please direct general correspondence to [info@opentelecomdata.net](mailto:info@opentelecomdata.net)
-For support with implementing the Open Fibre Data Standard, please contact [openfibre@opendataservices.coop](mailto:openfibre@opendataservices.coop)
+Please direct general correspondence to [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
+
+For support with implementing the Open Fibre Data Standard, please contact [openfibre@opendataservices.coop](mailto:openfibre@opendataservices.coop).
