@@ -1,13 +1,13 @@
 code,title,description
-dataCentre,Data centre,"A structure, or group of structures, dedicated to the centralized accommodation, interconnection and operation of information technology and network telecommunications equipment."
+dataCentre,Data centre,"A structure,or group of structures,dedicated to the centralized accommodation,interconnection and operation of information technology and network telecommunications equipment."
 cableLanding,Cable landing point,The location where a submarine or other underwater cable makes landfall.
-pop,Point of Presence,"A demarcation point, access point, or physical location at which two or more networks or communication devices share a connection."
-tower,Tower,A ground-based or rooftop structure that supports antennas for sending or receiving radio waves. 
-ixp,Internet Exchange Point,"A physical point at which networks such as internet service providers, mobile operators and content delivery networks come together to connect and exchange internet traffic."
+pop,Point of Presence,"A demarcation point,access point,or physical location at which two or more networks or communication devices share a connection."
+tower,Tower,A ground-based or rooftop structure that supports antennas for sending or receiving radio waves.
+ixp,Internet Exchange Point,"A physical point at which networks such as internet service providers,mobile operators and content delivery networks come together to connect and exchange internet traffic."
 borderCrossing,Border crossing,The point at which a fibre cable crosses either an international boundary or the coastline of the operator’s country. The countries to which this node connects should be listed in `.internationalConnections`.
 cabinet,Cabinet,An distribution cabinet to which end users are connected by a standard phone line.
 aggregationPoint,Aggregation point,A point at which multiple fibre optic cables are spliced together. Typically located between an exchange or POP and GPON splitters or end user premises.
 exchange,Exchange,A telephone exchange.
 substation,Substation,An electrical substation.
-addDropSite,Add drop site,"A point at which individual digital bit streams can be added to, or dropped from, a multiplexed signal in order to redirect bit streams between network paths. "
+addDropSite,Add drop site,"A point at which individual digital bit streams can be added to,or dropped from,a multiplexed signal in order to redirect bit streams between network paths."
 repeaterSite,Repeater site,A point at which fibre optic signals are amplified or repeated. Also known as a regeneration facility.
