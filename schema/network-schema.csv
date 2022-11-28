@@ -65,8 +65,7 @@ Span,countries,Countries,"The countries in which this span is physically located
 Phase,id,Identifier,An identifier for this phase. The identifier must be unique within the scope of the `phases` array.,string,1..1,,,,,
 Phase,name,Name,A name for this phase.,string,0..1,,,,,
 Phase,description,Description,A description for this phase.,string,0..1,,,,,
-Phase,funders,Funders,"Information about the organisations that provide financing for the development or operation of this phase, also known as investors or financers.
-",array,0..n,,,,,
+Phase,funders,Funders,"Information about the organisations that provide financing for the development or operation of this phase, also known as investors or financers.",array,0..n,,,,,
 Organisation,id,Local identifier,A local identifier for this organisation. The identifier must be unique within the scope of the `organisations` array.,string,1..1,,,,,
 Organisation,name,Name,A name for this organisation.,string,0..1,,,,,
 Organisation,identifier,Organisation identifier,An identifier for this organisation.,unknown,0..1,,,,,
