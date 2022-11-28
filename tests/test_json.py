@@ -149,7 +149,7 @@ def collect_codelist_enums(path, data, pointer=''):
 def collect_codelist_files(schema_dir):
     codelist_files = set()
     for csvpath, csvname, _, fieldnames, _ in walk_csv_data(top=schema_dir):
-        if 'code' in fieldnames:
+        if 'Code' in fieldnames:
             codelist_files.add(csvname)
 
     return codelist_files
@@ -165,7 +165,7 @@ def collect_codelist_codes():
     for _, codelist_file, _, _, rows in codelist_csvs:
         codes = []
         for row in rows:
-            codes.append(row.get('code'))
+            codes.append(row.get('Code'))
         codelist_codes[codelist_file] = codes
 
     return codelist_codes
