@@ -699,7 +699,7 @@ def update_from_airtable():
                 subdir = "open"
 
             with open(codelistdir / subdir / filename, 'w', newline='') as f:
-                fieldnames = ['code', 'title', 'description']
+                fieldnames = ['Code', 'Title', 'Description']
                 writer = csv.DictWriter(f, fieldnames=fieldnames)
                 writer.writeheader()
 
