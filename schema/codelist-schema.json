@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Codelist schema",
+  "description": "Schema for OFDS codelist CSV files.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["Code", "Title"],
+    "additionalProperties": false,
+    "properties": {
+      "Code": {
+        "title": "Code",
+        "description": "The value to use in OFDS data. Codes should match the letter case of external codes (e.g. ISO 4217, JSON Schema, GeoJSON, IANA Media Types) and should be camel case, otherwise.",
+        "type": "string",
+        "pattern": ""
+      },
+      "Title": {
+        "title": "Title",
+        "description": "A short title for the code.",
+        "type": "string",
+        "minLength": 1
+      },
+      "Description": {
+        "title": "Description",
+        "description": "A longer-form description of the code.",
+        "type": "string",
+        "minLength": 1
+      },
+      "Valid Until": {
+        "title": "Valid Until",
+        "description": "The date past which the code is no longer valid for use.",
+        "type": ["string", "null"],
+        "pattern": "^(\\d{4}/\\d{4}|\\d{4}-\\d{2}(/\\d{4}-\\d{2})?)$"
+      }
+    },
+    "minProperties": 1
+  },
+  "minItems": 1,
+  "uniqueItems": true
+}
