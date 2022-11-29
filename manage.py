@@ -736,8 +736,8 @@ def pre_commit():
     # Generate network-schema.csv
     schema_table = mapping_sheet(schema, include_codelist=True, include_definitions=True)
 
-    with (schemadir / 'network-schema.csv').open('w') as f:
-        writer = csv.DictWriter(f, fieldnames=schema_table[0])
+    with (schemadir / 'network-schema.csv').open('w', newline='') as f:
+        writer = csv.DictWriter(f, fieldnames=schema_table[0], lineterminator='\n')
         
         writer.writeheader()
         for row in schema_table[1]:
@@ -752,7 +752,8 @@ def pre_commit():
       output_format='csv',
       main_sheet_name="networks",
       truncation_length=9,
-      root_list_path='networks'
+      root_list_path='networks',
+      line_terminator='LF'
     )
 
     # Update examples/csv/template
@@ -762,7 +763,8 @@ def pre_commit():
       output_format="csv",
       main_sheet_name="networks",
       truncation_length=9,
-      no_deprecated_fields=True
+      no_deprecated_fields=True,
+      line_terminator='LF'
     )
 
     # Update docs/reference/publication_formats/csv.md
