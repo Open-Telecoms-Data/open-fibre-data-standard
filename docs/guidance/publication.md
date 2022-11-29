@@ -1,9 +1,11 @@
 # How to publish OFDS data
 
-```{admonition} Alpha consultation
-Welcome to the alpha release of the Open Fibre Data Standard.
+```{admonition} 0.1.0-beta release
+Welcome to the Open Fibre Data Standard 0.1.0-beta release.
 
-We want to hear your feedback on the standard and its documentation. To find out how you can provide feedback, read the [alpha release announcement](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/115).
+We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues linked in the documentation or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
+
+To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
 
 This page provides an [overview](#overview) of the process for publishing Open Fibre Data Standard (OFDS) data and [how-to guides](#how-to-guides) for specific topics.
@@ -71,11 +73,7 @@ For guidance on common steps in converting your data to OFDS format, see the fol
 
 #### Check your data
 
-Once you have prepared your data, the next step is to check that it is correctly structured and formatted according to the OFDS schema.
-
-```{admonition} Data Review Tool
-An online tool for checking the structure and format of OFDS data is under development and will be released with the Beta version of the standard. In the meantime, you can use a generic tool, like [JSON Schema Validator](https://www.jsonschemavalidator.net/) to check the structure and format of OFDS data.
-```
+Once you have prepared your data, the next step is to use the [OFDS Convert, Validate, Explore tool (CoVE)](https://ofds.cove.opendataservices.coop/) to check that your data is correctly structured and formatted according to the OFDS schema.
 
 #### Publish your data
 
@@ -97,7 +95,7 @@ If you add an additional field, you ought to describe its structure, format and 
 
 ### How to format data for publication
 
-```{admonition} Alpha consultation
+```{admonition} Consultation
 There are [open issues](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues?q=is%3Aopen+is%3Aissue+label%3ATooling) related to tooling for transforming data between publication formats.
 ```
 

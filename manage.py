@@ -461,7 +461,7 @@ def update_schema_docs(schema):
       # Add admonition with list of related Github issues
       if len(definition["issues"]) > 0:
           definition["content"].extend([
-              "```{admonition} Alpha consultation\n",
+              "```{admonition} Consultation\n",
               "The following issues relate to this component or its fields:\n"
           ])
           for issue in definition["issues"].values():

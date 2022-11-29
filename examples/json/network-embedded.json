@@ -7,5 +7,11 @@
   "spans": [
     {},
     {}
+  ],
+  "links": [
+    {
+      "rel": "describedby",
+      "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-schema.json"
+    }
   ]
 }

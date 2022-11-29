@@ -2,11 +2,23 @@
   "networks": [
     {
       "id": "fd7b30d6-f514-4cd0-a5ac-29a774f53a43",
-      "name": "Ghana Fibre Network"
+      "name": "Ghana Fibre Network",
+      "links": [
+        {
+          "rel": "describedby",
+          "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-schema.json"
+        }
+      ]
     },
     {
       "id": "acafe566-7ffa-416a-b3b4-84a52386a586",
-      "name": "Togo Fibre Network"
+      "name": "Togo Fibre Network",
+      "links": [
+        {
+          "rel": "describedby",
+          "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-schema.json"
+        }
+      ]
     }
   ],
   "links": {
