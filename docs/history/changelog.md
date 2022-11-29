@@ -19,6 +19,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#197](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/197) - Update pull request template.
 - [#201](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/201) - Add support page.
 - [#208](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/208) - Add link to "WGS 84" text in docs/reference/schema.md.
+- [#213](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/213) - For GeoJSON/JSON conversion, use libcoveofds now.
 
 ## 0.1.0-beta - 2022-11-10
 
