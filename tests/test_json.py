@@ -66,7 +66,8 @@ def test_codelist_enums(path, name, data):
     for codelist_file, codes in codelist_codes.items():
         if codelist_file in codelist_info:
             codelist_enum = codelist_info[codelist_file][0]
-            if Counter(codelist_enum) != Counter(codes):
+            open_codelist = codelist_info[codelist_file][1]
+            if not open_codelist and Counter(codelist_enum) != Counter(codes):
                 errors += 1
                 warn("""Codelist mismatch:\n
                     {}: \n
@@ -136,6 +137,9 @@ def collect_codelist_enums(path, data, pointer=''):
             codelists.update(collect_codelist_enums(path, item, pointer='{}/{}'.format(pointer, index)))
     elif isinstance(data, dict):
         if 'codelist' in data:
+          if data.get('type') == 'array' and 'items' in data:
+            codelists[data.get('codelist')] = ((data['items'].get('enum'), data.get('openCodelist')))
+          else:
             codelists[data.get('codelist')] = ((data.get('enum'), data.get('openCodelist')))
 
         for key, value in data.items():
