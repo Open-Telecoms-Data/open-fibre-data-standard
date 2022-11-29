@@ -397,8 +397,6 @@
               "string"
             ],
             "enum": [
-              "aerial",
-              "underground",
               "aboveGround",
               "belowGround"
             ],
