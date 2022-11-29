@@ -55,7 +55,7 @@ def test_codelist_enums(path, name, data):
     """
     Make sure the codes in the codelist CSVs match the equivalent enums in the schema.
     """
-    if "schema/testing" in path or "src/" in path:
+    if "src/" in path:
         return
 
     errors = 0
@@ -64,9 +64,7 @@ def test_codelist_enums(path, name, data):
     codelist_info = collect_codelist_enums(path, data)
 
     for codelist_file, codes in codelist_codes.items():
-        # Exclude statementType because the enums in each subschema are restricted
-        # and do not use the full codelist
-        if codelist_file != "statementType.csv" and codelist_file in codelist_info:
+        if codelist_file in codelist_info:
             codelist_enum = codelist_info[codelist_file][0]
             if Counter(codelist_enum) != Counter(codes):
                 errors += 1
