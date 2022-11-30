@@ -5,14 +5,17 @@
   "type": "array",
   "items": {
     "type": "object",
-    "required": ["Code", "Title"],
+    "required": [
+      "Code",
+      "Title"
+    ],
     "additionalProperties": false,
     "properties": {
       "Code": {
         "title": "Code",
         "description": "The value to use in OFDS data. Codes should match the letter case of external codes (e.g. ISO 4217, JSON Schema, GeoJSON, IANA Media Types) and should be camel case, otherwise.",
         "type": "string",
-        "pattern": ""
+        "pattern": "^([a-z]+([A-Z][a-z]+)*|[A-Z]+[0-9]?|[a-z]+(.[a-z]+)*|LineString|Point|(application|audio|font|example|image|message|model|multipart|text|video)/[\\w.+-]+|[A-Z]{2}([-_][A-Z]+)+|G.65[1-9](.1)?|tag:opentelecomdata.net,2022:(nodes|spans)(API|File))$"
       },
       "Title": {
         "title": "Title",
@@ -29,7 +32,10 @@
       "Valid Until": {
         "title": "Valid Until",
         "description": "The date past which the code is no longer valid for use.",
-        "type": ["string", "null"],
+        "type": [
+          "string",
+          "null"
+        ],
         "pattern": "^(\\d{4}/\\d{4}|\\d{4}-\\d{2}(/\\d{4}-\\d{2})?)$"
       }
     },
