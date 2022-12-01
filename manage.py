@@ -775,7 +775,7 @@ def pre_commit():
     update_schema_docs(schema)
 
     # Update examples/geojson/nodes.geojson and examples/geojson/spans.geojson
-    subprocess.run(['ofdskit', 'jsontogeojson', 'examples/json/network-package.json', 'examples/geojson/nodes.geojson', 'examples/geojson/spans.geojson'])
+    subprocess.run(['libcoveofds', 'jsontogeojson', 'examples/json/network-package.json', 'examples/geojson/nodes.geojson', 'examples/geojson/spans.geojson'])
 
 @cli.command()
 @click.argument('filename', type=click.Path(exists=True))

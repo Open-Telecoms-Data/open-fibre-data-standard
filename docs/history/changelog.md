@@ -16,6 +16,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
 * [#184](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/184) - Fix broken schema browser.
 * [#196](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/196) - Add link to the OFDS Convert, Validate, Explore tool (CoVE).
 * [#197](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/197) - Update pull request template.
+* [#204](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/204) - Update GeoJSON examples.
 
 ## 0.1.0-beta - 2022-11-10
 

@@ -20,7 +20,14 @@
                     "funders": [
                         {
                             "id": "1",
-                            "name": "Ghana Infrastructure Investment Fund"
+                            "name": "Ghana Infrastructure Investment Fund",
+                            "country": "GH",
+                            "roles": [
+                                "funder"
+                            ],
+                            "roleDetails": "The Ghana Infrastructure Investment Fund provided equity financing for the construction of phase 1 of the NextGen network.",
+                            "website": "https://www.example.com",
+                            "logo": "https://www.example.com/logo.png"
                         }
                     ]
                 },
@@ -110,7 +117,14 @@
                                     "funders": [
                                         {
                                             "id": "1",
-                                            "name": "Ghana Infrastructure Investment Fund"
+                                            "name": "Ghana Infrastructure Investment Fund",
+                                            "country": "GH",
+                                            "roles": [
+                                                "funder"
+                                            ],
+                                            "roleDetails": "The Ghana Infrastructure Investment Fund provided equity financing for the construction of phase 1 of the NextGen network.",
+                                            "website": "https://www.example.com",
+                                            "logo": "https://www.example.com/logo.png"
                                         }
                                     ]
                                 }
@@ -168,7 +182,14 @@
                     "funders": [
                         {
                             "id": "1",
-                            "name": "Ghana Infrastructure Investment Fund"
+                            "name": "Ghana Infrastructure Investment Fund",
+                            "country": "GH",
+                            "roles": [
+                                "funder"
+                            ],
+                            "roleDetails": "The Ghana Infrastructure Investment Fund provided equity financing for the construction of phase 1 of the NextGen network.",
+                            "website": "https://www.example.com",
+                            "logo": "https://www.example.com/logo.png"
                         }
                     ]
                 },
@@ -252,7 +273,14 @@
                                     "funders": [
                                         {
                                             "id": "1",
-                                            "name": "Ghana Infrastructure Investment Fund"
+                                            "name": "Ghana Infrastructure Investment Fund",
+                                            "country": "GH",
+                                            "roles": [
+                                                "funder"
+                                            ],
+                                            "roleDetails": "The Ghana Infrastructure Investment Fund provided equity financing for the construction of phase 1 of the NextGen network.",
+                                            "website": "https://www.example.com",
+                                            "logo": "https://www.example.com/logo.png"
                                         }
                                     ]
                                 }
