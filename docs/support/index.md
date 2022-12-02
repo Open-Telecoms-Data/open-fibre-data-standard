@@ -1,6 +1,6 @@
 # Getting Help
 
-This page describes how you can get help with publishing or using OFDS data.
+This page describes how you can get help with publishing or using Open Fibre Data Standard (OFDS) data.
 
 ## OFDS Helpdesk
 
