@@ -23,7 +23,6 @@ For details of the OFDS data model and publication formats and for the specific 
 
 For information about how you can access support with publishing or using OFDS data, look at [getting help](support/index).
 
-
 For information about changes in each version of the OFDS, read the [history](history/index)
 
 To find out about the policies and processes that govern the development of the OFDS, read the [governance](governance/index) page.

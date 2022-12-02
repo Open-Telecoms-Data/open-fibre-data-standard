@@ -58,17 +58,16 @@ The following example shows a network with two nodes represented in JSON format 
 
 ::::
 
-
 ## networks
 
 This table is related to the following tables:
 
- * [nodes](#nodes): one-to-many by `id`
- * [spans](#spans): one-to-many by `id`
- * [phases](#phases): one-to-many by `id`
- * [organisations](#organisations): one-to-many by `id`
- * [contracts](#contracts): one-to-many by `id`
- * [links](#links): one-to-many by `id`
+- [nodes](#nodes): one-to-many by `id`
+- [spans](#spans): one-to-many by `id`
+- [phases](#phases): one-to-many by `id`
+- [organisations](#organisations): one-to-many by `id`
+- [contracts](#contracts): one-to-many by `id`
+- [links](#links): one-to-many by `id`
 
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/networks.csv) or a [blank template](../../../examples/csv/template/networks.csv) for this table.
 
@@ -80,8 +79,8 @@ The fields in this table are listed below. You can also download an [example CSV
 
 This table is related to the following tables:
 
- * [networks](#networks): many-to-one by `id`
- * [internationalConnections](#internationalconnections): one-to-many by `nodes/0/id`
+- [networks](#networks): many-to-one by `id`
+- [internationalConnections](#internationalconnections): one-to-many by `nodes/0/id`
 
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/nodes.csv) or a [blank template](../../../examples/csv/template/nodes.csv) for this table.
 
@@ -93,7 +92,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 This table is related to the following tables:
 
- * [nodes](#nodes): many-to-one by `nodes/0/id`
+- [nodes](#nodes): many-to-one by `nodes/0/id`
 
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/nodes_internationalConnections.csv) or a [blank template](../../../examples/csv/template/nodes_internationalConnections.csv) for this table.
 
@@ -105,7 +104,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 This table is related to the following tables:
 
- * [networks](#networks): many-to-one by `id`
+- [networks](#networks): many-to-one by `id`
 
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/spans.csv) or a [blank template](../../../examples/csv/template/spans.csv) for this table.
 
@@ -117,8 +116,8 @@ The fields in this table are listed below. You can also download an [example CSV
 
 This table is related to the following tables:
 
- * [networks](#networks): many-to-one by `id`
- * [funders](#funders): one-to-many by `phases/0/id`
+- [networks](#networks): many-to-one by `id`
+- [funders](#funders): one-to-many by `phases/0/id`
 
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/phases.csv) or a [blank template](../../../examples/csv/template/phases.csv) for this table.
 
@@ -130,7 +129,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 This table is related to the following tables:
 
- * [phases](#phases): many-to-one by `phases/0/id`
+- [phases](#phases): many-to-one by `phases/0/id`
 
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/phases_funders.csv) or a [blank template](../../../examples/csv/template/phases_funders.csv) for this table.
 
@@ -142,7 +141,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 This table is related to the following tables:
 
- * [networks](#networks): many-to-one by `id`
+- [networks](#networks): many-to-one by `id`
 
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/organisations.csv) or a [blank template](../../../examples/csv/template/organisations.csv) for this table.
 
@@ -154,9 +153,9 @@ The fields in this table are listed below. You can also download an [example CSV
 
 This table is related to the following tables:
 
- * [networks](#networks): many-to-one by `id`
- * [documents](#documents): one-to-many by `contracts/0/id`
- * [relatedPhases](#relatedphases): one-to-many by `contracts/0/id`
+- [networks](#networks): many-to-one by `id`
+- [documents](#documents): one-to-many by `contracts/0/id`
+- [relatedPhases](#relatedphases): one-to-many by `contracts/0/id`
 
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/contracts.csv) or a [blank template](../../../examples/csv/template/contracts.csv) for this table.
 
@@ -168,7 +167,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 This table is related to the following tables:
 
- * [contracts](#contracts): many-to-one by `contracts/0/id`
+- [contracts](#contracts): many-to-one by `contracts/0/id`
 
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/contracts_documents.csv) or a [blank template](../../../examples/csv/template/contracts_documents.csv) for this table.
 
@@ -180,7 +179,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 This table is related to the following tables:
 
- * [contracts](#contracts): many-to-one by `contracts/0/id`
+- [contracts](#contracts): many-to-one by `contracts/0/id`
 
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/contracts_relatedPhases.csv) or a [blank template](../../../examples/csv/template/contracts_relatedPhases.csv) for this table.
 
@@ -192,7 +191,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 This table is related to the following tables:
 
- * [networks](#networks): many-to-one by `id`
+- [networks](#networks): many-to-one by `id`
 
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/links.csv) or a [blank template](../../../examples/csv/template/links.csv) for this table.
 

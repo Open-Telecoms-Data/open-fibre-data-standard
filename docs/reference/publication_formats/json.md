@@ -18,7 +18,7 @@ For guidance on paginating or streaming individual networks, see [how to publish
 
 The network package schema describes the structure of the container for publishing one or more networks in JSON format and for supporting pagination.
 
-For this version of OFDS, the canonical URL of the schema is [https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-package-schema.json](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-package-schema.json). Use the canonical URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested.
+For this version of OFDS, the canonical URL of the schema is [https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0\_\_1\_\_0\_\_beta/schema/network-package-schema.json](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-package-schema.json). Use the canonical URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested.
 
 This page presents the schema in an interactive browser. You can also download the canonical version of the schema as [JSON Schema](../../../schema/network-package-schema.json).
 
@@ -29,7 +29,8 @@ A network package is a JSON object that must include `.networks`: an array of `N
 :::{tab-item} Schema browser
 Click on schema elements to expand the tree, or use the '+' icon to expand all elements. Use { } to view the underlying schema for any section. Required fields are indicated in **bold**.
 
- <script src="../../_static/docson/widget.js" data-schema="../network-package-schema.json"></script>
+<script src="../../_static/docson/widget.js" data-schema="../network-package-schema.json"></script>
+
 :::
 
 :::{tab-item} Small file example

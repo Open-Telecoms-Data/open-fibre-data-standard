@@ -727,6 +727,8 @@ def pre_commit():
       - reference/schema.md
       - examples/geojson/nodes.geojson
       - examples/geojson/spans.geojson
+      Also run:
+      - mdformat
     """
 
     # Load schema
@@ -776,6 +778,9 @@ def pre_commit():
 
     # Update examples/geojson/nodes.geojson and examples/geojson/spans.geojson
     subprocess.run(['libcoveofds', 'jsontogeojson', 'examples/json/network-package.json', 'examples/geojson/nodes.geojson', 'examples/geojson/spans.geojson'])
+
+    # Run mdformat
+    subprocess.run(['mdformat', 'docs'])
 
 @cli.command()
 @click.argument('filename', type=click.Path(exists=True))

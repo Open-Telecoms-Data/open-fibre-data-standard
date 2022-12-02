@@ -14,8 +14,8 @@ In OFDS, there are two types of identifier: global identifiers and local identif
 
 The following identifiers are globally unique:
 
-* [Network identifier](#network-identifier)
-* [Organisation identifiers](#organisation-identifiers)
+- [Network identifier](#network-identifier)
+- [Organisation identifiers](#organisation-identifiers)
 
 ### Network identifier
 
