@@ -13,7 +13,7 @@ If you are planning to publish or use OFDS data, then the OFDS Helpdesk is on-ha
 * Providing guidance on mapping your data structures to OFDS
 * Giving you feedback on draft data files, and checking the structure of your data
 
-Helpdesk support is delivered through collaboration with [Open Data Services](https://opendataservices.coop).
+Support is delivered in collaboration with [Open Data Services Co-operative](https://opendataservices.coop).
 
 Through funding from the World Bank, this support is provided free of charge.
 
