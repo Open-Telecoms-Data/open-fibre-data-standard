@@ -17,7 +17,7 @@ Support is delivered in collaboration with [Open Data Services Co-operative](htt
 
 Through funding from the World Bank, this support is provided free of charge.
 
-Please e-mail [openfibre@opendataservices.coop](mailto:openfibre@opendataservices.coop) with your questions, and a member of the OFDS Helpdesk will be in touch with you soon.
+Please e-mail [openfibre@opendataservices.coop](mailto:openfibre@opendataservices.coop) with your questions, and a member of the OFDS Support Team will be in touch with you soon.
 
 ## OFDS Community
 
