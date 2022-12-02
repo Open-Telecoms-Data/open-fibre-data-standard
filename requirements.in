@@ -11,5 +11,7 @@ pyairtable
 PyGithub
 ocdskit
 sphinx-design
-ofdskit
+libcoveofds
 flattentool
+pytest
+jscc
