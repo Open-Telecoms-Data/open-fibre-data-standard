@@ -21,5 +21,5 @@ Please e-mail [openfibre@opendataservices.coop](mailto:openfibre@opendataservice
 
 ## OFDS Community
 
-You can also contribute directly to public discussions about implementing the standard and give feedback on its development, via the [discussion tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions). You can also [raise an issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) to make a technical contribution.
+You can contribute directly to public discussions about implementing the standard and give feedback on its development via the [discussion tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions). You can also [raise an issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) to make a technical contribution.
 
