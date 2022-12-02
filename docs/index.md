@@ -21,7 +21,12 @@ To learn how to publish and use open fibre data, read the [guidance](guidance/in
 
 For details of the OFDS data model and publication formats and for the specific rules that need to be followed to publish OFDS data, read the [reference](reference/index).
 
+For information about how you can access support with publishing or using OFDS data, look at [getting help](support/index).
+
+
 For information about changes in each version of the OFDS, read the [history](history/index)
+
+To find out about the policies and processes that govern the development of the OFDS, read the [governance](governance/index) page.
 
 ```{eval-rst}
 .. toctree::
@@ -30,6 +35,7 @@ For information about changes in each version of the OFDS, read the [history](hi
    primer/index
    guidance/index
    reference/index
+   support/index
    history/index
    governance/index
 ```
