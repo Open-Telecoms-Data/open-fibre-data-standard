@@ -2,7 +2,7 @@
 
 This page describes how you can get help with publishing or using Open Fibre Data Standard (OFDS) data.
 
-## OFDS Helpdesk
+## OFDS Support Team
 
 The Open Fibre Data Standard (OFDS) Helpdesk is available to support you in publishing or using OFDS data, and to assist in the ongoing development of the standard.
 
