@@ -27,4 +27,3 @@ OFDS data must be published using at least one of the formats described in this 
 Each format provides containers for publishing one or more networks and options to support pagination and streaming.
 
 To support the widest range of use cases, you should publish your data in all three formats. For more information on choosing a publication format and on publishing data in multiple formats, see [how to format data for publication](../../guidance/publication.md#how-to-format-data-for-publication).
-

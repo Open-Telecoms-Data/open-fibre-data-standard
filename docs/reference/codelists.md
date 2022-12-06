@@ -31,7 +31,8 @@ Codes are case-sensitive, and are generally provided as English language camelCa
 The contract type codelist is used to categorise contracts based on the World Bank PPPLRC's [types of PPP arrangement](https://ppp.worldbank.org/public-private-partnership/agreements).
 
 This codelist is referenced by the following properties:
-* [`Contract/type`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Contract,type)
+
+- [`Contract/type`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Contract,type)
 
 This codelist has the following codes:
 
@@ -46,7 +47,8 @@ This codelist has the following codes:
 The language codelist is used to provide the default language used in text fields and the language of linked documents, using two-letter codes from ISO639-1.
 
 This codelist is referenced by the following properties:
-* [`language`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,language)
+
+- [`language`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,language)
 
 This codelist has the following codes:
 
@@ -61,7 +63,8 @@ This codelist has the following codes:
 The link relation type codelist consists of extensions to the [IANA Link Relationship Types](https://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1) constructed according to the [tag URI scheme](https://www.rfc-editor.org/rfc/rfc4151).
 
 This codelist is referenced by the following properties:
-* [`Link/rel`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Link,rel)
+
+- [`Link/rel`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Link,rel)
 
 This codelist has the following codes:
 
@@ -76,7 +79,8 @@ This codelist has the following codes:
 The mediaType codelist is based on the [IANA Media Types list](https://www.iana.org/assignments/media-types/media-types.xhtml). The media type codelist adds an exceptional code for printed documents ('offline/print'), and omits any media type that is marked as deprecated or obsolete by IANA.
 
 This codelist is referenced by the following properties:
-* [`Document/format`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Document,format)
+
+- [`Document/format`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Document,format)
 
 This codelist has the following codes:
 
@@ -91,7 +95,8 @@ This codelist has the following codes:
 The node technologies codelist is used to indicate the technologies used in a node.
 
 This codelist is referenced by the following properties:
-* [`Node/technologies`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,technologies)
+
+- [`Node/technologies`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,technologies)
 
 This codelist has the following codes:
 
@@ -106,7 +111,8 @@ This codelist has the following codes:
 The node type codelist is used to categorise the nodes in a network.
 
 This codelist is referenced by the following properties:
-* [`Node/type`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,type)
+
+- [`Node/type`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,type)
 
 This codelist has the following codes:
 
@@ -121,7 +127,8 @@ This codelist has the following codes:
 The organisation identifier scheme codelist uses the codes from [org-id.guide](http://org-id.guide/) to identify the register from which an organisation's identifier is drawn. You can search for codes by browsing the website or you can download the latest version of the codelist as a [CSV file](http://org-id.guide/download.csv).
 
 This codelist is referenced by the following properties:
-* [`Identifier/scheme`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Identifier,scheme)
+
+- [`Identifier/scheme`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Identifier,scheme)
 
 This codelist has the following codes:
 
@@ -136,7 +143,8 @@ This codelist has the following codes:
 The organisation role codelist is used to identify an organisation's roles in a network. An organisation can have one or more roles.
 
 This codelist is referenced by the following properties:
-* [`Organisation/roles`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Organisation,roles)
+
+- [`Organisation/roles`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Organisation,roles)
 
 This codelist has the following codes:
 
@@ -151,7 +159,8 @@ This codelist has the following codes:
 The span technologies codelist is used to indicate the technologies used on a span.
 
 This codelist is referenced by the following properties:
-* [`Span/technologies`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,technologies)
+
+- [`Span/technologies`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,technologies)
 
 This codelist has the following codes:
 
@@ -168,9 +177,10 @@ This codelist has the following codes:
 The country codelist uses uppercase two-letter codes from [ISO3166-1](https://www.iso.org/iso-3166-country-codes.html). The country codelist adds a user-assigned code for Kosovo ('XK').
 
 This codelist is referenced by the following properties:
-* [`Span/countries`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,countries)
-* [`Organisation/country`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Organisation,country)
-* [`Address/country`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Address,country)
+
+- [`Span/countries`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,countries)
+- [`Organisation/country`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Organisation,country)
+- [`Address/country`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Address,country)
 
 This codelist has the following codes:
 
@@ -185,7 +195,8 @@ This codelist has the following codes:
 The currency codelist uses uppercase 3-letter codes from [ISO4217](https://www.iso.org/iso-4217-currency-codes.html).
 
 This codelist is referenced by the following properties:
-* [`Value/currency`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Value,currency)
+
+- [`Value/currency`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Value,currency)
 
 This codelist has the following codes:
 
@@ -200,7 +211,8 @@ This codelist has the following codes:
 The deployment codelist is used to categorise the deployment of spans.
 
 This codelist is referenced by the following properties:
-* [`Span/deployment`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,deployment)
+
+- [`Span/deployment`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,deployment)
 
 This codelist has the following codes:
 
@@ -215,7 +227,8 @@ This codelist has the following codes:
 The fibre type codelist is a subset of [ITU-T recommendations](https://www.itu.int/rec/T-REC-G/en) that describe characteristics of optical fibre and cables. It is used to categorise the type of fibre used in a span.
 
 This codelist is referenced by the following properties:
-* [`Span/fibreType`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,fibreType)
+
+- [`Span/fibreType`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,fibreType)
 
 This codelist has the following codes:
 
@@ -230,7 +243,8 @@ This codelist has the following codes:
 The geometry type codelist is used to categorise the type of geometry represented by the geometry object.
 
 This codelist is referenced by the following properties:
-* [`Geometry/type`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Geometry,type)
+
+- [`Geometry/type`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Geometry,type)
 
 This codelist has the following codes:
 
@@ -245,7 +259,8 @@ This codelist has the following codes:
 The node status codelist is used to identify the operational status of a node.
 
 This codelist is referenced by the following properties:
-* [`Node/status`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,status)
+
+- [`Node/status`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,status)
 
 This codelist has the following codes:
 
@@ -260,7 +275,8 @@ This codelist has the following codes:
 The span status codelist is used to indicate the operational status of a span.
 
 This codelist is referenced by the following properties:
-* [`Span/status`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,status)
+
+- [`Span/status`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,status)
 
 This codelist has the following codes:
 
@@ -275,7 +291,8 @@ This codelist has the following codes:
 The transmission medium codelist is used to categorise the physical media of a span.
 
 This codelist is referenced by the following properties:
-* [`Span/transmissionMedium`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,transmissionMedium)
+
+- [`Span/transmissionMedium`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,transmissionMedium)
 
 This codelist has the following codes:
 
@@ -284,4 +301,3 @@ This codelist has the following codes:
 :widths: auto
 :file: ../../codelists/closed/transmissionMedium.csv
 ```
-

@@ -95,32 +95,32 @@ This section describes the rules for transforming an OFDS network from JSON form
 
 To transform an OFDS network from JSON format to GeoJSON format, you must:
 
-* Create an empty JSON object for the nodes feature collection and set its `.type` to 'FeatureCollection'.
-* Create an empty JSON object for the spans feature collection and set its `.type` to 'FeatureCollection'.
-* For each contract in `contracts`, [dereference the phase references](#dereference-a-phase-reference) in `.relatedPhases`.
-* For each node in `nodes`:
-  * Convert the node to a GeoJSON feature:
-    * Create an empty JSON object for the feature.
-    * Set the feature's:
-    * `.type` to 'Feature'.
-    * `.geometry` to the node's `.location`, if it exists. Otherwise, set `.geometry` to `Null`.
-    * `.properties` to the properties of the node, excluding `.location`.
-    * [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProvider`.
-    * [Dereference the phase reference](#dereference-a-phase-reference) in the feature's `.phase` property.
-    * Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
-  * Add the feature to the nodes feature collection.
-* For each span in `spans`:
-  * Convert the span to a GeoJSON Feature:
-    * Create an empty JSON object for the feature.
-    * Set the feature's:
-    * `.type` to 'Feature'.
-    * `.geometry` to the span's `.route`, if it exists. Otherwise, set `.geometry` to `Null`.
-    * `.properties` to the properties of the span, excluding `.route`.
-    * [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProvider`.
-    * [Dereference the phase reference](#dereference-a-phase-reference) in `.properties.phase`.
-    * [Dereference the node ids](#dereference-a-node-id) in `properties.start` and `properties.end`.
-    * Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
-  * Add the feature to the spans feature collection.
+- Create an empty JSON object for the nodes feature collection and set its `.type` to 'FeatureCollection'.
+- Create an empty JSON object for the spans feature collection and set its `.type` to 'FeatureCollection'.
+- For each contract in `contracts`, [dereference the phase references](#dereference-a-phase-reference) in `.relatedPhases`.
+- For each node in `nodes`:
+  - Convert the node to a GeoJSON feature:
+    - Create an empty JSON object for the feature.
+    - Set the feature's:
+    - `.type` to 'Feature'.
+    - `.geometry` to the node's `.location`, if it exists. Otherwise, set `.geometry` to `Null`.
+    - `.properties` to the properties of the node, excluding `.location`.
+    - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProvider`.
+    - [Dereference the phase reference](#dereference-a-phase-reference) in the feature's `.phase` property.
+    - Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
+  - Add the feature to the nodes feature collection.
+- For each span in `spans`:
+  - Convert the span to a GeoJSON Feature:
+    - Create an empty JSON object for the feature.
+    - Set the feature's:
+    - `.type` to 'Feature'.
+    - `.geometry` to the span's `.route`, if it exists. Otherwise, set `.geometry` to `Null`.
+    - `.properties` to the properties of the span, excluding `.route`.
+    - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProvider`.
+    - [Dereference the phase reference](#dereference-a-phase-reference) in `.properties.phase`.
+    - [Dereference the node ids](#dereference-a-node-id) in `properties.start` and `properties.end`.
+    - Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
+  - Add the feature to the spans feature collection.
 
 ### Common operations
 
