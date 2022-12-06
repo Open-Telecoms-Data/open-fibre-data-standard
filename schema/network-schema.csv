@@ -51,7 +51,7 @@ Span,physicalInfrastructureProvider,Physical infrastructure provider,"The organi
 Span,networkProvider,Network provider,"The organisation that operates the active network infrastructure for this span, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",unknown,0..1,,,,,
 Span,supplier,Supplier,The organisation responsible for installing the cable for this span.,unknown,0..1,,,,,
 Span,transmissionMedium,Transmission medium,"The physical media of this span, from the closed transmissionMedium codelist.",array,0..n,"Enum: fibre, microwave, copper, coaxial",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#transmissionMedium,,,transmissionMedium.csv
-Span,deployment,Deployment,"The physical deployment of this span, from the closed deployment codelist. Further details of this span's deployment can be provided in `.deploymentDetails`.",array,0..n,"Enum: aerial, underground, aboveGround, belowGround",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment,,,deployment.csv
+Span,deployment,Deployment,"The physical deployment of this span, from the closed deployment codelist. Further details of this span's deployment can be provided in `.deploymentDetails`.",array,0..n,"Enum: aboveGround, belowGround",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment,,,deployment.csv
 Span,deploymentDetails,Deployment details,Further details of this span's deployment.,unknown,0..1,,,,,
 Span,darkFibre,Dark fibre availability,Whether access to dark fibre is available on this span.,boolean,0..1,,,,,
 Span,fibreType,Fibre type,"The type of fibre used in this span, from the closed fibreType codelist. Further details of the span's fibre type can be provided in `.fibreTypeDetails`.",string,0..1,"Enum: G.651.1, G.652, G.653, G.654, G.655, G.656, G.657",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#fibreType,,,fibreType.csv
@@ -65,8 +65,7 @@ Span,countries,Countries,"The countries in which this span is physically located
 Phase,id,Identifier,An identifier for this phase. The identifier must be unique within the scope of the `phases` array.,string,1..1,,,,,
 Phase,name,Name,A name for this phase.,string,0..1,,,,,
 Phase,description,Description,A description for this phase.,string,0..1,,,,,
-Phase,funders,Funders,"Information about the organisations that provide financing for the development or operation of this phase, also known as investors or financers.
-",array,0..n,,,,,
+Phase,funders,Funders,"Information about the organisations that provide financing for the development or operation of this phase, also known as investors or financers.",array,0..n,,,,,
 Organisation,id,Local identifier,A local identifier for this organisation. The identifier must be unique within the scope of the `organisations` array.,string,1..1,,,,,
 Organisation,name,Name,A name for this organisation.,string,0..1,,,,,
 Organisation,identifier,Organisation identifier,An identifier for this organisation.,unknown,0..1,,,,,

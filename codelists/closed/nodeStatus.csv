@@ -1,4 +1,4 @@
-code,title,description
+Code,Title,Description
 proposed,Proposed,Planning for the node is at an early stage and financing for its construction is not yet finalised.
 planned,Planned,Planning for the node is at an advanced stage and financing for its construction is finalised.
 underConstruction,Under construction,Construction of the passive physical infrastructure for the node is in progress.
