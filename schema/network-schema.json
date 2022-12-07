@@ -2062,7 +2062,7 @@
         },
         "rel": {
           "title": "Link relation type",
-          "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype). The 'describedby' code must only be used in the first item in the `links` array to link to the schema that describes the structure of the data." ,
+          "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype). The 'describedby' code must only be used in the first item in the `links` array to link to the schema that describes the structure of the data.",
           "type": "string",
           "$comment": "",
           "codelist": "linkRelationType.csv",

@@ -11,7 +11,9 @@
             "type": "LineString",
             "properties": ""
           },
-          "transmissionMedium": ["cable"],
+          "transmissionMedium": [
+            "cable"
+          ],
           "directed": "yes",
           "fibreCount": "52"
         }
