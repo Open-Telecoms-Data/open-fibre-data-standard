@@ -803,7 +803,7 @@
         },
         "funders": {
           "title": "Funders",
-          "description": "Information about the organisations that provide financing for the development or operation of this phase, also known as investors or financers.\n",
+          "description": "Information about the organisations that provide financing for the development or operation of this phase, also known as investors or financers.",
           "type": "array",
           "$comment": "",
           "items": {
