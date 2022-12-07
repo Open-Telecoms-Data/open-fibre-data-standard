@@ -1,11 +1,11 @@
-code,name
+Code,Name
 AD-COA,Andorra Chart of Accounts
 AE-ACCI,Ajman Chamber of Commerce and Industry
 AE-ADCD,Abu Dhabi Commercial Directory
 AE-AFZ,Ajman Free Zone Authority
 AE-COA,United Arab Emirates (the) Chart of Accounts
-AE-DCCI,Dubai Chamber of Commerce and Industry 
-AE-DFSA,Dubai Financial Services Authority 
+AE-DCCI,Dubai Chamber of Commerce and Industry
+AE-DFSA,Dubai Financial Services Authority
 AE-DIFC,Dubai International Financial Centre
 AE-DMCC,Dubai Multi Commodities Centre
 AE-FCCI,Fujairah Chamber of Commerce and Industry
@@ -18,7 +18,7 @@ AE-SCCI,Sharjah Chamber of Commerce and Industry
 AE-UQCCI,Umm al-Quwain Chamber of Commerce and Industry
 AF-CBR,Afghanistan Central Business Registry
 AF-COA,Afghanistan Chart of Accounts
-AF-MOE,Ministry of Economy NGO Department 
+AF-MOE,Ministry of Economy NGO Department
 AF-TIN,Afghanistan Tax Identification Number
 AG-COA,Antigua and Barbuda Chart of Accounts
 AI-COA,Anguilla Chart of Accounts
@@ -46,9 +46,9 @@ AZ-IVI,State Register of Commercial Entities (Ministry of Taxes of Azerbaijan Re
 BA-COA,Bosnia and Herzegovina Chart of Accounts
 BB-COA,Barbados Chart of Accounts
 BD-COA,Bangladesh Chart of Accounts
-BD-NAB,Bangladesh NGO Affairs Bureau 
-BD-ROC,Bangladesh Office of the Register of Joint Stock Companies and Firms 
-BE-BCE_KBO,Crossroads Bank for Enterprises 
+BD-NAB,Bangladesh NGO Affairs Bureau
+BD-ROC,Bangladesh Office of the Register of Joint Stock Companies and Firms
+BE-BCE_KBO,Crossroads Bank for Enterprises
 BE-COA,Belgium Chart of Accounts
 BE-GTCF,Au Greffe du Tribunal de Commerce Francophone de Bruxelles
 BF-COA,Burkina Faso Chart of Accounts
@@ -80,21 +80,21 @@ BY-COA,Belarus Chart of Accounts
 BZ-COA,Belize Chart of Accounts
 CA-CC,Corporations Canada
 CA-COA,Canada Chart of Accounts
-CA-CRA_ACR,Canadian Revenue Agency 
+CA-CRA_ACR,Canadian Revenue Agency
 CA-GOV,List of legal department names (Government of Canada)
-CA_AB-ABT,Corporate Registry Office 
-CA_BC-BRC_CBR,British Columbia Corporate Registry 
-CA_MB-MTB,"Manitoba Companies Office, Department of Entrepreneurship, Training and Trade "
-CA_NB-NWB_NOB,Corporate Registry 
+CA_AB-ABT,Corporate Registry Office
+CA_BC-BRC_CBR,British Columbia Corporate Registry
+CA_MB-MTB,"Manitoba Companies Office, Department of Entrepreneurship, Training and Trade"
+CA_NB-NWB_NOB,Corporate Registry
 CA_NL-NFL_TNL,"Registry of Companies, Department of Government Services"
-CA_NS-NVS_NVE,Nova Scotia Registry of Joint Stock Companies 
-CA_NT-NWT_TNO,Canadian Provincial Corporate Registration - Northwest Territories 
+CA_NS-NVS_NVE,Nova Scotia Registry of Joint Stock Companies
+CA_NT-NWT_TNO,Canadian Provincial Corporate Registration - Northwest Territories
 CA_NU-NNV,Nunavut Department of Justice - Corporate Registries
-CA_ON-ONT,"ServiceOntario, Ministry of Government Services "
+CA_ON-ONT,"ServiceOntario, Ministry of Government Services"
 CA_PE-PEI_IPE,Prince Edward Island Corporate
-CA_QC-QBC,Quebec Business Registrar 
-CA_SK-SKN,Saskatchewan Corporate Registry 
-CA_YT-YKT,Yukon Corporate Affairs 
+CA_QC-QBC,Quebec Business Registrar
+CA_SK-SKN,Saskatchewan Corporate Registry
+CA_YT-YKT,Yukon Corporate Affairs
 CC-COA,Cocos (Keeling) Islands (the) Chart of Accounts
 CD-COA,Congo (the Democratic Republic of the) Chart of Accounts
 CF-COA,Central African Republic (the) Chart of Accounts
@@ -113,9 +113,9 @@ CM-NIU,Tax Identification Number (Cameroon)
 CN-COA,China Chart of Accounts
 CN-SAIC,State Administration for Industry and Commerce (SAIC)
 CN-USCI,Unified Social Credit Identifier
-CO-CCB,Bogota Chamber of Commerce 
+CO-CCB,Bogota Chamber of Commerce
 CO-COA,Colombia Chart of Accounts
-CO-RUE,Unified Commercial and Social Registry (RUES) 
+CO-RUE,Unified Commercial and Social Registry (RUES)
 CR-COA,Costa Rica Chart of Accounts
 CR-RPJ,Registro de Personas Jurídicas (Costa Rica)
 CU-COA,Cuba Chart of Accounts
@@ -126,7 +126,7 @@ CY-COA,Cyprus Chart of Accounts
 CY-DRCOR,Cyprus Department of Registrar of Companies and Official Receiver (DRCOR)
 CZ-COA,Czechia Chart of Accounts
 CZ-DIC,Tax ID (DIČ) Czech Republic
-CZ-ICO,Access to Registers of Economic Subjects 
+CZ-ICO,Access to Registers of Economic Subjects
 DE-COA,Germany Chart of Accounts
 DE-CR,Common Register Portal of the German Federal States (CRP)
 DJ-COA,Djibouti Chart of Accounts
@@ -147,7 +147,7 @@ EH-COA,Western Sahara Chart of Accounts
 ER-COA,Eritrea Chart of Accounts
 ES-COA,Spain Chart of Accounts
 ES-DIR3,Common Directory of Organizational Units and Offices - DIR3
-ES-MDJ,Ministerio de Justicia 
+ES-MDJ,Ministerio de Justicia
 ES-NIF,Tax Identification Number
 ES-RMC,Central Commercial Register of the Kingdom of Spain
 ET-COA,Ethiopia Chart of Accounts
@@ -155,15 +155,15 @@ ET-CSA,Charities and Societies Agency (Ethiopia)
 ET-MFA,Ministry of Foreign Affairs
 ET-MOT,Ministry of Trade (Ethiopia)
 FI-COA,Finland Chart of Accounts
-FI-PRO,Finnish Patent and Registration Office 
+FI-PRO,Finnish Patent and Registration Office
 FI-VERO,Finnish Tax Administration
 FJ-COA,Fiji Chart of Accounts
 FK-COA,Falkland Islands (the) [Malvinas] Chart of Accounts
 FM-COA,Micronesia (Federated States of) Chart of Accounts
 FO-COA,Faroe Islands (the) Chart of Accounts
 FR-COA,France Chart of Accounts
-FR-INSEE,The National Institute of Statistics and Economic Studies 
-FR-RCS,Trade and Companies Register 
+FR-INSEE,The National Institute of Statistics and Economic Studies
+FR-RCS,Trade and Companies Register
 GA-COA,Gabon Chart of Accounts
 GB-CASC,Community amateur sports clubs (CASCs) registered with HMRC
 GB-CHC,Charity Commission/Comisiwn Elusennau
@@ -227,7 +227,7 @@ HU-AFA,Information and Electronic Company Registration Service
 HU-COA,Hungary Chart of Accounts
 ID-COA,Indonesia Chart of Accounts
 ID-DJP,Director General of Taxes
-ID-KDN,Ministry of Home Affairs 
+ID-KDN,Ministry of Home Affairs
 ID-KHH,Ministry of Justice & Human Rights
 ID-KLN,Ministry of Foreign affairs
 ID-PRO,Indonesia - NGOs registered at Provinicial Level
@@ -240,7 +240,7 @@ IL-RA,Israel Charity Registry
 IL-ROC,Registrar of Companies (Israel)
 IM-COA,Isle of Man Chart of Accounts
 IM-CR,Isle of Man Companies Registry
-IM-GR,Isle of Man Index of Registered Charities 
+IM-GR,Isle of Man Index of Registered Charities
 IN-COA,India Chart of Accounts
 IN-MCA,"Government of India, Ministry of Corporate Affairs"
 IN-MHA,Ministry of Home Affairs (India) Foreign Contributions (Regulation) Act Register
@@ -319,7 +319,7 @@ MH-COA,Marshall Islands (the) Chart of Accounts
 MK-COA,North Macedonia Chart of Accounts
 ML-CCIM,The Chamber of Commerce and Industry of Mali
 ML-COA,Mali Chart of Accounts
-ML-MAT,Ministere de l'Administration Territoriale 
+ML-MAT,Ministere de l'Administration Territoriale
 ML-NIF,Tax Identification Number
 MM-COA,Myanmar Chart of Accounts
 MM-MHA,Ministry of Home Affairs - Central Committee for the Registration and Supervision of Organisations
@@ -349,7 +349,7 @@ MZ-CR,Mozambique Commercial Registry
 MZ-MOJ,Mozambique Ministry of Justice
 MZ-NUIT,Taxpayer Single Identification Number (Mozambique)
 NA-COA,Namibia Chart of Accounts
-NA-NAMRA,Namibia Revenue Agency 
+NA-NAMRA,Namibia Revenue Agency
 NC-COA,New Caledonia Chart of Accounts
 NE-COA,Niger (the) Chart of Accounts
 NF-COA,Norfolk Island Chart of Accounts
@@ -360,7 +360,7 @@ NG-TIN,Taxpayer Identification Number
 NI-COA,Nicaragua Chart of Accounts
 NL-COA,Netherlands (the) Chart of Accounts
 NL-KVK,Chamber of Commerce (Netherlands)
-NL-OWMS,Overheid.nl Web Metadata Standard 
+NL-OWMS,Overheid.nl Web Metadata Standard
 NO-BRC,Brønnøysundregistrene
 NO-COA,Norway Chart of Accounts
 NP-COA,Nepal Chart of Accounts
@@ -375,7 +375,7 @@ PA-COA,Panama Chart of Accounts
 PA-PRP,Public Registry of Panama
 PE-COA,Peru Chart of Accounts
 PE-RUC,RUC Number (Peru)
-PE-SUNARP,Peruvian National Superintendency of Public Registries - Registered Legal Entities 
+PE-SUNARP,Peruvian National Superintendency of Public Registries - Registered Legal Entities
 PF-COA,French Polynesia Chart of Accounts
 PG-COA,Papua New Guinea Chart of Accounts
 PH-COA,Philippines (the) Chart of Accounts
@@ -404,7 +404,7 @@ QA-COA,Qatar Chart of Accounts
 RE-COA,Réunion Chart of Accounts
 RO-COA,Romania Chart of Accounts
 RO-CUI,National Trade Register (Romania)
-RS-APR,Serbian Business Registrations Agency 
+RS-APR,Serbian Business Registrations Agency
 RS-COA,Serbia Chart of Accounts
 RS-PIB,Tax identification number register
 RU-COA,Russian Federation (the) Chart of Accounts
@@ -417,7 +417,7 @@ SA-COA,Saudi Arabia Chart of Accounts
 SB-COA,Solomon Islands Chart of Accounts
 SC-COA,Seychelles Chart of Accounts
 SD-COA,Sudan (the) Chart of Accounts
-SE-BLV,Bolagsverket 
+SE-BLV,Bolagsverket
 SE-COA,Sweden Chart of Accounts
 SE-KK,"Legal, Financial and Administrative Services Agency (Sweden)"
 SE-ON,"Business Registration Number (Organisationsnummer), Sweden"
@@ -475,7 +475,7 @@ TZ-COA,"Tanzania, the United Republic of Chart of Accounts"
 TZ-NNCB,Tanzania National NGO Coordination Board
 TZ-TRA,Tanzania Revenue Agency
 UA-COA,Ukraine Chart of Accounts
-UA-EDR,United State Register 
+UA-EDR,United State Register
 UG-204CBO,"CBO Registration number, Uganda (Jinja District)"
 UG-COA,Uganda Chart of Accounts
 UG-NGB,"NGO Board, Ministry of Internal Affairs (Uganda)"
@@ -506,7 +506,7 @@ XI-EORI,Economic Operators Identification and Registration system
 XI-GRID,Global Research Identifiers Database
 XI-IATI,International Aid Transparency Initiative Organisation Identifier
 XI-LEI,Global Legal Entity Identifier Index
-XI-PB,Public Bodies - Open Knowledge Foundation 
+XI-PB,Public Bodies - Open Knowledge Foundation
 XI-PID,PermID: Thompson Reuters Permanent Identifier
 XI-ROR,Research Organization Registry
 XI-WIKIDATA,Wikidata
@@ -522,7 +522,7 @@ ZA-CIP,Companies and Intellectual Property Commission (CIPC)
 ZA-CIT,South African Corporate Income Tax (CIT) number
 ZA-COA,South Africa Chart of Accounts
 ZA-NPO,Nonprofit Organisation Directorate - South African Department of Social Development
-ZA-PBO,SA Revenue Service Tax Exemption Unit 
+ZA-PBO,SA Revenue Service Tax Exemption Unit
 ZM-COA,Zambia Chart of Accounts
 ZM-PCR,Patents and Companies Registration Agency
 ZM-RNGO,Department of Registrar for NGOs
