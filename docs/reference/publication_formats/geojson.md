@@ -138,4 +138,4 @@ Get the `Node` object in `nodes` whose `.id` is equal to the ID.
 
 ### Reference implementation
 
-A reference implementation of the transformation is [available in Python on Github](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/blob/main/manage.py). We strongly encourage any re-implementations to read its commented code, to ensure correctness.
+A reference implementation of the transformation is [available in Python on Github](https://github.com/Open-Telecoms-Data/lib-cove-ofds). We strongly encourage any re-implementations to read its commented code, to ensure correctness.
