@@ -55,7 +55,7 @@ exceptiongroup==1.0.0rc9
     # via
     #   cattrs
     #   pytest
-flattentool==0.19.0
+flattentool==0.20.0
     # via -r requirements.in
 gitdb==4.0.9
     # via gitpython
