@@ -21,6 +21,12 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#208](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/208) - Add link to "WGS 84" text in docs/reference/schema.md.
 - [#213](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/213) - For GeoJSON/JSON conversion, use libcoveofds now.
 
+## X.Y.Z - YYYY-MM-DD
+
+### Schema
+
+- [#234](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/234) - Allow multiple network providers per span and node.
+
 ## 0.1.0-beta - 2022-11-10
 
 ### Schema
