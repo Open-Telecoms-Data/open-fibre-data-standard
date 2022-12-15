@@ -11,11 +11,8 @@ import subprocess
 
 from collections import OrderedDict
 from flattentool import create_template, flatten
-from github import Github
 from ocdskit.mapping_sheet import mapping_sheet
 from pathlib import Path
-
-GITHUB_ACCESS_TOKEN = os.environ['GITHUB_ACCESS_TOKEN']
 
 basedir = Path(__file__).resolve().parent
 codelistdir = basedir / 'codelists'
@@ -82,20 +79,6 @@ def get_dereferenced_schema(schema, output=None):
                     output[prop] = schema.__reference__[prop]
 
     return output
-
-
-def get_issues(issue_urls):
-    """
-    Accepts a comma-separated list of issue urls and returns issues from the Github API.
-    """
-    github = Github(GITHUB_ACCESS_TOKEN)
-    repo = github.get_repo("Open-Telecoms-Data/open-fibre-data-standard")
-    issues = []
-
-    for issue_url in set(issue_urls.split(",")):
-        issues.append(repo.get_issue(number=int(issue_url.split("/")[-1])))
-    
-    return issues 
 
 
 def update_csv_docs(jsonref_schema):
@@ -379,33 +362,7 @@ def update_schema_docs(schema):
       
       # Add heading
       definition["content"].insert(0, f"#### {defn}\n")
-      
-      # Get Github issues and list related definitions and properties
-      definition["issues"] = OrderedDict()
-      if definition.get("$comment"):
-          for issue in get_issues(definition["$comment"]):
-              definition["issues"][issue.url] = {"issue": issue, "relatedTo": [defn]}
-      
-      for prop, property in definition["properties"].items():
-          if property.get("$comment"):
-              for issue in get_issues(property["$comment"]):
-                  if issue.url in definition["issues"]:
-                      definition["issues"][issue.url]["relatedTo"].append(f".{prop}")
-                  else:
-                      definition["issues"][issue.url] = {"issue": issue, "relatedTo": [f".{prop}"]}
-        
-      # Add admonition with list of related Github issues
-      if len(definition["issues"]) > 0:
-          definition["content"].extend([
-              "```{admonition} Consultation\n",
-              "The following issues relate to this component or its fields:\n"
-          ])
-          for issue in definition["issues"].values():
-              definition["content"].extend([
-                  f"* `{'`, `'.join(issue['relatedTo'])}`: [#{issue['issue'].number} {issue['issue'].title}]({issue['issue'].html_url})\n"
-              ])
-          definition["content"].append("```\n\n")
-             
+                         
       # Add description
       definition["content"].extend([
           f"`{defn}` is defined as:\n\n",
