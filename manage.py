@@ -232,7 +232,7 @@ def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
       )
       markdown.update(generate_csv_reference_markdown(key, value, parents + [table], depth + 1))
     else:
-      include_pointers.append(f"{parent_ref}{'/0/' if len(parent_ref) > 0 else ''}{table+'/0/' if len(parents)>0 else ''}{key}")
+      include_pointers.append(f"{parent_ref}{'/0/' if len(parent_ref) > 0 else ''}{table.split('_')[-1]+'/0/' if len(parents)>0 else ''}{key}")
 
   # Generate links to examples and templates
   markdown[table]['content'].append(f"\nThe fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/{table}.csv) or a [blank template](../../../examples/csv/template/{table}.csv) for this table.\n\n")

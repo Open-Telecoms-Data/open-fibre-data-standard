@@ -98,7 +98,7 @@ This table is related to the following tables:
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/nodes_internationalConnections.csv) or a [blank template](../../../examples/csv/template/nodes_internationalConnections.csv) for this table.
 
 ```{jsonschema} ../../../schema/network-schema.json
-:include: id,nodes/0/id,nodes/0/nodes_internationalConnections/0/streetAddress,nodes/0/nodes_internationalConnections/0/locality,nodes/0/nodes_internationalConnections/0/region,nodes/0/nodes_internationalConnections/0/postalCode,nodes/0/nodes_internationalConnections/0/country
+:include: id,nodes/0/id,nodes/0/internationalConnections/0/streetAddress,nodes/0/internationalConnections/0/locality,nodes/0/internationalConnections/0/region,nodes/0/internationalConnections/0/postalCode,nodes/0/internationalConnections/0/country
 ```
 
 #### nodes_networkProviders
@@ -110,7 +110,7 @@ This table is related to the following tables:
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/nodes_networkProviders.csv) or a [blank template](../../../examples/csv/template/nodes_networkProviders.csv) for this table.
 
 ```{jsonschema} ../../../schema/network-schema.json
-:include: id,nodes/0/id,nodes/0/nodes_networkProviders/0/id,nodes/0/nodes_networkProviders/0/name
+:include: id,nodes/0/id,nodes/0/networkProviders/0/id,nodes/0/networkProviders/0/name
 ```
 
 ### spans
@@ -135,7 +135,7 @@ This table is related to the following tables:
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/spans_networkProviders.csv) or a [blank template](../../../examples/csv/template/spans_networkProviders.csv) for this table.
 
 ```{jsonschema} ../../../schema/network-schema.json
-:include: id,spans/0/id,spans/0/spans_networkProviders/0/id,spans/0/spans_networkProviders/0/name
+:include: id,spans/0/id,spans/0/networkProviders/0/id,spans/0/networkProviders/0/name
 ```
 
 ### phases
@@ -160,7 +160,7 @@ This table is related to the following tables:
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/phases_funders.csv) or a [blank template](../../../examples/csv/template/phases_funders.csv) for this table.
 
 ```{jsonschema} ../../../schema/network-schema.json
-:include: id,phases/0/id,phases/0/phases_funders/0/id,phases/0/phases_funders/0/name
+:include: id,phases/0/id,phases/0/funders/0/id,phases/0/funders/0/name
 ```
 
 ### organisations
@@ -198,7 +198,7 @@ This table is related to the following tables:
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/contracts_documents.csv) or a [blank template](../../../examples/csv/template/contracts_documents.csv) for this table.
 
 ```{jsonschema} ../../../schema/network-schema.json
-:include: id,contracts/0/id,contracts/0/contracts_documents/0/title,contracts/0/contracts_documents/0/description,contracts/0/contracts_documents/0/url,contracts/0/contracts_documents/0/format
+:include: id,contracts/0/id,contracts/0/documents/0/title,contracts/0/documents/0/description,contracts/0/documents/0/url,contracts/0/documents/0/format
 ```
 
 #### contracts_relatedPhases
@@ -210,7 +210,7 @@ This table is related to the following tables:
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/contracts_relatedPhases.csv) or a [blank template](../../../examples/csv/template/contracts_relatedPhases.csv) for this table.
 
 ```{jsonschema} ../../../schema/network-schema.json
-:include: id,contracts/0/id,contracts/0/contracts_relatedPhases/0/id,contracts/0/contracts_relatedPhases/0/name
+:include: id,contracts/0/id,contracts/0/relatedPhases/0/id,contracts/0/relatedPhases/0/name
 ```
 
 ### links
