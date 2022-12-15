@@ -14,7 +14,7 @@ This page has [open issues](https://github.com/Open-Telecoms-Data/open-fibre-dat
 
 This section describes the structure of the tables in the CSV format and the relationship between the tables. Example CSV files and blank templates are provided for each table.
 
-The CSV format has 10 tables, reflecting the structure of the [schema](../schema.md). The networks table is the main table. Arrays of objects in the schema are represented as separate tables:
+The CSV format consists of several tables, reflecting the structure of the [schema](../schema.md). The networks table is the main table. Arrays of objects in the schema are represented as separate tables:
 
 ```{contents}
 ---
