@@ -49,59 +49,6 @@ def write_lines(filename, lines):
         f.writelines(lines)
 
 
-def dereference_object(ref, list):
-    """
-    Return from list the object referenced by ref. Otherwise, return ref.
-    """
-
-    if "id" in ref: # Can remove, `id` is required
-        for item in list:
-            if item.get("id") == ref["id"]: # Can simplify, `id` is required
-                return item
-
-    return ref
-
-
-def convert_to_feature(object, organisation_references, network, organisations, phases, nodes):
-    """
-    Convert a node or span to a GeoJSON feature.
-    """
-    feature = {"type": "Feature"}
-
-    # Set `.geometry`
-    # TO-DO: Handle case when publishers add an additional `location` or `route` field to spans and nodes, respectively.
-    if "location" in object:
-        feature["geometry"] = object.pop("location")
-    elif "route" in object:
-        feature["geometry"] = object.pop("route")
-    else:
-        feature["geometry"] = None
-    
-    properties = feature["properties"] = object
-    
-    # Dereference organisation references
-    for organisationReference in organisation_references:
-        if organisationReference in properties:
-            properties[organisationReference] == dereference_object(properties[organisationReference], organisations)
-    
-    # Dereference phase references
-    if "phase" in properties:
-        properties["phase"] == dereference_object(properties["phase"], phases)
-
-    # Dereference endpoints
-    for endpoint in ["start", "end"]:
-        if endpoint in properties:
-            for node in nodes:
-                if "id" in node and node["id"] == properties[endpoint]: # Can simplify, `.id` is required
-                    properties[endpoint] = node
-
-    # Embed network-level data
-    # TO-DO: Handle case when publishers add an additional `network` field to `Node` or `Span`.
-    feature["properties"]["network"] = network
-
-    return feature
-
-
 def delete_directory_contents(directory_path):
   """
   Deletes the contents of a directory on disk.
@@ -784,55 +731,6 @@ def pre_commit():
     # Run mdformat
     subprocess.run(['mdformat', 'docs'])
 
-@cli.command()
-@click.argument('filename', type=click.Path(exists=True))
-def convert_to_geojson(filename):
-    """
-    Convert a network package to two GeoJSON files: nodes.geojson and spans.geojson.
-    """
-
-    # Load data
-    with open(filename, 'r') as f:
-        package = json.load(f)
-
-    nodeFeatures = []
-    spanFeatures = []
-    
-    for network in package["networks"]:
-      nodes = network.pop("nodes", [])
-      spans = network.pop("spans", [])
-      # TO-DO: Consider how to handle unreferenced phases and organisations. Currently, they are dropped from the geoJSON output
-      phases = network.pop("phases", [])
-      organisations = network.pop("organisations", [])
-
-      # Dereference `contracts.relatedPhases`
-      if "contracts" in network:
-          for contract in network["contracts"]:
-              if "relatedPhases" in contract:
-                  for phase in contract["relatedPhases"]:
-                      phase = dereference_object(phase, phases)
-
-      # Convert nodes to features
-      for node in nodes:
-          nodeFeatures.append(convert_to_feature(node, ['physicalInfrastructureProvider', 'networkProvider'], network, organisations, phases, nodes))
-
-      # Convert spans to features
-      for span in spans:
-          spanFeatures.append(convert_to_feature(span, ['physicalInfrastructureProvider', 'networkProvider'], network, organisations, phases, nodes))
-
-    with open('nodes.geojson', 'w') as f:
-        featureCollection = {
-            "type": "FeatureCollection",
-            "features": nodeFeatures
-        }
-        json.dump(featureCollection, f, indent=2)
-
-    with open('spans.geojson', 'w') as f:
-        featureCollection = {
-            "type": "FeatureCollection",
-            "features": spanFeatures
-        }
-        json.dump(featureCollection, f, indent=2)
 
 if __name__ == '__main__':
     cli()
