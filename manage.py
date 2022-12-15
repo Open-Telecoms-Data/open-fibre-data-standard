@@ -192,6 +192,8 @@ def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
   """
 
   markdown = {}
+  if parents:
+    table = '_'.join(parents[1:] + [table])
   markdown[table] = {'depth': depth, 'content': []}
   
   include_pointers = []
@@ -226,15 +228,14 @@ def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
   for key,value in properties.items():
     if value['type'] == 'array' and value['items']['type'] == 'object':     
       markdown[table]['content'].append(
-        f" * [{key}](#{key.lower()}): one-to-many by `{'id' if table == 'networks' else '/0/'.join(parents[1:] + [table, 'id'])}`\n"
+        f" * [{key if table == 'networks' else f'{table}_{key}'}](#{key if table == 'networks' else f'{table}_{key}'.lower()}): one-to-many by `{'id' if table == 'networks' else '/0/'.join(parents[1:] + [table, 'id'])}`\n"
       )
       markdown.update(generate_csv_reference_markdown(key, value, parents + [table], depth + 1))
     else:
       include_pointers.append(f"{parent_ref}{'/0/' if len(parent_ref) > 0 else ''}{table+'/0/' if len(parents)>0 else ''}{key}")
 
   # Generate links to examples and templates
-  table_name = '_'.join(parents[1:] + [table])
-  markdown[table]['content'].append(f"\nThe fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/{table_name}.csv) or a [blank template](../../../examples/csv/template/{table_name}.csv) for this table.\n\n")
+  markdown[table]['content'].append(f"\nThe fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/{table}.csv) or a [blank template](../../../examples/csv/template/{table}.csv) for this table.\n\n")
 
   # Generate jsonschema directive
   markdown[table]['content'].extend([

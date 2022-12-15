@@ -20,9 +20,11 @@
           "physicalInfrastructureProvider": {
             "id": "FibreCo"
           },
-          "networkProvider": {
-            "id": "FibreCo"
-          },
+          "networkProviders": [
+            {
+              "id": "FibreCo"
+            }
+          ],
           "supplier": {
             "id": "ProjectCo"
           }
@@ -53,9 +55,11 @@
           "physicalInfrastructureProvider": {
             "id": "FibreCo"
           },
-          "networkProvider": {
-            "id": "FibreCo"
-          },
+          "networkProviders": [
+            {
+              "id": "FibreCo"
+            }
+          ],
           "internationalConnections": [
             {
               "streetAddress": "Togo"

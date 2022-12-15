@@ -2,6 +2,6 @@ Code,Title,Description
 proposed,Proposed,Planning for the node is at an early stage and financing for its construction is not yet finalised.
 planned,Planned,Planning for the node is at an advanced stage and financing for its construction is finalised.
 underConstruction,Under construction,Construction of the passive physical infrastructure for the node is in progress.
-operational,Operational,The active network infrastructure for the node is live and carrying traffic.
+operational,Operational,The active network infrastructure for at least one network provider at the node is live and carrying traffic.
 decommissioned,Decommissioned,The node is no longer operational.
 inactive,Inactive,"Construction of the passive network infrastructure is complete, but the node is not yet operational."

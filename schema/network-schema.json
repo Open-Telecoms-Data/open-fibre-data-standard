@@ -217,7 +217,7 @@
         },
         "type": {
           "title": "Node type",
-          "description": "The type of this node, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetype).",
+          "description": "The type of this node, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetype). For nodes with multiple network providers, the union of the node types for each provider.",
           "type": "array",
           "$comment": "",
           "items": {
@@ -256,7 +256,7 @@
         },
         "technologies": {
           "title": "Technologies",
-          "description": "The active technologies used at this node, from the open [nodeTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetechnologies).",
+          "description": "The active technologies used at this node, from the open [nodeTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetechnologies). For nodes with multiple network providers, the union of the active technologies used by each provider.",
           "type": "array",
           "$comment": "",
           "items": {
@@ -276,11 +276,16 @@
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
           "$ref": "#/definitions/OrganisationReference"
         },
-        "networkProvider": {
-          "title": "Network provider",
-          "description": "The organisation that operates the active network infrastructure for this node, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",
+        "networkProviders": {
+          "title": "Network providers",
+          "description": "The organisations that operate the active network infrastructure for this node, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
-          "$ref": "#/definitions/OrganisationReference"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrganisationReference"
+          },
+          "minItems": 1,
+          "uniqueItems": true
         }
       },
       "required": [
@@ -332,7 +337,7 @@
         },
         "readyForServiceDate": {
           "title": "Ready for service date",
-          "description": "The date this span was ready to carry traffic.",
+          "description": "The date this span was ready to carry traffic. For spans with multiple network providers, the earliest of the dates at which each provider's network was ready to carry traffic on this span.",
           "format": "date",
           "type": "string",
           "$comment": ""
@@ -369,11 +374,16 @@
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
           "$ref": "#/definitions/OrganisationReference"
         },
-        "networkProvider": {
-          "title": "Network provider",
-          "description": "The organisation that operates the active network infrastructure for this span, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",
+        "networkProviders": {
+          "title": "Network providers",
+          "description": "The organisations that operate the active network infrastructure for this span, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
-          "$ref": "#/definitions/OrganisationReference"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/OrganisationReference"
+          },
+          "minItems": 1,
+          "uniqueItems": true
         },
         "supplier": {
           "title": "Supplier",
@@ -472,7 +482,7 @@
         },
         "technologies": {
           "title": "Technologies",
-          "description": "The active technologies used on this span,from the open [spanTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spantechnologies).",
+          "description": "The active technologies used on this span, from the open [spanTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spantechnologies). For spans with multiple network providers, the union of the active technologies used by each provider.",
           "type": "array",
           "$comment": "",
           "items": {
@@ -488,7 +498,7 @@
         },
         "capacity": {
           "title": "Capacity",
-          "description": "The transmission rate, or throughput, of this span, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the span. Further details of this span's capacity can be provided in `.capacityDetails`.",
+          "description": "The transmission rate, or throughput, of this span, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the span. For spans with multiple network providers, the sum of the capacity of each provider's network on this span. Further details of this span's capacity can be provided in `.capacityDetails`.",
           "type": "number",
           "$comment": ""
         },

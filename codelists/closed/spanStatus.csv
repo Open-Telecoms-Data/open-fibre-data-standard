@@ -1,5 +1,5 @@
 Code,Title,Description
-operational,Operational,The active network infrastructure for the span is live and carrying traffic.
+operational,Operational,The active network infrastructure for at least one network provider on the span is live and carrying traffic.
 underConstruction,Under construction,Construction of the passive physical infrastructure for the span is in progress.
 planned,Planned,Planning for the span is at an advanced stage and financing for its construction is finalised.
 decommissioned,Decommissioned,The span is no longer operational.
