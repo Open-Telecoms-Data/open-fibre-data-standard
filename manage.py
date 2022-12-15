@@ -454,7 +454,7 @@ def pre_commit():
     jsonref_schema = json_load('network-schema.json', jsonref)
      
     # Generate network-schema.csv
-    schema_table = mapping_sheet(schema, include_codelist=True, include_definitions=True)
+    schema_table = mapping_sheet(schema, include_codelist=True, include_definitions=False)
 
     with (schemadir / 'network-schema.csv').open('w', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=schema_table[0], lineterminator='\n')
