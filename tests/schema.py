@@ -6,6 +6,11 @@ from libcoveofds.schema import OFDSSchema
 
 
 class CurrentVersionOFDSSchema(OFDSSchema):
+    """
+    A Schema object for libcoveofds that is used in these tests.
+    The normal Schema object always fetches the latest schema from the web.
+    This one uses the schema files that are on disk in schema/
+    """
 
     def __init__(self):
         filename_package = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "schema", "network-package-schema.json")
