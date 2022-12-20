@@ -70,23 +70,12 @@
                     "website": "https://www.example.com",
                     "logo": "https://www.example.com/logo.png"
                 },
-                "networkProvider": {
-                    "id": "GH-RGD-CS222222222",
-                    "name": "FastWeb",
-                    "identifier": {
-                        "id": "CS222222222",
-                        "scheme": "GH-RGD",
-                        "legalName": "FastWeb Ghana Limited",
-                        "uri": "https://example.com/companies/CS222222222"
-                    },
-                    "country": "GH",
-                    "roles": [
-                        "networkProvider"
-                    ],
-                    "roleDetails": "FastWeb provides wholesale services to service providers and dark fibre access to other network providers.",
-                    "website": "https://www.example.com",
-                    "logo": "https://www.example.com/logo.png"
-                },
+                "networkProviders": [
+                    {
+                        "id": "GH-RGD-CS222222222",
+                        "name": "FastWeb"
+                    }
+                ],
                 "network": {
                     "id": "a096d627-72e1-4f9b-b129-951b1737bff4",
                     "name": "Ghana Fibre Network",
@@ -226,23 +215,12 @@
                     "website": "https://www.example.com",
                     "logo": "https://www.example.com/logo.png"
                 },
-                "networkProvider": {
-                    "id": "GH-RGD-CS222222222",
-                    "name": "FastWeb",
-                    "identifier": {
-                        "id": "CS222222222",
-                        "scheme": "GH-RGD",
-                        "legalName": "FastWeb Ghana Limited",
-                        "uri": "https://example.com/companies/CS222222222"
-                    },
-                    "country": "GH",
-                    "roles": [
-                        "networkProvider"
-                    ],
-                    "roleDetails": "FastWeb provides wholesale services to service providers and dark fibre access to other network providers.",
-                    "website": "https://www.example.com",
-                    "logo": "https://www.example.com/logo.png"
-                },
+                "networkProviders": [
+                    {
+                        "id": "GH-RGD-CS222222222",
+                        "name": "FastWeb"
+                    }
+                ],
                 "network": {
                     "id": "a096d627-72e1-4f9b-b129-951b1737bff4",
                     "name": "Ghana Fibre Network",

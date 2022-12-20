@@ -116,7 +116,7 @@ Each `Node` has the following fields:
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Node
-:collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,physicalInfrastructureProvider,networkProvider
+:collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,physicalInfrastructureProvider,networkProviders
 ```
 
 :::
@@ -153,7 +153,7 @@ Each `Span` has the following fields:
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /definitions/Span
-:collapse: id,name,phase,status,readyForServiceDate,start,end,directed,route,physicalInfrastructureProvider,networkProvider,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
+:collapse: id,name,phase,status,readyForServiceDate,start,end,directed,route,physicalInfrastructureProvider,networkProviders,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
 ```
 
 :::
@@ -343,9 +343,9 @@ Each `Geometry` has the following fields:
 This component is referenced by the following properties:
 
 - [`Node/physicalInfrastructureProvider`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,physicalInfrastructureProvider)
-- [`Node/networkProvider`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,networkProvider)
+- [`Node/networkProviders`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,networkProviders)
 - [`Span/physicalInfrastructureProvider`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,physicalInfrastructureProvider)
-- [`Span/networkProvider`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,networkProvider)
+- [`Span/networkProviders`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,networkProviders)
 - [`Span/supplier`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,supplier)
 - [`Phase/funders`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Phase,funders)
 
@@ -372,8 +372,8 @@ Each `OrganisationReference` has the following fields:
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
- :jsonpointer: /networks/0/nodes/0/networkProvider
- :title: nodes/0/networkProvider
+ :jsonpointer: /networks/0/nodes/0/networkProviders
+ :title: nodes/0/networkProviders
 ```
 
 ```{eval-rst}
@@ -384,8 +384,8 @@ Each `OrganisationReference` has the following fields:
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
- :jsonpointer: /networks/0/spans/0/networkProvider
- :title: spans/0/networkProvider
+ :jsonpointer: /networks/0/spans/0/networkProviders
+ :title: spans/0/networkProviders
 ```
 
 ```{eval-rst}

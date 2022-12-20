@@ -44,10 +44,12 @@
             "id": "GH-RGD-CS111111111",
             "name": "FibreCo"
           },
-          "networkProvider": {
-            "id": "GH-RGD-CS222222222",
-            "name": "FastWeb"
-          }
+          "networkProviders": [
+            {
+              "id": "GH-RGD-CS222222222",
+              "name": "FastWeb"
+            }
+          ]
         },
         {
           "id": "2",
@@ -83,10 +85,12 @@
             "id": "GH-RGD-CS111111111",
             "name": "FibreCo"
           },
-          "networkProvider": {
-            "id": "GH-RGD-CS222222222",
-            "name": "FastWeb"
-          }
+          "networkProviders": [
+            {
+              "id": "GH-RGD-CS222222222",
+              "name": "FastWeb"
+            }
+          ]
         }
       ],
       "spans": [
@@ -163,10 +167,12 @@
             "id": "GH-RGD-CS111111111",
             "name": "FibreCo"
           },
-          "networkProvider": {
-            "id": "GH-RGD-CS222222222",
-            "name": "FastWeb"
-          },
+          "networkProviders": [
+            {
+              "id": "GH-RGD-CS222222222",
+              "name": "FastWeb"
+            }
+          ],
           "supplier": {
             "id": "GH-RGD-CS333333333",
             "name": "ProjectCo"

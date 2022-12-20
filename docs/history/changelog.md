@@ -22,6 +22,12 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#213](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/213) - For GeoJSON/JSON conversion, use libcoveofds now.
 - [#232](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/232) - Remove unmaintained GitHub issue admonitions
 
+## X.Y.Z - YYYY-MM-DD
+
+### Schema
+
+- [#234](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/234) - Allow multiple network providers per span and node.
+
 ## 0.1.0-beta - 2022-11-10
 
 ### Schema
