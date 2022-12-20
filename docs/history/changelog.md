@@ -3,7 +3,7 @@
 ```{admonition} 0.1.0-beta release
 Welcome to the Open Fibre Data Standard 0.1.0-beta release.
 
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues linked in the documentation or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
+We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
 
 To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
@@ -20,6 +20,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#201](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/201) - Add support page.
 - [#208](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/208) - Add link to "WGS 84" text in docs/reference/schema.md.
 - [#213](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/213) - For GeoJSON/JSON conversion, use libcoveofds now.
+- [#232](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/232) - Remove unmaintained GitHub issue admonitions
 
 ## X.Y.Z - YYYY-MM-DD
 

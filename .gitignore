@@ -2,3 +2,5 @@
 *.swp
 *~
 _build
+.python-version
+.vscode

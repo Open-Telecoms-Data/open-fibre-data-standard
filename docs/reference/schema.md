@@ -3,7 +3,7 @@
 ```{admonition} 0.1.0-beta release
 Welcome to the Open Fibre Data Standard 0.1.0-beta release.
 
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues linked in the documentation or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
+We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
 
 To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
@@ -98,14 +98,6 @@ This section lists each component in the OFDS schema. Some components are reused
 
 #### Node
 
-```{admonition} Consultation
-The following issues relate to this component or its fields:
-* `Node`, `.accessPoint`: [#60 Node definition (access points)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/60)
-* `.location`: [#10 Coordinates modelling (add support for WKT to Flatten Tool)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
-* `.internationalConnections`: [#72 International connections](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/72)
-* `.physicalInfrastructureProvider`, `.networkProvider`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
-```
-
 `Node` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
@@ -142,18 +134,6 @@ Each `Node` has the following fields:
 ::::
 
 #### Span
-
-```{admonition} Consultation
-The following issues relate to this component or its fields:
-* `Span`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
-* `.start`, `.end`: [#25 Link endpoints](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/25)
-* `.route`: [#12 Geometry types for link routes](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/12)
-* `.route`: [#10 Coordinates modelling (add support for WKT to Flatten Tool)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/10)
-* `.physicalInfrastructureProvider`, `.networkProvider`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
-* `.supplier`: [#87 Clarify semantics around link supplier](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/87)
-* `.deployment`, `.deploymentDetails`: [#26 Link deployment](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26)
-* `.capacityDetails`: [#24 Link capacity](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24)
-```
 
 `Span` is defined as:
 
@@ -229,11 +209,6 @@ Each `Phase` has the following fields:
 
 #### Organisation
 
-```{admonition} Consultation
-The following issues relate to this component or its fields:
-* `.roleDetails`: [#47 Link ownership and operation (physical infrastructure provider and network provider)](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47)
-```
-
 `Organisation` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
@@ -277,11 +252,6 @@ Each `Organisation` has the following fields:
 ::::
 
 #### Contract
-
-```{admonition} Consultation
-The following issues relate to this component or its fields:
-* `Contract`: [#71 Contracts](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/71)
-```
 
 `Contract` is defined as:
 
@@ -661,11 +631,6 @@ The `CoordinateReferenceSystem` object references the CRS by `name` and `uri`. I
 
 For more information, see [How to transform coordinates to the correct coordinate reference system](../guidance/publication.md#how-to-transform-coordinates-to-the-correct-coordinate-reference-system).
 
-```{admonition} Consultation
-The following issues relate to this component or its fields:
-* `CoordinateReferenceSystem`: [#9 Coordinate reference system](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/9)
-```
-
 `CoordinateReferenceSystem` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
@@ -702,12 +667,6 @@ Each `CoordinateReferenceSystem` has the following fields:
 ::::
 
 #### Link
-
-```{admonition} Consultation
-The following issues relate to this component or its fields:
-* `Link`: [#83 Consider renaming links to spans](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/83)
-* `Link`: [#75 Paginating and streaming nodes and links](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/75)
-```
 
 `Link` is defined as:
 
@@ -783,11 +742,6 @@ Each `FibreTypeDetails` has the following fields:
 
 #### DeploymentDetails
 
-```{admonition} Consultation
-The following issues relate to this component or its fields:
-* `DeploymentDetails`: [#26 Link deployment](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/26)
-```
-
 `DeploymentDetails` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
@@ -824,11 +778,6 @@ Each `DeploymentDetails` has the following fields:
 ::::
 
 #### CapacityDetails
-
-```{admonition} Consultation
-The following issues relate to this component or its fields:
-* `CapacityDetails`: [#24 Link capacity](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/24)
-```
 
 `CapacityDetails` is defined as:
 
