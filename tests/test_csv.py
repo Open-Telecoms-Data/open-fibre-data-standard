@@ -9,7 +9,8 @@ from jscc.schema import is_codelist
 from jscc.testing.checks import get_invalid_csv_files
 from jscc.testing.filesystem import walk_csv_data
 from jscc.testing.util import warn_and_assert
-
+from jsonschema import FormatChecker
+from jsonschema.validators import Draft4Validator as validator
 
 cwd = os.getcwd()
 
@@ -88,3 +89,43 @@ def test_valid():
             )
 
     assert errors == 0, "One or more codelist CSV files are invalid. See warnings below."
+
+def test_codelist():
+    """
+    Ensures all codelists files are valid against codelist-schema.json.
+    (Not organisationIdentifierScheme.csv - that comes from another source and has a different structure.)
+    """
+    exceptions = {
+    }
+
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'schema', 'codelist-schema.json')
+    with open(path) as f:
+        codelist_schema = json.load(f)
+
+    any_errors = False
+
+    for path, name, text, fieldnames, rows in walk_csv_data():
+        codes_seen = set()
+        if is_codelist(fieldnames) and name != 'organisationIdentifierScheme.csv':
+            data = []
+            for row_index, row in enumerate(rows, 2):
+                code = row['Code']
+                if code in codes_seen:
+                    any_errors = True
+                    warnings.warn(f'{path}: Duplicate code "{code}" on row {row_index}')
+                codes_seen.add(code)
+
+                item = {}
+                for k, v in row.items():
+                    if k == 'Code' or v:
+                        item[k] = v
+                    else:
+                        item[k] = None
+                data.append(item)
+
+            for error in validator(codelist_schema, format_checker=FormatChecker()).iter_errors(data):
+                if error.message != exceptions.get(os.path.basename(path)):
+                    any_errors = True
+                    warnings.warn(f"{path}: {error.message} ({'/'.join(error.absolute_schema_path)})\n")
+
+    assert not any_errors

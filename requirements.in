@@ -16,3 +16,4 @@ flattentool>=0.20
 pytest
 jscc
 mdformat
+jsonschema
