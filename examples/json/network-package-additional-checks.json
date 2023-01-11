@@ -20,9 +20,11 @@
           "physicalInfrastructureProvider": {
             "id": "FibreCo"
           },
-          "networkProvider": {
-            "id": "FibreCo"
-          },
+          "networkProviders": [
+            {
+              "id": "FibreCo"
+            }
+          ],
           "supplier": {
             "id": "ProjectCo"
           }
@@ -44,7 +46,7 @@
               [
                 0,
                 0
-              ]              
+              ]
             ]
           },
           "phase": {
@@ -53,9 +55,11 @@
           "physicalInfrastructureProvider": {
             "id": "FibreCo"
           },
-          "networkProvider": {
-            "id": "FibreCo"
-          },
+          "networkProviders": [
+            {
+              "id": "FibreCo"
+            }
+          ],
           "internationalConnections": [
             {
               "streetAddress": "Togo"
@@ -113,7 +117,7 @@
       "links": [
         {
           "rel": "describedby",
-          "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-schema.json"
+          "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__2__0/schema/network-schema.json"
         },
         {
           "href": "http://example.com/networks/a096d627-72e1-4f9b-b129-951b1737bff4/nodes",

@@ -1,4 +1,4 @@
-code,title,description
+Code,Title,Description
 sdh,Synchronous Digital Hierarchy,"A standardised protocol for transferring multiple digital bit streams synchronously over optical fibre. SDH is used worldwide, with the exception of the US and Canada."
 dwdm,Dense Wavelength Division Multiplexing,A technology that multiplexes a number of optical carrier signals onto a single optical fibre by using different wavelengths.
 tdm,Time Division Multiplexing,A technology that multiplexes a number of optical carrier signals onto a single optical fibre by using different arrival times.

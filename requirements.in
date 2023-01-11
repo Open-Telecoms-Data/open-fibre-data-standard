@@ -9,7 +9,11 @@ myst-parser
 sphinx-autobuild
 pyairtable
 PyGithub
-ocdskit
+ocdskit>=1.1.3
 sphinx-design
-ofdskit
-flattentool
+libcoveofds
+flattentool>=0.20
+pytest
+jscc
+mdformat
+jsonschema

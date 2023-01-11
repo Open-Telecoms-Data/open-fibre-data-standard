@@ -1,9 +1,9 @@
 # How to publish OFDS data
 
-```{admonition} 0.1.0-beta release
-Welcome to the Open Fibre Data Standard 0.1.0-beta release.
+```{admonition} 0.2.0 release
+Welcome to the Open Fibre Data Standard 0.2.0 release.
 
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues linked in the documentation or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
+We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
 
 To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
@@ -14,9 +14,9 @@ This page provides an [overview](#overview) of the process for publishing Open F
 
 The process for publishing OFDS data can be divided into three phases:
 
-* [Plan](#plan)
-* [Prepare](#prepare)
-* [Publish](#publish)
+- [Plan](#plan)
+- [Prepare](#prepare)
+- [Publish](#publish)
 
 ### Plan
 
@@ -68,16 +68,12 @@ The suggested approach is to develop a reproducible data pipeline so that you ca
 
 For guidance on common steps in converting your data to OFDS format, see the following guides:
 
-* [How to transform coordinates to the correct coordinate reference system](#how-to-transform-coordinates-to-the-correct-coordinate-reference-system)
-* [How to generate universally unique identifiers](#how-to-generate-universally-unique-identifiers)
+- [How to transform coordinates to the correct coordinate reference system](#how-to-transform-coordinates-to-the-correct-coordinate-reference-system)
+- [How to generate universally unique identifiers](#how-to-generate-universally-unique-identifiers)
 
 #### Check your data
 
-Once you have prepared your data, the next step is to check that it is correctly structured and formatted according to the OFDS schema.
-
-```{admonition} Data Review Tool
-An online tool for checking the structure and format of OFDS data is under development and will be released with the Beta version of the standard. In the meantime, you can use a generic tool, like [JSON Schema Validator](https://www.jsonschemavalidator.net/) to check the structure and format of OFDS data.
-```
+Once you have prepared your data, the next step is to use the [OFDS Convert, Validate, Explore tool (CoVE)](https://ofds.cove.opendataservices.coop/) to check that your data is correctly structured and formatted according to the OFDS schema.
 
 #### Publish your data
 
@@ -99,44 +95,23 @@ If you add an additional field, you ought to describe its structure, format and 
 
 ### How to format data for publication
 
-```{admonition} Consultation
-There are [open issues](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues?q=is%3Aopen+is%3Aissue+label%3ATooling) related to tooling for transforming data between publication formats.
-```
-
 OFDS data can be published in three [publication formats](../reference/publication_formats/index.md):
 
-* The [JSON format](../reference/publication_formats/json.md) reflects the structure of the [schema](../reference/schema.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
-* The [GeoJSON format](../reference/publication_formats/geojson.md) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
-* The [CSV format](../reference/publication_formats/csv.md) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to users who want to explore the data in spreadsheet tools.
+- The [JSON format](../reference/publication_formats/json.md) reflects the structure of the [schema](../reference/schema.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
+- The [GeoJSON format](../reference/publication_formats/geojson.md) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
+- The [CSV format](../reference/publication_formats/csv.md) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to users who want to explore the data in spreadsheet tools.
 
 To meet the widest range of use cases, you ought to publish data in all three formats. The suggested approach is to export your data in the JSON format and to use the following tools to transform it to the GeoJSON and CSV formats:
 
 ::::{tab-set}
 
 :::{tab-item} JSON to GeoJSON
-The standard repository's [`manage.py`](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/blob/main/manage.py) file provides a command-line interface for transforming OFDS data from JSON to GeoJSON format.
+The command line tool [Lib CoVE OFDS](https://libcoveofds.readthedocs.io/en/latest/) provides an interface for transforming OFDS data from JSON to GeoJSON format.
 
-To convert a network package to GeoJSON format:
-
-* Clone the [repository](https://github.com/Open-Telecoms-Data/open-fibre-data-standard)
-* Create a virtual environment:
+To convert a network package to GeoJSON format, first install Lib CoVE OFDS by following the [installation instructions](https://github.com/Open-Telecoms-Data/lib-cove-ofds#installation). Then, run the following command:
 
 ```bash
-sudo apt-get install python3-venv
-python3 -m venv .ve    
-source .ve/bin/activate
-```
-
-* Install requirements
-
-```bash
-pip install -r requirements.txt
-```
-
-* Run the following command:
-
-```bash
-./manage.py convert-to-geojson network-package.json
+libcoveofds jsontogeojson network-package.json nodes.geojson spans.geojson
 ```
 
 :::
@@ -146,10 +121,10 @@ pip install -r requirements.txt
 
 To convert data to CSV format:
 
-* [Install Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/getting-started/#getting-started)
-* Download the [network schema](../../schema/network-schema.json)
-* If your data is a [JSON Lines file](../reference/publication_formats/json.md#streaming-option), segment it into appropriately sized [network packages](../reference/publication_formats/json.md#small-files-and-api-responses-option)
-* Run the following command for each network package:
+- [Install Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/getting-started/#getting-started)
+- Download the [network schema](../../schema/network-schema.json)
+- If your data is a [JSON Lines file](../reference/publication_formats/json.md#streaming-option), segment it into appropriately sized [network packages](../reference/publication_formats/json.md#small-files-and-api-responses-option)
+- Run the following command for each network package:
 
 ```bash
 flatten-tool flatten --truncation-length=9 --root-list-path=networks --main-sheet-name=networks --schema=network-schema.json network-package.json -f csv
@@ -163,8 +138,8 @@ flatten-tool flatten --truncation-length=9 --root-list-path=networks --main-shee
 
 This section describes how to:
 
-* Use [pagination](#pagination) to publish an **individual** network that is too large to return in a single API response
-* Use [streaming](#streaming) to publish an **individual** network that is too large to load into memory.
+- Use [pagination](#pagination) to publish an **individual** network that is too large to return in a single API response
+- Use [streaming](#streaming) to publish an **individual** network that is too large to load into memory.
 
 For information on how to use pagination and streaming to publish **multiple** networks, see the [publication formats reference](../reference/publication_formats/index.md).
 
@@ -313,8 +288,8 @@ If access controls are necessary, do not use access tokens that need to be refre
 
 If the API implements rate limits (throttling):
 
-* Document the rate limits in the API documentation ([example](https://developer.twitter.com/en/docs/twitter-api/rate-limits)).
-* When a user exceeds a rate limit, return a [HTTP 429 'Too Many Requests' response status code,](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) and set the [Retry-After](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After) HTTP header to indicate how long to wait before making a new request.
+- Document the rate limits in the API documentation ([example](https://developer.twitter.com/en/docs/twitter-api/rate-limits)).
+- When a user exceeds a rate limit, return a [HTTP 429 'Too Many Requests' response status code,](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/429) and set the [Retry-After](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Retry-After) HTTP header to indicate how long to wait before making a new request.
 
 ##### Completeness
 
@@ -322,10 +297,10 @@ Ensure that all OFDS data can be accessed via the API.
 
 ##### Response format
 
-* Put the network package or GeoJSON feature collection at the top-level of the JSON data. For example, do not embed it under a results array.
-* Use a JSON library instead of implementing JSON serialisation yourself. This also guarantees that the encoding is UTF-8.
-* Remove NULL characters (\u0000) from the JSON response. These characters cannot be imported by users into some SQL databases.
-* If results cannot be returned, use an appropriate HTTP error code (400-599); do not return a JSON object with an error message and a 200 HTTP status code. That said, if a search request returns no results, it is appropriate to use a 200 HTTP status code, with an empty result set.
+- Put the network package or GeoJSON feature collection at the top-level of the JSON data. For example, do not embed it under a results array.
+- Use a JSON library instead of implementing JSON serialisation yourself. This also guarantees that the encoding is UTF-8.
+- Remove NULL characters (\\u0000) from the JSON response. These characters cannot be imported by users into some SQL databases.
+- If results cannot be returned, use an appropriate HTTP error code (400-599); do not return a JSON object with an error message and a 200 HTTP status code. That said, if a search request returns no results, it is appropriate to use a 200 HTTP status code, with an empty result set.
 
 ##### Monitoring
 
@@ -337,14 +312,14 @@ To publish OFDS data, you need to specify coordinates in the `urn:ogc:def:crs:OG
 
 If your data pipeline includes a Geographic Information System such as ArcGIS or QGIS, these tools can transform coordinates from one CRS to another. If you are writing your own software, or if you prefer to use the command line, several libraries and tools are available, for example:
 
-* [PROJ](https://proj.org/) and its associated Python interface ([PYPROJ](https://pyproj4.github.io/pyproj/stable/)) and JavaScript implementation ([PROJ4JS](http://proj4js.org/) are generic coordinate transformation tools that transform geospatial coordinates from one coordinate reference system (CRS) to another. They include command-line applications and an application programming interface.
-* [GDAL](https://gdal.org/) is a translator library for raster and vector geospatial data formats. It also comes with a variety of useful command line utilities for data translation and processing.
-* [Apache SIS](https://sis.apache.org/) is a free software, Java language library for developing geospatial applications. SIS provides data structures for geographic features and associated metadata along with methods to manipulate those data structures.
+- [PROJ](https://proj.org/) and its associated Python interface ([PYPROJ](https://pyproj4.github.io/pyproj/stable/)) and JavaScript implementation ([PROJ4JS](http://proj4js.org/) are generic coordinate transformation tools that transform geospatial coordinates from one coordinate reference system (CRS) to another. They include command-line applications and an application programming interface.
+- [GDAL](https://gdal.org/) is a translator library for raster and vector geospatial data formats. It also comes with a variety of useful command line utilities for data translation and processing.
+- [Apache SIS](https://sis.apache.org/) is a free software, Java language library for developing geospatial applications. SIS provides data structures for geographic features and associated metadata along with methods to manipulate those data structures.
 
 If you prefer to use a graphical user interface, several web-based tools are available, for example:
 
-* [MyGeodata Cloud](https://mygeodata.cloud/cs2cs/)
-* [epsg.io](https://epsg.io/transform)
+- [MyGeodata Cloud](https://mygeodata.cloud/cs2cs/)
+- [epsg.io](https://epsg.io/transform)
 
 The `urn:ogc:def:crs:OGC::CRS84` CRS is equivalent to EPSG:4326 with reversed axes so, if it is not supported by your chosen transformation tool, you can instead transform your coordinates to EPSG:4326 and manually order your coordinates in longitude, latitude order.
 
@@ -352,15 +327,15 @@ The `urn:ogc:def:crs:OGC::CRS84` CRS is equivalent to EPSG:4326 with reversed ax
 
 If you are writing your own software or if you prefer to use the command line, several libraries and tools are available to generate universally unique identifiers (UUIDS), for example:
 
-* Golang - [google/uuid](https://pkg.go.dev/github.com/google/uuid)
-* PHP - [ramsey/uuid](https://github.com/ramsey/uuid)
-* C++ - [Boost UUID](https://www.boost.org/doc/libs/1_65_0/libs/uuid/uuid.html)
-* Linux or C - [libuuid](https://linux.die.net/man/3/libuuid)
-* Python - [uuid.py](https://docs.python.org/3/library/uuid.html)
-* Java - [java.util.UUID](https://docs.oracle.com/javase/7/docs/api/java/util/UUID.html)
-* C# - [System.Guid](https://docs.microsoft.com/en-us/dotnet/api/system.guid)
-* JavaScript - [Crypto.randomUUID](https://www.moreonfew.com/how-to-generate-uuid-in-javascript/)
-* R - [uuid](https://cran.r-project.org/web/packages/uuid/index.html)
+- Golang - [google/uuid](https://pkg.go.dev/github.com/google/uuid)
+- PHP - [ramsey/uuid](https://github.com/ramsey/uuid)
+- C++ - [Boost UUID](https://www.boost.org/doc/libs/1_65_0/libs/uuid/uuid.html)
+- Linux or C - [libuuid](https://linux.die.net/man/3/libuuid)
+- Python - [uuid.py](https://docs.python.org/3/library/uuid.html)
+- Java - [java.util.UUID](https://docs.oracle.com/javase/7/docs/api/java/util/UUID.html)
+- C# - [System.Guid](https://docs.microsoft.com/en-us/dotnet/api/system.guid)
+- JavaScript - [Crypto.randomUUID](https://www.moreonfew.com/how-to-generate-uuid-in-javascript/)
+- R - [uuid](https://cran.r-project.org/web/packages/uuid/index.html)
 
 If you prefer to use a graphical user interface, several web-based tools are available, for example [Online UUID Generator](https://www.uuidgenerator.net/).
 
@@ -370,14 +345,14 @@ Publishing OFDS data involves making choices about what data to include and excl
 
 In order for users to interpret data correctly and make effective use of it, it's important to describe your decisions and to provide guidance to data users. Your data user guide ought to include:
 
-* [why you are publishing the data](../primer/openfibredata.md#why-publish-open-fibre-data)
-* [how you prepared the data](#prepare-your-data) and how frequently it is updated
-* the scope of the data
-* the meaning, structure and format of any [additional fields](#how-to-add-additional-fields)
-* the available [publication formats](#how-to-format-data-for-publication) and [access methods](#how-to-provide-access-to-data)
-* [license information](#how-to-license-your-data) for data reuse
-* any plans for changes to your publication
-* your contact details
+- [why you are publishing the data](../primer/openfibredata.md#why-publish-open-fibre-data)
+- [how you prepared the data](#prepare-your-data) and how frequently it is updated
+- the scope of the data
+- the meaning, structure and format of any [additional fields](#how-to-add-additional-fields)
+- the available [publication formats](#how-to-format-data-for-publication) and [access methods](#how-to-provide-access-to-data)
+- [license information](#how-to-license-your-data) for data reuse
+- any plans for changes to your publication
+- your contact details
 
 Your data user guide ought to be made available as a public web page. You ought to link to the web page wherever you publish links to your data.
 
@@ -387,8 +362,8 @@ Publishing your data under an open license is important because it prevents rest
 
 You are encouraged to use either a public domain dedication/certification or an attribution-only license:
 
-* A public domain dedication asserts no copyright, database rights or contractual rights over the data. For example, [Creative Commons' public domain tools](https://creativecommons.org/publicdomain/).
-* Attribution-only licenses allow for use and reuse, with the only restriction being that attribution (credit) be given to the original publisher. For example, [Creative Commons Attribution 4.0 International](http://creativecommons.org/licenses/by/4.0/).
+- A public domain dedication asserts no copyright, database rights or contractual rights over the data. For example, [Creative Commons' public domain tools](https://creativecommons.org/publicdomain/).
+- Attribution-only licenses allow for use and reuse, with the only restriction being that attribution (credit) be given to the original publisher. For example, [Creative Commons Attribution 4.0 International](http://creativecommons.org/licenses/by/4.0/).
 
 The Open Knowledge Foundation maintains a list of [licenses that conform to the open definition](https://opendefinition.org/licenses/). If you use a custom license, you ought to check that it conforms to the [open definition](https://opendefinition.org/od/2.1/en/).
 

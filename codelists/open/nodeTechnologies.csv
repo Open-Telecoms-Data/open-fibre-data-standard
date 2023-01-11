@@ -1,3 +1,3 @@
-code,title,description
+Code,Title,Description
 mpls,Multi-Protocol Label Switching,A routing technique that directs data from one node to the next based on labels rather than network addresses.
 ip,Internet Protocol,A network layer protocol that defines the addressing mechanism on the Internet to allow data to be transmitted.

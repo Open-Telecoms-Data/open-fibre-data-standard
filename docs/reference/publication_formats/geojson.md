@@ -1,15 +1,11 @@
 # GeoJSON
 
-```{admonition} 0.1.0-beta release
-Welcome to the Open Fibre Data Standard 0.1.0-beta release.
+```{admonition} 0.2.0 release
+Welcome to the Open Fibre Data Standard 0.2.0 release.
 
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues linked in the documentation or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
+We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
 
 To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
-```
-
-```{admonition} Consultation
-This page has [open issues](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues?q=is%3Aopen+is%3Aissue+label%3A%22GeoJSON+format%22+).
 ```
 
 This page describes how to publish data in GeoJSON format.
@@ -95,32 +91,32 @@ This section describes the rules for transforming an OFDS network from JSON form
 
 To transform an OFDS network from JSON format to GeoJSON format, you must:
 
-* Create an empty JSON object for the nodes feature collection and set its `.type` to 'FeatureCollection'.
-* Create an empty JSON object for the spans feature collection and set its `.type` to 'FeatureCollection'.
-* For each contract in `contracts`, [dereference the phase references](#dereference-a-phase-reference) in `.relatedPhases`.
-* For each node in `nodes`:
-  * Convert the node to a GeoJSON feature:
-    * Create an empty JSON object for the feature.
-    * Set the feature's:
-    * `.type` to 'Feature'.
-    * `.geometry` to the node's `.location`, if it exists. Otherwise, set `.geometry` to `Null`.
-    * `.properties` to the properties of the node, excluding `.location`.
-    * [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProvider`.
-    * [Dereference the phase reference](#dereference-a-phase-reference) in the feature's `.phase` property.
-    * Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
-  * Add the feature to the nodes feature collection.
-* For each span in `spans`:
-  * Convert the span to a GeoJSON Feature:
-    * Create an empty JSON object for the feature.
-    * Set the feature's:
-    * `.type` to 'Feature'.
-    * `.geometry` to the span's `.route`, if it exists. Otherwise, set `.geometry` to `Null`.
-    * `.properties` to the properties of the span, excluding `.route`.
-    * [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProvider`.
-    * [Dereference the phase reference](#dereference-a-phase-reference) in `.properties.phase`.
-    * [Dereference the node ids](#dereference-a-node-id) in `properties.start` and `properties.end`.
-    * Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
-  * Add the feature to the spans feature collection.
+- Create an empty JSON object for the nodes feature collection and set its `.type` to 'FeatureCollection'.
+- Create an empty JSON object for the spans feature collection and set its `.type` to 'FeatureCollection'.
+- For each contract in `contracts`, [dereference the phase references](#dereference-a-phase-reference) in `.relatedPhases`.
+- For each node in `nodes`:
+  - Convert the node to a GeoJSON feature:
+    - Create an empty JSON object for the feature.
+    - Set the feature's:
+    - `.type` to 'Feature'.
+    - `.geometry` to the node's `.location`, if it exists. Otherwise, set `.geometry` to `Null`.
+    - `.properties` to the properties of the node, excluding `.location`.
+    - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProviders`.
+    - [Dereference the phase reference](#dereference-a-phase-reference) in the feature's `.phase` property.
+    - Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
+  - Add the feature to the nodes feature collection.
+- For each span in `spans`:
+  - Convert the span to a GeoJSON Feature:
+    - Create an empty JSON object for the feature.
+    - Set the feature's:
+    - `.type` to 'Feature'.
+    - `.geometry` to the span's `.route`, if it exists. Otherwise, set `.geometry` to `Null`.
+    - `.properties` to the properties of the span, excluding `.route`.
+    - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProviders`.
+    - [Dereference the phase reference](#dereference-a-phase-reference) in `.properties.phase`.
+    - [Dereference the node ids](#dereference-a-node-id) in `properties.start` and `properties.end`.
+    - Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
+  - Add the feature to the spans feature collection.
 
 ### Common operations
 
@@ -138,4 +134,4 @@ Get the `Node` object in `nodes` whose `.id` is equal to the ID.
 
 ### Reference implementation
 
-A reference implementation of the transformation is [available in Python on Github](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/blob/main/manage.py). We strongly encourage any re-implementations to read its commented code, to ensure correctness.
+A reference implementation of the transformation is [available in Python on Github](https://github.com/Open-Telecoms-Data/lib-cove-ofds). We strongly encourage any re-implementations to read its commented code, to ensure correctness.

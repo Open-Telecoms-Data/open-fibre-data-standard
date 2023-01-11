@@ -70,7 +70,14 @@
                     "funders": [
                         {
                             "id": "1",
-                            "name": "Ghana Infrastructure Investment Fund"
+                            "name": "Ghana Infrastructure Investment Fund",
+                            "country": "GH",
+                            "roles": [
+                                "funder"
+                            ],
+                            "roleDetails": "The Ghana Infrastructure Investment Fund provided equity financing for the construction of phase 1 of the NextGen network.",
+                            "website": "https://www.example.com",
+                            "logo": "https://www.example.com/logo.png"
                         }
                     ]
                 },
@@ -116,10 +123,12 @@
                         "id": "GH-RGD-CS111111111",
                         "name": "FibreCo"
                     },
-                    "networkProvider": {
-                        "id": "GH-RGD-CS222222222",
-                        "name": "FastWeb"
-                    }
+                    "networkProviders": [
+                        {
+                            "id": "GH-RGD-CS222222222",
+                            "name": "FastWeb"
+                        }
+                    ]
                 },
                 "end": {
                     "id": "2",
@@ -155,10 +164,12 @@
                         "id": "GH-RGD-CS111111111",
                         "name": "FibreCo"
                     },
-                    "networkProvider": {
-                        "id": "GH-RGD-CS222222222",
-                        "name": "FastWeb"
-                    }
+                    "networkProviders": [
+                        {
+                            "id": "GH-RGD-CS222222222",
+                            "name": "FastWeb"
+                        }
+                    ]
                 },
                 "directed": false,
                 "physicalInfrastructureProvider": {
@@ -178,23 +189,12 @@
                     "website": "https://www.example.com",
                     "logo": "https://www.example.com/logo.png"
                 },
-                "networkProvider": {
-                    "id": "GH-RGD-CS222222222",
-                    "name": "FastWeb",
-                    "identifier": {
-                        "id": "CS222222222",
-                        "scheme": "GH-RGD",
-                        "legalName": "FastWeb Ghana Limited",
-                        "uri": "https://example.com/companies/CS222222222"
-                    },
-                    "country": "GH",
-                    "roles": [
-                        "networkProvider"
-                    ],
-                    "roleDetails": "FastWeb provides wholesale services to service providers and dark fibre access to other network providers.",
-                    "website": "https://www.example.com",
-                    "logo": "https://www.example.com/logo.png"
-                },
+                "networkProviders": [
+                    {
+                        "id": "GH-RGD-CS222222222",
+                        "name": "FastWeb"
+                    }
+                ],
                 "supplier": {
                     "id": "GH-RGD-CS333333333",
                     "name": "ProjectCo"
@@ -256,7 +256,14 @@
                                     "funders": [
                                         {
                                             "id": "1",
-                                            "name": "Ghana Infrastructure Investment Fund"
+                                            "name": "Ghana Infrastructure Investment Fund",
+                                            "country": "GH",
+                                            "roles": [
+                                                "funder"
+                                            ],
+                                            "roleDetails": "The Ghana Infrastructure Investment Fund provided equity financing for the construction of phase 1 of the NextGen network.",
+                                            "website": "https://www.example.com",
+                                            "logo": "https://www.example.com/logo.png"
                                         }
                                     ]
                                 }
@@ -289,7 +296,7 @@
                     "links": [
                         {
                             "rel": "describedby",
-                            "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-schema.json"
+                            "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__2__0/schema/network-schema.json"
                         }
                     ]
                 }
