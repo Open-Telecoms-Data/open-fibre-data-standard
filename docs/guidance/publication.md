@@ -108,7 +108,7 @@ To meet the widest range of use cases, you ought to publish data in all three fo
 :::{tab-item} JSON to GeoJSON
 The command line tool [Lib CoVE OFDS](https://libcoveofds.readthedocs.io/en/latest/) provides an interface for transforming OFDS data from JSON to GeoJSON format.
 
-To convert a network package to GeoJSON format, first install Lib CoVE OFDS by following the [installation instructions](https://github.com/Open-Telecoms-Data/lib-cove-ofds#installation). Then, run the following command:
+To convert a network package to GeoJSON format, install Lib CoVE OFDS and run the following command:
 
 ```bash
 libcoveofds jsontogeojson network-package.json nodes.geojson spans.geojson
