@@ -18,7 +18,7 @@ For guidance on paginating or streaming individual networks, see [how to publish
 
 The network package schema describes the structure of the container for publishing one or more networks in JSON format and for supporting pagination.
 
-For this version of OFDS, the canonical URL of the schema is [https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0\_\_1\_\_0\_\_beta/schema/network-package-schema.json](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__1__0__beta/schema/network-package-schema.json). Use the canonical URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested.
+For this version of OFDS, the canonical URL of the schema is [https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0\_\_2\_\_0/schema/network-package-schema.json](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__2__0/schema/network-package-schema.json). Use the canonical URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested.
 
 This page presents the schema in an interactive browser. You can also download the canonical version of the schema as [JSON Schema](../../../schema/network-package-schema.json).
 
