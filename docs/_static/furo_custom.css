@@ -1,0 +1,23 @@
+table.docutils {
+  font-size: 75%;
+}
+
+.admonition {
+  border-color: #bb437f;
+}
+
+p.admonition-title {
+  background-color: #BB437F4F;
+}
+
+p.admonition-title::before {
+  background-color: #c24886;
+}
+
+table.docutils th {
+  background: transparent;
+}
+
+tr.row-even {
+  background-color: var(--color-background-secondary);
+}

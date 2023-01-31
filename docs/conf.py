@@ -146,7 +146,24 @@ html_theme = 'furo'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-html_theme_options = {'navigation_depth': 5}
+html_theme_options = {
+  'light_css_variables': {
+    'color-brand-primary': '#BE5D82',
+    'color-brand-content': '#BE5D82',
+    'color-background-secondary': '#FAF8F9',
+    'color-sidebar-brand-text': '#BE5D82'
+  },
+  'dark_css_variables': {
+    'color-brand-primary': '#BE5D82',
+    'color-brand-content': '#BE5D82',
+    'color-sidebar-brand-text': '#BE5D82'
+  },
+  "light_logo": "ods_logo_light.png",
+  "dark_logo": "ods_logo_dark.png"
+}
+
+pygments_style = "perldoc"
+pygments_dark_style = "dracula"
 
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
@@ -154,7 +171,7 @@ html_theme_options = {'navigation_depth': 5}
 # The name for this set of Sphinx documents.
 # "<project> v<release> documentation" by default.
 #
-# html_title = 'Open Data Services Sphinx Base'
+html_title = 'Open Fibre Data Standard'
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #
@@ -163,7 +180,6 @@ html_theme_options = {'navigation_depth': 5}
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
 #
-# html_logo = None
 
 # The name of an image file (relative to this directory) to use as a favicon of
 # the docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -176,6 +192,8 @@ html_theme_options = {'navigation_depth': 5}
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static', '../schema']
 
+html_css_files = ['furo_custom.css']
+ 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
 # directly to the root of the documentation.
