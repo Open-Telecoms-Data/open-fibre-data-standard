@@ -138,7 +138,7 @@ todo_include_todos = False
 import os
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'furo'
     
 # otherwise, readthedocs.org uses their theme by default, so no need to specify it
 
