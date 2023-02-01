@@ -33,8 +33,7 @@
 extensions = ['myst_parser',
 'sphinxcontrib.opendataservices',
 'sphinxcontrib.jsonschema',
-'sphinx_design',
-'sphinx_rtd_theme']
+'sphinx_design']
 
 #MyST extenions
 myst_enable_extensions = [
