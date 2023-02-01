@@ -10,12 +10,7 @@ To comment on or create discussions and issues, you need to [sign up for a free 
 
 This section describes the structure of the tables in the CSV format and the relationship between the tables. Example CSV files and blank templates are provided for each table.
 
-The CSV format consists of several tables, reflecting the structure of the [schema](../schema.md). The networks table is the main table. Arrays of objects in the schema are represented as separate tables:
-
-```{contents}
----
-local: true
-```
+The CSV format consists of several tables, reflecting the structure of the [schema](../schema.md). The [networks table](#networks) is the main table. Arrays of objects in the schema are represented using the tables listed in the right sidebar.
 
 The field in the schema that each column represents is identified by the field's [JSON Pointer](https://tools.ietf.org/html/rfc6901). Rows in child tables are related to rows in parent tables using the parent object's `id` field.
 
