@@ -22,26 +22,6 @@ tr.row-even {
   background-color: var(--color-background-secondary);
 }
 
-.docson .box-header {
-  background: #bb437f7d;
-}
-
-.docson .box-name {
-  color: var(--color-foreground-primary);
-}
-
-.docson .box-description {
-  color: var(--color-foreground-primary);
-}
-
 .docson .box {
-  background-color: var(--color-admonition-background);
-}
-
-.docson .property-name {
-  color: var(--color-foreground-primary);
-}
-
-.docson .signature-description {
-  color: var(--color-foreground-primary);
+  background-color: rgb(255, 255, 255);
 }
