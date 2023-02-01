@@ -148,15 +148,15 @@ html_theme = 'furo'
 #
 html_theme_options = {
   'light_css_variables': {
-    'color-brand-primary': '#BE5D82',
-    'color-brand-content': '#BE5D82',
+    'color-brand-primary': '#aa2b5c',
+    'color-brand-content': '#aa2b5c',
     'color-background-secondary': '#FAF8F9',
-    'color-sidebar-brand-text': '#BE5D82'
+    'color-sidebar-brand-text': '#aa2b5c'
   },
   'dark_css_variables': {
-    'color-brand-primary': '#BE5D82',
-    'color-brand-content': '#BE5D82',
-    'color-sidebar-brand-text': '#BE5D82'
+    'color-brand-primary': '#da8ba9',
+    'color-brand-content': '#da8ba9',
+    'color-sidebar-brand-text': '#da8ba9'
   },
   "light_logo": "ods_logo_light.png",
   "dark_logo": "ods_logo_dark.png"

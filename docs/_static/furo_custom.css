@@ -3,7 +3,7 @@ table.docutils {
 }
 
 .admonition {
-  border-color: #bb437f;
+  border-color: #aa2b5c;
 }
 
 p.admonition-title {
@@ -11,7 +11,7 @@ p.admonition-title {
 }
 
 p.admonition-title::before {
-  background-color: #c24886;
+  background-color: #aa2b5c;
 }
 
 table.docutils th {
