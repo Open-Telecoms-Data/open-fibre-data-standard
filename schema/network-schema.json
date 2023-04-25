@@ -436,7 +436,7 @@
         },
         "fibreLength": {
           "title": "Fibre length",
-          "description": "The physical length of fibre optic cable used in this span.",
+          "description": "The physical length in kilometres, of fibre optic cable used in this span.",
           "type": "number",
           "$comment": ""
         },
