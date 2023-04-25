@@ -22,6 +22,12 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#213](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/213) - For GeoJSON/JSON conversion, use libcoveofds now.
 - [#232](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/232) - Remove unmaintained GitHub issue admonitions
 
+## 0.3.0 - YYYY-MM-DD
+
+### Schema
+
+- [#258](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/258) - Add unit to `Span.fibreLength` description
+
 ## 0.2.0 - 2023-01-11
 
 ### Schema
