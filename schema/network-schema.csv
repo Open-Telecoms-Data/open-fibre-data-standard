@@ -152,9 +152,7 @@ contracts,contracts/relatedPhases,Related phases,The phases to which this contra
 contracts,contracts/relatedPhases/id,Identifier,The identifier of the phase being referenced. This must match the `.id` of a phase in the `phases` array.,string,1..1,,,,,
 contracts,contracts/relatedPhases/name,Name,The name of the phase being referenced. This must match the `.name` of the phase in the `phases` array whose `.id` matches the `.id` of this phase reference.,string,0..1,,,,,
 ,website,Website,The URL of the website for this network.,string,0..1,iri,,,,
-,publisher,Publisher,The organisation that published this network.,object,0..1,,,,,
-,publisher,Organisation,An organisation.,object,0..1,,,,,
-publisher,publisher/id,Local identifier,A local identifier for this organisation. The identifier must be unique within the scope of the `organisations` array.,string,1..1,,,,,
+,publisher,Publisher,The publisher of this network.,object,0..1,,,,,
 publisher,publisher/name,Name,A name for this organisation.,string,0..1,,,,,
 publisher,publisher/identifier,Organisation identifier,An identifier for this organisation.,object,0..1,,,,,
 publisher,publisher/identifier,Organisation identifier,An organisation identifier.,object,0..1,,,,,
@@ -162,11 +160,6 @@ publisher,publisher/identifier/id,Identifier,The identifier assigned to the orga
 publisher,publisher/identifier/scheme,Scheme,"The register from which the identifier in `.id` is drawn, from the open organisationIdentifierScheme codelist.",string,0..1,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationidentifierscheme,,,organisationIdentifierScheme.csv
 publisher,publisher/identifier/legalName,Legal name,The legally registered name of the organisation,string,0..1,,,,,
 publisher,publisher/identifier/uri,URI,"A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.",string,0..1,iri,,,,
-publisher,publisher/country,Country,"The country in which this organisation is legally registered, from the closed country codelist.",string,0..1,"Enum: AD, AE, AF, AG, AI, AL, AM, AO, AQ, AR, AS, AT, AU, AW, AX, AZ, BA, BB, BD, BE, BF, BG, BH, BI, BJ, BL, BM, BN, BO, BQ, BR, BS, BT, BV, BW, BY, BZ, CA, CC, CD, CF, CG, CH, CI, CK, CL, CM, CN, CO, CR, CU, CV, CW, CX, CY, CZ, DE, DJ, DK, DM, DO, DZ, EC, EE, EG, EH, ER, ES, ET, FI, FJ, FK, FM, FO, FR, GA, GB, GD, GE, GF, GG, GH, GI, GL, GM, GN, GP, GQ, GR, GS, GT, GU, GW, GY, HK, HM, HN, HR, HT, HU, ID, IE, IL, IM, IN, IO, IQ, IR, IS, IT, JE, JM, JO, JP, KE, KG, KH, KI, KM, KN, KP, KR, KW, KY, KZ, LA, LB, LC, LI, LK, LR, LS, LT, LU, LV, LY, MA, MC, MD, ME, MF, MG, MH, MK, ML, MM, MN, MO, MP, MQ, MR, MS, MT, MU, MV, MW, MX, MY, MZ, NA, NC, NE, NF, NG, NI, NL, NO, NP, NR, NU, NZ, OM, PA, PE, PF, PG, PH, PK, PL, PM, PN, PR, PS, PT, PW, PY, QA, RE, RO, RS, RU, RW, SA, SB, SC, SD, SE, SG, SH, SI, SJ, SK, SL, SM, SN, SO, SR, SS, ST, SV, SX, SY, SZ, TC, TD, TF, TG, TH, TJ, TK, TL, TM, TN, TO, TR, TT, TV, TW, TZ, UA, UG, UM, US, UY, UZ, VA, VC, VE, VG, VI, VN, VU, WF, WS, XK, YE, YT, ZA, ZM, ZW",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country,,,country.csv
-publisher,publisher/roles,Roles,"This organisation's roles in this network, from the open organisationRole codelist. Further details about this organisation's roles can be provided in `.roleDetails`.",array,0..n,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationrole,,,organisationRole.csv
-publisher,publisher/roleDetails,Role details,Further details about this organisation's roles in the network,string,0..1,,,,,
-publisher,publisher/website,Website,The URL of the website for this organisation.,string,0..1,iri,,,,
-publisher,publisher/logo,Logo,The URL of the logo for this organisation.,string,0..1,iri,,,,
 ,publicationDate,Publication date,The date when this network was published.,string,0..1,date,,,,
 ,collectionDate,Collection date,"The date when the location data was collected. If a dataset was produced by digitising a map, the date that the data for the map was collected.",string,0..1,date,,,,
 ,crs,Coordinate reference system,The coordinate reference system used in this network. If this network includes any coordinate data (in `Node.location` or `Span.route`) then this field must be provided.,object,0..1,,,,,

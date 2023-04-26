@@ -80,8 +80,22 @@
     },
     "publisher": {
       "title": "Publisher",
-      "description": "The organisation that published this network.",
-      "$ref": "#/definitions/Organisation"
+      "description": "The publisher of this network.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "A name for this organisation.",
+          "type": "string",
+          "minLength": 1
+        },
+        "identifier": {
+          "title": "Organisation identifier",
+          "description": "An identifier for this organisation.",
+          "$ref": "#/definitions/Identifier"
+        }
+      },
+      "minProperties": 1
     },
     "publicationDate": {
       "title": "Publication date",
