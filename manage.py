@@ -160,6 +160,20 @@ def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
   markdown[table]['content'].extend([
     "```{jsonschema} ../../../schema/network-schema.json\n"
     f":include: {','.join(include_pointers)}\n"
+  ])
+
+  # Collapse node locations and span routes, which are represented using well-known text in the CSV format
+  if table == 'nodes':
+    markdown[table]['content'].extend([
+      ":collapse: nodes/0/location\n"
+    ])
+  elif table == 'spans':
+    markdown[table]['content'].extend([
+      ":collapse: spans/0/route\n"
+    ])
+
+  markdown[table]['content'].extend([
+    ":nocrossref:\n"
     "```\n"
   ])
 
