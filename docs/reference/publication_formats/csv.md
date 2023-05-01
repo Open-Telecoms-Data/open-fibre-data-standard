@@ -8,9 +8,9 @@ We want to hear your feedback on the standard and its documentation. For general
 To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
 
-This pages describes the CSV publication format, including structure of the tables in the CSV format, the relationship between the tables and the representation of location data. Example CSV files and blank templates are provided for each table.
+The CSV format consists of several tables, reflecting the structure of the [schema](../schema.md). This pages describes the CSV publication format, including the structure of the tables, the relationship between the tables and the representation of location data. Example CSV files and blank templates are provided for each table.
 
-The CSV format consists of several tables, reflecting the structure of the [schema](../schema.md). The networks table is the main table. Arrays of objects in the schema are represented as separate tables:
+The networks table is the main table. Arrays of objects in the schema are represented as separate tables:
 
 ```{contents}
 ---
