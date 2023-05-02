@@ -28,6 +28,10 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 - [#258](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/258) - Add unit to `Span.fibreLength` description
 
+### Non-normative documentation
+
+- [#259](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/259) - Fix link to Lib CoVE OFDS
+
 ## 0.2.0 - 2023-01-11
 
 ### Schema
