@@ -26,7 +26,8 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 ### Non-normative documentation
 
-- [#259](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/259) - Fix link to Lib CoVE OFDS
+- [#259](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/259) - Fix link to Lib CoVE OFDS.
+- [#263](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/263) - Add guidance on location obfuscation.
 
 ## 0.2.0 - 2023-01-11
 
