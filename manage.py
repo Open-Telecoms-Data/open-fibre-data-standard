@@ -252,7 +252,7 @@ def generate_codelist_markdown(codelist, type, references, definitions):
     ref = [part for part in ref if part != '0']
     
     # Ideally, these would be relative links - see https://github.com/OpenDataServices/sphinxcontrib-opendataservices/issues/43
-    url = 'https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,'
+    url = 'network-schema.json,'
     
     # Omit nested references
     if ref[0] in definitions and len(ref) == 2:
@@ -381,7 +381,7 @@ def update_schema_docs(schema):
           ref = [part for part in ref if part != '0']
 
           # Ideally, these would be relative links - see https://github.com/OpenDataServices/sphinxcontrib-opendataservices/issues/43
-          url = 'https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,'
+          url = 'network-schema.json,'
           
           # Omit nested references
           if ref[0] in schema['$defs'] and len(ref) == 2:
@@ -401,7 +401,8 @@ def update_schema_docs(schema):
           ":::{tab-item} Schema\n\n",
           "```{jsonschema} ../../schema/network-schema.json\n",
           f":pointer: /$defs/{defn}\n",
-          f":collapse: {','.join(definition['properties'].keys())}\n"
+          f":collapse: {','.join(definition['properties'].keys())}\n",
+          ":addtargets:\n",
           "```\n\n",
           ":::\n\n",
           ":::{tab-item} Examples\n\n"
