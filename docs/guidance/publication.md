@@ -32,6 +32,8 @@ Bearing in mind your priority use cases, you ought to review the OFDS [schema](.
 
 Most fields in the OFDS schema are optional. However, the more fields you publish, the more useful your data will be.
 
+If you are concerned about disclosing the exact sensitive location data, see [how to obfuscate location data](#how-to-obfuscate-location-data).
+
 #### Identify your data sources
 
 Once you have decided what data to publish, you ought to identify your data sources. These will be the systems, databases and documents that contain the data that you will convert to OFDS format for publication.
@@ -84,6 +86,17 @@ For your data to be open, you need to publish it using an open license. For more
 ## How-to guides
 
 This section contains how-to guides for specific topics. To learn about the process for publishing OFDS data, see the [overview](#overview).
+
+### How to obfuscate location data
+
+If you’re concerned about disclosing the exact location of fibre infrastructure, you can truncate the coordinates of node locations and span routes to obfuscate their exact locations. Before truncating coordinates, you should consider what level of accuracy is required to satisfy your [priority use cases](#identify-your-priority-use-cases). You can use the following table as a guide to the relationship between coordinate precision and accuracy:
+
+| Coordinate precision | Accuracy |
+| -- | -- |
+| 0.001° | ± 111 m |
+| 0.0001° | ± 11.1 m |
+| 0.00001° | ± 1.11 m |
+| 0.000001° | ± 0.111 m |
 
 ### How to add additional fields
 
