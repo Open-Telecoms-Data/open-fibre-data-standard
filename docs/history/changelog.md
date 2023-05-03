@@ -28,6 +28,10 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 - [#260](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/260) - Replace `id` with `$id` and `definitions` with `$defs` in schema files.
 
+### Normative documentation
+
+- [#260](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/260) - Use relative links to jsonschema anchors.
+
 ## 0.3.0 - YYY-MM-DD
 
 ### Non-normative documentation
