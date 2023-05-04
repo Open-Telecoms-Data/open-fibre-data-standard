@@ -716,7 +716,7 @@ def update_organisation_identifier_scheme():
   reader = csv_load('http://org-id.guide/download.csv')
 
   with open('codelists/open/organisationIdentifierScheme.csv', 'w', encoding='utf-8') as f:
-    writer = csv.writer(f)
+    writer = csv.writer(f, lineterminator='\n')
 
     writer.writerow(['Code', 'Title'])
     for code in reader:
