@@ -7,6 +7,7 @@ import json
 import jsonref
 import logging
 import os
+import re
 import requests
 import shutil
 import subprocess
@@ -582,6 +583,25 @@ def update_media_type():
                     writer.writerow([code, name])
 
         writer.writerow(['offline/print', 'print'])
+
+
+@cli.command()
+def update_language():
+    """
+    Update language.csv from ISO 639-1.
+    """
+    # https://www.iso.org/iso-639-language-codes.html
+    # https://id.loc.gov/vocabulary/iso639-1.html
+
+    with csv_dump('codelists/open/language.csv', ['Code', 'Title']) as writer:
+        reader = csv_load('https://id.loc.gov/vocabulary/iso639-1.tsv', delimiter='\t')
+        for row in reader:
+            # Remove parentheses, like "Greek, Modern (1453-)", and split alternatives.
+            titles = re.split(r' *\| *', re.sub(r' \(.+\)', '', row['Label (English)']))
+            # Remove duplication like "Ndebele, North |  North Ndebele" and join alternatives using a comma instead of
+            # a pipe. To preserve order, a dict without values is used instead of a set.
+            titles = ', '.join({' '.join(reversed(title.split(', '))): None for title in titles})
+            writer.writerow([row['code'], titles])
 
 
 if __name__ == '__main__':
