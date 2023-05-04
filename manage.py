@@ -5,12 +5,16 @@ import csv
 import glob
 import json
 import jsonref
+import logging
 import os
+import requests
 import shutil
 import subprocess
 
 from collections import OrderedDict
+from contextlib import contextmanager
 from flattentool import create_template, flatten
+from io import StringIO
 from ocdskit.mapping_sheet import mapping_sheet
 from pathlib import Path
 
@@ -33,6 +37,37 @@ def write_lines(filename, lines):
 
     with open(filename, 'w') as f:
         f.writelines(lines)
+
+
+def csv_load(url, delimiter=','):
+    """
+    Loads CSV data into a ``csv.DictReader`` from the given URL.
+    """
+    reader = csv.DictReader(StringIO(get(url).text), delimiter=delimiter)
+    return reader
+
+
+@contextmanager
+def csv_dump(path, fieldnames):
+    """
+    Writes CSV headers to the given path, and yields a ``csv.writer``.
+    """
+    f = (Path(path)).open('w')
+    writer = csv.writer(f, lineterminator='\n')
+    writer.writerow(fieldnames)
+    try:
+        yield writer
+    finally:
+        f.close()
+
+
+def get(url):
+    """
+    GETs a URL and returns the response. Raises an exception if the status code is not successful.
+    """
+    response = requests.get(url)
+    response.raise_for_status()
+    return response
 
 
 def delete_directory_contents(directory_path):
@@ -502,6 +537,51 @@ def pre_commit():
 
     # Run mdformat
     subprocess.run(['mdformat', 'docs'])
+
+
+@cli.command()
+def update_media_type():
+    """
+    Update mediaType.csv from IANA.
+
+    Ignores deprecated and obsolete media types.
+    """
+    # https://www.iana.org/assignments/media-types/media-types.xhtml
+
+    # See "Registries included below".
+    registries = [
+        'application',
+        'audio',
+        'font',
+        'image',
+        'message',
+        'model',
+        'multipart',
+        'text',
+        'video',
+    ]
+
+    with csv_dump('codelists/open/mediaType.csv', ['Code', 'Title']) as writer:
+        for registry in registries:
+            # See "Available Formats" under each heading.
+            reader = csv_load(f'https://www.iana.org/assignments/media-types/{registry}.csv')
+            for row in reader:
+                if ' ' in row['Name']:
+                    name, message = row['Name'].split(' ', 1)
+                else:
+                    name, message = row['Name'], None
+                code = f"{registry}/{name}"
+                template = row['Template']
+                # All messages are expected to be about deprecation and obsoletion.
+                if message:
+                    logging.warning('%s: %s', message, code)
+                # "x-emf" has "image/emf" in its "Template" value (but it is deprecated).
+                elif template and template != code:
+                    raise Exception(f"expected {code}, got {template}")
+                else:
+                    writer.writerow([code, name])
+
+        writer.writerow(['offline/print', 'print'])
 
 
 if __name__ == '__main__':
