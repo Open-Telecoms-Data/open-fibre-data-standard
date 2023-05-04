@@ -604,5 +604,44 @@ def update_language():
             writer.writerow([row['code'], titles])
 
 
+@cli.command()
+@click.argument('file', type=click.File())
+def update_country(file):
+    """
+    Update country.csv from ISO 3166-1 using FILE.
+
+    To retrieve the file:
+
+    \b
+    1. Open https://www.iso.org/obp/ui/#search/code/
+    2. Open the "Network" tab of the "Web Inspector" utility (Option-Cmd-I in Safari)
+    3. Set "Results per page:" to 300
+    4. Click the last "UIDL" entry in the "Network" tab
+    5. Copy its contents, excluding the for-loop, into a file
+    """
+    # https://www.iso.org/iso-3166-country-codes.html
+    # https://www.iso.org/obp/ui/#search
+
+    codes = {
+        # https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#User-assigned_code_elements
+        'XK': 'Kosovo',
+    }
+
+    rpc = json.load(file)[0]['rpc'][0]
+    offset = int(rpc[0])
+    for entry in rpc[3][1]:
+        d = entry['d']
+        # Clean "Western Sahara*", "United Arab Emirates (the)", etc.
+        codes[d[str(offset + 9)]] = re.sub(r' \(the\)|\*', '', d[str(offset + 13)])
+        # The country code appears at offsets 9 and 15. Check that they are always the same.
+        assert d[str(offset + 9)] == d[str(offset + 15)]
+
+    with open('codelists/closed/country.csv', 'w') as f:
+        writer = csv.writer(f, lineterminator='\n')
+        writer.writerow(['Code', 'Title'])
+        for code in sorted(codes):
+            writer.writerow([code, codes[code]])
+
+
 if __name__ == '__main__':
     cli()
