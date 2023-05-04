@@ -69,6 +69,7 @@ def get(url):
     """
     response = requests.get(url)
     response.raise_for_status()
+    response.encoding = response.apparent_encoding
     return response
 
 
@@ -706,6 +707,20 @@ def update_currency():
 
     json_dump('network-schema.json', network_schema)
 
+@cli.command()
+def update_organisation_identifier_scheme():
+  """
+  Update organisationIdentifierScheme.csv from org-id.guide.
+  """   
+   
+  reader = csv_load('http://org-id.guide/download.csv')
+
+  with open('codelists/open/organisationIdentifierScheme.csv', 'w', encoding='utf-8') as f:
+    writer = csv.writer(f)
+
+    writer.writerow(['Code', 'Title'])
+    for code in reader:
+      writer.writerow([code['code'], code['name/en'].strip()])
 
 if __name__ == '__main__':
     cli()
