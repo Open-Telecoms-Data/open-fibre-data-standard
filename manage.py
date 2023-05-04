@@ -16,6 +16,7 @@ from collections import OrderedDict
 from contextlib import contextmanager
 from flattentool import create_template, flatten
 from io import StringIO
+from lxml import etree
 from ocdskit.mapping_sheet import mapping_sheet
 from pathlib import Path
 
@@ -69,6 +70,15 @@ def get(url):
     response = requests.get(url)
     response.raise_for_status()
     return response
+
+
+def json_dump(filename, data):
+    """
+    Writes JSON data to the given filename.
+    """
+    with (schemadir / filename).open('w') as f:
+        json.dump(data, f, indent=2)
+        f.write('\n')
 
 
 def delete_directory_contents(directory_path):
@@ -641,6 +651,60 @@ def update_country(file):
         writer.writerow(['Code', 'Title'])
         for code in sorted(codes):
             writer.writerow([code, codes[code]])
+
+
+@cli.command()
+def update_currency():
+    """
+    Update currency.csv from ISO 4217.
+    """
+    # https://www.iso.org/iso-4217-currency-codes.html
+    # https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=currency-codes
+
+    # "List One: Current Currency & Funds"
+    current_codes = {}
+    url = 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml'  # noqa: E501
+    tree = etree.fromstring(get(url).content)
+    for node in tree.xpath('//CcyNtry'):
+        match = node.xpath('./Ccy')
+        # Entries like Antarctica have no universal currency.
+        if match:
+            code = node.xpath('./Ccy')[0].text
+            title = node.xpath('./CcyNm')[0].text.strip()
+            if code not in current_codes:
+                current_codes[code] = title
+            # We should expect currency titles to be consistent across countries.
+            elif current_codes[code] != title:
+                raise Exception(f'expected {current_codes[code]}, got {title}')
+
+    # "List Three: Historic Denominations (Currencies & Funds)"
+    historic_codes = {}
+    url = 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-three.xml'  # noqa: E501
+    tree = etree.fromstring(get(url).content)
+    for node in tree.xpath('//HstrcCcyNtry'):
+        code = node.xpath('./Ccy')[0].text
+        title = node.xpath('./CcyNm')[0].text.strip()
+        valid_until = node.xpath('./WthdrwlDt')[0].text
+        # Use ISO8601 interval notation.
+        valid_until = re.sub(r'^(\d{4})-(\d{4})$', r'\1/\2', valid_until.replace(' to ', '/'))
+        if code not in current_codes:
+            if code not in historic_codes:
+                historic_codes[code] = {'Title': title, 'Valid Until': valid_until}
+            # If the code is historical, use the most recent title and valid date.
+            elif valid_until > historic_codes[code]['Valid Until']:
+                historic_codes[code] = {'Title': title, 'Valid Until': valid_until}
+
+    with csv_dump('codelists/closed/currency.csv', ['Code', 'Title', 'Valid Until']) as writer:
+        for code in sorted(current_codes):
+            writer.writerow([code, current_codes[code], None])
+        for code in sorted(historic_codes):
+            writer.writerow([code, historic_codes[code]['Title'], historic_codes[code]['Valid Until']])
+
+    network_schema = json_load('network-schema.json')
+    codes = sorted(list(current_codes) + list(historic_codes))
+    network_schema['definitions']['Value']['properties']['currency']['enum'] = codes + [None]
+
+    json_dump('network-schema.json', network_schema)
 
 
 if __name__ == '__main__':
