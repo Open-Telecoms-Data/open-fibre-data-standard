@@ -722,5 +722,18 @@ def update_organisation_identifier_scheme():
     for code in reader:
       writer.writerow([code['code'], code['name/en'].strip()])
 
+
+@cli.command()
+@click.pass_context
+def update_codelists(ctx):
+    """
+    Update codelists except country.csv.
+    """
+    ctx.invoke(update_currency)
+    ctx.invoke(update_language)
+    ctx.invoke(update_media_type)
+    ctx.invoke(update_organisation_identifier_scheme)
+
+
 if __name__ == '__main__':
     cli()
