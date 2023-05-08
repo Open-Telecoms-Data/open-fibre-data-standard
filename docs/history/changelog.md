@@ -24,6 +24,14 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 ## 0.3.0 - YYYY-MM-DD
 
+### Schema
+
+- [#258](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/258) - Add unit to `Span.fibreLength` description
+
+### Codelists
+
+- [#265](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/265) - Update external codelists.
+
 ### Normative documentation
 
 - [#262](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/262) - Use well-known text to represent geometries in the CSV publication format.
@@ -31,6 +39,10 @@ Iterative improvements are made outside of the release cycle. They do not involv
 ### Non-normative documentation
 
 - [#259](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/259) - Fix link to Lib CoVE OFDS
+
+### Build
+
+- [#265](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/265) - Add scripts to update external codelists.
 
 ## 0.2.0 - 2023-01-11
 
