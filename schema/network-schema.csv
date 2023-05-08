@@ -99,7 +99,7 @@ spans,spans/fibreTypeDetails,Fibre type details,Further details about a span's f
 spans,spans/fibreTypeDetails/fibreSubtype,Fibre subtype,"The sub-category of the fibre type. For example, G.652.B.",string,0..1,,,,,
 spans,spans/fibreTypeDetails/description,Description,A description of this span's fibre type.,string,0..1,,,,,
 spans,spans/fibreCount,Fibre count,The number of individual optical fibres in this span.,integer,0..1,,,,,
-spans,spans/fibreLength,Fibre length,The physical length of fibre optic cable used in this span.,number,0..1,,,,,
+spans,spans/fibreLength,Fibre length,"The physical length in kilometres, of fibre optic cable used in this span.",number,0..1,,,,,
 spans,spans/technologies,Technologies,"The active technologies used on this span, from the open spanTechnologies codelist. For spans with multiple network providers, the union of the active technologies used by each provider.",array,0..n,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spantechnologies,,,spanTechnologies.csv
 spans,spans/capacity,Capacity,"The transmission rate, or throughput, of this span, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the span. For spans with multiple network providers, the sum of the capacity of each provider's network on this span. Further details of this span's capacity can be provided in `.capacityDetails`.",number,0..1,,,,,
 spans,spans/capacityDetails,Capacity details,Further details about this span's capacity,object,0..1,,,,,
