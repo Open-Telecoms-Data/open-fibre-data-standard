@@ -38,6 +38,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 - [#262](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/262) - Use well-known text to represent geometries in the CSV publication format.
 - [#260](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/260) - Use relative links to jsonschema anchors.
+- [#266](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/266) - Add `featureType` field to GeoJSON publication format.
 
 ### Non-normative documentation
 
