@@ -32,6 +32,10 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 - [#265](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/265) - Update external codelists.
 
+### Normative documentation
+
+- [#262](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/262) - Use well-known text to represent geometries in the CSV publication format.
+
 ### Non-normative documentation
 
 - [#259](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/259) - Fix link to Lib CoVE OFDS

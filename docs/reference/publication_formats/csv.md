@@ -8,9 +8,9 @@ We want to hear your feedback on the standard and its documentation. For general
 To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
 
-This section describes the structure of the tables in the CSV format and the relationship between the tables. Example CSV files and blank templates are provided for each table.
+The CSV format consists of several tables, reflecting the structure of the [schema](../schema.md). This pages describes the CSV publication format, including the structure of the tables, the relationship between the tables and the representation of location data. Example CSV files and blank templates are provided for each table.
 
-The CSV format consists of several tables, reflecting the structure of the [schema](../schema.md). The networks table is the main table. Arrays of objects in the schema are represented as separate tables:
+The networks table is the main table. Arrays of objects in the schema are represented as separate tables:
 
 ```{contents}
 ---
@@ -54,6 +54,29 @@ The following example shows a network with two nodes represented in JSON format 
 
 ::::
 
+Node locations and span routes are represented using [well-known text (WKT)](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) `POINT` and `LINESTRING` geometries, respectively. For example:
+
+::::{tab-set}
+
+:::{tab-item} Node locations
+
+| nodes/0/location |
+| --- |
+| POINT (-0.174 5.625) |
+| POINT (-1.628 6.711) |
+
+:::
+
+:::{tab-item} Span routes
+
+| spans/0/route |
+| --- |
+| LINESTRING (-0.173 5.626,-0.178 5.807,-0.112 5.971,-0.211 5.963,-0.321 6.17,-0.488 6.29,-0.56 6.421,-0.752 6.533,-0.867 6.607,-1.101 6.585,-1.304 6.623,-1.461 6.727,-1.628 6.713) |
+
+:::
+
+::::
+
 ## networks
 
 This table is related to the following tables:
@@ -69,6 +92,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,name,website,publisher,publicationDate,collectionDate,crs,accuracy,accuracyDetails,language
+:nocrossref:
 ```
 
 ### nodes
@@ -83,6 +107,8 @@ The fields in this table are listed below. You can also download an [example CSV
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,nodes/0/id,nodes/0/name,nodes/0/phase,nodes/0/status,nodes/0/location,nodes/0/address,nodes/0/type,nodes/0/accessPoint,nodes/0/power,nodes/0/technologies,nodes/0/physicalInfrastructureProvider
+:collapse: nodes/0/location
+:nocrossref:
 ```
 
 #### nodes_internationalConnections
@@ -95,6 +121,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,nodes/0/id,nodes/0/internationalConnections/0/streetAddress,nodes/0/internationalConnections/0/locality,nodes/0/internationalConnections/0/region,nodes/0/internationalConnections/0/postalCode,nodes/0/internationalConnections/0/country
+:nocrossref:
 ```
 
 #### nodes_networkProviders
@@ -107,6 +134,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,nodes/0/id,nodes/0/networkProviders/0/id,nodes/0/networkProviders/0/name
+:nocrossref:
 ```
 
 ### spans
@@ -120,6 +148,8 @@ The fields in this table are listed below. You can also download an [example CSV
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,spans/0/id,spans/0/name,spans/0/phase,spans/0/status,spans/0/readyForServiceDate,spans/0/start,spans/0/end,spans/0/directed,spans/0/route,spans/0/physicalInfrastructureProvider,spans/0/supplier,spans/0/transmissionMedium,spans/0/deployment,spans/0/deploymentDetails,spans/0/darkFibre,spans/0/fibreType,spans/0/fibreTypeDetails,spans/0/fibreCount,spans/0/fibreLength,spans/0/technologies,spans/0/capacity,spans/0/capacityDetails,spans/0/countries
+:collapse: spans/0/route
+:nocrossref:
 ```
 
 #### spans_networkProviders
@@ -132,6 +162,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,spans/0/id,spans/0/networkProviders/0/id,spans/0/networkProviders/0/name
+:nocrossref:
 ```
 
 ### phases
@@ -145,6 +176,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,phases/0/id,phases/0/name,phases/0/description
+:nocrossref:
 ```
 
 #### phases_funders
@@ -157,6 +189,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,phases/0/id,phases/0/funders/0/id,phases/0/funders/0/name
+:nocrossref:
 ```
 
 ### organisations
@@ -169,6 +202,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,organisations/0/id,organisations/0/name,organisations/0/identifier,organisations/0/country,organisations/0/roles,organisations/0/roleDetails,organisations/0/website,organisations/0/logo
+:nocrossref:
 ```
 
 ### contracts
@@ -183,6 +217,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,contracts/0/id,contracts/0/title,contracts/0/description,contracts/0/type,contracts/0/value,contracts/0/dateSigned
+:nocrossref:
 ```
 
 #### contracts_documents
@@ -195,6 +230,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,contracts/0/id,contracts/0/documents/0/title,contracts/0/documents/0/description,contracts/0/documents/0/url,contracts/0/documents/0/format
+:nocrossref:
 ```
 
 #### contracts_relatedPhases
@@ -207,6 +243,7 @@ The fields in this table are listed below. You can also download an [example CSV
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,contracts/0/id,contracts/0/relatedPhases/0/id,contracts/0/relatedPhases/0/name
+:nocrossref:
 ```
 
 ### links
@@ -219,4 +256,5 @@ The fields in this table are listed below. You can also download an [example CSV
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,links/0/href,links/0/rel
+:nocrossref:
 ```

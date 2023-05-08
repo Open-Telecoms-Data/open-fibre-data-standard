@@ -207,6 +207,20 @@ def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
   markdown[table]['content'].extend([
     "```{jsonschema} ../../../schema/network-schema.json\n"
     f":include: {','.join(include_pointers)}\n"
+  ])
+
+  # Collapse node locations and span routes, which are represented using well-known text in the CSV format
+  if table == 'nodes':
+    markdown[table]['content'].extend([
+      ":collapse: nodes/0/location\n"
+    ])
+  elif table == 'spans':
+    markdown[table]['content'].extend([
+      ":collapse: spans/0/route\n"
+    ])
+
+  markdown[table]['content'].extend([
+    ":nocrossref:\n"
     "```\n"
   ])
 
@@ -534,6 +548,35 @@ def pre_commit():
       no_deprecated_fields=True,
       line_terminator='LF',
     )
+
+    # Use WKT geometry in CSV examples and templates. This code should be removed once Flatten Tool supports WKT
+    replacements = {
+       'examples/csv/nodes.csv': [
+          ('nodes/0/location/type,nodes/0/location/coordinates','nodes/0/location'),
+          ('Point,-0.174;5.625', 'POINT (-0.174 5.625)'),
+          ('Point,-1.628;6.711', 'POINT (-1.628 6.711)')
+       ],
+       'examples/csv/template/nodes.csv': [
+          ('nodes/0/location/type,nodes/0/location/coordinates','nodes/0/location')
+       ],
+       'examples/csv/spans.csv': [
+          ('spans/0/route/type,spans/0/route/coordinates','spans/0/route'),
+          ('LineString,"-0.173,5.626;-0.178,5.807;-0.112,5.971;-0.211,5.963;-0.321,6.17;-0.488,6.29;-0.56,6.421;-0.752,6.533;-0.867,6.607;-1.101,6.585;-1.304,6.623;-1.461,6.727;-1.628,6.713"', '"LINESTRING (-0.173 5.626,-0.178 5.807,-0.112 5.971,-0.211 5.963,-0.321 6.17,-0.488 6.29,-0.56 6.421,-0.752 6.533,-0.867 6.607,-1.101 6.585,-1.304 6.623,-1.461 6.727,-1.628 6.713)"')
+       ],
+       'examples/csv/template/spans.csv': [
+          ('spans/0/route/type,spans/0/route/coordinates','spans/0/route')
+       ]
+    }
+    
+    for key, value in replacements.items():
+      with open(key, 'r') as f:
+         content = f.read()
+      
+      for replacement in value:
+         content = content.replace(replacement[0], replacement[1])
+      
+      with open(key, 'w') as f:
+         f.write(content)
 
     # Update docs/reference/publication_formats/csv.md
     update_csv_docs(jsonref_schema)
