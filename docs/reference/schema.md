@@ -218,7 +218,6 @@ Each `Phase` has the following fields:
 This component is referenced by the following properties:
 
 - [`organisations`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,organisations)
-- [`publisher`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,publisher)
 
 Each `Organisation` has the following fields:
 
@@ -239,12 +238,6 @@ Each `Organisation` has the following fields:
 .. jsoninclude:: ../../examples/json/network-package.json
  :jsonpointer: /networks/0/organisations
  :title: organisations
-```
-
-```{eval-rst}
-.. jsoninclude:: ../../examples/json/network-package.json
- :jsonpointer: /networks/0/publisher
- :title: publisher
 ```
 
 :::

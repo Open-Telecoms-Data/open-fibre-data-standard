@@ -4,3 +4,4 @@
 _build
 .python-version
 .vscode
+tests/__pycache__
