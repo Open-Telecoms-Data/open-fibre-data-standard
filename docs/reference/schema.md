@@ -46,6 +46,7 @@ In addition to the above sections, there are several top-level metadata fields:
 
 ```{jsonschema} ../../schema/network-schema.json
 :collapse: nodes,spans,phases,organisations,contracts,publisher,crs,links
+:addtargets:
 ```
 
 :::
@@ -101,12 +102,12 @@ This section lists each component in the OFDS schema. Some components are reused
 `Node` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Node/description
+:jsonpointer: /$defs/Node/description
 ```
 
 This component is referenced by the following properties:
 
-- [`nodes`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,nodes)
+- [`nodes`](network-schema.json,,nodes)
 
 Each `Node` has the following fields:
 
@@ -115,8 +116,9 @@ Each `Node` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Node
+:pointer: /$defs/Node
 :collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,physicalInfrastructureProvider,networkProviders
+:addtargets:
 ```
 
 :::
@@ -138,12 +140,12 @@ Each `Node` has the following fields:
 `Span` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Span/description
+:jsonpointer: /$defs/Span/description
 ```
 
 This component is referenced by the following properties:
 
-- [`spans`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,spans)
+- [`spans`](network-schema.json,,spans)
 
 Each `Span` has the following fields:
 
@@ -152,8 +154,9 @@ Each `Span` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Span
+:pointer: /$defs/Span
 :collapse: id,name,phase,status,readyForServiceDate,start,end,directed,route,physicalInfrastructureProvider,networkProviders,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
+:addtargets:
 ```
 
 :::
@@ -175,12 +178,12 @@ Each `Span` has the following fields:
 `Phase` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Phase/description
+:jsonpointer: /$defs/Phase/description
 ```
 
 This component is referenced by the following properties:
 
-- [`phases`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,phases)
+- [`phases`](network-schema.json,,phases)
 
 Each `Phase` has the following fields:
 
@@ -189,8 +192,9 @@ Each `Phase` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Phase
+:pointer: /$defs/Phase
 :collapse: id,name,description,funders
+:addtargets:
 ```
 
 :::
@@ -212,12 +216,12 @@ Each `Phase` has the following fields:
 `Organisation` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Organisation/description
+:jsonpointer: /$defs/Organisation/description
 ```
 
 This component is referenced by the following properties:
 
-- [`organisations`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,organisations)
+- [`organisations`](network-schema.json,,organisations)
 
 Each `Organisation` has the following fields:
 
@@ -226,8 +230,9 @@ Each `Organisation` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Organisation
+:pointer: /$defs/Organisation
 :collapse: id,name,identifier,country,roles,roleDetails,website,logo
+:addtargets:
 ```
 
 :::
@@ -249,12 +254,12 @@ Each `Organisation` has the following fields:
 `Contract` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Contract/description
+:jsonpointer: /$defs/Contract/description
 ```
 
 This component is referenced by the following properties:
 
-- [`contracts`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,contracts)
+- [`contracts`](network-schema.json,,contracts)
 
 Each `Contract` has the following fields:
 
@@ -263,8 +268,9 @@ Each `Contract` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Contract
+:pointer: /$defs/Contract
 :collapse: id,title,description,type,value,dateSigned,documents,relatedPhases
+:addtargets:
 ```
 
 :::
@@ -286,13 +292,13 @@ Each `Contract` has the following fields:
 `Geometry` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Geometry/description
+:jsonpointer: /$defs/Geometry/description
 ```
 
 This component is referenced by the following properties:
 
-- [`Node/location`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,location)
-- [`Span/route`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,route)
+- [`Node/location`](network-schema.json,/$defs/Node,location)
+- [`Span/route`](network-schema.json,/$defs/Span,route)
 
 Each `Geometry` has the following fields:
 
@@ -301,8 +307,9 @@ Each `Geometry` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Geometry
+:pointer: /$defs/Geometry
 :collapse: type,coordinates
+:addtargets:
 ```
 
 :::
@@ -330,17 +337,17 @@ Each `Geometry` has the following fields:
 `OrganisationReference` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/OrganisationReference/description
+:jsonpointer: /$defs/OrganisationReference/description
 ```
 
 This component is referenced by the following properties:
 
-- [`Node/physicalInfrastructureProvider`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,physicalInfrastructureProvider)
-- [`Node/networkProviders`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,networkProviders)
-- [`Span/physicalInfrastructureProvider`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,physicalInfrastructureProvider)
-- [`Span/networkProviders`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,networkProviders)
-- [`Span/supplier`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,supplier)
-- [`Phase/funders`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Phase,funders)
+- [`Node/physicalInfrastructureProvider`](network-schema.json,/$defs/Node,physicalInfrastructureProvider)
+- [`Node/networkProviders`](network-schema.json,/$defs/Node,networkProviders)
+- [`Span/physicalInfrastructureProvider`](network-schema.json,/$defs/Span,physicalInfrastructureProvider)
+- [`Span/networkProviders`](network-schema.json,/$defs/Span,networkProviders)
+- [`Span/supplier`](network-schema.json,/$defs/Span,supplier)
+- [`Phase/funders`](network-schema.json,/$defs/Phase,funders)
 
 Each `OrganisationReference` has the following fields:
 
@@ -349,8 +356,9 @@ Each `OrganisationReference` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/OrganisationReference
+:pointer: /$defs/OrganisationReference
 :collapse: id,name
+:addtargets:
 ```
 
 :::
@@ -402,14 +410,14 @@ Each `OrganisationReference` has the following fields:
 `PhaseReference` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/PhaseReference/description
+:jsonpointer: /$defs/PhaseReference/description
 ```
 
 This component is referenced by the following properties:
 
-- [`Node/phase`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,phase)
-- [`Span/phase`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,phase)
-- [`Contract/relatedPhases`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Contract,relatedPhases)
+- [`Node/phase`](network-schema.json,/$defs/Node,phase)
+- [`Span/phase`](network-schema.json,/$defs/Span,phase)
+- [`Contract/relatedPhases`](network-schema.json,/$defs/Contract,relatedPhases)
 
 Each `PhaseReference` has the following fields:
 
@@ -418,8 +426,9 @@ Each `PhaseReference` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/PhaseReference
+:pointer: /$defs/PhaseReference
 :collapse: id,name
+:addtargets:
 ```
 
 :::
@@ -453,13 +462,13 @@ Each `PhaseReference` has the following fields:
 `Address` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Address/description
+:jsonpointer: /$defs/Address/description
 ```
 
 This component is referenced by the following properties:
 
-- [`Node/address`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,address)
-- [`Node/internationalConnections`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Node,internationalConnections)
+- [`Node/address`](network-schema.json,/$defs/Node,address)
+- [`Node/internationalConnections`](network-schema.json,/$defs/Node,internationalConnections)
 
 Each `Address` has the following fields:
 
@@ -468,8 +477,9 @@ Each `Address` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Address
+:pointer: /$defs/Address
 :collapse: streetAddress,locality,region,postalCode,country
+:addtargets:
 ```
 
 :::
@@ -497,12 +507,12 @@ Each `Address` has the following fields:
 `Value` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Value/description
+:jsonpointer: /$defs/Value/description
 ```
 
 This component is referenced by the following properties:
 
-- [`Contract/value`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Contract,value)
+- [`Contract/value`](network-schema.json,/$defs/Contract,value)
 
 Each `Value` has the following fields:
 
@@ -511,8 +521,9 @@ Each `Value` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Value
+:pointer: /$defs/Value
 :collapse: amount,currency
+:addtargets:
 ```
 
 :::
@@ -534,12 +545,12 @@ Each `Value` has the following fields:
 `Document` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Document/description
+:jsonpointer: /$defs/Document/description
 ```
 
 This component is referenced by the following properties:
 
-- [`Contract/documents`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Contract,documents)
+- [`Contract/documents`](network-schema.json,/$defs/Contract,documents)
 
 Each `Document` has the following fields:
 
@@ -548,8 +559,9 @@ Each `Document` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Document
+:pointer: /$defs/Document
 :collapse: title,description,url,format
+:addtargets:
 ```
 
 :::
@@ -571,12 +583,12 @@ Each `Document` has the following fields:
 `Identifier` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Identifier/description
+:jsonpointer: /$defs/Identifier/description
 ```
 
 This component is referenced by the following properties:
 
-- [`Organisation/identifier`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Organisation,identifier)
+- [`Organisation/identifier`](network-schema.json,/$defs/Organisation,identifier)
 
 Each `Identifier` has the following fields:
 
@@ -585,8 +597,9 @@ Each `Identifier` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Identifier
+:pointer: /$defs/Identifier
 :collapse: id,scheme,legalName,uri
+:addtargets:
 ```
 
 :::
@@ -627,12 +640,12 @@ For more information, see [How to transform coordinates to the correct coordinat
 `CoordinateReferenceSystem` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/CoordinateReferenceSystem/description
+:jsonpointer: /$defs/CoordinateReferenceSystem/description
 ```
 
 This component is referenced by the following properties:
 
-- [`crs`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,crs)
+- [`crs`](network-schema.json,,crs)
 
 Each `CoordinateReferenceSystem` has the following fields:
 
@@ -641,8 +654,9 @@ Each `CoordinateReferenceSystem` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/CoordinateReferenceSystem
+:pointer: /$defs/CoordinateReferenceSystem
 :collapse: name,uri
+:addtargets:
 ```
 
 :::
@@ -664,12 +678,12 @@ Each `CoordinateReferenceSystem` has the following fields:
 `Link` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Link/description
+:jsonpointer: /$defs/Link/description
 ```
 
 This component is referenced by the following properties:
 
-- [`links`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,,links)
+- [`links`](network-schema.json,,links)
 
 Each `Link` has the following fields:
 
@@ -678,8 +692,9 @@ Each `Link` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/Link
+:pointer: /$defs/Link
 :collapse: href,rel
+:addtargets:
 ```
 
 :::
@@ -701,12 +716,12 @@ Each `Link` has the following fields:
 `FibreTypeDetails` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/FibreTypeDetails/description
+:jsonpointer: /$defs/FibreTypeDetails/description
 ```
 
 This component is referenced by the following properties:
 
-- [`Span/fibreTypeDetails`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,fibreTypeDetails)
+- [`Span/fibreTypeDetails`](network-schema.json,/$defs/Span,fibreTypeDetails)
 
 Each `FibreTypeDetails` has the following fields:
 
@@ -715,8 +730,9 @@ Each `FibreTypeDetails` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/FibreTypeDetails
+:pointer: /$defs/FibreTypeDetails
 :collapse: fibreSubtype,description
+:addtargets:
 ```
 
 :::
@@ -738,12 +754,12 @@ Each `FibreTypeDetails` has the following fields:
 `DeploymentDetails` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/DeploymentDetails/description
+:jsonpointer: /$defs/DeploymentDetails/description
 ```
 
 This component is referenced by the following properties:
 
-- [`Span/deploymentDetails`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,deploymentDetails)
+- [`Span/deploymentDetails`](network-schema.json,/$defs/Span,deploymentDetails)
 
 Each `DeploymentDetails` has the following fields:
 
@@ -752,8 +768,9 @@ Each `DeploymentDetails` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/DeploymentDetails
+:pointer: /$defs/DeploymentDetails
 :collapse: description
+:addtargets:
 ```
 
 :::
@@ -775,12 +792,12 @@ Each `DeploymentDetails` has the following fields:
 `CapacityDetails` is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/CapacityDetails/description
+:jsonpointer: /$defs/CapacityDetails/description
 ```
 
 This component is referenced by the following properties:
 
-- [`Span/capacityDetails`](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,/definitions/Span,capacityDetails)
+- [`Span/capacityDetails`](network-schema.json,/$defs/Span,capacityDetails)
 
 Each `CapacityDetails` has the following fields:
 
@@ -789,8 +806,9 @@ Each `CapacityDetails` has the following fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:pointer: /definitions/CapacityDetails
+:pointer: /$defs/CapacityDetails
 :collapse: description
+:addtargets:
 ```
 
 :::

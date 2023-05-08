@@ -248,20 +248,20 @@ def get_definition_references(schema, defn, parents=None, network_schema=None):
   if 'properties' in schema:
     for key, value in schema['properties'].items():
       if value.get('type') == 'array' and '$ref' in value['items']:
-        if value['items']['$ref'] == f"#/definitions/{defn}":
+        if value['items']['$ref'] == f"#/$defs/{defn}":
           references.append(parents + [key, '0'])
         else:
-          references.extend(get_definition_references(network_schema['definitions'][value['items']['$ref'].split('/')[-1]], defn, parents + [key, '0'], network_schema))
+          references.extend(get_definition_references(network_schema['$defs'][value['items']['$ref'].split('/')[-1]], defn, parents + [key, '0'], network_schema))
       elif '$ref' in value:
-        if value['$ref'] == f"#/definitions/{defn}":
+        if value['$ref'] == f"#/$defs/{defn}":
           references.append(parents + [key])
         else:
-          references.extend(get_definition_references(network_schema['definitions'][value['$ref'].split('/')[-1]], defn, parents + [key], network_schema))
+          references.extend(get_definition_references(network_schema['$defs'][value['$ref'].split('/')[-1]], defn, parents + [key], network_schema))
       elif 'properties' in value:
           references.extend(get_definition_references(value, defn, parents + [key], network_schema))
 
-  if 'definitions' in schema:
-    for key, value in schema['definitions'].items():
+  if '$defs' in schema:
+    for key, value in schema['$defs'].items():
       references.extend(get_definition_references(value, defn, [key], network_schema))
   
   return references
@@ -290,14 +290,14 @@ def get_codelist_references(schema, codelist, parents=None, network_schema=None)
       if value.get('codelist') == f"{codelist}.csv":
         references.append(parents + [key])
       elif value.get('type') == 'array' and '$ref' in value['items']:
-        references.extend(get_codelist_references(network_schema['definitions'][value['items']['$ref'].split('/')[-1]], codelist, parents + [key, '0'], network_schema))
+        references.extend(get_codelist_references(network_schema['$defs'][value['items']['$ref'].split('/')[-1]], codelist, parents + [key, '0'], network_schema))
       elif '$ref' in value:
-        references.extend(get_codelist_references(network_schema['definitions'][value['$ref'].split('/')[-1]], codelist, parents + [key], network_schema))
+        references.extend(get_codelist_references(network_schema['$defs'][value['$ref'].split('/')[-1]], codelist, parents + [key], network_schema))
       elif 'properties' in value:
           references.extend(get_codelist_references(value, codelist, parents + [key], network_schema))
 
-  if 'definitions' in schema:
-    for key, value in schema['definitions'].items():
+  if '$defs' in schema:
+    for key, value in schema['$defs'].items():
       references.extend(get_codelist_references(value, codelist, [key], network_schema))
   
   return references
@@ -313,11 +313,11 @@ def generate_codelist_markdown(codelist, type, references, definitions):
     ref = [part for part in ref if part != '0']
     
     # Ideally, these would be relative links - see https://github.com/OpenDataServices/sphinxcontrib-opendataservices/issues/43
-    url = 'https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,'
+    url = 'network-schema.json,'
     
     # Omit nested references
     if ref[0] in definitions and len(ref) == 2:
-      url += '/definitions/'
+      url += '/$defs/'
     elif len(ref) == 1:
       url += ','
     else:
@@ -380,7 +380,7 @@ def update_codelist_docs(schema):
   closed_codelist_reference = ["## Closed codelists\n\n"]
   
   for key, value in codelists.items():
-    value['content'].extend(generate_codelist_markdown(key, value['type'], value['references'], schema['definitions']))
+    value['content'].extend(generate_codelist_markdown(key, value['type'], value['references'], schema['$defs']))
     if value["type"] == "open":
         codelist_reference.extend(value['content'])
     else:
@@ -405,13 +405,13 @@ def update_schema_docs(schema):
           defn = schema_reference[i][5:-1]
           
           # Drop definitions that don't appear in the schema
-          if defn in schema["definitions"]:
-              schema["definitions"][defn]["content"] = []
+          if defn in schema["$defs"]:
+              schema["$defs"][defn]["content"] = []
               j = i+1
 
               # while j < len(schema_reference) and not schema_reference[j].startswith("```{admonition}") and schema_reference[j] != 'This component is referenced by the following properties:\n':
               while j < len(schema_reference) and not schema_reference[j].startswith("```{admonition}") and schema_reference[j] != f"`{defn}` is defined as:\n":
-                schema["definitions"][defn]["content"].append(schema_reference[j])
+                schema["$defs"][defn]["content"].append(schema_reference[j])
                 j = j+1
 
   # Preserve introductory content up to and including the sentence below the ### Components heading
@@ -419,7 +419,7 @@ def update_schema_docs(schema):
   schema_reference.append("\n")
     
   # Generate standard reference content for each definition
-  for defn, definition in schema["definitions"].items():
+  for defn, definition in schema["$defs"].items():
       definition["content"] = definition.get("content", [])
       
       # Add heading
@@ -429,7 +429,7 @@ def update_schema_docs(schema):
       definition["content"].extend([
           f"`{defn}` is defined as:\n\n",
           "```{jsoninclude-quote} ../../schema/network-schema.json\n",
-          f":jsonpointer: /definitions/{defn}/description\n",
+          f":jsonpointer: /$defs/{defn}/description\n",
           "```\n\n"
       ])
 
@@ -442,11 +442,11 @@ def update_schema_docs(schema):
           ref = [part for part in ref if part != '0']
 
           # Ideally, these would be relative links - see https://github.com/OpenDataServices/sphinxcontrib-opendataservices/issues/43
-          url = 'https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,'
+          url = 'network-schema.json,'
           
           # Omit nested references
-          if ref[0] in schema['definitions'] and len(ref) == 2:
-            url += '/definitions/'
+          if ref[0] in schema['$defs'] and len(ref) == 2:
+            url += '/$defs/'
           elif len(ref) == 1:
             url += ','
           else:
@@ -461,8 +461,9 @@ def update_schema_docs(schema):
           "::::{tab-set}\n\n",
           ":::{tab-item} Schema\n\n",
           "```{jsonschema} ../../schema/network-schema.json\n",
-          f":pointer: /definitions/{defn}\n",
-          f":collapse: {','.join(definition['properties'].keys())}\n"
+          f":pointer: /$defs/{defn}\n",
+          f":collapse: {','.join(definition['properties'].keys())}\n",
+          ":addtargets:\n",
           "```\n\n",
           ":::\n\n",
           ":::{tab-item} Examples\n\n"
@@ -470,7 +471,7 @@ def update_schema_docs(schema):
 
       # Add examples
       for ref in definition["references"]:
-        if ref[0] not in schema['definitions']:
+        if ref[0] not in schema['$defs']:
           if ref[-1] == '0':
             ref.pop(-1)
           

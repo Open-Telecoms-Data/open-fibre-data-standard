@@ -1,5 +1,5 @@
 {
-  "id": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__2__0/schema/network-schema.json",
+  "$id": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__2__0/schema/network-schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Network",
   "description": "A telecommunication network. A network consists of a set of nodes interconnected by spans.",
@@ -26,7 +26,7 @@
       "description": "Information about the nodes that belong to this network. Information about nodes should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk nodes file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated nodes endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Node"
+        "$ref": "#/$defs/Node"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -36,7 +36,7 @@
       "description": "Information about the spans that belong to this network. Information about spans should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk spans file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated spans endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Span"
+        "$ref": "#/$defs/Span"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -46,7 +46,7 @@
       "description": "Information about the phases in which this network is deployed.",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Phase"
+        "$ref": "#/$defs/Phase"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -56,7 +56,7 @@
       "description": "Information about the organisations involved in this network. Organisation references elsewhere in the schema are used to refer back to this entries in this list.",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Organisation"
+        "$ref": "#/$defs/Organisation"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -66,7 +66,7 @@
       "description": "Information about contracts related to this network.",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Contract"
+        "$ref": "#/$defs/Contract"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -92,7 +92,7 @@
         "identifier": {
           "title": "Organisation identifier",
           "description": "An identifier for this organisation.",
-          "$ref": "#/definitions/Identifier"
+          "$ref": "#/$defs/Identifier"
         }
       },
       "minProperties": 1
@@ -114,7 +114,7 @@
     "crs": {
       "title": "Coordinate reference system",
       "description": "The coordinate reference system used in this network. If this network includes any coordinate data (in `Node.location` or `Span.route`) then this field must be provided.",
-      "$ref": "#/definitions/CoordinateReferenceSystem"
+      "$ref": "#/$defs/CoordinateReferenceSystem"
     },
     "accuracy": {
       "title": "Accuracy",
@@ -155,13 +155,13 @@
         }
       ],
       "items": {
-        "$ref": "#/definitions/Link"
+        "$ref": "#/$defs/Link"
       },
       "minItems": 1,
       "uniqueItems": true
     }
   },
-  "definitions": {
+  "$defs": {
     "Node": {
       "title": "Node",
       "description": "A point within a network. A node may be an access point or may reflect a geographic point at which a span splits, aggregates or crosses a border. Nodes can allow for interconnections to other networks or connections to end users.",
@@ -182,7 +182,7 @@
         "phase": {
           "title": "Phase",
           "description": "The phase to which this node belongs.",
-          "$ref": "#/definitions/PhaseReference"
+          "$ref": "#/$defs/PhaseReference"
         },
         "status": {
           "title": "Status",
@@ -202,12 +202,12 @@
         "location": {
           "title": "Node location",
           "description": "In the [JSON publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/json.html), a GeoJSON [Point](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the physical location of this node. In the [CSV publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/csv.html), a [well-known text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) POINT geometry.",
-          "$ref": "#/definitions/Geometry"
+          "$ref": "#/$defs/Geometry"
         },
         "address": {
           "title": "Node address",
           "description": "The physical address of this node.",
-          "$ref": "#/definitions/Address"
+          "$ref": "#/$defs/Address"
         },
         "type": {
           "title": "Node type",
@@ -234,7 +234,7 @@
           "description": "The international connections available at this node. For all connections, `.country` is required.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Address"
+            "$ref": "#/$defs/Address"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -263,7 +263,7 @@
         "physicalInfrastructureProvider": {
           "title": "Physical infrastructure provider",
           "description": "The organisation that owns the passive network infrastructure for this node, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
-          "$ref": "#/definitions/OrganisationReference"
+          "$ref": "#/$defs/OrganisationReference"
         },
         "networkProviders": {
           "title": "Network providers",
@@ -271,7 +271,7 @@
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/OrganisationReference"
+            "$ref": "#/$defs/OrganisationReference"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -302,7 +302,7 @@
         "phase": {
           "title": "Phase",
           "description": "The phase to which this span belongs.",
-          "$ref": "#/definitions/PhaseReference"
+          "$ref": "#/$defs/PhaseReference"
         },
         "status": {
           "title": "Span status",
@@ -347,12 +347,12 @@
         "route": {
           "title": "Span route",
           "description": "In the [JSON publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/json.html), a GeoJSON [LineString](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the route of this span. In the [CSV publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/csv.html), a [well-known text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) LINESTRING geometry.",
-          "$ref": "#/definitions/Geometry"
+          "$ref": "#/$defs/Geometry"
         },
         "physicalInfrastructureProvider": {
           "title": "Physical infrastructure provider",
           "description": "The organisation that owns the passive network infrastructure for this span, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
-          "$ref": "#/definitions/OrganisationReference"
+          "$ref": "#/$defs/OrganisationReference"
         },
         "networkProviders": {
           "title": "Network providers",
@@ -360,7 +360,7 @@
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/OrganisationReference"
+            "$ref": "#/$defs/OrganisationReference"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -368,7 +368,7 @@
         "supplier": {
           "title": "Supplier",
           "description": "The organisation responsible for installing the cable for this span.",
-          "$ref": "#/definitions/OrganisationReference"
+          "$ref": "#/$defs/OrganisationReference"
         },
         "transmissionMedium": {
           "title": "Transmission medium",
@@ -413,7 +413,7 @@
         "deploymentDetails": {
           "title": "Deployment details",
           "description": "Further details of this span's deployment.",
-          "$ref": "#/definitions/DeploymentDetails"
+          "$ref": "#/$defs/DeploymentDetails"
         },
         "darkFibre": {
           "title": "Dark fibre availability",
@@ -440,7 +440,7 @@
         "fibreTypeDetails": {
           "title": "Fibre type details",
           "description": "Further details about this span's fibre type.",
-          "$ref": "#/definitions/FibreTypeDetails"
+          "$ref": "#/$defs/FibreTypeDetails"
         },
         "fibreCount": {
           "title": "Fibre count",
@@ -478,7 +478,7 @@
         "capacityDetails": {
           "title": "Capacity details",
           "description": "Further details about this span's capacity",
-          "$ref": "#/definitions/CapacityDetails"
+          "$ref": "#/$defs/CapacityDetails"
         },
         "countries": {
           "title": "Countries",
@@ -781,7 +781,7 @@
           "description": "Information about the organisations that provide financing for the development or operation of this phase, also known as investors or financers.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/OrganisationReference"
+            "$ref": "#/$defs/OrganisationReference"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -812,7 +812,7 @@
         "identifier": {
           "title": "Organisation identifier",
           "description": "An identifier for this organisation.",
-          "$ref": "#/definitions/Identifier"
+          "$ref": "#/$defs/Identifier"
         },
         "country": {
           "title": "Country",
@@ -1148,7 +1148,7 @@
         "value": {
           "title": "Contract value",
           "description": "The value of this contract.",
-          "$ref": "#/definitions/Value"
+          "$ref": "#/$defs/Value"
         },
         "dateSigned": {
           "title": "Date signed",
@@ -1162,7 +1162,7 @@
           "description": "The documents related to this contract.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Document"
+            "$ref": "#/$defs/Document"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -1172,7 +1172,7 @@
           "description": "The phases to which this contract relates.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PhaseReference"
+            "$ref": "#/$defs/PhaseReference"
           },
           "minItems": 1,
           "uniqueItems": true

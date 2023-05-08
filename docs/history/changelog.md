@@ -26,13 +26,9 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 ### Schema
 
-- [#261](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/261) - Replace `publisher` with an object.
-
-## 0.3.0 - YYYY-MM-DD
-
-### Schema
-
 - [#258](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/258) - Add unit to `Span.fibreLength` description
+- [#260](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/260) - Replace `id` with `$id` and `definitions` with `$defs` in schema files.
+- [#261](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/261) - Replace `publisher` with an object.
 
 ### Codelists
 
@@ -41,6 +37,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
 ### Normative documentation
 
 - [#262](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/262) - Use well-known text to represent geometries in the CSV publication format.
+- [#260](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/260) - Use relative links to jsonschema anchors.
 
 ### Non-normative documentation
 
