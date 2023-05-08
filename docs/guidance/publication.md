@@ -30,9 +30,11 @@ There are many [use cases](../primer/openfibredata.md#why-publish-open-fibre-dat
 
 Bearing in mind your priority use cases, you ought to review the OFDS [schema](../reference/schema.md) and decide which fields you want to publish.
 
+OFDS is designed for the public disclosure of open data. However, you can also use it to structure data that you want to share only with specific partners and data that you want to keep within your own organisation. As such, this step can involve deciding which fields to make public, which to share with partners and which to keep private.
+
 Most fields in the OFDS schema are optional. However, the more fields you publish, the more useful your data will be.
 
-If you are concerned about disclosing the exact sensitive location data, see [how to obfuscate location data](#how-to-obfuscate-location-data).
+If you are concerned about disclosing sensitive location data, see [how to obfuscate location data](#how-to-obfuscate-location-data).
 
 #### Identify your data sources
 
@@ -89,7 +91,7 @@ This section contains how-to guides for specific topics. To learn about the proc
 
 ### How to obfuscate location data
 
-If you’re concerned about disclosing the exact location of fibre infrastructure, you can truncate the coordinates of node locations and span routes to obfuscate their exact locations. Before truncating coordinates, you should consider what level of accuracy is required to satisfy your [priority use cases](#identify-your-priority-use-cases). You can use the following table as a guide to the relationship between coordinate precision and accuracy:
+If you’re concerned about disclosing the exact location of fibre infrastructure, you can truncate the coordinates of node locations and span routes in your public or shared data to obfuscate their exact locations, whilst retaining the precise coordinates for use within your own organisation. Before truncating coordinates, you ought to consider what level of accuracy is required to satisfy your [priority use cases](#identify-your-priority-use-cases). You can use the following table as a guide to the relationship between coordinate precision and accuracy:
 
 | Coordinate precision | Accuracy |
 | -- | -- |
