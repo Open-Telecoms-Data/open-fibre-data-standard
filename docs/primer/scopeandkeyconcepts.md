@@ -71,7 +71,7 @@ OFDS defines a network as:
 OFDS defines a node as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Node/description
+:jsonpointer: /$defs/Node/description
 ```
 
 Nodes can represent different elements in a fibre network and the type of each node can be specified in the data, for example a node could be a point of presence, an internet exchange point and/or a cable landing.
@@ -83,7 +83,7 @@ For more information about nodes, see the [Node reference](../reference/schema.m
 OFDS defines a span as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /definitions/Span/description
+:jsonpointer: /$defs/Span/description
 ```
 
 The nodes that a span connects are known as its endpoints. In addition to the endpoints, the physical route of the span can also be specified as a LineString. This allows for the detailed route of a span to be published even when granular data on node locations along the span is unavailable, for example in a dataset describing a national backbone network.
