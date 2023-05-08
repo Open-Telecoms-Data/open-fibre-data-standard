@@ -60,7 +60,6 @@ GTQ,Quetzal,
 GYD,Guyana Dollar,
 HKD,Hong Kong Dollar,
 HNL,Lempira,
-HRK,Kuna,
 HTG,Gourde,
 HUF,Forint,
 IDR,Rupiah,
@@ -128,6 +127,7 @@ SDG,Sudanese Pound,
 SEK,Swedish Krona,
 SGD,Singapore Dollar,
 SHP,Saint Helena Pound,
+SLE,Leone,
 SLL,Leone,
 SOS,Somali Shilling,
 SRD,Surinam Dollar,
@@ -153,6 +153,7 @@ UYI,Uruguay Peso en Unidades Indexadas (UI),
 UYU,Peso Uruguayo,
 UYW,Unidad Previsional,
 UZS,Uzbekistan Sum,
+VED,Bolívar Soberano,
 VES,Bolívar Soberano,
 VND,Dong,
 VUV,Vatu,
@@ -231,6 +232,7 @@ GRD,Drachma,2002-03
 GWE,Guinea Escudo,1978/1981
 GWP,Guinea-Bissau Peso,1997-05
 HRD,Croatian Dinar,1995-01
+HRK,Kuna,2023-01
 IEP,Irish Pound,2002-03
 ILP,Pound,1978/1981
 ILR,Old Shekel,1989/1990
