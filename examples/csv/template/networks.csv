@@ -1,1 +1,1 @@
-id,name,website,publisher/id,publisher/name,publisher/identifier/id,publisher/identifier/scheme,publisher/identifier/legalName,publisher/identifier/uri,publisher/country,publisher/roles,publisher/roleDetails,publisher/website,publisher/logo,publicationDate,collectionDate,crs/name,crs/uri,accuracy,accuracyDetails,language
+id,name,website,publisher/name,publisher/identifier/id,publisher/identifier/scheme,publisher/identifier/legalName,publisher/identifier/uri,publicationDate,collectionDate,crs/name,crs/uri,accuracy,accuracyDetails,language
