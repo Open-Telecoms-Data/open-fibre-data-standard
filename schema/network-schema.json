@@ -92,7 +92,7 @@
         "identifier": {
           "title": "Organisation identifier",
           "description": "An identifier for this organisation.",
-          "$ref": "#/definitions/Identifier"
+          "$ref": "#/$defs/Identifier"
         }
       },
       "minProperties": 1
