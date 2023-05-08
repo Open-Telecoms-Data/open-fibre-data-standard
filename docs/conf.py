@@ -30,11 +30,14 @@
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = ['myst_parser',
-'sphinxcontrib.opendataservices',
-'sphinxcontrib.jsonschema',
-'sphinx_design',
-'sphinx_rtd_theme']
+extensions = [
+    'myst_parser',
+    'sphinxcontrib.opencontracting',
+    'sphinxcontrib.opendataservices',
+    'sphinxcontrib.jsonschema',
+    'sphinx_design',
+    'sphinx_rtd_theme'
+]
 
 #MyST extenions
 myst_enable_extensions = [
