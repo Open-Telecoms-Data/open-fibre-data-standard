@@ -1,5 +1,5 @@
 {
-  "id": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__2__0/schema/network-schema.json",
+  "$id": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__2__0/schema/network-schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Network",
   "description": "A telecommunication network. A network consists of a set of nodes interconnected by spans.",
@@ -26,7 +26,7 @@
       "description": "Information about the nodes that belong to this network. Information about nodes should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk nodes file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated nodes endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Node"
+        "$ref": "#/$defs/Node"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -36,7 +36,7 @@
       "description": "Information about the spans that belong to this network. Information about spans should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk spans file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated spans endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Span"
+        "$ref": "#/$defs/Span"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -46,7 +46,7 @@
       "description": "Information about the phases in which this network is deployed.",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Phase"
+        "$ref": "#/$defs/Phase"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -56,7 +56,7 @@
       "description": "Information about the organisations involved in this network. Organisation references elsewhere in the schema are used to refer back to this entries in this list.",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Organisation"
+        "$ref": "#/$defs/Organisation"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -66,7 +66,7 @@
       "description": "Information about contracts related to this network.",
       "type": "array",
       "items": {
-        "$ref": "#/definitions/Contract"
+        "$ref": "#/$defs/Contract"
       },
       "minItems": 1,
       "uniqueItems": true
@@ -80,8 +80,22 @@
     },
     "publisher": {
       "title": "Publisher",
-      "description": "The organisation that published this network.",
-      "$ref": "#/definitions/Organisation"
+      "description": "The publisher of this network.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "A name for this organisation.",
+          "type": "string",
+          "minLength": 1
+        },
+        "identifier": {
+          "title": "Organisation identifier",
+          "description": "An identifier for this organisation.",
+          "$ref": "#/$defs/Identifier"
+        }
+      },
+      "minProperties": 1
     },
     "publicationDate": {
       "title": "Publication date",
@@ -100,7 +114,7 @@
     "crs": {
       "title": "Coordinate reference system",
       "description": "The coordinate reference system used in this network. If this network includes any coordinate data (in `Node.location` or `Span.route`) then this field must be provided.",
-      "$ref": "#/definitions/CoordinateReferenceSystem"
+      "$ref": "#/$defs/CoordinateReferenceSystem"
     },
     "accuracy": {
       "title": "Accuracy",
@@ -141,13 +155,13 @@
         }
       ],
       "items": {
-        "$ref": "#/definitions/Link"
+        "$ref": "#/$defs/Link"
       },
       "minItems": 1,
       "uniqueItems": true
     }
   },
-  "definitions": {
+  "$defs": {
     "Node": {
       "title": "Node",
       "description": "A point within a network. A node may be an access point or may reflect a geographic point at which a span splits, aggregates or crosses a border. Nodes can allow for interconnections to other networks or connections to end users.",
@@ -168,7 +182,7 @@
         "phase": {
           "title": "Phase",
           "description": "The phase to which this node belongs.",
-          "$ref": "#/definitions/PhaseReference"
+          "$ref": "#/$defs/PhaseReference"
         },
         "status": {
           "title": "Status",
@@ -187,13 +201,13 @@
         },
         "location": {
           "title": "Node location",
-          "description": "A GeoJSON [Point](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the physical location of this node.",
-          "$ref": "#/definitions/Geometry"
+          "description": "In the [JSON publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/json.html), a GeoJSON [Point](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the physical location of this node. In the [CSV publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/csv.html), a [well-known text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) POINT geometry.",
+          "$ref": "#/$defs/Geometry"
         },
         "address": {
           "title": "Node address",
           "description": "The physical address of this node.",
-          "$ref": "#/definitions/Address"
+          "$ref": "#/$defs/Address"
         },
         "type": {
           "title": "Node type",
@@ -220,7 +234,7 @@
           "description": "The international connections available at this node. For all connections, `.country` is required.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Address"
+            "$ref": "#/$defs/Address"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -249,7 +263,7 @@
         "physicalInfrastructureProvider": {
           "title": "Physical infrastructure provider",
           "description": "The organisation that owns the passive network infrastructure for this node, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
-          "$ref": "#/definitions/OrganisationReference"
+          "$ref": "#/$defs/OrganisationReference"
         },
         "networkProviders": {
           "title": "Network providers",
@@ -257,7 +271,7 @@
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/OrganisationReference"
+            "$ref": "#/$defs/OrganisationReference"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -288,7 +302,7 @@
         "phase": {
           "title": "Phase",
           "description": "The phase to which this span belongs.",
-          "$ref": "#/definitions/PhaseReference"
+          "$ref": "#/$defs/PhaseReference"
         },
         "status": {
           "title": "Span status",
@@ -332,13 +346,13 @@
         },
         "route": {
           "title": "Span route",
-          "description": "A GeoJSON [LineString](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the route of this span.",
-          "$ref": "#/definitions/Geometry"
+          "description": "In the [JSON publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/json.html), a GeoJSON [LineString](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the route of this span. In the [CSV publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/csv.html), a [well-known text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) LINESTRING geometry.",
+          "$ref": "#/$defs/Geometry"
         },
         "physicalInfrastructureProvider": {
           "title": "Physical infrastructure provider",
           "description": "The organisation that owns the passive network infrastructure for this span, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
-          "$ref": "#/definitions/OrganisationReference"
+          "$ref": "#/$defs/OrganisationReference"
         },
         "networkProviders": {
           "title": "Network providers",
@@ -346,7 +360,7 @@
           "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/OrganisationReference"
+            "$ref": "#/$defs/OrganisationReference"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -354,7 +368,7 @@
         "supplier": {
           "title": "Supplier",
           "description": "The organisation responsible for installing the cable for this span.",
-          "$ref": "#/definitions/OrganisationReference"
+          "$ref": "#/$defs/OrganisationReference"
         },
         "transmissionMedium": {
           "title": "Transmission medium",
@@ -399,7 +413,7 @@
         "deploymentDetails": {
           "title": "Deployment details",
           "description": "Further details of this span's deployment.",
-          "$ref": "#/definitions/DeploymentDetails"
+          "$ref": "#/$defs/DeploymentDetails"
         },
         "darkFibre": {
           "title": "Dark fibre availability",
@@ -426,7 +440,7 @@
         "fibreTypeDetails": {
           "title": "Fibre type details",
           "description": "Further details about this span's fibre type.",
-          "$ref": "#/definitions/FibreTypeDetails"
+          "$ref": "#/$defs/FibreTypeDetails"
         },
         "fibreCount": {
           "title": "Fibre count",
@@ -436,7 +450,7 @@
         },
         "fibreLength": {
           "title": "Fibre length",
-          "description": "The physical length of fibre optic cable used in this span.",
+          "description": "The physical length in kilometres, of fibre optic cable used in this span.",
           "type": "number",
           "$comment": ""
         },
@@ -464,7 +478,7 @@
         "capacityDetails": {
           "title": "Capacity details",
           "description": "Further details about this span's capacity",
-          "$ref": "#/definitions/CapacityDetails"
+          "$ref": "#/$defs/CapacityDetails"
         },
         "countries": {
           "title": "Countries",
@@ -767,7 +781,7 @@
           "description": "Information about the organisations that provide financing for the development or operation of this phase, also known as investors or financers.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/OrganisationReference"
+            "$ref": "#/$defs/OrganisationReference"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -798,7 +812,7 @@
         "identifier": {
           "title": "Organisation identifier",
           "description": "An identifier for this organisation.",
-          "$ref": "#/definitions/Identifier"
+          "$ref": "#/$defs/Identifier"
         },
         "country": {
           "title": "Country",
@@ -1134,7 +1148,7 @@
         "value": {
           "title": "Contract value",
           "description": "The value of this contract.",
-          "$ref": "#/definitions/Value"
+          "$ref": "#/$defs/Value"
         },
         "dateSigned": {
           "title": "Date signed",
@@ -1148,7 +1162,7 @@
           "description": "The documents related to this contract.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Document"
+            "$ref": "#/$defs/Document"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -1158,7 +1172,7 @@
           "description": "The phases to which this contract relates.",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/PhaseReference"
+            "$ref": "#/$defs/PhaseReference"
           },
           "minItems": 1,
           "uniqueItems": true
@@ -1563,34 +1577,63 @@
           "codelist": "currency.csv",
           "openCodelist": false,
           "enum": [
+            "ADP",
             "AED",
+            "AFA",
             "AFN",
+            "ALK",
             "ALL",
             "AMD",
             "ANG",
             "AOA",
+            "AOK",
+            "AON",
+            "AOR",
+            "ARA",
+            "ARP",
             "ARS",
+            "ARY",
+            "ATS",
             "AUD",
             "AWG",
+            "AYM",
+            "AZM",
             "AZN",
+            "BAD",
             "BAM",
             "BBD",
             "BDT",
+            "BEC",
+            "BEF",
+            "BEL",
+            "BGJ",
+            "BGK",
+            "BGL",
             "BGN",
             "BHD",
             "BIF",
             "BMD",
             "BND",
             "BOB",
+            "BOP",
             "BOV",
+            "BRB",
+            "BRC",
+            "BRE",
             "BRL",
+            "BRN",
+            "BRR",
             "BSD",
             "BTN",
+            "BUK",
             "BWP",
+            "BYB",
             "BYN",
+            "BYR",
             "BZD",
             "CAD",
             "CDF",
+            "CHC",
             "CHE",
             "CHF",
             "CHW",
@@ -1600,39 +1643,68 @@
             "COP",
             "COU",
             "CRC",
+            "CSD",
+            "CSJ",
+            "CSK",
             "CUC",
             "CUP",
             "CVE",
+            "CYP",
             "CZK",
+            "DDM",
+            "DEM",
             "DJF",
             "DKK",
             "DOP",
             "DZD",
+            "ECS",
+            "ECV",
+            "EEK",
             "EGP",
             "ERN",
+            "ESA",
+            "ESB",
+            "ESP",
             "ETB",
             "EUR",
+            "FIM",
             "FJD",
             "FKP",
+            "FRF",
             "GBP",
+            "GEK",
             "GEL",
+            "GHC",
+            "GHP",
             "GHS",
             "GIP",
             "GMD",
+            "GNE",
             "GNF",
+            "GNS",
+            "GQE",
+            "GRD",
             "GTQ",
+            "GWE",
+            "GWP",
             "GYD",
             "HKD",
             "HNL",
+            "HRD",
             "HRK",
             "HTG",
             "HUF",
             "IDR",
+            "IEP",
+            "ILP",
+            "ILR",
             "ILS",
             "INR",
             "IQD",
             "IRR",
+            "ISJ",
             "ISK",
+            "ITL",
             "JMD",
             "JOD",
             "JPY",
@@ -1645,79 +1717,130 @@
             "KWD",
             "KYD",
             "KZT",
+            "LAJ",
             "LAK",
             "LBP",
             "LKR",
             "LRD",
             "LSL",
+            "LSM",
+            "LTL",
+            "LTT",
+            "LUC",
+            "LUF",
+            "LUL",
+            "LVL",
+            "LVR",
             "LYD",
             "MAD",
             "MDL",
             "MGA",
+            "MGF",
             "MKD",
+            "MLF",
             "MMK",
             "MNT",
             "MOP",
+            "MRO",
             "MRU",
+            "MTL",
+            "MTP",
             "MUR",
+            "MVQ",
             "MVR",
             "MWK",
             "MXN",
+            "MXP",
             "MXV",
             "MYR",
+            "MZE",
+            "MZM",
             "MZN",
             "NAD",
             "NGN",
+            "NIC",
             "NIO",
+            "NLG",
             "NOK",
             "NPR",
             "NZD",
             "OMR",
             "PAB",
+            "PEH",
+            "PEI",
             "PEN",
+            "PES",
             "PGK",
             "PHP",
             "PKR",
             "PLN",
+            "PLZ",
+            "PTE",
             "PYG",
             "QAR",
+            "RHD",
+            "ROK",
+            "ROL",
             "RON",
             "RSD",
             "RUB",
+            "RUR",
             "RWF",
             "SAR",
             "SBD",
             "SCR",
+            "SDD",
             "SDG",
+            "SDP",
             "SEK",
             "SGD",
             "SHP",
+            "SIT",
+            "SKK",
+            "SLE",
             "SLL",
             "SOS",
             "SRD",
+            "SRG",
             "SSP",
+            "STD",
             "STN",
+            "SUR",
             "SVC",
             "SYP",
             "SZL",
             "THB",
+            "TJR",
             "TJS",
+            "TMM",
             "TMT",
             "TND",
             "TOP",
+            "TPE",
+            "TRL",
             "TRY",
             "TTD",
             "TWD",
             "TZS",
             "UAH",
+            "UAK",
+            "UGS",
+            "UGW",
             "UGX",
             "USD",
             "USN",
+            "USS",
             "UYI",
+            "UYN",
+            "UYP",
             "UYU",
             "UYW",
             "UZS",
+            "VEB",
+            "VED",
+            "VEF",
             "VES",
+            "VNC",
             "VND",
             "VUV",
             "WST",
@@ -1730,139 +1853,32 @@
             "XBD",
             "XCD",
             "XDR",
+            "XEU",
+            "XFO",
+            "XFU",
             "XOF",
             "XPD",
             "XPF",
             "XPT",
+            "XRE",
             "XSU",
             "XTS",
             "XUA",
             "XXX",
-            "YER",
-            "ZAR",
-            "ZMW",
-            "ZWL",
-            "ADP",
-            "AFA",
-            "ALK",
-            "AOK",
-            "AON",
-            "AOR",
-            "ARA",
-            "ARP",
-            "ARY",
-            "ATS",
-            "AYM",
-            "AZM",
-            "BAD",
-            "BEC",
-            "BEF",
-            "BEL",
-            "BGJ",
-            "BGK",
-            "BGL",
-            "BOP",
-            "BRB",
-            "BRC",
-            "BRE",
-            "BRN",
-            "BRR",
-            "BUK",
-            "BYB",
-            "BYR",
-            "CHC",
-            "CSD",
-            "CSJ",
-            "CSK",
-            "CYP",
-            "DDM",
-            "DEM",
-            "ECS",
-            "ECV",
-            "EEK",
-            "ESA",
-            "ESB",
-            "ESP",
-            "FIM",
-            "FRF",
-            "GEK",
-            "GHC",
-            "GHP",
-            "GNE",
-            "GNS",
-            "GQE",
-            "GRD",
-            "GWE",
-            "GWP",
-            "HRD",
-            "IEP",
-            "ILP",
-            "ILR",
-            "ISJ",
-            "ITL",
-            "LAJ",
-            "LSM",
-            "LTL",
-            "LTT",
-            "LUC",
-            "LUF",
-            "LUL",
-            "LVL",
-            "LVR",
-            "MGF",
-            "MLF",
-            "MRO",
-            "MTL",
-            "MTP",
-            "MVQ",
-            "MXP",
-            "MZE",
-            "MZM",
-            "NIC",
-            "NLG",
-            "PEH",
-            "PEI",
-            "PES",
-            "PLZ",
-            "PTE",
-            "RHD",
-            "ROK",
-            "ROL",
-            "RUR",
-            "SDD",
-            "SDP",
-            "SIT",
-            "SKK",
-            "SRG",
-            "STD",
-            "SUR",
-            "TJR",
-            "TMM",
-            "TPE",
-            "TRL",
-            "UAK",
-            "UGS",
-            "UGW",
-            "USS",
-            "UYN",
-            "UYP",
-            "VEB",
-            "VEF",
-            "VNC",
-            "XEU",
-            "XFO",
-            "XFU",
-            "XRE",
             "YDD",
+            "YER",
             "YUD",
             "YUM",
             "YUN",
             "ZAL",
+            "ZAR",
             "ZMK",
+            "ZMW",
             "ZRN",
             "ZRZ",
             "ZWC",
             "ZWD",
+            "ZWL",
             "ZWN",
             "ZWR"
           ]

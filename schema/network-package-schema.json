@@ -1,5 +1,5 @@
 {
-  "id": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__2__0/schema/network-package-schema.json",
+  "$id": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__2__0/schema/network-package-schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Network package",
   "description": "A container for publishing Open Fibre Data Standard networks.",

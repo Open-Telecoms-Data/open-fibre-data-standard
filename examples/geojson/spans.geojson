@@ -272,17 +272,13 @@
                     ],
                     "website": "http://example.com/network",
                     "publisher": {
-                        "id": "GH-RGD-CS111111111",
                         "name": "FibreCo",
                         "identifier": {
                             "id": "CS111111111",
                             "scheme": "GH-RGD",
                             "legalName": "FibreCo Ghana Limited",
                             "uri": "https://example.com/companies/CS111111111"
-                        },
-                        "country": "GH",
-                        "website": "https://www.example.com",
-                        "logo": "https://www.example.com/logo.png"
+                        }
                     },
                     "publicationDate": "2022-01-01",
                     "collectionDate": "2021-09-30",

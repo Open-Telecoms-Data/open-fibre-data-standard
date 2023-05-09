@@ -5,12 +5,18 @@ import csv
 import glob
 import json
 import jsonref
+import logging
 import os
+import re
+import requests
 import shutil
 import subprocess
 
 from collections import OrderedDict
+from contextlib import contextmanager
 from flattentool import create_template, flatten
+from io import StringIO
+from lxml import etree
 from ocdskit.mapping_sheet import mapping_sheet
 from pathlib import Path
 
@@ -33,6 +39,47 @@ def write_lines(filename, lines):
 
     with open(filename, 'w') as f:
         f.writelines(lines)
+
+
+def csv_load(url, delimiter=','):
+    """
+    Loads CSV data into a ``csv.DictReader`` from the given URL.
+    """
+    reader = csv.DictReader(StringIO(get(url).text), delimiter=delimiter)
+    return reader
+
+
+@contextmanager
+def csv_dump(path, fieldnames):
+    """
+    Writes CSV headers to the given path, and yields a ``csv.writer``.
+    """
+    f = (Path(path)).open('w')
+    writer = csv.writer(f, lineterminator='\n')
+    writer.writerow(fieldnames)
+    try:
+        yield writer
+    finally:
+        f.close()
+
+
+def get(url):
+    """
+    GETs a URL and returns the response. Raises an exception if the status code is not successful.
+    """
+    response = requests.get(url)
+    response.raise_for_status()
+    response.encoding = response.apparent_encoding
+    return response
+
+
+def json_dump(filename, data):
+    """
+    Writes JSON data to the given filename.
+    """
+    with (schemadir / filename).open('w') as f:
+        json.dump(data, f, indent=2)
+        f.write('\n')
 
 
 def delete_directory_contents(directory_path):
@@ -160,6 +207,20 @@ def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
   markdown[table]['content'].extend([
     "```{jsonschema} ../../../schema/network-schema.json\n"
     f":include: {','.join(include_pointers)}\n"
+  ])
+
+  # Collapse node locations and span routes, which are represented using well-known text in the CSV format
+  if table == 'nodes':
+    markdown[table]['content'].extend([
+      ":collapse: nodes/0/location\n"
+    ])
+  elif table == 'spans':
+    markdown[table]['content'].extend([
+      ":collapse: spans/0/route\n"
+    ])
+
+  markdown[table]['content'].extend([
+    ":nocrossref:\n"
     "```\n"
   ])
 
@@ -187,20 +248,20 @@ def get_definition_references(schema, defn, parents=None, network_schema=None):
   if 'properties' in schema:
     for key, value in schema['properties'].items():
       if value.get('type') == 'array' and '$ref' in value['items']:
-        if value['items']['$ref'] == f"#/definitions/{defn}":
+        if value['items']['$ref'] == f"#/$defs/{defn}":
           references.append(parents + [key, '0'])
         else:
-          references.extend(get_definition_references(network_schema['definitions'][value['items']['$ref'].split('/')[-1]], defn, parents + [key, '0'], network_schema))
+          references.extend(get_definition_references(network_schema['$defs'][value['items']['$ref'].split('/')[-1]], defn, parents + [key, '0'], network_schema))
       elif '$ref' in value:
-        if value['$ref'] == f"#/definitions/{defn}":
+        if value['$ref'] == f"#/$defs/{defn}":
           references.append(parents + [key])
         else:
-          references.extend(get_definition_references(network_schema['definitions'][value['$ref'].split('/')[-1]], defn, parents + [key], network_schema))
+          references.extend(get_definition_references(network_schema['$defs'][value['$ref'].split('/')[-1]], defn, parents + [key], network_schema))
       elif 'properties' in value:
           references.extend(get_definition_references(value, defn, parents + [key], network_schema))
 
-  if 'definitions' in schema:
-    for key, value in schema['definitions'].items():
+  if '$defs' in schema:
+    for key, value in schema['$defs'].items():
       references.extend(get_definition_references(value, defn, [key], network_schema))
   
   return references
@@ -229,14 +290,14 @@ def get_codelist_references(schema, codelist, parents=None, network_schema=None)
       if value.get('codelist') == f"{codelist}.csv":
         references.append(parents + [key])
       elif value.get('type') == 'array' and '$ref' in value['items']:
-        references.extend(get_codelist_references(network_schema['definitions'][value['items']['$ref'].split('/')[-1]], codelist, parents + [key, '0'], network_schema))
+        references.extend(get_codelist_references(network_schema['$defs'][value['items']['$ref'].split('/')[-1]], codelist, parents + [key, '0'], network_schema))
       elif '$ref' in value:
-        references.extend(get_codelist_references(network_schema['definitions'][value['$ref'].split('/')[-1]], codelist, parents + [key], network_schema))
+        references.extend(get_codelist_references(network_schema['$defs'][value['$ref'].split('/')[-1]], codelist, parents + [key], network_schema))
       elif 'properties' in value:
           references.extend(get_codelist_references(value, codelist, parents + [key], network_schema))
 
-  if 'definitions' in schema:
-    for key, value in schema['definitions'].items():
+  if '$defs' in schema:
+    for key, value in schema['$defs'].items():
       references.extend(get_codelist_references(value, codelist, [key], network_schema))
   
   return references
@@ -252,11 +313,11 @@ def generate_codelist_markdown(codelist, type, references, definitions):
     ref = [part for part in ref if part != '0']
     
     # Ideally, these would be relative links - see https://github.com/OpenDataServices/sphinxcontrib-opendataservices/issues/43
-    url = 'https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,'
+    url = 'network-schema.json,'
     
     # Omit nested references
     if ref[0] in definitions and len(ref) == 2:
-      url += '/definitions/'
+      url += '/$defs/'
     elif len(ref) == 1:
       url += ','
     else:
@@ -319,7 +380,7 @@ def update_codelist_docs(schema):
   closed_codelist_reference = ["## Closed codelists\n\n"]
   
   for key, value in codelists.items():
-    value['content'].extend(generate_codelist_markdown(key, value['type'], value['references'], schema['definitions']))
+    value['content'].extend(generate_codelist_markdown(key, value['type'], value['references'], schema['$defs']))
     if value["type"] == "open":
         codelist_reference.extend(value['content'])
     else:
@@ -344,13 +405,13 @@ def update_schema_docs(schema):
           defn = schema_reference[i][5:-1]
           
           # Drop definitions that don't appear in the schema
-          if defn in schema["definitions"]:
-              schema["definitions"][defn]["content"] = []
+          if defn in schema["$defs"]:
+              schema["$defs"][defn]["content"] = []
               j = i+1
 
               # while j < len(schema_reference) and not schema_reference[j].startswith("```{admonition}") and schema_reference[j] != 'This component is referenced by the following properties:\n':
               while j < len(schema_reference) and not schema_reference[j].startswith("```{admonition}") and schema_reference[j] != f"`{defn}` is defined as:\n":
-                schema["definitions"][defn]["content"].append(schema_reference[j])
+                schema["$defs"][defn]["content"].append(schema_reference[j])
                 j = j+1
 
   # Preserve introductory content up to and including the sentence below the ### Components heading
@@ -358,7 +419,7 @@ def update_schema_docs(schema):
   schema_reference.append("\n")
     
   # Generate standard reference content for each definition
-  for defn, definition in schema["definitions"].items():
+  for defn, definition in schema["$defs"].items():
       definition["content"] = definition.get("content", [])
       
       # Add heading
@@ -368,7 +429,7 @@ def update_schema_docs(schema):
       definition["content"].extend([
           f"`{defn}` is defined as:\n\n",
           "```{jsoninclude-quote} ../../schema/network-schema.json\n",
-          f":jsonpointer: /definitions/{defn}/description\n",
+          f":jsonpointer: /$defs/{defn}/description\n",
           "```\n\n"
       ])
 
@@ -381,11 +442,11 @@ def update_schema_docs(schema):
           ref = [part for part in ref if part != '0']
 
           # Ideally, these would be relative links - see https://github.com/OpenDataServices/sphinxcontrib-opendataservices/issues/43
-          url = 'https://open-fibre-data-standard.readthedocs.io/en/latest/reference/schema.html#network-schema.json,'
+          url = 'network-schema.json,'
           
           # Omit nested references
-          if ref[0] in schema['definitions'] and len(ref) == 2:
-            url += '/definitions/'
+          if ref[0] in schema['$defs'] and len(ref) == 2:
+            url += '/$defs/'
           elif len(ref) == 1:
             url += ','
           else:
@@ -400,8 +461,9 @@ def update_schema_docs(schema):
           "::::{tab-set}\n\n",
           ":::{tab-item} Schema\n\n",
           "```{jsonschema} ../../schema/network-schema.json\n",
-          f":pointer: /definitions/{defn}\n",
-          f":collapse: {','.join(definition['properties'].keys())}\n"
+          f":pointer: /$defs/{defn}\n",
+          f":collapse: {','.join(definition['properties'].keys())}\n",
+          ":addtargets:\n",
           "```\n\n",
           ":::\n\n",
           ":::{tab-item} Examples\n\n"
@@ -409,7 +471,7 @@ def update_schema_docs(schema):
 
       # Add examples
       for ref in definition["references"]:
-        if ref[0] not in schema['definitions']:
+        if ref[0] not in schema['$defs']:
           if ref[-1] == '0':
             ref.pop(-1)
           
@@ -488,6 +550,35 @@ def pre_commit():
       line_terminator='LF',
     )
 
+    # Use WKT geometry in CSV examples and templates. This code should be removed once Flatten Tool supports WKT
+    replacements = {
+       'examples/csv/nodes.csv': [
+          ('nodes/0/location/type,nodes/0/location/coordinates','nodes/0/location'),
+          ('Point,-0.174;5.625', 'POINT (-0.174 5.625)'),
+          ('Point,-1.628;6.711', 'POINT (-1.628 6.711)')
+       ],
+       'examples/csv/template/nodes.csv': [
+          ('nodes/0/location/type,nodes/0/location/coordinates','nodes/0/location')
+       ],
+       'examples/csv/spans.csv': [
+          ('spans/0/route/type,spans/0/route/coordinates','spans/0/route'),
+          ('LineString,"-0.173,5.626;-0.178,5.807;-0.112,5.971;-0.211,5.963;-0.321,6.17;-0.488,6.29;-0.56,6.421;-0.752,6.533;-0.867,6.607;-1.101,6.585;-1.304,6.623;-1.461,6.727;-1.628,6.713"', '"LINESTRING (-0.173 5.626,-0.178 5.807,-0.112 5.971,-0.211 5.963,-0.321 6.17,-0.488 6.29,-0.56 6.421,-0.752 6.533,-0.867 6.607,-1.101 6.585,-1.304 6.623,-1.461 6.727,-1.628 6.713)"')
+       ],
+       'examples/csv/template/spans.csv': [
+          ('spans/0/route/type,spans/0/route/coordinates','spans/0/route')
+       ]
+    }
+    
+    for key, value in replacements.items():
+      with open(key, 'r') as f:
+         content = f.read()
+      
+      for replacement in value:
+         content = content.replace(replacement[0], replacement[1])
+      
+      with open(key, 'w') as f:
+         f.write(content)
+
     # Update docs/reference/publication_formats/csv.md
     update_csv_docs(jsonref_schema)
 
@@ -502,6 +593,190 @@ def pre_commit():
 
     # Run mdformat
     subprocess.run(['mdformat', 'docs'])
+
+
+@cli.command()
+def update_media_type():
+    """
+    Update mediaType.csv from IANA.
+
+    Ignores deprecated and obsolete media types.
+    """
+    # https://www.iana.org/assignments/media-types/media-types.xhtml
+
+    # See "Registries included below".
+    registries = [
+        'application',
+        'audio',
+        'font',
+        'image',
+        'message',
+        'model',
+        'multipart',
+        'text',
+        'video',
+    ]
+
+    with csv_dump('codelists/open/mediaType.csv', ['Code', 'Title']) as writer:
+        for registry in registries:
+            # See "Available Formats" under each heading.
+            reader = csv_load(f'https://www.iana.org/assignments/media-types/{registry}.csv')
+            for row in reader:
+                if ' ' in row['Name']:
+                    name, message = row['Name'].split(' ', 1)
+                else:
+                    name, message = row['Name'], None
+                code = f"{registry}/{name}"
+                template = row['Template']
+                # All messages are expected to be about deprecation and obsoletion.
+                if message:
+                    logging.warning('%s: %s', message, code)
+                # "x-emf" has "image/emf" in its "Template" value (but it is deprecated).
+                elif template and template != code:
+                    raise Exception(f"expected {code}, got {template}")
+                else:
+                    writer.writerow([code, name])
+
+        writer.writerow(['offline/print', 'print'])
+
+
+@cli.command()
+def update_language():
+    """
+    Update language.csv from ISO 639-1.
+    """
+    # https://www.iso.org/iso-639-language-codes.html
+    # https://id.loc.gov/vocabulary/iso639-1.html
+
+    with csv_dump('codelists/open/language.csv', ['Code', 'Title']) as writer:
+        reader = csv_load('https://id.loc.gov/vocabulary/iso639-1.tsv', delimiter='\t')
+        for row in reader:
+            # Remove parentheses, like "Greek, Modern (1453-)", and split alternatives.
+            titles = re.split(r' *\| *', re.sub(r' \(.+\)', '', row['Label (English)']))
+            # Remove duplication like "Ndebele, North |  North Ndebele" and join alternatives using a comma instead of
+            # a pipe. To preserve order, a dict without values is used instead of a set.
+            titles = ', '.join({' '.join(reversed(title.split(', '))): None for title in titles})
+            writer.writerow([row['code'], titles])
+
+
+@cli.command()
+@click.argument('file', type=click.File())
+def update_country(file):
+    """
+    Update country.csv from ISO 3166-1 using FILE.
+
+    To retrieve the file:
+
+    \b
+    1. Open https://www.iso.org/obp/ui/#search/code/
+    2. Open the "Network" tab of the "Web Inspector" utility (Option-Cmd-I in Safari)
+    3. Set "Results per page:" to 300
+    4. Click the last "UIDL" entry in the "Network" tab
+    5. Copy its contents, excluding the for-loop, into a file
+    """
+    # https://www.iso.org/iso-3166-country-codes.html
+    # https://www.iso.org/obp/ui/#search
+
+    codes = {
+        # https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#User-assigned_code_elements
+        'XK': 'Kosovo',
+    }
+
+    rpc = json.load(file)[0]['rpc'][0]
+    offset = int(rpc[0])
+    for entry in rpc[3][1]:
+        d = entry['d']
+        # Clean "Western Sahara*", "United Arab Emirates (the)", etc.
+        codes[d[str(offset + 9)]] = re.sub(r' \(the\)|\*', '', d[str(offset + 13)])
+        # The country code appears at offsets 9 and 15. Check that they are always the same.
+        assert d[str(offset + 9)] == d[str(offset + 15)]
+
+    with open('codelists/closed/country.csv', 'w') as f:
+        writer = csv.writer(f, lineterminator='\n')
+        writer.writerow(['Code', 'Title'])
+        for code in sorted(codes):
+            writer.writerow([code, codes[code]])
+
+
+@cli.command()
+def update_currency():
+    """
+    Update currency.csv from ISO 4217.
+    """
+    # https://www.iso.org/iso-4217-currency-codes.html
+    # https://www.six-group.com/en/products-services/financial-information/data-standards.html#scrollTo=currency-codes
+
+    # "List One: Current Currency & Funds"
+    current_codes = {}
+    url = 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-one.xml'  # noqa: E501
+    tree = etree.fromstring(get(url).content)
+    for node in tree.xpath('//CcyNtry'):
+        match = node.xpath('./Ccy')
+        # Entries like Antarctica have no universal currency.
+        if match:
+            code = node.xpath('./Ccy')[0].text
+            title = node.xpath('./CcyNm')[0].text.strip()
+            if code not in current_codes:
+                current_codes[code] = title
+            # We should expect currency titles to be consistent across countries.
+            elif current_codes[code] != title:
+                raise Exception(f'expected {current_codes[code]}, got {title}')
+
+    # "List Three: Historic Denominations (Currencies & Funds)"
+    historic_codes = {}
+    url = 'https://www.six-group.com/dam/download/financial-information/data-center/iso-currrency/lists/list-three.xml'  # noqa: E501
+    tree = etree.fromstring(get(url).content)
+    for node in tree.xpath('//HstrcCcyNtry'):
+        code = node.xpath('./Ccy')[0].text
+        title = node.xpath('./CcyNm')[0].text.strip()
+        valid_until = node.xpath('./WthdrwlDt')[0].text
+        # Use ISO8601 interval notation.
+        valid_until = re.sub(r'^(\d{4})-(\d{4})$', r'\1/\2', valid_until.replace(' to ', '/'))
+        if code not in current_codes:
+            if code not in historic_codes:
+                historic_codes[code] = {'Title': title, 'Valid Until': valid_until}
+            # If the code is historical, use the most recent title and valid date.
+            elif valid_until > historic_codes[code]['Valid Until']:
+                historic_codes[code] = {'Title': title, 'Valid Until': valid_until}
+
+    with csv_dump('codelists/closed/currency.csv', ['Code', 'Title', 'Valid Until']) as writer:
+        for code in sorted(current_codes):
+            writer.writerow([code, current_codes[code], None])
+        for code in sorted(historic_codes):
+            writer.writerow([code, historic_codes[code]['Title'], historic_codes[code]['Valid Until']])
+
+    network_schema = json_load('network-schema.json')
+    codes = sorted(list(current_codes) + list(historic_codes))
+    network_schema['definitions']['Value']['properties']['currency']['enum'] = codes
+
+    json_dump('network-schema.json', network_schema)
+
+@cli.command()
+def update_organisation_identifier_scheme():
+  """
+  Update organisationIdentifierScheme.csv from org-id.guide.
+  """   
+   
+  reader = csv_load('http://org-id.guide/download.csv')
+
+  with open('codelists/open/organisationIdentifierScheme.csv', 'w', encoding='utf-8') as f:
+    writer = csv.writer(f, lineterminator='\n')
+
+    writer.writerow(['Code', 'Title'])
+    for code in reader:
+      writer.writerow([code['code'], code['name/en'].strip()])
+
+
+@cli.command()
+@click.pass_context
+def update_codelists(ctx):
+    """
+    Update codelists except country.csv.
+    """
+    ctx.invoke(update_currency)
+    ctx.invoke(update_language)
+    ctx.invoke(update_media_type)
+    ctx.invoke(update_organisation_identifier_scheme)
 
 
 if __name__ == '__main__':

@@ -20,14 +20,33 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#201](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/201) - Add support page.
 - [#208](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/208) - Add link to "WGS 84" text in docs/reference/schema.md.
 - [#213](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/213) - For GeoJSON/JSON conversion, use libcoveofds now.
-- [#232](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/232) - Remove unmaintained GitHub issue admonitions
+- [#232](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/232) - Remove unmaintained GitHub issue admonitions.
 
-## 0.3.0 - YYY-MM-DD
+## 0.3.0 - YYYY-MM-DD
+
+### Schema
+
+- [#258](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/258) - Add unit to `Span.fibreLength` description
+- [#260](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/260) - Replace `id` with `$id` and `definitions` with `$defs` in schema files.
+- [#261](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/261) - Replace `publisher` with an object.
+
+### Codelists
+
+- [#265](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/265) - Update external codelists.
+
+### Normative documentation
+
+- [#262](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/262) - Use well-known text to represent geometries in the CSV publication format.
+- [#260](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/260) - Use relative links to jsonschema anchors.
 
 ### Non-normative documentation
 
 - [#259](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/259) - Fix link to Lib CoVE OFDS.
 - [#264](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/264) - Update primer to emphasise technical and administrative data.
+
+### Build
+
+- [#265](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/265) - Add scripts to update external codelists.
 
 ## 0.2.0 - 2023-01-11
 
