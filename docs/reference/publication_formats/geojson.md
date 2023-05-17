@@ -1,7 +1,7 @@
 # GeoJSON
 
-```{admonition} 0.2.0 release
-Welcome to the Open Fibre Data Standard 0.2.0 release.
+```{admonition} 0.3.0 release
+Welcome to the Open Fibre Data Standard 0.3.0 release.
 
 We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
 
@@ -12,9 +12,11 @@ This page describes how to publish data in GeoJSON format.
 
 If your data is small enough to fit into memory or if you are publishing data via an API, you should use the [small files and API responses option](#small-files-and-api-responses-option). If your data is too large to fit into memory, you should use the [streaming option](#streaming-option).
 
+Some GIS tools require all features in a GeoJSON feature collection to have the same `.geometry.type` or to have a consistent schema of `.properties`. Therefore, in order to reduce barriers for users of such tools, the recommended approach is to publish separate feature collections for nodes and spans. If you prefer, you may publish a single feature collection containing both nodes and spans. In which case, the `properties.featureType` field can be used to determine whether each feature is a node or a span.
+
 ## Small files and API responses option
 
-Publish separate GeoJSON [feature collections](https://datatracker.ietf.org/doc/html/rfc7946#section-3.3) for nodes and spans, according to the [GeoJSON transformation specification](#geojson-transformation-specification).
+You should publish separate GeoJSON [feature collections](https://datatracker.ietf.org/doc/html/rfc7946#section-3.3) for nodes and spans, according to the [GeoJSON transformation specification](#geojson-transformation-specification).
 
 ::::{tab-set}
 
@@ -76,20 +78,20 @@ The following example shows a GeoJSON feature collection containing two features
 
 The streaming option describes how to publish multiple networks in GeoJSON format with support for streaming. You should only use this option if your data is too large to load into memory.
 
-The streaming option for GeoJSON is separate [Newline-delimited GeoJSON](https://stevage.github.io/ndgeojson/) files for nodes and spans, in which each line is a GeoJSON feature structured according to the [GeoJSON transformation specification](#geojson-transformation-specification).
+You should publish separate [Newline-delimited GeoJSON](https://stevage.github.io/ndgeojson/) files for nodes and spans, in which each line is a GeoJSON feature structured according to the [GeoJSON transformation specification](#geojson-transformation-specification).
 
-The following example shows a newline-delimited GeoJSON file containing two features:
+The following example shows a newline-delimited GeoJSON file containing two nodes:
 
 ```
-{"type":"Feature","properties":{"id":"1","name":"Accra POP","network":{"id":"fd7b30d6-f514-4cd0-a5ac-29a774f53a43","name":"Ghana Fibre Network"}}}
-{"type":"Feature","properties":{"id":"2","name":"Kumasi POP","network":{"id":"fd7b30d6-f514-4cd0-a5ac-29a774f53a43","name":"Ghana Fibre Network"}}}
+{"type":"Feature","properties":{"id":"1","name":"Accra POP","network":{"id":"fd7b30d6-f514-4cd0-a5ac-29a774f53a43","name":"Ghana Fibre Network"}, "featureType": "node"}}
+{"type":"Feature","properties":{"id":"2","name":"Kumasi POP","network":{"id":"fd7b30d6-f514-4cd0-a5ac-29a774f53a43","name":"Ghana Fibre Network"}, "featureType": "node"}}
 ```
 
 ## GeoJSON transformation specification
 
 This section describes the rules for transforming an OFDS network from JSON format to GeoJSON format.
 
-To transform an OFDS network from JSON format to GeoJSON format, you must:
+The transformation specification describes the recommended approach of producing separate feature collections for nodes and spans. If you prefer to publish a single GeoJSON feature collection containing both nodes and spans, you may combine the the resulting feature collections into a single feature collection.
 
 - Create an empty JSON object for the nodes feature collection and set its `.type` to 'FeatureCollection'.
 - Create an empty JSON object for the spans feature collection and set its `.type` to 'FeatureCollection'.
@@ -101,6 +103,7 @@ To transform an OFDS network from JSON format to GeoJSON format, you must:
     - `.type` to 'Feature'.
     - `.geometry` to the node's `.location`, if it exists. Otherwise, set `.geometry` to `Null`.
     - `.properties` to the properties of the node, excluding `.location`.
+    - `.properties.featureType` to 'node'.
     - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProviders`.
     - [Dereference the phase reference](#dereference-a-phase-reference) in the feature's `.phase` property.
     - Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
@@ -112,6 +115,7 @@ To transform an OFDS network from JSON format to GeoJSON format, you must:
     - `.type` to 'Feature'.
     - `.geometry` to the span's `.route`, if it exists. Otherwise, set `.geometry` to `Null`.
     - `.properties` to the properties of the span, excluding `.route`.
+    - `.properties.featureType` to 'span'.
     - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProviders`.
     - [Dereference the phase reference](#dereference-a-phase-reference) in `.properties.phase`.
     - [Dereference the node ids](#dereference-a-node-id) in `properties.start` and `properties.end`.
