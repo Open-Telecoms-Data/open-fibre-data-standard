@@ -45,7 +45,7 @@ In addition to the above sections, there are several top-level metadata fields:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../schema/network-schema.json
-:collapse: nodes,spans,phases,organisations,contracts,publisher,crs,links
+:collapse: nodes,spans,phases,organisations,contracts,crs,links
 :addtargets:
 ```
 
