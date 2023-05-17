@@ -46,6 +46,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
 ### Build
 
 - [#265](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/265) - Add scripts to update external codelists.
+- [#269](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/269) - Update version numbers.
 
 ## 0.2.0 - 2023-01-11
 
