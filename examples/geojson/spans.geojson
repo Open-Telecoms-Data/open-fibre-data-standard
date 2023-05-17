@@ -295,7 +295,8 @@
                             "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__3/schema/network-schema.json"
                         }
                     ]
-                }
+                },
+                "featureType": "span"
             }
         }
     ]
