@@ -1,7 +1,7 @@
 # Scope and key concepts
 
-```{admonition} 0.2.0 release
-Welcome to the Open Fibre Data Standard 0.2.0 release.
+```{admonition} 0.3.0 release
+Welcome to the Open Fibre Data Standard 0.3.0 release.
 
 We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
 
@@ -34,13 +34,15 @@ Depending on the [business model](#network-business-models) used in a network, t
 
 OFDS defines a physical infrastructure provider as:
 
-> An organisation that owns and maintains passive network infrastructure, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.
+```{code-description} ../../codelists/open/organisationRole.csv physicalInfrastructureProvider
+```
 
 #### Network provider
 
 OFDS defines a network provider as:
 
-> An organisation that operates the active network infrastructure, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.
+```{code-description} ../../codelists/open/organisationRole.csv networkProvider
+```
 
 #### Service provider
 
