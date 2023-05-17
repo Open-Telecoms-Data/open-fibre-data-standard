@@ -26,7 +26,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 ### Schema
 
-- [#258](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/258) - Add unit to `Span.fibreLength` description
+- [#258](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/258) - Add unit to `Span.fibreLength` description.
 - [#260](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/260) - Replace `id` with `$id` and `definitions` with `$defs` in schema files.
 - [#261](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/261), [#270](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/270) - Replace `publisher` with an object.
 
@@ -41,7 +41,8 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 ### Non-normative documentation
 
-- [#259](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/259) - Fix link to Lib CoVE OFDS
+- [#259](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/259) - Fix link to Lib CoVE OFDS.
+- [#268](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/268) - Quote code descriptions from CSV files.
 
 ### Build
 
