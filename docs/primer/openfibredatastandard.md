@@ -1,7 +1,7 @@
 # The Open Fibre Data Standard
 
-```{admonition} 0.2.0 release
-Welcome to the Open Fibre Data Standard 0.2.0 release.
+```{admonition} 0.3.0 release
+Welcome to the Open Fibre Data Standard 0.3.0 release.
 
 We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
 
@@ -20,6 +20,8 @@ The OFDS provides:
 - Publication formats to meet a range of use cases.
 - Guidance and tooling to support the publication and use of data
 
+The OFDS covers the location of fibre infrastructure and the technical and administrative attributes of fibre infrastructure.
+
 ## Why use the Open Fibre Data Standard?
 
 Data standards resolve ambiguity by defining the structure and meaning of data. Standardised data is easier for people and systems to interpret than non-standardised data:
@@ -35,6 +37,8 @@ Since all of the above units can be converted into Gbps, OFDS requires that publ
 ```
 
 Standards can also ensure that key information is included in a dataset. If data owners do not share key information in their data, then users need to negotiate with each data owner individually.
+
+In addition to publishing the locations of fibre network infrastructure, using the OFDS to publish data on the technical and administrative attributes of infrastructure helps to ensure that your data meets the needs of a range of users. For example, publishing data on the organisations that own and operate infrastructure can help operators and regulators to understand the true extent and resilience of fibre networks.
 
 ## What does OFDS data look like?
 
