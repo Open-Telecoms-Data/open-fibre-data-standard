@@ -145,7 +145,7 @@
           "properties": {
             "href": {
               "type": "string",
-              "const": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__3/schema/network-schema.json"
+              "const": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__0/schema/network-schema.json"
             },
             "rel": {
               "type": "string",
