@@ -300,6 +300,8 @@ This component is referenced by the following properties:
 - [`Node/location`](network-schema.json,/$defs/Node,location)
 - [`Span/route`](network-schema.json,/$defs/Span,route)
 
+Additional properties are not permitted within `Geometry` objects.
+
 Each `Geometry` has the following fields:
 
 ::::{tab-set}
