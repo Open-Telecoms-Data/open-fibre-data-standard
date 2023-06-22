@@ -14,7 +14,7 @@
       "type": "array",
       "minItems": 1,
       "items": {
-        "$ref": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__0/schema/network-schema.json"
+        "$ref": "network-schema.json"
       }
     },
     "links": {
