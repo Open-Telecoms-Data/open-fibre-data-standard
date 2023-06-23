@@ -455,6 +455,9 @@ def update_schema_docs(schema):
           url += ','.join(ref)
           definition["content"].append(f"- [`{'/'.join(ref)}`]({url})\n")
 
+      if definition.get('additionalProperties') == False:
+         definition["content"].append(f"\nAdditional properties are not permitted within `{defn}` objects.\n")
+
       # Add schema table
       definition["content"].extend([
           f"\nEach `{defn}` has the following fields:\n\n", 
