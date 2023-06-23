@@ -102,7 +102,7 @@ If you’re concerned about disclosing the exact location of fibre infrastructur
 
 ### How to add additional fields
 
-The OFDS schema does not restrict the use of additional fields. If there is a data element that you wish to publish for which you cannot identify a suitable mapping in OFDS, you can add an additional field to your data.
+The OFDS schema does not restrict the use of additional fields, except where noted in the [schema reference](../reference/schema.md). If there is a data element that you wish to publish for which you cannot identify a suitable mapping in OFDS, you can add an additional field to your data.
 
 Before adding an additional field, you ought to search the [standard issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) to see if a similar concept has already been discussed. If there are no existing discussions, you ought to open a new issue and describe the concept that you want to publish and your proposed modelling.
 
