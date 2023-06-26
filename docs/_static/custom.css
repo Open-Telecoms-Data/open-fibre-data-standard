@@ -1,0 +1,12 @@
+/*
+    Copied from
+    https://github.com/readthedocs/sphinx_rtd_theme/blob/9899ee4ee2f547f81e51297dc12317f018e62fdd/src/sass/_theme_rst.sass#L44-L51
+    which only applies to rst-content.
+*/
+.ofds-extra-nav a.reference.external::after {
+    font-family: FontAwesome;
+    content: "\f08e";
+    vertical-align: super;
+    font-size: 60%;
+    margin: 0 0.2em;
+}
