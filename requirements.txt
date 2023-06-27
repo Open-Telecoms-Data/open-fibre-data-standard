@@ -52,8 +52,10 @@ docutils==0.17.1
     #   sphinxcontrib-opendataservices-jsonschema
 et-xmlfile==1.1.0
     # via openpyxl
-flattentool==0.20.0
+flattentool==0.22.0
     # via -r requirements.in
+geojson==3.0.1
+    # via flattentool
 idna==3.3
     # via requests
 ijson==3.1.4
@@ -120,6 +122,8 @@ myst-parser==0.18.0
     #   sphinxcontrib-opencontracting
     #   sphinxcontrib-opendataservices
     #   sphinxcontrib-opendataservices-jsonschema
+numpy==1.25.0
+    # via shapely
 ocdsextensionregistry==0.1.13
     # via
     #   ocdskit
@@ -184,6 +188,8 @@ rfc3339-validator==0.1.4
 rfc3986-validator==0.1.1
     # via jscc
 schema==0.7.5
+    # via flattentool
+shapely==2.0.1
     # via flattentool
 six==1.16.0
     # via
