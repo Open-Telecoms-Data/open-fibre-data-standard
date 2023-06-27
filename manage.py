@@ -567,22 +567,6 @@ def pre_commit():
     # Update examples/geojson/nodes.geojson and examples/geojson/spans.geojson
     subprocess.run(['libcoveofds', 'jsontogeojson', 'examples/json/network-package.json', 'examples/geojson/nodes.geojson', 'examples/geojson/spans.geojson'])
 
-    # Add `properties.featureType` field to GeoJSON examples. This code should be removed once libcoveofds supports this feature.
-    feature_collections = {
-      'examples/geojson/nodes.geojson': 'node',
-      'examples/geojson/spans.geojson': 'span'
-    }
-    
-    for path, feature_type in feature_collections.items():    
-      with open(path, 'r') as f:
-        feature_collection = json.load(f)
-    
-      for feature in feature_collection['features']:
-         feature['properties']['featureType'] = feature_type
-      
-      with open(path, 'w') as f:
-         json.dump(feature_collection, f, indent=4)
-
     # Run mdformat
     subprocess.run(['mdformat', 'docs'])
 
