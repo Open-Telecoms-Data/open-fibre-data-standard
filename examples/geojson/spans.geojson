@@ -192,7 +192,20 @@
                 "networkProviders": [
                     {
                         "id": "GH-RGD-CS222222222",
-                        "name": "FastWeb"
+                        "name": "FastWeb",
+                        "identifier": {
+                            "id": "CS222222222",
+                            "scheme": "GH-RGD",
+                            "legalName": "FastWeb Ghana Limited",
+                            "uri": "https://example.com/companies/CS222222222"
+                        },
+                        "country": "GH",
+                        "roles": [
+                            "networkProvider"
+                        ],
+                        "roleDetails": "FastWeb provides wholesale services to service providers and dark fibre access to other network providers.",
+                        "website": "https://www.example.com",
+                        "logo": "https://www.example.com/logo.png"
                     }
                 ],
                 "supplier": {

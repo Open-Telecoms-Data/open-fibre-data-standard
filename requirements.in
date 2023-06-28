@@ -11,8 +11,8 @@ pyairtable
 PyGithub
 ocdskit>=1.1.3
 sphinx-design
-libcoveofds
-flattentool>=0.20
+libcoveofds>=0.8.2
+flattentool>=0.22
 pytest
 jscc
 mdformat
