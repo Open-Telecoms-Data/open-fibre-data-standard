@@ -384,10 +384,10 @@
               "copper",
               "coaxial"
             ],
-            "minLength": 1
+            "minLength": 1,
+            "codelist": "transmissionMedium.csv",
+            "openCodelist": false
           },
-          "codelist": "transmissionMedium.csv",
-          "openCodelist": false,
           "minItems": 1,
           "uniqueItems": true
         },
@@ -403,10 +403,10 @@
               "aboveGround",
               "belowGround"
             ],
-            "minLength": 1
+            "minLength": 1,
+            "codelist": "deployment.csv",
+            "openCodelist": false
           },
-          "codelist": "deployment.csv",
-          "openCodelist": false,
           "minItems": 1,
           "uniqueItems": true
         },
@@ -740,10 +740,10 @@
               "ZM",
               "ZW"
             ],
-            "minLength": 1
+            "minLength": 1,
+            "codelist": "country.csv",
+            "openCodelist": false
           },
-          "codelist": "country.csv",
-          "openCodelist": false,
           "minItems": 1,
           "uniqueItems": true
         }
