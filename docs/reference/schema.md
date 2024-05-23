@@ -351,6 +351,8 @@ This component is referenced by the following properties:
 - [`Span/supplier`](network-schema.json,/$defs/Span,supplier)
 - [`Phase/funders`](network-schema.json,/$defs/Phase,funders)
 
+Additional properties are not permitted within `OrganisationReference` objects.
+
 Each `OrganisationReference` has the following fields:
 
 ::::{tab-set}
@@ -420,6 +422,8 @@ This component is referenced by the following properties:
 - [`Node/phase`](network-schema.json,/$defs/Node,phase)
 - [`Span/phase`](network-schema.json,/$defs/Span,phase)
 - [`Contract/relatedPhases`](network-schema.json,/$defs/Contract,relatedPhases)
+
+Additional properties are not permitted within `PhaseReference` objects.
 
 Each `PhaseReference` has the following fields:
 

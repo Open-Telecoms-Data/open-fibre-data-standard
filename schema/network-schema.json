@@ -280,7 +280,10 @@
       "required": [
         "id"
       ],
-      "minProperties": 1
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^(?!(network$))"
+      }
     },
     "Span": {
       "title": "Span",
@@ -751,7 +754,10 @@
       "required": [
         "id"
       ],
-      "minProperties": 1
+      "minProperties": 1,
+      "propertyNames": {
+        "pattern": "^(?!(network$))"
+      }
     },
     "Phase": {
       "title": "Phase",
@@ -1241,7 +1247,8 @@
       "required": [
         "id"
       ],
-      "minProperties": 1
+      "minProperties": 1,
+      "additionalProperties": false
     },
     "PhaseReference": {
       "title": "Phase reference",
@@ -1264,7 +1271,8 @@
       "required": [
         "id"
       ],
-      "minProperties": 1
+      "minProperties": 1,
+      "additionalProperties": false
     },
     "Address": {
       "title": "Address",
