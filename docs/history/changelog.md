@@ -23,6 +23,13 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#232](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/232) - Remove unmaintained GitHub issue admonitions.
 - [#273](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/273) - Add OFDS Convert, Validate, Explore tool (CoVE) link to the left hand navigation
 
+## 0.4.0 - 2024-05-23
+
+### Schema
+
+- [#283](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/283) - Disallow additional properties in `OrganizationReference` and `PhaseReference` objects.
+- [#283](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/283) - Disallow additional properties with the name 'network' in `Span` and `Node` objects.
+
 ## 0.3.0 - 2023-05-17
 
 ### Schema
