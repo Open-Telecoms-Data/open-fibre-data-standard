@@ -1,3 +1,5 @@
+<!-- docs-type: reference https://diataxis.fr/reference/ -->
+
 # Governance
 
 ```{admonition} 0.3.0 release
