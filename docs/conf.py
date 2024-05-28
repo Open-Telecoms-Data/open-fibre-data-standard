@@ -364,3 +364,9 @@ texinfo_documents = [
 
 locale_dirs = ['locale/']   # path is example but recommended.
 gettext_compact = False     # optional.
+
+# -- Options for linkcheck builder ---------------------------------------------
+
+linkcheck_ignore = [
+    'https://linux.die.net/man/3/libuuid',  # 403 Client Error: Forbidden for url
+]
