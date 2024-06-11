@@ -11,7 +11,7 @@
   "properties": {
     "id": {
       "title": "Identifier",
-      "description": "A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/identifiers.html).",
+      "description": "A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/identifiers.html).",
       "format": "uuid",
       "type": "string"
     },
@@ -23,7 +23,7 @@
     },
     "nodes": {
       "title": "Nodes",
-      "description": "Information about the nodes that belong to this network. Information about nodes should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk nodes file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated nodes endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
+      "description": "Information about the nodes that belong to this network. Information about nodes should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk nodes file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated nodes endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/guidance/publication.html#how-to-format-data-for-publication).",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Node"
@@ -33,7 +33,7 @@
     },
     "spans": {
       "title": "Spans",
-      "description": "Information about the spans that belong to this network. Information about spans should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk spans file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated spans endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
+      "description": "Information about the spans that belong to this network. Information about spans should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk spans file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated spans endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/guidance/publication.html#how-to-format-data-for-publication).",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Span"
@@ -129,7 +129,7 @@
     },
     "language": {
       "title": "Language",
-      "description": "The default language of this network,from the open [language codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#language). A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
+      "description": "The default language of this network,from the open [language codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#language). A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
       "type": "string",
       "codelist": "language.csv",
       "openCodelist": true,
@@ -137,7 +137,7 @@
     },
     "links": {
       "title": "Links",
-      "description": "Links to related resources. The first item in the links array must be a link to the canonical JSON schema that describes the structure of the data. Links to API endpoints for nodes and spans should be provided when a network is too large to return in a single API response and links to bulk files should be provided when a network is too large to load into memory, for more information, see [how to publish large networks](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-publish-large-networks).",
+      "description": "Links to related resources. The first item in the links array must be a link to the canonical JSON schema that describes the structure of the data. Links to API endpoints for nodes and spans should be provided when a network is too large to return in a single API response and links to bulk files should be provided when a network is too large to load into memory, for more information, see [how to publish large networks](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/guidance/publication.html#how-to-publish-large-networks).",
       "type": "array",
       "prefixItems": [
         {
@@ -186,7 +186,7 @@
         },
         "status": {
           "title": "Status",
-          "description": "The status of this node, from the closed [nodeStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodestatus).",
+          "description": "The status of this node, from the closed [nodeStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#nodestatus).",
           "type": "string",
           "codelist": "nodeStatus.csv",
           "openCodelist": false,
@@ -201,7 +201,7 @@
         },
         "location": {
           "title": "Node location",
-          "description": "In the [JSON publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/json.html), a GeoJSON [Point](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the physical location of this node. In the [CSV publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/csv.html), a [well-known text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) POINT geometry.",
+          "description": "In the [JSON publication format](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/publication_formats/json.html), a GeoJSON [Point](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the physical location of this node. In the [CSV publication format](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/publication_formats/csv.html), a [well-known text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) POINT geometry.",
           "$ref": "#/$defs/Geometry"
         },
         "address": {
@@ -211,7 +211,7 @@
         },
         "type": {
           "title": "Node type",
-          "description": "The type of this node, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetype). For nodes with multiple network providers, the union of the node types for each provider.",
+          "description": "The type of this node, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#nodetype). For nodes with multiple network providers, the union of the node types for each provider.",
           "type": "array",
           "items": {
             "type": [
@@ -247,7 +247,7 @@
         },
         "technologies": {
           "title": "Technologies",
-          "description": "The active technologies used at this node, from the open [nodeTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetechnologies). For nodes with multiple network providers, the union of the active technologies used by each provider.",
+          "description": "The active technologies used at this node, from the open [nodeTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#nodetechnologies). For nodes with multiple network providers, the union of the active technologies used by each provider.",
           "type": "array",
           "items": {
             "type": [
@@ -306,7 +306,7 @@
         },
         "status": {
           "title": "Span status",
-          "description": "The status of the network infrastructure for this span, from the closed [spanStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spanstatus).",
+          "description": "The status of the network infrastructure for this span, from the closed [spanStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#spanstatus).",
           "type": "string",
           "codelist": "spanStatus.csv",
           "openCodelist": false,
@@ -346,7 +346,7 @@
         },
         "route": {
           "title": "Span route",
-          "description": "In the [JSON publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/json.html), a GeoJSON [LineString](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the route of this span. In the [CSV publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/csv.html), a [well-known text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) LINESTRING geometry.",
+          "description": "In the [JSON publication format](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/publication_formats/json.html), a GeoJSON [LineString](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the route of this span. In the [CSV publication format](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/publication_formats/csv.html), a [well-known text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) LINESTRING geometry.",
           "$ref": "#/$defs/Geometry"
         },
         "physicalInfrastructureProvider": {
@@ -372,7 +372,7 @@
         },
         "transmissionMedium": {
           "title": "Transmission medium",
-          "description": "The physical media of this span, from the closed [transmissionMedium codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#transmissionmedium).",
+          "description": "The physical media of this span, from the closed [transmissionMedium codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#transmissionmedium).",
           "type": "array",
           "items": {
             "type": [
@@ -393,7 +393,7 @@
         },
         "deployment": {
           "title": "Deployment",
-          "description": "The physical deployment of this span, from the closed [deployment codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment). Further details of this span's deployment can be provided in `.deploymentDetails`.",
+          "description": "The physical deployment of this span, from the closed [deployment codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#deployment). Further details of this span's deployment can be provided in `.deploymentDetails`.",
           "type": "array",
           "items": {
             "type": [
@@ -423,7 +423,7 @@
         },
         "fibreType": {
           "title": "Fibre type",
-          "description": "The type of fibre used in this span, from the closed [fibreType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#fibretype). Further details of the span's fibre type can be provided in `.fibreTypeDetails`.",
+          "description": "The type of fibre used in this span, from the closed [fibreType codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#fibretype). Further details of the span's fibre type can be provided in `.fibreTypeDetails`.",
           "type": "string",
           "codelist": "fibreType.csv",
           "openCodelist": false,
@@ -456,7 +456,7 @@
         },
         "technologies": {
           "title": "Technologies",
-          "description": "The active technologies used on this span, from the open [spanTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spantechnologies). For spans with multiple network providers, the union of the active technologies used by each provider.",
+          "description": "The active technologies used on this span, from the open [spanTechnologies codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#spantechnologies). For spans with multiple network providers, the union of the active technologies used by each provider.",
           "type": "array",
           "items": {
             "type": [
@@ -482,7 +482,7 @@
         },
         "countries": {
           "title": "Countries",
-          "description": "The countries in which this span is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",
+          "description": "The countries in which this span is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#country).",
           "type": "array",
           "items": {
             "type": [
@@ -816,7 +816,7 @@
         },
         "country": {
           "title": "Country",
-          "description": "The country in which this organisation is legally registered, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",
+          "description": "The country in which this organisation is legally registered, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#country).",
           "type": "string",
           "codelist": "country.csv",
           "openCodelist": false,
@@ -1075,7 +1075,7 @@
         },
         "roles": {
           "title": "Roles",
-          "description": "This organisation's roles in this network, from the open [organisationRole codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationrole). Further details about this organisation's roles can be provided in `.roleDetails`.",
+          "description": "This organisation's roles in this network, from the open [organisationRole codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#organisationrole). Further details about this organisation's roles can be provided in `.roleDetails`.",
           "type": "array",
           "items": {
             "type": [
@@ -1139,7 +1139,7 @@
         },
         "type": {
           "title": "Contract type",
-          "description": "The type of this contract, from the open [contractType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#contracttype).",
+          "description": "The type of this contract, from the open [contractType codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#contracttype).",
           "type": "string",
           "codelist": "contractType.csv",
           "openCodelist": true,
@@ -1190,7 +1190,7 @@
       "properties": {
         "type": {
           "title": "Type",
-          "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`, from the closed [geometryType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#geometrytype). This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Span.route`.",
+          "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`, from the closed [geometryType codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#geometrytype). This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Span.route`.",
           "type": "string",
           "codelist": "geometryType.csv",
           "openCodelist": false,
@@ -1297,7 +1297,7 @@
         },
         "country": {
           "title": "Country",
-          "description": "The country in which the address is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",
+          "description": "The country in which the address is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#country).",
           "type": "string",
           "codelist": "country.csv",
           "openCodelist": false,
@@ -1570,7 +1570,7 @@
         },
         "currency": {
           "title": "Currency",
-          "description": "The currency of this value, from the closed [currency codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#currency).",
+          "description": "The currency of this value, from the closed [currency codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#currency).",
           "type": "string",
           "codelist": "currency.csv",
           "openCodelist": false,
@@ -1910,7 +1910,7 @@
         },
         "format": {
           "title": "Format",
-          "description": "The format of this document, from the open [mediaType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#mediatype).",
+          "description": "The format of this document, from the open [mediaType codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#mediatype).",
           "type": "string",
           "codelist": "mediaType.csv",
           "openCodelist": true,
@@ -1932,7 +1932,7 @@
         },
         "scheme": {
           "title": "Scheme",
-          "description": "The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationidentifierscheme).",
+          "description": "The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#organisationidentifierscheme).",
           "type": "string",
           "codelist": "organisationIdentifierScheme.csv",
           "openCodelist": true,
@@ -1996,7 +1996,7 @@
         },
         "rel": {
           "title": "Link relation type",
-          "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype). The 'describedby' code must only be used in the first item in the `links` array to link to the schema that describes the structure of the data.",
+          "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists.html#linkrelationtype). The 'describedby' code must only be used in the first item in the `links` array to link to the schema that describes the structure of the data.",
           "type": "string",
           "codelist": "linkRelationType.csv",
           "openCodelist": true,
