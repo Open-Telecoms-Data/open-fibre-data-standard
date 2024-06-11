@@ -5,7 +5,7 @@
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
 PAPER         =
-BUILDDIR      = _build
+BUILDDIR      = _readthedocs
 
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
@@ -56,9 +56,9 @@ html:
 
 .PHONY: dirhtml
 dirhtml:
-	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
+	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/dirhtml."
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
 
 .PHONY: singlehtml
 singlehtml:
@@ -226,6 +226,6 @@ dummy:
 
 .PHONY: autobuild
 autobuild:
-	sphinx-autobuild -nW -q -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
+	sphinx-autobuild --re-ignore='docs/_readthedocs/*' -nW -q -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
-	@echo "Auto-build finished. The HTML pages are in $(BUILDDIR)/dirhtml."
+	@echo "Auto-build finished. The HTML pages are in $(BUILDDIR)/html."
