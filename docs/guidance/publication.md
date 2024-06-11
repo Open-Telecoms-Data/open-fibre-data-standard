@@ -137,7 +137,7 @@ libcoveofds jsontogeojson network-package.json nodes.geojson spans.geojson
 To convert data to CSV format:
 
 - [Install Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/getting-started/#getting-started)
-- Download the [network schema](../../schema/network-schema.json)
+- Download the [network schema](../_readthedocs/html/network-schema.json)
 - If your data is a [JSON Lines file](../reference/publication_formats/json.md#streaming-option), segment it into appropriately sized [network packages](../reference/publication_formats/json.md#small-files-and-api-responses-option)
 - Run the following command for each network package:
 

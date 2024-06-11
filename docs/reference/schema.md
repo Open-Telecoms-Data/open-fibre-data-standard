@@ -12,7 +12,7 @@ The schema provides the authoritative definition of the structure of Open Fibre 
 
 For this version of OFDS, the canonical URL of the schema is [https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0\_\_3\_\_0/schema/network-schema.json](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__0/schema/network-schema.json). Use the canonical URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested.
 
-This page presents the schema in an [interactive browser](#browser) and in [reference tables](#reference-tables) with additional information in paragraphs. You can also download the canonical version of the schema as [JSON Schema](../../schema/network-schema.json) or download it as a [CSV spreadsheet](../../schema/network-schema.csv).
+This page presents the schema in an [interactive browser](#browser) and in [reference tables](#reference-tables) with additional information in paragraphs. You can also download the canonical version of the schema as [JSON Schema](../_readthedocs/html/network-schema.json) or download it as a [CSV spreadsheet](../../schema/network-schema.csv).
 
 ```{note}
    If any conflicts are found between the text on this page and the text within the schema, the text within the schema takes precedence.
@@ -44,7 +44,7 @@ In addition to the above sections, there are several top-level metadata fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :collapse: nodes,spans,phases,organisations,contracts,crs,links
 :addtargets:
 ```
@@ -101,7 +101,7 @@ This section lists each component in the OFDS schema. Some components are reused
 
 `Node` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Node/description
 ```
 
@@ -115,7 +115,7 @@ Each `Node` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/Node
 :collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,physicalInfrastructureProvider,networkProviders
 :addtargets:
@@ -139,7 +139,7 @@ Each `Node` has the following fields:
 
 `Span` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Span/description
 ```
 
@@ -153,7 +153,7 @@ Each `Span` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/Span
 :collapse: id,name,phase,status,readyForServiceDate,start,end,directed,route,physicalInfrastructureProvider,networkProviders,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
 :addtargets:
@@ -177,7 +177,7 @@ Each `Span` has the following fields:
 
 `Phase` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Phase/description
 ```
 
@@ -191,7 +191,7 @@ Each `Phase` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/Phase
 :collapse: id,name,description,funders
 :addtargets:
@@ -215,7 +215,7 @@ Each `Phase` has the following fields:
 
 `Organisation` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Organisation/description
 ```
 
@@ -229,7 +229,7 @@ Each `Organisation` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/Organisation
 :collapse: id,name,identifier,country,roles,roleDetails,website,logo
 :addtargets:
@@ -253,7 +253,7 @@ Each `Organisation` has the following fields:
 
 `Contract` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Contract/description
 ```
 
@@ -267,7 +267,7 @@ Each `Contract` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/Contract
 :collapse: id,title,description,type,value,dateSigned,documents,relatedPhases
 :addtargets:
@@ -291,7 +291,7 @@ Each `Contract` has the following fields:
 
 `Geometry` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Geometry/description
 ```
 
@@ -308,7 +308,7 @@ Each `Geometry` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/Geometry
 :collapse: type,coordinates
 :addtargets:
@@ -338,7 +338,7 @@ Each `Geometry` has the following fields:
 
 `OrganisationReference` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/OrganisationReference/description
 ```
 
@@ -357,7 +357,7 @@ Each `OrganisationReference` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/OrganisationReference
 :collapse: id,name
 :addtargets:
@@ -411,7 +411,7 @@ Each `OrganisationReference` has the following fields:
 
 `PhaseReference` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/PhaseReference/description
 ```
 
@@ -427,7 +427,7 @@ Each `PhaseReference` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/PhaseReference
 :collapse: id,name
 :addtargets:
@@ -463,7 +463,7 @@ Each `PhaseReference` has the following fields:
 
 `Address` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Address/description
 ```
 
@@ -478,7 +478,7 @@ Each `Address` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/Address
 :collapse: streetAddress,locality,region,postalCode,country
 :addtargets:
@@ -508,7 +508,7 @@ Each `Address` has the following fields:
 
 `Value` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Value/description
 ```
 
@@ -522,7 +522,7 @@ Each `Value` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/Value
 :collapse: amount,currency
 :addtargets:
@@ -546,7 +546,7 @@ Each `Value` has the following fields:
 
 `Document` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Document/description
 ```
 
@@ -560,7 +560,7 @@ Each `Document` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/Document
 :collapse: title,description,url,format
 :addtargets:
@@ -584,7 +584,7 @@ Each `Document` has the following fields:
 
 `Identifier` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Identifier/description
 ```
 
@@ -598,7 +598,7 @@ Each `Identifier` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/Identifier
 :collapse: id,scheme,legalName,uri
 :addtargets:
@@ -641,7 +641,7 @@ For more information, see [How to transform coordinates to the correct coordinat
 
 `CoordinateReferenceSystem` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/CoordinateReferenceSystem/description
 ```
 
@@ -655,7 +655,7 @@ Each `CoordinateReferenceSystem` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/CoordinateReferenceSystem
 :collapse: name,uri
 :addtargets:
@@ -679,7 +679,7 @@ Each `CoordinateReferenceSystem` has the following fields:
 
 `Link` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Link/description
 ```
 
@@ -693,7 +693,7 @@ Each `Link` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/Link
 :collapse: href,rel
 :addtargets:
@@ -717,7 +717,7 @@ Each `Link` has the following fields:
 
 `FibreTypeDetails` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/FibreTypeDetails/description
 ```
 
@@ -731,7 +731,7 @@ Each `FibreTypeDetails` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/FibreTypeDetails
 :collapse: fibreSubtype,description
 :addtargets:
@@ -755,7 +755,7 @@ Each `FibreTypeDetails` has the following fields:
 
 `DeploymentDetails` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/DeploymentDetails/description
 ```
 
@@ -769,7 +769,7 @@ Each `DeploymentDetails` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/DeploymentDetails
 :collapse: description
 :addtargets:
@@ -793,7 +793,7 @@ Each `DeploymentDetails` has the following fields:
 
 `CapacityDetails` is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/CapacityDetails/description
 ```
 
@@ -807,7 +807,7 @@ Each `CapacityDetails` has the following fields:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../_readthedocs/html/network-schema.json
 :pointer: /$defs/CapacityDetails
 :collapse: description
 :addtargets:
