@@ -1,6 +1,6 @@
 Code,Title,Description
-planned,Planned,Planning for the span is at an advanced stage and financing for its construction is finalised.
 proposed,Proposed,Planning for the span is at an early stage and financing for its construction is not yet finalised.
+planned,Planned,Planning for the span is at an advanced stage and financing for its construction is finalised.
 underConstruction,Under construction,Construction of the passive physical infrastructure for the span is in progress.
 inactive,Inactive,"Construction of the passive network infrastructure is complete, but the span is not yet operational."
 operational,Operational,The active network infrastructure for at least one network provider on the span is live and carrying traffic.
