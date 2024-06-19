@@ -1,3 +1,5 @@
+<!-- docs-type: explanation https://diataxis.fr/explanation/ -->
+
 # Open Fibre Data Standard
 
 ```{admonition} 0.3.0 release

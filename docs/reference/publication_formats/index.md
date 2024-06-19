@@ -1,3 +1,5 @@
+<!-- docs-type: reference https://diataxis.fr/reference/ -->
+
 # Publication formats reference
 
 ```{admonition} 0.3.0 release

@@ -1,3 +1,5 @@
+<!-- docs-type: reference https://diataxis.fr/reference/ -->
+
 # Schema reference
 
 ```{admonition} 0.3.0 release

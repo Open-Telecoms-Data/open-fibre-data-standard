@@ -1,3 +1,5 @@
+<!-- docs-type: how-to-guides https://diataxis.fr/how-to-guides/ -->
+
 # How to use OFDS data
 
 ```{admonition} 0.3.0 release
