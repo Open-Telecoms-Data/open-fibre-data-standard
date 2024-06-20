@@ -1,3 +1,5 @@
+<!-- docs-type: explanation https://diataxis.fr/explanation/ -->
+
 # Primer
 
 ```{admonition} 0.3.0 release
