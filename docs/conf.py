@@ -35,8 +35,7 @@ extensions = [
     'sphinxcontrib.opencontracting',
     'sphinxcontrib.opendataservices',
     'sphinxcontrib.jsonschema',
-    'sphinx_design',
-    'sphinx_rtd_theme'
+    'sphinx_design'
 ]
 
 #MyST extenions
@@ -49,7 +48,7 @@ myst_enable_extensions = [
 myst_heading_anchors = 5
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+# templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -141,7 +140,7 @@ todo_include_todos = False
 import os
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinx_nefertiti'
     
 # otherwise, readthedocs.org uses their theme by default, so no need to specify it
 
@@ -149,7 +148,54 @@ html_theme = 'sphinx_rtd_theme'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-html_theme_options = {'navigation_depth': 5}
+html_theme_options = {
+    "logo": "ofds-logo.svg",
+    "logo_location": "sidebar",
+    "sans_serif_font": "Helvetica",
+    "documentation_font": "Helvetica",
+    "style": "blue",
+    "style_header_neutral": True,
+    "header_links": [
+        {
+            "text": "Primer",
+            "link": "primer/index",
+            "match": "/primer/*",
+        },
+        {
+            "text": "Guidance",
+            "link": "guidance/index",
+            "match": "/guidance/*",
+        },
+        {
+            "text": "Reference",
+            "link": "reference/index",
+            "match": "/reference/*",
+        },
+        {
+            "text": "Support",
+            "link": "support/index",
+            "match": "/support/*",
+        },
+        {
+            "text": "History",
+            "link": "history/index",
+            "match": "/history/*",
+        },
+        {
+            "text": "Governance",
+            "link": "governance/index",
+            "match": "/governance/*",
+        },
+       {
+            "text": "CoVE",
+            "link": "https://ofds.cove.opendataservices.coop/",
+        },
+    ],
+    "repository_url": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard",
+    "repository_name": "OFDS",
+    "project_short": "OFDS",
+}
+
 
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []

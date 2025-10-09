@@ -51,7 +51,6 @@ docutils==0.21.2
     # via
     #   myst-parser
     #   sphinx
-    #   sphinx-rtd-theme
     #   sphinxcontrib-opencontracting
     #   sphinxcontrib-opendataservices
     #   sphinxcontrib-opendataservices-jsonschema
@@ -221,8 +220,7 @@ sphinx==8.2.3
     #   sphinx-autobuild
     #   sphinx-design
     #   sphinx-intl
-    #   sphinx-rtd-theme
-    #   sphinxcontrib-jquery
+    #   sphinx-nefertiti
     #   sphinxcontrib-opencontracting
     #   sphinxcontrib-opendataservices
 sphinx-autobuild==2025.8.25
@@ -231,7 +229,7 @@ sphinx-design==0.6.1
     # via -r requirements.in
 sphinx-intl==2.3.2
     # via -r requirements.in
-sphinx-rtd-theme==3.0.2
+sphinx-nefertiti==0.8.9
     # via -r requirements.in
 sphinxcontrib-applehelp==2.0.0
     # via sphinx
@@ -239,8 +237,6 @@ sphinxcontrib-devhelp==2.0.0
     # via sphinx
 sphinxcontrib-htmlhelp==2.1.0
     # via sphinx
-sphinxcontrib-jquery==4.1
-    # via sphinx-rtd-theme
 sphinxcontrib-jsmath==1.0.1
     # via sphinx
 sphinxcontrib-opencontracting==0.0.10
