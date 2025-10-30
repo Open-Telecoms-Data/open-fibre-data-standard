@@ -150,11 +150,10 @@ html_theme = 'sphinx_nefertiti'
 #
 html_theme_options = {
     "logo": "ofds-logo.svg",
-    "logo_location": "sidebar",
+    "logo_location": "header",
     "sans_serif_font": "Helvetica",
     "documentation_font": "Helvetica",
     "style": "blue",
-    "style_header_neutral": True,
     "header_links": [
         {
             "text": "Primer",
@@ -196,6 +195,7 @@ html_theme_options = {
     "project_short": "OFDS",
 }
 
+html_style = ["custom.css"]
 
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
