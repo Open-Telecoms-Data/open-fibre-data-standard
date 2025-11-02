@@ -66,8 +66,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Open Fibre Data Standard'
-copyright = '2022, Open Data Services'
-author = 'Open Data Services'
+copyright = '2025, Open Fibre Data Standard'
+author = 'Open Fibre Data Standard'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
