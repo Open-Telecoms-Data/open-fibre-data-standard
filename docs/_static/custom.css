@@ -1,10 +1,7 @@
 .project-logo {
     filter: invert(100%) !important;
-} 
-
-.brand-text {
-    display:none !important;
-} 
+	margin-right: 1rem !important;
+}
 
  /* light/dark switcher */
 #snftt-luz {

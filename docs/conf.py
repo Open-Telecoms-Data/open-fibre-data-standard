@@ -151,41 +151,16 @@ html_theme = 'sphinx_nefertiti'
 html_theme_options = {
     "logo": "ofds-logo.svg",
     "logo_location": "header",
+    "logo_url": "https://ofds.info",
     "sans_serif_font": "Helvetica",
     "documentation_font": "Helvetica",
     "style": "blue",
     "header_links": [
         {
-            "text": "Primer",
-            "link": "primer/index",
-            "match": "/primer/*",
+            "text": "Documentation",
+            "link": "index",
         },
         {
-            "text": "Guidance",
-            "link": "guidance/index",
-            "match": "/guidance/*",
-        },
-        {
-            "text": "Reference",
-            "link": "reference/index",
-            "match": "/reference/*",
-        },
-        {
-            "text": "Support",
-            "link": "support/index",
-            "match": "/support/*",
-        },
-        {
-            "text": "History",
-            "link": "history/index",
-            "match": "/history/*",
-        },
-        {
-            "text": "Governance",
-            "link": "governance/index",
-            "match": "/governance/*",
-        },
-       {
             "text": "CoVE",
             "link": "https://ofds.cove.opendataservices.coop/",
         },
@@ -193,6 +168,7 @@ html_theme_options = {
     "repository_url": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard",
     "repository_name": "OFDS",
     "project_short": "OFDS",
+    "show_powered_by": False
 }
 
 html_style = ["custom.css"]
