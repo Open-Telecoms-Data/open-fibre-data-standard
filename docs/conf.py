@@ -328,10 +328,10 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
-latex_documents = [
-    (master_doc, 'sphinx.tex', 'Open Data Services Sphinx Base',
-     'Open Data Services', 'manual'),
-]
+# latex_documents = [
+#     (master_doc, 'sphinx.tex', 'Open Data Services Sphinx Base',
+#      'Open Data Services', 'manual'),
+# ]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -370,10 +370,10 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, 'sphinx', 'Open Data Services Sphinx Base',
-     [author], 1)
-]
+# man_pages = [
+#     (master_doc, 'sphinx', 'Open Data Services Sphinx Base',
+#      [author], 1)
+# ]
 
 # If true, show URL addresses after external links.
 #
@@ -385,11 +385,11 @@ man_pages = [
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [
-    (master_doc, 'sphinx', 'Open Data Services Sphinx Base',
-     author, 'sphinx', 'One line description of project.',
-     'Miscellaneous'),
-]
+# texinfo_documents = [
+#     (master_doc, 'sphinx', 'Open Data Services Sphinx Base',
+#      author, 'sphinx', 'One line description of project.',
+#      'Miscellaneous'),
+# ]
 
 # Documents to append as an appendix to all manuals.
 #
