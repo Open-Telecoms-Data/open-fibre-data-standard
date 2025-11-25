@@ -229,7 +229,7 @@ sphinx-design==0.6.1
     # via -r requirements.in
 sphinx-intl==2.3.2
     # via -r requirements.in
-sphinx-nefertiti==0.8.9
+sphinx-nefertiti==0.9.0
     # via -r requirements.in
 sphinxcontrib-applehelp==2.0.0
     # via sphinx

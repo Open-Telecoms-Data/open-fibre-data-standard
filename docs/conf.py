@@ -48,7 +48,7 @@ myst_enable_extensions = [
 myst_heading_anchors = 5
 
 # Add any paths that contain templates here, relative to this directory.
-# templates_path = ['_templates']
+templates_path = ['_templates']
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -151,7 +151,6 @@ html_theme = 'sphinx_nefertiti'
 html_theme_options = {
     "logo": "ofds-logo.svg",
     "logo_location": "header",
-    "logo_url": "https://ofds.info",
     "sans_serif_font": "Helvetica",
     "documentation_font": "Helvetica",
     "style": "blue",
@@ -163,6 +162,12 @@ html_theme_options = {
         {
             "text": "CoVE",
             "link": "https://ofds.cove.opendataservices.coop/",
+            "target": "_blank"
+        },
+        {
+            "text": "ofds.info",
+            "link": "https://ofds.info/",
+            "target": "_blank"
         },
     ],
     "repository_url": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard",
@@ -200,6 +205,8 @@ html_style = ["custom.css"]
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static', '../schema']
+
+html_css_files = ['renderjson.css', 'jsonschema.css']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
