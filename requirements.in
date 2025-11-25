@@ -16,4 +16,4 @@ pytest
 jscc
 mdformat
 jsonschema
-sphinx-nefertiti
+sphinx-nefertiti>=0.9.0

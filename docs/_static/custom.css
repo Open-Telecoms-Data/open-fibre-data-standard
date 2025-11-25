@@ -1,11 +1,17 @@
+button[id="button-search"] {
+    margin-bottom: 0px !important;
+}
+
+a[target="_blank"].snftt-hl.nav-link::after {
+    content: "⮺";
+    vertical-align: super;
+    font-size: 60%;
+    margin: 0 0.2em;
+}
+
 .project-logo {
     filter: invert(100%) !important;
 	margin-right: 1rem !important;
-}
-
- /* light/dark switcher */
-#snftt-luz {
-    display: none !important;
 }
 
 .nftt-navbar {
@@ -20,6 +26,10 @@
 .nftt-footer > :first-child {
 	background-color: #bbd034 !important;
     border-top: #110e27 1px solid !important;
+}
+
+.nftt-footer > :first-child .text-muted  {
+	color: #000000 !important;
 }
 
 .page-item a span.underline {
