@@ -19,6 +19,7 @@ OFDS data must be published using at least one of the formats described in this 
    json
    geojson
    csv
+   geopackage
 ```
 
 Each format provides containers for publishing one or more networks and options to support pagination and streaming.

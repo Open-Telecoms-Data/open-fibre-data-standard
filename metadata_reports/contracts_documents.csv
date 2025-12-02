@@ -1,0 +1,8 @@
+Name,Type,Not Null,Auto Increment,Title,Description,Enum,Reference Table,Reference Column
+id,INTEGER,FALSE,TRUE,,,,,
+title,TEXT,FALSE,FALSE,Title,A title for this document.,,,
+description,TEXT,FALSE,FALSE,Description,"A description of this document. Descriptions should not exceed 250 words. If the document is not accessible online, the description should describe how to access a copy of the document.",,,
+url,TEXT,FALSE,FALSE,URL,A web address for accessing this document.,,,
+format,TEXT,FALSE,FALSE,Format,"The format of this document, from the open [mediaType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#mediatype).",,,
+network_id,TEXT,FALSE,FALSE,Network ID,,,,
+contract_id,TEXT,FALSE,FALSE,Contract ID,,,,
