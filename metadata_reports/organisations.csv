@@ -6,7 +6,7 @@ identifier__id,TEXT,FALSE,FALSE,Organisation identifier Identifier,An identifier
 identifier__scheme,TEXT,FALSE,FALSE,Organisation identifier Scheme,"An identifier for this organisation. The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationidentifierscheme).",,,
 identifier__legalName,TEXT,FALSE,FALSE,Organisation identifier Legal name,An identifier for this organisation. The legally registered name of the organisation,,,
 identifier__uri,TEXT,FALSE,FALSE,Organisation identifier URI,"An identifier for this organisation. A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.",,,
-country,TEXT,FALSE,FALSE,Country,"The country in which this organisation is legally registered, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",,,
+country,TEXT,FALSE,FALSE,Country,"The country in which this organisation is legally registered, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",closed_codelist_country.csv,,
 roleDetails,TEXT,FALSE,FALSE,Role details,Further details about this organisation's roles in the network,,,
 website,TEXT,FALSE,FALSE,Website,The URL of the website for this organisation.,,,
 logo,TEXT,FALSE,FALSE,Logo,The URL of the logo for this organisation.,,,
