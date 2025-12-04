@@ -267,6 +267,78 @@ This section provides a definition for each entity, including a description, rel
 
 ````
 
+### Document
+
+````{dropdown} Description
+:open:
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: book
+
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /$defs/Document/description
+```
+````
+
+```{dropdown} Relationships
+:open:
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: link
+
+- [Network](#network): many-to-one
+- [Contract](#phase): one-to-many
+```
+
+````{dropdown} Attributes
+:open:
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: rows
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /$defs/Document
+:nocrossref:
+```
+
+````
+
+### International connection
+
+````{dropdown} Description
+:open:
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: book
+
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /$defs/Address/description
+```
+````
+
+```{dropdown} Relationships
+:open:
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: link
+
+- [Network](#network): many-to-one
+- [Nodes](#phase): one-to-many
+```
+
+````{dropdown} Attributes
+:open:
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: rows
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /$defs/Address
+:nocrossref:
+```
+
+````
+
 # TO DO:
 
 - work out what to do about Node.internationalConnections (currently a different entity, essentially) > suggest updating to Node.internationalConnections.countries
