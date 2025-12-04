@@ -140,7 +140,7 @@ To convert data to CSV format:
 
 - [Install Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/getting-started/#getting-started)
 - Download the [network schema](../../schema/network-schema.json)
-- If your data is a [JSON Lines file](../reference/publication_formats/json.md#streaming-option), segment it into appropriately sized [network packages](../reference/publication_formats/json.md#small-files-and-api-responses-option)
+- If your data is a [JSON Lines file](../reference/publication_formats/json.md#streaming-container), segment it into appropriately sized [network packages](../reference/publication_formats/json.md#small-files-and-api-responses-container)
 - Run the following command for each network package:
 
 ```bash
@@ -325,7 +325,7 @@ Set up error monitoring, so that if a request causes an HTTP 500 Internal Server
 
 ### How to transform coordinates to the correct coordinate reference system
 
-To publish OFDS data, you need to specify coordinates in the `urn:ogc:def:crs:OGC::CRS84` [coordinate reference system](../reference/schema.md#coordinatereferencesystem) (CRS). If the coordinates in your data sources are specified in a different CRS, before publishing your data in OFDS format, you first need to transform the coordinates to the correct CRS.
+To publish OFDS data, you need to specify coordinates in the `urn:ogc:def:crs:OGC::CRS84` [coordinate reference system](../reference/publication_formats/json.md#coordinatereferencesystem) (CRS). If the coordinates in your data sources are specified in a different CRS, before publishing your data in OFDS format, you first need to transform the coordinates to the correct CRS.
 
 If your data pipeline includes a Geographic Information System such as ArcGIS or QGIS, these tools can transform coordinates from one CRS to another. If you are writing your own software, or if you prefer to use the command line, several libraries and tools are available, for example:
 
