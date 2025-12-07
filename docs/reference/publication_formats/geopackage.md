@@ -279,10 +279,3 @@ An OFDS GeoPackage includes the following user-defined mapping tables:
 `relation_contracts_relatedPhases`,`contracts.id`,`phases.id`
 
 ```
-
-## TO DO
-
-- specify GeoPackage version
-- integrate metadata script into manage.py, check that foreign keys and enums are pulled in correctly.
-- list FKs separately
-- update script to generate CSV of codelist tables, and relation tables.
