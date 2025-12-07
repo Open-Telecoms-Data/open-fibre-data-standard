@@ -1,151 +1,222 @@
 <!-- docs-type: explanation https://diataxis.fr/explanation/ -->
 
-# Scope and key concepts
+# Scope, focus and key concepts
 
-```{admonition} 0.3.0 release
-Welcome to the Open Fibre Data Standard 0.3.0 release.
+This page explains the scope and focus of the Open Fibre Data Standard (OFDS) in the context of the three-layer broadband network value chain. It also introduces the key concepts and relationships covered in the OFDS data model.
 
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
+## Scope and focus
 
-To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
+OFDS provides a geospatial data model for describing fibre optic broadband networks, covering the location, organisational, technical and administrative attributes of fibre infrastructure. OFDS also provides three standardised representations of the data model in common data formats to support data exchange and publication.
+
+````{grid} 2
+:margin: 0
+:padding: 0
+
+```{grid-item}
+To illustrate the scope and focus of OFDS, consider the three-layers that make up the broadband network value chain:
+
+* The **services** consumed by end-users, such as internet, TV and telephony.
+* The **active infrastructure** over which services are delivered, consisting of electrical elements, such as lit fibre, access node switches and broadband remote access servers.
+* The **passive infrastructure**, which consists of the non-electrical elements, such as dark fibre, ducts and physical sites.
 ```
 
-This page explains the scope of the Open Fibre Data Standard (OFDS) in context of the three-layer [network value chain](#the-network-value-chain). It also introduces [key concepts](#key-concepts) that you need to understand in order to implement OFDS.
-
-## The network value chain
-
-Fibre optic networks broadly consist of three [layers](https://digital-strategy.ec.europa.eu/en/policies/broadband-network-layers-and-business-roles):
-
-- The passive infrastructure layer consists of the non-electrical elements, such as dark fibre, ducts and physical sites
-- The active infrastructure layer consists of the electrical elements, such as lit fiber, access node switches and broadband remote access servers
-- The service layer consists of services consumed by end-users, such as internet, TV and telephony, which are delivered using the active infrastructure.
-
-![The layers of fibre optic networks](../../_assets/networkValueChain.svg)
-
-The primary focus of OFDS is to describe the passive network infrastructure. The standard also accommodates some details about the active infrastructure. The services that are delivered using the infrastructure are out of scope.
-
-### Actors
-
-Based on the layers in the network value chain, there are three main groups of actors in a fibre optic network:
-
-![The actors in fibre optic networks](../../_assets/actors.svg)
-
-Depending on the [business model](#network-business-models) used in a network, there can be one or more of each type of actor involved in a single network.
-
-#### Physical infrastructure provider
-
-OFDS defines a physical infrastructure provider as:
-
-```{code-description} ../../codelists/open/organisationRole.csv physicalInfrastructureProvider
+```{grid-item}
+![Scope and focus of OFDS](../_static/scope_and_focus.svg)
 ```
 
-#### Network provider
+````
 
-OFDS defines a network provider as:
+The passive infrastructure can be further divided into **transmission media**, e.g. fibre cables, and **supporting infrastructure**, such as ducts, poles and pylons.
 
-```{code-description} ../../codelists/open/organisationRole.csv networkProvider
-```
+OFDS focuses primarily on describing the transmission media. It also accommodates some details about supporting infrastructure and active infrastructure, but it does not describe the services delivered across the infrastructure.
 
-#### Service provider
+## Networks, nodes and spans
 
-Service providers are organisations that deliver digital services across a network. For example, internet, e-health, elderly care, TV, phone, video-conferencing, entertainment, teleworking, smart monitoring etc. Service providers are out of scope of OFDS.
+`````{grid} 2
+:margin: 0
+:padding: 0
 
-### Network business models
+````{grid-item}
+:columns: 4
+A network in the OFDS data model is a set of **nodes** interconnected by **spans**.
 
-The actors in a fibre network can take on different roles depending on the business model(s) used in the network.
+Nodes and spans are spatial entities, also known as features. They consist of a **geometry** that describes their location on the earth's surface, and **attributes** that describe technical and administrative characteristics.
+````
 
-In a fully integrated model, one actor takes on all three roles, whilst in open networks the roles are separated. There are several possible business models for an open network:
+````{grid-item}
+:columns: 8
+![Nodes and spans](../_static/node_and_span.svg)
+````
 
-![Business models for an open network](../../_assets/networkBusinessModels.svg)
+`````
 
-## Key concepts
-
-### Networks
-
-OFDS defines a network as:
-
-```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /description
-```
-
-![An example network](../../_assets/networkExample.svg)
-
-### Nodes
-
-OFDS defines a node as:
+A node is represented as a **Point** geometry and is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /$defs/Node/description
 ```
 
-Nodes can represent different elements in a fibre network and the type of each node can be specified in the data, for example a node could be a point of presence, an internet exchange point and/or a cable landing.
-
-For more information about nodes, see the [Node reference](../reference/schema.md#node).
-
-### Spans
-
-OFDS defines a span as:
+A span is represented as a **LineString** geometry and is defined as:
 
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /$defs/Span/description
 ```
 
-The nodes that a span connects are known as its endpoints. In addition to the endpoints, the physical route of the span can also be specified as a LineString. This allows for the detailed route of a span to be published even when granular data on node locations along the span is unavailable, for example in a dataset describing a national backbone network.
+The following examples show how nodes and spans are represented in OFDS's JSON format. The examples include two attributes, `name` and `status`, that are common to both nodes and spans.
 
-![An example span](../../_assets/spanExample.svg)
 
-For more information about spans, see the [Span reference](../reference/schema.md#span).
+````{dropdown} Example: Node
+:animate: fade-in-slide-down
+:chevron: down-up
 
-### Geospatial data
-
-Geospatial data is information that describes objects or features with a location on or near the surface of the earth. Geospatial data typically combines location information (usually coordinates on the earth) and attribute information (the characteristics of the object concerned).
-
-OFDS data is usually geospatial data. It can contain both location information, such as the location of nodes and spans, and attribute information, such as the capacity of a span.
-
-OFDS data uses [GeoJSON geometry objects](https://www.rfc-editor.org/rfc/rfc7946#section-3.1) to represent location information. Nodes occupy single locations in space, so OFDS data uses the GeoJSON ['Point' geometry type](https://www.rfc-editor.org/rfc/rfc7946#section-3.1.2) to represent them. Spans are connected paths, so OFDS data uses the GeoJSON ['LineString' geometry type](https://www.rfc-editor.org/rfc/rfc7946#section-3.1.4) to represent them.
-
-Examples of OFDS node and span location data are given below.
-
-::::{tab-set}
-
-:::{tab-item} Node
 
 ```json
 {
-    "geometry": {
-        "type": "Point",
-        "coordinates": [
-            26.081,
-            -24.405
-        ]
-    }
+  "id": "1",
+  "location": {
+    "type": "Point",
+    "geometry": [-0.174, 5.625]
+  },
+  "name": "Accra",
+  "status": "operational"
 }
 ```
 
-:::
+````
 
-:::{tab-item} Span
+````{dropdown} Example: Span
+:animate: fade-in-slide-down
+:chevron: down-up
 
 ```json
 {
-    "geometry": {
-        "type": "LineString",
-        "coordinates": [
-            [
-                26.081,
-                -24.405
-            ],
-            [
-                26.09,
-                -24.416
-            ]
-        ]
-    }
+  "id": "1",
+  "route": {
+    "type": "LineString",
+    "geometry": [
+      [-0.174, 5.625],
+      [-0.178, 5.807],
+      [-0.112, 5.971]
+    ]
+  },
+  "name": "Accra to Kumasi",
+  "status": "operational"
 }
 ```
 
-:::
+````
 
-::::
 
-OFDS supports publishing geospatial data in several formats, for more information read the [publication format reference](../reference/index.md).
+### Linking nodes and spans
+
+````{grid} 2
+:margin: 0
+:padding: 0
+
+```{grid-item}
+Data on nodes and spans are often maintained as separate layers or datasets, without explicit references to describe the nodes to which each span connects.
+
+In OFDS, each node is assigned an identifier so that it can be referenced by the spans that connect to it.
+
+Explicitly linking nodes and spans means that data users can definitively know that a span connects to a node, without making assumptions based on geographical proximity.
+```
+
+```{grid-item}
+![Linking nodes and spans](../_static/linking_nodes_and_spans.svg)
+```
+
+````
+
+### Organisational attributes
+
+The OFDS data model describes three key roles for the organisations involved in a fibre network, each related to a different type of network infrastructure:
+
+* **Network providers** operate active network infrastructure (e.g. lit fibre and network switches)
+* **Transmission medium owners** own transmission media (e.g. fibre cables, splitters and combiners).
+* **Supporting infrastructure owners** own supporting infrastructure (e.g. ducts, poles and pylons).
+
+![Organisation roles](../_static/organisation_roles.svg)
+
+These relationships are declared as attributes of both nodes and spans. Therefore, OFDS can represent networks in which:
+
+* Different fibre cables are owned by different organisations.
+* Fibre cables and their supporting infrastructure are owned by different organisations.
+* Network operators lease dark fibre owned by a different organisation.
+
+The following example shows how the different organisation roles are modelled as attributes of a span in OFDS's JSON format.
+
+````{dropdown} Example: Organisation roles
+:animate: fade-in-slide-down
+:chevron: down-up
+
+In this example, a municipal council owns the duct through which fibre is deployed by a network operator named FibreCo. FibreCo operates it's own active infrastructure and leases dark fibre to a second operator named FastNet.
+
+```json
+{
+  "id": "1",
+  "transmissionMediumOwner": {
+    "id": "1",
+    "name": "FibreCo"
+  },
+  "supportingInfrastructure": {
+    "type": "duct",
+    "owner": {
+      "id": "2",
+      "name": "Accra Municipal Council"
+    }
+  },
+  "networkProviders": [
+    {
+      "id": "1",
+      "name": "FibreCo"
+    },
+    {
+      "id": "3",
+      "name": "FastNet"
+    }
+  ]
+}
+```
+
+````
+
+### Technical attributes
+
+In addition to the spatial and organisational characteristics of nodes and spans, the OFDS data model covers various technical attributes, including:
+
+````{grid} 2
+
+```{grid-item-card} Node attributes
+
+* Function within the network (e.g. point of presence, internet exchange point, or add drop site)
+* Whether active or passive transmission equipment which is capable of providing access to the network is installed 
+* Whether power for active network equipment is available
+* The active technologies in use (e.g. MPLS)
+* The type of supporting infrastructure (e.g. a building, pole or pylon). 
+
+```
+
+```{grid-item-card} Span attributes
+
+* Fibre type (e.g. G.652)
+* Fibres count
+* The active technologies in use (e.g. DWDM)
+* The transmission rate of the span
+* That type of supporting infrastructure (e.g. duct, pole or pylon).
+
+```
+
+````
+
+### Administrative attributes
+
+The OFDS data model also incorporates administrative attributes of nodes and spans, including:
+
+* Operational status
+* Ready for service dates
+* Availability of dark fibre, co-location space, and capacity for additional fibre cable installation
+* The phases in which node and spans were deployed, information on funders and contracts for each phase
+
+## Further reading
+
+To learn more about the OFDS data model and its publication formats, refer to the reference documentation.
