@@ -333,10 +333,7 @@ If your data pipeline includes a Geographic Information System such as ArcGIS or
 - [GDAL](https://gdal.org/) is a translator library for raster and vector geospatial data formats. It also comes with a variety of useful command line utilities for data translation and processing.
 - [Apache SIS](https://sis.apache.org/) is a free software, Java language library for developing geospatial applications. SIS provides data structures for geographic features and associated metadata along with methods to manipulate those data structures.
 
-If you prefer to use a graphical user interface, several web-based tools are available, for example:
-
-- [MyGeodata Cloud](https://mygeodata.cloud/cs2cs/)
-- [epsg.io](https://epsg.io/transform)
+If you prefer to use a graphical user interface, several web-based tools are available, e.g. [epsg.io](https://epsg.io/transform).
 
 The `urn:ogc:def:crs:OGC::CRS84` CRS is equivalent to EPSG:4326 with reversed axes so, if it is not supported by your chosen transformation tool, you can instead transform your coordinates to EPSG:4326 and manually order your coordinates in longitude, latitude order.
 
