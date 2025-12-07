@@ -12,7 +12,15 @@ The following diagram provides an overview of the entities and relationships in 
 
 ![The OFDS data model](../_static/data_model.png)
 
-As described in the [scope and key concepts primer](../primer/scopeandkeyconcepts.md), OFDS's primary focus is to describe transmission media (e.g. fibre cables). As such, the `Node` and `Span` entities represent the transmission media, but include attributes relating to the supporting infrastructure for the transmission media (e.g. ducts) and the active infrastructure operating over the transmission media (e.g. lit fibre). Notably, there are separate attributes for the owner of the transmission media, the owner of the supporting infrastructure, and the operator of the active infrastructure (the network provider), each modelled as a reference to an organisation.
+As described in the [scope and key concepts primer](../primer/scopeandkeyconcepts.md), OFDS's primary focus is to describe transmission media (e.g. fibre cables). As such, the `Node` and `Span` entities represent the transmission media, but include attributes relating to the supporting infrastructure for the transmission media (e.g. ducts) and the active infrastructure operating over the transmission media (e.g. lit fibre).
+
+Notably, there are separate attributes for:
+
+* The owner of the transmission media
+* The owner of the supporting infrastructure
+* The operators of the active infrastructure (network providers)
+
+Each of the above attributes is modelled as a reference to an organisation.
 
 ## Entities
 
@@ -338,15 +346,3 @@ This section provides a definition for each entity, including a description, rel
 ```
 
 ````
-
-# TO DO:
-
-- work out what to do about Node.internationalConnections (currently a different entity, essentially) > suggest updating to Node.internationalConnections.countries
-   - same for Contract.documents
-- add more on organisation roles to the overview
-- consider whether to put the whole overview in the primer and just have the diagram and reference tables on this page
-- work out what to do about information in object descriptions
-- decide whether to relate all entities to a network, or just nodes and spans
-- potentially make a clickable image map
-- consider providing a table with definitions and examples for each relationship
-- decide what to do about publisher, publicationDate, crs, language
