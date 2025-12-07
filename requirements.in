@@ -1,5 +1,6 @@
 jsonref
 sphinx
+sphinxcontrib-mermaid
 sphinxcontrib-opencontracting
 sphinxcontrib-opendataservices
 sphinxcontrib-opendataservices-jsonschema
