@@ -2,7 +2,7 @@
 
 This page describes how to represent the [OFDS data model](../schema.md) as a [GeoPackage](https://www.geopackage.org/). It provides an [overview](#overview) of the structure of an OFDS GeoPackage, and detailed [definitions](#table-definitions) for each of the tables in the GeoPackage.
 
-We provide an empty [OFDS GeoPackage template](../../../schema/template.gpkg) that implements the structure described on this page. The OFDS GeoPackage format is based on GeoPackage 1.Y.Z and uses the [GeoPackage Schema Extension](https://www.geopackage.org/spec140/#extension_schema) and [GeoPackage Related Tables Extension](https://docs.ogc.org/is/18-000/18-000.html).
+We provide an empty [OFDS GeoPackage template](../../../schema/geopackage.gpkg) that implements the structure described on this page. The OFDS GeoPackage format is based on GeoPackage 1.Y.Z and uses the [GeoPackage Schema Extension](https://www.geopackage.org/spec140/#extension_schema) and [GeoPackage Related Tables Extension](https://docs.ogc.org/is/18-000/18-000.html).
 
 ## Overview
 
