@@ -13,7 +13,7 @@ sphinx-design
 libcoveofds>=0.8.2
 flattentool>=0.22
 pytest
-jscc
+jscc<0.2.2
 mdformat
 jsonschema
 sphinx-nefertiti>=0.9.0
