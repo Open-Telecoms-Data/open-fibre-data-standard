@@ -1,5 +1,6 @@
 import csv
 import json
+import jsonref
 import os
 import shutil
 import sqlite3
@@ -43,8 +44,6 @@ class Builder:
             with open(
                 os.path.join(
                     self.root_directory,
-                    "buildofdsqgisplugin",
-                    "schema_0_3",
                     "codelists",
                     "open" if open_codelist else "closed",
                     codelist_name,
@@ -566,23 +565,24 @@ class Builder:
         # Load JSON Schema
         jsonschema_filename = os.path.join(
             self.root_directory,
-            "buildofdsqgisplugin",
-            "schema_0_3",
-            "schema.json",
+            "schema",
+            "network-schema.json",
         )
         with open(jsonschema_filename) as fp:
             jsonschema = json.load(fp)
+
+        jsonschema = jsonref.JsonRef.replace_refs(jsonschema)
+        
         # Copy GeoPackage
         sqlite_filename = os.path.join(
             self.root_directory,
-            "ofdsqgisplugin",
-            "schema_0_3",
-            "geopackage.gpkg",
+            "schema",
+            "geopackage",
+            "network-schema.gpkg",
         )
         shutil.copyfile(
             os.path.join(
                 self.root_directory,
-                "buildofdsqgisplugin",
                 "empty.gpkg",
             ),
             sqlite_filename,
@@ -724,20 +724,12 @@ class Builder:
         self._write_codelists()
         # Wrapup
         self.connection.commit()
-        schema_information_json_filename = os.path.join(
-            self.root_directory,
-            "ofdsqgisplugin",
-            "schema_0_3",
-            "schema_information.json",
-        )
-        with open(schema_information_json_filename, "w") as fp:
-            json.dump(self.information_out, fp, indent=2)
 
 
 if __name__ == "__main__":
     builder = Builder(
         root_directory=os.path.realpath(
-            os.path.join(os.path.dirname(os.path.realpath(__file__)), "..")
+            os.path.join(os.path.dirname(os.path.realpath(__file__)))
         ),
     )
     builder.go()
