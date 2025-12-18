@@ -1,0 +1,18 @@
+Name,Type,Not Null,Auto Increment,Title,Description,Enum,Reference Table,Reference Column
+id,INTEGER,FALSE,TRUE,,,,,
+geom,BLOB,FALSE,FALSE,,,,,
+ofds_id,TEXT,FALSE,FALSE,Identifier,An identifier for this node. The identifier must be unique within the scope of the `nodes` array.,,,
+name,TEXT,FALSE,FALSE,Node name,A name for this node.,,,
+phase__id,TEXT,FALSE,FALSE,Phase reference Identifier,The identifier and name of the phase being referenced. Used for cross-referencing. The identifier of the phase being referenced. This must match the `.id` of a phase in the `phases` array.,,,
+phase__name,TEXT,FALSE,FALSE,Phase reference Name,The identifier and name of the phase being referenced. Used for cross-referencing. The name of the phase being referenced. This must match the `.name` of the phase in the `phases` array whose `.id` matches the `.id` of this phase reference.,,,
+status,TEXT,FALSE,FALSE,Status,"The status of this node, from the closed [nodeStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodestatus).",closed_codelist_nodeStatus.csv,,
+address__streetAddress,TEXT,FALSE,FALSE,Address Street address,"An address. The street address. For example, 1600 Amphitheatre Pkwy.",,,
+address__locality,TEXT,FALSE,FALSE,Address Locality,"An address. The locality. For example, Mountain View.",,,
+address__region,TEXT,FALSE,FALSE,Address Region,"An address. The region. For example, CA.",,,
+address__postalCode,TEXT,FALSE,FALSE,Address Postal code,"An address. The postal code. For example, 94043.",,,
+address__country,TEXT,FALSE,FALSE,Address Country,"An address. The country in which the address is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",closed_codelist_country.csv,,
+accessPoint,TEXT,FALSE,FALSE,Access point,Whether active or passive transmission equipment is installed at this node which is capable of providing access to the network.,,,
+power,TEXT,FALSE,FALSE,Power availability,Whether power for active network equipment is available at this node.,,,
+physicalInfrastructureProvider__id,TEXT,FALSE,FALSE,Organisation reference Local identifier,The local identifier and name of the organisation being referenced. Used to cross-reference to the `organisations` array. The local identifier of the organisation being referenced. This must match the `.id` of an organisation in the `organisations` array.,,,
+physicalInfrastructureProvider__name,TEXT,FALSE,FALSE,Organisation reference Name,The local identifier and name of the organisation being referenced. Used to cross-reference to the `organisations` array. The name of the organisation being referenced. This must match the `.name` of the organisation in the `organisations` array whose `.id` matches the `.id` of this organisation reference.,,,
+network_id,INTEGER,FALSE,FALSE,Network ID,,,networks,id

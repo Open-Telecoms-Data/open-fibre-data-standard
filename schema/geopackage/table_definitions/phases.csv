@@ -3,4 +3,4 @@ id,INTEGER,FALSE,TRUE,,,,,
 ofds_id,TEXT,FALSE,FALSE,Identifier,An identifier for this phase. The identifier must be unique within the scope of the `phases` array.,,,
 name,TEXT,FALSE,FALSE,Name,A name for this phase.,,,
 description,TEXT,FALSE,FALSE,Description,A description for this phase.,,,
-network_id,TEXT,FALSE,FALSE,Network ID,,,,
+network_id,INTEGER,FALSE,FALSE,Network ID,,,networks,id

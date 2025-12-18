@@ -1,0 +1,11 @@
+`relation_nodes_type`,nodes.id,codelist_open_nodeType.id
+`relation_nodes_technologies`,nodes.id,codelist_open_nodeTechnologies.id
+`relation_nodes_networkProviders`,nodes.id,organisations.id
+`relation_spans_networkProviders`,spans.id,organisations.id
+`relation_spans_transmissionMedium`,spans.id,codelist_closed_transmissionMedium.id
+`relation_spans_deployment`,spans.id,codelist_closed_deployment.id
+`relation_spans_technologies`,spans.id,codelist_open_spanTechnologies.id
+`relation_spans_countries`,spans.id,codelist_closed_country.id
+`relation_phases_funders`,phases.id,organisations.id
+`relation_contracts_relatedPhases`,contracts.id,phases.id
+`relation_organisations_roles`,organisations.id,codelist_open_organisationRole.id

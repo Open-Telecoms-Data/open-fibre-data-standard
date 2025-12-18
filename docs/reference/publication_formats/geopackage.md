@@ -2,7 +2,7 @@
 
 This page describes how to represent the [OFDS data model](../schema.md) as a [GeoPackage](https://www.geopackage.org/). It provides an [overview](#overview) of the structure of an OFDS GeoPackage, and detailed [definitions](#table-definitions) for each of the tables in the GeoPackage.
 
-We provide an empty [OFDS GeoPackage template](../../../schema/geopackage.gpkg) that implements the structure described on this page. The OFDS GeoPackage format is based on GeoPackage 1.Y.Z and uses the [GeoPackage Schema Extension](https://www.geopackage.org/spec140/#extension_schema) and [GeoPackage Related Tables Extension](https://docs.ogc.org/is/18-000/18-000.html).
+We provide an empty [OFDS GeoPackage template](../../../schema/geopackage/network-schema.gpkg) that implements the structure described on this page. The OFDS GeoPackage format is based on GeoPackage 1.Y.Z and uses the [GeoPackage Schema Extension](https://www.geopackage.org/spec140/#extension_schema) and [GeoPackage Related Tables Extension](https://docs.ogc.org/is/18-000/18-000.html).
 
 ## Overview
 
@@ -119,7 +119,7 @@ Vector Feature User Data Tables represent spatial entities in the OFDS data mode
 Entity: [Node](../schema.md#node)
 
 ```{csv-table}
-:file: ../../../metadata_reports/nodes.csv
+:file: ../../../schema/geopackage/table_definitions/nodes.csv
 ```
 ````
 
@@ -132,7 +132,7 @@ Entity: [Node](../schema.md#node)
 Entity: [Span](../schema.md#span)
 
 ```{csv-table}
-:file: ../../../metadata_reports/spans.csv
+:file: ../../../schema/geopackage/table_definitions/spans.csv
 ```
 ````
 
@@ -149,7 +149,7 @@ Attributes User Data Tables represent non-spatial entities in the OFDS data mode
 Entity: [Network](../schema.md#network)
 
 ```{csv-table}
-:file: ../../../metadata_reports/networks.csv
+:file: ../../../schema/geopackage/table_definitions/networks.csv
 ```
 ````
 
@@ -162,7 +162,7 @@ Entity: [Network](../schema.md#network)
 Entity: [Phase](../schema.md#phase)
 
 ```{csv-table}
-:file: ../../../metadata_reports/phases.csv
+:file: ../../../schema/geopackage/table_definitions/phases.csv
 ```
 ````
 
@@ -175,7 +175,7 @@ Entity: [Phase](../schema.md#phase)
 Entity: [Organisation](../schema.md#organisation)
 
 ```{csv-table}
-:file: ../../../metadata_reports/organisations.csv
+:file: ../../../schema/geopackage/table_definitions/organisations.csv
 ```
 ````
 
@@ -188,7 +188,7 @@ Entity: [Organisation](../schema.md#organisation)
 Entity: [Contract](../schema.md#contract)
 
 ```{csv-table}
-:file: ../../../metadata_reports/contracts.csv
+:file: ../../../schema/geopackage/table_definitions/contracts.csv
 ```
 ````
 
@@ -201,7 +201,7 @@ Entity: [Contract](../schema.md#contract)
 Entity: [Document](../schema.md#document)
 
 ```{csv-table}
-:file: ../../../metadata_reports/contracts_documents.csv
+:file: ../../../schema/geopackage/table_definitions/contracts_documents.csv
 ```
 ````
 
@@ -214,7 +214,7 @@ Entity: [Document](../schema.md#document)
 Entity: [International connection](../schema.md#international-connection)
 
 ```{csv-table}
-:file: ../../../metadata_reports/nodes_internationalConnections.csv
+:file: ../../../schema/geopackage/table_definitions/nodes_internationalConnections.csv
 ```
 ````
 
@@ -234,18 +234,7 @@ An OFDS GeoPackage includes the following codelist tables:
 
 ```{csv-table}
 :header: Table,Codelist
-
-`codelist_closed_country`, [country](../codelists.md#country)
-`codelist_closed_deployment`, [deployment](../codelists.md#deployment)
-`codelist_closed_transmissionMedium`, [transmissionMedium](../codelists.md#transmissionmedium)
-`codelist_open_contractType`, [contractType](../codelists.md#contracttype)
-`codelist_open_language`, [language](../codelists.md#language)
-`codelist_open_mediaType`, [mediaType](../codelists.md#mediatype)
-`codelist_open_nodeTechnologies`, [nodeTechnologies](../codelists.md#nodetechnologies)
-`codelist_open_nodeType`, [nodeType](../codelists.md#nodetype)
-`codelist_open_organisationIdentifierScheme`, [organisationIdentifierScheme](../codelists.md#organisationidentifierscheme)
-`codelist_open_organisationrole`, [organisationrole](../codelists.md#organisationrole)
-`codelist_open_spanTechnologies`, [spanTechnologies](../codelists.md#spantechnologies)
+:file: ../../../schema/geopackage/table_definitions/codelist_tables.csv
 
 ```
 
@@ -265,17 +254,7 @@ An OFDS GeoPackage includes the following user-defined mapping tables:
 
 ```{csv-table}
 :header: Table,base_id FK,related_id FK
+:file: ../../../schema/geopackage/table_definitions/mapping_tables.csv
 
-`relation_nodes_networkProviders`,`nodes.id`,`organisations.id`
-`relation_nodes_technologies`,`nodes.id`,`codelist_open_nodeTechnologies.id`
-`relation_nodes_type`,`nodes.id`,`codelist_open_nodeType.id`
-`relation_spans_networkProviders`,`spans.id`,`organisations.id`
-`relation_spans_countries`,`spans.id`,`codelist_closed_country`
-`relation_spans_deployment`,`nodes.id`,`codelist_closed_deployment`
-`relation_spans_technologies`,`spans.id`,`codelist_open_spanTechnologies`
-`relation_spans_transmissionMedium`,`spans.id`,`codelist_closed_transmissionMedium`
-`relation_organisations_roles`,`organisations.id`,`codelist_open_organisationRole`
-`relation_phases_funders`,`phases.id`,`organisations.id`
-`relation_contracts_relatedPhases`,`contracts.id`,`phases.id`
 
 ```
