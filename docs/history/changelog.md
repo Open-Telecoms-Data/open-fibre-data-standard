@@ -27,7 +27,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#280](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/280) - Reorder codelist codes.
 - [#248](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/282) - Add comments declaring document mode to each markdown file in docs
 
-## 0.3.0 - 2023-05-17
+## 0.3.0 - 2023-06-29
 
 ### Schema
 
@@ -42,7 +42,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 ### Normative documentation
 
-- [#262](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/262), [#276](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/276)  - Use well-known text to represent geometries in the CSV publication format.
+- [#262](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/262), [#276](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/276) - Use well-known text to represent geometries in the CSV publication format.
 - [#260](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/260) - Use relative links to jsonschema anchors.
 - [#266](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/266), [#276](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/276) - Add `featureType` field to GeoJSON publication format.
 
