@@ -3,7 +3,7 @@ button[id="button-search"] {
 }
 
 a[target="_blank"].snftt-hl.nav-link::after {
-    content: "⮺";
+    content: "\2197";
     vertical-align: super;
     font-size: 60%;
     margin: 0 0.2em;
