@@ -35,8 +35,7 @@ extensions = [
     'sphinxcontrib.opencontracting',
     'sphinxcontrib.opendataservices',
     'sphinxcontrib.jsonschema',
-    'sphinx_design',
-    'sphinx_rtd_theme'
+    'sphinx_design'
 ]
 
 #MyST extenions
@@ -67,8 +66,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Open Fibre Data Standard'
-copyright = '2022, Open Data Services'
-author = 'Open Data Services'
+copyright = '2025, Open Fibre Data Standard'
+author = 'Open Fibre Data Standard'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -141,7 +140,7 @@ todo_include_todos = False
 import os
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-html_theme = 'sphinx_rtd_theme'
+html_theme = 'sphinx_nefertiti'
     
 # otherwise, readthedocs.org uses their theme by default, so no need to specify it
 
@@ -149,7 +148,35 @@ html_theme = 'sphinx_rtd_theme'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-html_theme_options = {'navigation_depth': 5}
+html_theme_options = {
+    "logo": "ofds-logo.svg",
+    "logo_location": "header",
+    "sans_serif_font": "Helvetica",
+    "documentation_font": "Helvetica",
+    "style": "blue",
+    "header_links": [
+        {
+            "text": "Documentation",
+            "link": "index",
+        },
+        {
+            "text": "CoVE",
+            "link": "https://ofds.cove.opendataservices.coop/",
+            "target": "_blank"
+        },
+        {
+            "text": "ofds.info",
+            "link": "https://ofds.info/",
+            "target": "_blank"
+        },
+    ],
+    "repository_url": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard",
+    "repository_name": "OFDS",
+    "project_short": "OFDS",
+    "show_powered_by": False
+}
+
+html_style = ["custom.css"]
 
 # Add any paths that contain custom themes here, relative to this directory.
 # html_theme_path = []
@@ -178,6 +205,8 @@ html_theme_options = {'navigation_depth': 5}
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static', '../schema']
+
+html_css_files = ['renderjson.css', 'jsonschema.css']
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
@@ -282,10 +311,10 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
-latex_documents = [
-    (master_doc, 'sphinx.tex', 'Open Data Services Sphinx Base',
-     'Open Data Services', 'manual'),
-]
+# latex_documents = [
+#     (master_doc, 'sphinx.tex', 'Open Data Services Sphinx Base',
+#      'Open Data Services', 'manual'),
+# ]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -324,10 +353,10 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [
-    (master_doc, 'sphinx', 'Open Data Services Sphinx Base',
-     [author], 1)
-]
+# man_pages = [
+#     (master_doc, 'sphinx', 'Open Data Services Sphinx Base',
+#      [author], 1)
+# ]
 
 # If true, show URL addresses after external links.
 #
@@ -339,11 +368,11 @@ man_pages = [
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [
-    (master_doc, 'sphinx', 'Open Data Services Sphinx Base',
-     author, 'sphinx', 'One line description of project.',
-     'Miscellaneous'),
-]
+# texinfo_documents = [
+#     (master_doc, 'sphinx', 'Open Data Services Sphinx Base',
+#      author, 'sphinx', 'One line description of project.',
+#      'Miscellaneous'),
+# ]
 
 # Documents to append as an appendix to all manuals.
 #

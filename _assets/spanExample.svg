@@ -10,7 +10,7 @@
    sodipodi:docname="spanExample.svg"
    width="600"
    height="176"
-   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,16 +24,16 @@
      borderopacity="0.25"
      inkscape:showpageshadow="2"
      inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
+     inkscape:pagecheckerboard="true"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
      inkscape:zoom="1.0885417"
-     inkscape:cx="359.19616"
-     inkscape:cy="232.88038"
+     inkscape:cx="360.11482"
+     inkscape:cy="233.79904"
      inkscape:window-width="1920"
-     inkscape:window-height="962"
-     inkscape:window-x="1920"
-     inkscape:window-y="27"
+     inkscape:window-height="1085"
+     inkscape:window-x="0"
+     inkscape:window-y="32"
      inkscape:window-maximized="1"
      inkscape:current-layer="g63"
      inkscape:pageshadow="0" />
@@ -47,6 +47,13 @@
   <g
      clip-path="url(#p.0)"
      id="g63">
+    <rect
+       style="fill:#ffffff"
+       id="rect7928"
+       width="615.28876"
+       height="194.83871"
+       x="-9.8986425"
+       y="-12.131064" />
     <g
        id="g2263"
        style="fill:#20344e;fill-opacity:1;stroke:#20344e;stroke-opacity:1"

@@ -4,7 +4,6 @@ sphinxcontrib-opencontracting
 sphinxcontrib-opendataservices
 sphinxcontrib-opendataservices-jsonschema
 sphinx-intl
-sphinx_rtd_theme
 myst-parser
 sphinx-autobuild
 pyairtable
@@ -12,8 +11,9 @@ PyGithub
 ocdskit>=1.1.3
 sphinx-design
 libcoveofds>=0.8.2
-flattentool>=0.22
+flattentool[geo]>=0.22
 pytest
-jscc
+jscc<0.2.2
 mdformat
 jsonschema
+sphinx-nefertiti>=0.9.0
