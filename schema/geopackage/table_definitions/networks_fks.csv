@@ -1,0 +1,3 @@
+Column,References
+language,FK(`codelist_open_language`.`id`)
+publisher__identifier__scheme,FK(`codelist_open_organisationIdentifierScheme`.`id`)

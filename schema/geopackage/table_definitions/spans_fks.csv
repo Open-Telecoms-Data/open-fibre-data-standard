@@ -1,0 +1,7 @@
+Column,References
+network_id,FK(`networks`.`id`)
+supplier,FK(`organisations`.`id`)
+physicalInfrastructureProvider,FK(`organisations`.`id`)
+end,FK(`nodes`.`id`)
+start,FK(`nodes`.`id`)
+phase,FK(`phases`.`id`)

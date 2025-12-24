@@ -1,9 +1,9 @@
-Name,Type,Not Null,Auto Increment,Title,Description,Enum,Reference Table,Reference Column
-id,INTEGER,FALSE,TRUE,,,,,
-streetAddress,TEXT,FALSE,FALSE,Street address,"The street address. For example, 1600 Amphitheatre Pkwy.",,,
-locality,TEXT,FALSE,FALSE,Locality,"The locality. For example, Mountain View.",,,
-region,TEXT,FALSE,FALSE,Region,"The region. For example, CA.",,,
-postalCode,TEXT,FALSE,FALSE,Postal code,"The postal code. For example, 94043.",,,
-country,TEXT,FALSE,FALSE,Country,"The country in which the address is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",closed_codelist_country.csv,,
-network_id,INTEGER,FALSE,FALSE,Network ID,,,networks,id
-node_id,INTEGER,FALSE,FALSE,Nodes ID,,,nodes,id
+Name,Type,Constraints,Title,Description
+id,INTEGER,PK,,
+streetAddress,TEXT,,Street address,"The street address. For example, 1600 Amphitheatre Pkwy."
+locality,TEXT,,Locality,"The locality. For example, Mountain View."
+region,TEXT,,Region,"The region. For example, CA."
+postalCode,TEXT,,Postal code,"The postal code. For example, 94043."
+country,TEXT,,Country,"The country in which the address is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country)."
+network_id,INTEGER,FK,Network ID,
+node_id,INTEGER,FK,Nodes ID,

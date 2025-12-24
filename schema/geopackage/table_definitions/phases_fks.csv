@@ -1,0 +1,2 @@
+Column,References
+network_id,FK(`networks`.`id`)

@@ -1,10 +1,10 @@
-Name,Type,Not Null,Auto Increment,Title,Description,Enum,Reference Table,Reference Column
-id,INTEGER,FALSE,TRUE,,,,,
-ofds_id,TEXT,FALSE,FALSE,Identifier,An identifier for this contract. The identifier must be unique within the scope of the `contracts` array.,,,
-title,TEXT,FALSE,FALSE,Contract title,A title for this contract.,,,
-description,TEXT,FALSE,FALSE,Contract description,A description for this contract.,,,
-type,INTEGER,FALSE,FALSE,Contract type,"The type of this contract, from the open [contractType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#contracttype).",,codelist_open_contractType,id
-value__amount,REAL,FALSE,FALSE,Contract value Amount,The value of this contract. The amount of this value.,,,
-value__currency,TEXT,FALSE,FALSE,Contract value Currency,"The value of this contract. The currency of this value, from the closed [currency codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#currency).",closed_codelist_currency.csv,,
-dateSigned,TEXT,FALSE,FALSE,Date signed,The date this contract was signed.,,,
-network_id,INTEGER,FALSE,FALSE,Network ID,,,networks,id
+Name,Type,Constraints,Title,Description
+id,INTEGER,PK,,
+ofds_id,TEXT,,Identifier,An identifier for this contract. The identifier must be unique within the scope of the `contracts` array.
+title,TEXT,,Contract title,A title for this contract.
+description,TEXT,,Contract description,A description for this contract.
+type,INTEGER,FK,Contract type,"The type of this contract, from the open [contractType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#contracttype)."
+value__amount,REAL,,Contract value Amount,The value of this contract. The amount of this value.
+value__currency,TEXT,,Contract value Currency,"The value of this contract. The currency of this value, from the closed [currency codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#currency)."
+dateSigned,TEXT,,Date signed,The date this contract was signed.
+network_id,INTEGER,FK,Network ID,

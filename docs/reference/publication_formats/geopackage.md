@@ -124,7 +124,7 @@ Array | Open or Closed | An M:N relationship between the Vector Feature or Attri
 
 ### Vector feature user data tables
 
-Vector Feature User Data Tables represent spatial entities in the OFDS data model.
+Vector Feature User Data Tables represent [spatial entities](#features-spatial-entities) in the OFDS data model.
 
 ````{dropdown} nodes
 :name: nodes
@@ -132,11 +132,20 @@ Vector Feature User Data Tables represent spatial entities in the OFDS data mode
 :animate: fade-in-slide-down
 :chevron: down-up
 
-Entity: [Node](../schema.md#node)
+Columns:
 
 ```{csv-table}
 :file: ../../../schema/geopackage/table_definitions/nodes.csv
+:header-rows: 1
 ```
+
+Foreign keys:
+
+```{csv-table}
+:file: ../../../schema/geopackage/table_definitions/nodes_fks.csv
+:header-rows: 1
+```
+
 ````
 
 ````{dropdown} spans
@@ -145,16 +154,26 @@ Entity: [Node](../schema.md#node)
 :animate: fade-in-slide-down
 :chevron: down-up
 
-Entity: [Span](../schema.md#span)
+Columns:
 
 ```{csv-table}
 :file: ../../../schema/geopackage/table_definitions/spans.csv
+:header-rows: 1
 ```
+
+Foreign keys:
+
+```{csv-table}
+:file: ../../../schema/geopackage/table_definitions/spans_fks.csv
+:header-rows: 1
+```
+
+
 ````
 
 ### Attributes user data tables
 
-Attributes User Data Tables represent non-spatial entities in the OFDS data model.
+Attributes User Data Tables represent [non-spatial entities](#non-spatial-entities) in the OFDS data model.
 
 ````{dropdown} networks
 :name: networks
@@ -162,11 +181,20 @@ Attributes User Data Tables represent non-spatial entities in the OFDS data mode
 :animate: fade-in-slide-down
 :chevron: down-up
 
-Entity: [Network](../schema.md#network)
+Columns:
 
 ```{csv-table}
 :file: ../../../schema/geopackage/table_definitions/networks.csv
+:header-rows: 1
 ```
+
+Foreign keys:
+
+```{csv-table}
+:file: ../../../schema/geopackage/table_definitions/networks_fks.csv
+:header-rows: 1
+```
+
 ````
 
 ````{dropdown} phases
@@ -175,11 +203,20 @@ Entity: [Network](../schema.md#network)
 :animate: fade-in-slide-down
 :chevron: down-up
 
-Entity: [Phase](../schema.md#phase)
+Columns:
 
 ```{csv-table}
 :file: ../../../schema/geopackage/table_definitions/phases.csv
+:header-rows: 1
 ```
+
+Foreign keys:
+
+```{csv-table}
+:file: ../../../schema/geopackage/table_definitions/phases_fks.csv
+:header-rows: 1
+```
+
 ````
 
 ````{dropdown} organisations
@@ -188,11 +225,20 @@ Entity: [Phase](../schema.md#phase)
 :animate: fade-in-slide-down
 :chevron: down-up
 
-Entity: [Organisation](../schema.md#organisation)
+Columns:
 
 ```{csv-table}
 :file: ../../../schema/geopackage/table_definitions/organisations.csv
+:header-rows: 1
 ```
+
+Foreign keys:
+
+```{csv-table}
+:file: ../../../schema/geopackage/table_definitions/organisations_fks.csv
+:header-rows: 1
+```
+
 ````
 
 ````{dropdown} contracts
@@ -201,11 +247,20 @@ Entity: [Organisation](../schema.md#organisation)
 :animate: fade-in-slide-down
 :chevron: down-up
 
-Entity: [Contract](../schema.md#contract)
+Columns:
 
 ```{csv-table}
 :file: ../../../schema/geopackage/table_definitions/contracts.csv
+:header-rows: 1
 ```
+
+Foreign keys:
+
+```{csv-table}
+:file: ../../../schema/geopackage/table_definitions/contracts_fks.csv
+:header-rows: 1
+```
+
 ````
 
 ````{dropdown} contracts_documents
@@ -214,11 +269,20 @@ Entity: [Contract](../schema.md#contract)
 :animate: fade-in-slide-down
 :chevron: down-up
 
-Entity: [Document](../schema.md#document)
+Columns:
 
 ```{csv-table}
 :file: ../../../schema/geopackage/table_definitions/contracts_documents.csv
+:header-rows: 1
 ```
+
+Foreign keys:
+
+```{csv-table}
+:file: ../../../schema/geopackage/table_definitions/contracts_documents_fks.csv
+:header-rows: 1
+```
+
 ````
 
 ````{dropdown} nodes_internationalConnections
@@ -227,11 +291,20 @@ Entity: [Document](../schema.md#document)
 :animate: fade-in-slide-down
 :chevron: down-up
 
-Entity: [International connection](../schema.md#international-connection)
+Columns:
 
 ```{csv-table}
 :file: ../../../schema/geopackage/table_definitions/nodes_internationalConnections.csv
+:header-rows: 1
 ```
+
+Foreign keys:
+
+```{csv-table}
+:file: ../../../schema/geopackage/table_definitions/nodes_internationalConnections_fks.csv
+:header-rows: 1
+```
+
 ````
 
 ### Codelist tables

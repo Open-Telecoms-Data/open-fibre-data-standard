@@ -1,16 +1,16 @@
-Name,Type,Not Null,Auto Increment,Title,Description,Enum,Reference Table,Reference Column
-id,INTEGER,FALSE,TRUE,,,,,
-geom,BLOB,FALSE,FALSE,,,,,
-ofds_id,TEXT,FALSE,FALSE,Identifier,An identifier for this node. The identifier must be unique within the scope of the `nodes` array.,,,
-name,TEXT,FALSE,FALSE,Node name,A name for this node.,,,
-phase,INTEGER,FALSE,FALSE,Phase,The phase to which this node belongs.,,phases,id
-status,TEXT,FALSE,FALSE,Status,"The status of this node, from the closed [nodeStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodestatus).",closed_codelist_nodeStatus.csv,,
-address__streetAddress,TEXT,FALSE,FALSE,Node address Street address,"The physical address of this node. The street address. For example, 1600 Amphitheatre Pkwy.",,,
-address__locality,TEXT,FALSE,FALSE,Node address Locality,"The physical address of this node. The locality. For example, Mountain View.",,,
-address__region,TEXT,FALSE,FALSE,Node address Region,"The physical address of this node. The region. For example, CA.",,,
-address__postalCode,TEXT,FALSE,FALSE,Node address Postal code,"The physical address of this node. The postal code. For example, 94043.",,,
-address__country,TEXT,FALSE,FALSE,Node address Country,"The physical address of this node. The country in which the address is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country).",closed_codelist_country.csv,,
-accessPoint,TEXT,FALSE,FALSE,Access point,Whether active or passive transmission equipment is installed at this node which is capable of providing access to the network.,,,
-power,TEXT,FALSE,FALSE,Power availability,Whether power for active network equipment is available at this node.,,,
-physicalInfrastructureProvider,INTEGER,FALSE,FALSE,Physical infrastructure provider,"The organisation that owns the passive network infrastructure for this node, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",,organisations,id
-network_id,INTEGER,FALSE,FALSE,Network ID,,,networks,id
+Name,Type,Constraints,Title,Description
+id,INTEGER,PK,,
+geom,BLOB,,,
+ofds_id,TEXT,,Identifier,An identifier for this node. The identifier must be unique within the scope of the `nodes` array.
+name,TEXT,,Node name,A name for this node.
+phase,INTEGER,FK,Phase,The phase to which this node belongs.
+status,TEXT,,Status,"The status of this node, from the closed [nodeStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodestatus)."
+address__streetAddress,TEXT,,Node address Street address,"The physical address of this node. The street address. For example, 1600 Amphitheatre Pkwy."
+address__locality,TEXT,,Node address Locality,"The physical address of this node. The locality. For example, Mountain View."
+address__region,TEXT,,Node address Region,"The physical address of this node. The region. For example, CA."
+address__postalCode,TEXT,,Node address Postal code,"The physical address of this node. The postal code. For example, 94043."
+address__country,TEXT,,Node address Country,"The physical address of this node. The country in which the address is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country)."
+accessPoint,TEXT,,Access point,Whether active or passive transmission equipment is installed at this node which is capable of providing access to the network.
+power,TEXT,,Power availability,Whether power for active network equipment is available at this node.
+physicalInfrastructureProvider,INTEGER,FK,Physical infrastructure provider,"The organisation that owns the passive network infrastructure for this node, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites."
+network_id,INTEGER,FK,Network ID,
