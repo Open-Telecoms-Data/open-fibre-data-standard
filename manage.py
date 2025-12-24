@@ -696,6 +696,64 @@ def pre_commit():
     # Generate table definition CSV files from GeoPackage
     export_metadata_to_csv("schema/geopackage/network-schema.gpkg", "schema/geopackage/table_definitions")
 
+    # Generate diagram from GeoPackage
+    subprocess.run(["mermerd", "--runConfig", "docs/reference/publication_formats/geopackage.yaml"])
+
+    # Add style config to diagram and remove non-key attributes
+    with open("docs/reference/publication_formats/geopackage.mmd", 'r') as f:
+        lines = f.readlines()
+
+    # 1. Prepare Header
+    header = "---\nconfig:\n  layout: elk\n---\n"
+    
+    # 2. Prepare Footer
+    footer = (
+        "\n    classDef feature fill:#f3ffa6ff,stroke:#bbd034\n"
+        "    classDef attribute fill:#cec7ffff,stroke:#110e27\n"
+        "    classDef mapping fill:#efefefff,stroke:#434343ff\n\n"
+        "    class nodes,spans feature\n"
+        "    class networks,organisations,phases,contracts attribute\n"
+        "    class relation_contracts_relatedPhases,relation_spans_networkProviders,relation_nodes_networkProviders mapping\n"
+        "    direction BT\n"
+    )
+
+    processed_content = []
+    
+    # Regex to identify lines inside table definitions that are NOT PK or FK
+    # It looks for lines that contain 'PK' or 'FK'
+    is_inside_table = False
+    
+    for line in lines:
+        stripped = line.strip()
+        
+        # Detect start/end of table blocks
+        if '{' in line:
+            is_inside_table = True
+            processed_content.append(line)
+            continue
+        if '}' in line:
+            is_inside_table = False
+            processed_content.append(line)
+            continue
+            
+        if is_inside_table:
+            # 3. Remove attributes that aren't PK or FK
+            # We keep the line if it contains PK or FK (case insensitive)
+            if re.search(r'\bPK\b|\bFK\b', stripped):
+                processed_content.append(line)
+            else:
+                # Skip normal attributes
+                continue
+        else:
+            # Keep lines outside of tables (like relationship definitions)
+            processed_content.append(line)
+
+    # Combine everything
+    final_output = header + "".join(processed_content) + footer
+
+    with open("docs/reference/publication_formats/geopackage.mmd", 'w') as f:
+        f.write(final_output)
+
     # Update examples/csv
     delete_directory_contents('examples/csv')
     flatten(

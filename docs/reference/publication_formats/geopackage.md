@@ -1,40 +1,59 @@
 # GeoPackage
 
-This page describes how to represent the [OFDS data model](../schema.md) as a [GeoPackage](https://www.geopackage.org/). It provides an [overview](#overview) of the structure of an OFDS GeoPackage, and detailed [definitions](#table-definitions) for each of the tables in the GeoPackage.
+This page describes a standardised representation of the [OFDS data model](../schema.md) as a [GeoPackage](https://www.geopackage.org/). A GeoPackage is a [SQLite](https://sqlite.org/) database. This page provides an [overview](#overview) of the structure of an OFDS GeoPackage, and detailed [definitions](#table-definitions) for each of the tables in the database.
 
-We provide an empty [OFDS GeoPackage template](../../../schema/geopackage/network-schema.gpkg) that implements the structure described on this page. The OFDS GeoPackage format is based on GeoPackage 1.Y.Z and uses the [GeoPackage Schema Extension](https://www.geopackage.org/spec140/#extension_schema) and [GeoPackage Related Tables Extension](https://docs.ogc.org/is/18-000/18-000.html).
+The OFDS GeoPackage format is based on [GeoPackage 1.4.0](https://www.geopackage.org/spec140/), including the [GeoPackage Schema Extension](https://www.geopackage.org/spec140/#extension_schema) and [GeoPackage Related Tables Extension](https://docs.ogc.org/is/18-000/18-000.html).
+
+## Template
+
+The [OFDS GeoPackage template](../../../schema/geopackage/network-schema.gpkg) implements the structure described on this page.
+
+```{tip}
+You can explore the structure of the OFDS GeoPackage template in common GIS tools such as [QGIS](https://qgis.org/), or you can connect directly to the SQLite database using your preferred SQL client. 
+```
 
 ## Overview
 
-A single OFDS GeoPackage can contain multiple networks.
+The following diagram illustrates how the main entities and relationships in the OFDS data model are represented in an OFDS GeoPackage. Features (spatial entities) are coloured yellow, non-spatial entities are coloured blue, and associative tables (M:N relationships) are coloured grey.
 
-Spatial entities in the OFDS data model are represented as features in [Vector Feature User Data Tables](https://www.geopackage.org/spec140/#feature_user_tables), which contain both geometries and attributes. Non-spatial entities in the OFDS data model are represented as non-spatial attribute sets in [Attributes User Data Tables](https://www.geopackage.org/spec140/#attributes_user_tables), which contain only attributes and no geometries.
+```{mermaid} geopackage.mmd
+:zoom:
+```
 
-```{dropdown} Example: Spatial entities
+### Features (spatial entities)
+
+Nodes and spans are represented as features in [Vector Feature User Data Tables](https://www.geopackage.org/spec140/#feature_user_tables), which contain both geometries and attributes.
+
+```{dropdown} Example: Nodes
 :animate: fade-in-slide-down
 :chevron: down-up
 
-Nodes are spatial entities (a node's location is a Point geometry) so they are represented as spatial features in the `nodes` vector feature user data table.
+[Nodes](../schema.md#node) are spatial entities with a Point geometry so they are represented as spatial features in the [`nodes` vector feature user data table](#nodes).
 
 ```
 
-```{dropdown} Example: Non-spatial entities
+### Non-spatial entities
+
+Non-spatial entities, such as organisations, are represented as non-spatial attribute sets in [Attributes User Data Tables](https://www.geopackage.org/spec140/#attributes_user_tables), which contain only attributes and no geometries.
+
+```{dropdown} Example: Organisations
 :animate: fade-in-slide-down
 :chevron: down-up
 
-Organisations are non-spatial entities (they have no associated geometry) so they are represented as non-spatial attribute sets in the `organisations` attributes user data table.
-
-
+[Organisations](../schema.md#organisation) are non-spatial entities (they have no associated geometry) so they are represented as non-spatial attribute sets in the [`organisations` attributes user data table](#organisations).
 
 ```
 
-One-to-many (1:N) relationships (including array attributes) are represented as separate tables with foreign key relationships and many-to-many (M:N) relationships are represented as [User-Defined Mapping Tables](https://docs.ogc.org/is/18-000/18-000.html#user_defined_mapping_table).
+### One-to-many relationships
 
-````{dropdown} Example: 1:N relationships
+One-to-many (1:N) relationships between entities in the OFDS data model, such as a [network](../schema.md#network) with many [nodes](../schema.md#node), are represented as [foreign key](https://en.wikipedia.org/wiki/Foreign_key) relationships. Attributes of type array in the OFDS data model, such as a [span](../schema.md#span)'s transmission medium are also represented as foreign key relationships.
+
+
+````{dropdown} Example: Networks and nodes
 :animate: fade-in-slide-down
 :chevron: down-up
 
-The 1:N relationship between a network and the nodes that belong to it is represented as a foreign key relationship from `nodes.network_id` to `networks.id`.
+The 1:N relationship between a network and the nodes that belong to it is represented as a foreign key (`network_id`) in the [`nodes` table](#nodes) that references the `id` field in the [`networks` table](#networks).
 
 ```{mermaid}
 
@@ -49,19 +68,22 @@ The 1:N relationship between a network and the nodes that belong to it is repres
         nodes {
             INTEGER id PK
             INTEGER network_id FK
-            TEXT name
-            TEXT status
+            BLOB geom
         }
 
 ```
 
 ````
 
+### Many-to-many relationships
+
+Many-to-many (M:N) relationships, such as a node with many network providers, are represented as [User-Defined Mapping Tables](https://docs.ogc.org/is/18-000/18-000.html#user_defined_mapping_table).
+
 ````{dropdown} Example: M:N relationships
 :animate: fade-in-slide-down
 :chevron: down-up
 
-The M:N relationship between a node and the organisations that operate active network infrastructure located at the node is represented by the `relation_nodes_networkProviders` user-defined mapping table, which relates records in the `nodes` table to records in the `organisations` table.  
+The M:N relationship between a [node](../schema.md#node) and its network providers (the organisations that operate active network infrastructure located at the node) is represented by the `relation_nodes_networkProviders` user-defined mapping table, which relates records in the [`nodes` table](#nodes) to records in the [`organisations` table](#organisations).  
 
 ```{mermaid}
 
@@ -71,7 +93,7 @@ The M:N relationship between a node and the organisations that operate active ne
         relation_nodes_networkProviders }o--|| organisations : ""
         nodes {
             INTEGER id PK
-            TEXT name
+            BLOB geom
         }
         relation_nodes_networkProviders {
             INTEGER base_id FK
@@ -86,27 +108,21 @@ The M:N relationship between a node and the organisations that operate active ne
 
 ````
 
-The representation of attributes that reference a codelist depends on whether the attribute takes a single (text) value or an array of values from the codelist, and on whether the codelist is closed (i.e. the attributes value must belong to the codelist) or open (i.e. the attribute can take values that do not belong to the codelist).
+### Codelists
 
-```{dropdown} Examples
-:animate: fade-in-slide-down
-:chevron: down-up
+Some attributes in the OFDS data model refer to [codelists](../codelists.md) to limit and standardise the possible values of the attribute. 
+
+The representation of attributes that reference a codelist depends on whether the attribute takes a single value or an array of values from the codelist, and on whether the codelist is closed (i.e. the attributes value must belong to the codelist) or open (i.e. the attribute can take values that do not belong to the codelist):
 
 Attribute data type | Codelist type | Representation | Example
 --- | --- | --- | ---
-Text | Closed | A column whose value is constrained to the codelist by an enum defined using the GeoPackage Schema Extension. | The Node Status attribute is represented by the `status` column in the `nodes` table, with an enum defined for the codes in the [nodeStatus codelist](../codelists.md#nodestatus).
-Text | Open | A column with a foreign key relationship to a table containing the values in the codelist. | The Contract Type attribute is represented by the `type` column in the `contracts` table, with a foreign key to the `codelist_open_contractType` table, which contains the codes in the [contractType codelist](../codelists.md#contracttype).
-Array | Open or Closed | An M:N relationship between the Vector Feature or Attributes User Data Table that represents the entity to which it belongs, and a table containing the values in the codelist. | The Node Type attribute is represented by the `type` column in the `nodes` table, with an M:N relationship (`relation_nodes_type`) to the `codelist_open_nodeType` table, which contains the codes in the [nodeType codelist](../codelists.md#nodetype).
-
-```
-
-The following diagram illustrates how the entities and relationships in the OFDS data model are represented in an OFDS GeoPackage. Codelist tables and their associated user-defined mapping tables are omitted for brevity. 
-
-![OFDS GeoPackage structure](../../_static/geopackage_structure.png)
+Text | Closed | A column whose value is constrained to the codelist by an enum defined using the GeoPackage Schema Extension. | The Node Status attribute is represented by the `status` column in the [`nodes` table](#nodes), with an enum defined for the codes in the [nodeStatus codelist](../codelists.md#nodestatus).
+Text | Open | A column with a foreign key relationship to a table containing the values in the codelist. | The Contract Type attribute is represented by the `type` column in the [`contracts` table](#contracts), with a foreign key to the `codelist_open_contractType` [codelist table](#codelist-tables), which contains the codes in the [contractType codelist](../codelists.md#contracttype).
+Array | Open or Closed | An M:N relationship between the Vector Feature or Attributes User Data Table that represents the entity to which it belongs, and a table containing the values in the codelist. | The Node Type attribute is represented by the `type` column in the [`nodes` table](#nodes), with an M:N relationship (`relation_nodes_type`) to the `codelist_open_nodeType` [codelist table](#codelist-tables), which contains the codes in the [nodeType codelist](../codelists.md#nodetype).
 
 ## Table definitions
 
-### Vector Feature User Data Tables
+### Vector feature user data tables
 
 Vector Feature User Data Tables represent spatial entities in the OFDS data model.
 
@@ -136,7 +152,7 @@ Entity: [Span](../schema.md#span)
 ```
 ````
 
-### Attributes User Data Tables
+### Attributes user data tables
 
 Attributes User Data Tables represent non-spatial entities in the OFDS data model.
 
@@ -238,7 +254,7 @@ An OFDS GeoPackage includes the following codelist tables:
 
 ```
 
-### User-Defined Mapping Tables
+### User-defined mapping tables
 
 Each user defined mapping table has the following columns:
 
