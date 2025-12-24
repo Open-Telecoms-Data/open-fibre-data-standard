@@ -6,13 +6,10 @@ erDiagram
     contracts {
         INTEGER id PK 
         INTEGER network_id FK 
-        INTEGER type FK 
     }
 
     networks {
         INTEGER id PK 
-        INTEGER language FK 
-        INTEGER publisher__identifier__scheme FK 
     }
 
     nodes {
@@ -24,7 +21,6 @@ erDiagram
 
     organisations {
         INTEGER id PK 
-        INTEGER identifier__scheme FK 
         INTEGER network_id FK 
     }
 
@@ -49,12 +45,12 @@ erDiagram
     }
 
     spans {
-        INTEGER end FK 
-        INTEGER id PK 
-        INTEGER network_id FK 
+        INTEGER id PK
+        INTEGER network_id FK
+        INTEGER start FK  
         INTEGER phase FK 
+        INTEGER end FK 
         INTEGER physicalInfrastructureProvider FK 
-        INTEGER start FK 
         INTEGER supplier FK 
     }
 
