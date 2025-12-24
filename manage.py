@@ -739,7 +739,7 @@ def pre_commit():
         if is_inside_table:
             # 3. Remove attributes that aren't PK or FK
             # We keep the line if it contains PK or FK (case insensitive)
-            if re.search(r'\bPK\b|\bFK\b', stripped):
+            if re.search(r'\bPK\b|\bFK\b', stripped) and not re.search('identifier__scheme', stripped) and not re.search('type', stripped) and not re.search('language', stripped):
                 processed_content.append(line)
             else:
                 # Skip normal attributes
