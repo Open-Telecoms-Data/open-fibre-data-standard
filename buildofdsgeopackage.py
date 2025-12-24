@@ -1,12 +1,24 @@
 import csv
 import json
-import jsonref
 import os
 import shutil
 import sqlite3
 
+from referencing import Registry
+from referencing.jsonschema import DRAFT202012
+
 MAP_FIELD_TYPES_TO_SQLITE_TYPES = {"boolean": "int", "integer": "int", "number": "real"}
 
+def deref(obj, registry):
+    if isinstance(obj, list): return [deref(i, registry) for i in obj]
+    if not isinstance(obj, dict): return obj
+    
+    # Merge $ref contents with local keys (2020-12 style)
+    if "$ref" in obj:
+        resolved = registry.resolver().lookup(obj.pop("$ref")).contents
+        obj = {**resolved, **obj}
+        
+    return {k: deref(v, registry) for k, v in obj.items()}
 
 class Builder:
 
@@ -571,7 +583,9 @@ class Builder:
         with open(jsonschema_filename) as fp:
             jsonschema = json.load(fp)
 
-        jsonschema = jsonref.JsonRef.replace_refs(jsonschema)
+        reg = Registry().with_resource(uri="", resource=DRAFT202012.create_resource(jsonschema))
+
+        jsonschema = deref(jsonschema, reg)
         
         # Copy GeoPackage
         sqlite_filename = os.path.join(

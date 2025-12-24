@@ -18,6 +18,8 @@ erDiagram
     nodes {
         INTEGER id PK 
         INTEGER network_id FK 
+        INTEGER phase FK 
+        INTEGER physicalInfrastructureProvider FK 
     }
 
     organisations {
@@ -50,7 +52,10 @@ erDiagram
         INTEGER end FK 
         INTEGER id PK 
         INTEGER network_id FK 
+        INTEGER phase FK 
+        INTEGER physicalInfrastructureProvider FK 
         INTEGER start FK 
+        INTEGER supplier FK 
     }
 
     contracts }o--|| networks : "network_id"
@@ -59,12 +64,17 @@ erDiagram
     organisations }o--|| networks : "network_id"
     phases }o--|| networks : "network_id"
     spans }o--|| networks : "network_id"
+    nodes }o--|| organisations : "physicalInfrastructureProvider"
+    nodes }o--|| phases : "phase"
     relation_nodes_networkProviders }o--|| nodes : "base_id"
     spans }o--|| nodes : "end"
     spans }o--|| nodes : "start"
     relation_nodes_networkProviders }o--|| organisations : "related_id"
     relation_spans_networkProviders }o--|| organisations : "related_id"
+    spans }o--|| organisations : "physicalInfrastructureProvider"
+    spans }o--|| organisations : "supplier"
     relation_contracts_relatedPhases }o--|| phases : "related_id"
+    spans }o--|| phases : "phase"
     relation_spans_networkProviders }o--|| spans : "base_id"
 
     classDef feature fill:#f3ffa6ff,stroke:#bbd034
