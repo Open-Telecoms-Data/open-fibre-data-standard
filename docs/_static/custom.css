@@ -1,3 +1,11 @@
+.sd-summary-title.sd-card-header.feature-drop-down {
+	background-color: #f3ffa6ff !important;
+}
+
+.sd-summary-title.sd-card-header.attribute-drop-down {
+	background-color: #cec7ffff !important;
+}
+
 button[id="button-search"] {
     margin-bottom: 0px !important;
 }
