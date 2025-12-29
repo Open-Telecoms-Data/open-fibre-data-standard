@@ -169,12 +169,12 @@
       "properties": {
         "id": {
           "title": "Identifier",
-          "description": "An identifier for this node. The identifier must be unique within the scope of the `nodes` array.",
+          "description": "A locally-unique identifier for this node.",
           "type": "string",
           "minLength": 1
         },
         "name": {
-          "title": "Node name",
+          "title": "Name",
           "description": "A name for this node.",
           "type": "string",
           "minLength": 1
@@ -200,17 +200,17 @@
           ]
         },
         "location": {
-          "title": "Node location",
-          "description": "In the [JSON publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/json.html), a GeoJSON [Point](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the physical location of this node. In the [CSV publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/csv.html), a [well-known text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) POINT geometry.",
+          "title": "Location",
+          "description": "The physical location of this node.",
           "$ref": "#/$defs/Geometry"
         },
         "address": {
-          "title": "Node address",
+          "title": "Address",
           "description": "The physical address of this node.",
           "$ref": "#/$defs/Address"
         },
         "type": {
-          "title": "Node type",
+          "title": "Type",
           "description": "The type of this node, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetype). For nodes with multiple network providers, the union of the node types for each provider.",
           "type": "array",
           "items": {
@@ -289,12 +289,12 @@
       "properties": {
         "id": {
           "title": "Identifier",
-          "description": "An identifier for this span. The identifier must be unique within the scope of the `spans` array.",
+          "description": "A locally-unique identifier for this span.",
           "type": "string",
           "minLength": 1
         },
         "name": {
-          "title": "Span name",
+          "title": "Name",
           "description": "A name for this span.",
           "type": "string",
           "minLength": 1
@@ -305,7 +305,7 @@
           "$ref": "#/$defs/PhaseReference"
         },
         "status": {
-          "title": "Span status",
+          "title": "Status",
           "description": "The status of the network infrastructure for this span, from the closed [spanStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spanstatus).",
           "type": "string",
           "codelist": "spanStatus.csv",
@@ -328,25 +328,25 @@
         },
         "start": {
           "title": "Start",
-          "description": "The identifier of one of two nodes that this span connects. It must match the `.id` of a node in the `nodes` array. If `directed == true`, it represents the starting point of the span. Otherwise, the distinction between `start` and `end` is arbitrary.",
+          "description": "The identifier of one of two nodes that this span connects. It must match the identifier of a node. If the span is directed, it represents the starting point of the span.",
           "type": "string",
           "minLength": 1
         },
         "end": {
           "title": "End",
-          "description": "The identifier of one of two nodes that this span connects. It must match the `.id` of a node in the `nodes` array. If `directed == true`, it represents the end point of the span. Otherwise, the distinction between `start` and `end` is arbitrary.",
+          "description": "The identifier of one of two nodes that this span connects. It must match the identifier of a node. If the span is directed, it represents the end point of the span.",
           "type": "string",
           "minLength": 1
         },
         "directed": {
           "title": "Directed",
-          "description": "Whether this span is directed. If `True`, then `.start` represents the start of the span and `.end` represents the end. Otherwise, `.start` and `.end` reference this span's endpoints with no direction implied.",
+          "description": "Whether this span is directed. If the span is directed, the span begins at the node referenced in `.start` and ends at the node referenced in `.end`. Otherwise, the span connects the nodes referenced in `.start` and `.end` with no direction implied.",
           "type": "boolean",
           "$comment": ""
         },
         "route": {
-          "title": "Span route",
-          "description": "In the [JSON publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/json.html), a GeoJSON [LineString](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the route of this span. In the [CSV publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/csv.html), a [well-known text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) LINESTRING geometry.",
+          "title": "Route",
+          "description": "The physical route that this span takes between the nodes that it connects.",
           "$ref": "#/$defs/Geometry"
         },
         "physicalInfrastructureProvider": {
@@ -760,7 +760,7 @@
       "properties": {
         "id": {
           "title": "Identifier",
-          "description": "An identifier for this phase. The identifier must be unique within the scope of the `phases` array.",
+          "description": "A locally-unique identifier for this phase.",
           "type": "string",
           "minLength": 1
         },
@@ -799,7 +799,7 @@
       "properties": {
         "id": {
           "title": "Local identifier",
-          "description": "A local identifier for this organisation. The identifier must be unique within the scope of the `organisations` array.",
+          "description": "A locally-unique identifier for this organisation.",
           "type": "string",
           "minLength": 1
         },
@@ -1121,24 +1121,24 @@
       "properties": {
         "id": {
           "title": "Identifier",
-          "description": "An identifier for this contract. The identifier must be unique within the scope of the `contracts` array.",
+          "description": "A locally-unique identifier for this contract.",
           "type": "string",
           "minLength": 1
         },
         "title": {
-          "title": "Contract title",
+          "title": "Title",
           "description": "A title for this contract.",
           "type": "string",
           "minLength": 1
         },
         "description": {
-          "title": "Contract description",
+          "title": "Description",
           "description": "A description for this contract.",
           "type": "string",
           "minLength": 1
         },
         "type": {
-          "title": "Contract type",
+          "title": "Type",
           "description": "The type of this contract, from the open [contractType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#contracttype).",
           "type": "string",
           "codelist": "contractType.csv",
@@ -1146,7 +1146,7 @@
           "minLength": 1
         },
         "value": {
-          "title": "Contract value",
+          "title": "Value",
           "description": "The value of this contract.",
           "$ref": "#/$defs/Value"
         },
@@ -1158,7 +1158,7 @@
           "$comment": ""
         },
         "documents": {
-          "title": "Contract documents",
+          "title": "Documents",
           "description": "The documents related to this contract.",
           "type": "array",
           "items": {
@@ -1222,18 +1222,18 @@
     },
     "OrganisationReference": {
       "title": "Organisation reference",
-      "description": "The local identifier and name of the organisation being referenced. Used to cross-reference to the `organisations` array.",
+      "description": "The local identifier and name of the organisation being referenced. Used for cross-referencing.",
       "type": "object",
       "properties": {
         "id": {
           "title": "Local identifier",
-          "description": "The local identifier of the organisation being referenced. This must match the `.id` of an organisation in the `organisations` array.",
+          "description": "The local identifier of the organisation being referenced.",
           "type": "string",
           "minLength": 1
         },
         "name": {
           "title": "Name",
-          "description": "The name of the organisation being referenced. This must match the `.name` of the organisation in the `organisations` array whose `.id` matches the `.id` of this organisation reference.",
+          "description": "The name of the organisation being referenced. This must match the name of the organisation referenced in `.id`.",
           "type": "string",
           "minLength": 1
         }
@@ -1250,13 +1250,13 @@
       "properties": {
         "id": {
           "title": "Identifier",
-          "description": "The identifier of the phase being referenced. This must match the `.id` of a phase in the `phases` array.",
+          "description": "The identifier of the phase being referenced.",
           "type": "string",
           "minLength": 1
         },
         "name": {
           "title": "Name",
-          "description": "The name of the phase being referenced. This must match the `.name` of the phase in the `phases` array whose `.id` matches the `.id` of this phase reference.",
+          "description": "The name of the phase being referenced. This must match the name of the phase referenced in `.id`.",
           "type": "string",
           "minLength": 1
         }
@@ -1988,14 +1988,14 @@
       "type": "object",
       "properties": {
         "href": {
-          "title": "Link target",
+          "title": "Target",
           "description": "The URL of this related resource.",
           "format": "iri",
           "type": "string",
           "$comment": ""
         },
         "rel": {
-          "title": "Link relation type",
+          "title": "Relation type",
           "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype). The 'describedby' code must only be used in the first item in the `links` array to link to the schema that describes the structure of the data.",
           "type": "string",
           "codelist": "linkRelationType.csv",
@@ -2016,7 +2016,7 @@
       "type": "object",
       "properties": {
         "fibreSubtype": {
-          "title": "Fibre subtype",
+          "title": "Subtype",
           "description": "The sub-category of the fibre type. For example, G.652.B.",
           "type": "string",
           "minLength": 1
