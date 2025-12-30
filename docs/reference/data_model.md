@@ -2,19 +2,25 @@
 
 # Data model
 
-OFDS defines a data model for describing a fibre network. The data model is a logical model that defines the entities, attributes and relationships needed to describe a fibre network. This page defines the data model without reference to its representation in a particular data format. It provides an [overview](#overview) of the data model and [reference tables](#entities) for each entity.
+The OFDS data model is a logical model that sets out the entities, attributes and relationships needed to describe a fibre network, without specifying how to represent them in a particular data format. This page provides an [overview](#overview) of the data model and [reference tables](#entities) for each entity.
 
+```{seealso}
 OFDS also defines standardised representations of the data model in different [data formats](publication_formats/index.md), which can be used to store, publish or exchange OFDS data.
+```
 
 ## Overview
 
-The following diagram provides an overview of the key entities and relationships in the OFDS data model:
+The following diagram provides an overview of the key entities and relationships in the OFDS data model.
 
 ```{mermaid} data_model.mmd
 :zoom:
 ```
 
-The network entity is omitted from the diagram for brevity. However, all entities in the data model are associated with a network.
+<br>The network entity is omitted from the diagram for brevity. However, all entities in the data model are associated with a network.
+
+```{seealso}
+For an introduction to key concepts and relationships covered in the OFDS data model, read the [scope, focus and key concepts primer](../primer/scopeandkeyconcepts.md).
+```
 
 ## Entities
 
