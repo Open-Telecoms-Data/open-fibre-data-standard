@@ -23,7 +23,7 @@
     },
     "nodes": {
       "title": "Nodes",
-      "description": "Information about the nodes that belong to this network. Information about nodes should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk nodes file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated nodes endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
+      "description": "The nodes that belong to this network.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Node"
@@ -33,7 +33,7 @@
     },
     "spans": {
       "title": "Spans",
-      "description": "Information about the spans that belong to this network. Information about spans should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk spans file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated spans endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
+      "description": "The spans that belong to this network.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Span"
@@ -43,7 +43,7 @@
     },
     "phases": {
       "title": "Phases",
-      "description": "Information about the phases in which this network is deployed.",
+      "description": "The phases in which this network was, or will be, deployed.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Phase"
@@ -53,7 +53,7 @@
     },
     "organisations": {
       "title": "Organisations",
-      "description": "Information about the organisations involved in this network. Organisation references elsewhere in the schema are used to refer back to this entries in this list.",
+      "description": "The organisations involved in this network.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Organisation"
@@ -63,7 +63,7 @@
     },
     "contracts": {
       "title": "Contracts",
-      "description": "Information about contracts related to this network.",
+      "description": "Contracts related to this network.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Contract"
@@ -328,13 +328,13 @@
         },
         "start": {
           "title": "Start",
-          "description": "The identifier of one of two nodes that this span connects. It must match the identifier of a node. If the span is directed, it represents the starting point of the span.",
+          "description": "The identifier of one of two nodes that this span connects. If the span is directed, it represents the starting point of the span.",
           "type": "string",
           "minLength": 1
         },
         "end": {
           "title": "End",
-          "description": "The identifier of one of two nodes that this span connects. It must match the identifier of a node. If the span is directed, it represents the end point of the span.",
+          "description": "The identifier of one of two nodes that this span connects. If the span is directed, it represents the end point of the span.",
           "type": "string",
           "minLength": 1
         },
@@ -778,7 +778,7 @@
         },
         "funders": {
           "title": "Funders",
-          "description": "Information about the organisations that provide financing for the development or operation of this phase, also known as investors or financers.",
+          "description": "The organisations that provide financing for the development or operation of this phase, also known as investors or financers.",
           "type": "array",
           "items": {
             "$ref": "#/$defs/OrganisationReference"
