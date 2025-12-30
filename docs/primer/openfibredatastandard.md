@@ -91,4 +91,4 @@ The following example shows OFDS data containing a single network in CSV format.
 
 ::::
 
-To learn more about the use cases for each format, read the [guidance on how to format data for publication](../guidance/publication.md#how-to-format-data-for-publication). For details of the structure of the OFDS schema, read the [schema reference](../reference/schema.md). For details of the rules and specifications for publishing OFDS data in each format, read the [publication formats reference](../reference/publication_formats/index.md).
+To learn more about the use cases for each format, read the [guidance on how to format data for publication](../guidance/publication.md#how-to-format-data-for-publication). For details of the structure of the OFDS data model, read the [data model reference](../reference/data_model.md). For details of the data formats for publishing, storing or exchanging OFDS data in each format, read the [publication formats reference](../reference/publication_formats/index.md).

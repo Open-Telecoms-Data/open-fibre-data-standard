@@ -1,6 +1,6 @@
 # GeoPackage
 
-This page describes a standardised representation of the [OFDS data model](../schema.md) as a [GeoPackage](https://www.geopackage.org/). A GeoPackage is a [SQLite](https://sqlite.org/) database. This page provides an [overview](#overview) of the structure of an OFDS GeoPackage, and detailed [definitions](#table-definitions) for each of the tables in the database.
+This page describes a standardised representation of the [OFDS data model](../data_model.md) as a [GeoPackage](https://www.geopackage.org/). A GeoPackage is a [SQLite](https://sqlite.org/) database. This page provides an [overview](#overview) of the structure of an OFDS GeoPackage, and detailed [definitions](#table-definitions) for each of the tables in the database.
 
 The OFDS GeoPackage format is based on [GeoPackage 1.4.0](https://www.geopackage.org/spec140/), including the [GeoPackage Schema Extension](https://www.geopackage.org/spec140/#extension_schema) and [GeoPackage Related Tables Extension](https://docs.ogc.org/is/18-000/18-000.html).
 
@@ -28,7 +28,7 @@ Nodes and spans are represented as features in [Vector Feature User Data Tables]
 :animate: fade-in-slide-down
 :chevron: down-up
 
-[Nodes](../schema.md#node) are spatial entities with a Point geometry so they are represented as spatial features in the [`nodes` vector feature user data table](#nodes).
+[Nodes](../data_model.md#node) are spatial entities with a Point geometry so they are represented as spatial features in the [`nodes` vector feature user data table](#nodes).
 
 Node geometries are stored in the `geom` column of the `nodes` table in [GeoPackage SQL Geometry Binary Format](https://www.geopackage.org/spec140/#gpb_spec). Node attributes are stored in the other columns of the `nodes` table.
 
@@ -60,7 +60,7 @@ Non-spatial entities, such as organisations, are represented as non-spatial attr
 :animate: fade-in-slide-down
 :chevron: down-up
 
-[Organisations](../schema.md#organisation) are non-spatial entities (they have no associated geometry) so they are represented as non-spatial attribute sets in the [`organisations` attributes user data table](#organisations).
+[Organisations](../data_model.md#organisation) are non-spatial entities (they have no associated geometry) so they are represented as non-spatial attribute sets in the [`organisations` attributes user data table](#organisations).
 
 ```{card} Attributes
 
@@ -72,7 +72,7 @@ id | name | country | website
 
 ### One-to-many relationships
 
-One-to-many (1:N) relationships between entities in the OFDS data model, such as a [network](../schema.md#network) with many [nodes](../schema.md#node), are represented as [foreign key](https://en.wikipedia.org/wiki/Foreign_key) relationships. Attributes of type array in the OFDS data model, such as a [span](../schema.md#span)'s transmission medium are also represented as foreign key relationships.
+One-to-many (1:N) relationships between entities in the OFDS data model, such as a [network](../data_model.md#network) with many [nodes](../data_model.md#node), are represented as [foreign key](https://en.wikipedia.org/wiki/Foreign_key) relationships. Attributes of type array in the OFDS data model, such as a [span](../data_model.md#span)'s transmission medium are also represented as foreign key relationships.
 
 
 ````{dropdown} Example: Networks and nodes
@@ -117,7 +117,7 @@ Many-to-many (M:N) relationships, such as a node with many network providers, ar
 :animate: fade-in-slide-down
 :chevron: down-up
 
-The M:N relationship between a [node](../schema.md#node) and the organisations that operate active network infrastructure located at the node is represented by the `relation_nodes_networkProviders` user-defined mapping table.
+The M:N relationship between a [node](../data_model.md#node) and the organisations that operate active network infrastructure located at the node is represented by the `relation_nodes_networkProviders` user-defined mapping table.
 
 The mapping table relates records in the [`nodes` table](#nodes) to records in the [`organisations` table](#organisations).
 

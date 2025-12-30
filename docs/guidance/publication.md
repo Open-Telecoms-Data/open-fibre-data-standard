@@ -30,7 +30,7 @@ There are many [use cases](../primer/openfibredata.md#why-publish-open-fibre-dat
 
 #### Decide what data to publish
 
-Bearing in mind your priority use cases, you ought to review the OFDS [schema](../reference/schema.md) and decide which fields you want to publish.
+Bearing in mind your priority use cases, you ought to review the OFDS [data model](../reference/data_model.md) and decide which fields you want to publish.
 
 OFDS is designed for the public disclosure of open data. However, you can also use it to structure data that you want to share only with specific partners and data that you want to keep within your own organisation. As such, this step can involve deciding which fields to make public, which to share with partners and which to keep private.
 
@@ -48,7 +48,7 @@ The prepare phase covers mapping your data to OFDS, collecting missing data and 
 
 #### Map your data to OFDS
 
-Once you have identified your data sources, you ought to map your data to the OFDS schema, that is, identify which data elements within your data sources match which OFDS [fields](../reference/schema.md) and [codes](../reference/codelists.md). If there are data elements that you want to publish but for which you cannot identify a suitable mapping, you can [add additional fields](#how-to-add-additional-fields) to your OFDS data.
+Once you have identified your data sources, you ought to map your data to the OFDS schema, that is, identify which data elements within your data sources match which OFDS [attributes](../reference/data_model.md) and [codes](../reference/codelists.md). If there are data elements that you want to publish but for which you cannot identify a suitable mapping, you can [add additional fields](#how-to-add-additional-fields) to your OFDS data.
 
 Your mapping acts as a blueprint for preparing your data. It will help you to identify the steps involved in converting your data to OFDS format.
 
@@ -104,7 +104,7 @@ If you’re concerned about disclosing the exact location of fibre infrastructur
 
 ### How to add additional fields
 
-The OFDS schema does not restrict the use of additional fields, except where noted in the [schema reference](../reference/schema.md). If there is a data element that you wish to publish for which you cannot identify a suitable mapping in OFDS, you can add an additional field to your data.
+The OFDS schema does not restrict the use of additional fields, except where noted in the [data model reference](../reference/data_model.md). If there is a data element that you wish to publish for which you cannot identify a suitable mapping in OFDS, you can add an additional field to your data.
 
 Before adding an additional field, you ought to search the [standard issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) to see if a similar concept has already been discussed. If there are no existing discussions, you ought to open a new issue and describe the concept that you want to publish and your proposed modelling.
 
@@ -114,7 +114,7 @@ If you add an additional field, you ought to describe its structure, format and 
 
 OFDS data can be published in three [publication formats](../reference/publication_formats/index.md):
 
-- The [JSON format](../reference/publication_formats/json.md) reflects the structure of the [schema](../reference/schema.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
+- The [JSON format](../reference/publication_formats/json.md) reflects the structure of the [data model](../reference/data_model.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
 - The [GeoJSON format](../reference/publication_formats/geojson.md) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
 - The [CSV format](../reference/publication_formats/csv.md) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to users who want to explore the data in spreadsheet tools.
 
@@ -210,7 +210,7 @@ The following example shows the response returned by the spans endpoint with URL
 
 ##### Streaming
 
-The preferred approach is to publish embedded nodes and spans. If your network is too large to load into memory, you ought to use `.links` to reference separate files for nodes and spans. Each file ought to be formatted as a [JSON Lines](https://jsonlines.org/) file in which each line is a valid [`Node`](../reference/schema.md#node) or [`Span`](../reference/schema.md#span), respectively.
+The preferred approach is to publish embedded nodes and spans. If your network is too large to load into memory, you ought to use `.links` to reference separate files for nodes and spans. Each file ought to be formatted as a [JSON Lines](https://jsonlines.org/) file in which each line is a valid [`Node`](../reference/publication_formats/json.md#node) or [`Span`](../reference/publication_formats/json.md#span), respectively.
 
 ::::{tab-set}
 

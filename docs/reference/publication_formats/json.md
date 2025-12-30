@@ -2,7 +2,7 @@
 
 # JSON
 
-This page describes how to represent the [OFDS data model](../schema.md) as [JSON](https://www.json.org) data. It describes the [containers](#containers) for publishing data in JSON format, and it describes the [schema for a network object](#network-object-schema).
+This page describes how to represent the [OFDS data model](../data_model.md) as [JSON](https://www.json.org) data. It describes the [containers](#containers) for publishing data in JSON format, and it describes the [schema for a network object](#network-object-schema).
 
 ## Containers
 
@@ -20,7 +20,7 @@ For this version of OFDS, the canonical URL of the schema is [https://raw.github
 
 This page presents the schema in an interactive browser. You can also download the canonical version of the schema as [JSON Schema](../../../schema/network-package-schema.json).
 
-A network package is a JSON object that must include `.networks`: an array of `Network` objects as described by the [network schema](../schema.md). For data published via a paginated API, the optional `.links` object should be used to provide URLs for the next and previous pages of results.
+A network package is a JSON object that must include `.networks`: an array of `Network` objects as described by the [network object schema](#network-object-schema). For data published via a paginated API, the optional `.links` object should be used to provide URLs for the next and previous pages of results.
 
 ::::{tab-set}
 
@@ -57,7 +57,7 @@ The following example shows a network package containing two networks with URLs 
 
 The streaming option describes how to package multiple JSON-format networks with support for streaming. You should only use this option if your data is too large to load into memory.
 
-The streaming option is a [JSON Lines](https://jsonlines.org/) file in which each line is a valid OFDS network, as described by the [network schema](../schema.md).
+The streaming option is a [JSON Lines](https://jsonlines.org/) file in which each line is a valid OFDS network, as described by the [network object schema](#network-object-schema).
 
 The following example shows a JSON Lines file containing two networks:
 

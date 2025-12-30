@@ -22,8 +22,6 @@ Publishers must use the codes in the codelists, unless no code is appropriate. I
 If you use new codes outside those in an open codelist, please create an issue in the [OFDS GitHub repository](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues), so that the codes can be considered for inclusion in the codelist.
 ```
 
-The [schema](schema.md) has a `codelist` property to indicate the CSV file that defines the codes in the codelist (shown as tables below). It also has an `openCodelist` property, to indicate whether the codelist is open or closed.
-
 Codes are case-sensitive, and are generally provided as English language camelCase. Codes must not be translated.
 
 ## Open codelists
@@ -303,3 +301,4 @@ This codelist has the following codes:
 :widths: auto
 :file: ../../codelists/closed/transmissionMedium.csv
 ```
+

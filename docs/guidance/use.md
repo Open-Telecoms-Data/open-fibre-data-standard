@@ -24,7 +24,7 @@ To explore the example file:
 
 1. Clone the [OFDS GitHub repository](https://github.com/Open-Telecoms-Data/open-fibre-data-standard).
 1. Open `examples/qgis/geojson.qgs` in QGIS.
-1. Explore the [attribute table](https://docs.qgis.org/3.22/en/docs/user_manual/working_with_vector/attribute_table.html) for the nodes and spans layers and use the [schema reference](../reference/schema.md) to look up the meaning of each attribute.
+1. Explore the [attribute table](https://docs.qgis.org/3.22/en/docs/user_manual/working_with_vector/attribute_table.html) for the nodes and spans layers and use the [data model](../reference/data_model.md) to look up the meaning of each attribute.
 
 Alternatively, you can download the [example QGIS file](../../examples/qgis/geojson.qgs) and the example [nodes.geojson](../../examples/geojson/nodes.geojson) and [spans.geojson](../../examples/geojson/spans.geojson) files separately. However, when you open the example QGIS file you will need to use the [Handle Unavailable Layers](https://docs.qgis.org/3.22/en/docs/user_manual/introduction/project_files.html#handling-broken-file-paths) dialog to locate the nodes and spans files.
 
