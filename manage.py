@@ -613,7 +613,7 @@ def export_metadata_to_csv(gpkg_path, output_dir="schema/geopackage"):
                 codelist_name = table_name.split("_")[-1]
                 codelist_tables.append({
                     "Table": f"`{table_name}`",
-                    "Codelist": f"[{codelist_name}](../codelists.md#{codelist_name.lower()})"
+                    "Codelist": f"[{codelist_name}](../../codelists.md#{codelist_name.lower()})"
                 })
             elif table_name.startswith("relation"):
                 mapping_tables.append({
@@ -702,7 +702,7 @@ def pre_commit():
     export_metadata_to_csv("schema/geopackage/network-schema.gpkg", "schema/geopackage/table_definitions")
 
     # Generate diagram from GeoPackage
-    subprocess.run(["mermerd", "--runConfig", "docs/reference/publication_formats/geopackage.yaml"])
+    subprocess.run(["mermerd", "--runConfig", "docs/reference/publication_formats/geopackage/geopackage.yaml"])
 
     # Add style config to diagram and remove non-key attributes
     with open("docs/reference/publication_formats/geopackage.mmd", 'r') as f:

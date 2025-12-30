@@ -16,10 +16,10 @@ OFDS data must be published using at least one of the formats described in this 
 .. toctree::
    :maxdepth: 1
    
-   json
+   json/index.md
    geojson
    csv
-   geopackage
+   geopackage/index.md
 ```
 
 Each format provides containers for publishing one or more networks and options to support pagination and streaming.

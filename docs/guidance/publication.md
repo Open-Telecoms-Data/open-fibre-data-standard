@@ -114,7 +114,7 @@ If you add an additional field, you ought to describe its structure, format and 
 
 OFDS data can be published in three [publication formats](../reference/publication_formats/index.md):
 
-- The [JSON format](../reference/publication_formats/json.md) reflects the structure of the [data model](../reference/data_model.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
+- The [JSON format](../reference/publication_formats/json/index.md) reflects the structure of the [data model](../reference/data_model.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
 - The [GeoJSON format](../reference/publication_formats/geojson.md) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
 - The [CSV format](../reference/publication_formats/csv.md) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to users who want to explore the data in spreadsheet tools.
 
@@ -140,7 +140,7 @@ To convert data to CSV format:
 
 - [Install Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/getting-started/#getting-started)
 - Download the [network schema](../../schema/network-schema.json)
-- If your data is a [JSON Lines file](../reference/publication_formats/json.md#streaming-container), segment it into appropriately sized [network packages](../reference/publication_formats/json.md#small-files-and-api-responses-container)
+- If your data is a [JSON Lines file](../reference/publication_formats/json/containers.md#streaming-container), segment it into appropriately sized [network packages](../reference/publication_formats/json/containers.md#small-files-and-api-responses-container)
 - Run the following command for each network package:
 
 ```bash
@@ -160,7 +160,7 @@ This section describes how to:
 
 For information on how to use pagination and streaming to publish **multiple** networks, see the [publication formats reference](../reference/publication_formats/index.md).
 
-This guidance is applicable to the [JSON publication format](../reference/publication_formats/json.md), for information on pagination and streaming for the GeoJSON format see the [GeoJSON publication format reference](../reference/publication_formats/geojson.md).
+This guidance is applicable to the [JSON publication format](../reference/publication_formats/json/index.md), for information on pagination and streaming for the GeoJSON format see the [GeoJSON publication format reference](../reference/publication_formats/geojson.md).
 
 ##### Pagination
 
@@ -210,7 +210,7 @@ The following example shows the response returned by the spans endpoint with URL
 
 ##### Streaming
 
-The preferred approach is to publish embedded nodes and spans. If your network is too large to load into memory, you ought to use `.links` to reference separate files for nodes and spans. Each file ought to be formatted as a [JSON Lines](https://jsonlines.org/) file in which each line is a valid [`Node`](../reference/publication_formats/json.md#node) or [`Span`](../reference/publication_formats/json.md#span), respectively.
+The preferred approach is to publish embedded nodes and spans. If your network is too large to load into memory, you ought to use `.links` to reference separate files for nodes and spans. Each file ought to be formatted as a [JSON Lines](https://jsonlines.org/) file in which each line is a valid [`Node`](../reference/publication_formats/json/network_schema.md#node) or [`Span`](../reference/publication_formats/json/network_schema.md#span), respectively.
 
 ::::{tab-set}
 
@@ -325,7 +325,7 @@ Set up error monitoring, so that if a request causes an HTTP 500 Internal Server
 
 ### How to transform coordinates to the correct coordinate reference system
 
-To publish OFDS data, you need to specify coordinates in the `urn:ogc:def:crs:OGC::CRS84` [coordinate reference system](../reference/publication_formats/json.md#coordinatereferencesystem) (CRS). If the coordinates in your data sources are specified in a different CRS, before publishing your data in OFDS format, you first need to transform the coordinates to the correct CRS.
+To publish OFDS data, you need to specify coordinates in the `urn:ogc:def:crs:OGC::CRS84` [coordinate reference system](../reference/publication_formats/json/network_schema.md#coordinate-reference-system) (CRS). If the coordinates in your data sources are specified in a different CRS, before publishing your data in OFDS format, you first need to transform the coordinates to the correct CRS.
 
 If your data pipeline includes a Geographic Information System such as ArcGIS or QGIS, these tools can transform coordinates from one CRS to another. If you are writing your own software, or if you prefer to use the command line, several libraries and tools are available, for example:
 

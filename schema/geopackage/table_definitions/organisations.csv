@@ -1,6 +1,6 @@
 Name,Type,Constraints,Title,Description
 id,INTEGER,PK,,
-ofds_id,TEXT,,Local identifier,A local identifier for this organisation. The identifier must be unique within the scope of the `organisations` array.
+ofds_id,TEXT,,Local identifier,A locally-unique identifier for this organisation.
 name,TEXT,,Name,A name for this organisation.
 identifier__id,TEXT,,Organisation identifier Identifier,An identifier for this organisation. The identifier assigned to the organisation in the register identified in `.scheme`.
 identifier__scheme,INTEGER,FK,Organisation identifier Scheme,"An identifier for this organisation. The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationidentifierscheme)."

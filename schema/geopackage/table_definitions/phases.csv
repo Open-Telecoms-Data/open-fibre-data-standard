@@ -1,6 +1,6 @@
 Name,Type,Constraints,Title,Description
 id,INTEGER,PK,,
-ofds_id,TEXT,,Identifier,An identifier for this phase. The identifier must be unique within the scope of the `phases` array.
+ofds_id,TEXT,,Identifier,A locally-unique identifier for this phase.
 name,TEXT,,Name,A name for this phase.
 description,TEXT,,Description,A description for this phase.
 network_id,INTEGER,FK,Network ID,

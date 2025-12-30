@@ -128,7 +128,7 @@ The organisation identifier scheme codelist uses the codes from [org-id.guide](h
 
 This codelist is referenced by the following properties:
 
-- [`Identifier/scheme`](network-schema.json,/$defs/Identifier,scheme)
+- [`Identifier/scheme`](network-schema.json,/$defs/Organisation,identifier/scheme)
 
 This codelist has the following codes:
 
@@ -196,7 +196,7 @@ The currency codelist uses uppercase 3-letter codes from [ISO4217](https://www.i
 
 This codelist is referenced by the following properties:
 
-- [`Value/currency`](network-schema.json,/$defs/Value,currency)
+- [`Value/currency`](network-schema.json,/$defs/Contract,value/currency)
 
 This codelist has the following codes:
 
