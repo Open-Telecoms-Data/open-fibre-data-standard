@@ -1,6 +1,6 @@
 <!-- docs-type: reference https://diataxis.fr/reference/ -->
 
-# Publication formats reference
+# Data formats
 
 ```{admonition} 0.3.0 release
 Welcome to the Open Fibre Data Standard 0.3.0 release.
@@ -10,7 +10,7 @@ We want to hear your feedback on the standard and its documentation. For general
 To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
 
-OFDS data must be published using at least one of the formats described in this section:
+OFDS defines standardised representations of the [logical data model](../data_model.md) in the following data formats:
 
 ```{eval-rst}
 .. toctree::
@@ -22,6 +22,10 @@ OFDS data must be published using at least one of the formats described in this 
    geopackage/index.md
 ```
 
-Each format provides containers for publishing one or more networks and options to support pagination and streaming.
+Each format provides containers for publishing one or more networks and options to support pagination and streaming, where appropriate.
 
-To support the widest range of use cases, you should publish your data in all three formats. For more information on choosing a publication format and on publishing data in multiple formats, see [how to format data for publication](../../guidance/publication.md#how-to-format-data-for-publication).
+When sharing data publicly, to support the widest range of use cases, you should publish your data in as many formats as possible so that users can access data in their preferred format.
+
+```{seealso}
+For more information on choosing a data format and on publishing data in multiple formats, see [how to format data for publication](../../guidance/publication.md#how-to-format-data-for-publication).
+```

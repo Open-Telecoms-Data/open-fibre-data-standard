@@ -26,6 +26,8 @@ The [publication formats reference](publication_formats/index.md) is the canonic
    
    data_model
    codelists
-   publication_formats/index.md
    identifiers
+   crs
+   publication_formats/index.md
+
 ```

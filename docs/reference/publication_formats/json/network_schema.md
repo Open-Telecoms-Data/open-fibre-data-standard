@@ -1,10 +1,10 @@
 # Network schema
 
-The network schema provides the authoritative definition of the structure of a network object, the meaning of each field, and the rules that must be followed to represent the OFDS data model as JSON data. It is used to validate the structure and format of OFDS JSON data.
+The network schema provides the authoritative definition of the structure of a network object, the meaning of each property, and the rules that must be followed to represent the OFDS data model as JSON data. The schema is used to validate the structure and format of OFDS JSON data.
 
 ```{note}
 
-Use the canonical schema URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested:
+Use the canonical schema URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested. The canonical URL for version 0.3.0 is:
 
 [https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0\_\_3\_\_0/schema/network-schema.json](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__0/schema/network-schema.json)
 
@@ -18,21 +18,23 @@ This page presents the schema in an [interactive browser](#browser) and in [refe
 
 ## Browser
 
-Click on schema elements to expand the tree, or use the '+' icon to expand all elements. Use { } to view the underlying schema for any section. Required fields are indicated in **bold**.
+Click on schema elements to expand the tree, or use the '+' icon to expand all elements. Use { } to view the underlying schema for any section. Required properties are indicated in **bold**.
 
 <script src="../../_static/docson/widget.js" data-schema="../../../network-schema.json"></script>
 
 ## Reference tables
 
-This section presents each field in the schema in tables with additional information in paragraphs. Required fields are indicated in the **Required** column. For fields that reference sub-schemas, a link is provided to a table with details of the sub-schema.
+This section presents each property in the schema in tables with additional information in paragraphs. Required properties are indicated in the **Required** column. For properties that reference sub-schemas, a link is provided to a table with details of the sub-schema.
 
 ### Network
 
-This section describes the structure of an OFDS network object.
+The top-level object in the network schema is a network, defined as:
 
-#### Properties
+```{jsoninclude-quote} ../../../../schema/network-schema.json
+:jsonpointer: /description
+```
 
-A network object has the following properties:
+A network has the following properties:
 
 ::::{tab-set}
 
@@ -41,6 +43,7 @@ A network object has the following properties:
 ```{jsonschema} ../../../../schema/network-schema.json
 :collapse: nodes,spans,phases,organisations,contracts,links
 :addtargets:
+:prefix: json
 ```
 
 :::
@@ -57,21 +60,6 @@ A network object has the following properties:
 
 ::::
 
-#### Coordinate reference system
-
-Coordinates in all OFDS data must be specified in the coordinate reference system [required by GeoJSON](https://datatracker.ietf.org/doc/html/rfc7946#section-4):
-
-> The coordinate reference system for all GeoJSON coordinates is a geographic coordinate reference system, using the World Geodetic System 1984 [WGS 84](https://datatracker.ietf.org/doc/html/rfc7946#ref-WGS84) datum, with longitude and latitude units of decimal degrees.  This is equivalent to the coordinate reference system identified by the Open Geospatial Consortium (OGC) URN urn:ogc:def:crs:OGC::CRS84.
-
-The `CoordinateReferenceSystem` object references the CRS by `name` and `uri`. Its properties must be set to the following values:
-
-- `name`: urn:ogc:def:crs:OGC::CRS84
-- `uri`: <http://www.opengis.net/def/crs/OGC/1.3/CRS84>
-
-`urn:ogc:def:crs:OGC::CRS84` denotes WGS84 with the order longitude, latitude. It is equivalent to EPSG:4326 with reversed axes.
-
-For more information, see [How to transform coordinates to the correct coordinate reference system](../../../guidance/publication.md#how-to-transform-coordinates-to-the-correct-coordinate-reference-system).
-
 ### Node
 
 `Node` is defined as:
@@ -82,9 +70,9 @@ For more information, see [How to transform coordinates to the correct coordinat
 
 This sub-schema is referenced by the following properties:
 
-- [`nodes`](network-schema.json,,nodes)
+- [`nodes`](json,network-schema.json,,nodes)
 
-Each `Node` has the following fields:
+Each `Node` has the following properties:
 
 ::::{tab-set}
 
@@ -94,6 +82,7 @@ Each `Node` has the following fields:
 :pointer: /$defs/Node
 :collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,physicalInfrastructureProvider,networkProviders
 :addtargets:
+:prefix: json
 ```
 
 :::
@@ -120,9 +109,9 @@ Each `Node` has the following fields:
 
 This sub-schema is referenced by the following properties:
 
-- [`spans`](network-schema.json,,spans)
+- [`spans`](json,network-schema.json,,spans)
 
-Each `Span` has the following fields:
+Each `Span` has the following properties:
 
 ::::{tab-set}
 
@@ -132,6 +121,7 @@ Each `Span` has the following fields:
 :pointer: /$defs/Span
 :collapse: id,name,phase,status,readyForServiceDate,start,end,directed,route,physicalInfrastructureProvider,networkProviders,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
 :addtargets:
+:prefix: json
 ```
 
 :::
@@ -158,9 +148,9 @@ Each `Span` has the following fields:
 
 This sub-schema is referenced by the following properties:
 
-- [`phases`](network-schema.json,,phases)
+- [`phases`](json,network-schema.json,,phases)
 
-Each `Phase` has the following fields:
+Each `Phase` has the following properties:
 
 ::::{tab-set}
 
@@ -170,6 +160,7 @@ Each `Phase` has the following fields:
 :pointer: /$defs/Phase
 :collapse: id,name,description,funders
 :addtargets:
+:prefix: json
 ```
 
 :::
@@ -196,9 +187,9 @@ Each `Phase` has the following fields:
 
 This sub-schema is referenced by the following properties:
 
-- [`organisations`](network-schema.json,,organisations)
+- [`organisations`](json,network-schema.json,,organisations)
 
-Each `Organisation` has the following fields:
+Each `Organisation` has the following properties:
 
 ::::{tab-set}
 
@@ -208,6 +199,7 @@ Each `Organisation` has the following fields:
 :pointer: /$defs/Organisation
 :collapse: id,name,country,roles,roleDetails,website,logo
 :addtargets:
+:prefix: json
 ```
 
 :::
@@ -234,9 +226,9 @@ Each `Organisation` has the following fields:
 
 This sub-schema is referenced by the following properties:
 
-- [`contracts`](network-schema.json,,contracts)
+- [`contracts`](json,network-schema.json,,contracts)
 
-Each `Contract` has the following fields:
+Each `Contract` has the following properties:
 
 ::::{tab-set}
 
@@ -246,6 +238,7 @@ Each `Contract` has the following fields:
 :pointer: /$defs/Contract
 :collapse: id,title,description,type,dateSigned,documents,relatedPhases
 :addtargets:
+:prefix: json
 ```
 
 :::
@@ -276,12 +269,12 @@ This section lists each sub-schema in the OFDS schema. Sub-schemas are reused in
 
 This sub-schema is referenced by the following properties:
 
-- [`Node/location`](network-schema.json,/$defs/Node,location)
-- [`Span/route`](network-schema.json,/$defs/Span,route)
+- [`Node/location`](json,network-schema.json,/$defs/Node,location)
+- [`Span/route`](json,network-schema.json,/$defs/Span,route)
 
 Additional properties are not permitted within `Geometry` objects.
 
-Each `Geometry` has the following fields:
+Each `Geometry` has the following properties:
 
 ::::{tab-set}
 
@@ -291,6 +284,7 @@ Each `Geometry` has the following fields:
 :pointer: /$defs/Geometry
 :collapse: type,coordinates
 :addtargets:
+:prefix: json
 ```
 
 :::
@@ -323,14 +317,14 @@ Each `Geometry` has the following fields:
 
 This sub-schema is referenced by the following properties:
 
-- [`Node/physicalInfrastructureProvider`](network-schema.json,/$defs/Node,physicalInfrastructureProvider)
-- [`Node/networkProviders`](network-schema.json,/$defs/Node,networkProviders)
-- [`Span/physicalInfrastructureProvider`](network-schema.json,/$defs/Span,physicalInfrastructureProvider)
-- [`Span/networkProviders`](network-schema.json,/$defs/Span,networkProviders)
-- [`Span/supplier`](network-schema.json,/$defs/Span,supplier)
-- [`Phase/funders`](network-schema.json,/$defs/Phase,funders)
+- [`Node/physicalInfrastructureProvider`](json,network-schema.json,/$defs/Node,physicalInfrastructureProvider)
+- [`Node/networkProviders`](json,network-schema.json,/$defs/Node,networkProviders)
+- [`Span/physicalInfrastructureProvider`](json,network-schema.json,/$defs/Span,physicalInfrastructureProvider)
+- [`Span/networkProviders`](json,network-schema.json,/$defs/Span,networkProviders)
+- [`Span/supplier`](json,network-schema.json,/$defs/Span,supplier)
+- [`Phase/funders`](json,network-schema.json,/$defs/Phase,funders)
 
-Each `OrganisationReference` has the following fields:
+Each `OrganisationReference` has the following properties:
 
 ::::{tab-set}
 
@@ -340,6 +334,7 @@ Each `OrganisationReference` has the following fields:
 :pointer: /$defs/OrganisationReference
 :collapse: id,name
 :addtargets:
+:prefix: json
 ```
 
 :::
@@ -396,11 +391,11 @@ Each `OrganisationReference` has the following fields:
 
 This sub-schema is referenced by the following properties:
 
-- [`Node/phase`](network-schema.json,/$defs/Node,phase)
-- [`Span/phase`](network-schema.json,/$defs/Span,phase)
-- [`Contract/relatedPhases`](network-schema.json,/$defs/Contract,relatedPhases)
+- [`Node/phase`](json,network-schema.json,/$defs/Node,phase)
+- [`Span/phase`](json,network-schema.json,/$defs/Span,phase)
+- [`Contract/relatedPhases`](json,network-schema.json,/$defs/Contract,relatedPhases)
 
-Each `PhaseReference` has the following fields:
+Each `PhaseReference` has the following properties:
 
 ::::{tab-set}
 
@@ -410,6 +405,7 @@ Each `PhaseReference` has the following fields:
 :pointer: /$defs/PhaseReference
 :collapse: id,name
 :addtargets:
+:prefix: json
 ```
 
 :::
@@ -448,10 +444,10 @@ Each `PhaseReference` has the following fields:
 
 This sub-schema is referenced by the following properties:
 
-- [`Node/address`](network-schema.json,/$defs/Node,address)
-- [`Node/internationalConnections`](network-schema.json,/$defs/Node,internationalConnections)
+- [`Node/address`](json,network-schema.json,/$defs/Node,address)
+- [`Node/internationalConnections`](json,network-schema.json,/$defs/Node,internationalConnections)
 
-Each `Address` has the following fields:
+Each `Address` has the following properties:
 
 ::::{tab-set}
 
@@ -461,6 +457,7 @@ Each `Address` has the following fields:
 :pointer: /$defs/Address
 :collapse: streetAddress,locality,region,postalCode,country
 :addtargets:
+:prefix: json
 ```
 
 :::
@@ -493,9 +490,9 @@ Each `Address` has the following fields:
 
 This sub-schema is referenced by the following properties:
 
-- [`Contract/documents`](network-schema.json,/$defs/Contract,documents)
+- [`Contract/documents`](json,network-schema.json,/$defs/Contract,documents)
 
-Each `Document` has the following fields:
+Each `Document` has the following properties:
 
 ::::{tab-set}
 
@@ -505,6 +502,7 @@ Each `Document` has the following fields:
 :pointer: /$defs/Document
 :collapse: title,description,url,format
 :addtargets:
+:prefix: json
 ```
 
 :::
@@ -531,9 +529,9 @@ Each `Document` has the following fields:
 
 This sub-schema is referenced by the following properties:
 
-- [`links`](network-schema.json,,links)
+- [`links`](json,network-schema.json,,links)
 
-Each `Link` has the following fields:
+Each `Link` has the following properties:
 
 ::::{tab-set}
 
@@ -543,6 +541,7 @@ Each `Link` has the following fields:
 :pointer: /$defs/Link
 :collapse: href,rel
 :addtargets:
+:prefix: json
 ```
 
 :::

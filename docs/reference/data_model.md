@@ -86,8 +86,10 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :icon: rows
 
 ```{jsonschema} ../../schema/network-schema.json
-:include: id,name,website
+:include: id,name,website,language
 :nocrossref:
+:addtargets:
+:prefix: data_model
 ```
 
 ````
@@ -146,6 +148,8 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :pointer: /$defs/Phase
 :include: id,name,description
 :nocrossref:
+:addtargets:
+:prefix: data_model
 ```
 
 ````
@@ -209,6 +213,8 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :include: id,name,status,location,address/streetAddress,address/locality,address/region,address/postalCode,address/country,type,accessPoint,power,technologies,internationalConnections
 :collapse: location,internationalConnections
 :nocrossref:
+:addtargets:
+:prefix: data_model
 ```
 
 ````
@@ -281,9 +287,11 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /$defs/Span
-:include: id,name,status,readyForServiceDate,directed,route,transmissionMedium,deploymentDetails/description,darkFibre,fibreType,fibreTypeDetails/fibreSubtype,fibreTypeDetails/description,fibreCount,fibreLength,technologies,capacity,capacityDetails/description,countries
+:include: id,name,status,readyForServiceDate,directed,route,transmissionMedium,deployment,deploymentDetails/description,darkFibre,fibreType,fibreTypeDetails/fibreSubtype,fibreTypeDetails/description,fibreCount,fibreLength,technologies,capacity,capacityDetails/description,countries
 :collapse: route
 :nocrossref:
+:addtargets:
+:prefix: data_model
 ```
 
 ````
@@ -346,6 +354,8 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :pointer: /$defs/Organisation
 :include: id,name,identifier/id,identifier/scheme,identifier/legalName,identifier/uri,country,roles,roleDetails,website,logo
 :nocrossref:
+:addtargets:
+:prefix: data_model
 ```
 
 ````
@@ -395,6 +405,8 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :pointer: /$defs/Contract
 :include: id,title,description,type,value/amount,value/currency,dateSigned
 :nocrossref:
+:addtargets:
+:prefix: data_model
 ```
 
 ````
@@ -441,6 +453,8 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /$defs/Document
 :nocrossref:
+:addtargets:
+:prefix: data_model
 ```
 
 ````
