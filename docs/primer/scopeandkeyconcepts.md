@@ -13,7 +13,7 @@ OFDS provides a geospatial data model for describing fibre optic broadband netwo
 :padding: 0
 
 ```{grid-item}
-To illustrate the scope and focus of OFDS, consider the three-layers that make up the broadband network value chain:
+To illustrate the scope and focus of OFDS, consider the three layers that make up the broadband network value chain:
 
 * The **services** consumed by end-users, such as internet, TV and telephony.
 * The **active infrastructure** over which services are delivered, consisting of electrical elements, such as lit fibre, access node switches and broadband remote access servers.
@@ -149,7 +149,7 @@ The following example shows how the different organisation roles are modelled as
 :animate: fade-in-slide-down
 :chevron: down-up
 
-In this example, a municipal council owns the duct through which fibre is deployed by a network operator named FibreCo. FibreCo operates it's own active infrastructure and leases dark fibre to a second operator named FastNet.
+In this example, a municipal council owns the duct through which fibre is deployed by a network operator named FibreCo. FibreCo operates its own active infrastructure and leases dark fibre to a second operator named FastNet.
 
 ```json
 {
@@ -188,8 +188,8 @@ In addition to the spatial and organisational characteristics of nodes and spans
 
 ```{grid-item-card} Node attributes
 
-* Function within the network (e.g. point of presence, internet exchange point, or add drop site)
-* Whether active or passive transmission equipment which is capable of providing access to the network is installed 
+* Function within the network (e.g. point of presence, internet exchange point, or add-drop site)
+* Whether active or passive transmission equipment, which is capable of providing access to the network, is installed 
 * Whether power for active network equipment is available
 * The active technologies in use (e.g. MPLS)
 * The type of supporting infrastructure (e.g. a building, pole or pylon). 
@@ -202,7 +202,7 @@ In addition to the spatial and organisational characteristics of nodes and spans
 * Fibres count
 * The active technologies in use (e.g. DWDM)
 * The transmission rate of the span
-* That type of supporting infrastructure (e.g. duct, pole or pylon).
+* The type of supporting infrastructure (e.g. duct, pole or pylon).
 
 ```
 
