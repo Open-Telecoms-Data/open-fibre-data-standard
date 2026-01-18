@@ -14,7 +14,7 @@ You can explore the structure of the OFDS GeoPackage template in common GIS tool
 
 ## Overview
 
-The following diagram illustrates how the main entities and relationships in the OFDS data model are represented in an OFDS GeoPackage. Features (spatial entities) are coloured yellow, non-spatial entities are coloured blue, and associative tables (M:N relationships) are coloured grey.
+The following diagram illustrates how the main entities and relationships in the OFDS data model are represented in an OFDS GeoPackage. Features (spatial entities) are coloured yellow, non-spatial entities are coloured blue, and associative tables (M:N relationships) are coloured grey. Only primary and foreign keys are shown in the diagram. For a complete description of the columns in each table, refer to the [table definitions](#table-definitions).
 
 ```{mermaid} geopackage.mmd
 :zoom:
