@@ -10,7 +10,7 @@ We want to hear your feedback on the standard and its documentation. For general
 To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
 
-OFDS defines standardised representations of the [logical data model](../data_model.md) in the following data formats:
+OFDS defines schemas based on the [logical data model](../data_model.md) for publishing, storing and exchanging data in the following formats:
 
 ```{eval-rst}
 .. toctree::
