@@ -1,6 +1,6 @@
 # Network schema
 
-The network schema provides the authoritative definition of the structure of a network object, the meaning of each property, and the rules that must be followed to represent the OFDS data model as JSON data. The schema is used to validate the structure and format of OFDS JSON data.
+The network schema provides the authoritative definition of the structure of a network object, the meaning of each property, and the rules that must be followed to publish, store or exchange data that conforms to the OFDS data model as JSON data. The schema is used to validate the structure and format of OFDS JSON data.
 
 ```{note}
 
