@@ -16,8 +16,6 @@ The following diagram provides an overview of the key entities and relationships
 :zoom:
 ```
 
-<br>The network entity is omitted from the diagram for brevity. However, all entities in the data model are associated with a network.
-
 ```{seealso}
 For an introduction to key concepts and relationships covered in the OFDS data model, read the [scope, focus and key concepts primer](../primer/scopeandkeyconcepts.md).
 ```
@@ -64,16 +62,6 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
    - 1:N
    - ```{jsoninclude-quote} ../../schema/network-schema.json
       :jsonpointer: /properties/phases/description
-      ```
-*  - [Organisation](#organisation)
-   - 1:N
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
-      :jsonpointer: /properties/organisations/description
-      ```
-*  - [Contract](#contract)
-   - 1:N
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
-      :jsonpointer: /properties/contracts/description
       ```
 
 ````
@@ -319,9 +307,6 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 *  - Entity
    - Cardinality
    - Description
-*  - [Network](#network)
-   - N:1
-   -
 *  - [Phase](#phase)
    - N:1
    - 
@@ -383,9 +368,6 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 *  - Entity
    - Cardinality
    - Description
-*  - [Network](#network)
-   - N:1
-   -
 *  - [Phase](#phase)
    - 1:N
    - ```{jsoninclude-quote} ../../schema/network-schema.json
@@ -434,9 +416,6 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 *  - Entity
    - Cardinality
    - Description
-*  - [Network](#network)
-   - N:1
-   -
 *  - [Contract](#contract)
    - N:1
    -

@@ -3,6 +3,9 @@ config:
   layout: elk
 ---
 erDiagram
+    Network {
+    }
+    
     Contract {
     }
 
@@ -18,6 +21,9 @@ erDiagram
     Span {
     }
 
+    Network ||--o{ Node : "Consists of"
+    Network ||--o{ Span : "Consists of"
+    Network ||--o{ Phase : "Deployed in"
     Node }o--|| Organisation : "Physical infrastructure owned by"
     Node }o--|| Organisation : "Active infrastructure operated by"
     Node }o--|| Phase : "Deployed in"
@@ -34,5 +40,5 @@ erDiagram
     classDef non-spatial fill:#cec7ffff,stroke:#110e27
 
     class Node,Span spatial
-    class Organisation,Phase,Contract non-spatial
+    class Network,Organisation,Phase,Contract non-spatial
     direction LR
