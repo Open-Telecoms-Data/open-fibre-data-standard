@@ -27,6 +27,19 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#280](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/280) - Reorder codelist codes.
 - [#248](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/282) - Add comments declaring document mode to each markdown file in docs
 
+## 0.4.0 - YYYY-MM-DD
+
+### Schema
+
+- [](<>):
+  - `Span`:
+    - Add `.supportingInfrastructure` object to descibe supporting infrastructure
+    - Replace `.physicalInfrastructureProvider` with `.transmissionMediumOwner` and `.supportingInfrastructure.owner` to distinguish ownership of transmission media and supporting infrastructure.
+  - `Node`:
+    - Add `.supportingInfrastructure` object to descibe supporting infrastructure
+    - Replace `.physicalInfrastructureProvider` with `.transmissionMediumOwner` and `.supportingInfrastructure.owner` to distinguish ownership of transmission media and supporting infrastructure.
+    - Move codes relating to supporting infrastructure from the nodeType codelist to the nodeSupportingInfrastructureType codelist
+
 ## 0.3.0 - 2023-06-29
 
 ### Schema

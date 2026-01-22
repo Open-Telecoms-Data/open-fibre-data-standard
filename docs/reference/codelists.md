@@ -92,6 +92,18 @@ This codelist has the following codes:
 :file: ../../codelists/open/mediaType.csv
 ```
 
+### nodeSupportingInfrastructure
+
+This codelist is referenced by the following properties:
+
+This codelist has the following codes:
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/nodeSupportingInfrastructure.csv
+```
+
 ### nodeTechnologies
 
 The node technologies codelist is used to indicate the technologies used in a node.
@@ -154,6 +166,18 @@ This codelist has the following codes:
 :header-rows: 1
 :widths: auto
 :file: ../../codelists/open/organisationRole.csv
+```
+
+### spanSupportingInfrastructure
+
+This codelist is referenced by the following properties:
+
+This codelist has the following codes:
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/spanSupportingInfrastructure.csv
 ```
 
 ### spanTechnologies

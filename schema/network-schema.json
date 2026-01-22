@@ -224,6 +224,38 @@
           "minItems": 1,
           "uniqueItems": true
         },
+        "supportingInfrastructure": {
+          "title": "Supporting infrastructure",
+          "description": "The infrastructure that supports this node.",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Type",
+              "description": "The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodesupportinginfrastructure).",
+              "type": "string",
+              "minLength": 1,
+              "openCodelist": true,
+              "codelist": "nodeSupportingInfrastructure.csv"
+            },
+            "typeDetails": {
+              "title": "Type details",
+              "description": "Further details about the type of supporting infrastructure.",
+              "type": "string",
+              "minLength": 1
+            },
+            "owner": {
+              "title": "Owner",
+              "description": "The organisation that owns the supporting infrastructure.",
+              "$ref": "#/$defs/OrganisationReference"
+            },
+            "spareCapacity": {
+              "title": "Spare capacity",
+              "description": "Whether the supporting infrastructure has spare capacity for the installation of additional network equipment.",
+              "type": "boolean"
+            }
+          },
+          "minProperties": 1
+        },
         "accessPoint": {
           "title": "Access point",
           "description": "Whether active or passive transmission equipment is installed at this node which is capable of providing access to the network.",
@@ -260,9 +292,9 @@
           "minItems": 1,
           "uniqueItems": true
         },
-        "physicalInfrastructureProvider": {
-          "title": "Physical infrastructure provider",
-          "description": "The organisation that owns the passive network infrastructure for this node, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
+        "transmissionMediumOwner": {
+          "title": "Transmission medium owner",
+          "description": "The organisation that owns the transmission media for this node, i.e. the passive network equipment such as splitters, combiners and fibre distribution panels.",
           "$ref": "#/$defs/OrganisationReference"
         },
         "networkProviders": {
@@ -349,9 +381,9 @@
           "description": "In the [JSON publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/json.html), a GeoJSON [LineString](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the route of this span. In the [CSV publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/csv.html), a [well-known text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) LINESTRING geometry.",
           "$ref": "#/$defs/Geometry"
         },
-        "physicalInfrastructureProvider": {
-          "title": "Physical infrastructure provider",
-          "description": "The organisation that owns the passive network infrastructure for this span, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
+        "transmissionMediumOwner": {
+          "title": "Owner",
+          "description": "The organisation that owns the transmission media for this span, i.e. the fibre cables.",
           "$ref": "#/$defs/OrganisationReference"
         },
         "networkProviders": {
@@ -414,6 +446,38 @@
           "title": "Deployment details",
           "description": "Further details of this span's deployment.",
           "$ref": "#/$defs/DeploymentDetails"
+        },
+        "supportingInfrastructure": {
+          "title": "Supporting infrastructure",
+          "description": "The infrastructure that supports this span.",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Type",
+              "description": "The type of supporting infrastructure, from the open [spanSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spansupportinginfrastructure).",
+              "type": "string",
+              "minLength": 1,
+              "openCodelist": true,
+              "codelist": "spanSupportingInfrastructure.csv"
+            },
+            "typeDetails": {
+              "title": "Type details",
+              "description": "Further details about the type of supporting infrastructure.",
+              "type": "string",
+              "minLength": 1
+            },
+            "owner": {
+              "title": "Owner",
+              "description": "The organisation that owns the supporting infrastructure.",
+              "$ref": "#/$defs/OrganisationReference"
+            },
+            "spareCapacity": {
+              "title": "Spare capacity",
+              "description": "Whether the supporting infrastructure has spare capacity for the installation of additional fibre cables.",
+              "type": "boolean"
+            }
+          },
+          "minProperties": 1
         },
         "darkFibre": {
           "title": "Dark fibre availability",
