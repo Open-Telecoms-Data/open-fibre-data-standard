@@ -31,7 +31,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 ### Schema
 
-- [](<>):
+- [#317](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/317):
   - `Span`:
     - Add `.supportingInfrastructure` object to descibe supporting infrastructure
     - Replace `.physicalInfrastructureProvider` with `.transmissionMediumOwner` and `.supportingInfrastructure.owner` to distinguish ownership of transmission media and supporting infrastructure.
