@@ -624,14 +624,14 @@ def export_metadata_to_csv(gpkg_path, output_dir="schema/geopackage"):
             else:
                 # 3. Write table definition and foreign keys to CSV file
                 output_file = os.path.join(output_dir, f"{table_name}.csv")
-                with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
-                    writer = csv.DictWriter(csvfile, fieldnames=['Name', 'Type', 'Constraints', 'Title', 'Description'])
+                with open(output_file, 'w', encoding='utf-8') as csvfile:
+                    writer = csv.DictWriter(csvfile, fieldnames=['Name', 'Type', 'Constraints', 'Title', 'Description'], lineterminator='\n')
                     writer.writeheader()
                     writer.writerows(metadata_rows)
                 
                 output_file = os.path.join(output_dir, f"{table_name}_fks.csv")
-                with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
-                    writer = csv.DictWriter(csvfile, fieldnames=['Column', 'References'])
+                with open(output_file, 'w', encoding='utf-8') as csvfile:
+                    writer = csv.DictWriter(csvfile, fieldnames=['Column', 'References'], lineterminator='\n')
                     writer.writeheader()
                     writer.writerows(foreign_keys)
               
@@ -640,13 +640,13 @@ def export_metadata_to_csv(gpkg_path, output_dir="schema/geopackage"):
         
         # 4. Write list of codelist tables and mapping tables to CSV file
         output_file = os.path.join(output_dir, "codelist_tables.csv")
-        with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=["Table", "Codelist"])
+        with open(output_file, 'w', encoding='utf-8') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=["Table", "Codelist"], lineterminator='\n')
             writer.writerows(codelist_tables)
 
         output_file = os.path.join(output_dir, "mapping_tables.csv")
-        with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=["Table", "base_id FK", "related_id FK"])
+        with open(output_file, 'w', encoding='utf-8') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=["Table", "base_id FK", "related_id FK"], lineterminator='\n')
             writer.writerows(mapping_tables)
 
         conn.close()
@@ -983,6 +983,21 @@ def update_codelists(ctx):
     ctx.invoke(update_language)
     ctx.invoke(update_media_type)
     ctx.invoke(update_organisation_identifier_scheme)
+
+
+@cli.command()
+@click.argument('filename', type=click.Path(exists=True))
+def format_csv(filename):
+    """
+    Format a CSV file to conform to the requirements of the tests.
+    """
+    with open(filename, 'r') as f:
+        reader = csv.reader(f)
+        data = list(reader)
+    
+    with open(filename, 'w') as f:
+        writer = csv.writer(f, lineterminator='\n')
+        writer.writerows(data)
 
 
 if __name__ == '__main__':
