@@ -1,3 +1,0 @@
-Name,Type,Not Null,Auto Increment,Title,Description,Enum,Reference Table,Reference Column
-base_id,INTEGER,TRUE,TRUE,,,,contracts,id
-related_id,INTEGER,TRUE,TRUE,,,,phases,id

@@ -1,4 +1,0 @@
-Name,Type,Constraints,Title,Description
-id,INTEGER,['PK'],,
-code,TEXT,,Code,Code
-description,TEXT,,Description,Description
