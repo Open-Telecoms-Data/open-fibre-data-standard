@@ -1607,7 +1607,7 @@
     },
     "OrganisationReference": {
       "title": "Organisation reference",
-      "description": "The local identifier and name of the organisation being referenced. Used for cross-referencing.",
+      "description": "The [local identifier](https://standard.ofds.info/en/latest/reference/identifiers.html#local-identifiers) and name of the organisation being referenced. Used for cross-referencing within the dataset.",
       "type": "object",
       "properties": {
         "id": {
