@@ -74,7 +74,6 @@ id | name | country | website
 
 One-to-many (1:N) relationships between entities in the OFDS data model, such as a [network](../../data_model.md#network) with many [nodes](../../data_model.md#node), are represented as [foreign key](https://en.wikipedia.org/wiki/Foreign_key) relationships. Attributes of type array in the OFDS data model, such as a [span](../../data_model.md#span)'s transmission medium are also represented as foreign key relationships.
 
-
 ````{dropdown} Example: Networks and nodes
 :animate: fade-in-slide-down
 :chevron: down-up
@@ -155,7 +154,7 @@ The mapping table relates records in the [`nodes` table](#nodes) to records in t
 
 ### Codelists
 
-Some attributes in the OFDS data model refer to [codelists](../../codelists.md) to limit and standardise the possible values of the attribute. 
+Some attributes in the OFDS data model refer to [codelists](../../codelists.md) to limit and standardise the possible values of the attribute.
 
 The representation of attributes that reference a codelist depends on whether the attribute takes a single value or an array of values from the codelist, and on whether the codelist is closed (i.e. the attributes value must belong to the codelist) or open (i.e. the attribute can take values that do not belong to the codelist):
 

@@ -2,7 +2,7 @@
 
 # JSON
 
-This page describes the schema for publishing, storing or exchanging data that conforms to the [OFDS data model](../../data_model.md)  as [JSON](https://www.json.org) data. It describes the [JSON Schema for a network object](network_schema.md), and the [containers](containers.md) for publishing, storing or exchanging one or more network objects.
+This page describes the schema for publishing, storing or exchanging data that conforms to the [OFDS data model](../../data_model.md) as [JSON](https://www.json.org) data. It describes the [JSON Schema for a network object](network_schema.md), and the [containers](containers.md) for publishing, storing or exchanging one or more network objects.
 
 ```{eval-rst}
 .. toctree::
