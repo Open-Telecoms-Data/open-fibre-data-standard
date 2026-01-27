@@ -1,6 +1,6 @@
-Code,Title,Description,Source
-duct,Duct,"A protective and hollow pipe or conduit used to house, organise and shield fibre optic cables from environmental hazards and mechanical damage. For example, a rigid PVC-U outer protective duct, a multi-way air-blown fibre duct, or a multi-apeture microduct bundle.",Original
-none,None,"The transmission medium is directly buried in the ground.",Original
-pipe,Pipe,"A tube used to convey water, gas, oil, or other fluid substances.",Oxford English Dictionary
-pole,Pole,A support commonly used to carry aerial fibre optic cables or for joint use with electrical power cables in distribution/middle-mile networks.,Adapted from the [ITU-T recommendation ITU-T L.330 (10/2020)](https://www.itu.int/myworkspace/rec-external/item?id=14515) definition
-pylon,Pylon,A tall tower-like structure used for carrying electricity cables high above the ground in transmission/backbone networks. Also known as a transmission tower.,Adapted from the Oxford English Dictionary definition
+Code,Title,Description
+duct,Duct,"A protective and hollow pipe or conduit used to house, organise and shield fibre optic cables from environmental hazards and mechanical damage. For example, a rigid PVC-U outer protective duct, a multi-way air-blown fibre duct, or a multi-apeture microduct bundle."
+none,None,The transmission medium is directly buried in the ground.
+pipe,Pipe,"A tube used to convey water, gas, oil, or other fluid substances."
+pole,Pole,A support commonly used to carry aerial fibre optic cables or for joint use with electrical power cables in distribution/middle-mile networks.
+pylon,Pylon,A tall tower-like structure used for carrying electricity cables high above the ground in transmission/backbone networks. Also known as a transmission tower.
