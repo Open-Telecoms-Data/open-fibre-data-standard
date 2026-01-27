@@ -35,7 +35,8 @@ extensions = [
     'sphinxcontrib.opencontracting',
     'sphinxcontrib.opendataservices',
     'sphinxcontrib.jsonschema',
-    'sphinx_design'
+    'sphinx_design',
+    'sphinxcontrib.mermaid'
 ]
 
 #MyST extenions

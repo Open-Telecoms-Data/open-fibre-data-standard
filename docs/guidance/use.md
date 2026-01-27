@@ -24,7 +24,7 @@ To explore the example file:
 
 1. Clone the [OFDS GitHub repository](https://github.com/Open-Telecoms-Data/open-fibre-data-standard).
 1. Open `examples/qgis/geojson.qgs` in QGIS.
-1. Explore the [attribute table](https://docs.qgis.org/3.22/en/docs/user_manual/working_with_vector/attribute_table.html) for the nodes and spans layers and use the [schema reference](../reference/schema.md) to look up the meaning of each attribute.
+1. Explore the [attribute table](https://docs.qgis.org/3.22/en/docs/user_manual/working_with_vector/attribute_table.html) for the nodes and spans layers and use the [data model](../reference/data_model.md) to look up the meaning of each attribute.
 
 Alternatively, you can download the [example QGIS file](../../examples/qgis/geojson.qgs) and the example [nodes.geojson](../../examples/geojson/nodes.geojson) and [spans.geojson](../../examples/geojson/spans.geojson) files separately. However, when you open the example QGIS file you will need to use the [Handle Unavailable Layers](https://docs.qgis.org/3.22/en/docs/user_manual/introduction/project_files.html#handling-broken-file-paths) dialog to locate the nodes and spans files.
 
@@ -46,7 +46,7 @@ The example Leaflet notebook shows how to use [Python](https://www.python.org/),
 
 ### How to plot coordinates accurately
 
-Coordinates in OFDS data are specified in the `urn:ogc:def:crs:OGC::CRS84` [coordinate reference system](../reference/schema.md#coordinatereferencesystem) (CRS). To create accurate maps, you need need to set the correct coordinate reference system when using OFDS data.
+Coordinates in OFDS data are specified in the `urn:ogc:def:crs:OGC::CRS84` [coordinate reference system](../reference/crs.md) (CRS). To create accurate maps, you need need to set the correct coordinate reference system when using OFDS data.
 
 If you are using OFDS data published in GeoJSON format, then the tool that you are using is likely to default to the correct CRS because `urn:ogc:def:crs:OGC::CRS84` is the default CRS for GeoJSON data.
 

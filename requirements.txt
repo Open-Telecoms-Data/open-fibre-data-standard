@@ -184,7 +184,9 @@ pytest==8.4.2
 pytz==2025.2
     # via flattentool
 pyyaml==6.0.3
-    # via myst-parser
+    # via
+    #   myst-parser
+    #   sphinxcontrib-mermaid
 referencing==0.36.2
     # via
     #   jsonschema
@@ -227,6 +229,7 @@ sphinx==8.2.3
     #   sphinx-design
     #   sphinx-intl
     #   sphinx-nefertiti
+    #   sphinxcontrib-mermaid
     #   sphinxcontrib-opencontracting
     #   sphinxcontrib-opendataservices
 sphinx-autobuild==2025.8.25
@@ -245,11 +248,13 @@ sphinxcontrib-htmlhelp==2.1.0
     # via sphinx
 sphinxcontrib-jsmath==1.0.1
     # via sphinx
+sphinxcontrib-mermaid==1.2.3
+    # via -r requirements.in
 sphinxcontrib-opencontracting==0.0.10
     # via -r requirements.in
 sphinxcontrib-opendataservices==0.6.0
     # via -r requirements.in
-sphinxcontrib-opendataservices-jsonschema==0.7.1
+sphinxcontrib-opendataservices-jsonschema @ git+https://github.com/OpenDataServices/sphinxcontrib-opendataservices-jsonschema@d3c8e861a55019278a8462b6edabd101e5fb5642
     # via
     #   -r requirements.in
     #   sphinxcontrib-opendataservices

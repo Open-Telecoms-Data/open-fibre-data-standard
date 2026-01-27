@@ -27,6 +27,18 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#280](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/280) - Reorder codelist codes.
 - [#248](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/282) - Add comments declaring document mode to each markdown file in docs
 
+## 0.4.0 - YYYY-MM-DD
+
+### Data model and schemas
+
+- [#310](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/310):
+  - Specify logical data model separately from data format schemas
+  - Add GeoPackage publication format
+  - Update property descriptions for use in context of data model and other publication formats
+  - Omit parent names from property titles to reduce repetition
+  - In-line some definitions to reduce reference page length
+  - Clarify property descriptions
+
 ## 0.3.0 - 2023-06-29
 
 ### Schema
