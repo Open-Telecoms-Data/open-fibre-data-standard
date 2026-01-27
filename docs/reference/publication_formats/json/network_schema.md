@@ -81,7 +81,7 @@ Each `Node` has the following properties:
 
 ```{jsonschema} ../../../../schema/network-schema.json
 :pointer: /$defs/Node
-:collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,physicalInfrastructureProvider,networkProviders
+:collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,transmissionMediumOwner,networkProviders
 :addtargets:
 :prefix: json
 ```
@@ -120,7 +120,7 @@ Each `Span` has the following properties:
 
 ```{jsonschema} ../../../../schema/network-schema.json
 :pointer: /$defs/Span
-:collapse: id,name,phase,status,readyForServiceDate,start,end,directed,route,physicalInfrastructureProvider,networkProviders,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
+:collapse: id,name,phase,status,readyForServiceDate,start,end,directed,route,transmissionMediumOwner,networkProviders,supplier,transmissionMedium,deployment,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
 :addtargets:
 :prefix: json
 ```
@@ -318,9 +318,11 @@ Each `Geometry` has the following properties:
 
 This sub-schema is referenced by the following properties:
 
-- [`Node/physicalInfrastructureProvider`](json,network-schema.json,/$defs/Node,physicalInfrastructureProvider)
+- [`Node/transmissionMediumOwner`](json,network-schema.json,/$defs/Node,transmissionMediumOwner)
+- [`Node/supportingInfrastructure/owner`](json,network-schema.json,/$defs/Node,supportingInfrastructure/owner)
 - [`Node/networkProviders`](json,network-schema.json,/$defs/Node,networkProviders)
-- [`Span/physicalInfrastructureProvider`](json,network-schema.json,/$defs/Span,physicalInfrastructureProvider)
+- [`Span/transmissionMediumOwner`](json,network-schema.json,/$defs/Span,transmissionMediumOwner)
+- [`Span/supportingInfrastructure/owner`](json,network-schema.json,/$defs/Span,supportingInfrastructure/owner)
 - [`Span/networkProviders`](json,network-schema.json,/$defs/Span,networkProviders)
 - [`Span/supplier`](json,network-schema.json,/$defs/Span,supplier)
 - [`Phase/funders`](json,network-schema.json,/$defs/Phase,funders)
@@ -344,8 +346,8 @@ Each `OrganisationReference` has the following properties:
 
 ```{eval-rst}
 .. jsoninclude:: ../../../../examples/json/network-package.json
- :jsonpointer: /networks/0/nodes/0/physicalInfrastructureProvider
- :title: nodes/0/physicalInfrastructureProvider
+ :jsonpointer: /networks/0/nodes/0/transmissionMediumOwner
+ :title: nodes/0/transmissionMediumOwner
 ```
 
 ```{eval-rst}
@@ -356,8 +358,8 @@ Each `OrganisationReference` has the following properties:
 
 ```{eval-rst}
 .. jsoninclude:: ../../../../examples/json/network-package.json
- :jsonpointer: /networks/0/spans/0/physicalInfrastructureProvider
- :title: spans/0/physicalInfrastructureProvider
+ :jsonpointer: /networks/0/spans/0/transmissionMediumOwner
+ :title: spans/0/transmissionMediumOwner
 ```
 
 ```{eval-rst}

@@ -221,11 +221,9 @@
                 "deployment": [
                     "belowGround"
                 ],
-                "deploymentDetails": {
-                    "description": "Buried in ducts"
-                },
                 "supportingInfrastructure": {
                     "type": "duct",
+                    "description": "Buried in ducts",
                     "owner": {
                         "id": "GH-RGD-CS111111111",
                         "name": "FibreCo"
