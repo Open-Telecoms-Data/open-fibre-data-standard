@@ -73,7 +73,7 @@ OFDS defines a node as:
 
 Nodes can represent different elements in a fibre network and the type of each node can be specified in the data, for example a node could be a point of presence, an internet exchange point and/or a cable landing.
 
-For more information about nodes, see the [Node reference](../reference/schema.md#node).
+For more information about nodes, see the [Node reference](../reference/data_model.md#node).
 
 ### Spans
 
@@ -87,7 +87,7 @@ The nodes that a span connects are known as its endpoints. In addition to the en
 
 ![An example span](../../_assets/spanExample.svg)
 
-For more information about spans, see the [Span reference](../reference/schema.md#span).
+For more information about spans, see the [Span reference](../reference/data_model.md#span).
 
 ### Geospatial data
 

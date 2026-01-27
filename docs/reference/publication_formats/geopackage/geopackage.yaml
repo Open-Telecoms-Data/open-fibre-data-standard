@@ -1,0 +1,22 @@
+# Connection properties
+connectionString: "sqlite3://schema/geopackage/network-schema.gpkg"
+
+# Define what tables should be used
+useAllTables: true
+
+# Additional flags
+outputFileName: "docs/reference/publication_formats/geopackage.mmd"
+ignoreTables:
+  - codelist*
+  - gpkg*
+  - sqlite*
+  - relation_nodes_technologies
+  - relation_nodes_type
+  - relation_organisations_roles
+  - relation_phases_funders
+  - relation_spans_countries
+  - relation_spans_deployment
+  - relation_spans_technologies
+  - relation_spans_transmissionMedium
+  - contracts_documents
+  - nodes_internationalConnections

@@ -29,14 +29,21 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 ## 0.4.0 - YYYY-MM-DD
 
-### Schema
+### Data model and schemas
 
+- [#310](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/310):
+  - Specify logical data model separately from data format schemas
+  - Add GeoPackage publication format
+  - Update property descriptions for use in context of data model and other publication formats
+  - Omit parent names from property titles to reduce repetition
+  - In-line some definitions to reduce reference page length
+  - Clarify property descriptions
 - [#317](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/317):
   - `Span`:
-    - Add `.supportingInfrastructure` object to descibe supporting infrastructure
+    - Add `.supportingInfrastructure` to descibe supporting infrastructure
     - Replace `.physicalInfrastructureProvider` with `.transmissionMediumOwner` and `.supportingInfrastructure.owner` to distinguish ownership of transmission media and supporting infrastructure.
   - `Node`:
-    - Add `.supportingInfrastructure` object to descibe supporting infrastructure
+    - Add `.supportingInfrastructure` to descibe supporting infrastructure
     - Replace `.physicalInfrastructureProvider` with `.transmissionMediumOwner` and `.supportingInfrastructure.owner` to distinguish ownership of transmission media and supporting infrastructure.
     - Remove `Span.deploymentDetails.description`, in favour of `Span.supportingInfrastructure.description`.
     - Move codes relating to supporting infrastructure from the nodeType codelist to the nodeSupportingInfrastructureType codelist

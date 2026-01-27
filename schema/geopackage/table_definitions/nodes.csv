@@ -1,0 +1,16 @@
+Name,Type,Constraints,Title,Description
+id,INTEGER,PK,,
+geom,BLOB,,,
+ofds_id,TEXT,,Identifier,A locally-unique identifier for this node.
+name,TEXT,,Name,A name for this node.
+phase,INTEGER,FK,Phase,The phase to which this node belongs.
+status,TEXT,,Status,"The status of this node, from the closed [nodeStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodestatus)."
+address__streetAddress,TEXT,,Address Street address,"The physical address of this node. The street address. For example, 1600 Amphitheatre Pkwy."
+address__locality,TEXT,,Address Locality,"The physical address of this node. The locality. For example, Mountain View."
+address__region,TEXT,,Address Region,"The physical address of this node. The region. For example, CA."
+address__postalCode,TEXT,,Address Postal code,"The physical address of this node. The postal code. For example, 94043."
+address__country,TEXT,,Address Country,"The physical address of this node. The country in which the address is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country)."
+accessPoint,TEXT,,Access point,Whether active or passive transmission equipment is installed at this node which is capable of providing access to the network.
+power,TEXT,,Power availability,Whether power for active network equipment is available at this node.
+physicalInfrastructureProvider,INTEGER,FK,Physical infrastructure provider,"The organisation that owns the passive network infrastructure for this node, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites."
+network_id,INTEGER,FK,Network ID,
