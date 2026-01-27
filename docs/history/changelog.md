@@ -38,6 +38,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
   - `Node`:
     - Add `.supportingInfrastructure` object to descibe supporting infrastructure
     - Replace `.physicalInfrastructureProvider` with `.transmissionMediumOwner` and `.supportingInfrastructure.owner` to distinguish ownership of transmission media and supporting infrastructure.
+    - Remove `Span.deploymentDetails.description`, in favour of `Span.supportingInfrastructure.description`.
     - Move codes relating to supporting infrastructure from the nodeType codelist to the nodeSupportingInfrastructureType codelist
 
 ## 0.3.0 - 2023-06-29

@@ -157,7 +157,7 @@ Each `Span` has the following fields:
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /$defs/Span
-:collapse: id,name,phase,status,readyForServiceDate,start,end,directed,route,transmissionMediumOwner,networkProviders,supplier,transmissionMedium,deployment,deploymentDetails,supportingInfrastructure,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
+:collapse: id,name,phase,status,readyForServiceDate,start,end,directed,route,transmissionMediumOwner,networkProviders,supplier,transmissionMedium,deployment,supportingInfrastructure,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
 :addtargets:
 ```
 
@@ -759,44 +759,6 @@ Each `FibreTypeDetails` has the following fields:
 .. jsoninclude:: ../../examples/json/network-package.json
  :jsonpointer: /networks/0/spans/0/fibreTypeDetails
  :title: spans/0/fibreTypeDetails
-```
-
-:::
-
-::::
-
-#### DeploymentDetails
-
-`DeploymentDetails` is defined as:
-
-```{jsoninclude-quote} ../../schema/network-schema.json
-:jsonpointer: /$defs/DeploymentDetails/description
-```
-
-This component is referenced by the following properties:
-
-- [`Span/deploymentDetails`](network-schema.json,/$defs/Span,deploymentDetails)
-
-Each `DeploymentDetails` has the following fields:
-
-::::{tab-set}
-
-:::{tab-item} Schema
-
-```{jsonschema} ../../schema/network-schema.json
-:pointer: /$defs/DeploymentDetails
-:collapse: description
-:addtargets:
-```
-
-:::
-
-:::{tab-item} Examples
-
-```{eval-rst}
-.. jsoninclude:: ../../examples/json/network-package.json
- :jsonpointer: /networks/0/spans/0/deploymentDetails
- :title: spans/0/deploymentDetails
 ```
 
 :::

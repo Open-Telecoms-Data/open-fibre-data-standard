@@ -149,7 +149,7 @@ This table is related to the following tables:
 The fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/spans.csv) or a [blank template](../../../examples/csv/template/spans.csv) for this table.
 
 ```{jsonschema} ../../../schema/network-schema.json
-:include: id,spans/0/id,spans/0/name,spans/0/phase,spans/0/status,spans/0/readyForServiceDate,spans/0/start,spans/0/end,spans/0/directed,spans/0/route,spans/0/transmissionMediumOwner,spans/0/supplier,spans/0/transmissionMedium,spans/0/deployment,spans/0/deploymentDetails,spans/0/supportingInfrastructure,spans/0/darkFibre,spans/0/fibreType,spans/0/fibreTypeDetails,spans/0/fibreCount,spans/0/fibreLength,spans/0/technologies,spans/0/capacity,spans/0/capacityDetails,spans/0/countries
+:include: id,spans/0/id,spans/0/name,spans/0/phase,spans/0/status,spans/0/readyForServiceDate,spans/0/start,spans/0/end,spans/0/directed,spans/0/route,spans/0/transmissionMediumOwner,spans/0/supplier,spans/0/transmissionMedium,spans/0/deployment,spans/0/supportingInfrastructure,spans/0/darkFibre,spans/0/fibreType,spans/0/fibreTypeDetails,spans/0/fibreCount,spans/0/fibreLength,spans/0/technologies,spans/0/capacity,spans/0/capacityDetails,spans/0/countries
 :collapse: spans/0/route
 :nocrossref:
 ```

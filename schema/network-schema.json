@@ -237,9 +237,9 @@
               "openCodelist": true,
               "codelist": "nodeSupportingInfrastructure.csv"
             },
-            "typeDetails": {
-              "title": "Type details",
-              "description": "Further details about the type of supporting infrastructure.",
+            "description": {
+              "title": "Description",
+              "description": "A description of the supporting infrastructure for this node.",
               "type": "string",
               "minLength": 1
             },
@@ -442,11 +442,6 @@
           "minItems": 1,
           "uniqueItems": true
         },
-        "deploymentDetails": {
-          "title": "Deployment details",
-          "description": "Further details of this span's deployment.",
-          "$ref": "#/$defs/DeploymentDetails"
-        },
         "supportingInfrastructure": {
           "title": "Supporting infrastructure",
           "description": "The infrastructure that supports this span.",
@@ -460,9 +455,9 @@
               "openCodelist": true,
               "codelist": "spanSupportingInfrastructure.csv"
             },
-            "typeDetails": {
-              "title": "Type details",
-              "description": "Further details about the type of supporting infrastructure.",
+            "description": {
+              "title": "Description",
+              "description": "A description of the supporting infrastructure for this span.",
               "type": "string",
               "minLength": 1
             },
@@ -2088,20 +2083,6 @@
         "description": {
           "title": "Description",
           "description": "A description of this span's fibre type.",
-          "type": "string",
-          "minLength": 1
-        }
-      },
-      "minProperties": 1
-    },
-    "DeploymentDetails": {
-      "title": "Deployment details",
-      "description": "Further details about a span's deployment.",
-      "type": "object",
-      "properties": {
-        "description": {
-          "title": "Description",
-          "description": "A description of this span's deployment.",
           "type": "string",
           "minLength": 1
         }

@@ -33,7 +33,7 @@ nodes,nodes/address/country,Country,"The country in which the address is physica
 nodes,nodes/type,Node type,"The type of this node, from the open nodeType codelist. For nodes with multiple network providers, the union of the node types for each provider.",array,0..n,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetype,,,nodeType.csv
 nodes,nodes/supportingInfrastructure,Supporting infrastructure,The infrastructure that supports this node.,object,0..1,,,,,
 nodes,nodes/supportingInfrastructure/type,Type,"The type of supporting infrastructure, from the open nodeSupportingInfrastructure codelist.",string,0..1,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodesupportinginfrastructure,,,nodeSupportingInfrastructure.csv
-nodes,nodes/supportingInfrastructure/typeDetails,Type details,Further details about the type of supporting infrastructure.,string,0..1,,,,,
+nodes,nodes/supportingInfrastructure/description,Description,A description of the supporting infrastructure for this node.,string,0..1,,,,,
 nodes,nodes/supportingInfrastructure/owner,Owner,The organisation that owns the supporting infrastructure.,object,0..1,,,,,
 nodes,nodes/supportingInfrastructure/owner,Organisation reference,The local identifier and name of the organisation being referenced. Used to cross-reference to the `organisations` array.,object,0..1,,,,,
 nodes,nodes/supportingInfrastructure/owner/id,Local identifier,The local identifier of the organisation being referenced. This must match the `.id` of an organisation in the `organisations` array.,string,1..1,,,,,
@@ -97,12 +97,9 @@ spans,spans/supplier/id,Local identifier,The local identifier of the organisatio
 spans,spans/supplier/name,Name,The name of the organisation being referenced. This must match the `.name` of the organisation in the `organisations` array whose `.id` matches the `.id` of this organisation reference.,string,0..1,,,,,
 spans,spans/transmissionMedium,Transmission medium,"The physical media of this span, from the closed transmissionMedium codelist.",array,0..n,"Enum: fibre, microwave, copper, coaxial",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#transmissionmedium,,,transmissionMedium.csv
 spans,spans/deployment,Deployment,"The physical deployment of this span, from the closed deployment codelist. Further details of this span's deployment can be provided in `.deploymentDetails`.",array,0..n,"Enum: aboveGround, belowGround",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment,,,deployment.csv
-spans,spans/deploymentDetails,Deployment details,Further details of this span's deployment.,object,0..1,,,,,
-spans,spans/deploymentDetails,Deployment details,Further details about a span's deployment.,object,0..1,,,,,
-spans,spans/deploymentDetails/description,Description,A description of this span's deployment.,string,0..1,,,,,
 spans,spans/supportingInfrastructure,Supporting infrastructure,The infrastructure that supports this span.,object,0..1,,,,,
 spans,spans/supportingInfrastructure/type,Type,"The type of supporting infrastructure, from the open spanSupportingInfrastructure codelist.",string,0..1,,https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spansupportinginfrastructure,,,spanSupportingInfrastructure.csv
-spans,spans/supportingInfrastructure/typeDetails,Type details,Further details about the type of supporting infrastructure.,string,0..1,,,,,
+spans,spans/supportingInfrastructure/description,Description,A description of the supporting infrastructure for this span.,string,0..1,,,,,
 spans,spans/supportingInfrastructure/owner,Owner,The organisation that owns the supporting infrastructure.,object,0..1,,,,,
 spans,spans/supportingInfrastructure/owner,Organisation reference,The local identifier and name of the organisation being referenced. Used to cross-reference to the `organisations` array.,object,0..1,,,,,
 spans,spans/supportingInfrastructure/owner/id,Local identifier,The local identifier of the organisation being referenced. This must match the `.id` of an organisation in the `organisations` array.,string,1..1,,,,,
