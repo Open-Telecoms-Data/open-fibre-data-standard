@@ -29,7 +29,8 @@ class Builder:
         self.information_out = None
         self.MAPPING_FOREIGN_KEY_NAMES_TO_LAYERS = {
             "Phase": "phases",
-            "Physical infrastructure provider": "organisations",
+            "Transmission medium owner": "organisations",
+            "Owner": "organisations",
             "Supplier": "organisations",
             "Start": "nodes",
             "End": "nodes",

@@ -203,7 +203,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /$defs/Node
-:include: id,name,status,location,address/streetAddress,address/locality,address/region,address/postalCode,address/country,type,accessPoint,power,technologies,internationalConnections,supportingInfrastructure
+:include: id,name,status,location,address/streetAddress,address/locality,address/region,address/postalCode,address/country,type,accessPoint,power,technologies,internationalConnections,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity
 :collapse: location,internationalConnections
 :nocrossref:
 :addtargets:
@@ -285,7 +285,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /$defs/Span
-:include: id,name,status,readyForServiceDate,directed,route,transmissionMedium,deployment,darkFibre,fibreType,fibreTypeDetails/fibreSubtype,fibreTypeDetails/description,fibreCount,fibreLength,technologies,capacity,capacityDetails/description,countries,supportingInfrastructure
+:include: id,name,status,readyForServiceDate,directed,route,transmissionMedium,deployment,darkFibre,fibreType,fibreTypeDetails/fibreSubtype,fibreTypeDetails/description,fibreCount,fibreLength,technologies,capacity,capacityDetails/description,countries,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity
 :collapse: route
 :nocrossref:
 :addtargets:
@@ -320,13 +320,19 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 *  - [Phase](#phase)
    - N:1
    - 
-*  - [Node](#node) (Physical infrastructure provider)
+*  - [Node](#node) (Transmission medium owner)
+   - 1:N
+   - 
+*  - [Node](#node) (Supporting infrastructure owner)
    - 1:N
    - 
 *  - [Node](#node) (Network provider)
    - M:N
    - 
-*  - [Span](#span) (Physical infrastructure provider)
+*  - [Span](#span) (Transmission medium owner)
+   - 1:N
+   - 
+*  - [Span](#span) (Supporting infrastructure owner)
    - 1:N
    - 
 *  - [Span](#span) (Network provider)

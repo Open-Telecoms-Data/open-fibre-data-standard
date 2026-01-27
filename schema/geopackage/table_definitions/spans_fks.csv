@@ -1,6 +1,8 @@
 Column,References
 network_id,FK(`networks`.`id`)
+supportingInfrastructure__owner,FK(`organisations`.`id`)
 supplier,FK(`organisations`.`id`)
+transmissionMediumOwner,FK(`organisations`.`id`)
 end,FK(`nodes`.`id`)
 start,FK(`nodes`.`id`)
 phase,FK(`phases`.`id`)
