@@ -425,7 +425,7 @@
         },
         "deployment": {
           "title": "Deployment",
-          "description": "The physical deployment of this span, from the closed [deployment codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment). Further details of this span's deployment can be provided in `.deploymentDetails`.",
+          "description": "The physical deployment of this span, from the closed [deployment codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment). Further details of this span's deployment can be provided in `.supportingInfrastructure`.",
           "type": "array",
           "items": {
             "type": [
