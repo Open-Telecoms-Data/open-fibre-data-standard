@@ -215,7 +215,7 @@ This codelist has the following codes:
 
 This codelist is referenced by the following properties:
 
-* [`Span/supportingInfrastructure/type`](data_model,network-schema.json,/$defs/Span,supportingInfrastructure/type)
+- [`Span/supportingInfrastructure/type`](data_model,network-schema.json,/$defs/Span,supportingInfrastructure/type)
 
 This codelist has the following codes:
 
