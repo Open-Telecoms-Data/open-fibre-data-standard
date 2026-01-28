@@ -38,6 +38,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
   - Omit parent names from property titles to reduce repetition
   - In-line some definitions to reduce reference page length
   - Clarify property descriptions
+- [#321](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/321) - Add `Span.cableType` and `Span.codeployment`
 
 ## 0.3.0 - 2023-06-29
 
