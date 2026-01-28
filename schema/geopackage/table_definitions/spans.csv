@@ -12,6 +12,8 @@ directed,TEXT,,Directed,"Whether this span is directed. If the span is directed,
 physicalInfrastructureProvider,INTEGER,FK,Physical infrastructure provider,"The organisation that owns the passive network infrastructure for this span, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites."
 supplier,INTEGER,FK,Supplier,The organisation responsible for installing the cable for this span.
 deploymentDetails__description,TEXT,,Deployment details Description,Further details about this span's deployment. A description of this span's deployment.
+codeployment,INTEGER,FK,Codeployment,The type of utility or transport infrastrucutre with which this span is codeployed.
+cableType,INTEGER,FK,Cable type,The type of cable used in this span
 darkFibre,TEXT,,Dark fibre availability,Whether access to dark fibre is available on this span.
 fibreType,TEXT,,Fibre type,"The type of fibre used in this span, from the closed [fibreType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#fibretype). Further details of the span's fibre type can be provided in `.fibreTypeDetails`."
 fibreTypeDetails__fibreSubtype,TEXT,,Fibre type details Subtype,"Further details about this span's fibre type. The sub-category of this span's fibre type. For example, G.652.B."
