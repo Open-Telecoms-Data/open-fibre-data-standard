@@ -38,6 +38,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
   - Omit parent names from property titles to reduce repetition
   - In-line some definitions to reduce reference page length
   - Clarify property descriptions
+- [](<>) - Update `Node.type` description to explain modelling of junctions.
 
 ## 0.3.0 - 2023-06-29
 

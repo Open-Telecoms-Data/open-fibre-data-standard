@@ -211,7 +211,7 @@
         },
         "type": {
           "title": "Type",
-          "description": "The type of this node, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetype). For nodes with multiple network providers, the union of the node types for each provider.",
+          "description": "This node's function, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetype). For nodes with multiple network providers, the union of the node types for each provider. If a node's only function is to serve as a junction between spans, this attribute should be omitted. Junction nodes are identified by the existence of more than two spans that begin or end at the node.",
           "type": "array",
           "items": {
             "type": [
