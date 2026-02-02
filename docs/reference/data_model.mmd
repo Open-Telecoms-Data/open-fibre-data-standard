@@ -21,6 +21,9 @@ erDiagram
     Span {
     }
 
+    Wayleave {
+    }
+
     Network ||--o{ Node : "Consists of"
     Network ||--o{ Span : "Consists of"
     Network ||--o{ Phase : "Deployed in"
@@ -35,10 +38,12 @@ erDiagram
     Span }o--|| Phase : "Deployed in"
     Contract }o--|| Phase: "Agreement to develop"
     Phase }o--|| Organisation: "Financed by"
+    Wayleave }o--o{ Span: "Grants rights for installation, operation and maintenance of"
+    Wayleave }o--|| Organisation: "Rights granted by"
 
     classDef spatial fill:#f3ffa6ff,stroke:#bbd034
     classDef non-spatial fill:#cec7ffff,stroke:#110e27
 
     class Node,Span spatial
-    class Network,Organisation,Phase,Contract non-spatial
+    class Network,Organisation,Phase,Contract,Wayleave non-spatial
     direction LR

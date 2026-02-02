@@ -38,6 +38,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
   - Omit parent names from property titles to reduce repetition
   - In-line some definitions to reduce reference page length
   - Clarify property descriptions
+- Add `wayleaves` to describe formal agreements that grant a network operator rights to install, maintain or operate telecommunications infrastructure on, over, or under the grantor’s property or asset.
 
 ## 0.3.0 - 2023-06-29
 

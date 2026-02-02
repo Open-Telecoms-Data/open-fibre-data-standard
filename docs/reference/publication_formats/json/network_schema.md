@@ -41,8 +41,8 @@ A network has the following properties:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../../../schema/network-schema.json
-:collapse: nodes,spans,phases,organisations,contracts,links
-:include: id,name,nodes,spans,phases,organisations,contracts,website,publisher/name,publisher/identifier/id,publisher/identifier/scheme,publisher/identifier/legalName,publicationDate,collectionDate,crs/name,crs/uri,accuracy,accuracyDetails,language,links
+:collapse: nodes,spans,phases,organisations,contracts,links,wayleaves
+:include: id,name,nodes,spans,phases,organisations,contracts,website,publisher/name,publisher/identifier/id,publisher/identifier/scheme,publisher/identifier/legalName,publicationDate,collectionDate,crs/name,crs/uri,accuracy,accuracyDetails,language,links,wayleaves
 :addtargets:
 :prefix: json
 ```
@@ -237,7 +237,7 @@ Each `Contract` has the following properties:
 
 ```{jsonschema} ../../../../schema/network-schema.json
 :pointer: /$defs/Contract
-:collapse: id,title,description,type,dateSigned,documents,relatedPhases
+:collapse: id,title,description,type,dateSigned,documents,relatedPhases,value
 :addtargets:
 :prefix: json
 ```
@@ -250,6 +250,44 @@ Each `Contract` has the following properties:
 .. jsoninclude:: ../../../../examples/json/network-package.json
  :jsonpointer: /networks/0/contracts
  :title: contracts
+```
+
+:::
+
+::::
+
+### Wayleave
+
+`Wayleave` is defined as:
+
+```{jsoninclude-quote} ../../../../schema/network-schema.json
+:jsonpointer: /$defs/Wayleave/description
+```
+
+This sub-schema is referenced by the following properties:
+
+- [`wayleaves`](json,network-schema.json,,wayleaves)
+
+Each `Wayleave` has the following properties:
+
+::::{tab-set}
+
+:::{tab-item} Schema
+
+```{jsonschema} ../../../../schema/network-schema.json
+:pointer: /$defs/Wayleave
+:addtargets:
+:prefix: json
+```
+
+:::
+
+:::{tab-item} Examples
+
+```{eval-rst}
+.. jsoninclude:: ../../../../examples/json/network-package.json
+ :jsonpointer: /networks/0/wayleaves
+ :title: wayleaves
 ```
 
 :::
@@ -475,6 +513,45 @@ Each `Address` has the following properties:
 .. jsoninclude:: ../../../../examples/json/network-package.json
  :jsonpointer: /networks/0/nodes/0/internationalConnections
  :title: nodes/0/internationalConnections
+```
+
+:::
+
+::::
+
+#### Value
+
+`Value` is defined as:
+
+```{jsoninclude-quote} ../../../../schema/network-schema.json
+:jsonpointer: /$defs/Value/description
+```
+
+This sub-schema is referenced by the following properties:
+
+- [`Contract/value`](json,network-schema.json,/$defs/Contract,documents)
+- [`Wayleave/cost/perMetre`](json,network-schema.json,/$defs/Wayleave,cost/perMetre)
+
+Each `Value` has the following properties:
+
+::::{tab-set}
+
+:::{tab-item} Schema
+
+```{jsonschema} ../../../../schema/network-schema.json
+:pointer: /$defs/Value
+:addtargets:
+:prefix: json
+```
+
+:::
+
+:::{tab-item} Examples
+
+```{eval-rst}
+.. jsoninclude:: ../../../../examples/json/network-package.json
+ :jsonpointer: /networks/0/contracts/0/documents
+ :title: contracts/0/documents
 ```
 
 :::

@@ -44,6 +44,11 @@ erDiagram
         INTEGER related_id PK,FK 
     }
 
+    relation_spans_wayleaves {
+        INTEGER base_id PK,FK 
+        INTEGER related_id PK,FK 
+    }
+
     spans {
         INTEGER end FK 
         INTEGER id PK 
@@ -54,12 +59,19 @@ erDiagram
         INTEGER supplier FK 
     }
 
+    wayleaves {
+        INTEGER grantor FK 
+        INTEGER id PK 
+        INTEGER network_id FK 
+    }
+
     contracts }o--|| networks : "network_id"
     relation_contracts_relatedPhases }o--|| contracts : "base_id"
     nodes }o--|| networks : "network_id"
     organisations }o--|| networks : "network_id"
     phases }o--|| networks : "network_id"
     spans }o--|| networks : "network_id"
+    wayleaves }o--|| networks : "network_id"
     nodes }o--|| organisations : "physicalInfrastructureProvider"
     nodes }o--|| phases : "phase"
     relation_nodes_networkProviders }o--|| nodes : "base_id"
@@ -69,15 +81,18 @@ erDiagram
     relation_spans_networkProviders }o--|| organisations : "related_id"
     spans }o--|| organisations : "physicalInfrastructureProvider"
     spans }o--|| organisations : "supplier"
+    wayleaves }o--|| organisations : "grantor"
     relation_contracts_relatedPhases }o--|| phases : "related_id"
     spans }o--|| phases : "phase"
     relation_spans_networkProviders }o--|| spans : "base_id"
+    relation_spans_wayleaves }o--|| spans : "base_id"
+    relation_spans_wayleaves }o--|| wayleaves : "related_id"
 
     classDef feature fill:#f3ffa6ff,stroke:#bbd034
     classDef attribute fill:#cec7ffff,stroke:#110e27
     classDef mapping fill:#efefefff,stroke:#434343ff
 
     class nodes,spans feature
-    class networks,organisations,phases,contracts attribute
-    class relation_contracts_relatedPhases,relation_spans_networkProviders,relation_nodes_networkProviders mapping
+    class networks,organisations,phases,contracts,wayleaves attribute
+    class relation_contracts_relatedPhases,relation_spans_networkProviders,relation_spans_wayleaves,relation_nodes_networkProviders mapping
     direction BT

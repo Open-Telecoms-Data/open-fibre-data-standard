@@ -33,11 +33,14 @@ class Builder:
             "Supplier": "organisations",
             "Start": "nodes",
             "End": "nodes",
+            "Wayleaves": "wayleaves",
+            "Grantor": "organisations"
         }
         self.MAPPING_MANY_TO_MANY_KEY_NAMES_TO_LAYERS = {
             "Network providers": "organisations",
             "Funders": "organisations",
             "Related phases": "phases",
+            "Wayleaves": "wayleaves"
         }
 
     def _load_codelist_items(
@@ -525,11 +528,10 @@ class Builder:
     ):
         relations = []
         for property_key, property_value in json_schema["properties"].items():
-
             # --------  many to many
             if (
                 property_value["type"] == "array"
-                and property_value["items"]["type"] == "object"
+                and property_value["items"]["type"] in ["object", "string"]
                 and property_value["title"]
                 in self.MAPPING_MANY_TO_MANY_KEY_NAMES_TO_LAYERS.keys()
             ):
@@ -680,6 +682,11 @@ class Builder:
             has_network_id=True,
         )
         self._create_table_from_json_schema(
+            jsonschema["properties"]["wayleaves"]["items"],
+            table_name="wayleaves",
+            has_network_id=True,
+        )
+        self._create_table_from_json_schema(
             jsonschema["properties"]["nodes"]["items"]["properties"][
                 "internationalConnections"
             ]["items"],
@@ -729,6 +736,10 @@ class Builder:
         self._create_relations_from_json_schema(
             jsonschema["properties"]["contracts"]["items"],
             table_name="contracts",
+        )
+        self._create_relations_from_json_schema(
+            jsonschema["properties"]["wayleaves"]["items"],
+            table_name="wayleaves",
         )
         self._create_relations_from_json_schema(
             jsonschema["properties"]["organisations"]["items"],
