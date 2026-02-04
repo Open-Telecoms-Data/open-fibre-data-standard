@@ -11,7 +11,7 @@
   "properties": {
     "id": {
       "title": "Identifier",
-      "description": "A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://standard.ofds.info/en/{{version}}/reference/identifiers.html).",
+      "description": "A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://standard.ofds.info/en/{{version}}/reference/identifiers).",
       "format": "uuid",
       "type": "string"
     },
@@ -129,7 +129,7 @@
     },
     "language": {
       "title": "Language",
-      "description": "The default language used in text attributes,from the open [language codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#language). A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
+      "description": "The default language used in text attributes,from the open [language codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#language). A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
       "type": "string",
       "codelist": "language.csv",
       "openCodelist": true,
@@ -137,7 +137,7 @@
     },
     "links": {
       "title": "Links",
-      "description": "Links to related resources. The first item in the links array must be a link to the canonical JSON schema that describes the structure of the data. Links to API endpoints for nodes and spans should be provided when a network is too large to return in a single API response and links to bulk files should be provided when a network is too large to load into memory, for more information, see [how to publish large networks](https://standard.ofds.info/en/{{version}}/guidance/publication.html#how-to-publish-large-networks).",
+      "description": "Links to related resources. The first item in the links array must be a link to the canonical JSON schema that describes the structure of the data. Links to API endpoints for nodes and spans should be provided when a network is too large to return in a single API response and links to bulk files should be provided when a network is too large to load into memory, for more information, see [how to publish large networks](https://standard.ofds.info/en/{{version}}/guidance/publication#how-to-publish-large-networks).",
       "type": "array",
       "prefixItems": [
         {
@@ -186,7 +186,7 @@
         },
         "status": {
           "title": "Status",
-          "description": "The status of this node, from the closed [nodeStatus codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#nodestatus).",
+          "description": "The status of this node, from the closed [nodeStatus codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodestatus).",
           "type": "string",
           "codelist": "nodeStatus.csv",
           "openCodelist": false,
@@ -211,7 +211,7 @@
         },
         "type": {
           "title": "Type",
-          "description": "The type of this node, from the open [nodeType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#nodetype). For nodes with multiple network providers, the union of the node types for each provider.",
+          "description": "The type of this node, from the open [nodeType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodetype). For nodes with multiple network providers, the union of the node types for each provider.",
           "type": "array",
           "items": {
             "type": [
@@ -247,7 +247,7 @@
         },
         "technologies": {
           "title": "Technologies",
-          "description": "The active technologies used at this node, from the open [nodeTechnologies codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#nodetechnologies). For nodes with multiple network providers, the union of the active technologies used by each provider.",
+          "description": "The active technologies used at this node, from the open [nodeTechnologies codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodetechnologies). For nodes with multiple network providers, the union of the active technologies used by each provider.",
           "type": "array",
           "items": {
             "type": [
@@ -306,7 +306,7 @@
         },
         "status": {
           "title": "Status",
-          "description": "The status of the network infrastructure for this span, from the closed [spanStatus codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#spanstatus).",
+          "description": "The status of the network infrastructure for this span, from the closed [spanStatus codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#spanstatus).",
           "type": "string",
           "codelist": "spanStatus.csv",
           "openCodelist": false,
@@ -372,7 +372,7 @@
         },
         "transmissionMedium": {
           "title": "Transmission medium",
-          "description": "The physical media of this span, from the closed [transmissionMedium codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#transmissionmedium).",
+          "description": "The physical media of this span, from the closed [transmissionMedium codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#transmissionmedium).",
           "type": "array",
           "items": {
             "type": [
@@ -393,7 +393,7 @@
         },
         "deployment": {
           "title": "Deployment",
-          "description": "The physical deployment of this span, from the closed [deployment codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#deployment). Further details of this span's deployment can be provided in `.deploymentDetails`.",
+          "description": "The physical deployment of this span, from the closed [deployment codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#deployment). Further details of this span's deployment can be provided in `.deploymentDetails`.",
           "type": "array",
           "items": {
             "type": [
@@ -432,7 +432,7 @@
         },
         "fibreType": {
           "title": "Fibre type",
-          "description": "The type of fibre used in this span, from the closed [fibreType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#fibretype). Further details of the span's fibre type can be provided in `.fibreTypeDetails`.",
+          "description": "The type of fibre used in this span, from the closed [fibreType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#fibretype). Further details of the span's fibre type can be provided in `.fibreTypeDetails`.",
           "type": "string",
           "codelist": "fibreType.csv",
           "openCodelist": false,
@@ -480,7 +480,7 @@
         },
         "technologies": {
           "title": "Technologies",
-          "description": "The active technologies used on this span, from the open [spanTechnologies codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#spantechnologies). For spans with multiple network providers, the union of the active technologies used by each provider.",
+          "description": "The active technologies used on this span, from the open [spanTechnologies codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#spantechnologies). For spans with multiple network providers, the union of the active technologies used by each provider.",
           "type": "array",
           "items": {
             "type": [
@@ -515,7 +515,7 @@
         },
         "countries": {
           "title": "Countries",
-          "description": "The countries in which this span is physically located, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#country).",
+          "description": "The countries in which this span is physically located, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country).",
           "type": "array",
           "items": {
             "type": [
@@ -855,7 +855,7 @@
             },
             "scheme": {
               "title": "Scheme",
-              "description": "The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#organisationidentifierscheme).",
+              "description": "The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#organisationidentifierscheme).",
               "type": "string",
               "codelist": "organisationIdentifierScheme.csv",
               "openCodelist": true,
@@ -879,7 +879,7 @@
         },
         "country": {
           "title": "Country",
-          "description": "The country in which this organisation is legally registered, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#country).",
+          "description": "The country in which this organisation is legally registered, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country).",
           "type": "string",
           "codelist": "country.csv",
           "openCodelist": false,
@@ -1138,7 +1138,7 @@
         },
         "roles": {
           "title": "Roles",
-          "description": "This organisation's roles in this network, from the open [organisationRole codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#organisationrole). Further details about this organisation's roles can be provided in `.roleDetails`.",
+          "description": "This organisation's roles in this network, from the open [organisationRole codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#organisationrole). Further details about this organisation's roles can be provided in `.roleDetails`.",
           "type": "array",
           "items": {
             "type": [
@@ -1202,7 +1202,7 @@
         },
         "type": {
           "title": "Type",
-          "description": "The type of this contract, from the open [contractType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#contracttype).",
+          "description": "The type of this contract, from the open [contractType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#contracttype).",
           "type": "string",
           "codelist": "contractType.csv",
           "openCodelist": true,
@@ -1221,7 +1221,7 @@
             },
             "currency": {
               "title": "Currency",
-              "description": "The currency of this value, from the closed [currency codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#currency).",
+              "description": "The currency of this value, from the closed [currency codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#currency).",
               "type": "string",
               "codelist": "currency.csv",
               "openCodelist": false,
@@ -1575,7 +1575,7 @@
       "properties": {
         "type": {
           "title": "Type",
-          "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`, from the closed [geometryType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#geometrytype). This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Span.route`.",
+          "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`, from the closed [geometryType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#geometrytype). This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Span.route`.",
           "type": "string",
           "codelist": "geometryType.csv",
           "openCodelist": false,
@@ -1607,7 +1607,7 @@
     },
     "OrganisationReference": {
       "title": "Organisation reference",
-      "description": "The [local identifier](https://standard.ofds.info/en/latest/reference/identifiers.html#local-identifiers) and name of the organisation being referenced. Used for cross-referencing within the dataset.",
+      "description": "The [local identifier](https://standard.ofds.info/en/latest/reference/identifiers#local-identifiers) and name of the organisation being referenced. Used for cross-referencing within the dataset.",
       "type": "object",
       "properties": {
         "id": {
@@ -1682,7 +1682,7 @@
         },
         "country": {
           "title": "Country",
-          "description": "The country in which the address is physically located, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#country).",
+          "description": "The country in which the address is physically located, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country).",
           "type": "string",
           "codelist": "country.csv",
           "openCodelist": false,
@@ -1968,7 +1968,7 @@
         },
         "format": {
           "title": "Format",
-          "description": "The format of this document, from the open [mediaType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#mediatype).",
+          "description": "The format of this document, from the open [mediaType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#mediatype).",
           "type": "string",
           "codelist": "mediaType.csv",
           "openCodelist": true,
@@ -2019,7 +2019,7 @@
         },
         "rel": {
           "title": "Relation type",
-          "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#linkrelationtype). The 'describedby' code must only be used in the first item in the `links` array to link to the schema that describes the structure of the data.",
+          "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#linkrelationtype). The 'describedby' code must only be used in the first item in the `links` array to link to the schema that describes the structure of the data.",
           "type": "string",
           "codelist": "linkRelationType.csv",
           "openCodelist": true,
