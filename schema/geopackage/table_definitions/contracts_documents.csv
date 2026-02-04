@@ -3,6 +3,6 @@ id,INTEGER,PK,,
 title,TEXT,,Title,A title for this document.
 description,TEXT,,Description,"A description of this document. Descriptions should not exceed 250 words. If the document is not accessible online, the description should describe how to access a copy of the document."
 url,TEXT,,URL,A web address for accessing this document.
-format,INTEGER,FK,Format,"The format of this document, from the open [mediaType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#mediatype)."
+format,INTEGER,FK,Format,"The format of this document, from the open [mediaType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#mediatype)."
 network_id,INTEGER,FK,Network ID,
 contract_id,INTEGER,FK,Contract ID,
