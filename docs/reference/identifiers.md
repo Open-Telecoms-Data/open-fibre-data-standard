@@ -35,7 +35,7 @@ To ensure that an organisation's `.identifier` is globally unique, it has two co
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Organisation
 :include: identifier/scheme,identifier/id
 ```

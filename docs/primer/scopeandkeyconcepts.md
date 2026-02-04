@@ -64,7 +64,7 @@ In a fully integrated model, one actor takes on all three roles, whilst in open 
 
 OFDS defines a network as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /description
 ```
 
@@ -74,7 +74,7 @@ OFDS defines a network as:
 
 OFDS defines a node as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Node/description
 ```
 
@@ -86,7 +86,7 @@ For more information about nodes, see the [Node reference](../reference/data_mod
 
 OFDS defines a span as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Span/description
 ```
 

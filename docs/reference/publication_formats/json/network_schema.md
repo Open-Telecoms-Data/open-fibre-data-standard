@@ -10,7 +10,7 @@ Use the canonical schema URL to make sure that your software, documentation or o
 
 ```
 
-This page presents the schema in an [interactive browser](#browser) and in [reference tables](#reference-tables) with additional information in paragraphs. You can also download the canonical version of the schema as [JSON Schema](../../../../schema/network-schema.json) or download it as a [CSV spreadsheet](../../../../schema/network-schema.csv).
+This page presents the schema in an [interactive browser](#browser) and in [reference tables](#reference-tables) with additional information in paragraphs. You can also download the canonical version of the schema as [JSON Schema](../../../../docs/_readthedocs/html/network-schema.json) or download it as a [CSV spreadsheet](../../../../schema/network-schema.csv).
 
 ```{note}
    If any conflicts are found between the text on this page and the text within the schema, the text within the schema takes precedence.
@@ -30,7 +30,7 @@ This section presents each property in the schema in tables with additional info
 
 The top-level object in the network schema is a network, defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /description
 ```
 
@@ -40,7 +40,7 @@ A network has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../docs/_readthedocs/html/network-schema.json
 :collapse: nodes,spans,phases,organisations,contracts,links
 :include: id,name,nodes,spans,phases,organisations,contracts,website,publisher/name,publisher/identifier/id,publisher/identifier/scheme,publisher/identifier/legalName,publicationDate,collectionDate,crs/name,crs/uri,accuracy,accuracyDetails,language,links
 :addtargets:
@@ -65,7 +65,7 @@ A network has the following properties:
 
 `Node` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Node/description
 ```
 
@@ -79,7 +79,7 @@ Each `Node` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Node
 :collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,physicalInfrastructureProvider,networkProviders
 :addtargets:
@@ -104,7 +104,7 @@ Each `Node` has the following properties:
 
 `Span` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Span/description
 ```
 
@@ -118,7 +118,7 @@ Each `Span` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Span
 :collapse: id,name,phase,status,readyForServiceDate,start,end,directed,route,physicalInfrastructureProvider,networkProviders,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
 :addtargets:
@@ -143,7 +143,7 @@ Each `Span` has the following properties:
 
 `Phase` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Phase/description
 ```
 
@@ -157,7 +157,7 @@ Each `Phase` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Phase
 :collapse: id,name,description,funders
 :addtargets:
@@ -182,7 +182,7 @@ Each `Phase` has the following properties:
 
 `Organisation` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Organisation/description
 ```
 
@@ -196,7 +196,7 @@ Each `Organisation` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Organisation
 :collapse: id,name,country,roles,roleDetails,website,logo
 :addtargets:
@@ -221,7 +221,7 @@ Each `Organisation` has the following properties:
 
 `Contract` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Contract/description
 ```
 
@@ -235,7 +235,7 @@ Each `Contract` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Contract
 :collapse: id,title,description,type,dateSigned,documents,relatedPhases
 :addtargets:
@@ -264,7 +264,7 @@ This section lists each sub-schema in the OFDS schema. Sub-schemas are reused in
 
 `Geometry` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Geometry/description
 ```
 
@@ -281,7 +281,7 @@ Each `Geometry` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Geometry
 :collapse: type,coordinates
 :addtargets:
@@ -312,7 +312,7 @@ Each `Geometry` has the following properties:
 
 `OrganisationReference` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/OrganisationReference/description
 ```
 
@@ -331,7 +331,7 @@ Each `OrganisationReference` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/OrganisationReference
 :collapse: id,name
 :addtargets:
@@ -386,7 +386,7 @@ Each `OrganisationReference` has the following properties:
 
 `PhaseReference` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/PhaseReference/description
 ```
 
@@ -402,7 +402,7 @@ Each `PhaseReference` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/PhaseReference
 :collapse: id,name
 :addtargets:
@@ -439,7 +439,7 @@ Each `PhaseReference` has the following properties:
 
 `Address` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Address/description
 ```
 
@@ -454,7 +454,7 @@ Each `Address` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Address
 :collapse: streetAddress,locality,region,postalCode,country
 :addtargets:
@@ -485,7 +485,7 @@ Each `Address` has the following properties:
 
 `Document` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Document/description
 ```
 
@@ -499,7 +499,7 @@ Each `Document` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Document
 :collapse: title,description,url,format
 :addtargets:
@@ -524,7 +524,7 @@ Each `Document` has the following properties:
 
 `Link` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Link/description
 ```
 
@@ -538,7 +538,7 @@ Each `Link` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Link
 :collapse: href,rel
 :addtargets:
