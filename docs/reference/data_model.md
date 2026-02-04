@@ -284,6 +284,36 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 
 ````
 
+````{dropdown} Additional information
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: info
+
+#### Equipped capacity
+
+`Span.capacity` is defined as the equipped capacity of a span:
+
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /$defs/Span/properties/capacity/description
+```
+
+There are several measures of capacity in fibre networks[^itu-attribution]:
+
+* **Potential capacity** refers to the total theoretical bandwidth that is available, including lit (turned on) and unlit (dark fibre) capacity.
+* **Equipped capacity**, also known as lit capacity, refers to bandwith that is turned on and ready for use.
+* **Purchased capacity**, also known as contracted capacity, covers bandwidth put into service, but not all of which is used; some is held in reserve for restoration or redundancy
+* **Used capacity** covers bandwidth that is available to carry traffic.
+
+```{image} ../_static/capacity-diagram.svg
+:alt: Capacity diagram
+:width: 70%
+:align: center
+```
+
+[^itu-attribution]: Text and diagram adapted from the [ITU Handbook for the collection of administrative data on telecommunications/ICT, 2020 edition](https://www.itu.int/en/ITU-D/Statistics/Pages/publications/handbook.aspx).
+
+````
+
 ### Organisation
 
 ````{dropdown} Description
