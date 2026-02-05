@@ -434,7 +434,7 @@
         },
         "cableType": {
           "title": "Cable type",
-          "description": "The type of cable used in this span",
+          "description": "The type of cable used in this span.",
           "type": "string",
           "minLength": 1,
           "openCodelist": true,
