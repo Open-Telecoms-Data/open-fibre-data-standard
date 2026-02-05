@@ -44,7 +44,7 @@ In addition to publishing the locations of fibre network infrastructure, using t
 
 ## What does OFDS data look like?
 
-To meet the needs of different users, OFDS data can be published in three formats: JSON, GeoJSON and CSV. The tabs below provide examples of OFDS data in each format:
+To meet the needs of different users, OFDS supports several [data formats](../reference/publication_formats/index.md). The examples show what OFDS data looks like in JSON and CSV format.
 
 ::::{tab-set}
 
@@ -56,24 +56,6 @@ The following example shows OFDS data containing a single network in JSON format
     :jsonpointer:
     :expand: networks
     :title: JSON
-```
-
-:::
-
-:::{tab-item} GeoJSON
-The following example shows OFDS data containing a single network in GeoJSON format. OFDS GeoJSON data consists of separate files for nodes and spans. Use the dropdown menu to explore an example nodes file and an example spans file:
-
-```{eval-rst}
-.. jsoninclude:: ../../examples/geojson/nodes.geojson
-    :jsonpointer:
-    :expand: features
-    :title: Nodes
-
-.. jsoninclude:: ../../examples/geojson/spans.geojson
-    :jsonpointer:
-    :expand: features
-    :title: Spans
-
 ```
 
 :::
