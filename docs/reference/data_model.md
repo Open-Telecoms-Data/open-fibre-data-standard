@@ -275,7 +275,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /$defs/Span
-:include: id,name,status,readyForServiceDate,directed,route,transmissionMedium,deployment,deploymentDetails/description,darkFibre,fibreType,fibreTypeDetails/fibreSubtype,fibreTypeDetails/description,fibreCount,fibreLength,technologies,capacity,capacityDetails/description,countries
+:include: id,name,status,readyForServiceDate,directed,route,transmissionMedium,deployment,deploymentDetails/description,darkFibre,fibreType,fibreTypeDetails/fibreSubtype,fibreTypeDetails/description,fibreCount,fibreLength,technologies,capacity,capacityDetails/description,countries,cableType,codeployment
 :collapse: route
 :nocrossref:
 :addtargets:

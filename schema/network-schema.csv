@@ -81,6 +81,8 @@ spans,spans/transmissionMedium,Transmission medium,"The physical media of this s
 spans,spans/deployment,Deployment,"The physical deployment of this span, from the closed deployment codelist. Further details of this span's deployment can be provided in `.deploymentDetails`.",array,0..n,"Enum: aboveGround, belowGround",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment,,,deployment.csv
 spans,spans/deploymentDetails,Deployment details,Further details about this span's deployment.,object,0..1,,,,,
 spans,spans/deploymentDetails/description,Description,A description of this span's deployment.,string,0..1,,,,,
+spans,spans/codeployment,Codeployment,The type of utility or transport infrastrucutre with which this span is codeployed.,string,0..1,,,,,codeployment.csv
+spans,spans/cableType,Cable type,The type of cable used in this span,string,0..1,,,,,cableType.csv
 spans,spans/darkFibre,Dark fibre availability,Whether access to dark fibre is available on this span.,boolean,0..1,,,,,
 spans,spans/fibreType,Fibre type,"The type of fibre used in this span, from the closed fibreType codelist. Further details of the span's fibre type can be provided in `.fibreTypeDetails`.",string,0..1,"Enum: G.651.1, G.652, G.653, G.654, G.655, G.656, G.657",https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#fibretype,,,fibreType.csv
 spans,spans/fibreTypeDetails,Fibre type details,Further details about this span's fibre type.,object,0..1,,,,,

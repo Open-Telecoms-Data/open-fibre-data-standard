@@ -28,6 +28,50 @@ Some codelists are specific to particular data formats. These are listed in the 
 
 ## Open codelists
 
+### cableType
+
+This codelist is referenced by the following attributes:
+
+- [`Span/cableType`](data_model,network-schema.json,/$defs/Span,cableType)
+
+This codelist has the following codes:
+
+````{dropdown} Codes
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: rows
+:open:
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/cableType.csv
+```
+
+````
+
+### codeployment
+
+This codelist is referenced by the following attributes:
+
+- [`Span/codeployment`](data_model,network-schema.json,/$defs/Span,codeployment)
+
+This codelist has the following codes:
+
+````{dropdown} Codes
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: rows
+:open:
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/codeployment.csv
+```
+
+````
+
 ### contractType
 
 The contract type codelist is used to categorise contracts based on the World Bank PPPLRC's [types of PPP arrangement](https://ppp.worldbank.org/public-private-partnership/agreements).
