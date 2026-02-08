@@ -437,30 +437,6 @@ This codelist has the following codes:
 
 The following codelists are specific to the [JSON format](publication_formats/json/index.md).
 
-#### geometryType
-
-The geometry type codelist is used to categorise the type of geometry represented by the geometry object.
-
-This codelist is referenced by the following attributes:
-
-- [`Geometry/type`](json,network-schema.json,/$defs/Geometry,type)
-
-This codelist has the following codes:
-
-````{dropdown} Codes
-:animate: fade-in-slide-down
-:chevron: down-up
-:icon: rows
-:open:
-
-```{csv-table-no-translate}
-:header-rows: 1
-:widths: auto
-:file: ../../codelists/closed/geometryType.csv
-```
-
-````
-
 #### linkRelationType
 
 The link relation type codelist consists of extensions to the [IANA Link Relationship Types](https://www.iana.org/assignments/link-relations/link-relations.xhtml#link-relations-1) constructed according to the [tag URI scheme](https://www.rfc-editor.org/rfc/rfc4151).

@@ -112,7 +112,7 @@ Examples of OFDS node and span location data are given below.
 
 ```json
 {
-    "geometry": {
+    "location": {
         "type": "Point",
         "coordinates": [
             26.081,
@@ -128,7 +128,7 @@ Examples of OFDS node and span location data are given below.
 
 ```json
 {
-    "geometry": {
+    "route": {
         "type": "LineString",
         "coordinates": [
             [
