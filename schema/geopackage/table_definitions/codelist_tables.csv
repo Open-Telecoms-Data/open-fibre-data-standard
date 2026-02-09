@@ -1,5 +1,7 @@
 `codelist_open_organisationIdentifierScheme`,[organisationIdentifierScheme](../../codelists.md#organisationidentifierscheme)
 `codelist_open_language`,[language](../../codelists.md#language)
+`codelist_open_codeployment`,[codeployment](../../codelists.md#codeployment)
+`codelist_open_cableType`,[cableType](../../codelists.md#cabletype)
 `codelist_open_contractType`,[contractType](../../codelists.md#contracttype)
 `codelist_open_mediaType`,[mediaType](../../codelists.md#mediatype)
 `codelist_open_nodeType`,[nodeType](../../codelists.md#nodetype)

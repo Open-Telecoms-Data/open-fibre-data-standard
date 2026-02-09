@@ -424,6 +424,22 @@
           },
           "minProperties": 1
         },
+        "codeployment": {
+          "title": "Codeployment",
+          "description": "The type of utility or transport infrastrucutre with which this span is codeployed.",
+          "type": "string",
+          "minLength": 1,
+          "openCodelist": true,
+          "codelist": "codeployment.csv"
+        },
+        "cableType": {
+          "title": "Cable type",
+          "description": "The type of cable used in this span.",
+          "type": "string",
+          "minLength": 1,
+          "openCodelist": true,
+          "codelist": "cableType.csv"
+        },
         "darkFibre": {
           "title": "Dark fibre availability",
           "description": "Whether access to dark fibre is available on this span.",

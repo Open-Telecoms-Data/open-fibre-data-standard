@@ -1,0 +1,9 @@
+Code,Title,Description
+wasteWater,Waste water,Infrastructure used for the collection and transport of sewage or used water to treatment facilities.
+drinkingWater,Drinking water,Networks dedicated to the distribution of potable water for human consumption.
+stormWater,Storm water,Systems designed to manage and redirect excess rain and ground water from impervious surfaces.
+gas,Gas,Pipelines used for the transport and distribution of natural or manufactured gas.
+oil,Oil,Pipelines used for the transport of crude oil or refined petroleum products.
+electricity,Electricity,"High, medium, or low voltage power transmission and distribution lines."
+road,Road,"Public or private vehicular thoroughfares, including bridges, tunnels, and associated ducts."
+rail,Rail,"Infrastructure related to railway tracks, including corridors, signaling conduits, and embankments."
