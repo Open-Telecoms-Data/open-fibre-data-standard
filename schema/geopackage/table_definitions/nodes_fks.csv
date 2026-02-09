@@ -1,4 +1,6 @@
 Column,References
 network_id,FK(`networks`.`id`)
-physicalInfrastructureProvider,FK(`organisations`.`id`)
+transmissionMediumOwner,FK(`organisations`.`id`)
+supportingInfrastructure__owner,FK(`organisations`.`id`)
 phase,FK(`phases`.`id`)
+supportingInfrastructure__type,FK(`codelist_open_nodeSupportingInfrastructure`.`id`)
