@@ -47,6 +47,8 @@ Iterative improvements are made outside of the release cycle. They do not involv
     - Replace `.physicalInfrastructureProvider` with `.transmissionMediumOwner` and `.supportingInfrastructure.owner` to distinguish ownership of transmission media and supporting infrastructure.
     - Remove `Span.deploymentDetails.description`, in favour of `Span.supportingInfrastructure.description`.
     - Move codes relating to supporting infrastructure from the nodeType codelist to the nodeSupportingInfrastructureType codelist
+- [#321](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/321) - Add `Span.cableType` and `Span.codeployment`
+- [#322](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/322) - Update `Node.type` description to explain modelling of junctions
 
 ## 0.3.0 - 2023-06-29
 
