@@ -705,7 +705,7 @@ def pre_commit():
     subprocess.run(["mermerd", "--runConfig", "docs/reference/publication_formats/geopackage/geopackage.yaml"])
 
     # Add style config to diagram and remove non-key attributes
-    with open("docs/reference/publication_formats/geopackage.mmd", 'r') as f:
+    with open("docs/reference/publication_formats/geopackage/geopackage.mmd", 'r') as f:
         lines = f.readlines()
 
     # 1. Prepare Header
@@ -756,7 +756,7 @@ def pre_commit():
     # Combine everything
     final_output = header + "".join(processed_content) + footer
 
-    with open("docs/reference/publication_formats/geopackage.mmd", 'w') as f:
+    with open("docs/reference/publication_formats/geopackage/geopackage.mmd", 'w') as f:
         f.write(final_output)
 
     # Update examples/csv

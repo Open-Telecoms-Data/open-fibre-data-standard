@@ -59,4 +59,4 @@ The `.identifier.scheme` field ensures that the identifier is globally unique, e
 
 Most identifiers in OFDS only need to be unique among the identifiers used for the same type of object within the same scope. For example, node identifiers only need to be unique with the scope of the nodes belonging to a network.
 
-Some local identifiers are used for cross-referencing. For example, an organisation's `.id` is a local identifier used for cross-referencing from attributes such as `Node.physicalInfrastructureProvider`.
+Some local identifiers are used for cross-referencing. For example, an organisation's `.id` is a local identifier used for cross-referencing from attributes such as `Node.transmissionMediumOwner`.
