@@ -71,7 +71,7 @@ For example, to convert the `nodes` layer to GeoJSON format:
 ```{code-cell}
 %%bash
 
-ogr2ogr -f GeoJSON  nodes.geojson /vsicurl/https://standard.ofds.info/en/298-remove-geojson/network.gpkg nodes
+ogr2ogr -f GeoJSON  nodes.geojson /vsicurl/https://standard.ofds.info/en/298-remove-geojson/geopackage/network.gpkg nodes
 ```
 
 ```{note}
@@ -131,7 +131,7 @@ Pass the SQL statement to the `-sql` option of `ogr2ogr`:
 ```{code-cell}
 %%bash
 
-ogr2ogr -f GeoJSON nodes_dereferenced.geojson /vsicurl/https://standard.ofds.info/en/298-remove-geojson/network.gpkg \
+ogr2ogr -f GeoJSON nodes_dereferenced.geojson /vsicurl/https://standard.ofds.info/en/298-remove-geojson/geopackage/network.gpkg \
   -sql "SELECT \
           nodes.*, \
           organisations.name AS physicalInfrastructureProvider_name \
@@ -173,10 +173,26 @@ In an OFDS GeoPackage, many-to-many relationships, such as a node having multipl
 
 If you use a standard `JOIN`, the output will contain duplicate features for every relationship. To keep your GeoJSON clean, you can use the SQLite `GROUP_CONCAT` function to merge these related values into a single property.
 
+For example, to dereference `nodes.networkProviders`, you can use the following SQL statement:
+
+```sql
+SELECT 
+    n.*, 
+    GROUP_CONCAT(o.name, ', ') AS networkProvider_names 
+FROM nodes n 
+LEFT JOIN relation_nodes_networkProviders nnp 
+    ON n.id = nnp.base_id 
+LEFT JOIN organisations o 
+    ON nnp.related_id = o.id 
+GROUP BY n.id
+```
+
+Pass the SQL statement to the `-sql` option of `ogr2ogr`:
+
 ```{code-cell}
 %%bash
 
-ogr2ogr -f GeoJSON nodes_multi_provider.geojson /vsicurl/https://standard.ofds.info/en/298-remove-geojson/network.gpkg \
+ogr2ogr -f GeoJSON nodes_multi_provider.geojson /vsicurl/https://standard.ofds.info/en/298-remove-geojson/geopackage/network.gpkg \
   -sql "SELECT \
             n.*, \
             GROUP_CONCAT(o.name, ', ') AS networkProvider_names \
