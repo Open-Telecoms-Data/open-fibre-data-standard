@@ -50,7 +50,8 @@
         },
         {
           "id": "2",
-          "name": "FastWeb"
+          "name": "FastWeb",
+          "website": "https://www.example.com"
         }
       ],
       "crs": {
