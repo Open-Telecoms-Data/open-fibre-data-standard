@@ -50,6 +50,10 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#321](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/321) - Add `Span.cableType` and `Span.codeployment`
 - [#322](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/322) - Update `Node.type` description to explain modelling of junctions
 
+### Normative documentation
+
+- [#331](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/331) - Add link to JSON Schema documentation for data types, formats and validation keywords.
+
 ## 0.3.0 - 2023-06-29
 
 ### Schema
