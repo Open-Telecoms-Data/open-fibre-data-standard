@@ -8,7 +8,6 @@ version: 2
 # Set the version of Python and other tools you might need
 build:
   os: ubuntu-20.04
-  python: "3.12"
   apt_packages:
     - gdal-bin
     - jq
