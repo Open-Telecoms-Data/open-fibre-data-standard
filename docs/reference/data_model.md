@@ -74,7 +74,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :icon: rows
 
 ```{jsonschema} ../../schema/network-schema.json
-:include: id,name,website,language
+:include: id,identifier,name,website,language
 :nocrossref:
 :addtargets:
 :prefix: data_model

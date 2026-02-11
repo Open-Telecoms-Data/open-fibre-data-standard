@@ -86,7 +86,7 @@ This table is related to the following tables:
 The columns in this table are listed below. You can also download an [example CSV file](../../../examples/csv/networks.csv) or a [blank template](../../../examples/csv/template/networks.csv) for this table.
 
 ```{jsonschema} ../../../schema/network-schema.json
-:include: id,name,website,publisher,publicationDate,collectionDate,crs,accuracy,accuracyDetails,language
+:include: id,identifier,name,website,publisher,publicationDate,collectionDate,crs,accuracy,accuracyDetails,language
 :nocrossref:
 ```
 

@@ -1,5 +1,6 @@
 section,path,title,description,type,range,values,links,deprecated,deprecationNotes,codelist
-,id,Identifier,"A universally unique identifier for this network, as defined by RFC 4122. For more information, see the identifier reference.",string,1..1,uuid,"https://datatracker.ietf.org/doc/html/rfc4122, https://open-fibre-data-standard.readthedocs.io/en/latest/reference/identifiers.html",,,
+,id,UUID,"A universally unique identifier for this network, as defined by RFC 4122. For more information, see the identifier reference.",string,1..1,uuid,"https://datatracker.ietf.org/doc/html/rfc4122, https://open-fibre-data-standard.readthedocs.io/en/latest/reference/identifiers.html",,,
+,identifier,Identifier,A local identifier for this network in an internal system.,string,0..1,,,,,
 ,name,Network name,A name for this network.,string,0..1,,,,,
 ,nodes,Nodes,The nodes that belong to this network.,array,0..n,,,,,
 ,nodes,Node,"A point within a network. A node may be an access point or may reflect a geographic point at which a span splits, aggregates or crosses a border. Nodes can allow for interconnections to other networks or connections to end users.",object,,,,,,
