@@ -22,7 +22,7 @@ This page presents the schema in an [interactive browser](#browser) and in [refe
    - [Data types](https://json-schema.org/understanding-json-schema/reference/type)
    - [String formats](https://json-schema.org/understanding-json-schema/reference/type#built-in-formats)
    - [Validation keywords](https://json-schema.org/understanding-json-schema/keywords)
-``` 
+```
 
 ## Browser
 
