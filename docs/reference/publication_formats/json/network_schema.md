@@ -16,6 +16,14 @@ This page presents the schema in an [interactive browser](#browser) and in [refe
    If any conflicts are found between the text on this page and the text within the schema, the text within the schema takes precedence.
 ```
 
+```{seealso}
+   For more information on the data types, string formats and other validation keywords used in the network schema, refer to the JSON Schema Reference documentation:
+
+   - [Data types](https://json-schema.org/understanding-json-schema/reference/type)
+   - [String formats](https://json-schema.org/understanding-json-schema/reference/type#built-in-formats)
+   - [Validation keywords](https://json-schema.org/understanding-json-schema/keywords)
+``` 
+
 ## Browser
 
 Click on schema elements to expand the tree, or use the '+' icon to expand all elements. Use { } to view the underlying schema for any section. Required properties are indicated in **bold**.
