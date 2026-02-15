@@ -28,6 +28,50 @@ Some codelists are specific to particular data formats. These are listed in the 
 
 ## Open codelists
 
+### cableType
+
+This codelist is referenced by the following attributes:
+
+- [`Span/cableType`](data_model,network-schema.json,/$defs/Span,cableType)
+
+This codelist has the following codes:
+
+````{dropdown} Codes
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: rows
+:open:
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/cableType.csv
+```
+
+````
+
+### codeployment
+
+This codelist is referenced by the following attributes:
+
+- [`Span/codeployment`](data_model,network-schema.json,/$defs/Span,codeployment)
+
+This codelist has the following codes:
+
+````{dropdown} Codes
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: rows
+:open:
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/codeployment.csv
+```
+
+````
+
 ### contractType
 
 The contract type codelist is used to categorise contracts based on the World Bank PPPLRC's [types of PPP arrangement](https://ppp.worldbank.org/public-private-partnership/agreements).
@@ -95,7 +139,26 @@ This codelist has the following codes:
 :widths: auto
 :file: ../../codelists/open/mediaType.csv
 ```
+````
 
+### nodeSupportingInfrastructure
+
+This codelist is referenced by the following properties:
+
+- [`Node/supportingInfrastructure/type`](data_model,network-schema.json,/$defs/Node,supportingInfrastructure/type)
+
+This codelist has the following codes:
+
+````{dropdown} Codes
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: rows
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/nodeSupportingInfrastructure.csv
+```
 ````
 
 ### nodeTechnologies
@@ -190,7 +253,27 @@ This codelist has the following codes:
 :widths: auto
 :file: ../../codelists/open/organisationRole.csv
 ```
+````
 
+### spanSupportingInfrastructure
+
+This codelist is referenced by the following properties:
+
+- [`Span/supportingInfrastructure/type`](data_model,network-schema.json,/$defs/Span,supportingInfrastructure/type)
+
+This codelist has the following codes:
+
+````{dropdown} Codes
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: rows
+:open:
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/spanSupportingInfrastructure.csv
+```
 ````
 
 ### spanTechnologies

@@ -102,7 +102,7 @@ This table is related to the following tables:
 The columns in this table are listed below. You can also download an [example CSV file](../../../examples/csv/nodes.csv) or a [blank template](../../../examples/csv/template/nodes.csv) for this table.
 
 ```{jsonschema} ../../../schema/network-schema.json
-:include: id,nodes/0/id,nodes/0/name,nodes/0/phase,nodes/0/status,nodes/0/location,nodes/0/address,nodes/0/type,nodes/0/accessPoint,nodes/0/power,nodes/0/technologies,nodes/0/physicalInfrastructureProvider
+:include: id,nodes/0/id,nodes/0/name,nodes/0/phase,nodes/0/status,nodes/0/location,nodes/0/address,nodes/0/type,nodes/0/supportingInfrastructure,nodes/0/accessPoint,nodes/0/power,nodes/0/technologies,nodes/0/transmissionMediumOwner
 :collapse: nodes/0/location
 :nocrossref:
 ```
@@ -143,7 +143,7 @@ This table is related to the following tables:
 The columns in this table are listed below. You can also download an [example CSV file](../../../examples/csv/spans.csv) or a [blank template](../../../examples/csv/template/spans.csv) for this table.
 
 ```{jsonschema} ../../../schema/network-schema.json
-:include: id,spans/0/id,spans/0/name,spans/0/phase,spans/0/status,spans/0/readyForServiceDate,spans/0/start,spans/0/end,spans/0/directed,spans/0/route,spans/0/physicalInfrastructureProvider,spans/0/supplier,spans/0/transmissionMedium,spans/0/deployment,spans/0/deploymentDetails,spans/0/darkFibre,spans/0/fibreType,spans/0/fibreTypeDetails,spans/0/fibreCount,spans/0/fibreLength,spans/0/technologies,spans/0/capacity,spans/0/capacityDetails,spans/0/wayleaves,spans/0/countries
+:include: id,spans/0/id,spans/0/name,spans/0/phase,spans/0/status,spans/0/readyForServiceDate,spans/0/start,spans/0/end,spans/0/directed,spans/0/route,spans/0/transmissionMediumOwner,spans/0/supplier,spans/0/transmissionMedium,spans/0/deployment,spans/0/supportingInfrastructure,spans/0/darkFibre,spans/0/fibreType,spans/0/fibreTypeDetails,spans/0/fibreCount,spans/0/fibreLength,spans/0/technologies,spans/0/capacity,spans/0/capacityDetails,spans/0/wayleaves,spans/0/countries
 :collapse: spans/0/route
 :nocrossref:
 ```

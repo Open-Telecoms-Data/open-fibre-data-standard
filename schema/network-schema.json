@@ -221,7 +221,7 @@
         },
         "type": {
           "title": "Type",
-          "description": "The type of this node, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetype). For nodes with multiple network providers, the union of the node types for each provider.",
+          "description": "This node's function, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetype). For nodes with multiple network providers, the union of the node types for each provider. If a node's only function is to serve as a junction between spans, this attribute should be omitted. Junction nodes are identified by the existence of more than two spans that begin or end at the node.",
           "type": "array",
           "items": {
             "type": [
@@ -233,6 +233,38 @@
           "openCodelist": true,
           "minItems": 1,
           "uniqueItems": true
+        },
+        "supportingInfrastructure": {
+          "title": "Supporting infrastructure",
+          "description": "The infrastructure that supports this node.",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Type",
+              "description": "The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodesupportinginfrastructure).",
+              "type": "string",
+              "minLength": 1,
+              "openCodelist": true,
+              "codelist": "nodeSupportingInfrastructure.csv"
+            },
+            "description": {
+              "title": "Description",
+              "description": "A description of the supporting infrastructure for this node.",
+              "type": "string",
+              "minLength": 1
+            },
+            "owner": {
+              "title": "Owner",
+              "description": "The organisation that owns the supporting infrastructure.",
+              "$ref": "#/$defs/OrganisationReference"
+            },
+            "spareCapacity": {
+              "title": "Spare capacity",
+              "description": "Whether the supporting infrastructure has spare capacity for the installation of additional network equipment.",
+              "type": "boolean"
+            }
+          },
+          "minProperties": 1
         },
         "accessPoint": {
           "title": "Access point",
@@ -270,9 +302,9 @@
           "minItems": 1,
           "uniqueItems": true
         },
-        "physicalInfrastructureProvider": {
-          "title": "Physical infrastructure provider",
-          "description": "The organisation that owns the passive network infrastructure for this node, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
+        "transmissionMediumOwner": {
+          "title": "Transmission medium owner",
+          "description": "The organisation that owns the transmission media for this node, i.e. the passive network equipment such as splitters, combiners and fibre distribution panels.",
           "$ref": "#/$defs/OrganisationReference"
         },
         "networkProviders": {
@@ -359,9 +391,9 @@
           "description": "The physical route that this span takes between the nodes that it connects.",
           "$ref": "#/$defs/Geometry"
         },
-        "physicalInfrastructureProvider": {
-          "title": "Physical infrastructure provider",
-          "description": "The organisation that owns the passive network infrastructure for this span, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
+        "transmissionMediumOwner": {
+          "title": "Owner",
+          "description": "The organisation that owns the transmission media for this span, i.e. the fibre cables.",
           "$ref": "#/$defs/OrganisationReference"
         },
         "networkProviders": {
@@ -403,7 +435,7 @@
         },
         "deployment": {
           "title": "Deployment",
-          "description": "The physical deployment of this span, from the closed [deployment codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment). Further details of this span's deployment can be provided in `.deploymentDetails`.",
+          "description": "The physical deployment of this span, from the closed [deployment codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment). Further details of this span's deployment can be provided in `.supportingInfrastructure`.",
           "type": "array",
           "items": {
             "type": [
@@ -420,19 +452,53 @@
           "minItems": 1,
           "uniqueItems": true
         },
-        "deploymentDetails": {
-          "title": "Deployment details",
-          "description": "Further details about this span's deployment.",
+        "supportingInfrastructure": {
+          "title": "Supporting infrastructure",
+          "description": "The infrastructure that supports this span.",
           "type": "object",
           "properties": {
+            "type": {
+              "title": "Type",
+              "description": "The type of supporting infrastructure, from the open [spanSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spansupportinginfrastructure).",
+              "type": "string",
+              "minLength": 1,
+              "openCodelist": true,
+              "codelist": "spanSupportingInfrastructure.csv"
+            },
             "description": {
               "title": "Description",
-              "description": "A description of this span's deployment.",
+              "description": "A description of the supporting infrastructure for this span.",
               "type": "string",
               "minLength": 1
+            },
+            "owner": {
+              "title": "Owner",
+              "description": "The organisation that owns the supporting infrastructure.",
+              "$ref": "#/$defs/OrganisationReference"
+            },
+            "spareCapacity": {
+              "title": "Spare capacity",
+              "description": "Whether the supporting infrastructure has spare capacity for the installation of additional fibre cables.",
+              "type": "boolean"
             }
           },
           "minProperties": 1
+        },
+        "codeployment": {
+          "title": "Codeployment",
+          "description": "The type of utility or transport infrastrucutre with which this span is codeployed.",
+          "type": "string",
+          "minLength": 1,
+          "openCodelist": true,
+          "codelist": "codeployment.csv"
+        },
+        "cableType": {
+          "title": "Cable type",
+          "description": "The type of cable used in this span.",
+          "type": "string",
+          "minLength": 1,
+          "openCodelist": true,
+          "codelist": "cableType.csv"
         },
         "darkFibre": {
           "title": "Dark fibre availability",
@@ -2059,6 +2125,26 @@
       },
       "minProperties": 1
     },
+    "FibreTypeDetails": {
+      "title": "Fibre type details",
+      "description": "Further details about a span's fibre type.",
+      "type": "object",
+      "properties": {
+        "fibreSubtype": {
+          "title": "Fibre subtype",
+          "description": "The sub-category of the fibre type. For example, G.652.B.",
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of this span's fibre type.",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
     "Wayleave": {
       "title": "Wayleave",
       "description": "A formal agreement that grants a network operator rights to install, maintain or operate telecommunications infrastructure on, over, or under the grantor's property or asset.",
@@ -2119,6 +2205,20 @@
           }
         }
       }
+    },
+    "CapacityDetails": {
+      "title": "Capacity details",
+      "description": "Further details about a span's capacity.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "A description of this span's capacity.",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
     }
   },
   "minProperties": 1

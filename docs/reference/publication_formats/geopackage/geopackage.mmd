@@ -16,7 +16,8 @@ erDiagram
         INTEGER id PK 
         INTEGER network_id FK 
         INTEGER phase FK 
-        INTEGER physicalInfrastructureProvider FK 
+        INTEGER supportingInfrastructure__owner FK 
+        INTEGER transmissionMediumOwner FK 
     }
 
     organisations {
@@ -50,13 +51,16 @@ erDiagram
     }
 
     spans {
+        INTEGER cableType FK 
+        INTEGER codeployment FK 
         INTEGER end FK 
         INTEGER id PK 
         INTEGER network_id FK 
         INTEGER phase FK 
-        INTEGER physicalInfrastructureProvider FK 
         INTEGER start FK 
         INTEGER supplier FK 
+        INTEGER supportingInfrastructure__owner FK 
+        INTEGER transmissionMediumOwner FK 
     }
 
     wayleaves {
@@ -72,16 +76,18 @@ erDiagram
     phases }o--|| networks : "network_id"
     spans }o--|| networks : "network_id"
     wayleaves }o--|| networks : "network_id"
-    nodes }o--|| organisations : "physicalInfrastructureProvider"
+    nodes }o--|| organisations : "supportingInfrastructure__owner"
+    nodes }o--|| organisations : "transmissionMediumOwner"
     nodes }o--|| phases : "phase"
     relation_nodes_networkProviders }o--|| nodes : "base_id"
     spans }o--|| nodes : "end"
     spans }o--|| nodes : "start"
     relation_nodes_networkProviders }o--|| organisations : "related_id"
     relation_spans_networkProviders }o--|| organisations : "related_id"
-    spans }o--|| organisations : "physicalInfrastructureProvider"
     spans }o--|| organisations : "supplier"
     wayleaves }o--|| organisations : "grantor"
+    spans }o--|| organisations : "supportingInfrastructure__owner"
+    spans }o--|| organisations : "transmissionMediumOwner"
     relation_contracts_relatedPhases }o--|| phases : "related_id"
     spans }o--|| phases : "phase"
     relation_spans_networkProviders }o--|| spans : "base_id"
