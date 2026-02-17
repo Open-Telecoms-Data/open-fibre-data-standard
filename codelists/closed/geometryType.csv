@@ -1,3 +1,0 @@
-Code,Title,Description
-LineString,Line string,"A GeoJSON LineString, i.e. an array of two or more positions."
-Point,Point,"A GeoJSON Point, i.e. a single position."

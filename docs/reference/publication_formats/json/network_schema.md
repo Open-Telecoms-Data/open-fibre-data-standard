@@ -298,29 +298,28 @@ Each `Wayleave` has the following properties:
 
 This section lists each sub-schema in the OFDS schema. Sub-schemas are reused in multiple places in the schema. For information on how the sub-schemas fit together, see the [network object](#network) section or the [schema browser](#browser).
 
-#### Geometry
+#### PointGeometry
 
-`Geometry` is defined as:
+`PointGeometry` is defined as:
 
 ```{jsoninclude-quote} ../../../../schema/network-schema.json
-:jsonpointer: /$defs/Geometry/description
+:jsonpointer: /$defs/PointGeometry/description
 ```
 
 This sub-schema is referenced by the following properties:
 
 - [`Node/location`](json,network-schema.json,/$defs/Node,location)
-- [`Span/route`](json,network-schema.json,/$defs/Span,route)
 
-Additional properties are not permitted within `Geometry` objects.
+Additional properties are not permitted within `PointGeometry` objects.
 
-Each `Geometry` has the following properties:
+Each `PointGeometry` has the following properties:
 
 ::::{tab-set}
 
 :::{tab-item} Schema
 
 ```{jsonschema} ../../../../schema/network-schema.json
-:pointer: /$defs/Geometry
+:pointer: /$defs/PointGeometry
 :collapse: type,coordinates
 :addtargets:
 :prefix: json
@@ -335,6 +334,41 @@ Each `Geometry` has the following properties:
  :jsonpointer: /networks/0/nodes/0/location
  :title: nodes/0/location
 ```
+
+:::
+
+::::
+
+#### LineStringGeometry
+
+`LineStringGeometry` is defined as:
+
+```{jsoninclude-quote} ../../../../schema/network-schema.json
+:jsonpointer: /$defs/LineStringGeometry/description
+```
+
+This sub-schema is referenced by the following properties:
+
+- [`Span/route`](json,network-schema.json,/$defs/Span,route)
+
+Additional properties are not permitted within `LineStringGeometry` objects.
+
+Each `LineStringGeometry` has the following properties:
+
+::::{tab-set}
+
+:::{tab-item} Schema
+
+```{jsonschema} ../../../../schema/network-schema.json
+:pointer: /$defs/LineStringGeometry
+:collapse: type,coordinates
+:addtargets:
+:prefix: json
+```
+
+:::
+
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../../../examples/json/network-package.json
