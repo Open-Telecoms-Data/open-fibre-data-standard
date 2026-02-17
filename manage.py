@@ -138,14 +138,14 @@ def update_csv_docs(jsonref_schema):
   csv_reference = read_lines(referencedir / 'publication_formats' / 'csv.md')
 
   # Preserve introductory content up to the ## networks heading
-  csv_reference = csv_reference[:csv_reference.index("## networks\n") - 1]
+  csv_reference = csv_reference[:csv_reference.index("### networks\n") - 1]
 
   # Generate CSV reference
   dereferenced_schema = get_dereferenced_schema(jsonref_schema)
   markdown = generate_csv_reference_markdown('networks', dereferenced_schema)
  
   for key, value in markdown.items():
-    csv_reference.append(f"\n{'#'*value['depth']} {key}\n\n")
+    csv_reference.append(f"\n{'#'*(value['depth']+1)} {key}\n\n")
     csv_reference.extend(value['content'])
 
   write_lines(referencedir / 'publication_formats' / 'csv.md', csv_reference)
@@ -184,7 +184,7 @@ def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
       parent_ref = f"{'/0/'.join([parent for parent in parents[1:]])}"
  
     markdown[table]['content'].append(
-      f" * [{parents[-1]}](#{parents[-1].lower()}): many-to-one by `{parent_ref + '/0/' if len(parent_ref) > 0 else ''}id`\n"
+      f"- [{parents[-1]}](#{parents[-1].lower()}): many-to-one by `{parent_ref + '/0/' if len(parent_ref) > 0 else ''}id`\n"
     )
 
   # Add references to parent object ids to list of pointers for jsonschema directive
@@ -197,14 +197,14 @@ def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
   for key,value in properties.items():
     if value['type'] == 'array' and value['items']['type'] == 'object':     
       markdown[table]['content'].append(
-        f" * [{key if table == 'networks' else f'{table}_{key}'}](#{key if table == 'networks' else f'{table}_{key}'.lower()}): one-to-many by `{'id' if table == 'networks' else '/0/'.join(parents[1:] + [table, 'id'])}`\n"
+        f"- [{key if table == 'networks' else f'{table}_{key}'}](#{key if table == 'networks' else f'{table}_{key}'.lower()}): one-to-many by `{'id' if table == 'networks' else '/0/'.join(parents[1:] + [table, 'id'])}`\n"
       )
       markdown.update(generate_csv_reference_markdown(key, value, parents + [table], depth + 1))
     else:
       include_pointers.append(f"{parent_ref}{'/0/' if len(parent_ref) > 0 else ''}{table.split('_')[-1]+'/0/' if len(parents)>0 else ''}{key}")
 
   # Generate links to examples and templates
-  markdown[table]['content'].append(f"\nThe fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/{table}.csv) or a [blank template](../../../examples/csv/template/{table}.csv) for this table.\n\n")
+  markdown[table]['content'].append(f"\nThe columns in this table are listed below. You can also download an [example CSV file](../../../examples/csv/{table}.csv) or a [blank template](../../../examples/csv/template/{table}.csv) for this table.\n\n")
 
   # Generate jsonschema directive
   markdown[table]['content'].extend([
@@ -717,8 +717,8 @@ def pre_commit():
         "    classDef attribute fill:#cec7ffff,stroke:#110e27\n"
         "    classDef mapping fill:#efefefff,stroke:#434343ff\n\n"
         "    class nodes,spans feature\n"
-        "    class networks,organisations,phases,contracts attribute\n"
-        "    class relation_contracts_relatedPhases,relation_spans_networkProviders,relation_nodes_networkProviders mapping\n"
+        "    class networks,organisations,phases,contracts,wayleaves attribute\n"
+        "    class relation_contracts_relatedPhases,relation_spans_networkProviders,relation_spans_wayleaves,relation_nodes_networkProviders mapping\n"
         "    direction BT\n"
     )
 
