@@ -448,6 +448,28 @@ Attributes User Data Tables represent [non-spatial entities](#non-spatial-entiti
 
 ````
 
+````{dropdown} wayleaves
+:name: wayleaves
+:class-title: attribute-drop-down
+:animate: fade-in-slide-down
+:chevron: down-up
+
+**Columns**
+
+```{csv-table}
+:file: ../../../../schema/geopackage/table_definitions/wayleaves.csv
+:header-rows: 1
+```
+
+**Foreign keys**
+
+```{csv-table}
+:file: ../../../../schema/geopackage/table_definitions/wayleaves_fks.csv
+:header-rows: 1
+```
+
+````
+
 ````{dropdown} contracts_documents
 :name: contracts_documents
 :class-title: attribute-drop-down
