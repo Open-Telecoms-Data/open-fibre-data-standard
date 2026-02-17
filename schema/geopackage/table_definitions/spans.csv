@@ -2,7 +2,7 @@ Name,Type,Constraints,Title,Description
 id,INTEGER,PK,,
 geom,BLOB,,,
 ofds_id,TEXT,,Identifier,A locally-unique identifier for this span.
-name,TEXT,,Name,A name for this span. The name should be unique amonst the spans belonging to a network.
+name,TEXT,,Name,A name for this span. The name should be unique amongst the spans belonging to a network.
 phase,INTEGER,FK,Phase,The phase to which this span belongs.
 status,TEXT,,Status,"The status of the network infrastructure for this span, from the closed [spanStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spanstatus)."
 readyForServiceDate,TEXT,,Ready for service date,"The date this span was ready to carry traffic. For spans with multiple network providers, the earliest of the dates at which each provider's network was ready to carry traffic on this span."

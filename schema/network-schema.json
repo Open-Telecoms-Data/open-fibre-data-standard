@@ -333,7 +333,7 @@
         },
         "name": {
           "title": "Name",
-          "description": "A name for this span. The name should be unique amonst the spans belonging to a network.",
+          "description": "A name for this span. The name should be unique amongst the spans belonging to a network.",
           "type": "string",
           "minLength": 1
         },
@@ -871,7 +871,7 @@
         },
         "name": {
           "title": "Name",
-          "description": "A name for this phase. The name should be unique amonst the phases belonging to a network.",
+          "description": "A name for this phase. The name should be unique amongst the phases belonging to a network.",
           "type": "string",
           "minLength": 1
         },
@@ -910,7 +910,7 @@
         },
         "name": {
           "title": "Name",
-          "description": "A name for this organisation. The name should be unique amonst the organisations belonging to a network.",
+          "description": "A name for this organisation. The name should be unique amongst the organisations belonging to a network.",
           "type": "string",
           "minLength": 1
         },
