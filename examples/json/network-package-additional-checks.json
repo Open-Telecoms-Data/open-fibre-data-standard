@@ -17,7 +17,7 @@
           "phase": {
             "id": "Phase 1"
           },
-          "physicalInfrastructureProvider": {
+          "transmissionMediumOwner": {
             "id": "FibreCo"
           },
           "networkProviders": [
@@ -52,7 +52,7 @@
           "phase": {
             "id": "Phase 1"
           },
-          "physicalInfrastructureProvider": {
+          "transmissionMediumOwner": {
             "id": "FibreCo"
           },
           "networkProviders": [
