@@ -41,8 +41,8 @@ A network has the following properties:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../../../schema/network-schema.json
-:collapse: nodes,spans,phases,organisations,contracts,links
-:include: id,name,nodes,spans,phases,organisations,contracts,website,publisher/name,publisher/identifier/id,publisher/identifier/scheme,publisher/identifier/legalName,publicationDate,collectionDate,crs/name,crs/uri,accuracy,accuracyDetails,language,links
+:collapse: nodes,spans,phases,organisations,contracts,links,wayleaves
+:include: id,name,nodes,spans,phases,organisations,contracts,website,publisher/name,publisher/identifier/id,publisher/identifier/scheme,publisher/identifier/legalName,publicationDate,collectionDate,crs/name,crs/uri,accuracy,accuracyDetails,language,links,wayleaves
 :addtargets:
 :prefix: json
 ```
@@ -81,7 +81,7 @@ Each `Node` has the following properties:
 
 ```{jsonschema} ../../../../schema/network-schema.json
 :pointer: /$defs/Node
-:collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,physicalInfrastructureProvider,networkProviders
+:collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,transmissionMediumOwner,networkProviders
 :addtargets:
 :prefix: json
 ```
@@ -120,7 +120,7 @@ Each `Span` has the following properties:
 
 ```{jsonschema} ../../../../schema/network-schema.json
 :pointer: /$defs/Span
-:collapse: id,name,phase,status,readyForServiceDate,start,end,directed,route,physicalInfrastructureProvider,networkProviders,supplier,transmissionMedium,deployment,deploymentDetails,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
+:collapse: id,name,phase,status,readyForServiceDate,start,end,directed,route,transmissionMediumOwner,networkProviders,supplier,transmissionMedium,deployment,darkFibre,fibreType,fibreTypeDetails,fibreCount,fibreLength,technologies,capacity,capacityDetails,countries
 :addtargets:
 :prefix: json
 ```
@@ -237,7 +237,7 @@ Each `Contract` has the following properties:
 
 ```{jsonschema} ../../../../schema/network-schema.json
 :pointer: /$defs/Contract
-:collapse: id,title,description,type,dateSigned,documents,relatedPhases
+:collapse: id,title,description,type,dateSigned,documents,relatedPhases,value
 :addtargets:
 :prefix: json
 ```
@@ -250,6 +250,44 @@ Each `Contract` has the following properties:
 .. jsoninclude:: ../../../../examples/json/network-package.json
  :jsonpointer: /networks/0/contracts
  :title: contracts
+```
+
+:::
+
+::::
+
+### Wayleave
+
+`Wayleave` is defined as:
+
+```{jsoninclude-quote} ../../../../schema/network-schema.json
+:jsonpointer: /$defs/Wayleave/description
+```
+
+This sub-schema is referenced by the following properties:
+
+- [`wayleaves`](json,network-schema.json,,wayleaves)
+
+Each `Wayleave` has the following properties:
+
+::::{tab-set}
+
+:::{tab-item} Schema
+
+```{jsonschema} ../../../../schema/network-schema.json
+:pointer: /$defs/Wayleave
+:addtargets:
+:prefix: json
+```
+
+:::
+
+:::{tab-item} Examples
+
+```{eval-rst}
+.. jsoninclude:: ../../../../examples/json/network-package.json
+ :jsonpointer: /networks/0/wayleaves
+ :title: wayleaves
 ```
 
 :::
@@ -352,9 +390,11 @@ Each `LineStringGeometry` has the following properties:
 
 This sub-schema is referenced by the following properties:
 
-- [`Node/physicalInfrastructureProvider`](json,network-schema.json,/$defs/Node,physicalInfrastructureProvider)
+- [`Node/transmissionMediumOwner`](json,network-schema.json,/$defs/Node,transmissionMediumOwner)
+- [`Node/supportingInfrastructure/owner`](json,network-schema.json,/$defs/Node,supportingInfrastructure/owner)
 - [`Node/networkProviders`](json,network-schema.json,/$defs/Node,networkProviders)
-- [`Span/physicalInfrastructureProvider`](json,network-schema.json,/$defs/Span,physicalInfrastructureProvider)
+- [`Span/transmissionMediumOwner`](json,network-schema.json,/$defs/Span,transmissionMediumOwner)
+- [`Span/supportingInfrastructure/owner`](json,network-schema.json,/$defs/Span,supportingInfrastructure/owner)
 - [`Span/networkProviders`](json,network-schema.json,/$defs/Span,networkProviders)
 - [`Span/supplier`](json,network-schema.json,/$defs/Span,supplier)
 - [`Phase/funders`](json,network-schema.json,/$defs/Phase,funders)
@@ -378,8 +418,8 @@ Each `OrganisationReference` has the following properties:
 
 ```{eval-rst}
 .. jsoninclude:: ../../../../examples/json/network-package.json
- :jsonpointer: /networks/0/nodes/0/physicalInfrastructureProvider
- :title: nodes/0/physicalInfrastructureProvider
+ :jsonpointer: /networks/0/nodes/0/transmissionMediumOwner
+ :title: nodes/0/transmissionMediumOwner
 ```
 
 ```{eval-rst}
@@ -390,8 +430,8 @@ Each `OrganisationReference` has the following properties:
 
 ```{eval-rst}
 .. jsoninclude:: ../../../../examples/json/network-package.json
- :jsonpointer: /networks/0/spans/0/physicalInfrastructureProvider
- :title: spans/0/physicalInfrastructureProvider
+ :jsonpointer: /networks/0/spans/0/transmissionMediumOwner
+ :title: spans/0/transmissionMediumOwner
 ```
 
 ```{eval-rst}
@@ -509,6 +549,45 @@ Each `Address` has the following properties:
 .. jsoninclude:: ../../../../examples/json/network-package.json
  :jsonpointer: /networks/0/nodes/0/internationalConnections
  :title: nodes/0/internationalConnections
+```
+
+:::
+
+::::
+
+#### Value
+
+`Value` is defined as:
+
+```{jsoninclude-quote} ../../../../schema/network-schema.json
+:jsonpointer: /$defs/Value/description
+```
+
+This sub-schema is referenced by the following properties:
+
+- [`Contract/value`](json,network-schema.json,/$defs/Contract,documents)
+- [`Wayleave/cost/perMetre`](json,network-schema.json,/$defs/Wayleave,cost/perMetre)
+
+Each `Value` has the following properties:
+
+::::{tab-set}
+
+:::{tab-item} Schema
+
+```{jsonschema} ../../../../schema/network-schema.json
+:pointer: /$defs/Value
+:addtargets:
+:prefix: json
+```
+
+:::
+
+:::{tab-item} Examples
+
+```{eval-rst}
+.. jsoninclude:: ../../../../examples/json/network-package.json
+ :jsonpointer: /networks/0/contracts/0/documents
+ :title: contracts/0/documents
 ```
 
 :::

@@ -10,7 +10,11 @@ address__locality,TEXT,,Address Locality,"The physical address of this node. The
 address__region,TEXT,,Address Region,"The physical address of this node. The region. For example, CA."
 address__postalCode,TEXT,,Address Postal code,"The physical address of this node. The postal code. For example, 94043."
 address__country,TEXT,,Address Country,"The physical address of this node. The country in which the address is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country)."
+supportingInfrastructure__type,INTEGER,FK,Supporting infrastructure Type,"The infrastructure that supports this node. The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodesupportinginfrastructure)."
+supportingInfrastructure__description,TEXT,,Supporting infrastructure Description,The infrastructure that supports this node. A description of the supporting infrastructure for this node.
+supportingInfrastructure__owner,INTEGER,FK,Supporting infrastructure Owner,The infrastructure that supports this node. The organisation that owns the supporting infrastructure.
+supportingInfrastructure__spareCapacity,TEXT,,Supporting infrastructure Spare capacity,The infrastructure that supports this node. Whether the supporting infrastructure has spare capacity for the installation of additional network equipment.
 accessPoint,TEXT,,Access point,Whether active or passive transmission equipment is installed at this node which is capable of providing access to the network.
 power,TEXT,,Power availability,Whether power for active network equipment is available at this node.
-physicalInfrastructureProvider,INTEGER,FK,Physical infrastructure provider,"The organisation that owns the passive network infrastructure for this node, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites."
+transmissionMediumOwner,INTEGER,FK,Transmission medium owner,"The organisation that owns the transmission media for this node, i.e. the passive network equipment such as splitters, combiners and fibre distribution panels."
 network_id,INTEGER,FK,Network ID,

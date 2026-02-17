@@ -38,8 +38,19 @@ Iterative improvements are made outside of the release cycle. They do not involv
   - Omit parent names from property titles to reduce repetition
   - In-line some definitions to reduce reference page length
   - Clarify property descriptions
+- [#323](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/323) - Add `wayleaves` to describe formal agreements that grant a network operator rights to install, maintain or operate telecommunications infrastructure on, over, or under the grantor’s property or asset.
+- [#317](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/317):
+  - `Span`:
+    - Add `.supportingInfrastructure` to descibe supporting infrastructure
+    - Replace `.physicalInfrastructureProvider` with `.transmissionMediumOwner` and `.supportingInfrastructure.owner` to distinguish ownership of transmission media and supporting infrastructure.
+  - `Node`:
+    - Add `.supportingInfrastructure` to descibe supporting infrastructure
+    - Replace `.physicalInfrastructureProvider` with `.transmissionMediumOwner` and `.supportingInfrastructure.owner` to distinguish ownership of transmission media and supporting infrastructure.
+    - Remove `Span.deploymentDetails.description`, in favour of `Span.supportingInfrastructure.description`.
+    - Move codes relating to supporting infrastructure from the nodeType codelist to the nodeSupportingInfrastructureType codelist
 - [#321](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/321) - Add `Span.cableType` and `Span.codeployment`
 - [#327](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/327) - Improve validation of GeoJSON geometry objects
+- [#322](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/322) - Update `Node.type` description to explain modelling of junctions
 
 ## 0.3.0 - 2023-06-29
 

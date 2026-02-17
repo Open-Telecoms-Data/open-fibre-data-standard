@@ -106,7 +106,7 @@ The transformation specification describes the recommended approach of producing
     - `.geometry` to the node's `.location`, if it exists. Otherwise, set `.geometry` to `Null`.
     - `.properties` to the properties of the node, excluding `.location`.
     - `.properties.featureType` to 'node'.
-    - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProviders`.
+    - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.transmissionMediumOwner`, `.properties.supportingInfrastructure.owner`, and `.networkProviders`.
     - [Dereference the phase reference](#dereference-a-phase-reference) in the feature's `.phase` property.
     - Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
   - Add the feature to the nodes feature collection.
@@ -118,7 +118,7 @@ The transformation specification describes the recommended approach of producing
     - `.geometry` to the span's `.route`, if it exists. Otherwise, set `.geometry` to `Null`.
     - `.properties` to the properties of the span, excluding `.route`.
     - `.properties.featureType` to 'span'.
-    - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProviders`.
+    - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.transmissionMediumOwner`, `.properties.supportingInfrastructure.owner` and `.networkProviders`.
     - [Dereference the phase reference](#dereference-a-phase-reference) in `.properties.phase`.
     - [Dereference the node ids](#dereference-a-node-id) in `properties.start` and `properties.end`.
     - Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
