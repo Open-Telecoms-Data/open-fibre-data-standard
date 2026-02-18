@@ -42,6 +42,14 @@
                 "type": [
                     "pop"
                 ],
+                "supportingInfrastructure": {
+                    "type": "building",
+                    "owner": {
+                        "id": "GH-RGD-CS111111111",
+                        "name": "FibreCo"
+                    },
+                    "spareCapacity": true
+                },
                 "accessPoint": true,
                 "internationalConnections": [
                     {
@@ -53,22 +61,9 @@
                 "technologies": [
                     "ip"
                 ],
-                "physicalInfrastructureProvider": {
+                "transmissionMediumOwner": {
                     "id": "GH-RGD-CS111111111",
-                    "name": "FibreCo",
-                    "identifier": {
-                        "id": "CS111111111",
-                        "scheme": "GH-RGD",
-                        "legalName": "FibreCo Ghana Limited",
-                        "uri": "https://example.com/companies/CS111111111"
-                    },
-                    "country": "GH",
-                    "roles": [
-                        "physicalInfrastructureProvider"
-                    ],
-                    "roleDetails": "FibreCo owns and maintains the physical infrastructure.",
-                    "website": "https://www.example.com",
-                    "logo": "https://www.example.com/logo.png"
+                    "name": "FibreCo"
                 },
                 "networkProviders": [
                     {
@@ -203,27 +198,22 @@
                 "type": [
                     "pop"
                 ],
+                "supportingInfrastructure": {
+                    "type": "building",
+                    "owner": {
+                        "id": "GH-RGD-CS111111111",
+                        "name": "FibreCo"
+                    },
+                    "spareCapacity": true
+                },
                 "accessPoint": false,
                 "power": true,
                 "technologies": [
                     "ip"
                 ],
-                "physicalInfrastructureProvider": {
+                "transmissionMediumOwner": {
                     "id": "GH-RGD-CS111111111",
-                    "name": "FibreCo",
-                    "identifier": {
-                        "id": "CS111111111",
-                        "scheme": "GH-RGD",
-                        "legalName": "FibreCo Ghana Limited",
-                        "uri": "https://example.com/companies/CS111111111"
-                    },
-                    "country": "GH",
-                    "roles": [
-                        "physicalInfrastructureProvider"
-                    ],
-                    "roleDetails": "FibreCo owns and maintains the physical infrastructure.",
-                    "website": "https://www.example.com",
-                    "logo": "https://www.example.com/logo.png"
+                    "name": "FibreCo"
                 },
                 "networkProviders": [
                     {

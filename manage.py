@@ -10,6 +10,7 @@ import os
 import re
 import requests
 import shutil
+import sqlite3
 import subprocess
 
 from collections import OrderedDict
@@ -19,6 +20,8 @@ from io import StringIO
 from lxml import etree
 from ocdskit.mapping_sheet import mapping_sheet
 from pathlib import Path
+
+import buildofdsgeopackage
 
 basedir = Path(__file__).resolve().parent
 codelistdir = basedir / 'codelists'
@@ -135,14 +138,14 @@ def update_csv_docs(jsonref_schema):
   csv_reference = read_lines(referencedir / 'publication_formats' / 'csv.md')
 
   # Preserve introductory content up to the ## networks heading
-  csv_reference = csv_reference[:csv_reference.index("## networks\n") - 1]
+  csv_reference = csv_reference[:csv_reference.index("### networks\n") - 1]
 
   # Generate CSV reference
   dereferenced_schema = get_dereferenced_schema(jsonref_schema)
   markdown = generate_csv_reference_markdown('networks', dereferenced_schema)
  
   for key, value in markdown.items():
-    csv_reference.append(f"\n{'#'*value['depth']} {key}\n\n")
+    csv_reference.append(f"\n{'#'*(value['depth']+1)} {key}\n\n")
     csv_reference.extend(value['content'])
 
   write_lines(referencedir / 'publication_formats' / 'csv.md', csv_reference)
@@ -181,7 +184,7 @@ def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
       parent_ref = f"{'/0/'.join([parent for parent in parents[1:]])}"
  
     markdown[table]['content'].append(
-      f" * [{parents[-1]}](#{parents[-1].lower()}): many-to-one by `{parent_ref + '/0/' if len(parent_ref) > 0 else ''}id`\n"
+      f"- [{parents[-1]}](#{parents[-1].lower()}): many-to-one by `{parent_ref + '/0/' if len(parent_ref) > 0 else ''}id`\n"
     )
 
   # Add references to parent object ids to list of pointers for jsonschema directive
@@ -194,14 +197,14 @@ def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
   for key,value in properties.items():
     if value['type'] == 'array' and value['items']['type'] == 'object':     
       markdown[table]['content'].append(
-        f" * [{key if table == 'networks' else f'{table}_{key}'}](#{key if table == 'networks' else f'{table}_{key}'.lower()}): one-to-many by `{'id' if table == 'networks' else '/0/'.join(parents[1:] + [table, 'id'])}`\n"
+        f"- [{key if table == 'networks' else f'{table}_{key}'}](#{key if table == 'networks' else f'{table}_{key}'.lower()}): one-to-many by `{'id' if table == 'networks' else '/0/'.join(parents[1:] + [table, 'id'])}`\n"
       )
       markdown.update(generate_csv_reference_markdown(key, value, parents + [table], depth + 1))
     else:
       include_pointers.append(f"{parent_ref}{'/0/' if len(parent_ref) > 0 else ''}{table.split('_')[-1]+'/0/' if len(parents)>0 else ''}{key}")
 
   # Generate links to examples and templates
-  markdown[table]['content'].append(f"\nThe fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/{table}.csv) or a [blank template](../../../examples/csv/template/{table}.csv) for this table.\n\n")
+  markdown[table]['content'].append(f"\nThe columns in this table are listed below. You can also download an [example CSV file](../../../examples/csv/{table}.csv) or a [blank template](../../../examples/csv/template/{table}.csv) for this table.\n\n")
 
   # Generate jsonschema directive
   markdown[table]['content'].extend([
@@ -495,6 +498,164 @@ def update_schema_docs(schema):
 
   write_lines(referencedir / 'schema.md', schema_reference) 
 
+
+def get_table_metadata(cursor, table_name):
+    """
+    Retrieves and combines structural and GeoPackage-specific metadata for a single table.
+    """
+    column_metadata = {}
+    foreign_keys = {}
+
+    # 1. Get Structural Metadata (Name, Type, Not Null, Auto Increment)
+    # PRAGMA table_info(table_name) returns: cid, name, type, notnull, dflt_value, pk
+    try:
+        cursor.execute(f"PRAGMA table_info('{table_name}');")
+        table_info = cursor.fetchall()
+        for col in table_info:
+            cid, name, col_type, notnull, dflt_value, pk = col
+            column_metadata[name] = {
+                'Name': name,
+                'Type': col_type,
+                'Constraints': [],
+                'Title': None,
+                'Description': None
+            }
+            if pk:
+              column_metadata[name]['Constraints'].append('PK')
+            if notnull:
+              column_metadata[name]['Constraints'].append('Not Null')
+    except sqlite3.Error as e:
+        print(f"Error querying table_info for {table_name}: {e}")
+        return []
+
+    # 2. Get Foreign Key Metadata (Reference Table, Reference Column)
+    # PRAGMA foreign_key_list(table_name) returns: id, seq, table, from, to, on_update, on_delete, match
+    try:
+        cursor.execute(f"PRAGMA foreign_key_list('{table_name}');")
+        fk_list = cursor.fetchall()
+        # The column names for the FK list are: id, seq, table, from, to, on_update, on_delete, match
+        fk_names = ["id", "seq", "table", "from", "to", "on_update", "on_delete", "match"]
+        
+        for fk in fk_list:
+            fk_data = dict(zip(fk_names, fk))
+            col_name = fk_data['from']
+            if col_name in column_metadata:
+                column_metadata[col_name]['Constraints'].append('FK')
+                foreign_keys[col_name] = {
+                   'Column': col_name,
+                   'References':f'FK(`{fk_data["table"]}`.`{fk_data["to"]}`)'
+                }
+    except sqlite3.Error as e:
+        print(f"Error querying foreign_key_list for {table_name}: {e}")
+
+    # 3. Get GeoPackage Metadata (Title annd Description)
+    # SELECT column_name, title, description FROM gpkg_data_columns
+    try:
+        query = f"""
+        SELECT column_name, title, description
+        FROM gpkg_data_columns
+        WHERE table_name = '{table_name}';
+        """
+        cursor.execute(query)
+        gpkg_metadata = cursor.fetchall()
+        for col_name, title, description in gpkg_metadata:
+            if col_name in column_metadata:
+                column_metadata[col_name]['Title'] = title
+                column_metadata[col_name]['Description'] = description
+
+    except sqlite3.Error as e:
+        print(f"Error querying gpkg_data_columns for {table_name}: {e}")
+        # Note: If gpkg_data_columns is missing or the table is not registered, Title/Description will be NULL.
+
+    for metadata in column_metadata.values():
+        metadata['Constraints'] = ", ".join(metadata['Constraints'])
+
+    # Convert dictionary values to a list of structured dictionaries for CSV
+    return list(column_metadata.values()), list(foreign_keys.values())
+
+
+def export_metadata_to_csv(gpkg_path, output_dir="schema/geopackage"):
+    """
+    Main function to connect to the GeoPackage and manage the export process.
+    """
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    print(f"Connecting to GeoPackage: {gpkg_path}")
+    
+    codelist_tables = []
+    mapping_tables = []
+
+    try:
+        conn = sqlite3.connect(gpkg_path)
+        cursor = conn.cursor()
+
+        # 1. Identify tables (data_type 'features' or 'attributes') from gpkg_contents
+        cursor.execute("SELECT table_name FROM gpkg_contents WHERE data_type IN ('features', 'attributes');")
+        table_names = [row[0] for row in cursor.fetchall()]
+
+        if not table_names:
+            print("No feature or attribute tables found in gpkg_contents.")
+            return
+
+        print(f"Found {len(table_names)} tables to process: {', '.join(table_names)}")
+        
+        # 2. Process each table
+        for table_name in table_names:
+            
+            metadata_rows, foreign_keys = get_table_metadata(cursor, table_name)
+            
+            if not metadata_rows:
+                print(f"Skipping empty or error table: {table_name}")
+                continue
+
+            if table_name.startswith("codelist"):
+                codelist_name = table_name.split("_")[-1]
+                codelist_tables.append({
+                    "Table": f"`{table_name}`",
+                    "Codelist": f"[{codelist_name}](../../codelists.md#{codelist_name.lower()})"
+                })
+            elif table_name.startswith("relation"):
+                mapping_tables.append({
+                   "Table": f"`{table_name}`",
+                   "base_id FK": foreign_keys[1]['References'].removeprefix("FK(").removesuffix(")"),
+                   "related_id FK": foreign_keys[0]['References'].removeprefix("FK(").removesuffix(")")
+                })
+            else:
+                # 3. Write table definition and foreign keys to CSV file
+                output_file = os.path.join(output_dir, f"{table_name}.csv")
+                with open(output_file, 'w', encoding='utf-8') as csvfile:
+                    writer = csv.DictWriter(csvfile, fieldnames=['Name', 'Type', 'Constraints', 'Title', 'Description'], lineterminator='\n')
+                    writer.writeheader()
+                    writer.writerows(metadata_rows)
+                
+                output_file = os.path.join(output_dir, f"{table_name}_fks.csv")
+                with open(output_file, 'w', encoding='utf-8') as csvfile:
+                    writer = csv.DictWriter(csvfile, fieldnames=['Column', 'References'], lineterminator='\n')
+                    writer.writeheader()
+                    writer.writerows(foreign_keys)
+              
+            
+                print(f"Successfully exported metadata for '{table_name}' to '{output_file}'")
+        
+        # 4. Write list of codelist tables and mapping tables to CSV file
+        output_file = os.path.join(output_dir, "codelist_tables.csv")
+        with open(output_file, 'w', encoding='utf-8') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=["Table", "Codelist"], lineterminator='\n')
+            writer.writerows(codelist_tables)
+
+        output_file = os.path.join(output_dir, "mapping_tables.csv")
+        with open(output_file, 'w', encoding='utf-8') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=["Table", "base_id FK", "related_id FK"], lineterminator='\n')
+            writer.writerows(mapping_tables)
+
+        conn.close()
+        print("\nProcessing complete.")
+
+    except sqlite3.Error as e:
+        print(f"An SQLite error occurred: {e}")
+
+
 @click.group()
 def cli():
     pass
@@ -528,7 +689,76 @@ def pre_commit():
         writer.writeheader()
         for row in schema_table[1]:
             writer.writerow(row)
+
+    # Generate GeoPackage
+    builder = buildofdsgeopackage.Builder(
+        root_directory=os.path.realpath(
+            os.path.join(os.path.dirname(os.path.realpath(__file__)))
+        ),
+    )
+    builder.go()
+
+    # Generate table definition CSV files from GeoPackage
+    export_metadata_to_csv("schema/geopackage/network-schema.gpkg", "schema/geopackage/table_definitions")
+
+    # Generate diagram from GeoPackage
+    subprocess.run(["mermerd", "--runConfig", "docs/reference/publication_formats/geopackage/geopackage.yaml"])
+
+    # Add style config to diagram and remove non-key attributes
+    with open("docs/reference/publication_formats/geopackage/geopackage.mmd", 'r') as f:
+        lines = f.readlines()
+
+    # 1. Prepare Header
+    header = "---\nconfig:\n  layout: elk\n---\n"
     
+    # 2. Prepare Footer
+    footer = (
+        "\n    classDef feature fill:#f3ffa6ff,stroke:#bbd034\n"
+        "    classDef attribute fill:#cec7ffff,stroke:#110e27\n"
+        "    classDef mapping fill:#efefefff,stroke:#434343ff\n\n"
+        "    class nodes,spans feature\n"
+        "    class networks,organisations,phases,contracts,wayleaves attribute\n"
+        "    class relation_contracts_relatedPhases,relation_spans_networkProviders,relation_spans_wayleaves,relation_nodes_networkProviders mapping\n"
+        "    direction BT\n"
+    )
+
+    processed_content = []
+    
+    # Regex to identify lines inside table definitions that are NOT PK or FK
+    # It looks for lines that contain 'PK' or 'FK'
+    is_inside_table = False
+    
+    for line in lines:
+        stripped = line.strip()
+        
+        # Detect start/end of table blocks
+        if '{' in line:
+            is_inside_table = True
+            processed_content.append(line)
+            continue
+        if '}' in line:
+            is_inside_table = False
+            processed_content.append(line)
+            continue
+            
+        if is_inside_table:
+            # 3. Remove attributes that aren't PK or FK
+            # We keep the line if it contains PK or FK (case insensitive)
+            if re.search(r'\bPK\b|\bFK\b', stripped) and not re.search('identifier__scheme', stripped) and not re.search('type', stripped) and not re.search('language', stripped):
+                processed_content.append(line)
+            else:
+                # Skip normal attributes
+                continue
+        else:
+            # Keep lines outside of tables (like relationship definitions)
+            processed_content.append(line)
+
+    # Combine everything
+    final_output = header + "".join(processed_content) + footer
+
+    with open("docs/reference/publication_formats/geopackage/geopackage.mmd", 'w') as f:
+        f.write(final_output)
+
     # Update examples/csv
     delete_directory_contents('examples/csv')
     flatten(
@@ -753,6 +983,21 @@ def update_codelists(ctx):
     ctx.invoke(update_language)
     ctx.invoke(update_media_type)
     ctx.invoke(update_organisation_identifier_scheme)
+
+
+@cli.command()
+@click.argument('filename', type=click.Path(exists=True))
+def format_csv(filename):
+    """
+    Format a CSV file to conform to the requirements of the tests.
+    """
+    with open(filename, 'r') as f:
+        reader = csv.reader(f)
+        data = list(reader)
+    
+    with open(filename, 'w') as f:
+        writer = csv.writer(f, lineterminator='\n')
+        writer.writerows(data)
 
 
 if __name__ == '__main__':

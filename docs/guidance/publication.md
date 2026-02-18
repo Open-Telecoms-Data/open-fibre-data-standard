@@ -2,14 +2,6 @@
 
 # How to publish OFDS data
 
-```{admonition} 0.3.0 release
-Welcome to the Open Fibre Data Standard 0.3.0 release.
-
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
-
-To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
-```
-
 This page provides an [overview](#overview) of the process for publishing Open Fibre Data Standard (OFDS) data and [how-to guides](#how-to-guides) for specific topics.
 
 ## Overview
@@ -30,7 +22,7 @@ There are many [use cases](../primer/openfibredata.md#why-publish-open-fibre-dat
 
 #### Decide what data to publish
 
-Bearing in mind your priority use cases, you ought to review the OFDS [schema](../reference/schema.md) and decide which fields you want to publish.
+Bearing in mind your priority use cases, you ought to review the OFDS [data model](../reference/data_model.md) and decide which fields you want to publish.
 
 OFDS is designed for the public disclosure of open data. However, you can also use it to structure data that you want to share only with specific partners and data that you want to keep within your own organisation. As such, this step can involve deciding which fields to make public, which to share with partners and which to keep private.
 
@@ -48,7 +40,7 @@ The prepare phase covers mapping your data to OFDS, collecting missing data and 
 
 #### Map your data to OFDS
 
-Once you have identified your data sources, you ought to map your data to the OFDS schema, that is, identify which data elements within your data sources match which OFDS [fields](../reference/schema.md) and [codes](../reference/codelists.md). If there are data elements that you want to publish but for which you cannot identify a suitable mapping, you can [add additional fields](#how-to-add-additional-fields) to your OFDS data.
+Once you have identified your data sources, you ought to map your data to the OFDS schema, that is, identify which data elements within your data sources match which OFDS [attributes](../reference/data_model.md) and [codes](../reference/codelists.md). If there are data elements that you want to publish but for which you cannot identify a suitable mapping, you can [add additional fields](#how-to-add-additional-fields) to your OFDS data.
 
 Your mapping acts as a blueprint for preparing your data. It will help you to identify the steps involved in converting your data to OFDS format.
 
@@ -104,7 +96,7 @@ If you’re concerned about disclosing the exact location of fibre infrastructur
 
 ### How to add additional fields
 
-The OFDS schema does not restrict the use of additional fields, except where noted in the [schema reference](../reference/schema.md). If there is a data element that you wish to publish for which you cannot identify a suitable mapping in OFDS, you can add an additional field to your data.
+The OFDS schema does not restrict the use of additional fields, except where noted in the [data model reference](../reference/data_model.md). If there is a data element that you wish to publish for which you cannot identify a suitable mapping in OFDS, you can add an additional field to your data.
 
 Before adding an additional field, you ought to search the [standard issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) to see if a similar concept has already been discussed. If there are no existing discussions, you ought to open a new issue and describe the concept that you want to publish and your proposed modelling.
 
@@ -114,7 +106,7 @@ If you add an additional field, you ought to describe its structure, format and 
 
 OFDS data can be published in three [publication formats](../reference/publication_formats/index.md):
 
-- The [JSON format](../reference/publication_formats/json.md) reflects the structure of the [schema](../reference/schema.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
+- The [JSON format](../reference/publication_formats/json/index.md) reflects the structure of the [data model](../reference/data_model.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
 - The [GeoJSON format](../reference/publication_formats/geojson.md) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
 - The [CSV format](../reference/publication_formats/csv.md) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to users who want to explore the data in spreadsheet tools.
 
@@ -140,7 +132,7 @@ To convert data to CSV format:
 
 - [Install Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/getting-started/#getting-started)
 - Download the [network schema](../../schema/network-schema.json)
-- If your data is a [JSON Lines file](../reference/publication_formats/json.md#streaming-option), segment it into appropriately sized [network packages](../reference/publication_formats/json.md#small-files-and-api-responses-option)
+- If your data is a [JSON Lines file](../reference/publication_formats/json/containers.md#streaming-container), segment it into appropriately sized [network packages](../reference/publication_formats/json/containers.md#small-files-and-api-responses-container)
 - Run the following command for each network package:
 
 ```bash
@@ -160,7 +152,7 @@ This section describes how to:
 
 For information on how to use pagination and streaming to publish **multiple** networks, see the [publication formats reference](../reference/publication_formats/index.md).
 
-This guidance is applicable to the [JSON publication format](../reference/publication_formats/json.md), for information on pagination and streaming for the GeoJSON format see the [GeoJSON publication format reference](../reference/publication_formats/geojson.md).
+This guidance is applicable to the [JSON publication format](../reference/publication_formats/json/index.md), for information on pagination and streaming for the GeoJSON format see the [GeoJSON publication format reference](../reference/publication_formats/geojson.md).
 
 ##### Pagination
 
@@ -210,7 +202,7 @@ The following example shows the response returned by the spans endpoint with URL
 
 ##### Streaming
 
-The preferred approach is to publish embedded nodes and spans. If your network is too large to load into memory, you ought to use `.links` to reference separate files for nodes and spans. Each file ought to be formatted as a [JSON Lines](https://jsonlines.org/) file in which each line is a valid [`Node`](../reference/schema.md#node) or [`Span`](../reference/schema.md#span), respectively.
+The preferred approach is to publish embedded nodes and spans. If your network is too large to load into memory, you ought to use `.links` to reference separate files for nodes and spans. Each file ought to be formatted as a [JSON Lines](https://jsonlines.org/) file in which each line is a valid [`Node`](../reference/publication_formats/json/network_schema.md#node) or [`Span`](../reference/publication_formats/json/network_schema.md#span), respectively.
 
 ::::{tab-set}
 
@@ -325,7 +317,7 @@ Set up error monitoring, so that if a request causes an HTTP 500 Internal Server
 
 ### How to transform coordinates to the correct coordinate reference system
 
-To publish OFDS data, you need to specify coordinates in the `urn:ogc:def:crs:OGC::CRS84` [coordinate reference system](../reference/schema.md#coordinatereferencesystem) (CRS). If the coordinates in your data sources are specified in a different CRS, before publishing your data in OFDS format, you first need to transform the coordinates to the correct CRS.
+To publish OFDS data, you need to specify coordinates in the `urn:ogc:def:crs:OGC::CRS84` [coordinate reference system](../reference/crs.md) (CRS). If the coordinates in your data sources are specified in a different CRS, before publishing your data in OFDS format, you first need to transform the coordinates to the correct CRS.
 
 If your data pipeline includes a Geographic Information System such as ArcGIS or QGIS, these tools can transform coordinates from one CRS to another. If you are writing your own software, or if you prefer to use the command line, several libraries and tools are available, for example:
 

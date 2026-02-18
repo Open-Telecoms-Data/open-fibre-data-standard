@@ -23,7 +23,7 @@
     },
     "nodes": {
       "title": "Nodes",
-      "description": "Information about the nodes that belong to this network. Information about nodes should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk nodes file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated nodes endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
+      "description": "The nodes that belong to this network.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Node"
@@ -33,7 +33,7 @@
     },
     "spans": {
       "title": "Spans",
-      "description": "Information about the spans that belong to this network. Information about spans should be embedded in this field unless:\n\n* The network is too large to load in to memory, in which case a link to a streamable bulk spans file may be provided in `.links`\n* The data is published via an API and the network is too large to return in a single API response, in which case a link to a paginated spans endpoint may be provided in `.links`.\n\nFor more information, see [how to format data for publication](https://open-fibre-data-standard.readthedocs.io/en/latest/guidance/publication.html#how-to-format-data-for-publication).",
+      "description": "The spans that belong to this network.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Span"
@@ -43,7 +43,7 @@
     },
     "phases": {
       "title": "Phases",
-      "description": "Information about the phases in which this network is deployed.",
+      "description": "The phases in which this network was, or will be, deployed.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Phase"
@@ -53,7 +53,7 @@
     },
     "organisations": {
       "title": "Organisations",
-      "description": "Information about the organisations involved in this network. Organisation references elsewhere in the schema are used to refer back to this entries in this list.",
+      "description": "The organisations involved in this network.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Organisation"
@@ -61,9 +61,19 @@
       "minItems": 1,
       "uniqueItems": true
     },
+    "wayleaves": {
+      "title": "Wayleaves",
+      "description": "Formal agreements that grant network operators rights to install, maintain or operate telecommunications infrastructure on, over, or under grantors' property or assets.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Wayleave"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
     "contracts": {
       "title": "Contracts",
-      "description": "Information about contracts related to this network.",
+      "description": "Contracts related to this network.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Contract"
@@ -92,7 +102,7 @@
         "identifier": {
           "title": "Organisation identifier",
           "description": "An identifier for this organisation.",
-          "$ref": "#/$defs/Identifier"
+          "$ref": "#/$defs/Organisation/properties/identifier"
         }
       },
       "minProperties": 1
@@ -129,7 +139,7 @@
     },
     "language": {
       "title": "Language",
-      "description": "The default language of this network,from the open [language codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#language). A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
+      "description": "The default language used in text attributes,from the open [language codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#language). A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
       "type": "string",
       "codelist": "language.csv",
       "openCodelist": true,
@@ -169,12 +179,12 @@
       "properties": {
         "id": {
           "title": "Identifier",
-          "description": "An identifier for this node. The identifier must be unique within the scope of the `nodes` array.",
+          "description": "A locally-unique identifier for this node.",
           "type": "string",
           "minLength": 1
         },
         "name": {
-          "title": "Node name",
+          "title": "Name",
           "description": "A name for this node.",
           "type": "string",
           "minLength": 1
@@ -200,18 +210,18 @@
           ]
         },
         "location": {
-          "title": "Node location",
-          "description": "In the [JSON publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/json.html), a GeoJSON [Point](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the physical location of this node. In the [CSV publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/csv.html), a [well-known text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) POINT geometry.",
-          "$ref": "#/$defs/Geometry"
+          "title": "Location",
+          "description": "The physical location of this node.",
+          "$ref": "#/$defs/PointGeometry"
         },
         "address": {
-          "title": "Node address",
+          "title": "Address",
           "description": "The physical address of this node.",
           "$ref": "#/$defs/Address"
         },
         "type": {
-          "title": "Node type",
-          "description": "The type of this node, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetype). For nodes with multiple network providers, the union of the node types for each provider.",
+          "title": "Type",
+          "description": "This node's function, from the open [nodeType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodetype). For nodes with multiple network providers, the union of the node types for each provider. If a node's only function is to serve as a junction between spans, this attribute should be omitted. Junction nodes are identified by the existence of more than two spans that begin or end at the node.",
           "type": "array",
           "items": {
             "type": [
@@ -223,6 +233,38 @@
           "openCodelist": true,
           "minItems": 1,
           "uniqueItems": true
+        },
+        "supportingInfrastructure": {
+          "title": "Supporting infrastructure",
+          "description": "The infrastructure that supports this node.",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Type",
+              "description": "The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodesupportinginfrastructure).",
+              "type": "string",
+              "minLength": 1,
+              "openCodelist": true,
+              "codelist": "nodeSupportingInfrastructure.csv"
+            },
+            "description": {
+              "title": "Description",
+              "description": "A description of the supporting infrastructure for this node.",
+              "type": "string",
+              "minLength": 1
+            },
+            "owner": {
+              "title": "Owner",
+              "description": "The organisation that owns the supporting infrastructure.",
+              "$ref": "#/$defs/OrganisationReference"
+            },
+            "spareCapacity": {
+              "title": "Spare capacity",
+              "description": "Whether the supporting infrastructure has spare capacity for the installation of additional network equipment.",
+              "type": "boolean"
+            }
+          },
+          "minProperties": 1
         },
         "accessPoint": {
           "title": "Access point",
@@ -260,9 +302,9 @@
           "minItems": 1,
           "uniqueItems": true
         },
-        "physicalInfrastructureProvider": {
-          "title": "Physical infrastructure provider",
-          "description": "The organisation that owns the passive network infrastructure for this node, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
+        "transmissionMediumOwner": {
+          "title": "Transmission medium owner",
+          "description": "The organisation that owns the transmission media for this node, i.e. the passive network equipment such as splitters, combiners and fibre distribution panels.",
           "$ref": "#/$defs/OrganisationReference"
         },
         "networkProviders": {
@@ -280,7 +322,12 @@
       "required": [
         "id"
       ],
-      "minProperties": 1
+      "minProperties": 1,
+      "propertyName": {
+        "not": {
+          "const": "network"
+        }
+      }
     },
     "Span": {
       "title": "Span",
@@ -289,12 +336,12 @@
       "properties": {
         "id": {
           "title": "Identifier",
-          "description": "An identifier for this span. The identifier must be unique within the scope of the `spans` array.",
+          "description": "A locally-unique identifier for this span.",
           "type": "string",
           "minLength": 1
         },
         "name": {
-          "title": "Span name",
+          "title": "Name",
           "description": "A name for this span.",
           "type": "string",
           "minLength": 1
@@ -305,7 +352,7 @@
           "$ref": "#/$defs/PhaseReference"
         },
         "status": {
-          "title": "Span status",
+          "title": "Status",
           "description": "The status of the network infrastructure for this span, from the closed [spanStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spanstatus).",
           "type": "string",
           "codelist": "spanStatus.csv",
@@ -328,30 +375,30 @@
         },
         "start": {
           "title": "Start",
-          "description": "The identifier of one of two nodes that this span connects. It must match the `.id` of a node in the `nodes` array. If `directed == true`, it represents the starting point of the span. Otherwise, the distinction between `start` and `end` is arbitrary.",
+          "description": "The identifier of one of two nodes that this span connects. If the span is directed, it represents the starting point of the span.",
           "type": "string",
           "minLength": 1
         },
         "end": {
           "title": "End",
-          "description": "The identifier of one of two nodes that this span connects. It must match the `.id` of a node in the `nodes` array. If `directed == true`, it represents the end point of the span. Otherwise, the distinction between `start` and `end` is arbitrary.",
+          "description": "The identifier of one of two nodes that this span connects. If the span is directed, it represents the end point of the span.",
           "type": "string",
           "minLength": 1
         },
         "directed": {
           "title": "Directed",
-          "description": "Whether this span is directed. If `True`, then `.start` represents the start of the span and `.end` represents the end. Otherwise, `.start` and `.end` reference this span's endpoints with no direction implied.",
+          "description": "Whether this span is directed. If the span is directed, the span begins at the node referenced in `.start` and ends at the node referenced in `.end`. Otherwise, the span connects the nodes referenced in `.start` and `.end` with no direction implied.",
           "type": "boolean",
           "$comment": ""
         },
         "route": {
-          "title": "Span route",
-          "description": "In the [JSON publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/json.html), a GeoJSON [LineString](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4) geometry describing the route of this span. In the [CSV publication format](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/publication_formats/csv.html), a [well-known text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) LINESTRING geometry.",
-          "$ref": "#/$defs/Geometry"
+          "title": "Route",
+          "description": "The physical route that this span takes between the nodes that it connects.",
+          "$ref": "#/$defs/LineStringGeometry"
         },
-        "physicalInfrastructureProvider": {
-          "title": "Physical infrastructure provider",
-          "description": "The organisation that owns the passive network infrastructure for this span, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites.",
+        "transmissionMediumOwner": {
+          "title": "Owner",
+          "description": "The organisation that owns the transmission media for this span, i.e. the fibre cables.",
           "$ref": "#/$defs/OrganisationReference"
         },
         "networkProviders": {
@@ -393,7 +440,7 @@
         },
         "deployment": {
           "title": "Deployment",
-          "description": "The physical deployment of this span, from the closed [deployment codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment). Further details of this span's deployment can be provided in `.deploymentDetails`.",
+          "description": "The physical deployment of this span, from the closed [deployment codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#deployment). Further details of this span's deployment can be provided in `.supportingInfrastructure`.",
           "type": "array",
           "items": {
             "type": [
@@ -410,10 +457,53 @@
           "minItems": 1,
           "uniqueItems": true
         },
-        "deploymentDetails": {
-          "title": "Deployment details",
-          "description": "Further details of this span's deployment.",
-          "$ref": "#/$defs/DeploymentDetails"
+        "supportingInfrastructure": {
+          "title": "Supporting infrastructure",
+          "description": "The infrastructure that supports this span.",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Type",
+              "description": "The type of supporting infrastructure, from the open [spanSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spansupportinginfrastructure).",
+              "type": "string",
+              "minLength": 1,
+              "openCodelist": true,
+              "codelist": "spanSupportingInfrastructure.csv"
+            },
+            "description": {
+              "title": "Description",
+              "description": "A description of the supporting infrastructure for this span.",
+              "type": "string",
+              "minLength": 1
+            },
+            "owner": {
+              "title": "Owner",
+              "description": "The organisation that owns the supporting infrastructure.",
+              "$ref": "#/$defs/OrganisationReference"
+            },
+            "spareCapacity": {
+              "title": "Spare capacity",
+              "description": "Whether the supporting infrastructure has spare capacity for the installation of additional fibre cables.",
+              "type": "boolean"
+            }
+          },
+          "minProperties": 1
+        },
+        "codeployment": {
+          "title": "Codeployment",
+          "description": "The type of utility or transport infrastrucutre with which this span is codeployed.",
+          "type": "string",
+          "minLength": 1,
+          "openCodelist": true,
+          "codelist": "codeployment.csv"
+        },
+        "cableType": {
+          "title": "Cable type",
+          "description": "The type of cable used in this span.",
+          "type": "string",
+          "minLength": 1,
+          "openCodelist": true,
+          "codelist": "cableType.csv"
         },
         "darkFibre": {
           "title": "Dark fibre availability",
@@ -440,7 +530,22 @@
         "fibreTypeDetails": {
           "title": "Fibre type details",
           "description": "Further details about this span's fibre type.",
-          "$ref": "#/$defs/FibreTypeDetails"
+          "type": "object",
+          "properties": {
+            "fibreSubtype": {
+              "title": "Subtype",
+              "description": "The sub-category of this span's fibre type. For example, G.652.B.",
+              "type": "string",
+              "minLength": 1
+            },
+            "description": {
+              "title": "Description",
+              "description": "A description of this span's fibre type.",
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "minProperties": 1
         },
         "fibreCount": {
           "title": "Fibre count",
@@ -477,8 +582,28 @@
         },
         "capacityDetails": {
           "title": "Capacity details",
-          "description": "Further details about this span's capacity",
-          "$ref": "#/$defs/CapacityDetails"
+          "description": "Further details about this span's capacity.",
+          "type": "object",
+          "properties": {
+            "description": {
+              "title": "Description",
+              "description": "A description of this span's capacity.",
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "minProperties": 1
+        },
+        "wayleaves": {
+          "title": "Wayleaves",
+          "description": "The identifiers of the formal agreements that grant network operators rights to install, maintain or operate this span's infrastructure on, over, or under grantors' property or assets.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 1
         },
         "countries": {
           "title": "Countries",
@@ -751,7 +876,12 @@
       "required": [
         "id"
       ],
-      "minProperties": 1
+      "minProperties": 1,
+      "propertyName": {
+        "not": {
+          "const": "network"
+        }
+      }
     },
     "Phase": {
       "title": "Phase",
@@ -760,7 +890,7 @@
       "properties": {
         "id": {
           "title": "Identifier",
-          "description": "An identifier for this phase. The identifier must be unique within the scope of the `phases` array.",
+          "description": "A locally-unique identifier for this phase.",
           "type": "string",
           "minLength": 1
         },
@@ -778,7 +908,7 @@
         },
         "funders": {
           "title": "Funders",
-          "description": "Information about the organisations that provide financing for the development or operation of this phase, also known as investors or financers.",
+          "description": "The organisations that provide financing for the development or operation of this phase, also known as investors or financers.",
           "type": "array",
           "items": {
             "$ref": "#/$defs/OrganisationReference"
@@ -799,7 +929,7 @@
       "properties": {
         "id": {
           "title": "Local identifier",
-          "description": "A local identifier for this organisation. The identifier must be unique within the scope of the `organisations` array.",
+          "description": "A locally-unique identifier for this organisation.",
           "type": "string",
           "minLength": 1
         },
@@ -812,7 +942,37 @@
         "identifier": {
           "title": "Organisation identifier",
           "description": "An identifier for this organisation.",
-          "$ref": "#/$defs/Identifier"
+          "type": "object",
+          "properties": {
+            "id": {
+              "title": "Identifier",
+              "description": "The identifier assigned to the organisation in the register identified in `.scheme`.",
+              "type": "string",
+              "minLength": 1
+            },
+            "scheme": {
+              "title": "Scheme",
+              "description": "The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationidentifierscheme).",
+              "type": "string",
+              "codelist": "organisationIdentifierScheme.csv",
+              "openCodelist": true,
+              "minLength": 1
+            },
+            "legalName": {
+              "title": "Legal name",
+              "description": "The legally registered name of the organisation",
+              "type": "string",
+              "minLength": 1
+            },
+            "uri": {
+              "title": "URI",
+              "description": "A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.",
+              "format": "iri",
+              "type": "string",
+              "$comment": ""
+            }
+          },
+          "minProperties": 1
         },
         "country": {
           "title": "Country",
@@ -1121,24 +1281,24 @@
       "properties": {
         "id": {
           "title": "Identifier",
-          "description": "An identifier for this contract. The identifier must be unique within the scope of the `contracts` array.",
+          "description": "A locally-unique identifier for this contract.",
           "type": "string",
           "minLength": 1
         },
         "title": {
-          "title": "Contract title",
+          "title": "Title",
           "description": "A title for this contract.",
           "type": "string",
           "minLength": 1
         },
         "description": {
-          "title": "Contract description",
+          "title": "Description",
           "description": "A description for this contract.",
           "type": "string",
           "minLength": 1
         },
         "type": {
-          "title": "Contract type",
+          "title": "Type",
           "description": "The type of this contract, from the open [contractType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#contracttype).",
           "type": "string",
           "codelist": "contractType.csv",
@@ -1146,7 +1306,7 @@
           "minLength": 1
         },
         "value": {
-          "title": "Contract value",
+          "title": "Value",
           "description": "The value of this contract.",
           "$ref": "#/$defs/Value"
         },
@@ -1158,7 +1318,7 @@
           "$comment": ""
         },
         "documents": {
-          "title": "Contract documents",
+          "title": "Documents",
           "description": "The documents related to this contract.",
           "type": "array",
           "items": {
@@ -1183,57 +1343,78 @@
       ],
       "minProperties": 1
     },
-    "Geometry": {
-      "title": "Geometry",
-      "description": "A [GeoJSON Geometry object](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1).",
+    "PointGeometry": {
+      "title": "Point geometry",
+      "description": "A [GeoJSON Geometry object](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1) of type [Point](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.2).",
       "type": "object",
       "properties": {
         "type": {
           "title": "Type",
-          "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`, from the closed [geometryType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#geometrytype). This must be 'Point' when referenced by `Node.location`, and 'LineString' when referenced by `Span.route`.",
+          "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`. For a point geometry, the value must be 'Point'.",
           "type": "string",
-          "codelist": "geometryType.csv",
-          "openCodelist": false,
-          "enum": [
-            "LineString",
-            "Point"
-          ]
+          "const": "Point"
         },
         "coordinates": {
           "title": "Coordinates",
-          "description": "One or more [GeoJSON positions](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.1). For geometries of type 'Point', the coordinates member must be a single position. For geometries of type 'LineString' the coordinates member must be an array of positions.\n\nEach position is an array of numbers with two or more elements.  The first two elements are longitude and latitude, or easting and northing, precisely in that order. Longitude and latitude must be expressed using the World Geodetic System 1984 [WGS 84](https://datatracker.ietf.org/doc/html/rfc7946#ref-WGS84) datum in units of decimal degrees. Altitude or elevation may be included as an optional third element and must be expressed as the height in meters above or below the WGS 84 reference ellipsoid\n\nTherefore, geometries of type 'Point' must be a single array, e.g. [longitude, latitude], and geometries of type 'LineString' must be an array of arrays, e.g. [[longitude, latitude], [longitude, latitude]].",
+          "description": "A single [GeoJSON position](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.1). A position is an array of numbers with two or more elements.  The first two elements are longitude and latitude, or easting and northing, precisely in that order. Longitude and latitude must be expressed using the World Geodetic System 1984 [WGS 84](https://datatracker.ietf.org/doc/html/rfc7946#ref-WGS84) datum in units of decimal degrees. Altitude or elevation may be included as an optional third element and must be expressed as the height in meters above or below the WGS 84 reference ellipsoid.",
           "type": "array",
           "items": {
-            "type": [
-              "number",
-              "array"
-            ],
-            "minItems": 1
+            "type": "number"
           },
-          "minItems": 1
+          "minItems": 2
         }
       },
       "required": [
         "type",
         "coordinates"
       ],
-      "minProperties": 1,
+      "additionalProperties": false
+    },
+    "LineStringGeometry": {
+      "title": "LineString geometry",
+      "description": "A [GeoJSON Geometry object](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1) of type [LineString](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4).",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Type",
+          "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`. For a linestring geometry, the value must be 'LineString'.",
+          "type": "string",
+          "const": "LineString"
+        },
+        "coordinates": {
+          "title": "Coordinates",
+          "description": "Two or more [GeoJSON positions](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.1). A position is an array of numbers with two or more elements.  The first two elements are longitude and latitude, or easting and northing, precisely in that order. Longitude and latitude must be expressed using the World Geodetic System 1984 [WGS 84](https://datatracker.ietf.org/doc/html/rfc7946#ref-WGS84) datum in units of decimal degrees. Altitude or elevation may be included as an optional third element and must be expressed as the height in meters above or below the WGS 84 reference ellipsoid.",
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "number"
+            }
+          },
+          "minItems": 2
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
       "additionalProperties": false
     },
     "OrganisationReference": {
       "title": "Organisation reference",
-      "description": "The local identifier and name of the organisation being referenced. Used to cross-reference to the `organisations` array.",
+      "description": "The [local identifier](https://standard.ofds.info/en/latest/reference/identifiers.html#local-identifiers) and name of the organisation being referenced. Used for cross-referencing within the dataset.",
       "type": "object",
       "properties": {
         "id": {
           "title": "Local identifier",
-          "description": "The local identifier of the organisation being referenced. This must match the `.id` of an organisation in the `organisations` array.",
+          "description": "The local identifier of the organisation being referenced.",
           "type": "string",
           "minLength": 1
         },
         "name": {
           "title": "Name",
-          "description": "The name of the organisation being referenced. This must match the `.name` of the organisation in the `organisations` array whose `.id` matches the `.id` of this organisation reference.",
+          "description": "The name of the organisation being referenced. This must match the name of the organisation referenced in `.id`.",
           "type": "string",
           "minLength": 1
         }
@@ -1241,7 +1422,8 @@
       "required": [
         "id"
       ],
-      "minProperties": 1
+      "minProperties": 1,
+      "additionalProperties": false
     },
     "PhaseReference": {
       "title": "Phase reference",
@@ -1250,13 +1432,13 @@
       "properties": {
         "id": {
           "title": "Identifier",
-          "description": "The identifier of the phase being referenced. This must match the `.id` of a phase in the `phases` array.",
+          "description": "The identifier of the phase being referenced.",
           "type": "string",
           "minLength": 1
         },
         "name": {
           "title": "Name",
-          "description": "The name of the phase being referenced. This must match the `.name` of the phase in the `phases` array whose `.id` matches the `.id` of this phase reference.",
+          "description": "The name of the phase being referenced. This must match the name of the phase referenced in `.id`.",
           "type": "string",
           "minLength": 1
         }
@@ -1264,7 +1446,8 @@
       "required": [
         "id"
       ],
-      "minProperties": 1
+      "minProperties": 1,
+      "additionalProperties": false
     },
     "Address": {
       "title": "Address",
@@ -1555,6 +1738,97 @@
           ]
         }
       },
+      "minProperties": 1
+    },
+    "Document": {
+      "title": "Document",
+      "description": "A piece of electronic or physical matter that provides information or evidence or that serves as an official record.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "description": "A title for this document.",
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of this document. Descriptions should not exceed 250 words. If the document is not accessible online, the description should describe how to access a copy of the document.",
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "title": "URL",
+          "description": "A web address for accessing this document.",
+          "format": "iri",
+          "type": "string",
+          "$comment": ""
+        },
+        "format": {
+          "title": "Format",
+          "description": "The format of this document, from the open [mediaType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#mediatype).",
+          "type": "string",
+          "codelist": "mediaType.csv",
+          "openCodelist": true,
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "CoordinateReferenceSystem": {
+      "title": "Coordinate reference system",
+      "description": "The coordinate reference system used in the data.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "The name of the coordinate reference system.",
+          "format": "uri",
+          "type": "string",
+          "const": "urn:ogc:def:crs:OGC::CRS84",
+          "$comment": ""
+        },
+        "uri": {
+          "title": "Uniform Resource Identifier",
+          "description": "A URI for the coordinate reference system.",
+          "format": "uri",
+          "type": "string",
+          "const": "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
+          "$comment": ""
+        }
+      },
+      "required": [
+        "name",
+        "uri"
+      ],
+      "minProperties": 1
+    },
+    "Link": {
+      "title": "Link",
+      "description": "A link to a related resource.",
+      "type": "object",
+      "properties": {
+        "href": {
+          "title": "Target",
+          "description": "The URL of this related resource.",
+          "format": "iri",
+          "type": "string",
+          "$comment": ""
+        },
+        "rel": {
+          "title": "Relation type",
+          "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype). The 'describedby' code must only be used in the first item in the `links` array to link to the schema that describes the structure of the data.",
+          "type": "string",
+          "codelist": "linkRelationType.csv",
+          "openCodelist": true,
+          "minLength": 1,
+          "pattern": "^(?!(describedby))"
+        }
+      },
+      "required": [
+        "href",
+        "rel"
+      ],
       "minProperties": 1
     },
     "Value": {
@@ -1884,132 +2158,6 @@
       },
       "minProperties": 1
     },
-    "Document": {
-      "title": "Document",
-      "description": "A piece of electronic or physical matter that provides information or evidence or that serves as an official record.",
-      "type": "object",
-      "properties": {
-        "title": {
-          "title": "Title",
-          "description": "A title for this document.",
-          "type": "string",
-          "minLength": 1
-        },
-        "description": {
-          "title": "Description",
-          "description": "A description of this document. Descriptions should not exceed 250 words. If the document is not accessible online, the description should describe how to access a copy of the document.",
-          "type": "string",
-          "minLength": 1
-        },
-        "url": {
-          "title": "URL",
-          "description": "A web address for accessing this document.",
-          "format": "iri",
-          "type": "string",
-          "$comment": ""
-        },
-        "format": {
-          "title": "Format",
-          "description": "The format of this document, from the open [mediaType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#mediatype).",
-          "type": "string",
-          "codelist": "mediaType.csv",
-          "openCodelist": true,
-          "minLength": 1
-        }
-      },
-      "minProperties": 1
-    },
-    "Identifier": {
-      "title": "Organisation identifier",
-      "description": "An organisation identifier.",
-      "type": "object",
-      "properties": {
-        "id": {
-          "title": "Identifier",
-          "description": "The identifier assigned to the organisation in the register identified in `.scheme`.",
-          "type": "string",
-          "minLength": 1
-        },
-        "scheme": {
-          "title": "Scheme",
-          "description": "The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#organisationidentifierscheme).",
-          "type": "string",
-          "codelist": "organisationIdentifierScheme.csv",
-          "openCodelist": true,
-          "minLength": 1
-        },
-        "legalName": {
-          "title": "Legal name",
-          "description": "The legally registered name of the organisation",
-          "type": "string",
-          "minLength": 1
-        },
-        "uri": {
-          "title": "URI",
-          "description": "A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.",
-          "format": "iri",
-          "type": "string",
-          "$comment": ""
-        }
-      },
-      "minProperties": 1
-    },
-    "CoordinateReferenceSystem": {
-      "title": "Coordinate reference system",
-      "description": "The coordinate reference system used in the data.",
-      "type": "object",
-      "properties": {
-        "name": {
-          "title": "Name",
-          "description": "The name of the coordinate reference system.",
-          "format": "uri",
-          "type": "string",
-          "const": "urn:ogc:def:crs:OGC::CRS84",
-          "$comment": ""
-        },
-        "uri": {
-          "title": "Uniform Resource Identifier",
-          "description": "A URI for the coordinate reference system.",
-          "format": "uri",
-          "type": "string",
-          "const": "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
-          "$comment": ""
-        }
-      },
-      "required": [
-        "name",
-        "uri"
-      ],
-      "minProperties": 1
-    },
-    "Link": {
-      "title": "Link",
-      "description": "A link to a related resource.",
-      "type": "object",
-      "properties": {
-        "href": {
-          "title": "Link target",
-          "description": "The URL of this related resource.",
-          "format": "iri",
-          "type": "string",
-          "$comment": ""
-        },
-        "rel": {
-          "title": "Link relation type",
-          "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#linkrelationtype). The 'describedby' code must only be used in the first item in the `links` array to link to the schema that describes the structure of the data.",
-          "type": "string",
-          "codelist": "linkRelationType.csv",
-          "openCodelist": true,
-          "minLength": 1,
-          "pattern": "^(?!(describedby))"
-        }
-      },
-      "required": [
-        "href",
-        "rel"
-      ],
-      "minProperties": 1
-    },
     "FibreTypeDetails": {
       "title": "Fibre type details",
       "description": "Further details about a span's fibre type.",
@@ -2030,19 +2178,66 @@
       },
       "minProperties": 1
     },
-    "DeploymentDetails": {
-      "title": "Deployment details",
-      "description": "Further details about a span's deployment.",
+    "Wayleave": {
+      "title": "Wayleave",
+      "description": "A formal agreement that grants a network operator rights to install, maintain or operate telecommunications infrastructure on, over, or under the grantor's property or asset.",
       "type": "object",
+      "required": [
+        "id"
+      ],
       "properties": {
-        "description": {
-          "title": "Description",
-          "description": "A description of this span's deployment.",
+        "id": {
+          "title": "Identifier",
+          "description": "A locally-unique identifier for this wayleave.",
           "type": "string",
           "minLength": 1
+        },
+        "grantor": {
+          "title": "Grantor",
+          "description": "The entity that grants a network operator the legal right to install, maintain, or operate telecommunications infrastructure on, over, or under property or assets.",
+          "$ref": "#/$defs/OrganisationReference"
+        },
+        "yearSigned": {
+          "title": "Year signed",
+          "description": "The year in which this wayleave was signed.",
+          "type": "integer"
+        },
+        "term": {
+          "title": "Term",
+          "description": "Information about the duration of the wayleave.",
+          "type": "object",
+          "properties": {
+            "indefinite": {
+              "title": "Indefinite",
+              "description": "Whether the term of wayleave is indefinite, i.e. without an end date.",
+              "type": "boolean"
+            },
+            "years": {
+              "title": "Years",
+              "description": "If the wayleave's term is definite, its duration in years.",
+              "type": "integer"
+            }
+          },
+          "minProperties": 1
+        },
+        "cost": {
+          "title": "Cost",
+          "description": "Information about the cost of the wayleave.",
+          "type": "object",
+          "properties": {
+            "recurring": {
+              "title": "Recurring",
+              "description": "Whether this is a recurring cost.",
+              "type": "boolean"
+            },
+            "perMetre": {
+              "title": "Cost per metre",
+              "description": "The average cost per metre for this wayleave. Wayleave costs can include a mix of per length and per item fees, e.g. a fee per metre of cable and a fee per pole. The average cost per metre should be calculated by dividing the total cost of all fees by the total length in metres of cable covered by the wayleave. For recurring fees, the average cost per metre should be annualised.",
+              "$ref": "#/$defs/Value"
+            }
+          }
         }
-      },
-      "minProperties": 1
+      }
     },
     "CapacityDetails": {
       "title": "Capacity details",

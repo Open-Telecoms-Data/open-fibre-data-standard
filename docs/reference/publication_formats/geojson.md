@@ -2,14 +2,6 @@
 
 # GeoJSON
 
-```{admonition} 0.3.0 release
-Welcome to the Open Fibre Data Standard 0.3.0 release.
-
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
-
-To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
-```
-
 This page describes how to publish data in GeoJSON format.
 
 If your data is small enough to fit into memory or if you are publishing data via an API, you should use the [small files and API responses option](#small-files-and-api-responses-option). If your data is too large to fit into memory, you should use the [streaming option](#streaming-option).
@@ -106,7 +98,7 @@ The transformation specification describes the recommended approach of producing
     - `.geometry` to the node's `.location`, if it exists. Otherwise, set `.geometry` to `Null`.
     - `.properties` to the properties of the node, excluding `.location`.
     - `.properties.featureType` to 'node'.
-    - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProviders`.
+    - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.transmissionMediumOwner`, `.properties.supportingInfrastructure.owner`, and `.networkProviders`.
     - [Dereference the phase reference](#dereference-a-phase-reference) in the feature's `.phase` property.
     - Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.
   - Add the feature to the nodes feature collection.
@@ -118,7 +110,7 @@ The transformation specification describes the recommended approach of producing
     - `.geometry` to the span's `.route`, if it exists. Otherwise, set `.geometry` to `Null`.
     - `.properties` to the properties of the span, excluding `.route`.
     - `.properties.featureType` to 'span'.
-    - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.physicalInfrastructureProvider` and `.networkProviders`.
+    - [Dereference the organisation references](#dereference-an-organisation-reference) in `.properties.transmissionMediumOwner`, `.properties.supportingInfrastructure.owner` and `.networkProviders`.
     - [Dereference the phase reference](#dereference-a-phase-reference) in `.properties.phase`.
     - [Dereference the node ids](#dereference-a-node-id) in `properties.start` and `properties.end`.
     - Set `.properties.network` to the properties of the network, excluding `.nodes`, `.spans`, `.phases` and `.organisations`.

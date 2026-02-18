@@ -2,30 +2,24 @@
 
 # Reference
 
-```{admonition} 0.3.0 release
-Welcome to the Open Fibre Data Standard 0.3.0 release.
-
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
-
-To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
-```
-
 ```{note}
    Throughout the reference documentation, the key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" are to be interpreted as described in [RFC2119](https://datatracker.ietf.org/doc/html/rfc2119).
 ```
 
-The [schema reference](schema.md) is the canonical reference for the structure of the Open Fibre Data Standard (OFDS) data model, the meaning of each field, and the rules that must be followed to publish OFDS data.
+The [data model reference](data_model.md) is the canonical reference for the entities, attributes and relationships that make up the Open Fibre Data Standard (OFDS) data model.
 
-The [codelists reference](codelists.md) is the canonical reference for the meaning of the codes used to limit and standardise the possible values of fields in OFDS data.
+The [codelists reference](codelists.md) is the canonical reference for the meaning of the codes used to limit and standardise the possible values of attributes in the OFDS data model.
 
-The [publication formats reference](publication_formats/index.md) is the canonical reference for the formats in which OFDS can be published, and the rules for transforming OFDS data from one publication format to another.
+The [publication formats reference](publication_formats/index.md) is the canonical reference for the data formats in which OFDS data can be published, stored and exchanged.
 
 ```{eval-rst}
 .. toctree::
    :maxdepth: 1
    
-   schema
+   data_model
    codelists
-   publication_formats/index.md
    identifiers
+   crs
+   publication_formats/index.md
+
 ```

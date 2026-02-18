@@ -2,14 +2,6 @@
 
 # Identifiers
 
-```{admonition} 0.3.0 release
-Welcome to the Open Fibre Data Standard 0.3.0 release.
-
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
-
-To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
-```
-
 In OFDS, there are two types of identifier: global identifiers and local identifiers.
 
 ## Global identifiers
@@ -57,6 +49,6 @@ The `.identifier.scheme` field ensures that the identifier is globally unique, e
 
 ## Local identifiers
 
-Most identifiers in OFDS only need to be unique among the identifiers used for the same type of object within the same scope. For example, node identifiers only need to be unique with the scope of the `.nodes` array. Uniqueness constraints are specified in the description of each identifier.
+Most identifiers in OFDS only need to be unique among the identifiers used for the same type of object within the same scope. For example, node identifiers only need to be unique with the scope of the nodes belonging to a network.
 
-Some local identifiers are used for cross-referencing. For example, an organisation's `.id` is a local identifier used for cross-referencing from fields such as `Node.physicalInfrastructureProvider.id`.
+Some local identifiers are used for cross-referencing. For example, an organisation's `.id` is a local identifier used for cross-referencing from attributes such as `Node.transmissionMediumOwner`.

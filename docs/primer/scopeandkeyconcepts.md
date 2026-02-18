@@ -69,7 +69,6 @@ The following examples show how nodes and spans are represented in OFDS's JSON f
 :animate: fade-in-slide-down
 :chevron: down-up
 
-
 ```json
 {
   "id": "1",
