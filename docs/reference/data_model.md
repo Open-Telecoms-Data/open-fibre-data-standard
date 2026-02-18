@@ -33,7 +33,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: book
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /description
 ```
 ````
@@ -50,17 +50,17 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
    - Description
 *  - [Node](#node)
    - 1:N
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /properties/nodes/description
       ```
 *  - [Span](#span)
    - 1:N
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /properties/spans/description
       ```
 *  - [Phase](#phase)
    - 1:N
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /properties/phases/description
       ```
 
@@ -73,7 +73,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: rows
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :include: id,identifier,name,website,language
 :nocrossref:
 :addtargets:
@@ -90,7 +90,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: book
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Phase/description
 ```
 ````
@@ -116,7 +116,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
    -
 *  - [Organisation](#organisation)
    - 1:N
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Phase/properties/funders/description
       ```
 *  - [Contract](#contract)
@@ -132,7 +132,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: rows
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Phase
 :include: id,name,description
 :nocrossref:
@@ -150,7 +150,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: book
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Node/description
 ```
 ````
@@ -170,7 +170,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
    -
 *  - [Phase](#phase)
    - N:1
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Node/properties/phase/description
       ```
 *  - [Span](#span)
@@ -178,7 +178,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
    -
 *  - [Organisation](#organisation) (Transmission medium owner)
    - N:1
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Node/properties/transmissionMediumOwner/description
       ```
 *  - [Organisation](#organisation) (Supporting infrastructure owner)
@@ -188,7 +188,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
       ```
 *  - [Organisation](#organisation) (Network provider)
    - N:M
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Node/properties/networkProviders/description
       ```
 
@@ -201,7 +201,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: rows
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Node
 :include: id,name,status,location,address/streetAddress,address/locality,address/region,address/postalCode,address/country,type,accessPoint,power,technologies,internationalConnections,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity
 :collapse: location,internationalConnections
@@ -220,7 +220,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: book
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Span/description
 ```
 ````
@@ -240,22 +240,22 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
    -
 *  - [Phase](#phase)
    - N:1
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Span/properties/phase/description
       ```
 *  - [Node](#node) (start)
    - N:1
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Span/properties/start/description
       ```
 *  - [Node](#node) (end)
    - N:1
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Span/properties/end/description
       ```
 *  - [Organisation](#organisation) (Transmission medium owner)
    - N:1
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Span/properties/transmissionMediumOwner/description
       ```
 *  - [Organisation](#organisation) (Supporting infrastructure owner)
@@ -265,12 +265,12 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
       ```
 *  - [Organisation](#organisation) (Network provider)
    - N:M
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Span/properties/networkProviders/description
       ```
 *  - [Organisation](#organisation) (Supplier)
    - N:1
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Span/properties/supplier/description
       ```
 *  - [Wayleave](#wayleave)
@@ -288,7 +288,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: rows
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Span
 :include: id,name,status,readyForServiceDate,directed,route,transmissionMedium,deployment,darkFibre,fibreType,fibreTypeDetails/fibreSubtype,fibreTypeDetails/description,fibreCount,fibreLength,technologies,capacity,capacityDetails/description,countries,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity,cableType,codeployment
 :collapse: route
@@ -296,6 +296,36 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :addtargets:
 :prefix: data_model
 ```
+
+````
+
+````{dropdown} Additional information
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: info
+
+#### Equipped capacity
+
+`Span.capacity` is defined as the equipped capacity of a span:
+
+```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+:jsonpointer: /$defs/Span/properties/capacity/description
+```
+
+There are several measures of capacity in fibre networks[^itu-attribution]:
+
+* **Potential capacity** refers to the total theoretical bandwidth that is available, including lit (turned on) and unlit (dark fibre) capacity.
+* **Equipped capacity**, also known as lit capacity, refers to bandwith that is turned on and ready for use.
+* **Purchased capacity**, also known as contracted capacity, covers bandwidth put into service, but not all of which is used; some is held in reserve for restoration or redundancy
+* **Used capacity** covers bandwidth that is available to carry traffic.
+
+```{image} ../_static/capacity-diagram.svg
+:alt: Capacity diagram
+:width: 70%
+:align: center
+```
+
+[^itu-attribution]: Text and diagram adapted from the [ITU Handbook for the collection of administrative data on telecommunications/ICT, 2020 edition](https://www.itu.int/en/ITU-D/Statistics/Pages/publications/handbook.aspx).
 
 ````
 
@@ -307,7 +337,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: book
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Organisation/description
 ```
 ````
@@ -356,7 +386,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: rows
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Organisation
 :include: id,name,identifier/id,identifier/scheme,identifier/legalName,identifier/uri,country,roles,roleDetails,website,logo
 :nocrossref:
@@ -374,7 +404,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: book
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Contract/description
 ```
 ````
@@ -391,7 +421,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
    - Description
 *  - [Phase](#phase)
    - 1:N
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
+   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Contract/properties/relatedPhases/description
       ```
 
@@ -404,7 +434,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: rows
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Contract
 :include: id,title,description,type,value/amount,value/currency,dateSigned
 :nocrossref:
@@ -469,7 +499,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: book
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Document/description
 ```
 ````
@@ -497,7 +527,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: rows
 
-```{jsonschema} ../../schema/network-schema.json
+```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Document
 :nocrossref:
 :addtargets:

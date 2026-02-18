@@ -57,6 +57,10 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 - [#331](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/331) - Add link to JSON Schema documentation for data types, formats and validation keywords.
 
+### Reference documentation
+
+- [#325](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/325) - Add equipped capacity diagram to data model reference.
+
 ## 0.3.0 - 2023-06-29
 
 ### Schema

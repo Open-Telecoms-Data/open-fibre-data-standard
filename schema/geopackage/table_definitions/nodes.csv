@@ -4,13 +4,13 @@ geom,BLOB,,,
 ofds_id,TEXT,,Identifier,A locally-unique identifier for this node.
 name,TEXT,,Name,A name for this node. The name should be unique amongst the nodes belonging to a network.
 phase,INTEGER,FK,Phase,The phase to which this node belongs.
-status,TEXT,,Status,"The status of this node, from the closed [nodeStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodestatus)."
+status,TEXT,,Status,"The status of this node, from the closed [nodeStatus codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodestatus)."
 address__streetAddress,TEXT,,Address Street address,"The physical address of this node. The street address. For example, 1600 Amphitheatre Pkwy."
 address__locality,TEXT,,Address Locality,"The physical address of this node. The locality. For example, Mountain View."
 address__region,TEXT,,Address Region,"The physical address of this node. The region. For example, CA."
 address__postalCode,TEXT,,Address Postal code,"The physical address of this node. The postal code. For example, 94043."
-address__country,TEXT,,Address Country,"The physical address of this node. The country in which the address is physically located, from the closed [country codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#country)."
-supportingInfrastructure__type,INTEGER,FK,Supporting infrastructure Type,"The infrastructure that supports this node. The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodesupportinginfrastructure)."
+address__country,TEXT,,Address Country,"The physical address of this node. The country in which the address is physically located, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country)."
+supportingInfrastructure__type,INTEGER,FK,Supporting infrastructure Type,"The infrastructure that supports this node. The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/{{vesion}}/reference/codelists#nodesupportinginfrastructure)."
 supportingInfrastructure__description,TEXT,,Supporting infrastructure Description,The infrastructure that supports this node. A description of the supporting infrastructure for this node.
 supportingInfrastructure__owner,INTEGER,FK,Supporting infrastructure Owner,The infrastructure that supports this node. The organisation that owns the supporting infrastructure.
 supportingInfrastructure__spareCapacity,TEXT,,Supporting infrastructure Spare capacity,The infrastructure that supports this node. Whether the supporting infrastructure has spare capacity for the installation of additional network equipment.
