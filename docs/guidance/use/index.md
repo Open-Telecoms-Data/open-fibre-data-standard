@@ -35,9 +35,7 @@ The [OFDS QGIS plugin](https://github.com/Open-Telecoms-Data/ofds-qgis-plugin) p
 
 Coordinates in OFDS data are specified in the `urn:ogc:def:crs:OGC::CRS84` [coordinate reference system](../../reference/crs.md) (CRS). To create accurate maps, you need need to set the correct coordinate reference system when using OFDS data.
 
-If you are using OFDS data published in GeoJSON format, then the tool that you are using is likely to default to the correct CRS because `urn:ogc:def:crs:OGC::CRS84` is the default CRS for GeoJSON data.
-
-If you are using OFDS data published in other formats, then you need to pay careful attention to coordinate ordering. `urn:ogc:def:crs:OGC::CRS84` is equivalent to EPSG:4326 with reversed axes so, if it is not supported by the tool that you are using, you can set your CRS to EPSG:4326 and ensure that you read coordinates in longitude, latitude order.
+You also need to pay careful attention to coordinate ordering. `urn:ogc:def:crs:OGC::CRS84` is equivalent to EPSG:4326 with reversed axes so, if it is not supported by the tool that you are using, you can set your CRS to EPSG:4326 and ensure that you read coordinates in longitude, latitude order.
 
 For more information on transforming coordinates from one CRS to another, see [how to transform coordinates to the correct coordinate reference system](../publication.md#how-to-transform-coordinates-to-the-correct-coordinate-reference-system).
 
