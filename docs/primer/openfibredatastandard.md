@@ -2,14 +2,6 @@
 
 # The Open Fibre Data Standard
 
-```{admonition} 0.3.0 release
-Welcome to the Open Fibre Data Standard 0.3.0 release.
-
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
-
-To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
-```
-
 This page provides an introduction to the Open Fibre Data Standard (OFDS), the reasons for using it and what OFDS data looks like.
 
 ## What is the Open Fibre Data Standard?
@@ -44,7 +36,7 @@ In addition to publishing the locations of fibre network infrastructure, using t
 
 ## What does OFDS data look like?
 
-To meet the needs of different users, OFDS data can be published in three formats: JSON, GeoJSON and CSV. The tabs below provide examples of OFDS data in each format:
+To meet the needs of different users, OFDS supports several [data formats](../reference/publication_formats/index.md). The examples show what OFDS data looks like in JSON and CSV format.
 
 ::::{tab-set}
 
@@ -56,24 +48,6 @@ The following example shows OFDS data containing a single network in JSON format
     :jsonpointer:
     :expand: networks
     :title: JSON
-```
-
-:::
-
-:::{tab-item} GeoJSON
-The following example shows OFDS data containing a single network in GeoJSON format. OFDS GeoJSON data consists of separate files for nodes and spans. Use the dropdown menu to explore an example nodes file and an example spans file:
-
-```{eval-rst}
-.. jsoninclude:: ../../examples/geojson/nodes.geojson
-    :jsonpointer:
-    :expand: features
-    :title: Nodes
-
-.. jsoninclude:: ../../examples/geojson/spans.geojson
-    :jsonpointer:
-    :expand: features
-    :title: Spans
-
 ```
 
 :::
