@@ -201,7 +201,7 @@ This table is related to the following tables:
 
 The columns in this table are listed below. You can also download an [example CSV file](../../../examples/csv/wayleaves.csv) or a [blank template](../../../examples/csv/template/wayleaves.csv) for this table.
 
-```{jsonschema} ../../../schema/network-schema.json
+```{jsonschema} ../../../docs/_readthedocs/html/network-schema.json
 :include: id,wayleaves/0/id,wayleaves/0/grantor,wayleaves/0/yearSigned,wayleaves/0/term,wayleaves/0/cost
 :nocrossref:
 ```

@@ -247,7 +247,7 @@
           "properties": {
             "type": {
               "title": "Type",
-              "description": "The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodesupportinginfrastructure).",
+              "description": "The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/{{vesion}}/reference/codelists#nodesupportinginfrastructure).",
               "type": "string",
               "minLength": 1,
               "openCodelist": true,
@@ -470,7 +470,7 @@
           "properties": {
             "type": {
               "title": "Type",
-              "description": "The type of supporting infrastructure, from the open [spanSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spansupportinginfrastructure).",
+              "description": "The type of supporting infrastructure, from the open [spanSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/{{vesion}}/reference/codelists#spansupportinginfrastructure).",
               "type": "string",
               "minLength": 1,
               "openCodelist": true,
@@ -1409,7 +1409,7 @@
     },
     "OrganisationReference": {
       "title": "Organisation reference",
-      "description": "The [local identifier](https://standard.ofds.info/en/latest/reference/identifiers#local-identifiers) and name of the organisation being referenced. Used for cross-referencing within the dataset.",
+      "description": "The [local identifier](https://standard.ofds.info/en/{{vesion}}/reference/identifiers#local-identifiers) and name of the organisation being referenced. Used for cross-referencing within the dataset.",
       "type": "object",
       "properties": {
         "id": {
@@ -1850,7 +1850,7 @@
         },
         "currency": {
           "title": "Currency",
-          "description": "The currency of this value, from the closed [currency codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#currency).",
+          "description": "The currency of this value, from the closed [currency codelist](https://open-fibre-data-standard.readthedocs.io/en/{{vesion}}/reference/codelists#currency).",
           "type": "string",
           "codelist": "currency.csv",
           "openCodelist": false,
