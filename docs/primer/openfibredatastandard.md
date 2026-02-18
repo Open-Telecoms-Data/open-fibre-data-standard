@@ -97,6 +97,6 @@ LIMIT
 ```{seealso}
 
 * [Data formats reference](../reference/data_formats/index.md)
-* [How to format data for publication](../guidance/publication.md#how-to-format-data-for-publication)
+* [How to format data for publication](../guidance/publication.md#how-to-format-data)
 
 ```

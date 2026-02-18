@@ -18,15 +18,15 @@ The plan phase covers identifying your priority use cases, deciding what data to
 
 #### Identify your priority use cases
 
-There are many [use cases](../primer/openfibredata.md#why-publish-fibre-data-as-open-data) for OFDS data, each with their own data needs. You ought to decide which use cases to prioritise so that you can make sure that your data includes the necessary fields and that it is available via suitable publication formats and access methods.
+There are many [use cases](../primer/openfibredata.md#why-publish-fibre-data-as-open-data) for OFDS data, each with their own data needs. You ought to decide which use cases to prioritise so that you can make sure that your data includes the necessary entities and attributes and that it is available via suitable formats and access methods.
 
 #### Decide what data to publish
 
-Bearing in mind your priority use cases, you ought to review the OFDS [data model](../reference/data_model.md) and decide which fields you want to publish.
+Bearing in mind your priority use cases, you ought to review the OFDS [data model](../reference/data_model.md) and decide which entities and attributes you want to publish.
 
-OFDS is designed for the public disclosure of open data. However, you can also use it to structure data that you want to share only with specific partners and data that you want to keep within your own organisation. As such, this step can involve deciding which fields to make public, which to share with partners and which to keep private.
+OFDS is primarily designed for the public disclosure of open data. However, you can also use it to exchange data with specific partners and to store data within your own organisation. As such, this step can involve deciding which entities and attributes to make public, which to share with partners and which to keep private.
 
-Most fields in the OFDS schema are optional. However, the more fields you publish, the more useful your data will be.
+Most attributes in OFDS are optional. However, the more attributes you publish, the more useful your data will be.
 
 If you are concerned about disclosing sensitive location data, see [how to obfuscate location data](#how-to-obfuscate-location-data).
 
@@ -36,23 +36,23 @@ Once you have decided what data to publish, you ought to identify your data sour
 
 ### Prepare
 
-The prepare phase covers mapping your data to OFDS, collecting missing data and choosing your publication formats and access methods.
+The prepare phase covers choosing your data formats, mapping your data to OFDS, collecting missing data.
+
+#### Choose your data formats and access methods
+
+Bearing in mind your priority use cases, you ought to decide which data formats and access methods you wish to implement.
+
+For more information, see [how to format data for publication](#how-to-format-data) and [how to provide access to data](#how-to-provide-access-to-data).
 
 #### Map your data to OFDS
 
-Once you have identified your data sources, you ought to map your data to the OFDS schema, that is, identify which data elements within your data sources match which OFDS [attributes](../reference/data_model.md) and [codes](../reference/codelists.md). If there are data elements that you want to publish but for which you cannot identify a suitable mapping, you can [add additional fields](#how-to-add-additional-fields) to your OFDS data.
+Once you have identified your data sources and chosen your data formats, you ought to map your data to the schema for your chosen data formats, that is, identify which data elements within your data sources match which OFDS [attributes](../reference/data_model.md) and [codes](../reference/codelists.md). If there are data elements that you want to publish but for which you cannot identify a suitable mapping, you can [add additional attributes](#how-to-add-additional-attributes) to your OFDS data.
 
 Your mapping acts as a blueprint for preparing your data. It will help you to identify the steps involved in converting your data to OFDS format.
 
 #### Collect missing data
 
-Your mapping might identify fields that you want to publish but that are missing from your data sources. If so, you'll need to collect the missing data.
-
-#### Choose your publication formats and access methods
-
-Bearing in mind your priority use cases, you ought to decide which publication formats and access methods you will use to publish your OFDS data.
-
-For more information, see [how to format data for publication](#how-to-format-data-for-publication) and [how to provide access to data](#how-to-provide-access-to-data).
+Your mapping might identify attributes that you want to publish but that are missing from your data sources. If so, you'll need to collect the missing data.
 
 ### Publish
 
@@ -60,7 +60,7 @@ The publish phase covers preparing your data, checking your data and publishing 
 
 #### Prepare your data
 
-Once you have completed your mapping and decided on your publication formats and access methods, the next step is to convert your data to OFDS format.
+Once you have completed your mapping and collected missing data, the next step is to convert your data to your chosen format.
 
 The suggested approach is to develop a reproducible data pipeline so that you can easily update your OFDS publication when the data in your data sources is updated. However, you can prepare your data using whichever tools you are most comfortable with.
 
@@ -71,7 +71,7 @@ For guidance on common steps in converting your data to OFDS format, see the fol
 
 #### Check your data
 
-Once you have prepared your data, the next step is to use the [OFDS Convert, Validate, Explore tool (CoVE)](https://ofds.cove.opendataservices.coop/) to check that your data is correctly structured and formatted according to the OFDS schema.
+Once you have prepared your data, the next step is to use the [OFDS Convert, Validate, Explore tool (CoVE)](https://ofds.cove.opendataservices.coop/) to check that your data is correctly structured and formatted according to OFDS.
 
 #### Publish your data
 
@@ -94,19 +94,19 @@ If you’re concerned about disclosing the exact location of fibre infrastructur
 | 0.00001° | ± 1.11 m |
 | 0.000001° | ± 0.111 m |
 
-### How to add additional fields
+### How to add additional attributes
 
-The OFDS schema does not restrict the use of additional fields, except where noted in the [data model reference](../reference/data_model.md). If there is a data element that you wish to publish for which you cannot identify a suitable mapping in OFDS, you can add an additional field to your data.
+OFDS does not restrict the use of additional attributes, except where noted in the [reference documentation](../reference/index.md). If there is a data element that you wish to publish for which you cannot identify a suitable mapping in OFDS, you can add an additional attribute to your data.
 
-Before adding an additional field, you ought to search the [standard issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) to see if a similar concept has already been discussed. If there are no existing discussions, you ought to open a new issue and describe the concept that you want to publish and your proposed modelling.
+Before adding an additional attribute, you ought to search the [standard issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) to see if a similar concept has already been discussed. If there are no existing discussions, you ought to open a new issue and describe the concept that you want to publish and your proposed modelling.
 
-If you add an additional field, you ought to describe its structure, format and meaning in your data user guide. For more information, see [how to write a data user guide](#how-to-write-a-data-user-guide).
+If you add an additional attribute, you ought to describe its structure, format and meaning in your data user guide. For more information, see [how to write a data user guide](#how-to-write-a-data-user-guide).
 
-### How to format data for publication
+### How to format data
 
-OFDS data can be published in three [publication formats](../reference/data_formats/index.md):
+OFDS data can be published, exchanged and stored in three [data formats](../reference/data_formats/index.md):
 
-- The [JSON format](../reference/data_formats/json/index.md) reflects the structure of the [data model](../reference/data_model.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
+- The [JSON format](../reference/data_formats/json/index.md) reflects the structure of the [data model](../reference/data_model.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other data formats can be converted to and from.
 - The [GeoJSON format](../reference/data_formats/geojson.md) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
 - The [CSV format](../reference/data_formats/csv.md) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to users who want to explore the data in spreadsheet tools.
 
@@ -150,9 +150,9 @@ This section describes how to:
 - Use [pagination](#pagination) to publish an **individual** network that is too large to return in a single API response
 - Use [streaming](#streaming) to publish an **individual** network that is too large to load into memory.
 
-For information on how to use pagination and streaming to publish **multiple** networks, see the [publication formats reference](../reference/data_formats/index.md).
+For information on how to use pagination and streaming to publish **multiple** networks, see the [data formats reference](../reference/data_formats/index.md).
 
-This guidance is applicable to the [JSON publication format](../reference/data_formats/json/index.md), for information on pagination and streaming for the GeoJSON format see the [GeoJSON publication format reference](../reference/data_formats/geojson.md).
+This guidance is applicable to the [JSON format](../reference/data_formats/json/index.md), for information on pagination and streaming for the GeoJSON format see the [GeoJSON reference](../reference/data_formats/geojson.md).
 
 ##### Pagination
 
@@ -347,15 +347,15 @@ If you prefer to use a graphical user interface, several web-based tools are ava
 
 ### How to write a data user guide
 
-Publishing OFDS data involves making choices about what data to include and exclude, and how to map existing data elements to the fields in OFDS.
+Publishing OFDS data involves making choices about what data to include and exclude, and how to map existing data elements to the attributes in OFDS.
 
 In order for users to interpret data correctly and make effective use of it, it's important to describe your decisions and to provide guidance to data users. Your data user guide ought to include:
 
 - [why you are publishing the data](../primer/openfibredata.md#why-publish-fibre-data-as-open-data)
 - [how you prepared the data](#prepare-your-data) and how frequently it is updated
 - the scope of the data
-- the meaning, structure and format of any [additional fields](#how-to-add-additional-fields)
-- the available [publication formats](#how-to-format-data-for-publication) and [access methods](#how-to-provide-access-to-data)
+- the meaning, structure and format of any [additional attributes](#how-to-add-additional-attributes)
+- the available [data formats](#how-to-format-data) and [access methods](#how-to-provide-access-to-data)
 - [license information](#how-to-license-your-data) for data reuse
 - any plans for changes to your publication
 - your contact details
