@@ -1,0 +1,9 @@
+Code,Title,Description
+opgw,Optical Groundwire,A cable used in overhead power transmission networks that combines the functions of grounding and telecommunications
+adss,All-Dielectric Self-Supporting,A cable used in overhead power transmission and distribution networks that is strong enough to support itself between structures without using conductive metal elements.
+oppc,Optical Phase Conductor,A cable used in overhead power transmission networks that combines the functions of a phase wire and telecommunications
+wrappedDielectric,Wrapped dielectric,A cable used in overhead power transmission networks that is wrapped around an existing groundwire or conductor
+figureEight,Figure-8,A self-supporting cable used in overhead power distribution networks that combines optical fibres with an integrated steel messenger wire in an 8-shaped cross-section.
+opnw,Optical Neutral Wire,A cable used in overhead power distribution networks that combines the functions of a neutral wire and telecommunications
+opmw,Optical Messenger Wire,A self-supporting cable used in overhead power distribution networks that also supports another cable
+mass,Metallic Aerial Self-Supporting,A stand-alone cable self-supporting cable used in overhead power distribution networks

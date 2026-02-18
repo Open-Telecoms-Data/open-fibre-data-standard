@@ -2,16 +2,21 @@ Name,Type,Constraints,Title,Description
 id,INTEGER,PK,,
 geom,BLOB,,,
 ofds_id,TEXT,,Identifier,A locally-unique identifier for this span.
-name,TEXT,,Name,A name for this span.
+name,TEXT,,Name,A name for this span. The name should be unique amongst the spans belonging to a network.
 phase,INTEGER,FK,Phase,The phase to which this span belongs.
 status,TEXT,,Status,"The status of the network infrastructure for this span, from the closed [spanStatus codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#spanstatus)."
 readyForServiceDate,TEXT,,Ready for service date,"The date this span was ready to carry traffic. For spans with multiple network providers, the earliest of the dates at which each provider's network was ready to carry traffic on this span."
 start,INTEGER,FK,Start,"The identifier of one of two nodes that this span connects. If the span is directed, it represents the starting point of the span."
 end,INTEGER,FK,End,"The identifier of one of two nodes that this span connects. If the span is directed, it represents the end point of the span."
 directed,TEXT,,Directed,"Whether this span is directed. If the span is directed, the span begins at the node referenced in `.start` and ends at the node referenced in `.end`. Otherwise, the span connects the nodes referenced in `.start` and `.end` with no direction implied."
-physicalInfrastructureProvider,INTEGER,FK,Physical infrastructure provider,"The organisation that owns the passive network infrastructure for this span, i.e. the non-electrical elements, such as dark fibre, ducts and physical sites."
+transmissionMediumOwner,INTEGER,FK,Owner,"The organisation that owns the transmission media for this span, i.e. the fibre cables."
 supplier,INTEGER,FK,Supplier,The organisation responsible for installing the cable for this span.
-deploymentDetails__description,TEXT,,Deployment details Description,Further details about this span's deployment. A description of this span's deployment.
+supportingInfrastructure__type,INTEGER,FK,Supporting infrastructure Type,"The infrastructure that supports this span. The type of supporting infrastructure, from the open [spanSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#spansupportinginfrastructure)."
+supportingInfrastructure__description,TEXT,,Supporting infrastructure Description,The infrastructure that supports this span. A description of the supporting infrastructure for this span.
+supportingInfrastructure__owner,INTEGER,FK,Supporting infrastructure Owner,The infrastructure that supports this span. The organisation that owns the supporting infrastructure.
+supportingInfrastructure__spareCapacity,TEXT,,Supporting infrastructure Spare capacity,The infrastructure that supports this span. Whether the supporting infrastructure has spare capacity for the installation of additional fibre cables.
+codeployment,INTEGER,FK,Codeployment,The type of utility or transport infrastrucutre with which this span is codeployed.
+cableType,INTEGER,FK,Cable type,The type of cable used in this span.
 darkFibre,TEXT,,Dark fibre availability,Whether access to dark fibre is available on this span.
 fibreType,TEXT,,Fibre type,"The type of fibre used in this span, from the closed [fibreType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists.html#fibretype). Further details of the span's fibre type can be provided in `.fibreTypeDetails`."
 fibreTypeDetails__fibreSubtype,TEXT,,Fibre type details Subtype,"Further details about this span's fibre type. The sub-category of this span's fibre type. For example, G.652.B."

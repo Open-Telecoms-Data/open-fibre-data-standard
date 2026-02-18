@@ -2,14 +2,6 @@
 
 # Codelists
 
-```{admonition} 0.3.0 release
-Welcome to the Open Fibre Data Standard 0.3.0 release.
-
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
-
-To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
-```
-
 Some attributes in the OFDS [data model](data_model.md) and [formats](publication_formats/index.md) refer to codelists, to limit and standardise the possible values of the attribute, in order to promote data interoperability.
 
 Codelists can either be open or closed. [**Closed codelists**](#closed-codelists) are intended to be comprehensive; for example, the currency codelist covers all currencies in the world. [**Open codelists**](#open-codelists) are intended to be representative, but not comprehensive.
@@ -27,6 +19,50 @@ Codes are case-sensitive, and are generally provided as English language camelCa
 Some codelists are specific to particular data formats. These are listed in the [format-specific codelists](#format-specific-codelists) section.
 
 ## Open codelists
+
+### cableType
+
+This codelist is referenced by the following attributes:
+
+- [`Span/cableType`](data_model,network-schema.json,/$defs/Span,cableType)
+
+This codelist has the following codes:
+
+````{dropdown} Codes
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: rows
+:open:
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/cableType.csv
+```
+
+````
+
+### codeployment
+
+This codelist is referenced by the following attributes:
+
+- [`Span/codeployment`](data_model,network-schema.json,/$defs/Span,codeployment)
+
+This codelist has the following codes:
+
+````{dropdown} Codes
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: rows
+:open:
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/codeployment.csv
+```
+
+````
 
 ### contractType
 
@@ -95,7 +131,26 @@ This codelist has the following codes:
 :widths: auto
 :file: ../../codelists/open/mediaType.csv
 ```
+````
 
+### nodeSupportingInfrastructure
+
+This codelist is referenced by the following properties:
+
+- [`Node/supportingInfrastructure/type`](data_model,network-schema.json,/$defs/Node,supportingInfrastructure/type)
+
+This codelist has the following codes:
+
+````{dropdown} Codes
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: rows
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/nodeSupportingInfrastructure.csv
+```
 ````
 
 ### nodeTechnologies
@@ -190,7 +245,27 @@ This codelist has the following codes:
 :widths: auto
 :file: ../../codelists/open/organisationRole.csv
 ```
+````
 
+### spanSupportingInfrastructure
+
+This codelist is referenced by the following properties:
+
+- [`Span/supportingInfrastructure/type`](data_model,network-schema.json,/$defs/Span,supportingInfrastructure/type)
+
+This codelist has the following codes:
+
+````{dropdown} Codes
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: rows
+:open:
+
+```{csv-table-no-translate}
+:header-rows: 1
+:widths: auto
+:file: ../../codelists/open/spanSupportingInfrastructure.csv
+```
 ````
 
 ### spanTechnologies
@@ -392,30 +467,6 @@ This codelist has the following codes:
 ### JSON
 
 The following codelists are specific to the [JSON format](publication_formats/json/index.md).
-
-#### geometryType
-
-The geometry type codelist is used to categorise the type of geometry represented by the geometry object.
-
-This codelist is referenced by the following attributes:
-
-- [`Geometry/type`](json,network-schema.json,/$defs/Geometry,type)
-
-This codelist has the following codes:
-
-````{dropdown} Codes
-:animate: fade-in-slide-down
-:chevron: down-up
-:icon: rows
-:open:
-
-```{csv-table-no-translate}
-:header-rows: 1
-:widths: auto
-:file: ../../codelists/closed/geometryType.csv
-```
-
-````
 
 #### linkRelationType
 

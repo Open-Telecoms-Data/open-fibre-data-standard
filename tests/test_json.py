@@ -38,7 +38,7 @@ def test_indent():
 def test_invalid_json():
     """Test whether all JSON files can be parsed."""
     warn_and_assert(
-        get_invalid_json_files(excluded=('.git', '.ve', '_static', 'build', 'fixtures', "_build")), "{0} is not valid JSON: {1}", "JSON files are invalid. See warnings below."
+        get_invalid_json_files(excluded=('.git', '.ve', '.venv' '_static', 'build', 'fixtures', "_build")), "{0} is not valid JSON: {1}", "JSON files are invalid. See warnings below."
     )
 
 
