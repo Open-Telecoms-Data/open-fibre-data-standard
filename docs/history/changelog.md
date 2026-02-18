@@ -45,9 +45,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#328](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/328) - Disallow properties named `network` in `Span` and `Node` definitions, and additional properties in `OrganisationReference` and `PhaseReference` definitions, to ease conversion between formats.
 - [#327](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/327) - Improve validation of GeoJSON geometry objects
 - [#322](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/322) - Update `Node.type` description to explain modelling of junctions
-- [#329](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/329):
-  - Recommend unique names for nodes, spans, phases and organisations
-  - Add `Network.id`
+- [#329](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/329) - Add `Network.id`, recommend unique names for nodes, spans, phases and organisations
 
 ### Codelists
 
@@ -56,9 +54,6 @@ Iterative improvements are made outside of the release cycle. They do not involv
 ### Normative documentation
 
 - [#331](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/331) - Add link to JSON Schema documentation for data types, formats and validation keywords.
-
-### Reference documentation
-
 - [#325](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/325) - Add equipped capacity diagram to data model reference.
 
 ## 0.3.0 - 2023-06-29
