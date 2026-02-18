@@ -36,7 +36,9 @@ extensions = [
     'sphinxcontrib.opendataservices',
     'sphinxcontrib.jsonschema',
     'sphinx_design',
-    'sphinxcontrib.mermaid'
+    'sphinxcontrib.mermaid',
+    'crate.sphinx.csv',
+    'sphinxcontrib.sqltable'
 ]
 
 #MyST extenions

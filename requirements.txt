@@ -60,6 +60,8 @@ flattentool[geo]==0.27.0
     # via -r requirements.in
 geojson==3.2.0
     # via flattentool
+greenlet==3.3.1
+    # via sqlalchemy
 h11==0.16.0
     # via uvicorn
 idna==3.10
@@ -226,13 +228,17 @@ sphinx==8.2.3
     #   -r requirements.in
     #   myst-parser
     #   sphinx-autobuild
+    #   sphinx-csv-filter
     #   sphinx-design
     #   sphinx-intl
     #   sphinx-nefertiti
     #   sphinxcontrib-mermaid
     #   sphinxcontrib-opencontracting
     #   sphinxcontrib-opendataservices
+    #   sphinxcontrib-sqltable
 sphinx-autobuild==2025.8.25
+    # via -r requirements.in
+sphinx-csv-filter==0.4.2
     # via -r requirements.in
 sphinx-design==0.6.1
     # via -r requirements.in
@@ -262,6 +268,10 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
+sphinxcontrib-sqltable==2.1.1
+    # via -r requirements.in
+sqlalchemy==2.0.46
+    # via sphinxcontrib-sqltable
 starlette==0.48.0
     # via sphinx-autobuild
 transaction==5.0
@@ -275,6 +285,7 @@ typing-extensions==4.15.0
     #   pydantic-core
     #   pygithub
     #   referencing
+    #   sqlalchemy
     #   starlette
     #   typing-inspection
 typing-inspection==0.4.2

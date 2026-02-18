@@ -5,7 +5,7 @@ connectionString: "sqlite3://schema/geopackage/network-schema.gpkg"
 useAllTables: true
 
 # Additional flags
-outputFileName: "docs/reference/publication_formats/geopackage/geopackage.mmd"
+outputFileName: "docs/reference/data_formats/geopackage/geopackage.mmd"
 ignoreTables:
   - codelist*
   - gpkg*
