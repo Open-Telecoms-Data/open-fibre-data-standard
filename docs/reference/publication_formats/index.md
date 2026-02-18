@@ -9,7 +9,6 @@ OFDS defines schemas based on the [logical data model](../data_model.md) for pub
    :maxdepth: 1
    
    json/index.md
-   geojson
    csv
    geopackage/index.md
 ```

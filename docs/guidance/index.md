@@ -11,5 +11,5 @@ Read the guidance to learn about how to publish and use OFDS data.
    :maxdepth: 1
 
    publication
-   use
+   use/index
 ```

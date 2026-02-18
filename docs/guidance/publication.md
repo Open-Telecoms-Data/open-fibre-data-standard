@@ -104,24 +104,25 @@ If you add an additional field, you ought to describe its structure, format and 
 
 ### How to format data for publication
 
-OFDS data can be published in three [publication formats](../reference/publication_formats/index.md):
+OFDS supports several [data formats](../reference/publication_formats/index.md):
 
 - The [JSON format](../reference/publication_formats/json/index.md) reflects the structure of the [data model](../reference/data_model.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
-- The [GeoJSON format](../reference/publication_formats/geojson.md) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
+- The [GeoPackage format](../reference/publication_formats/geopackage/index.md) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
 - The [CSV format](../reference/publication_formats/csv.md) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to users who want to explore the data in spreadsheet tools.
 
-To meet the widest range of use cases, you ought to publish data in all three formats. The suggested approach is to export your data in the JSON format and to use the following tools to transform it to the GeoJSON and CSV formats:
+If you are publishing open data, to meet the widest range of use cases, you ought to publish data in all three formats. You can export data in whichever format best suits your needs, and use the following tools to convert it to the other formats:
 
 ::::{tab-set}
 
-:::{tab-item} JSON to GeoJSON
-The command line tool [Lib CoVE OFDS](https://libcoveofds.readthedocs.io/en/latest/) provides an interface for transforming OFDS data from JSON to GeoJSON format.
+:::{tab-item} JSON to GeoPackage
 
-To convert a network package to GeoJSON format, install [Lib CoVE OFDS](https://libcoveofds.readthedocs.io/en/latest/) and run the following command:
+The [OFDS QGIS plugin](https://github.com/Open-Telecoms-Data/ofds-qgis-plugin) supports importing OFDS data in JSON format and exporting it in GeoPackage format.
 
-```bash
-libcoveofds jsontogeojson network-package.json nodes.geojson spans.geojson
-```
+:::
+
+:::{tab-item} GeoPackage to JSON
+
+The [OFDS QGIS plugin](https://github.com/Open-Telecoms-Data/ofds-qgis-plugin) supports opening an OFDS GeoPackage and exporting it in OFDS JSON format.
 
 :::
 
@@ -141,6 +142,21 @@ flatten-tool flatten --truncation-length=9 --root-list-path=networks --main-shee
 
 :::
 
+:::{tab-item} CSV to JSON
+[Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/) provides a command-line interface for transforming OFDS data from CSV to JSON format.
+
+To convert data to CSV format:
+
+- [Install Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/getting-started/#getting-started)
+- Download the [network schema](../../schema/network-schema.json)
+- Run the following command, replacing `path/to/csv/files` with the path to your CSV files
+
+```bash
+flatten-tool unflatten -f csv -m networks -s network-schema.json --convert-wkt path/to/csv/files
+```
+
+:::
+
 ::::
 
 #### How to publish large networks
@@ -151,8 +167,6 @@ This section describes how to:
 - Use [streaming](#streaming) to publish an **individual** network that is too large to load into memory.
 
 For information on how to use pagination and streaming to publish **multiple** networks, see the [publication formats reference](../reference/publication_formats/index.md).
-
-This guidance is applicable to the [JSON publication format](../reference/publication_formats/json/index.md), for information on pagination and streaming for the GeoJSON format see the [GeoJSON publication format reference](../reference/publication_formats/geojson.md).
 
 ##### Pagination
 
@@ -306,7 +320,7 @@ Ensure that all OFDS data can be accessed via the API.
 
 ##### Response format
 
-- Put the network package or GeoJSON feature collection at the top-level of the JSON data. For example, do not embed it under a results array.
+- Put the network package at the top-level of the JSON data. For example, do not embed it under a results array.
 - Use a JSON library instead of implementing JSON serialisation yourself. This also guarantees that the encoding is UTF-8.
 - Remove NULL characters (\\u0000) from the JSON response. These characters cannot be imported by users into some SQL databases.
 - If results cannot be returned, use an appropriate HTTP error code (400-599); do not return a JSON object with an error message and a 200 HTTP status code. That said, if a search request returns no results, it is appropriate to use a 200 HTTP status code, with an empty result set.
