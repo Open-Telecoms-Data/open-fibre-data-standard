@@ -1,6 +1,7 @@
 Name,Type,Constraints,Title,Description
 id,INTEGER,PK,,
-ofds_id,TEXT,,Identifier,"A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/identifiers.html)."
+ofds_id,TEXT,,UUID,"A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/identifiers.html)."
+identifier,TEXT,,Identifier,A local identifier for this network in an internal system.
 name,TEXT,,Network name,A name for this network.
 website,TEXT,,Website,The URL of the website for this network.
 publisher__name,TEXT,,Publisher Name,The publisher of this network. A name for this organisation.

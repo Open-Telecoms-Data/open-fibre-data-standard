@@ -1,6 +1,6 @@
 Name,Type,Constraints,Title,Description
 id,INTEGER,PK,,
 ofds_id,TEXT,,Identifier,A locally-unique identifier for this phase.
-name,TEXT,,Name,A name for this phase.
+name,TEXT,,Name,A name for this phase. The name should be unique amongst the phases belonging to a network.
 description,TEXT,,Description,A description for this phase.
 network_id,INTEGER,FK,Network ID,
