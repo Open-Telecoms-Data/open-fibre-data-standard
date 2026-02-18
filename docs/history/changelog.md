@@ -61,6 +61,14 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 - [#325](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/325) - Add equipped capacity diagram to data model reference.
 
+### Normative documentation
+
+- [#319](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/319) - Use consistent terminology ('data model', 'data formats', 'attributes', 'publish, store and exchange)
+
+### Non-normative
+
+- [#319](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/319) - Update Primer and use consistent terminology ('data model', 'data formats', 'attributes', 'publish, store and exchange)
+
 ## 0.3.0 - 2023-06-29
 
 ### Schema

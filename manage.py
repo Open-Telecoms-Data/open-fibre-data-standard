@@ -132,10 +132,10 @@ def get_dereferenced_schema(schema, output=None):
 
 
 def update_csv_docs(jsonref_schema):
-  """Update docs/reference/publication_formats/csv.md"""
+  """Update docs/reference/data_formats/csv.md"""
 
   # Load csv reference
-  csv_reference = read_lines(referencedir / 'publication_formats' / 'csv.md')
+  csv_reference = read_lines(referencedir / 'data_formats' / 'csv.md')
 
   # Preserve introductory content up to the ## networks heading
   csv_reference = csv_reference[:csv_reference.index("### networks\n") - 1]
@@ -148,7 +148,7 @@ def update_csv_docs(jsonref_schema):
     csv_reference.append(f"\n{'#'*(value['depth']+1)} {key}\n\n")
     csv_reference.extend(value['content'])
 
-  write_lines(referencedir / 'publication_formats' / 'csv.md', csv_reference)
+  write_lines(referencedir / 'data_formats' / 'csv.md', csv_reference)
 
 def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
   """
@@ -667,7 +667,7 @@ def pre_commit():
       - network-schema.csv
       - examples/csv/template
       - examples/csv
-      - reference/publication_formats/csv.md
+      - reference/data_formats/csv.md
       - reference/codelists.md
       - reference/schema.md
       - examples/geojson/nodes.geojson
@@ -702,10 +702,10 @@ def pre_commit():
     export_metadata_to_csv("schema/geopackage/network-schema.gpkg", "schema/geopackage/table_definitions")
 
     # Generate diagram from GeoPackage
-    subprocess.run(["mermerd", "--runConfig", "docs/reference/publication_formats/geopackage/geopackage.yaml"])
+    subprocess.run(["mermerd", "--runConfig", "docs/reference/data_formats/geopackage/geopackage.yaml"])
 
     # Add style config to diagram and remove non-key attributes
-    with open("docs/reference/publication_formats/geopackage/geopackage.mmd", 'r') as f:
+    with open("docs/reference/data_formats/geopackage/geopackage.mmd", 'r') as f:
         lines = f.readlines()
 
     # 1. Prepare Header
@@ -756,7 +756,7 @@ def pre_commit():
     # Combine everything
     final_output = header + "".join(processed_content) + footer
 
-    with open("docs/reference/publication_formats/geopackage/geopackage.mmd", 'w') as f:
+    with open("docs/reference/data_formats/geopackage/geopackage.mmd", 'w') as f:
         f.write(final_output)
 
     # Update examples/csv
@@ -785,7 +785,7 @@ def pre_commit():
       convert_wkt=True
     )
 
-    # Update docs/reference/publication_formats/csv.md
+    # Update docs/reference/data_formats/csv.md
     update_csv_docs(jsonref_schema)
 
     # Update docs/reference/codelists.md

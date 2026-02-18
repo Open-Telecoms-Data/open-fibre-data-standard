@@ -27,7 +27,7 @@ The [OFDS QGIS plugin](https://github.com/Open-Telecoms-Data/ofds-qgis-plugin) p
 1. Download the [example OFDS JSON file](../../../examples/json/network-package.json)
 1. [Create a new project in QGIS and add OFDS layers](https://github.com/Open-Telecoms-Data/ofds-qgis-plugin?tab=readme-ov-file#1-initial-project-setup)
 1. [Import](https://github.com/Open-Telecoms-Data/ofds-qgis-plugin?tab=readme-ov-file#workflow-b-edit-an-existing-ofds-dataset) the example OFDS JSON file
-1. Explore the [attribute table](https://docs.qgis.org/3.22/en/docs/user_manual/working_with_vector/attribute_table.html) for the nodes and spans layers and use the [GeoPackage reference](../../reference/publication_formats/geopackage/index.md) to understand the layer structure and the meaning of the attributes.
+1. Explore the [attribute table](https://docs.qgis.org/3.22/en/docs/user_manual/working_with_vector/attribute_table.html) for the nodes and spans layers and use the [GeoPackage reference](../../reference/data_formats/geopackage/index.md) to understand the layer structure and the meaning of the attributes.
 
 ## How to guides
 
