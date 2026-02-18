@@ -53,6 +53,10 @@ Iterative improvements are made outside of the release cycle. They do not involv
 
 - [#330](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/330) - Update descriptions in LinkRelationType codelist
 
+### Normative documentation
+
+- [#331](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/331) - Add link to JSON Schema documentation for data types, formats and validation keywords.
+
 ## 0.3.0 - 2023-06-29
 
 ### Schema
