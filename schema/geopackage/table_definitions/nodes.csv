@@ -2,7 +2,7 @@ Name,Type,Constraints,Title,Description
 id,INTEGER,PK,,
 geom,BLOB,,,
 ofds_id,TEXT,,Identifier,A locally-unique identifier for this node.
-name,TEXT,,Name,A name for this node.
+name,TEXT,,Name,A name for this node. The name should be unique amongst the nodes belonging to a network.
 phase,INTEGER,FK,Phase,The phase to which this node belongs.
 status,TEXT,,Status,"The status of this node, from the closed [nodeStatus codelist](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/codelists.html#nodestatus)."
 address__streetAddress,TEXT,,Address Street address,"The physical address of this node. The street address. For example, 1600 Amphitheatre Pkwy."

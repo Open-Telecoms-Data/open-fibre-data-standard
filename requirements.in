@@ -5,7 +5,7 @@ sphinxcontrib-opencontracting
 sphinxcontrib-opendataservices
 sphinxcontrib-opendataservices-jsonschema @ git+https://github.com/OpenDataServices/sphinxcontrib-opendataservices-jsonschema@d3c8e861a55019278a8462b6edabd101e5fb5642
 sphinx-intl
-myst-parser
+myst-nb
 sphinx-autobuild
 pyairtable
 PyGithub
@@ -18,3 +18,5 @@ jscc<0.2.2
 mdformat
 jsonschema
 sphinx-nefertiti>=0.9.0
+folium
+leaflet

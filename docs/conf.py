@@ -31,7 +31,7 @@
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'myst_parser',
+    'myst_nb',
     'sphinxcontrib.opencontracting',
     'sphinxcontrib.opendataservices',
     'sphinxcontrib.jsonschema',
@@ -213,7 +213,7 @@ html_css_files = ['renderjson.css', 'jsonschema.css']
 # .htaccess) here, relative to this directory. These files are copied
 # directly to the root of the documentation.
 #
-# html_extra_path = []
+html_extra_path = ["../examples/geopackage/network.gpkg"]
 
 # If not None, a 'Last updated on:' timestamp is inserted at every page
 # bottom, using the given strftime format.

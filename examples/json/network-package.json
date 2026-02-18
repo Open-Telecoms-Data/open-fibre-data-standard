@@ -223,6 +223,9 @@
           "capacityDetails": {
             "description": "2xSTM-16"
           },
+          "wayleaves": [
+            "1"
+          ],
           "countries": [
             "GH"
           ]
@@ -303,6 +306,14 @@
           "roleDetails": "The Ghana Infrastructure Investment Fund provided equity financing for the construction of phase 1 of the NextGen network.",
           "website": "https://www.example.com",
           "logo": "https://www.example.com/logo.png"
+        },
+        {
+          "id": "4",
+          "name": "Accra Municipal Council",
+          "country": "GH",
+          "roles": [
+            "wayleaveGrantor"
+          ]
         }
       ],
       "contracts": [
@@ -330,6 +341,27 @@
               "name": "NextGen Phase 1"
             }
           ]
+        }
+      ],
+      "wayleaves": [
+        {
+          "id": "1",
+          "grantor": {
+            "id": "1",
+            "name": "Accra Municipal Council"
+          },
+          "yearSigned": 2022,
+          "term": {
+            "indefinite": false,
+            "years": 25
+          },
+          "cost": {
+            "recurring": true,
+            "perMetre": {
+              "amount": 1.75,
+              "currency": "GHS"
+            }
+          }
         }
       ],
       "website": "http://example.com/network",

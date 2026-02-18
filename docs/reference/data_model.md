@@ -74,7 +74,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :icon: rows
 
 ```{jsonschema} ../../schema/network-schema.json
-:include: id,name,website,language
+:include: id,identifier,name,website,language
 :nocrossref:
 :addtargets:
 :prefix: data_model
@@ -273,6 +273,11 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
    - ```{jsoninclude-quote} ../../schema/network-schema.json
       :jsonpointer: /$defs/Span/properties/supplier/description
       ```
+*  - [Wayleave](#wayleave)
+   - M:N
+   - ```{jsoninclude-quote} ../../schema/network-schema.json
+      :jsonpointer: /$defs/Span/properties/wayleaves/description
+      ```
 
 ````
 
@@ -402,6 +407,53 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /$defs/Contract
 :include: id,title,description,type,value/amount,value/currency,dateSigned
+:nocrossref:
+:addtargets:
+:prefix: data_model
+```
+
+````
+
+### Wayleave
+
+````{dropdown} Description
+:open:
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: book
+
+```{jsoninclude-quote} ../../schema/network-schema.json
+:jsonpointer: /$defs/Wayleave/description
+```
+````
+
+`````{dropdown} Relationships
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: link
+
+````{list-table}
+:header-rows: 1
+*  - Entity
+   - Cardinality
+   - Description
+*  - [Span](#phase)
+   - M:N
+   - ```{jsoninclude-quote} ../../schema/network-schema.json
+      :jsonpointer: /$defs/Span/properties/wayleaves/description
+      ```
+
+````
+
+`````
+
+````{dropdown} Attributes
+:animate: fade-in-slide-down
+:chevron: down-up
+:icon: rows
+
+```{jsonschema} ../../schema/network-schema.json
+:pointer: /$defs/Wayleave
 :nocrossref:
 :addtargets:
 :prefix: data_model

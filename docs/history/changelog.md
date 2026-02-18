@@ -2,14 +2,6 @@
 
 # Changelog
 
-```{admonition} 0.3.0 release
-Welcome to the Open Fibre Data Standard 0.3.0 release.
-
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
-
-To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
-```
-
 This page lists the changes in each version of the Open Fibre Data Standard.
 
 ## Iterative improvements
@@ -38,6 +30,8 @@ Iterative improvements are made outside of the release cycle. They do not involv
   - Omit parent names from property titles to reduce repetition
   - In-line some definitions to reduce reference page length
   - Clarify property descriptions
+- [#326](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/326) - Remove GeoJSON publication format.
+- [#323](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/323) - Add `wayleaves` to describe formal agreements that grant a network operator rights to install, maintain or operate telecommunications infrastructure on, over, or under the grantor’s property or asset.
 - [#317](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/317):
   - `Span`:
     - Add `.supportingInfrastructure` to descibe supporting infrastructure
@@ -48,7 +42,12 @@ Iterative improvements are made outside of the release cycle. They do not involv
     - Remove `Span.deploymentDetails.description`, in favour of `Span.supportingInfrastructure.description`.
     - Move codes relating to supporting infrastructure from the nodeType codelist to the nodeSupportingInfrastructureType codelist
 - [#321](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/321) - Add `Span.cableType` and `Span.codeployment`
+- [#328](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/328) - Disallow properties named `network` in `Span` and `Node` definitions, and additional properties in `OrganisationReference` and `PhaseReference` definitions, to ease conversion between formats.
+- [#327](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/327) - Improve validation of GeoJSON geometry objects
 - [#322](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/322) - Update `Node.type` description to explain modelling of junctions
+- [#329](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/329):
+  - Recommend unique names for nodes, spans, phases and organisations
+  - Add `Network.id`
 
 ### Codelists
 

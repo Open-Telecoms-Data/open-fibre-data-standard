@@ -2,14 +2,6 @@
 
 # CSV
 
-```{admonition} 0.3.0 release
-Welcome to the Open Fibre Data Standard 0.3.0 release.
-
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
-
-To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
-```
-
 This pages describes the CSV publication format, including the structure of the tables, the relationship between the tables and the representation of location data. Example CSV files and blank templates are provided for each table.
 
 ## Location data
@@ -80,13 +72,14 @@ This table is related to the following tables:
 - [spans](#spans): one-to-many by `id`
 - [phases](#phases): one-to-many by `id`
 - [organisations](#organisations): one-to-many by `id`
+- [wayleaves](#wayleaves): one-to-many by `id`
 - [contracts](#contracts): one-to-many by `id`
 - [links](#links): one-to-many by `id`
 
 The columns in this table are listed below. You can also download an [example CSV file](../../../examples/csv/networks.csv) or a [blank template](../../../examples/csv/template/networks.csv) for this table.
 
 ```{jsonschema} ../../../schema/network-schema.json
-:include: id,name,website,publisher,publicationDate,collectionDate,crs,accuracy,accuracyDetails,language
+:include: id,identifier,name,website,publisher,publicationDate,collectionDate,crs,accuracy,accuracyDetails,language
 :nocrossref:
 ```
 
@@ -142,7 +135,7 @@ This table is related to the following tables:
 The columns in this table are listed below. You can also download an [example CSV file](../../../examples/csv/spans.csv) or a [blank template](../../../examples/csv/template/spans.csv) for this table.
 
 ```{jsonschema} ../../../schema/network-schema.json
-:include: id,spans/0/id,spans/0/name,spans/0/phase,spans/0/status,spans/0/readyForServiceDate,spans/0/start,spans/0/end,spans/0/directed,spans/0/route,spans/0/transmissionMediumOwner,spans/0/supplier,spans/0/transmissionMedium,spans/0/deployment,spans/0/supportingInfrastructure,spans/0/darkFibre,spans/0/fibreType,spans/0/fibreTypeDetails,spans/0/fibreCount,spans/0/fibreLength,spans/0/technologies,spans/0/capacity,spans/0/capacityDetails,spans/0/countries
+:include: id,spans/0/id,spans/0/name,spans/0/phase,spans/0/status,spans/0/readyForServiceDate,spans/0/start,spans/0/end,spans/0/directed,spans/0/route,spans/0/transmissionMediumOwner,spans/0/supplier,spans/0/transmissionMedium,spans/0/deployment,spans/0/supportingInfrastructure,spans/0/codeployment,spans/0/cableType,spans/0/darkFibre,spans/0/fibreType,spans/0/fibreTypeDetails,spans/0/fibreCount,spans/0/fibreLength,spans/0/technologies,spans/0/capacity,spans/0/capacityDetails,spans/0/wayleaves,spans/0/countries
 :collapse: spans/0/route
 :nocrossref:
 ```
@@ -197,6 +190,19 @@ The columns in this table are listed below. You can also download an [example CS
 
 ```{jsonschema} ../../../schema/network-schema.json
 :include: id,organisations/0/id,organisations/0/name,organisations/0/identifier,organisations/0/country,organisations/0/roles,organisations/0/roleDetails,organisations/0/website,organisations/0/logo
+:nocrossref:
+```
+
+#### wayleaves
+
+This table is related to the following tables:
+
+- [networks](#networks): many-to-one by `id`
+
+The columns in this table are listed below. You can also download an [example CSV file](../../../examples/csv/wayleaves.csv) or a [blank template](../../../examples/csv/template/wayleaves.csv) for this table.
+
+```{jsonschema} ../../../schema/network-schema.json
+:include: id,wayleaves/0/id,wayleaves/0/grantor,wayleaves/0/yearSigned,wayleaves/0/term,wayleaves/0/cost
 :nocrossref:
 ```
 

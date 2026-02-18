@@ -41,8 +41,8 @@ A network has the following properties:
 :::{tab-item} Schema
 
 ```{jsonschema} ../../../../schema/network-schema.json
-:collapse: nodes,spans,phases,organisations,contracts,links
-:include: id,name,nodes,spans,phases,organisations,contracts,website,publisher/name,publisher/identifier/id,publisher/identifier/scheme,publisher/identifier/legalName,publicationDate,collectionDate,crs/name,crs/uri,accuracy,accuracyDetails,language,links
+:collapse: nodes,spans,phases,organisations,contracts,links,wayleaves
+:include: id,identifier,name,nodes,spans,phases,organisations,contracts,website,publisher/name,publisher/identifier/id,publisher/identifier/scheme,publisher/identifier/legalName,publicationDate,collectionDate,crs/name,crs/uri,accuracy,accuracyDetails,language,links,wayleaves
 :addtargets:
 :prefix: json
 ```
@@ -237,7 +237,7 @@ Each `Contract` has the following properties:
 
 ```{jsonschema} ../../../../schema/network-schema.json
 :pointer: /$defs/Contract
-:collapse: id,title,description,type,dateSigned,documents,relatedPhases
+:collapse: id,title,description,type,dateSigned,documents,relatedPhases,value
 :addtargets:
 :prefix: json
 ```
@@ -256,33 +256,70 @@ Each `Contract` has the following properties:
 
 ::::
 
-### Other sub-schemas
+### Wayleave
 
-This section lists each sub-schema in the OFDS schema. Sub-schemas are reused in multiple places in the schema. For information on how the sub-schemas fit together, see the [network object](#network) section or the [schema browser](#browser).
-
-#### Geometry
-
-`Geometry` is defined as:
+`Wayleave` is defined as:
 
 ```{jsoninclude-quote} ../../../../schema/network-schema.json
-:jsonpointer: /$defs/Geometry/description
+:jsonpointer: /$defs/Wayleave/description
 ```
 
 This sub-schema is referenced by the following properties:
 
-- [`Node/location`](json,network-schema.json,/$defs/Node,location)
-- [`Span/route`](json,network-schema.json,/$defs/Span,route)
+- [`wayleaves`](json,network-schema.json,,wayleaves)
 
-Additional properties are not permitted within `Geometry` objects.
-
-Each `Geometry` has the following properties:
+Each `Wayleave` has the following properties:
 
 ::::{tab-set}
 
 :::{tab-item} Schema
 
 ```{jsonschema} ../../../../schema/network-schema.json
-:pointer: /$defs/Geometry
+:pointer: /$defs/Wayleave
+:addtargets:
+:prefix: json
+```
+
+:::
+
+:::{tab-item} Examples
+
+```{eval-rst}
+.. jsoninclude:: ../../../../examples/json/network-package.json
+ :jsonpointer: /networks/0/wayleaves
+ :title: wayleaves
+```
+
+:::
+
+::::
+
+### Other sub-schemas
+
+This section lists each sub-schema in the OFDS schema. Sub-schemas are reused in multiple places in the schema. For information on how the sub-schemas fit together, see the [network object](#network) section or the [schema browser](#browser).
+
+#### PointGeometry
+
+`PointGeometry` is defined as:
+
+```{jsoninclude-quote} ../../../../schema/network-schema.json
+:jsonpointer: /$defs/PointGeometry/description
+```
+
+This sub-schema is referenced by the following properties:
+
+- [`Node/location`](json,network-schema.json,/$defs/Node,location)
+
+Additional properties are not permitted within `PointGeometry` objects.
+
+Each `PointGeometry` has the following properties:
+
+::::{tab-set}
+
+:::{tab-item} Schema
+
+```{jsonschema} ../../../../schema/network-schema.json
+:pointer: /$defs/PointGeometry
 :collapse: type,coordinates
 :addtargets:
 :prefix: json
@@ -297,6 +334,41 @@ Each `Geometry` has the following properties:
  :jsonpointer: /networks/0/nodes/0/location
  :title: nodes/0/location
 ```
+
+:::
+
+::::
+
+#### LineStringGeometry
+
+`LineStringGeometry` is defined as:
+
+```{jsoninclude-quote} ../../../../schema/network-schema.json
+:jsonpointer: /$defs/LineStringGeometry/description
+```
+
+This sub-schema is referenced by the following properties:
+
+- [`Span/route`](json,network-schema.json,/$defs/Span,route)
+
+Additional properties are not permitted within `LineStringGeometry` objects.
+
+Each `LineStringGeometry` has the following properties:
+
+::::{tab-set}
+
+:::{tab-item} Schema
+
+```{jsonschema} ../../../../schema/network-schema.json
+:pointer: /$defs/LineStringGeometry
+:collapse: type,coordinates
+:addtargets:
+:prefix: json
+```
+
+:::
+
+:::{tab-item} Examples
 
 ```{eval-rst}
 .. jsoninclude:: ../../../../examples/json/network-package.json
@@ -477,6 +549,45 @@ Each `Address` has the following properties:
 .. jsoninclude:: ../../../../examples/json/network-package.json
  :jsonpointer: /networks/0/nodes/0/internationalConnections
  :title: nodes/0/internationalConnections
+```
+
+:::
+
+::::
+
+#### Value
+
+`Value` is defined as:
+
+```{jsoninclude-quote} ../../../../schema/network-schema.json
+:jsonpointer: /$defs/Value/description
+```
+
+This sub-schema is referenced by the following properties:
+
+- [`Contract/value`](json,network-schema.json,/$defs/Contract,documents)
+- [`Wayleave/cost/perMetre`](json,network-schema.json,/$defs/Wayleave,cost/perMetre)
+
+Each `Value` has the following properties:
+
+::::{tab-set}
+
+:::{tab-item} Schema
+
+```{jsonschema} ../../../../schema/network-schema.json
+:pointer: /$defs/Value
+:addtargets:
+:prefix: json
+```
+
+:::
+
+:::{tab-item} Examples
+
+```{eval-rst}
+.. jsoninclude:: ../../../../examples/json/network-package.json
+ :jsonpointer: /networks/0/contracts/0/documents
+ :title: contracts/0/documents
 ```
 
 :::
