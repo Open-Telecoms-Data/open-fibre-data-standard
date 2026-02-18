@@ -49,6 +49,10 @@ Iterative improvements are made outside of the release cycle. They do not involv
   - Recommend unique names for nodes, spans, phases and organisations
   - Add `Network.id`
 
+### Codelists
+
+- [#330](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/330) - Update descriptions in LinkRelationType codelist
+
 ## 0.3.0 - 2023-06-29
 
 ### Schema
