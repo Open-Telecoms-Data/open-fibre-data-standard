@@ -67,13 +67,13 @@ Nodes and spans are spatial entities, also known as features. They consist of a 
 
 A node is represented as a **Point** geometry and is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Node/description
 ```
 
 A span is represented as a **LineString** geometry and is defined as:
 
-```{jsoninclude-quote} ../../schema/network-schema.json
+```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Span/description
 ```
 

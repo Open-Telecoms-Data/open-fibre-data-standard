@@ -40,7 +40,7 @@ Using the OFDS to inform the data that you choose to publish, exchange or store 
 
 ## What does OFDS data look like?
 
-To meet the needs of different users, OFDS provides schemas for three data formats:
+To meet the needs of different users, OFDS supports several [data formats](../reference/data_formats/index.md). The examples show what OFDS data looks like in JSON and CSV format.
 
 - GeoPackage data is useful to GIS analysts, because it can be imported and edited by common GIS tools, whilst maintaining referential integrity
 - JSON data is useful to web developers, because it be easily rendered as a web-map.

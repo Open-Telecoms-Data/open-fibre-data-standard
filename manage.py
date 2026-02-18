@@ -208,7 +208,7 @@ def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
 
   # Generate jsonschema directive
   markdown[table]['content'].extend([
-    "```{jsonschema} ../../../schema/network-schema.json\n"
+    "```{jsonschema} ../../../docs/_readthedocs/html/network-schema.json\n"
     f":include: {','.join(include_pointers)}\n"
   ])
 
@@ -431,7 +431,7 @@ def update_schema_docs(schema):
       # Add description
       definition["content"].extend([
           f"`{defn}` is defined as:\n\n",
-          "```{jsoninclude-quote} ../../schema/network-schema.json\n",
+          "```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json\n",
           f":jsonpointer: /$defs/{defn}/description\n",
           "```\n\n"
       ])
@@ -466,7 +466,7 @@ def update_schema_docs(schema):
           f"\nEach `{defn}` has the following fields:\n\n", 
           "::::{tab-set}\n\n",
           ":::{tab-item} Schema\n\n",
-          "```{jsonschema} ../../schema/network-schema.json\n",
+          "```{jsonschema} ../../docs/_readthedocs/html/network-schema.json\n",
           f":pointer: /$defs/{defn}\n",
           f":collapse: {','.join(definition['properties'].keys())}\n",
           ":addtargets:\n",

@@ -15,5 +15,5 @@ This section of the documentation contains guidance on how to publish and use OF
    :maxdepth: 1
 
    publication
-   use
+   use/index
 ```

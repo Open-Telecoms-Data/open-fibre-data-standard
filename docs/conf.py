@@ -20,6 +20,8 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
+import json
+import os
 
 # -- General configuration ------------------------------------------------
 
@@ -31,7 +33,7 @@
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'myst_parser',
+    'myst_nb',
     'sphinxcontrib.opencontracting',
     'sphinxcontrib.opendataservices',
     'sphinxcontrib.jsonschema',
@@ -100,7 +102,7 @@ language = 'en'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store','_static/docson']
+exclude_patterns = ['_build', '_readthedocs', 'Thumbs.db', '.DS_Store','_static/docson']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -215,7 +217,7 @@ html_css_files = ['renderjson.css', 'jsonschema.css']
 # .htaccess) here, relative to this directory. These files are copied
 # directly to the root of the documentation.
 #
-# html_extra_path = []
+html_extra_path = ["../examples/geopackage/network.gpkg"]
 
 # If not None, a 'Last updated on:' timestamp is inserted at every page
 # bottom, using the given strftime format.
@@ -402,3 +404,55 @@ gettext_compact = False     # optional.
 linkcheck_ignore = [
     'https://linux.die.net/man/3/libuuid',  # 403 Client Error: Forbidden for url
 ]
+
+def replace_substring_in_json(file_path, search_substring, replace_string, output_path=None):
+    # Read the JSON file
+    with open(file_path, 'r') as file:
+        data = json.load(file)
+
+    # Recursively search and replace the substring in the JSON data
+    _replace_substring_in_json(data, search_substring, replace_string)
+
+    # Set output path
+    if output_path is None:
+        output_path = file_path
+
+    # Create the directory if it does not exist
+    output_dir = os.path.dirname(output_path)
+    os.makedirs(output_dir, exist_ok=True)    
+
+    # Write the modified JSON data to the output file
+    with open(output_path, 'w') as file:
+        json.dump(data, file, indent=4)
+
+
+def _replace_substring_in_json(data, search_substring, replace_string):
+    if isinstance(data, dict):
+        for key, value in data.items():
+            if isinstance(value, str):
+                data[key] = value.replace(search_substring, replace_string)
+            else:
+                _replace_substring_in_json(value, search_substring, replace_string)
+    elif isinstance(data, list):
+        for i, item in enumerate(data):
+            if isinstance(item, str):
+                data[i] = item.replace(search_substring, replace_string)
+            else:
+                _replace_substring_in_json(item, search_substring, replace_string)
+
+
+def setup(app):
+    # Connect handlers to events
+    app.connect('env-before-read-docs', env_before_read_docs)
+
+
+def env_before_read_docs(app, env, docnames):
+    rtd_version = os.getenv('READTHEDOCS_VERSION')
+
+    # Process schema and write to _readthedocs/html
+    if rtd_version is not None:
+        # Replace {{version}} placeholders
+        replace_substring_in_json('../schema/network-schema.json', '{{version}}', rtd_version, output_path='_readthedocs/html/network-schema.json')
+    else:
+        # Don't replace {{version}} placeholders
+        replace_substring_in_json('../schema/network-schema.json', 'https://standard.ofds.info/en/{{version}}/', 'https://standard.ofds.info/en/{{version}}/', output_path='_readthedocs/html/network-schema.json')
