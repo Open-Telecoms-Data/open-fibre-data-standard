@@ -18,7 +18,7 @@ The plan phase covers identifying your priority use cases, deciding what data to
 
 #### Identify your priority use cases
 
-There are many [use cases](../primer/openfibredata.md#why-publish-open-fibre-data) for OFDS data, each with their own data needs. You ought to decide which use cases to prioritise so that you can make sure that your data includes the necessary fields and that it is available via suitable publication formats and access methods.
+There are many [use cases](../primer/openfibredata.md#why-publish-fibre-data-as-open-data) for OFDS data, each with their own data needs. You ought to decide which use cases to prioritise so that you can make sure that your data includes the necessary fields and that it is available via suitable publication formats and access methods.
 
 #### Decide what data to publish
 
@@ -351,7 +351,7 @@ Publishing OFDS data involves making choices about what data to include and excl
 
 In order for users to interpret data correctly and make effective use of it, it's important to describe your decisions and to provide guidance to data users. Your data user guide ought to include:
 
-- [why you are publishing the data](../primer/openfibredata.md#why-publish-open-fibre-data)
+- [why you are publishing the data](../primer/openfibredata.md#why-publish-fibre-data-as-open-data)
 - [how you prepared the data](#prepare-your-data) and how frequently it is updated
 - the scope of the data
 - the meaning, structure and format of any [additional fields](#how-to-add-additional-fields)
