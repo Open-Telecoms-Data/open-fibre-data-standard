@@ -368,9 +368,9 @@ sphinxcontrib-serializinghtml==2.0.0
 sphinxcontrib-sqltable==2.1.1
     # via -r requirements.in
 sqlalchemy==2.0.46
-    # via sphinxcontrib-sqltable
-sqlalchemy==2.0.46
-    # via jupyter-cache
+    # via
+    #   jupyter-cache
+    #   sphinxcontrib-sqltable
 stack-data==0.6.3
     # via ipython
 starlette==0.48.0
