@@ -50,7 +50,7 @@ A network has the following properties:
 
 ```{jsonschema} ../../../../schema/network-schema.json
 :collapse: nodes,spans,phases,organisations,contracts,links,wayleaves
-:include: id,name,nodes,spans,phases,organisations,contracts,website,publisher/name,publisher/identifier/id,publisher/identifier/scheme,publisher/identifier/legalName,publicationDate,collectionDate,crs/name,crs/uri,accuracy,accuracyDetails,language,links,wayleaves
+:include: id,identifier,name,nodes,spans,phases,organisations,contracts,website,publisher/name,publisher/identifier/id,publisher/identifier/scheme,publisher/identifier/legalName,publicationDate,collectionDate,crs/name,crs/uri,accuracy,accuracyDetails,language,links,wayleaves
 :addtargets:
 :prefix: json
 ```

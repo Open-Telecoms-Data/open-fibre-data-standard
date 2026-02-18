@@ -10,10 +10,16 @@
   ],
   "properties": {
     "id": {
-      "title": "Identifier",
+      "title": "UUID",
       "description": "A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://open-fibre-data-standard.readthedocs.io/en/latest/reference/identifiers.html).",
       "format": "uuid",
       "type": "string"
+    },
+    "identifier": {
+      "title": "Identifier",
+      "description": "A local identifier for this network in an internal system.",
+      "type": "string",
+      "minLength": 1
     },
     "name": {
       "title": "Network name",
@@ -185,7 +191,7 @@
         },
         "name": {
           "title": "Name",
-          "description": "A name for this node.",
+          "description": "A name for this node. The name should be unique amongst the nodes belonging to a network.",
           "type": "string",
           "minLength": 1
         },
@@ -342,7 +348,7 @@
         },
         "name": {
           "title": "Name",
-          "description": "A name for this span.",
+          "description": "A name for this span. The name should be unique amongst the spans belonging to a network.",
           "type": "string",
           "minLength": 1
         },
@@ -896,7 +902,7 @@
         },
         "name": {
           "title": "Name",
-          "description": "A name for this phase.",
+          "description": "A name for this phase. The name should be unique amongst the phases belonging to a network.",
           "type": "string",
           "minLength": 1
         },
@@ -935,7 +941,7 @@
         },
         "name": {
           "title": "Name",
-          "description": "A name for this organisation.",
+          "description": "A name for this organisation. The name should be unique amongst the organisations belonging to a network.",
           "type": "string",
           "minLength": 1
         },

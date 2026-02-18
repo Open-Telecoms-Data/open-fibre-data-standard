@@ -2,14 +2,6 @@
 
 # CSV
 
-```{admonition} 0.3.0 release
-Welcome to the Open Fibre Data Standard 0.3.0 release.
-
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
-
-To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
-```
-
 This pages describes the CSV publication format, including the structure of the tables, the relationship between the tables and the representation of location data. Example CSV files and blank templates are provided for each table.
 
 ## Location data
@@ -87,7 +79,7 @@ This table is related to the following tables:
 The columns in this table are listed below. You can also download an [example CSV file](../../../examples/csv/networks.csv) or a [blank template](../../../examples/csv/template/networks.csv) for this table.
 
 ```{jsonschema} ../../../schema/network-schema.json
-:include: id,name,website,publisher,publicationDate,collectionDate,crs,accuracy,accuracyDetails,language
+:include: id,identifier,name,website,publisher,publicationDate,collectionDate,crs,accuracy,accuracyDetails,language
 :nocrossref:
 ```
 
