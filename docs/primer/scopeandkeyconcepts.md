@@ -32,13 +32,6 @@ Based on the layers in the network value chain, there are three main groups of a
 
 Depending on the [business model](#network-business-models) used in a network, there can be one or more of each type of actor involved in a single network.
 
-#### Physical infrastructure provider
-
-OFDS defines a physical infrastructure provider as:
-
-```{code-description} ../../codelists/open/organisationRole.csv physicalInfrastructureProvider
-```
-
 #### Network provider
 
 OFDS defines a network provider as:
@@ -112,7 +105,7 @@ Examples of OFDS node and span location data are given below.
 
 ```json
 {
-    "geometry": {
+    "location": {
         "type": "Point",
         "coordinates": [
             26.081,
@@ -128,7 +121,7 @@ Examples of OFDS node and span location data are given below.
 
 ```json
 {
-    "geometry": {
+    "route": {
         "type": "LineString",
         "coordinates": [
             [
