@@ -33,6 +33,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: book
+:name: network-description
 ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /description
 ```
@@ -42,7 +43,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: link
-
+:name: network-relationships
 ````{list-table}
 :header-rows: 1
 *  - Entity
@@ -72,7 +73,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: rows
-
+:name: network-attributes
 ```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :include: id,identifier,name,website,language
 :nocrossref:
@@ -89,7 +90,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: book
-
+name: phase-description
 ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Phase/description
 ```
@@ -99,7 +100,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: link
-
+:name: phase-relationships
 ````{list-table}
 :header-rows: 1
 *  - Entity
@@ -131,7 +132,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: rows
-
+:name: phase-attributes
 ```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Phase
 :include: id,name,description
@@ -149,7 +150,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: book
-
+:name: node-description
 ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Node/description
 ```
@@ -159,6 +160,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: link
+:name: node-relationships
 
 ````{list-table}
 :header-rows: 1
@@ -200,7 +202,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: rows
-
+:name: node-attributes
 ```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Node
 :include: id,name,status,location,address/streetAddress,address/locality,address/region,address/postalCode,address/country,type,accessPoint,power,technologies,internationalConnections,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity
@@ -219,7 +221,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: book
-
+:name: span-description
 ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Span/description
 ```
@@ -229,7 +231,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: link
-
+:name: span-relationships
 ````{list-table}
 :header-rows: 1
 *  - Entity
@@ -287,7 +289,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: rows
-
+:name: span-attributes
 ```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Span
 :include: id,name,status,readyForServiceDate,directed,route,transmissionMedium,deployment,darkFibre,fibreType,fibreTypeDetails/fibreSubtype,fibreTypeDetails/description,fibreCount,fibreLength,technologies,capacity,capacityDetails/description,countries,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity,cableType,codeployment
@@ -303,7 +305,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: info
-
+:name: span-additional-information
 #### Equipped capacity
 
 `Span.capacity` is defined as the equipped capacity of a span:
@@ -336,7 +338,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: book
-
+:name: organisation-description
 ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Organisation/description
 ```
@@ -346,7 +348,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: link
-
+:name: organisation-relationships
 ````{list-table}
 :header-rows: 1
 *  - Entity
@@ -385,7 +387,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: rows
-
+:name: organisation-attributes
 ```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Organisation
 :include: id,name,identifier/id,identifier/scheme,identifier/legalName,identifier/uri,country,roles,roleDetails,website,logo
@@ -403,7 +405,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: book
-
+:name: contract-description
 ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Contract/description
 ```
@@ -413,7 +415,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: link
-
+:name: contract-relationships
 ````{list-table}
 :header-rows: 1
 *  - Entity
@@ -433,7 +435,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: rows
-
+:name: contract-attributes
 ```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Contract
 :include: id,title,description,type,value/amount,value/currency,dateSigned
@@ -451,7 +453,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: book
-
+:name: wayleave-description
 ```{jsoninclude-quote} ../../schema/network-schema.json
 :jsonpointer: /$defs/Wayleave/description
 ```
@@ -461,7 +463,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: link
-
+:name: wayleave-relationships
 ````{list-table}
 :header-rows: 1
 *  - Entity
@@ -481,7 +483,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: rows
-
+:name: wayleave-attributes
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /$defs/Wayleave
 :nocrossref:
@@ -498,7 +500,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: book
-
+:name: document-description
 ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Document/description
 ```
@@ -508,7 +510,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: link
-
+:name: document-relationships
 ````{list-table}
 :header-rows: 1
 *  - Entity
@@ -526,7 +528,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: rows
-
+:name: document-attributes
 ```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
 :pointer: /$defs/Document
 :nocrossref:
