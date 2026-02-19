@@ -5,7 +5,7 @@
 The OFDS data model is a logical model that sets out the entities, attributes and relationships needed to describe a fibre network, without specifying how to represent them in a particular data format. This page provides an [overview](#overview) of the data model and [reference tables](#entities) for each entity.
 
 ```{seealso}
-OFDS also defines standardised representations of the data model in different [data formats](publication_formats/index.md), which can be used to store, publish or exchange OFDS data.
+OFDS also defines standardised representations of the data model in different [data formats](data_formats/index.md), which can be used to store, publish or exchange OFDS data.
 ```
 
 ## Overview

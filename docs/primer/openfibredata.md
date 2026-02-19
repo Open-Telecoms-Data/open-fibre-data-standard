@@ -2,19 +2,21 @@
 
 # Open fibre data
 
-## What is open fibre data?
+This page explains what fibre data is, why it's useful to publish it as open data, and the difference between maps and data.
 
-Open data is data that can be freely used, modified, and shared by anyone for any purpose.
+## What is fibre data?
 
-Open fibre data describes fibre optic communication networks. It can cover:
+Fibre data describes fibre optic communication networks. It covers:
 
 - Geospatial data, such as the physical location of the spans and nodes in a fibre optic communication network
 - Technical data, such as the number and type of optical fibres in a span
 - Administrative data, such as the organisations that own passive infrastructure or operate active network infrastructure
 
-## Why publish open fibre data?
+## Why publish fibre data as open data?
 
-Open fibre data is useful to many different stakeholders and can be used for many different purposes; for example:
+Open data is data that can be freely used, modified, and shared by anyone for any purpose.
+
+Publishing fibre data as open data is useful to many different stakeholders and can be used for many different purposes; for example:
 
 - Infrastructure and network providers can use data to avoid overbuild, reduce commercial risk and identify existing networks to connect to.
 - Academics, researchers and policy analysts can use data to understand the economic and/or social impact of investing in fibre infrastructure.
@@ -22,7 +24,11 @@ Open fibre data is useful to many different stakeholders and can be used for man
 - Government, private and multi-lateral investors can use data to identify opportunities to invest in fibre infrastructure.
 - Non-governmental organisations can use data to advocate for improved internet access.
 
+```{seealso}
+
 For more information on the use cases for open fibre data, read the [demand side research consultation document](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/4).
+
+```
 
 ## Maps and data: What’s the difference?
 

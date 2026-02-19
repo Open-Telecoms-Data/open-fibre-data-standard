@@ -2,7 +2,7 @@
 
 # Codelists
 
-Some attributes in the OFDS [data model](data_model.md) and [formats](publication_formats/index.md) refer to codelists, to limit and standardise the possible values of the attribute, in order to promote data interoperability.
+Some attributes in the OFDS [data model](data_model.md) and [formats](data_formats/index.md) refer to codelists, to limit and standardise the possible values of the attribute, in order to promote data interoperability.
 
 Codelists can either be open or closed. [**Closed codelists**](#closed-codelists) are intended to be comprehensive; for example, the currency codelist covers all currencies in the world. [**Open codelists**](#open-codelists) are intended to be representative, but not comprehensive.
 
@@ -466,7 +466,7 @@ This codelist has the following codes:
 
 ### JSON
 
-The following codelists are specific to the [JSON format](publication_formats/json/index.md).
+The following codelists are specific to the [JSON format](data_formats/json/index.md).
 
 #### linkRelationType
 

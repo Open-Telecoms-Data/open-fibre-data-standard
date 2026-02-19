@@ -325,13 +325,17 @@ sphinx==8.2.3
     #   myst-nb
     #   myst-parser
     #   sphinx-autobuild
+    #   sphinx-csv-filter
     #   sphinx-design
     #   sphinx-intl
     #   sphinx-nefertiti
     #   sphinxcontrib-mermaid
     #   sphinxcontrib-opencontracting
     #   sphinxcontrib-opendataservices
+    #   sphinxcontrib-sqltable
 sphinx-autobuild==2025.8.25
+    # via -r requirements.in
+sphinx-csv-filter==0.4.2
     # via -r requirements.in
 sphinx-design==0.6.1
     # via -r requirements.in
@@ -361,8 +365,12 @@ sphinxcontrib-qthelp==2.0.0
     # via sphinx
 sphinxcontrib-serializinghtml==2.0.0
     # via sphinx
+sphinxcontrib-sqltable==2.1.1
+    # via -r requirements.in
 sqlalchemy==2.0.46
-    # via jupyter-cache
+    # via
+    #   jupyter-cache
+    #   sphinxcontrib-sqltable
 stack-data==0.6.3
     # via ipython
 starlette==0.48.0
