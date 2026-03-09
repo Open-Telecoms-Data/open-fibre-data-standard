@@ -1,3 +1,4 @@
+import argparse
 import csv
 import json
 import os
@@ -26,8 +27,20 @@ def deref(obj, registry):
 
 class Builder:
 
-    def __init__(self, root_directory):
+    def __init__(
+        self, root_directory, output_directory=None, write_schema_information_json=False
+    ):
         self.root_directory = root_directory
+        if output_directory:
+            self.output_directory = output_directory
+        else:
+            self.output_directory = os.path.join(
+                self.root_directory,
+                "schema",
+                "geopackage",
+            )
+        self.write_schema_information_json = write_schema_information_json
+
         self.connection = None
         self.cursor = None
         self.information_out = None
@@ -592,9 +605,7 @@ class Builder:
 
         # Copy GeoPackage
         sqlite_filename = os.path.join(
-            self.root_directory,
-            "schema",
-            "geopackage",
+            self.output_directory,
             "network-schema.gpkg",
         )
         shutil.copyfile(
@@ -744,12 +755,26 @@ class Builder:
         self._write_codelists()
         # Wrapup
         self.connection.commit()
+        if self.write_schema_information_json:
+            schema_information_json_filename = os.path.join(
+                self.output_directory,
+                "schema_information.json",
+            )
+            with open(schema_information_json_filename, "w") as fp:
+                json.dump(self.information_out, fp, indent=2)
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output-directory")
+    parser.add_argument("--write-schema-information-json", action="store_true")
+    args = parser.parse_args()
+
     builder = Builder(
         root_directory=os.path.realpath(
             os.path.join(os.path.dirname(os.path.realpath(__file__)))
         ),
+        output_directory=args.output_directory,
+        write_schema_information_json=args.write_schema_information_json,
     )
     builder.go()
