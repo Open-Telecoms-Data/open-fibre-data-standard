@@ -953,7 +953,7 @@ def update_currency():
 
     network_schema = json_load('network-schema.json')
     codes = sorted(list(current_codes) + list(historic_codes))
-    network_schema['definitions']['Value']['properties']['currency']['enum'] = codes
+    network_schema['$defs']['Value']['properties']['currency']['enum'] = codes
 
     json_dump('network-schema.json', network_schema)
 
