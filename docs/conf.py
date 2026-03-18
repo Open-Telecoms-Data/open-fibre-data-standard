@@ -447,12 +447,17 @@ def setup(app):
 
 
 def env_before_read_docs(app, env, docnames):
+    # Get the Sphinx output directory
+    outdir = app.outdir
     rtd_version = os.getenv('READTHEDOCS_VERSION')
+    
+    # Define the final destination inside the build folder
+    target_path = os.path.join(outdir, 'network-schema.json')
 
     # Process schema and write to _readthedocs/html
     if rtd_version is not None:
         # Replace {{version}} placeholders
-        replace_substring_in_json('../schema/network-schema.json', '{{version}}', rtd_version, output_path='_readthedocs/html/network-schema.json')
+        replace_substring_in_json('../schema/network-schema.json', '{{version}}', rtd_version, output_path=target_path)
     else:
         # Don't replace {{version}} placeholders
-        replace_substring_in_json('../schema/network-schema.json', 'https://standard.ofds.info/en/{{version}}/', 'https://standard.ofds.info/en/{{version}}/', output_path='_readthedocs/html/network-schema.json')
+        replace_substring_in_json('../schema/network-schema.json', 'https://standard.ofds.info/en/{{version}}/', 'https://standard.ofds.info/en/{{version}}/', output_path=target_path)
