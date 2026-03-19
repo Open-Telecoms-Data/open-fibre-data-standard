@@ -450,6 +450,7 @@ def setup(app):
 def env_before_read_docs(app, env, docnames):
     # Get the Sphinx output directory
     outdir = app.outdir
+    print(outdir)
     rtd_version = os.getenv('READTHEDOCS_VERSION')
     
     # Define the final destination inside the build folder
