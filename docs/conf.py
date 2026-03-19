@@ -22,6 +22,7 @@
 # sys.path.insert(0, os.path.abspath('.'))
 import json
 import os
+import shutil
 
 # -- General configuration ------------------------------------------------
 
@@ -454,10 +455,15 @@ def env_before_read_docs(app, env, docnames):
     # Define the final destination inside the build folder
     target_path = os.path.join(outdir, 'network-schema.json')
 
-    # Process schema and write to _readthedocs/html
+    # Process schema and write to output directory
     if rtd_version is not None:
         # Replace {{version}} placeholders
         replace_substring_in_json('../schema/network-schema.json', '{{version}}', rtd_version, output_path=target_path)
     else:
         # Don't replace {{version}} placeholders
         replace_substring_in_json('../schema/network-schema.json', 'https://standard.ofds.info/en/{{version}}/', 'https://standard.ofds.info/en/{{version}}/', output_path=target_path)
+    
+    # Copy other schema and codelist files to output directory
+    shutil.copyfile('../schema/network-package-schema.json', os.path.join(outdir, 'network-package-schema.json'))
+    shutil.copytree('../codelists', os.path.join(outdir, 'codelists'), dirs_exist_ok=True)
+    
