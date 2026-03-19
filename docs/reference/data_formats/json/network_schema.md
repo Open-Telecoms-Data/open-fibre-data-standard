@@ -4,13 +4,13 @@ The network schema provides the authoritative definition of the structure of a n
 
 ```{note}
 
-Use the canonical schema URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested. The canonical URL for version 0.3.0 is:
+Use the canonical schema URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested. The canonical URL for version 0.4.0 is:
 
-[https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0\_\_3\_\_0/schema/network-schema.json](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__0/schema/network-schema.json)
+[https://standard.ofds.info/en/0\_\_4\_\_0/network-schema.json](https://standard.ofds.info/en/0__4__0/network-schema.json)
 
 ```
 
-This page presents the schema in an [interactive browser](#browser) and in [reference tables](#reference-tables) with additional information in paragraphs. You can also download the canonical version of the schema as [JSON Schema](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__0/schema/network-schema.jso) or download it as a [CSV spreadsheet](../../../../schema/network-schema.csv).
+This page presents the schema in an [interactive browser](#browser) and in [reference tables](#reference-tables) with additional information in paragraphs. You can also download the canonical version of the schema as [JSON Schema](../../../_readthedocs/html/network-schema.json) or download it as a [CSV spreadsheet](../../../../schema/network-schema.csv).
 
 ```{note}
    If any conflicts are found between the text on this page and the text within the schema, the text within the schema takes precedence.

@@ -150,7 +150,7 @@
                     "links": [
                         {
                             "rel": "describedby",
-                            "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__0/schema/network-schema.json"
+                            "href": "https://standard.ofds.info/en/0__4__0/network-schema.json"
                         }
                     ]
                 },
@@ -300,7 +300,7 @@
                     "links": [
                         {
                             "rel": "describedby",
-                            "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__0/schema/network-schema.json"
+                            "href": "https://standard.ofds.info/en/0__4__0/network-schema.json"
                         }
                     ]
                 },
