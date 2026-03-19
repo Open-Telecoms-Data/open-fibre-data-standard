@@ -8,8 +8,6 @@ import sqlite3
 from referencing import Registry
 from referencing.jsonschema import DRAFT202012
 
-MAP_FIELD_TYPES_TO_SQLITE_TYPES = {"boolean": "int", "integer": "int", "number": "real"}
-
 
 def deref(obj, registry):
     if isinstance(obj, list):
