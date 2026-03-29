@@ -467,4 +467,3 @@ def env_before_read_docs(app, env, docnames):
     # Copy other schema and codelist files to output directory
     shutil.copyfile('../schema/network-package-schema.json', os.path.join(outdir, 'network-package-schema.json'))
     shutil.copytree('../codelists', os.path.join(outdir, 'codelists'), dirs_exist_ok=True)
-    
