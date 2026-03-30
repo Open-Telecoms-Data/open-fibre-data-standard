@@ -34,7 +34,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: book
 :name: network-description
-```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
 :jsonpointer: /description
 ```
 ````
@@ -51,17 +51,17 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
    - Description
 *  - [Node](#node)
    - 1:N
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /properties/nodes/description
       ```
 *  - [Span](#span)
    - 1:N
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /properties/spans/description
       ```
 *  - [Phase](#phase)
    - 1:N
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /properties/phases/description
       ```
 
@@ -74,7 +74,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: rows
 :name: network-attributes
-```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
+```{jsonschema} ../../_readthedocs/html/network-schema.json
 :include: id,identifier,name,website,language
 :nocrossref:
 :addtargets:
@@ -91,7 +91,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: book
 name: phase-description
-```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Phase/description
 ```
 ````
@@ -117,7 +117,7 @@ name: phase-description
    -
 *  - [Organisation](#organisation)
    - 1:N
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Phase/properties/funders/description
       ```
 *  - [Contract](#contract)
@@ -133,7 +133,7 @@ name: phase-description
 :chevron: down-up
 :icon: rows
 :name: phase-attributes
-```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
+```{jsonschema} ../../_readthedocs/html/network-schema.json
 :pointer: /$defs/Phase
 :include: id,name,description
 :nocrossref:
@@ -151,7 +151,7 @@ name: phase-description
 :chevron: down-up
 :icon: book
 :name: node-description
-```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Node/description
 ```
 ````
@@ -172,7 +172,7 @@ name: phase-description
    -
 *  - [Phase](#phase)
    - N:1
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Node/properties/phase/description
       ```
 *  - [Span](#span)
@@ -180,7 +180,7 @@ name: phase-description
    -
 *  - [Organisation](#organisation) (Transmission medium owner)
    - N:1
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Node/properties/transmissionMediumOwner/description
       ```
 *  - [Organisation](#organisation) (Supporting infrastructure owner)
@@ -190,7 +190,7 @@ name: phase-description
       ```
 *  - [Organisation](#organisation) (Network provider)
    - N:M
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Node/properties/networkProviders/description
       ```
 
@@ -203,7 +203,7 @@ name: phase-description
 :chevron: down-up
 :icon: rows
 :name: node-attributes
-```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
+```{jsonschema} ../../_readthedocs/html/network-schema.json
 :pointer: /$defs/Node
 :include: id,name,status,location,address/streetAddress,address/locality,address/region,address/postalCode,address/country,type,accessPoint,power,technologies,internationalConnections,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity
 :collapse: location,internationalConnections
@@ -222,7 +222,7 @@ name: phase-description
 :chevron: down-up
 :icon: book
 :name: span-description
-```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Span/description
 ```
 ````
@@ -242,22 +242,22 @@ name: phase-description
    -
 *  - [Phase](#phase)
    - N:1
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Span/properties/phase/description
       ```
 *  - [Node](#node) (start)
    - N:1
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Span/properties/start/description
       ```
 *  - [Node](#node) (end)
    - N:1
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Span/properties/end/description
       ```
 *  - [Organisation](#organisation) (Transmission medium owner)
    - N:1
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Span/properties/transmissionMediumOwner/description
       ```
 *  - [Organisation](#organisation) (Supporting infrastructure owner)
@@ -267,12 +267,12 @@ name: phase-description
       ```
 *  - [Organisation](#organisation) (Network provider)
    - N:M
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Span/properties/networkProviders/description
       ```
 *  - [Organisation](#organisation) (Supplier)
    - N:1
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Span/properties/supplier/description
       ```
 *  - [Wayleave](#wayleave)
@@ -290,7 +290,7 @@ name: phase-description
 :chevron: down-up
 :icon: rows
 :name: span-attributes
-```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
+```{jsonschema} ../../_readthedocs/html/network-schema.json
 :pointer: /$defs/Span
 :include: id,name,status,readyForServiceDate,directed,route,transmissionMedium,deployment,darkFibre,fibreType,fibreTypeDetails/fibreSubtype,fibreTypeDetails/description,fibreCount,fibreLength,technologies,capacity,capacityDetails/description,countries,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity,cableType,codeployment
 :collapse: route
@@ -310,7 +310,7 @@ name: phase-description
 
 `Span.capacity` is defined as the equipped capacity of a span:
 
-```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Span/properties/capacity/description
 ```
 
@@ -339,7 +339,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :chevron: down-up
 :icon: book
 :name: organisation-description
-```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Organisation/description
 ```
 ````
@@ -388,7 +388,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :chevron: down-up
 :icon: rows
 :name: organisation-attributes
-```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
+```{jsonschema} ../../_readthedocs/html/network-schema.json
 :pointer: /$defs/Organisation
 :include: id,name,identifier/id,identifier/scheme,identifier/legalName,identifier/uri,country,roles,roleDetails,website,logo
 :nocrossref:
@@ -406,7 +406,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :chevron: down-up
 :icon: book
 :name: contract-description
-```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Contract/description
 ```
 ````
@@ -423,7 +423,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
    - Description
 *  - [Phase](#phase)
    - 1:N
-   - ```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
       :jsonpointer: /$defs/Contract/properties/relatedPhases/description
       ```
 
@@ -436,7 +436,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :chevron: down-up
 :icon: rows
 :name: contract-attributes
-```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
+```{jsonschema} ../../_readthedocs/html/network-schema.json
 :pointer: /$defs/Contract
 :include: id,title,description,type,value/amount,value/currency,dateSigned
 :nocrossref:
@@ -501,7 +501,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :chevron: down-up
 :icon: book
 :name: document-description
-```{jsoninclude-quote} ../../docs/_readthedocs/html/network-schema.json
+```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Document/description
 ```
 ````
@@ -529,7 +529,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :chevron: down-up
 :icon: rows
 :name: document-attributes
-```{jsonschema} ../../docs/_readthedocs/html/network-schema.json
+```{jsonschema} ../../_readthedocs/html/network-schema.json
 :pointer: /$defs/Document
 :nocrossref:
 :addtargets:
