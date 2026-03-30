@@ -247,7 +247,7 @@
           "properties": {
             "type": {
               "title": "Type",
-              "description": "The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists#nodesupportinginfrastructure).",
+              "description": "The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodesupportinginfrastructure).",
               "type": "string",
               "minLength": 1,
               "openCodelist": true,
@@ -470,7 +470,7 @@
           "properties": {
             "type": {
               "title": "Type",
-              "description": "The type of supporting infrastructure, from the open [spanSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists#spansupportinginfrastructure).",
+              "description": "The type of supporting infrastructure, from the open [spanSupportingInfrastructure codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#spansupportinginfrastructure).",
               "type": "string",
               "minLength": 1,
               "openCodelist": true,
@@ -1850,7 +1850,7 @@
         },
         "currency": {
           "title": "Currency",
-          "description": "The currency of this value, from the closed [currency codelist](https://open-fibre-data-standard.readthedocs.io/en/{{version}}/reference/codelists#currency).",
+          "description": "The currency of this value, from the closed [currency codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#currency).",
           "type": "string",
           "codelist": "currency.csv",
           "openCodelist": false,
