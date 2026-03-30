@@ -12,9 +12,9 @@ The network package schema describes the structure of the container for publishi
 
 ```{note}
 
-Use the canonical network package schema URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested. The canonical URL for version 0.3.0 is:
+Use the canonical network package schema URL to make sure that your software, documentation or other resources refer to the specific version of the schema with which they were tested. The canonical URL for version 0.4.0 is:
 
-[https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0\_\_3\_\_0/schema/network-package-schema.json](https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__0/schema/network-package-schema.json)
+[https://standard.ofds.info/en/0\_\_4\_\_0/network-package-schema.json](https://standard.ofds.info/en/0__4__0/network-package-schema.json)
 
 ```
 

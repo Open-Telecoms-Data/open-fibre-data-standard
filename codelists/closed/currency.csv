@@ -3,7 +3,6 @@ AED,UAE Dirham,
 AFN,Afghani,
 ALL,Lek,
 AMD,Armenian Dram,
-ANG,Netherlands Antillean Guilder,
 AOA,Kwanza,
 ARS,Argentine Peso,
 AUD,Australian Dollar,
@@ -12,7 +11,6 @@ AZN,Azerbaijan Manat,
 BAM,Convertible Mark,
 BBD,Barbados Dollar,
 BDT,Taka,
-BGN,Bulgarian Lev,
 BHD,Bahraini Dinar,
 BIF,Burundi Franc,
 BMD,Bermudian Dollar,
@@ -36,7 +34,6 @@ CNY,Yuan Renminbi,
 COP,Colombian Peso,
 COU,Unidad de Valor Real,
 CRC,Costa Rican Colon,
-CUC,Peso Convertible,
 CUP,Cuban Peso,
 CVE,Cabo Verde Escudo,
 CZK,Czech Koruna,
@@ -128,7 +125,6 @@ SEK,Swedish Krona,
 SGD,Singapore Dollar,
 SHP,Saint Helena Pound,
 SLE,Leone,
-SLL,Leone,
 SOS,Somali Shilling,
 SRD,Surinam Dollar,
 SSP,South Sudanese Pound,
@@ -158,6 +154,7 @@ VES,Bolívar Soberano,
 VND,Dong,
 VUV,Vatu,
 WST,Tala,
+XAD,Arab Accounting Dinar,
 XAF,CFA Franc BEAC,
 XAG,Silver,
 XAU,Gold,
@@ -166,6 +163,7 @@ XBB,Bond Markets Unit European Monetary Unit (E.M.U.-6),
 XBC,Bond Markets Unit European Unit of Account 9 (E.U.A.-9),
 XBD,Bond Markets Unit European Unit of Account 17 (E.U.A.-17),
 XCD,East Caribbean Dollar,
+XCG,Caribbean Guilder,
 XDR,SDR (Special Drawing Right),
 XOF,CFA Franc BCEAO,
 XPD,Palladium,
@@ -178,10 +176,11 @@ XXX,The codes assigned for transactions where no currency is involved,
 YER,Yemeni Rial,
 ZAR,Rand,
 ZMW,Zambian Kwacha,
-ZWL,Zimbabwe Dollar,
+ZWG,Zimbabwe Gold,
 ADP,Andorran Peseta,2003-07
 AFA,Afghani,2003-01
 ALK,Old Lek,1989-12
+ANG,Netherlands Antillean Guilder,2025-03
 AOK,Kwanza,1991-03
 AON,New Kwanza,2000-02
 AOR,Kwanza Reajustado,2000-02
@@ -198,6 +197,7 @@ BEL,Financial Franc,1990-03
 BGJ,Lev A/52,1989/1990
 BGK,Lev A/62,1989/1990
 BGL,Lev,2003-11
+BGN,Bulgarian Lev,2026-01
 BOP,Peso boliviano,1987-02
 BRB,Cruzeiro,1986-03
 BRC,Cruzado,1989-02
@@ -211,6 +211,7 @@ CHC,WIR Franc (for electronic),2004-11
 CSD,Serbian Dinar,2006-10
 CSJ,Krona A/53,1989/1990
 CSK,Koruna,1993-03
+CUC,Peso Convertible,2021-06
 CYP,Cyprus Pound,2008-01
 DDM,Mark der DDR,1990-07/1990-09
 DEM,Deutsche Mark,2002-03
@@ -271,6 +272,7 @@ SDD,Sudanese Dinar,2007-07
 SDP,Sudanese Pound,1998-06
 SIT,Tolar,2007-01
 SKK,Slovak Koruna,2009-01
+SLL,Leone,2023-12
 SRG,Surinam Guilder,2003-12
 STD,Dobra,2017-12
 SUR,Rouble,1990-12
@@ -301,5 +303,6 @@ ZRN,New Zaire,1999-06
 ZRZ,Zaire,1994-02
 ZWC,Rhodesian Dollar,1989-12
 ZWD,Zimbabwe Dollar,2008-08
+ZWL,Zimbabwe Dollar,2024-09
 ZWN,Zimbabwe Dollar (new),2006-09
 ZWR,Zimbabwe Dollar,2009-06

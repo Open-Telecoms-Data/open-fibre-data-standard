@@ -1,5 +1,5 @@
 {
-  "$id": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__0/schema/network-schema.json",
+  "$id": "https://standard.ofds.info/en/0__4__0/network-schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Network",
   "description": "A telecommunication network. A network consists of a set of nodes interconnected by spans.",
@@ -161,7 +161,7 @@
           "properties": {
             "href": {
               "type": "string",
-              "const": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__0/schema/network-schema.json"
+              "const": "https://standard.ofds.info/en/0__4__0/network-schema.json"
             },
             "rel": {
               "type": "string",
@@ -247,7 +247,7 @@
           "properties": {
             "type": {
               "title": "Type",
-              "description": "The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/{{vesion}}/reference/codelists#nodesupportinginfrastructure).",
+              "description": "The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodesupportinginfrastructure).",
               "type": "string",
               "minLength": 1,
               "openCodelist": true,
@@ -470,7 +470,7 @@
           "properties": {
             "type": {
               "title": "Type",
-              "description": "The type of supporting infrastructure, from the open [spanSupportingInfrastructure codelist](https://open-fibre-data-standard.readthedocs.io/en/{{vesion}}/reference/codelists#spansupportinginfrastructure).",
+              "description": "The type of supporting infrastructure, from the open [spanSupportingInfrastructure codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#spansupportinginfrastructure).",
               "type": "string",
               "minLength": 1,
               "openCodelist": true,
@@ -1409,7 +1409,7 @@
     },
     "OrganisationReference": {
       "title": "Organisation reference",
-      "description": "The [local identifier](https://standard.ofds.info/en/{{vesion}}/reference/identifiers#local-identifiers) and name of the organisation being referenced. Used for cross-referencing within the dataset.",
+      "description": "The [local identifier](https://standard.ofds.info/en/{{version}}/reference/identifiers#local-identifiers) and name of the organisation being referenced. Used for cross-referencing within the dataset.",
       "type": "object",
       "properties": {
         "id": {
@@ -1850,7 +1850,7 @@
         },
         "currency": {
           "title": "Currency",
-          "description": "The currency of this value, from the closed [currency codelist](https://open-fibre-data-standard.readthedocs.io/en/{{vesion}}/reference/codelists#currency).",
+          "description": "The currency of this value, from the closed [currency codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#currency).",
           "type": "string",
           "codelist": "currency.csv",
           "openCodelist": false,
@@ -2122,6 +2122,7 @@
             "VND",
             "VUV",
             "WST",
+            "XAD",
             "XAF",
             "XAG",
             "XAU",
@@ -2130,6 +2131,7 @@
             "XBC",
             "XBD",
             "XCD",
+            "XCG",
             "XDR",
             "XEU",
             "XFO",
@@ -2156,6 +2158,7 @@
             "ZRZ",
             "ZWC",
             "ZWD",
+            "ZWG",
             "ZWL",
             "ZWN",
             "ZWR"

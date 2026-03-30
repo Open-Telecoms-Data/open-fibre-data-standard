@@ -132,7 +132,7 @@ The [OFDS QGIS plugin](https://github.com/Open-Telecoms-Data/ofds-qgis-plugin) s
 To convert data to CSV format:
 
 - [Install Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/getting-started/#getting-started)
-- Download the [network schema](../../docs/_readthedocs/html/network-schema.json)
+- Download the [network schema](../reference/data_formats/json/network_schema.md)
 - If your data is a [JSON Lines file](../reference/data_formats/json/containers.md#streaming-container), segment it into appropriately sized [network packages](../reference/data_formats/json/containers.md#small-files-and-api-responses-container)
 - Run the following command for each network package:
 
@@ -148,7 +148,7 @@ flatten-tool flatten --truncation-length=9 --root-list-path=networks --main-shee
 To convert data to CSV format:
 
 - [Install Flatten Tool](https://flatten-tool.readthedocs.io/en/latest/getting-started/#getting-started)
-- Download the [network schema](../../schema/network-schema.json)
+- Download the [network schema](../reference/data_formats/json/network_schema.md)
 - Run the following command, replacing `path/to/csv/files` with the path to your CSV files
 
 ```bash
