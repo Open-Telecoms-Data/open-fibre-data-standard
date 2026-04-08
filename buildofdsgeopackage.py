@@ -250,7 +250,7 @@ class Builder:
             if i["type"] == "open_codelist"
         ]
         fields_sql += [
-            "FOREIGN KEY ({}) REFERENCES {}(id)".format(
+            "FOREIGN KEY ({}) REFERENCES {}(id) ON DELETE SET NULL".format(
                 i["name"], i["foreignkey_layer"]
             )
             for i in columns
