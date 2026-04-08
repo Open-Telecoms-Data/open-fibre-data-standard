@@ -448,8 +448,8 @@ class Builder:
                     base_id INTEGER NOT NULL,
                     related_id INTEGER NOT NULL,
                     PRIMARY KEY (base_id, related_id),
-                    FOREIGN KEY (base_id) REFERENCES {}(id),
-                    FOREIGN KEY (related_id) REFERENCES {}(id)
+                    FOREIGN KEY (base_id) REFERENCES {}(id) ON DELETE CASCADE,
+                    FOREIGN KEY (related_id) REFERENCES {}(id) ON DELETE CASCADE
                 );
                 """.format(
                     relation["mapping_table"], table_name, relation["related_table"]
