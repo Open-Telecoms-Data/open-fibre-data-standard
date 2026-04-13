@@ -407,6 +407,8 @@ This sub-schema is referenced by the following properties:
 - [`Span/supplier`](json,network-schema.json,/$defs/Span,supplier)
 - [`Phase/funders`](json,network-schema.json,/$defs/Phase,funders)
 
+Additional properties are not permitted within `OrganisationReference` objects.
+
 Each `OrganisationReference` has the following properties:
 
 ::::{tab-set}
@@ -477,6 +479,8 @@ This sub-schema is referenced by the following properties:
 - [`Node/phase`](json,network-schema.json,/$defs/Node,phase)
 - [`Span/phase`](json,network-schema.json,/$defs/Span,phase)
 - [`Contract/relatedPhases`](json,network-schema.json,/$defs/Contract,relatedPhases)
+
+Additional properties are not permitted within `PhaseReference` objects.
 
 Each `PhaseReference` has the following properties:
 
