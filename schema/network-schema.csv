@@ -88,7 +88,7 @@ spans,spans/supportingInfrastructure/owner,Organisation reference,The local iden
 spans,spans/supportingInfrastructure/owner/id,Local identifier,The local identifier of the organisation being referenced.,string,1..1,,,,,
 spans,spans/supportingInfrastructure/owner/name,Name,The name of the organisation being referenced. This must match the name of the organisation referenced in `.id`.,string,0..1,,,,,
 spans,spans/supportingInfrastructure/spareCapacity,Spare capacity,Whether the supporting infrastructure has spare capacity for the installation of additional fibre cables.,boolean,0..1,,,,,
-spans,spans/codeployment,Codeployment,The type of utility or transport infrastrucutre with which this span is codeployed.,string,0..1,,,,,codeployment.csv
+spans,spans/codeployment,Codeployment,"The type of utility or transport infrastrucutre with which this span is codeployed, from the open codeployment codelist.",string,0..1,,https://standard.ofds.info/en/{{version}}/reference/codelists#codeployment,,,codeployment.csv
 spans,spans/cableType,Cable type,The type of cable used in this span.,string,0..1,,,,,cableType.csv
 spans,spans/darkFibre,Dark fibre availability,Whether access to dark fibre is available on this span.,boolean,0..1,,,,,
 spans,spans/fibreType,Fibre type,"The type of fibre used in this span, from the closed fibreType codelist. Further details of the span's fibre type can be provided in `.fibreTypeDetails`.",string,0..1,"Enum: G.651.1, G.652, G.653, G.654, G.655, G.656, G.657",https://standard.ofds.info/en/{{version}}/reference/codelists#fibretype,,,fibreType.csv
