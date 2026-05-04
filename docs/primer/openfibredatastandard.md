@@ -2,75 +2,101 @@
 
 # The Open Fibre Data Standard
 
-```{admonition} 0.3.0 release
-Welcome to the Open Fibre Data Standard 0.3.0 release.
-
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
-
-To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
-```
-
 This page provides an introduction to the Open Fibre Data Standard (OFDS), the reasons for using it and what OFDS data looks like.
 
 ## What is the Open Fibre Data Standard?
 
-The OFDS is a data standard for the publication of open fibre data. It describes what data to publish about fibre optic networks in order to meet a range of use cases and how to structure and format that data for publication and use.
+The OFDS is a data standard for publishing, exchanging and storing data about fibre infrastructure. It describes the data needed to satisfy a range of use cases, and how to structure and format that data for publication, exchange and storage.
 
 The OFDS provides:
 
-- A common structured data model, including a schema, codelists, definitions and rules that need to be followed.
-- Publication formats to meet a range of use cases.
-- Guidance and tooling to support the publication and use of data
+- A [logical data model](../reference/data_model.md), that defines the entities, relationships and attributes needed to describe fibre infrastructure
+- [Schemas](../reference/data_formats/index.md) for publishing, exchanging and storing data in GeoPackage, JSON and CSV format
+- [Guidance and tooling](../guidance/index.md) for producing and using OFDS data
 
-The OFDS covers the location of fibre infrastructure and the technical and administrative attributes of fibre infrastructure.
+The OFDS covers several kinds of data about fibre infrastructure, including:
+
+- Location data, e.g. the coordinates of nodes and the route of fibre spans.
+- Technical data, e.g. the a ITU-T standard that a fibre cable conforms to.
+- Administrative data, e.g. the organisations that own and operate fibre infrastructure.
 
 ## Why use the Open Fibre Data Standard?
 
-Data standards resolve ambiguity by defining the structure and meaning of data. Standardised data is easier for people and systems to interpret than non-standardised data:
+Standardised data is easier for people and systems to interpret than non-standardised data because data standards resolve ambiguity by defining the structure and meaning of data.
 
-- Without standards, data users or intermediaries have to do the hard work of making sense of different datasets and developing dataset-specific methodologies and tools.
+Without standards, data users or intermediaries have to do the hard work of making sense of different datasets and developing dataset-specific methodologies and tools. But, with standards, users have access to information about the structure and meaning of data and can develop reusable tools and methodologies that can be applied to many different datasets.
 
-- With standards, users have access to information about the structure and meaning of data and can develop reusable tools and methodologies that can be applied to many different datasets.
+```{admonition} Example: Standardising capacity data
 
-```{admonition} Standardisation in the fibre context
-The [supply-side research](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions/5) identified a variety of units and notations for specifying the capacity of a fibre-optic span: Mbps, Gbps, STM notation and E-carrier notation. This lack of standardisation presents a challenge to users who want to compare the capacity of different spans and networks.
+There are a variety of units and notations for specifying the capacity of a fibre-optic span, including Mbps, Gbps, STM notation and E-carrier notation. This lack of standardisation presents a challenge to users who want to compare the capacity of different spans and networks.
 
 Since all of the above units can be converted into Gbps, OFDS requires that publishers specify span capacity in Gbps. This approach places the effort of conversion onto the data publisher, where it only needs to happen once, rather than onto data users, each of whom would need to convert the data if it were not standardised.
+
 ```
 
 Standards can also ensure that key information is included in a dataset. If data owners do not share key information in their data, then users need to negotiate with each data owner individually.
 
-In addition to publishing the locations of fibre network infrastructure, using the OFDS to publish data on the technical and administrative attributes of infrastructure helps to ensure that your data meets the needs of a range of users. For example, publishing data on the organisations that own and operate infrastructure can help operators and regulators to understand the true extent and resilience of fibre networks.
+Using the OFDS to inform the data that you choose to publish, exchange or store helps to ensure that your data meets the needs of a range of users. For example, data on the organisations that own and operate infrastructure can help operators and regulators to understand where different organisations might be reporting on the same fibre cable, making it easier to understand the true extent and resilience of fibre infrastructure.
 
 ## What does OFDS data look like?
 
-To meet the needs of different users, OFDS supports several [data formats](../reference/publication_formats/index.md). The examples show what OFDS data looks like in JSON and CSV format.
+To meet the needs of different users, OFDS supports several [data formats](../reference/data_formats/index.md). The examples show what OFDS data looks like in JSON and CSV format.
 
-::::{tab-set}
+- GeoPackage data is useful to GIS analysts, because it can be imported and edited by common GIS tools, whilst maintaining referential integrity
+- JSON data is useful to web developers, because it be easily rendered as a web-map.
+- CSV data is useful to spreadsheet users since it can be imported directly into spreadsheet packages.
 
-:::{tab-item} JSON
-The following example shows OFDS data containing a single network in JSON format:
+The following examples show how a single node is represented in each data format. For brevity's sake, only a subset of the possible attributes are shown:
+
+`````{tab-set}
+
+````{tab-item} GeoPackage
+
+```{sqltable}
+:connection_string: sqlite:///../examples/geopackage/network.gpkg
+SELECT
+    id,
+    "The node's coordinates as a GeoPackage SQL Geometry Binary Format blob" as geom,
+    name,
+    status,
+    accessPoint
+FROM
+    nodes
+LIMIT
+    1
+```
+
+````
+
+````{tab-item} JSON
 
 ```{eval-rst}
 .. jsoninclude:: ../../examples/json/network-package.json
-    :jsonpointer:
-    :expand: networks
+    :jsonpointer: /networks/0/nodes/0
+    :include_only: id,name,status,location,accessPoint
+    :expand: location,coordinates
     :title: JSON
 ```
 
-:::
+````
 
-:::{tab-item} CSV
-The following example shows OFDS data containing a single network in CSV format. OFDS CSV data consists of multiple tables to reflect the nested nature of the schema. Only the network table is shown here:
+````{tab-item} CSV
 
-```{csv-table-no-translate}
+```{csv-filter}
 :header-rows: 1
 :widths: auto
-:file: ../../examples/csv/networks.csv
+:file: ../../examples/csv/nodes.csv
+:included_cols: 1,2,5,6,19
+:include: {1: '1'}
 ```
 
-:::
+````
 
-::::
+`````
 
-To learn more about the use cases for each format, read the [guidance on how to format data for publication](../guidance/publication.md#how-to-format-data-for-publication). For details of the structure of the OFDS data model, read the [data model reference](../reference/data_model.md). For details of the data formats for publishing, storing or exchanging OFDS data in each format, read the [publication formats reference](../reference/publication_formats/index.md).
+```{seealso}
+
+* [Data formats reference](../reference/data_formats/index.md)
+* [How to format data for publication](../guidance/publication.md#how-to-format-data)
+
+```

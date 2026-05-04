@@ -227,6 +227,9 @@
           "capacityDetails": {
             "description": "2xSTM-16"
           },
+          "wayleaves": [
+            "1"
+          ],
           "countries": [
             "GH"
           ]
@@ -307,6 +310,14 @@
           "roleDetails": "The Ghana Infrastructure Investment Fund provided equity financing for the construction of phase 1 of the NextGen network.",
           "website": "https://www.example.com",
           "logo": "https://www.example.com/logo.png"
+        },
+        {
+          "id": "4",
+          "name": "Accra Municipal Council",
+          "country": "GH",
+          "roles": [
+            "wayleaveGrantor"
+          ]
         }
       ],
       "contracts": [
@@ -336,6 +347,27 @@
           ]
         }
       ],
+      "wayleaves": [
+        {
+          "id": "1",
+          "grantor": {
+            "id": "1",
+            "name": "Accra Municipal Council"
+          },
+          "yearSigned": 2022,
+          "term": {
+            "indefinite": false,
+            "years": 25
+          },
+          "cost": {
+            "recurring": true,
+            "perMetre": {
+              "amount": 1.75,
+              "currency": "GHS"
+            }
+          }
+        }
+      ],
       "website": "http://example.com/network",
       "publisher": {
         "name": "FibreCo",
@@ -358,7 +390,7 @@
       "links": [
         {
           "rel": "describedby",
-          "href": "https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/0__3__0/schema/network-schema.json"
+          "href": "https://standard.ofds.info/en/0__4__0/network-schema.json"
         }
       ]
     }

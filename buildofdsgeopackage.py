@@ -1,3 +1,4 @@
+import argparse
 import csv
 import json
 import os
@@ -7,23 +8,37 @@ import sqlite3
 from referencing import Registry
 from referencing.jsonschema import DRAFT202012
 
-MAP_FIELD_TYPES_TO_SQLITE_TYPES = {"boolean": "int", "integer": "int", "number": "real"}
 
 def deref(obj, registry):
-    if isinstance(obj, list): return [deref(i, registry) for i in obj]
-    if not isinstance(obj, dict): return obj
-    
+    if isinstance(obj, list):
+        return [deref(i, registry) for i in obj]
+    if not isinstance(obj, dict):
+        return obj
+
     # Merge $ref contents with local keys (2020-12 style)
     if "$ref" in obj:
         resolved = registry.resolver().lookup(obj.pop("$ref")).contents
         obj = {**resolved, **obj}
-        
+
     return {k: deref(v, registry) for k, v in obj.items()}
+
 
 class Builder:
 
-    def __init__(self, root_directory):
+    def __init__(
+        self, root_directory, output_directory=None, write_schema_information_json=False
+    ):
         self.root_directory = root_directory
+        if output_directory:
+            self.output_directory = output_directory
+        else:
+            self.output_directory = os.path.join(
+                self.root_directory,
+                "schema",
+                "geopackage",
+            )
+        self.write_schema_information_json = write_schema_information_json
+
         self.connection = None
         self.cursor = None
         self.information_out = None
@@ -34,11 +49,14 @@ class Builder:
             "Supplier": "organisations",
             "Start": "nodes",
             "End": "nodes",
+            "Wayleaves": "wayleaves",
+            "Grantor": "organisations",
         }
         self.MAPPING_MANY_TO_MANY_KEY_NAMES_TO_LAYERS = {
             "Network providers": "organisations",
             "Funders": "organisations",
             "Related phases": "phases",
+            "Wayleaves": "wayleaves",
         }
 
     def _load_codelist_items(
@@ -157,9 +175,7 @@ class Builder:
                             description
                         )
                         VALUES (?, ?);
-                        """.format(
-                            table_name
-                        ),
+                        """.format(table_name),
                         [code, desc],
                     )
 
@@ -234,7 +250,7 @@ class Builder:
             if i["type"] == "open_codelist"
         ]
         fields_sql += [
-            "FOREIGN KEY ({}) REFERENCES {}(id)".format(
+            "FOREIGN KEY ({}) REFERENCES {}(id) ON DELETE SET NULL".format(
                 i["name"], i["foreignkey_layer"]
             )
             for i in columns
@@ -266,15 +282,11 @@ class Builder:
         )
 
         if geographic_type:
-            self.cursor.execute(
-                """
+            self.cursor.execute("""
                 INSERT INTO gpkg_geometry_columns (
                     table_name, column_name, geometry_type_name, srs_id, z, m
                 ) VALUES ('{}', 'geom', '{}', 4326, 0, 0);
-            """.format(
-                    table_name, geographic_type
-                )
-            )
+            """.format(table_name, geographic_type))
 
         self.information_out["tables"][table_name] = {
             "columns": columns,
@@ -434,8 +446,8 @@ class Builder:
                     base_id INTEGER NOT NULL,
                     related_id INTEGER NOT NULL,
                     PRIMARY KEY (base_id, related_id),
-                    FOREIGN KEY (base_id) REFERENCES {}(id),
-                    FOREIGN KEY (related_id) REFERENCES {}(id)
+                    FOREIGN KEY (base_id) REFERENCES {}(id) ON DELETE CASCADE,
+                    FOREIGN KEY (related_id) REFERENCES {}(id) ON DELETE CASCADE
                 );
                 """.format(
                     relation["mapping_table"], table_name, relation["related_table"]
@@ -526,11 +538,10 @@ class Builder:
     ):
         relations = []
         for property_key, property_value in json_schema["properties"].items():
-
             # --------  many to many
             if (
                 property_value["type"] == "array"
-                and property_value["items"]["type"] == "object"
+                and property_value["items"]["type"] in ["object", "string"]
                 and property_value["title"]
                 in self.MAPPING_MANY_TO_MANY_KEY_NAMES_TO_LAYERS.keys()
             ):
@@ -544,6 +555,7 @@ class Builder:
                         ],
                         "mapping_table": "relation_" + table_name + "_" + property_key,
                         "title": property_value["title"],
+                        "description": property_value["description"],
                         "related_table_private": False,
                     }
                 )
@@ -567,6 +579,7 @@ class Builder:
                         + property_value["codelist"][:-4],
                         "mapping_table": "relation_" + table_name + "_" + property_key,
                         "title": property_value["title"],
+                        "description": property_value["description"],
                         "related_table_private": not property_value.get("openCodelist"),
                         "codelist": True,
                     }
@@ -584,15 +597,15 @@ class Builder:
         with open(jsonschema_filename) as fp:
             jsonschema = json.load(fp)
 
-        reg = Registry().with_resource(uri="", resource=DRAFT202012.create_resource(jsonschema))
+        reg = Registry().with_resource(
+            uri="", resource=DRAFT202012.create_resource(jsonschema)
+        )
 
         jsonschema = deref(jsonschema, reg)
-        
+
         # Copy GeoPackage
         sqlite_filename = os.path.join(
-            self.root_directory,
-            "schema",
-            "geopackage",
+            self.output_directory,
             "network-schema.gpkg",
         )
         shutil.copyfile(
@@ -611,34 +624,28 @@ class Builder:
             "closed_codelists": {},
         }
         # Create extension tables
-        self.cursor.execute(
-            """
+        self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS gpkgext_relations (
                 id INTEGER PRIMARY KEY AUTOINCREMENT, base_table_name TEXT NOT NULL, base_primary_column TEXT NOT NULL, related_table_name TEXT NOT NULL, related_primary_column TEXT NOT NULL, relation_type TEXT NOT NULL, mapping_table_name TEXT UNIQUE
             );
-        """
-        )
+        """)
         # Create gpkg_data_columns per https://www.geopackage.org/spec120/#gpkg_data_columns_sql
         # EXCEPT don't make the name column UNIQUE, this causes us clashes
         # https://www.geopackage.org/spec120/#gpkg_data_columns_cols says "A human-readable identifier (e.g. short name) for the column_name content" so why unique?
         # And indeed this is changed in the unreleased version https://www.geopackage.org/spec/#gpkg_data_columns_sql
-        self.cursor.execute(
-            """
+        self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS gpkg_data_columns (
                 table_name TEXT NOT NULL, column_name TEXT NOT NULL, name TEXT, title TEXT, description TEXT, mime_type TEXT, constraint_name TEXT,
                 CONSTRAINT pk_gdc PRIMARY KEY (table_name, column_name),
                 CONSTRAINT fk_gdc_tn FOREIGN KEY (table_name) REFERENCES gpkg_contents(table_name)
             );
-        """
-        )
+        """)
         # Create gpkg_data_column_constraints per https://www.geopackage.org/spec120/#gpkg_data_column_constraints_sql
-        self.cursor.execute(
-            """
+        self.cursor.execute("""
             CREATE TABLE IF NOT EXISTS gpkg_data_column_constraints (
                 constraint_name TEXT NOT NULL, constraint_type TEXT NOT NULL, value TEXT, min NUMERIC, min_is_inclusive BOOLEAN, max NUMERIC, max_is_inclusive BOOLEAN, description TEXT, CONSTRAINT gdcc_ntv UNIQUE (constraint_name, constraint_type, value)
             );
-        """
-        )
+        """)
         # Register extensions
         self.cursor.execute(
             "INSERT OR IGNORE INTO gpkg_extensions (table_name, column_name, extension_name, definition, scope) VALUES ('gpkgext_relations', NULL, 'gpkg_related_tables','http://docs.opengeospatial.org/is/18-000/18-000.html', 'read-write');"
@@ -678,6 +685,11 @@ class Builder:
         self._create_table_from_json_schema(
             jsonschema["properties"]["contracts"]["items"],
             table_name="contracts",
+            has_network_id=True,
+        )
+        self._create_table_from_json_schema(
+            jsonschema["properties"]["wayleaves"]["items"],
+            table_name="wayleaves",
             has_network_id=True,
         )
         self._create_table_from_json_schema(
@@ -732,6 +744,10 @@ class Builder:
             table_name="contracts",
         )
         self._create_relations_from_json_schema(
+            jsonschema["properties"]["wayleaves"]["items"],
+            table_name="wayleaves",
+        )
+        self._create_relations_from_json_schema(
             jsonschema["properties"]["organisations"]["items"],
             table_name="organisations",
         )
@@ -739,12 +755,26 @@ class Builder:
         self._write_codelists()
         # Wrapup
         self.connection.commit()
+        if self.write_schema_information_json:
+            schema_information_json_filename = os.path.join(
+                self.output_directory,
+                "schema_information.json",
+            )
+            with open(schema_information_json_filename, "w") as fp:
+                json.dump(self.information_out, fp, indent=2)
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--output-directory")
+    parser.add_argument("--write-schema-information-json", action="store_true")
+    args = parser.parse_args()
+
     builder = Builder(
         root_directory=os.path.realpath(
             os.path.join(os.path.dirname(os.path.realpath(__file__)))
         ),
+        output_directory=args.output_directory,
+        write_schema_information_json=args.write_schema_information_json,
     )
     builder.go()

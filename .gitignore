@@ -2,6 +2,7 @@
 *.swp
 *~
 _build
+_readthedocs
 .python-version
 .vscode
 tests/__pycache__

@@ -2,12 +2,10 @@
 
 # Reference
 
-```{admonition} 0.3.0 release
-Welcome to the Open Fibre Data Standard 0.3.0 release.
+```{admonition} New to OFDS?
 
-We want to hear your feedback on the standard and its documentation. For general feedback, questions and suggestions, you can comment on an existing [discussion](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/discussions) or start a new one. For bug reports or feedback on specific elements of the data model and documentation, you can comment on the issues in the [issue tracker](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues) or you can [create a new issue](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/new/choose).
+Read the [Primer](../primer/index.md).
 
-To comment on or create discussions and issues, you need to [sign up for a free GitHub account](https://github.com/signup). If you prefer to provide feedback privately, you can email [info@opentelecomdata.net](mailto:info@opentelecomdata.net).
 ```
 
 ```{note}
@@ -18,7 +16,7 @@ The [data model reference](data_model.md) is the canonical reference for the ent
 
 The [codelists reference](codelists.md) is the canonical reference for the meaning of the codes used to limit and standardise the possible values of attributes in the OFDS data model.
 
-The [publication formats reference](publication_formats/index.md) is the canonical reference for the data formats in which OFDS data can be published, stored and exchanged.
+The [data formats reference](data_formats/index.md) is the canonical reference for the data formats in which OFDS data can be published, stored and exchanged.
 
 ```{eval-rst}
 .. toctree::
@@ -28,6 +26,6 @@ The [publication formats reference](publication_formats/index.md) is the canonic
    codelists
    identifiers
    crs
-   publication_formats/index.md
+   data_formats/index.md
 
 ```

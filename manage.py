@@ -132,23 +132,23 @@ def get_dereferenced_schema(schema, output=None):
 
 
 def update_csv_docs(jsonref_schema):
-  """Update docs/reference/publication_formats/csv.md"""
+  """Update docs/reference/data_formats/csv.md"""
 
   # Load csv reference
-  csv_reference = read_lines(referencedir / 'publication_formats' / 'csv.md')
+  csv_reference = read_lines(referencedir / 'data_formats' / 'csv.md')
 
   # Preserve introductory content up to the ## networks heading
-  csv_reference = csv_reference[:csv_reference.index("## networks\n") - 1]
+  csv_reference = csv_reference[:csv_reference.index("### networks\n") - 1]
 
   # Generate CSV reference
   dereferenced_schema = get_dereferenced_schema(jsonref_schema)
   markdown = generate_csv_reference_markdown('networks', dereferenced_schema)
  
   for key, value in markdown.items():
-    csv_reference.append(f"\n{'#'*value['depth']} {key}\n\n")
+    csv_reference.append(f"\n{'#'*(value['depth']+1)} {key}\n\n")
     csv_reference.extend(value['content'])
 
-  write_lines(referencedir / 'publication_formats' / 'csv.md', csv_reference)
+  write_lines(referencedir / 'data_formats' / 'csv.md', csv_reference)
 
 def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
   """
@@ -184,7 +184,7 @@ def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
       parent_ref = f"{'/0/'.join([parent for parent in parents[1:]])}"
  
     markdown[table]['content'].append(
-      f" * [{parents[-1]}](#{parents[-1].lower()}): many-to-one by `{parent_ref + '/0/' if len(parent_ref) > 0 else ''}id`\n"
+      f"- [{parents[-1]}](#{parents[-1].lower()}): many-to-one by `{parent_ref + '/0/' if len(parent_ref) > 0 else ''}id`\n"
     )
 
   # Add references to parent object ids to list of pointers for jsonschema directive
@@ -197,18 +197,18 @@ def generate_csv_reference_markdown(table, schema, parents=None, depth=2):
   for key,value in properties.items():
     if value['type'] == 'array' and value['items']['type'] == 'object':     
       markdown[table]['content'].append(
-        f" * [{key if table == 'networks' else f'{table}_{key}'}](#{key if table == 'networks' else f'{table}_{key}'.lower()}): one-to-many by `{'id' if table == 'networks' else '/0/'.join(parents[1:] + [table, 'id'])}`\n"
+        f"- [{key if table == 'networks' else f'{table}_{key}'}](#{key if table == 'networks' else f'{table}_{key}'.lower()}): one-to-many by `{'id' if table == 'networks' else '/0/'.join(parents[1:] + [table, 'id'])}`\n"
       )
       markdown.update(generate_csv_reference_markdown(key, value, parents + [table], depth + 1))
     else:
       include_pointers.append(f"{parent_ref}{'/0/' if len(parent_ref) > 0 else ''}{table.split('_')[-1]+'/0/' if len(parents)>0 else ''}{key}")
 
   # Generate links to examples and templates
-  markdown[table]['content'].append(f"\nThe fields in this table are listed below. You can also download an [example CSV file](../../../examples/csv/{table}.csv) or a [blank template](../../../examples/csv/template/{table}.csv) for this table.\n\n")
+  markdown[table]['content'].append(f"\nThe columns in this table are listed below. You can also download an [example CSV file](../../../examples/csv/{table}.csv) or a [blank template](../../../examples/csv/template/{table}.csv) for this table.\n\n")
 
   # Generate jsonschema directive
   markdown[table]['content'].extend([
-    "```{jsonschema} ../../../schema/network-schema.json\n"
+    "```{jsonschema} ../../../_readthedocs/html/network-schema.json\n"
     f":include: {','.join(include_pointers)}\n"
   ])
 
@@ -431,7 +431,7 @@ def update_schema_docs(schema):
       # Add description
       definition["content"].extend([
           f"`{defn}` is defined as:\n\n",
-          "```{jsoninclude-quote} ../../schema/network-schema.json\n",
+          "```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json\n",
           f":jsonpointer: /$defs/{defn}/description\n",
           "```\n\n"
       ])
@@ -466,7 +466,7 @@ def update_schema_docs(schema):
           f"\nEach `{defn}` has the following fields:\n\n", 
           "::::{tab-set}\n\n",
           ":::{tab-item} Schema\n\n",
-          "```{jsonschema} ../../schema/network-schema.json\n",
+          "```{jsonschema} ../../_readthedocs/html/network-schema.json\n",
           f":pointer: /$defs/{defn}\n",
           f":collapse: {','.join(definition['properties'].keys())}\n",
           ":addtargets:\n",
@@ -667,7 +667,7 @@ def pre_commit():
       - network-schema.csv
       - examples/csv/template
       - examples/csv
-      - reference/publication_formats/csv.md
+      - reference/data_formats/csv.md
       - reference/codelists.md
       - reference/schema.md
       - examples/geojson/nodes.geojson
@@ -702,10 +702,10 @@ def pre_commit():
     export_metadata_to_csv("schema/geopackage/network-schema.gpkg", "schema/geopackage/table_definitions")
 
     # Generate diagram from GeoPackage
-    subprocess.run(["mermerd", "--runConfig", "docs/reference/publication_formats/geopackage/geopackage.yaml"])
+    subprocess.run(["mermerd", "--runConfig", "docs/reference/data_formats/geopackage/geopackage.yaml"])
 
     # Add style config to diagram and remove non-key attributes
-    with open("docs/reference/publication_formats/geopackage/geopackage.mmd", 'r') as f:
+    with open("docs/reference/data_formats/geopackage/geopackage.mmd", 'r') as f:
         lines = f.readlines()
 
     # 1. Prepare Header
@@ -717,8 +717,8 @@ def pre_commit():
         "    classDef attribute fill:#cec7ffff,stroke:#110e27\n"
         "    classDef mapping fill:#efefefff,stroke:#434343ff\n\n"
         "    class nodes,spans feature\n"
-        "    class networks,organisations,phases,contracts attribute\n"
-        "    class relation_contracts_relatedPhases,relation_spans_networkProviders,relation_nodes_networkProviders mapping\n"
+        "    class networks,organisations,phases,contracts,wayleaves attribute\n"
+        "    class relation_contracts_relatedPhases,relation_spans_networkProviders,relation_spans_wayleaves,relation_nodes_networkProviders mapping\n"
         "    direction BT\n"
     )
 
@@ -756,7 +756,7 @@ def pre_commit():
     # Combine everything
     final_output = header + "".join(processed_content) + footer
 
-    with open("docs/reference/publication_formats/geopackage/geopackage.mmd", 'w') as f:
+    with open("docs/reference/data_formats/geopackage/geopackage.mmd", 'w') as f:
         f.write(final_output)
 
     # Update examples/csv
@@ -785,7 +785,7 @@ def pre_commit():
       convert_wkt=True
     )
 
-    # Update docs/reference/publication_formats/csv.md
+    # Update docs/reference/data_formats/csv.md
     update_csv_docs(jsonref_schema)
 
     # Update docs/reference/codelists.md
@@ -953,7 +953,7 @@ def update_currency():
 
     network_schema = json_load('network-schema.json')
     codes = sorted(list(current_codes) + list(historic_codes))
-    network_schema['definitions']['Value']['properties']['currency']['enum'] = codes
+    network_schema['$defs']['Value']['properties']['currency']['enum'] = codes
 
     json_dump('network-schema.json', network_schema)
 
