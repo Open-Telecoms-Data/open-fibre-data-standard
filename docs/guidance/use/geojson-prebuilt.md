@@ -55,7 +55,7 @@ for f in [
 os.chdir('_nb')
 ```
 
-OFDS provides pre-built scripts for the `nodes` and `spans` layers that produce a single, ready-to-use GeoJSON output — with organisation names, phase names, codelist values, and address fields already included as properties. The following table shows which combinations of OFDS data format and tool are supported:
+OFDS provides pre-built scripts for the `nodes` and `spans` layers that produce a single, ready-to-use GeoJSON output, with organisation names, phase names, codelist values, and address fields already included as properties. The following table shows which combinations of OFDS data format and tool are supported:
 
 | | [ogr2ogr](https://gdal.org/en/stable/programs/ogr2ogr.html) | [GeoPandas](https://geopandas.org/) | [QGIS](https://qgis.org/) |
 |---|:---:|:---:|:---:|
