@@ -37,6 +37,8 @@ For more information on transforming coordinates from one CRS to another, see [h
 
    leaflet
    geojson
+   geojson-prebuilt
+   geojson-custom
 ```
 
 ## How to convert OFDS data to GeoJSON format
