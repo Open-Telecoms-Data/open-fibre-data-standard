@@ -86,7 +86,7 @@ WITH
     )
 
 SELECT
-    -- s.geom,  -- uncomment to include geometry
+    s.geom,
     s.ofds_id                                                       AS identifier,
     s.name,
     phases.name                                                     AS phase,

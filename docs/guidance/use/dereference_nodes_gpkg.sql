@@ -49,7 +49,7 @@ WITH
             node_id
     )
 SELECT
-    -- n.geom,  -- uncomment to include geometry
+    n.geom,
     n.ofds_id AS identifier,
     n.name,
     phases.name AS phase,

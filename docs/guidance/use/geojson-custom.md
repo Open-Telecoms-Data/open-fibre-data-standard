@@ -13,6 +13,30 @@ tags: [remove-cell, skip-execution]
 
 ```
 
+```{code-cell}
+---
+tags: [remove-cell]
+---
+import os, shutil, urllib.request
+
+os.makedirs('_nb', exist_ok=True)
+
+BASE_URL = 'https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/298-geojson-guidance'
+
+def get_file(repo_path, dest=None):
+    dest_name = dest or os.path.basename(repo_path)
+    local = f'../../../{repo_path}'
+    if os.path.exists(local):
+        shutil.copy(local, f'_nb/{dest_name}')
+    else:
+        urllib.request.urlretrieve(f'{BASE_URL}/{repo_path}', f'_nb/{dest_name}')
+
+for f in ['network-simple.gpkg', 'nodes.csv', 'nodes_networkProviders.csv', 'phases.csv', 'organisations.csv']:
+    get_file(f'docs/guidance/use/{f}')
+
+os.chdir('_nb')
+```
+
 The following examples show how to write custom SQL or Python to dereference specific relationships in an OFDS dataset. Use these as a starting point when the [pre-built scripts](geojson-prebuilt.md) don't cover your exact requirements — for example, if you need to select a specific subset of fields, apply filters, or join to tables not covered by the pre-built scripts.
 
 All examples use the `nodes` layer, but the same approaches apply equally to `spans`.

@@ -4,199 +4,200 @@ file_format: mystnb
 
 # Convert nodes and spans to GeoJSON
 
++++{"tags": ["remove-cell"]}
+## Setup
+
+To run the commands in this notebook, you'll need to install [GDAL](https://gdal.org/en/stable/index.html) and [jq](https://jqlang.org/), and run the following cell to install Python dependencies:
+
++++
+
 ```{code-cell}
 ---
 tags: [remove-cell, skip-execution]
 ---
+
 !pip install geopandas
+
 ```
 
 ```{code-cell}
 ---
 tags: [remove-cell]
 ---
-import shutil
+import os, shutil, urllib.request
 
-# GeoPackage: copy database and SQL scripts to the working directory
-shutil.copy('../../../examples/geopackage/network.gpkg', 'network.gpkg')
-shutil.copy('../../../examples/geopackage/dereference_nodes.sql', 'dereference_nodes.sql')
-shutil.copy('../../../examples/geopackage/dereference_spans.sql', 'dereference_spans.sql')
+os.makedirs('_nb', exist_ok=True)
 
-# Uncomment the geometry column in each GeoPackage SQL script
-with open('dereference_nodes.sql') as f:
-    sql = f.read()
-sql = sql.replace('    -- n.geom,  -- uncomment to include geometry', '    n.geom,')
-with open('dereference_nodes.sql', 'w') as f:
-    f.write(sql)
+BASE_URL = 'https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/298-geojson-guidance'
 
-with open('dereference_spans.sql') as f:
-    sql = f.read()
-sql = sql.replace('    -- s.geom,  -- uncomment to include geometry', '    s.geom,')
-with open('dereference_spans.sql', 'w') as f:
-    f.write(sql)
+def get_file(repo_path, dest=None):
+    dest_name = dest or os.path.basename(repo_path)
+    local = f'../../../{repo_path}'
+    if os.path.exists(local):
+        shutil.copy(local, f'_nb/{dest_name}')
+    else:
+        urllib.request.urlretrieve(f'{BASE_URL}/{repo_path}', f'_nb/{dest_name}')
 
-# CSV: copy the full example CSV files (which include all required fields)
-for csv_file in [
+get_file('examples/geopackage/network.gpkg', 'network.gpkg')
+get_file('examples/json/network-package.json', 'network-package.json')
+for f in [
     'nodes.csv', 'nodes_networkProviders.csv', 'nodes_internationalConnections.csv',
     'spans.csv', 'spans_networkProviders.csv', 'wayleaves.csv',
 ]:
-    shutil.copy(f'../../../examples/csv/{csv_file}', csv_file)
+    get_file(f'examples/csv/{f}')
+for f in [
+    'dereference_nodes_gpkg.sql', 'dereference_spans_gpkg.sql',
+    'dereference_nodes_csv.sql', 'dereference_spans_csv.sql',
+    'dereference_nodes.py', 'dereference_spans.py',
+]:
+    get_file(f'docs/guidance/use/{f}')
 
-# JSON: copy dereference scripts and example data
-for py_file in ['dereference_nodes.py', 'dereference_spans.py']:
-    shutil.copy(f'../../../examples/json/{py_file}', py_file)
-shutil.copy('../../../examples/json/network-package.json', 'network-package.json')
+os.chdir('_nb')
 ```
 
-OFDS provides pre-built scripts for the `nodes` and `spans` layers that produce a single, ready-to-use GeoJSON output — with organisation names, phase names, codelist values, and address fields already included as properties. Scripts are available for all three OFDS data formats.
+OFDS provides pre-built scripts for the `nodes` and `spans` layers that produce a single, ready-to-use GeoJSON output — with organisation names, phase names, codelist values, and address fields already included as properties. The following table shows which combinations of OFDS data format and tool are supported:
 
-**Jump to:** [GeoPackage](#geopackage) · [CSV](#csv) · [JSON](#json) · [Output field reference](#output-field-reference)
+| | [ogr2ogr](https://gdal.org/en/stable/programs/ogr2ogr.html) | [GeoPandas](https://geopandas.org/) | [QGIS](https://qgis.org/) |
+|---|:---:|:---:|:---:|
+| **[GeoPackage](#geopackage)** | [✓](#ogr2ogr) | [✓](#geopandas) | [✓](#qgis) |
+| **[CSV](#csv)** | [✓](#ogr2ogr-1) | | |
+| **[JSON](#json)** | | [✓](#python) | |
+
+This page also provides an [output field reference](#output-field-reference) that describes how OFDS data is transformed in the output GeoJSON files.
+
+```{tip}
+Download this page as an executable Jupyter Notebook:  {nb-download}`geojson-prebuilt.ipynb`.
+```
 
 ## GeoPackage
 
-The GeoPackage scripts use SQL with CTEs and are run directly against the GeoPackage file. Download:
+The GeoPackage scripts are SQL queries that run directly against an OFDS GeoPackage file:
 
-* [`dereference_nodes.sql`](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/blob/0.3-dev/examples/geopackage/dereference_nodes.sql)
-* [`dereference_spans.sql`](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/blob/0.3-dev/examples/geopackage/dereference_spans.sql)
+* [`dereference_nodes_gpkg.sql`](dereference_nodes_gpkg.sql)
+* [`dereference_spans_gpkg.sql`](dereference_spans_gpkg.sql)
 
-```{note}
-Both scripts include a commented-out geometry column (`-- n.geom` / `-- s.geom`). Uncomment this line before running if you want the output to include geometry.
-```
+This section provides instructions for using the scripts to dereference and convert an OFDS GeoPackage to GeoJSON format using three common GIS tools:
+
+* [QGIS (GIS software)](#qgis)
+* [ogr2ogr (command-line tool)](#ogr2ogr)
+* [GeoPandas (Python library)](#geopandas)
+
+A GeoPackage is a SQLite database in which geometries are encoded in binary format. Therefore, whilst you can query the database directly from any SQL client, it is recommended to use a GIS tool to convert data that includes geometries to GeoJSON format.
+
+### QGIS
+
+[QGIS](https://qgis.org/) is a popular open-source GIS software that can be used to convert geospatial data between different file formats.
+
+To convert the nodes and spans layers to GeoJSON format in QGIS:
+
+1. Open **Database > DB Manager** in QGIS.
+2. Under **GeoPackage** in the left panel, connect to your `.gpkg` file.
+3. Open the **SQL Window** and paste the contents of `dereference_nodes.sql` or `dereference_spans.sql`.
+4. Click **Execute**, then check **Load as new layer**, set the geometry column to `geom`, and click **Load**.
+5. To export: right-click the layer and select **Export > Save Features As**, choosing **GeoJSON**.
 
 ### ogr2ogr
+
+[ogr2ogr](https://gdal.org/en/stable/programs/ogr2ogr.html) is a command-line tool that can be used to convert geospatial data between file formats.
+
+Use the following commands to dereference and convert the nodes and spans layers to GeoJSON format:
 
 ```{code-cell}
 %%bash
 ogr2ogr -f GeoJSON gpkg_nodes.geojson network.gpkg \
-  -sql "$(cat dereference_nodes.sql)"
+  -sql "$(cat dereference_nodes_gpkg.sql)" \
+  -lco RFC7946=YES \
+  -nln nodes
 
 ogr2ogr -f GeoJSON gpkg_spans.geojson network.gpkg \
-  -sql "$(cat dereference_spans.sql)"
+  -sql "$(cat dereference_spans_gpkg.sql)" \
+  -lco RFC7946=YES \
+  -nln spans
 ```
+
+View `gpkg_nodes.geojson`, using [jq](https://jqlang.org/) to filter out properties with `null` values: 
 
 ```{code-cell}
 ---
 mystnb:
   scroll_outputs: True
 ---
-import json
-
-with open('gpkg_nodes.geojson') as f:
-    data = json.load(f)
-
-for feature in data['features']:
-    props = {k: v for k, v in feature['properties'].items() if v is not None and v != ''}
-    print(json.dumps(props, indent=2))
-    print()
+cat gpkg_nodes.geojson | jq 'del(..|nulls)'
 ```
 
 ### GeoPandas
 
+[GeoPandas](https://geopandas.org/) is a Python library that can be used to convert geospatial data between different file formats.
+
+Use the following Python script to dereference and convert the nodes and spans layers to GeoJSON format:
+
 ```{code-cell}
 import geopandas as gpd
 
-with open('dereference_nodes.sql') as f:
-    sql = f.read()
+def dereference_and_convert(gpkg_file, sql_file, output_file, layer):
+    with open(sql_file) as f:
+        sql = f.read()
 
-nodes = gpd.read_file('network.gpkg', sql=sql)
-nodes.to_file('gpkg_nodes_gpd.geojson', driver='GeoJSON')
-nodes[['identifier', 'name', 'phase', 'status', 'address', 'networkProviders']]
+    data = gpd.read_file(gpkg_file, sql=sql)
+    data.to_file(output_file, driver='GeoJSON', layer=layer, RFC7946='YES')
+
+dereference_and_convert('network.gpkg', 'dereference_nodes_gpkg.sql', 'gpkg_nodes_gpd.geojson', 'nodes')
+dereference_and_convert('network.gpkg', 'dereference_spans_gpkg.sql', 'gpkg_spans_gpd.geojson', 'spans')
 ```
 
 ```{note}
 The `sql` parameter requires GeoPandas 1.0 or later with the [pyogrio](https://pyogrio.readthedocs.io/en/latest/) engine.
 ```
 
-### QGIS
-
-1. Open **Database > DB Manager** in QGIS.
-2. Under **GeoPackage** in the left panel, connect to your `.gpkg` file.
-3. Open the **SQL Window**, paste the script contents, and uncomment the `geom` line.
-4. Click **Execute**, then check **Load as new layer**, set the geometry column to `geom`, and click **Load**.
-5. To export: right-click the layer and select **Export > Save Features As**, choosing **GeoJSON**.
-
-## CSV
-
-```{code-cell}
----
-tags: [remove-cell]
----
-import shutil
-
-# Switch to the CSV versions of the dereference scripts
-shutil.copy('../../../examples/csv/dereference_nodes.sql', 'dereference_nodes.sql')
-shutil.copy('../../../examples/csv/dereference_spans.sql', 'dereference_spans.sql')
-```
-
-The CSV scripts use SQL with the ogr2ogr SQLite dialect, which treats each CSV file as a database table. Download:
-
-* [`dereference_nodes.sql`](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/blob/0.3-dev/examples/csv/dereference_nodes.sql)
-* [`dereference_spans.sql`](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/blob/0.3-dev/examples/csv/dereference_spans.sql)
-
-### ogr2ogr
-
-Run from the directory containing your CSV files:
-
-```{code-cell}
-%%bash
-ogr2ogr -f GeoJSON csv_nodes.geojson nodes.csv \
-  -dialect SQLite \
-  -sql "$(cat dereference_nodes.sql)" \
-  -a_srs EPSG:4326
-
-ogr2ogr -f GeoJSON csv_spans.geojson spans.csv \
-  -dialect SQLite \
-  -sql "$(cat dereference_spans.sql)" \
-  -a_srs EPSG:4326
-```
+View `gpkg_nodes_gpd.geojson`, using [jq](https://jqlang.org/) to filter out properties with `null` values: 
 
 ```{code-cell}
 ---
 mystnb:
   scroll_outputs: True
 ---
-import json
-
-with open('csv_nodes.geojson') as f:
-    data = json.load(f)
-
-for feature in data['features']:
-    props = {k: v for k, v in feature['properties'].items() if v is not None and v != ''}
-    print(json.dumps(props, indent=2))
-    print()
+cat gpkg_nodes_gpd.geojson | jq 'del(..|nulls)'
 ```
 
-### GeoPandas
+## CSV
+
+The CSV scripts are SQL queries designed for use with the ogr2ogr SQLite dialect, which treats each CSV file as a database table.
+
+* [`dereference_nodes_csv.sql`](dereference_nodes_csv.sql)
+* [`dereference_spans_csv.sql`](dereference_spans_csv.sql)
+
+### ogr2ogr
+
+[ogr2ogr](https://gdal.org/en/stable/programs/ogr2ogr.html) is a command-line tool that can be used to convert geospatial data between file formats.
+
+Use the following commands to dereference and convert the nodes and spans CSV files to GeoJSON format:
 
 ```{code-cell}
-import pandas as pd
-import geopandas as gpd
-from shapely import wkt
+%%bash
+ogr2ogr -f GeoJSON csv_nodes.geojson nodes.csv \
+  -dialect SQLite \
+  -sql "$(cat dereference_nodes_csv.sql)" \
+  -a_srs EPSG:4326 \
+  -lco RFC7946=YES \
+  -nln nodes
 
-nodes = pd.read_csv('nodes.csv')
-providers = pd.read_csv('nodes_networkProviders.csv')
-network_providers = (
-    providers.groupby('nodes/0/id')['nodes/0/networkProviders/0/name']
-    .apply(';'.join)
-    .reset_index()
-)
-nodes = nodes.merge(network_providers, on='nodes/0/id', how='left')
-nodes['geometry'] = nodes['nodes/0/location'].apply(wkt.loads)
-gdf = gpd.GeoDataFrame(nodes, crs='EPSG:4326')
-gdf.to_file('csv_nodes_gpd.geojson', driver='GeoJSON')
-gdf[['nodes/0/id', 'nodes/0/name', 'nodes/0/status', 'nodes/0/networkProviders/0/name']]
+ogr2ogr -f GeoJSON csv_spans.geojson spans.csv \
+  -dialect SQLite \
+  -sql "$(cat dereference_spans_csv.sql)" \
+  -a_srs EPSG:4326 \
+  -lco RFC7946=YES \
+  -nln spans
 ```
 
-```{note}
-This GeoPandas example joins only the network providers relationship. For a full dereference equivalent to the SQL script, use the ogr2ogr approach above.
+View `csv_nodes.geojson`, using [jq](https://jqlang.org/) to filter out properties with `null` values: 
+
+```{code-cell}
+---
+mystnb:
+  scroll_outputs: True
+---
+cat csv_nodes.geojson | jq 'del(..|nulls)'
 ```
-
-### QGIS
-
-1. Use **Layer > Add Layer > Add Delimited Text Layer**.
-2. Select `nodes.csv`, set **Geometry field** to `nodes/0/location`, **Geometry type** to `Point`, and **CRS** to `EPSG:4326`.
-3. To join network providers: use **Layer Properties > Joins** to join `nodes_networkProviders.csv` on the node ID field.
-4. To export: right-click the layer and select **Export > Save Features As**, choosing **GeoJSON**.
 
 ## JSON
 
@@ -204,8 +205,8 @@ The JSON scripts are Python scripts that read an OFDS network package JSON file.
 
 Download:
 
-* [`dereference_nodes.py`](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/blob/0.3-dev/examples/json/dereference_nodes.py)
-* [`dereference_spans.py`](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/blob/0.3-dev/examples/json/dereference_spans.py)
+* [`dereference_nodes.py`](dereference_nodes.py)
+* [`dereference_spans.py`](dereference_spans.py)
 
 Requires [GeoPandas](https://geopandas.org/) and [Shapely](https://shapely.readthedocs.io/).
 
@@ -242,10 +243,6 @@ for feature in data['features']:
     print(json.dumps(props, indent=2))
     print()
 ```
-
-### QGIS
-
-Run the Python script first to produce a GeoJSON file, then load it in QGIS via **Layer > Add Layer > Add Vector Layer**.
 
 ## Output field reference
 
