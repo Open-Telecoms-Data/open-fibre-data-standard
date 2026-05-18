@@ -26,6 +26,7 @@ tags: [remove-cell]
 ---
 import os, shutil, urllib.request
 
+shutil.rmtree('_nb') if os.path.exists('_nb') else None
 os.makedirs('_nb', exist_ok=True)
 
 BASE_URL = 'https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data-standard/298-geojson-guidance'
@@ -42,7 +43,7 @@ get_file('examples/geopackage/network.gpkg', 'network.gpkg')
 get_file('examples/json/network-package.json', 'network-package.json')
 for f in [
     'nodes.csv', 'nodes_networkProviders.csv', 'nodes_internationalConnections.csv',
-    'spans.csv', 'spans_networkProviders.csv', 'wayleaves.csv',
+    'spans.csv', 'spans_networkProviders.csv', 'wayleaves.csv', 'networks.csv'
 ]:
     get_file(f'examples/csv/{f}')
 for f in [
@@ -55,7 +56,7 @@ for f in [
 os.chdir('_nb')
 ```
 
-OFDS provides pre-built scripts for the `nodes` and `spans` layers that produce a single, ready-to-use GeoJSON output, with organisation names, phase names, codelist values, and address fields already included as properties. The following table shows which combinations of OFDS data format and tool are supported:
+OFDS provides pre-built scripts for the `nodes` and `spans` layers that produce a dereferenced GeoJSON output, with organisation names, phase names, codelist values, and address fields already included as properties. The following table shows which combinations of OFDS data format and tool are covered on this page:
 
 | | [ogr2ogr](https://gdal.org/en/stable/programs/ogr2ogr.html) | [GeoPandas](https://geopandas.org/) | [QGIS](https://qgis.org/) |
 |---|:---:|:---:|:---:|
@@ -201,7 +202,7 @@ cat csv_nodes.geojson | jq 'del(..|nulls)'
 
 ## JSON
 
-The JSON scripts are Python scripts that read an OFDS network package JSON file. OFDS JSON data is already fully dereferenced — organisation names, phase names, and other attributes are embedded as nested objects — so the scripts focus on extracting and flattening these into a consistent property structure.
+The JSON scripts are Python scripts that read an OFDS network package JSON file and write a GeoJSON feature collection containing nodes or spans with dereferenced properties.
 
 Download:
 
@@ -228,20 +229,14 @@ dereference_nodes('network-package.json', 'json_nodes2.geojson')
 dereference_spans('network-package.json', 'json_spans2.geojson')
 ```
 
+View `json_nodes.geojson`, using [jq](https://jqlang.org/):
+
 ```{code-cell}
 ---
 mystnb:
   scroll_outputs: True
 ---
-import json
-
-with open('json_nodes.geojson') as f:
-    data = json.load(f)
-
-for feature in data['features']:
-    props = {k: v for k, v in feature['properties'].items() if v is not None and v != ''}
-    print(json.dumps(props, indent=2))
-    print()
+cat json_nodes.geojson | jq .
 ```
 
 ## Output field reference

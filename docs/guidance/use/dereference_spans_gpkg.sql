@@ -1,14 +1,17 @@
--- database: network.gpkg
--- Full dereference of the spans table in network.gpkg.
--- Replaces all integer FK references with their semantic identifiers:
+-- Dereference the spans table in an OFDS GeoPackage.
+-- Use this script to export spans in GeoJSON format: https://standard.ofds.info/en/latest/guidance/use/geojson-prebuilt/
+-- OFDS GeoPackage reference documentation: https://standard.ofds.info/en/latest/reference/data_formats/geopackage/
+-- 
+-- Deferencing method:
+-- - Replaces all integer FK references with their human-readable labels:
 --   - codelist columns → codelist code
---   - organisation FKs → organisations.name
---   - node FKs → nodes.ofds_id
---   - phase FK → phases.name
---   - network FK → networks.name
---   - wayleave FKs → wayleaves.ofds_id
--- Many-to-many relations (networkProviders, transmissionMedium, deployment,
--- technologies, wayleaves, countries) are aggregated as semicolon-separated strings.
+--   - organisation FKs → organisation name
+--   - node FKs → node name and identifier
+--   - phase FKs → phase name
+--   - network FKs → network name
+--   - wayleave FKs → wayleave summary (grantor, term, cost)
+-- - Aggregates many-to-many relations (networkProviders, transmissionMedium, deployment,
+-- technologies, wayleaves, countries) as semicolon-separated strings.
 
 WITH
     span_network_providers AS (

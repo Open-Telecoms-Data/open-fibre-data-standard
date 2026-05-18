@@ -1,13 +1,17 @@
--- database: network.gpkg
--- Full dereference of the nodes table in network.gpkg.
--- Replaces all integer FK references with their semantic identifiers:
+-- Dereference the nodes table in an OFDS GeoPackage.
+-- Use this script to export nodes in GeoJSON format: https://standard.ofds.info/en/latest/guidance/use/geojson-prebuilt/
+-- OFDS GeoPackage reference documentation: https://standard.ofds.info/en/latest/reference/data_formats/geopackage/
+-- 
+-- Deferencing method:
+-- - Replaces all integer FK references with their human-readable labels:
 --   - codelist columns → codelist code
---   - organisation FKs → organisations.name
---   - phase FK → phases.name
---   - network FK → networks.name
--- Many-to-many relations (type, technologies, networkProviders) are aggregated
+--   - organisation FKs → organisation name
+--   - phase FKs → phase name
+--   - network FKs → network name
+--	 - international connection FKs → country names
+-- - Aggregates many-to-many relations (type, technologies, networkProviders, international connections)
 -- as semicolon-separated strings.
--- Child rows in nodes_internationalConnections are aggregated as semicolon-separated countries.
+-- - Concatenates address components into comma-separated strings
 WITH
     node_types AS (
         SELECT

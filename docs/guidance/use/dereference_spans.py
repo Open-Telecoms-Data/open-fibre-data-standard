@@ -5,8 +5,7 @@ Usage:
     python dereference_spans.py input.json output.geojson
 
 Reads an OFDS network package JSON file and produces a GeoJSON FeatureCollection
-of spans. Resolves start/end node references to names, looks up wayleave details
-from the network's wayleaves array, and joins arrays as semicolon-separated strings.
+of spans.
 
 Requires: geopandas, shapely
 """
@@ -43,7 +42,6 @@ def dereference_spans(input_path, output_path):
 
     rows = []
     for network in networks:
-        # Build lookup dicts for nodes and wayleaves within this network
         nodes = {n["id"]: n for n in network.get("nodes", [])}
         wayleaves = {w["id"]: w for w in network.get("wayleaves", [])}
 
@@ -54,7 +52,6 @@ def dereference_spans(input_path, output_path):
             start_name = nodes.get(start_id, {}).get("name", start_id)
             end_name = nodes.get(end_id, {}).get("name", end_id)
 
-            # Wayleaves are referenced by ID; look up details from network.wayleaves
             span_wayleaves = [wayleaves[wid] for wid in span.get("wayleaves", []) if wid in wayleaves]
 
             rows.append(
@@ -105,7 +102,6 @@ def dereference_spans(input_path, output_path):
 
     gdf = gpd.GeoDataFrame(rows, crs="EPSG:4326")
     gdf.to_file(output_path, driver="GeoJSON")
-    print(f"Wrote {len(gdf)} spans to {output_path}")
 
 
 if __name__ == "__main__":

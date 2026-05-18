@@ -4,7 +4,7 @@ OFDS data in any of its supported [data formats](../../reference/data_formats/in
 
 This page helps you decide which approach is right for your use case, and introduces the key concepts behind converting OFDS data to GeoJSON. Detailed instructions are provided on two separate pages:
 
-* [Use a pre-built scripts](geojson-prebuilt.md) - ready-to-use queries and scripts that convert nodes and spans from any OFDS format to a dereferenced GeoJSON output
+* [Use a pre-built script](geojson-prebuilt.md) - ready-to-use queries and scripts that convert nodes and spans from any OFDS format to a dereferenced GeoJSON output
 * [Write a custom script](geojson-custom.md) - examples showing how to write your own SQL or Python to produce a customised GeoJSON output
 
 ## Which approach should I use?

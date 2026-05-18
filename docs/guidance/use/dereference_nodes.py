@@ -5,9 +5,7 @@ Usage:
     python dereference_nodes.py input.json output.geojson
 
 Reads an OFDS network package JSON file and produces a GeoJSON FeatureCollection
-of nodes. All properties are already named in JSON; this script extracts and
-flattens them into a consistent structure matching the GeoPackage and CSV
-dereference scripts, with arrays joined as semicolon-separated strings.
+of nodes.
 
 Requires: geopandas, shapely
 """
@@ -33,6 +31,7 @@ def dereference_nodes(input_path, output_path):
 
             rows.append(
                 {
+                    "network": network.get("name"),
                     "geometry": shape(node["location"]) if node.get("location") else None,
                     "identifier": node.get("id"),
                     "name": node.get("name"),
@@ -70,7 +69,6 @@ def dereference_nodes(input_path, output_path):
 
     gdf = gpd.GeoDataFrame(rows, crs="EPSG:4326")
     gdf.to_file(output_path, driver="GeoJSON")
-    print(f"Wrote {len(gdf)} nodes to {output_path}")
 
 
 if __name__ == "__main__":
