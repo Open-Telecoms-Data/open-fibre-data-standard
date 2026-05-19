@@ -90,7 +90,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :animate: fade-in-slide-down
 :chevron: down-up
 :icon: book
-name: phase-description
+:name: phase-description
 ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
 :jsonpointer: /$defs/Phase/description
 ```
