@@ -31,8 +31,8 @@ def dereference_nodes(input_path, output_path):
 
             rows.append(
                 {
-                    "network": network.get("name"),
                     "geometry": shape(node["location"]) if node.get("location") else None,
+                    "network": network.get("name"),
                     "identifier": node.get("id"),
                     "name": node.get("name"),
                     "phase": node.get("phase", {}).get("name"),
@@ -67,7 +67,7 @@ def dereference_nodes(input_path, output_path):
                 }
             )
 
-    gdf = gpd.GeoDataFrame(rows, crs="EPSG:4326")
+    gdf = gpd.GeoDataFrame(rows)
     gdf.to_file(output_path, driver="GeoJSON")
 
 

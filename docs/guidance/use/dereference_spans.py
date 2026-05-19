@@ -57,6 +57,7 @@ def dereference_spans(input_path, output_path):
             rows.append(
                 {
                     "geometry": shape(span["route"]) if span.get("route") else None,
+                    "network": network.get("name"),
                     "identifier": span.get("id"),
                     "name": span.get("name"),
                     "phase": span.get("phase", {}).get("name"),
@@ -79,15 +80,14 @@ def dereference_spans(input_path, output_path):
                     "fibreTypeDetails__description": span.get("fibreTypeDetails", {}).get("description"),
                     "fibreCount": span.get("fibreCount"),
                     "fibreLength": span.get("fibreLength"),
-                    "transmissionMedium": ";".join(span.get("transmissionMedium", [])),
-                    "deployment": ";".join(span.get("deployment", [])),
-                    "technologies": ";".join(span.get("technologies", [])),
                     "capacity": span.get("capacity"),
                     "capacityDetails__description": span.get("capacityDetails", {}).get("description"),
                     "networkProviders": ";".join(
                         p.get("name", "") for p in span.get("networkProviders", [])
                     ),
-                    "countries": ";".join(span.get("countries", [])),
+                    "transmissionMedium": ";".join(span.get("transmissionMedium", [])),
+                    "deployment": ";".join(span.get("deployment", [])),
+                    "technologies": ";".join(span.get("technologies", [])),
                     "wayleave_grantor": ";".join(
                         w.get("grantor", {}).get("name", "") for w in span_wayleaves
                     ),
@@ -97,10 +97,11 @@ def dereference_spans(input_path, output_path):
                     "wayleave_cost": ";".join(
                         filter(None, (_wayleave_cost(w) for w in span_wayleaves))
                     ),
+                    "countries": ";".join(span.get("countries", []))
                 }
             )
 
-    gdf = gpd.GeoDataFrame(rows, crs="EPSG:4326")
+    gdf = gpd.GeoDataFrame(rows)
     gdf.to_file(output_path, driver="GeoJSON")
 
 

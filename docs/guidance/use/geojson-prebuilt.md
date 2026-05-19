@@ -202,7 +202,7 @@ cat csv_nodes.geojson | jq 'del(..|nulls)'
 
 ## JSON
 
-The JSON scripts are Python scripts that read an OFDS network package JSON file and write a GeoJSON feature collection containing nodes or spans with dereferenced properties.
+The JSON scripts are Python scripts that read an [OFDS network package JSON file](../../reference/data_formats/json/index.md) and write a GeoJSON feature collection containing nodes or spans with dereferenced properties.
 
 Download:
 
@@ -219,16 +219,6 @@ python dereference_nodes.py network-package.json json_nodes.geojson
 python dereference_spans.py network-package.json json_spans.geojson
 ```
 
-Or import directly into your own script:
-
-```{code-cell}
-from dereference_nodes import dereference_nodes
-from dereference_spans import dereference_spans
-
-dereference_nodes('network-package.json', 'json_nodes2.geojson')
-dereference_spans('network-package.json', 'json_spans2.geojson')
-```
-
 View `json_nodes.geojson`, using [jq](https://jqlang.org/):
 
 ```{code-cell}
@@ -241,12 +231,13 @@ cat json_nodes.geojson | jq .
 
 ## Output field reference
 
-All three format-specific scripts produce a consistent set of output properties. The tables below describe the output fields.
+The scripts produce a consistent set of output properties across all three formats. Minor differences in how certain value types are represented are described in [Format differences](#format-differences).
 
 **Nodes**
 
 | Output field | Description |
 |---|---|
+| `network` | Network name |
 | `identifier` | Node identifier |
 | `name` | Node name |
 | `phase` | Phase name |
@@ -268,6 +259,7 @@ All three format-specific scripts produce a consistent set of output properties.
 
 | Output field | Description |
 |---|---|
+| `network` | Network name |
 | `identifier` | Span identifier |
 | `name` | Span name |
 | `phase` | Phase name |
@@ -290,13 +282,41 @@ All three format-specific scripts produce a consistent set of output properties.
 | `fibreTypeDetails__description` | Fibre type description |
 | `fibreCount` | Number of fibres |
 | `fibreLength` | Fibre length (metres) |
-| `transmissionMedium` | Semicolon-separated codelist codes |
-| `deployment` | Semicolon-separated codelist codes |
-| `technologies` | Semicolon-separated codelist codes |
 | `capacity` | Capacity |
 | `capacityDetails__description` | Capacity description |
 | `networkProviders` | Semicolon-separated organisation names |
-| `countries` | Semicolon-separated country codes |
+| `transmissionMedium` | Semicolon-separated codelist codes |
+| `deployment` | Semicolon-separated codelist codes |
+| `technologies` | Semicolon-separated codelist codes |
 | `wayleave_grantor` | Organisation name |
 | `wayleave_term` | e.g. `25 years` or `indefinite` |
 | `wayleave_cost` | e.g. `1.75 GHS per metre (annual)` |
+| `countries` | Semicolon-separated country codes |
+
+### Format differences
+
+The three scripts produce equivalent output, but differ in how certain value types are represented due to the underlying data formats.
+
+**Boolean fields** (`directed`, `darkFibre`, `accessPoint`, `power`, `supportingInfrastructure__spareCapacity`)
+
+| Format | Representation |
+|---|---|
+| GeoPackage | `"true"` / `"false"` (string) |
+| CSV | `"True"` / `"False"` (string) |
+| JSON | `true` / `false` (native JSON boolean) |
+
+**Numeric fields** (`fibreCount`, `fibreLength`, `capacity`)
+
+| Format | Representation |
+|---|---|
+| GeoPackage | Native number (e.g. `24`, `276000.0`, `4.976`) |
+| CSV | String (e.g. `"24"`, `"276000"`, `"4.976"`) |
+| JSON | Native number (e.g. `24`, `276000`, `4.976`) |
+
+**Missing values** (e.g. `codeployment`, `cableType`, `supportingInfrastructure__description` when not set)
+
+| Format | Representation |
+|---|---|
+| GeoPackage | `null` |
+| CSV | `""` (empty string) |
+| JSON | `null` |

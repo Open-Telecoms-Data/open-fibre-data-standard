@@ -9,7 +9,7 @@ This page helps you decide which approach is right for your use case, and introd
 
 ## Which approach should I use?
 
-**Use the [pre-built scripts](geojson-prebuilt.md) if:**
+**[Use the pre-built scripts](geojson-prebuilt.md) if:**
 
 * You want nodes and spans as GeoJSON with all references resolved to human-readable values
 * You're working with [GeoPackage](../../reference/data_formats/geopackage/index.md), [CSV](../../reference/data_formats/csv.md) or [JSON](../../reference/data_formats/json/index.md) data

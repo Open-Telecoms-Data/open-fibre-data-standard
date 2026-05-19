@@ -90,6 +90,7 @@ WITH
 
 SELECT
     s.geom,
+    networks.name                                                   AS network,
     s.ofds_id                                                       AS identifier,
     s.name,
     phases.name                                                     AS phase,
@@ -114,7 +115,6 @@ SELECT
     s.fibreLength,
     s.capacity,
     s.capacityDetails__description,
-    networks.name                                                   AS network,
     span_network_providers.networkProviders,
     span_transmission_medium.transmissionMedium,
     span_deployment.deployment,

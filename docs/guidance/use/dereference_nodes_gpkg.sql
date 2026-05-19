@@ -54,6 +54,7 @@ WITH
     )
 SELECT
     n.geom,
+    networks.name AS network,
     n.ofds_id AS identifier,
     n.name,
     phases.name AS phase,
@@ -66,16 +67,15 @@ SELECT
         n."address__postalCode",
         n."address__country"
     ) AS address,
+    node_types.type,
     supporting_infrastructure_type.code AS supportingInfrastructure__type,
     n.supportingInfrastructure__description,
     supporting_infrastructure_owner.name AS supportingInfrastructure__owner,
     n.supportingInfrastructure__spareCapacity,
     n.accessPoint,
     n.power,
-    transmission_medium_owner.name AS transmissionMediumOwner,
-    networks.name AS network,
-    node_types.type,
     node_technologies.technologies,
+    transmission_medium_owner.name AS transmissionMediumOwner,
     node_network_providers.networkProviders,
     node_international_connections.internationalConnections
 FROM
