@@ -18,6 +18,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#273](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/273) - Add OFDS Convert, Validate, Explore tool (CoVE) link to the left hand navigation
 - [#280](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/280) - Reorder codelist codes.
 - [#248](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/282) - Add comments declaring document mode to each markdown file in docs
+- [#332](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/332) - Add guidance on converting OFDS data to GeoJSON format. Correct error in example data.
 
 ## 0.4.0 - 2026-03-30
 
