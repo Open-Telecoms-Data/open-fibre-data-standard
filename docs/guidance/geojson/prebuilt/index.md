@@ -74,14 +74,14 @@ Download this page as an executable Jupyter Notebook:  {nb-download}`index.ipynb
 
 The GeoPackage scripts are SQL queries that run directly against an OFDS GeoPackage file:
 
-* [`dereference_nodes_gpkg.sql`](dereference_nodes_gpkg.sql)
-* [`dereference_spans_gpkg.sql`](dereference_spans_gpkg.sql)
+- [`dereference_nodes_gpkg.sql`](dereference_nodes_gpkg.sql)
+- [`dereference_spans_gpkg.sql`](dereference_spans_gpkg.sql)
 
 This section provides instructions for using the scripts to dereference and convert an OFDS GeoPackage to GeoJSON format using three common GIS tools:
 
-* [QGIS (GIS software)](#qgis)
-* [ogr2ogr (command-line tool)](#ogr2ogr)
-* [GeoPandas (Python library)](#geopandas)
+- [QGIS (GIS software)](#qgis)
+- [ogr2ogr (command-line tool)](#ogr2ogr)
+- [GeoPandas (Python library)](#geopandas)
 
 A GeoPackage is a SQLite database in which geometries are encoded in binary format. Therefore, whilst you can query the database directly from any SQL client, it is recommended to use a GIS tool to convert data that includes geometries to GeoJSON format.
 
@@ -92,10 +92,10 @@ A GeoPackage is a SQLite database in which geometries are encoded in binary form
 To convert the nodes and spans layers to GeoJSON format in QGIS:
 
 1. Open **Database > DB Manager** in QGIS.
-2. Under **GeoPackage** in the left panel, connect to your `.gpkg` file.
-3. Open the **SQL Window** and paste the contents of `dereference_nodes.sql` or `dereference_spans.sql`.
-4. Click **Execute**, then check **Load as new layer**, set the geometry column to `geom`, and click **Load**.
-5. To export: right-click the layer and select **Export > Save Features As**, choosing **GeoJSON**.
+1. Under **GeoPackage** in the left panel, connect to your `.gpkg` file.
+1. Open the **SQL Window** and paste the contents of `dereference_nodes.sql` or `dereference_spans.sql`.
+1. Click **Execute**, then check **Load as new layer**, set the geometry column to `geom`, and click **Load**.
+1. To export: right-click the layer and select **Export > Save Features As**, choosing **GeoJSON**.
 
 ### ogr2ogr
 
@@ -103,10 +103,11 @@ To convert the nodes and spans layers to GeoJSON format in QGIS:
 
 To execute a sql script and export the output to GeoJSON format, use the following options:
 
-* [`-f GeoJSON`](https://gdal.org/en/stable/programs/ogr2ogr.html#cmdoption-ogr2ogr-f) to set the output format to GeoJSON
-* [`-sql` @filename](https://gdal.org/en/stable/programs/ogr2ogr.html#cmdoption-ogr2ogr-sql) to specify the SQL query to execute, using `@filename` to read the query from a file
-* [`-lco RFC7946=YES`](https://gdal.org/en/stable/programs/ogr2ogr.html#cmdoption-ogr2ogr-lco) to ensure output is compliant with the GeoJSON specfication (RFC 7946)
-- [`-nln` layer_name](https://gdal.org/en/stable/programs/ogr2ogr.html#cmdoption-ogr2ogr-nln) to set the name of the output layer (optional)
+- [`-f GeoJSON`](https://gdal.org/en/stable/programs/ogr2ogr.html#cmdoption-ogr2ogr-f) to set the output format to GeoJSON
+- [`-sql` @filename](https://gdal.org/en/stable/programs/ogr2ogr.html#cmdoption-ogr2ogr-sql) to specify the SQL query to execute, using `@filename` to read the query from a file
+- [`-lco RFC7946=YES`](https://gdal.org/en/stable/programs/ogr2ogr.html#cmdoption-ogr2ogr-lco) to ensure output is compliant with the GeoJSON specfication (RFC 7946)
+
+* [`-nln` layer_name](https://gdal.org/en/stable/programs/ogr2ogr.html#cmdoption-ogr2ogr-nln) to set the name of the output layer (optional)
 
 For example, to execute `dereference_nodes_gpkg.sql` and export the output to `gpkg_nodes.geojson`:
 
@@ -123,7 +124,7 @@ ogr2ogr -f GeoJSON gpkg_spans.geojson network.gpkg \
   -nln spans
 ```
 
-View `gpkg_nodes.geojson`, using [jq](https://jqlang.org/) to filter out properties with `null` values: 
+View `gpkg_nodes.geojson`, using [jq](https://jqlang.org/) to filter out properties with `null` values:
 
 ```{code-cell}
 ---
@@ -157,7 +158,7 @@ dereference_and_convert('network.gpkg', 'dereference_spans_gpkg.sql', 'gpkg_span
 The `sql` parameter requires GeoPandas 1.0 or later with the [pyogrio](https://pyogrio.readthedocs.io/en/latest/) engine.
 ```
 
-View `gpkg_nodes_gpd.geojson`, using [jq](https://jqlang.org/) to filter out properties with `null` values: 
+View `gpkg_nodes_gpd.geojson`, using [jq](https://jqlang.org/) to filter out properties with `null` values:
 
 ```{code-cell}
 ---
@@ -171,8 +172,8 @@ cat gpkg_nodes_gpd.geojson | jq 'del(..|nulls)'
 
 The CSV scripts are SQL queries designed for use with the ogr2ogr SQLite dialect, which treats each CSV file as a database table.
 
-* [`dereference_nodes_csv.sql`](dereference_nodes_csv.sql)
-* [`dereference_spans_csv.sql`](dereference_spans_csv.sql)
+- [`dereference_nodes_csv.sql`](dereference_nodes_csv.sql)
+- [`dereference_spans_csv.sql`](dereference_spans_csv.sql)
 
 ### ogr2ogr
 
@@ -197,7 +198,7 @@ ogr2ogr -f GeoJSON csv_spans.geojson spans.csv \
   -nln spans
 ```
 
-View `csv_nodes.geojson`, using [jq](https://jqlang.org/) to filter out properties with `null` values: 
+View `csv_nodes.geojson`, using [jq](https://jqlang.org/) to filter out properties with `null` values:
 
 ```{code-cell}
 ---
@@ -213,8 +214,8 @@ The JSON scripts are Python scripts that read an [OFDS network package JSON file
 
 Download:
 
-* [`dereference_nodes.py`](dereference_nodes.py)
-* [`dereference_spans.py`](dereference_spans.py)
+- [`dereference_nodes.py`](dereference_nodes.py)
+- [`dereference_spans.py`](dereference_spans.py)
 
 Requires [GeoPandas](https://geopandas.org/) and [Shapely](https://shapely.readthedocs.io/).
 

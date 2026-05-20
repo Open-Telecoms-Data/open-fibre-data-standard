@@ -69,13 +69,13 @@ Fields that reference an open [codelist](../../../reference/codelists.md) (e.g. 
 
 ### Dereference a many-to-many relationship
 
-[Many-to-many relationships](../../../reference/data_formats/geopackage/index.md#many-to-many-relationships) are modelled as [associative tables](https://en.wikipedia.org/wiki/Associative_entity), which link a base table and a related table.  For example, the `relation_nodes_networkProviders` table associates nodes in the `nodes` table with network providers in the `organisations` table.
+[Many-to-many relationships](../../../reference/data_formats/geopackage/index.md#many-to-many-relationships) are modelled as [associative tables](https://en.wikipedia.org/wiki/Associative_entity), which link a base table and a related table. For example, the `relation_nodes_networkProviders` table associates nodes in the `nodes` table with network providers in the `organisations` table.
 
 To dereference many-to-many relationship:
 
-* join the base table to the associative table, and the associative table to the related table
-* select the desired fields from the base and related tables
-* decide how to merge or aggregate the values of selected fields from the related table.
+- join the base table to the associative table, and the associative table to the related table
+- select the desired fields from the base and related tables
+- decide how to merge or aggregate the values of selected fields from the related table.
 
 The example below dereferences the relationship between `nodes` and `organisations`, and uses `GROUP_CONCAT` to merge network provider names into a comma-separated string:
 
@@ -99,7 +99,7 @@ Node locations and span routes are represented as WKT strings in the `nodes/0/lo
 
 When authoring a SQL query for use with ogr2ogr's SQLite dialect, column names must match the CSV headers exactly, using double quotes for paths containing slashes. For example, the `nodes/0/location` column must be referenced in SQL as `"nodes/0/location"`.
 
-The [CSV format reference documentation](../../../reference/data_formats/csv.md) lists the relationships between the tables in the CSV format. 
+The [CSV format reference documentation](../../../reference/data_formats/csv.md) lists the relationships between the tables in the CSV format.
 
 ### Dereference a one-to-many relationship
 
@@ -115,9 +115,9 @@ For example, the `nodes/0/phase/id` column in the `nodes` table references the `
 
 One-to-many relationships are modelled as separate CSV files linking identifiers in the base and related tables. To dereference a many-to-many relationship:
 
-* join the base table to the associative table, and the associative table to the related table
-* select the desired fields from the base and related tables
-* decide how to merge or aggregate the values of selected fields from the related table.
+- join the base table to the associative table, and the associative table to the related table
+- select the desired fields from the base and related tables
+- decide how to merge or aggregate the values of selected fields from the related table.
 
 For example, the `nodes_networkProviders.csv` file links nodes to their network providers in the `organisations.csv` file. To dereference this relationship, join `nodes.csv` with `nodes_networkProviders.csv` on `nodes/0/id` and join `nodes_networkProviders.csv` with `organisations.csv` on `nodes/0/networkProviders/0/id` and `organisations/0/id`. This example uses `GROUP_CONCAT` to merge multiple network provider websites into a comma-separated string, but you could select different fields or use a different aggregation method depending on your needs.
 
@@ -132,11 +132,10 @@ OFDS JSON data is already partly dereferenced. However, some properties are mode
 
 To dereference these properties, you can write a Python script to load the JSON data, look up the referenced objects in the `organisations` and `phases` arrays, and construct a GeoDataFrame for export to GeoJSON format. The example below:
 
-* maps the name of the phase to which a node belongs from `.phase.name` to `.phase_name`
-* dereferences the phase identifier referenced in `.phase.id` and returns the `.description` of the referenced phase
-* joins the names of the node's network providers from `.networkProviders.name` into a single comma-separated string in `.networkProvider_names`
-* dereferences the organisation identifiers referenced in `.networkProviders.id` and joins the websites of the referenced organisations into a single comma-separated string in `.networkProvider_websites`.
-
+- maps the name of the phase to which a node belongs from `.phase.name` to `.phase_name`
+- dereferences the phase identifier referenced in `.phase.id` and returns the `.description` of the referenced phase
+- joins the names of the node's network providers from `.networkProviders.name` into a single comma-separated string in `.networkProvider_names`
+- dereferences the organisation identifiers referenced in `.networkProviders.id` and joins the websites of the referenced organisations into a single comma-separated string in `.networkProvider_websites`.
 
 ```{code-cell}
 import json
@@ -166,7 +165,7 @@ gdf = gpd.GeoDataFrame(rows, crs='EPSG:4326')
 gdf.to_file('json_nodes_example.geojson', driver='GeoJSON')
 ```
 
-View `json_nodes_example.geojson`, using [jq](https://jqlang.org/) to filter out properties with `null` values: 
+View `json_nodes_example.geojson`, using [jq](https://jqlang.org/) to filter out properties with `null` values:
 
 ```{code-cell}
 ---
