@@ -101,7 +101,7 @@ def dereference_spans(input_path, output_path):
                 }
             )
 
-    gdf = gpd.GeoDataFrame(rows)
+    gdf = gpd.GeoDataFrame(rows, crs='EPSG:4326')
     gdf.to_file(output_path, driver="GeoJSON")
 
 

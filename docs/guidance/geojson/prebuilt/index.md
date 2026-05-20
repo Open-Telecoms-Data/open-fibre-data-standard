@@ -33,7 +33,7 @@ BASE_URL = 'https://raw.githubusercontent.com/Open-Telecoms-Data/open-fibre-data
 
 def get_file(repo_path, dest=None):
     dest_name = dest or os.path.basename(repo_path)
-    local = f'../../../{repo_path}'
+    local = f'../../../../{repo_path}'
     if os.path.exists(local):
         shutil.copy(local, f'_nb/{dest_name}')
     else:
@@ -51,7 +51,7 @@ for f in [
     'dereference_nodes_csv.sql', 'dereference_spans_csv.sql',
     'dereference_nodes.py', 'dereference_spans.py',
 ]:
-    get_file(f'docs/guidance/use/{f}')
+    get_file(f'docs/guidance/geojson/prebuilt/{f}')
 
 os.chdir('_nb')
 ```
@@ -67,7 +67,7 @@ OFDS provides pre-built scripts for the `nodes` and `spans` layers that produce 
 This page also provides an [output field reference](#output-field-reference) that describes how OFDS data is transformed in the output GeoJSON files.
 
 ```{tip}
-Download this page as an executable Jupyter Notebook:  {nb-download}`geojson-prebuilt.ipynb`.
+Download this page as an executable Jupyter Notebook:  {nb-download}`index.ipynb`.
 ```
 
 ## GeoPackage
@@ -101,17 +101,24 @@ To convert the nodes and spans layers to GeoJSON format in QGIS:
 
 [ogr2ogr](https://gdal.org/en/stable/programs/ogr2ogr.html) is a command-line tool that can be used to convert geospatial data between file formats.
 
-Use the following commands to dereference and convert the nodes and spans layers to GeoJSON format:
+To execute a sql script and export the output to GeoJSON format, use the following options:
+
+* [`-f GeoJSON`](https://gdal.org/en/stable/programs/ogr2ogr.html#cmdoption-ogr2ogr-f) to set the output format to GeoJSON
+* [`-sql` @filename](https://gdal.org/en/stable/programs/ogr2ogr.html#cmdoption-ogr2ogr-sql) to specify the SQL query to execute, using `@filename` to read the query from a file
+* [`-lco RFC7946=YES`](https://gdal.org/en/stable/programs/ogr2ogr.html#cmdoption-ogr2ogr-lco) to ensure output is compliant with the GeoJSON specfication (RFC 7946)
+- [`-nln` layer_name](https://gdal.org/en/stable/programs/ogr2ogr.html#cmdoption-ogr2ogr-nln) to set the name of the output layer (optional)
+
+For example, to execute `dereference_nodes_gpkg.sql` and export the output to `gpkg_nodes.geojson`:
 
 ```{code-cell}
 %%bash
 ogr2ogr -f GeoJSON gpkg_nodes.geojson network.gpkg \
-  -sql "$(cat dereference_nodes_gpkg.sql)" \
+  -sql @dereference_nodes_gpkg.sql \
   -lco RFC7946=YES \
   -nln nodes
 
 ogr2ogr -f GeoJSON gpkg_spans.geojson network.gpkg \
-  -sql "$(cat dereference_spans_gpkg.sql)" \
+  -sql @dereference_spans_gpkg.sql \
   -lco RFC7946=YES \
   -nln spans
 ```
@@ -202,7 +209,7 @@ cat csv_nodes.geojson | jq 'del(..|nulls)'
 
 ## JSON
 
-The JSON scripts are Python scripts that read an [OFDS network package JSON file](../../reference/data_formats/json/index.md) and write a GeoJSON feature collection containing nodes or spans with dereferenced properties.
+The JSON scripts are Python scripts that read an [OFDS network package JSON file](../../../reference/data_formats/json/index.md) and write a GeoJSON feature collection containing nodes or spans with dereferenced properties.
 
 Download:
 
@@ -295,9 +302,9 @@ The scripts produce a consistent set of output properties across all three forma
 
 ### Format differences
 
-The three scripts produce equivalent output, but differ in how certain value types are represented due to the underlying data formats.
+The three scripts produce equivalent output, but differ in how certain value types are represented due to differences in the source data formats and the tools and libraries used to convert data.
 
-**Boolean fields** (`directed`, `darkFibre`, `accessPoint`, `power`, `supportingInfrastructure__spareCapacity`)
+**Boolean fields**
 
 | Format | Representation |
 |---|---|
@@ -305,7 +312,7 @@ The three scripts produce equivalent output, but differ in how certain value typ
 | CSV | `"True"` / `"False"` (string) |
 | JSON | `true` / `false` (native JSON boolean) |
 
-**Numeric fields** (`fibreCount`, `fibreLength`, `capacity`)
+**Numeric fields**
 
 | Format | Representation |
 |---|---|
@@ -313,7 +320,7 @@ The three scripts produce equivalent output, but differ in how certain value typ
 | CSV | String (e.g. `"24"`, `"276000"`, `"4.976"`) |
 | JSON | Native number (e.g. `24`, `276000`, `4.976`) |
 
-**Missing values** (e.g. `codeployment`, `cableType`, `supportingInfrastructure__description` when not set)
+**Missing values**
 
 | Format | Representation |
 |---|---|

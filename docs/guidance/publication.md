@@ -159,6 +159,10 @@ flatten-tool unflatten -f csv -m networks -s network-schema.json --convert-wkt p
 
 ::::
 
+```{seealso}
+To learn how to convert OFDS data to GeoJSON format, see [How to convert OFDS data to GeoJSON format](geojson/index.md).
+```
+
 #### How to publish large networks
 
 This section describes how to:

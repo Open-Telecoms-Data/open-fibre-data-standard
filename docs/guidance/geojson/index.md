@@ -4,18 +4,18 @@ OFDS data in any of its supported [data formats](../../reference/data_formats/in
 
 This page helps you decide which approach is right for your use case, and introduces the key concepts behind converting OFDS data to GeoJSON. Detailed instructions are provided on two separate pages:
 
-* [Use a pre-built script](geojson-prebuilt.md) - ready-to-use queries and scripts that convert nodes and spans from any OFDS format to a dereferenced GeoJSON output
-* [Write a custom script](geojson-custom.md) - examples showing how to write your own SQL or Python to produce a customised GeoJSON output
+* [Use a pre-built script](prebuilt/index.md) - ready-to-use queries and scripts that convert nodes and spans from any OFDS format to a dereferenced GeoJSON output
+* [Write a custom script](custom/index.md) - examples showing how to write your own SQL or Python to produce a customised GeoJSON output
 
 ## Which approach should I use?
 
-**[Use the pre-built scripts](geojson-prebuilt.md) if:**
+**[Use the pre-built scripts](prebuilt/index.md) if:**
 
 * You want nodes and spans as GeoJSON with all references resolved to human-readable values
 * You're working with [GeoPackage](../../reference/data_formats/geopackage/index.md), [CSV](../../reference/data_formats/csv.md) or [JSON](../../reference/data_formats/json/index.md) data
 * You want to use ogr2ogr, GeoPandas or QGIS
 
-**[Write a custom script](geojson-custom.md) if:**
+**[Write a custom script](custom/index.md) if:**
 
 * You need to select a specific subset of fields
 * You want to apply filters (e.g. only operational spans)
@@ -71,3 +71,11 @@ id,name,status,transmissionMediumOwner
 1,Accra,operational,FibreCo
 ```
 ````
+
+```{eval-rst}
+.. toctree::
+   :hidden:
+
+   prebuilt/index
+   custom/index
+```

@@ -11,7 +11,7 @@ Download this page as an executable Jupyter Notebook:  {nb-download}`leaflet.ipy
 ```
 
 ```{seealso}
-To learn how to convert OFDS data to GeoJSON format and visualise it in Folium (Leaflet), see [How to convert OFDS data to GeoJSON format](geojson).
+To learn how to convert OFDS data to GeoJSON format and visualise it in Folium (Leaflet), see [How to convert OFDS data to GeoJSON format](../geojson/index.md).
 ```
 
 ## Get the data

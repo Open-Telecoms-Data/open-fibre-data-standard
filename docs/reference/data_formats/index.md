@@ -19,4 +19,6 @@ When sharing data publicly, to support the widest range of use cases, you should
 
 ```{seealso}
 For more information on choosing a data format and on publishing data in multiple formats, see [how to format data for publication](../../guidance/publication.md#how-to-format-data).
+
+To learn how to convert OFDS data to GeoJSON format, see [How to convert OFDS data to GeoJSON format](../../guidance/geojson/index.md).
 ```
