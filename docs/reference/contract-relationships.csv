@@ -1,0 +1,3 @@
+Entity,Cardinality,Description
+[Document](#document),1:N,Documents: The documents related to this contract.
+[Phase](#phase),1:N,Related phases: The phases to which this contract relates.

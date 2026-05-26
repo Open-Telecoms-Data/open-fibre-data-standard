@@ -1,6 +1,6 @@
 {
   "$id": "https://standard.ofds.info/en/0__4__0/network-schema.json",
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$schema": "file:///home/ddewhurst/google_drive/Repositories/open_fibre/open-fibre-data-standard/schema/metaschema.json",
   "title": "Network",
   "description": "A telecommunication network. A network consists of a set of nodes interconnected by spans.",
   "type": "object",
@@ -383,13 +383,23 @@
           "title": "Start",
           "description": "The identifier of one of two nodes that this span connects. If the span is directed, it represents the starting point of the span.",
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "x-references": {
+            "definition": "#/definitions/Node",
+            "property": "id",
+            "collection": "#/properties/nodes"
+          }
         },
         "end": {
           "title": "End",
           "description": "The identifier of one of two nodes that this span connects. If the span is directed, it represents the end point of the span.",
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "x-references": {
+            "definition": "#/definitions/Node",
+            "collection": "#/properties/nodes",
+            "property": "id"
+          }
         },
         "directed": {
           "title": "Directed",
@@ -403,7 +413,7 @@
           "$ref": "#/$defs/LineStringGeometry"
         },
         "transmissionMediumOwner": {
-          "title": "Owner",
+          "title": "Transmission medium owner",
           "description": "The organisation that owns the transmission media for this span, i.e. the fibre cables.",
           "$ref": "#/$defs/OrganisationReference"
         },
@@ -606,7 +616,12 @@
           "type": "array",
           "items": {
             "type": "string",
-            "minLength": 1
+            "minLength": 1,
+            "x-references": {
+              "definition": "#/definitions/Wayleave",
+              "collection": "#/properties/wayleaves",
+              "property": "id"
+            }
           },
           "uniqueItems": true,
           "minItems": 1
@@ -1416,7 +1431,12 @@
           "title": "Local identifier",
           "description": "The local identifier of the organisation being referenced.",
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "x-references": {
+            "definition": "#/definitions/Organisation",
+            "collection": "#/properties/organisations",
+            "property": "id"
+          }
         },
         "name": {
           "title": "Name",
@@ -1440,7 +1460,12 @@
           "title": "Identifier",
           "description": "The identifier of the phase being referenced.",
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "x-references": {
+            "definition": "#/definitions/Phase",
+            "collection": "#/properties/phases",
+            "property": "id"
+          }
         },
         "name": {
           "title": "Name",

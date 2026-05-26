@@ -24,6 +24,8 @@ For an introduction to key concepts and relationships covered in the OFDS data m
 
 This section provides a definition for each entity in the data model, including a description, relationships to other entities, and attributes.
 
+Relationships are listed from the perspective of the entity that holds the reference. Inverse relationships are not shown separately.See the [#overview] diagram for a full view of how entities relate to each other.
+
 Some attributes refer to [codelists](codelists.md) to limit and standardise the possible values of the attribute. In such cases, a link to the codelist is provided in the attribute's description.
 
 ### Network
@@ -44,26 +46,9 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: link
 :name: network-relationships
-````{list-table}
+````{csv-table}
+:file: network-relationships.csv
 :header-rows: 1
-*  - Entity
-   - Cardinality
-   - Description
-*  - [Node](#node)
-   - 1:N
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /properties/nodes/description
-      ```
-*  - [Span](#span)
-   - 1:N
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /properties/spans/description
-      ```
-*  - [Phase](#phase)
-   - 1:N
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /properties/phases/description
-      ```
 
 ````
 
@@ -75,7 +60,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :icon: rows
 :name: network-attributes
 ```{jsonschema} ../../_readthedocs/html/network-schema.json
-:include: id,identifier,name,website,language
+:include: id,identifier,name,website,publicationDate,collectionDate,accuracy,accuracyDetails,language
 :nocrossref:
 :addtargets:
 :prefix: data_model
@@ -101,28 +86,9 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: link
 :name: phase-relationships
-````{list-table}
+````{csv-table}
+:file: phase-relationships.csv
 :header-rows: 1
-*  - Entity
-   - Cardinality
-   - Description
-*  - [Network](#network)
-   - N:1
-   -
-*  - [Node](#node)
-   - 1:N
-   -
-*  - [Span](#span)
-   - 1:N
-   -
-*  - [Organisation](#organisation)
-   - 1:N
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /$defs/Phase/properties/funders/description
-      ```
-*  - [Contract](#contract)
-   - N:1
-   -
 
 ````
 
@@ -162,37 +128,9 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :icon: link
 :name: node-relationships
 
-````{list-table}
+````{csv-table}
+:file: node-relationships.csv
 :header-rows: 1
-*  - Entity
-   - Cardinality
-   - Description
-*  - [Network](#network)
-   - N:1
-   -
-*  - [Phase](#phase)
-   - N:1
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /$defs/Node/properties/phase/description
-      ```
-*  - [Span](#span)
-   - M:N
-   -
-*  - [Organisation](#organisation) (Transmission medium owner)
-   - N:1
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /$defs/Node/properties/transmissionMediumOwner/description
-      ```
-*  - [Organisation](#organisation) (Supporting infrastructure owner)
-   - N:1
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
-      :jsonpointer: /$defs/Node/properties/supportingInfrastructure/properties/owner/description
-      ```
-*  - [Organisation](#organisation) (Network provider)
-   - N:M
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /$defs/Node/properties/networkProviders/description
-      ```
 
 ````
 
@@ -205,7 +143,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :name: node-attributes
 ```{jsonschema} ../../_readthedocs/html/network-schema.json
 :pointer: /$defs/Node
-:include: id,name,status,location,address/streetAddress,address/locality,address/region,address/postalCode,address/country,type,accessPoint,power,technologies,internationalConnections,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity
+:include: id,name,status,location,address/streetAddress,address/locality,address/region,address/postalCode,address/country,type,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity,accessPoint,internationalConnections,power,technologies
 :collapse: location,internationalConnections
 :nocrossref:
 :addtargets:
@@ -232,54 +170,9 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :chevron: down-up
 :icon: link
 :name: span-relationships
-````{list-table}
+````{csv-table}
+:file: span-relationships.csv
 :header-rows: 1
-*  - Entity
-   - Cardinality
-   - Description
-*  - [Network](#network)
-   - N:1
-   -
-*  - [Phase](#phase)
-   - N:1
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /$defs/Span/properties/phase/description
-      ```
-*  - [Node](#node) (start)
-   - N:1
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /$defs/Span/properties/start/description
-      ```
-*  - [Node](#node) (end)
-   - N:1
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /$defs/Span/properties/end/description
-      ```
-*  - [Organisation](#organisation) (Transmission medium owner)
-   - N:1
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /$defs/Span/properties/transmissionMediumOwner/description
-      ```
-*  - [Organisation](#organisation) (Supporting infrastructure owner)
-   - N:1
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
-      :jsonpointer: /$defs/Span/properties/supportingInfrastructure/properties/owner/description
-      ```
-*  - [Organisation](#organisation) (Network provider)
-   - N:M
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /$defs/Span/properties/networkProviders/description
-      ```
-*  - [Organisation](#organisation) (Supplier)
-   - N:1
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /$defs/Span/properties/supplier/description
-      ```
-*  - [Wayleave](#wayleave)
-   - M:N
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
-      :jsonpointer: /$defs/Span/properties/wayleaves/description
-      ```
 
 ````
 
@@ -292,7 +185,7 @@ Some attributes refer to [codelists](codelists.md) to limit and standardise the 
 :name: span-attributes
 ```{jsonschema} ../../_readthedocs/html/network-schema.json
 :pointer: /$defs/Span
-:include: id,name,status,readyForServiceDate,directed,route,transmissionMedium,deployment,darkFibre,fibreType,fibreTypeDetails/fibreSubtype,fibreTypeDetails/description,fibreCount,fibreLength,technologies,capacity,capacityDetails/description,countries,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity,cableType,codeployment
+:include: id,name,status,readyForServiceDate,directed,route,transmissionMedium,deployment,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity,codeployment,cableType,darkFibre,fibreType,fibreTypeDetails/fibreSubtype,fibreTypeDetails/description,fibreCount,fibreLength,technologies,capacity,capacityDetails/description,countries
 :collapse: route
 :nocrossref:
 :addtargets:
@@ -344,45 +237,6 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 ```
 ````
 
-`````{dropdown} Relationships
-:animate: fade-in-slide-down
-:chevron: down-up
-:icon: link
-:name: organisation-relationships
-````{list-table}
-:header-rows: 1
-*  - Entity
-   - Cardinality
-   - Description
-*  - [Phase](#phase)
-   - N:1
-   - 
-*  - [Node](#node) (Transmission medium owner)
-   - 1:N
-   - 
-*  - [Node](#node) (Supporting infrastructure owner)
-   - 1:N
-   - 
-*  - [Node](#node) (Network provider)
-   - M:N
-   - 
-*  - [Span](#span) (Transmission medium owner)
-   - 1:N
-   - 
-*  - [Span](#span) (Supporting infrastructure owner)
-   - 1:N
-   - 
-*  - [Span](#span) (Network provider)
-   - M:N
-   - 
-*  - [Span](#span) (Supplier)
-   - 1:N
-   - 
-
-````
-
-`````
-
 ````{dropdown} Attributes
 :animate: fade-in-slide-down
 :chevron: down-up
@@ -416,18 +270,9 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :chevron: down-up
 :icon: link
 :name: contract-relationships
-````{list-table}
+````{csv-table}
+:file: contract-relationships.csv
 :header-rows: 1
-*  - Entity
-   - Cardinality
-   - Description
-*  - [Phase](#phase)
-   - 1:N
-   - ```{jsoninclude-quote} ../../_readthedocs/html/network-schema.json
-      :jsonpointer: /$defs/Contract/properties/relatedPhases/description
-      ```
-
-````
 
 `````
 
@@ -464,16 +309,9 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :chevron: down-up
 :icon: link
 :name: wayleave-relationships
-````{list-table}
+````{csv-table}
+:file: wayleave-relationships.csv
 :header-rows: 1
-*  - Entity
-   - Cardinality
-   - Description
-*  - [Span](#phase)
-   - M:N
-   - ```{jsoninclude-quote} ../../schema/network-schema.json
-      :jsonpointer: /$defs/Span/properties/wayleaves/description
-      ```
 
 ````
 
@@ -486,6 +324,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :name: wayleave-attributes
 ```{jsonschema} ../../schema/network-schema.json
 :pointer: /$defs/Wayleave
+:include: id,yearSigned,term/indefinite,term/years,cost/recurring,cost/perMetre/amount,cost/perMetre/currency
 :nocrossref:
 :addtargets:
 :prefix: data_model
@@ -506,24 +345,6 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 ```
 ````
 
-`````{dropdown} Relationships
-:animate: fade-in-slide-down
-:chevron: down-up
-:icon: link
-:name: document-relationships
-````{list-table}
-:header-rows: 1
-*  - Entity
-   - Cardinality
-   - Description
-*  - [Contract](#contract)
-   - N:1
-   -
-
-````
-
-`````
-
 ````{dropdown} Attributes
 :animate: fade-in-slide-down
 :chevron: down-up
@@ -531,6 +352,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :name: document-attributes
 ```{jsonschema} ../../_readthedocs/html/network-schema.json
 :pointer: /$defs/Document
+:include: title,description,url,format
 :nocrossref:
 :addtargets:
 :prefix: data_model
