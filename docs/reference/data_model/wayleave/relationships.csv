@@ -1,0 +1,2 @@
+entity,cardinality,description
+[Organisation](#organisation),1:1,"Grantor: The entity that grants a network operator the legal right to install, maintain, or operate telecommunications infrastructure on, over, or under property or assets."

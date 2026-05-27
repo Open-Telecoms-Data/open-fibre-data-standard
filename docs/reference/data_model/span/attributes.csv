@@ -1,0 +1,20 @@
+path,title,description,type
+id,Identifier,A locally-unique identifier for this span.,string
+name,Name,A name for this span. The name should be unique amongst the spans belonging to a network.,string
+status,Status,"The status of the network infrastructure for this span, from the closed [spanStatus codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#spanstatus).",string
+readyForServiceDate,Ready for service date,"The date this span was ready to carry traffic. For spans with multiple network providers, the earliest of the dates at which each provider's network was ready to carry traffic on this span.",string
+directed,Directed,"Whether this span is directed. If the span is directed, the span begins at the node referenced in `.start` and ends at the node referenced in `.end`. Otherwise, the span connects the nodes referenced in `.start` and `.end` with no direction implied.",boolean
+route,Route,The physical route that this span takes between the nodes that it connects.,
+supportingInfrastructure/type,Type,"The type of supporting infrastructure, from the open [spanSupportingInfrastructure codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#spansupportinginfrastructure).",string
+supportingInfrastructure/description,Description,A description of the supporting infrastructure for this span.,string
+supportingInfrastructure/spareCapacity,Spare capacity,Whether the supporting infrastructure has spare capacity for the installation of additional fibre cables.,boolean
+codeployment,Codeployment,The type of utility or transport infrastrucutre with which this span is codeployed.,string
+cableType,Cable type,The type of cable used in this span.,string
+darkFibre,Dark fibre availability,Whether access to dark fibre is available on this span.,boolean
+fibreType,Fibre type,"The type of fibre used in this span, from the closed [fibreType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#fibretype). Further details of the span's fibre type can be provided in `.fibreTypeDetails`.",string
+fibreTypeDetails/fibreSubtype,Subtype,"The sub-category of this span's fibre type. For example, G.652.B.",string
+fibreTypeDetails/description,Description,A description of this span's fibre type.,string
+fibreCount,Fibre count,The number of individual optical fibres in this span.,integer
+fibreLength,Fibre length,"The physical length in kilometres, of fibre optic cable used in this span.",number
+capacity,Equipped capacity,"The transmission rate, or throughput, of this span, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the span. For spans with multiple network providers, the sum of the capacity of each provider's network on this span. Further details of this span's capacity can be provided in `.capacityDetails`. For more information, see [equipped capacity](https://standard.ofds.info/en/{{version}}/reference/data_model/#equipped-capacity).",number
+capacityDetails/description,Description,A description of this span's capacity.,string

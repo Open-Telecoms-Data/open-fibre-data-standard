@@ -1,4 +1,4 @@
-Entity,Cardinality,Description
+entity,cardinality,description
 [Phase](#phase),1:1,Phase: The phase to which this node belongs.
 [Organisation](#organisation),1:1,Owner: The organisation that owns the supporting infrastructure.
 [Organisation](#organisation),1:1,"Transmission medium owner: The organisation that owns the transmission media for this node, i.e. the passive network equipment such as splitters, combiners and fibre distribution panels."

@@ -1,0 +1,15 @@
+path,title,description,type
+id,UUID,"A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://standard.ofds.info/en/{{version}}/reference/identifiers).",string
+identifier,Identifier,A local identifier for this network in an internal system.,string
+name,Network name,A name for this network.,string
+website,Website,The URL of the website for this network.,string
+publisher/name,Name,A name for this organisation.,string
+publisher/identifier/id,Identifier,The identifier assigned to the organisation in the register identified in `.scheme`.,string
+publisher/identifier/scheme,Scheme,"The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#organisationidentifierscheme).",string
+publisher/identifier/legalName,Legal name,The legally registered name of the organisation,string
+publisher/identifier/uri,URI,"A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.",string
+publicationDate,Publication date,The date when this network was published.,string
+collectionDate,Collection date,"The date when the location data was collected. If a dataset was produced by digitising a map, the date that the data for the map was collected.",string
+accuracy,Accuracy,"The horizontal uncertainty, in metres, of the coordinates in this dataset relative to the datum of the coordinate reference system specified in `crs`. Further details about the accuracy of coordinates in this dataset can be provided in `.accuracyDetails`.",number
+accuracyDetails,Accuracy details,"Further details about the accuracy specified in `accuracy`. For example, the confidence level of the accuracy measurement, the methodology used to calculate the accuracy, or a local classification of accuracy.",string
+language,Language,"The default language used in text attributes,from the open [language codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#language). A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",string

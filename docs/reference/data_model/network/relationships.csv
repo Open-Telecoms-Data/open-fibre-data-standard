@@ -1,0 +1,7 @@
+entity,cardinality,description
+[Node](#node),1:N,Nodes: The nodes that belong to this network.
+[Span](#span),1:N,Spans: The spans that belong to this network.
+[Phase](#phase),1:N,"Phases: The phases in which this network was, or will be, deployed."
+[Organisation](#organisation),1:N,Organisations: The organisations involved in this network.
+[Wayleave](#wayleave),1:N,"Wayleaves: Formal agreements that grant network operators rights to install, maintain or operate this network's telecommunications infrastructure on, over, or under grantors' property or assets."
+[Contract](#contract),1:N,Contracts: Contracts related to this network.

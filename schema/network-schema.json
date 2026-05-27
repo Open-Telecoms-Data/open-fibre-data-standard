@@ -69,7 +69,7 @@
     },
     "wayleaves": {
       "title": "Wayleaves",
-      "description": "Formal agreements that grant network operators rights to install, maintain or operate telecommunications infrastructure on, over, or under grantors' property or assets.",
+      "description": "Formal agreements that grant network operators rights to install, maintain or operate this network's telecommunications infrastructure on, over, or under grantors' property or assets.",
       "type": "array",
       "items": {
         "$ref": "#/$defs/Wayleave"
@@ -108,7 +108,7 @@
         "identifier": {
           "title": "Organisation identifier",
           "description": "An identifier for this organisation.",
-          "$ref": "#/$defs/Organisation/properties/identifier"
+          "$ref": "#/$defs/Identifier"
         }
       },
       "minProperties": 1
@@ -130,7 +130,8 @@
     "crs": {
       "title": "Coordinate reference system",
       "description": "The coordinate reference system used in this network. If this network includes any coordinate data (in `Node.location` or `Span.route`) then this field must be provided.",
-      "$ref": "#/$defs/CoordinateReferenceSystem"
+      "$ref": "#/$defs/CoordinateReferenceSystem",
+      "x-logical-type": "exclude"
     },
     "accuracy": {
       "title": "Accuracy",
@@ -174,7 +175,8 @@
         "$ref": "#/$defs/Link"
       },
       "minItems": 1,
-      "uniqueItems": true
+      "uniqueItems": true,
+      "x-logical-type": "exclude"
     }
   },
   "$defs": {
@@ -333,7 +335,8 @@
         "not": {
           "const": "network"
         }
-      }
+      },
+      "x-logical-type": "entity"
     },
     "Span": {
       "title": "Span",
@@ -385,7 +388,7 @@
           "type": "string",
           "minLength": 1,
           "x-references": {
-            "definition": "#/definitions/Node",
+            "definition": "#/$defs/Node",
             "property": "id",
             "collection": "#/properties/nodes"
           }
@@ -396,7 +399,7 @@
           "type": "string",
           "minLength": 1,
           "x-references": {
-            "definition": "#/definitions/Node",
+            "definition": "#/$defs/Node",
             "collection": "#/properties/nodes",
             "property": "id"
           }
@@ -618,7 +621,7 @@
             "type": "string",
             "minLength": 1,
             "x-references": {
-              "definition": "#/definitions/Wayleave",
+              "definition": "#/$defs/Wayleave",
               "collection": "#/properties/wayleaves",
               "property": "id"
             }
@@ -902,7 +905,8 @@
         "not": {
           "const": "network"
         }
-      }
+      },
+      "x-logical-type": "entity"
     },
     "Phase": {
       "title": "Phase",
@@ -941,7 +945,8 @@
       "required": [
         "id"
       ],
-      "minProperties": 1
+      "minProperties": 1,
+      "x-logical-type": "entity"
     },
     "Organisation": {
       "title": "Organisation",
@@ -961,39 +966,7 @@
           "minLength": 1
         },
         "identifier": {
-          "title": "Organisation identifier",
-          "description": "An identifier for this organisation.",
-          "type": "object",
-          "properties": {
-            "id": {
-              "title": "Identifier",
-              "description": "The identifier assigned to the organisation in the register identified in `.scheme`.",
-              "type": "string",
-              "minLength": 1
-            },
-            "scheme": {
-              "title": "Scheme",
-              "description": "The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#organisationidentifierscheme).",
-              "type": "string",
-              "codelist": "organisationIdentifierScheme.csv",
-              "openCodelist": true,
-              "minLength": 1
-            },
-            "legalName": {
-              "title": "Legal name",
-              "description": "The legally registered name of the organisation",
-              "type": "string",
-              "minLength": 1
-            },
-            "uri": {
-              "title": "URI",
-              "description": "A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.",
-              "format": "iri",
-              "type": "string",
-              "$comment": ""
-            }
-          },
-          "minProperties": 1
+          "$ref": "#/$defs/Identifier"
         },
         "country": {
           "title": "Country",
@@ -1293,7 +1266,8 @@
       "required": [
         "id"
       ],
-      "minProperties": 1
+      "minProperties": 1,
+      "x-logical-type": "entity"
     },
     "Contract": {
       "title": "Contract",
@@ -1362,7 +1336,8 @@
       "required": [
         "id"
       ],
-      "minProperties": 1
+      "minProperties": 1,
+      "x-logical-type": "entity"
     },
     "PointGeometry": {
       "title": "Point geometry",
@@ -1389,7 +1364,8 @@
         "type",
         "coordinates"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-logical-type": "attribute"
     },
     "LineStringGeometry": {
       "title": "LineString geometry",
@@ -1420,7 +1396,8 @@
         "type",
         "coordinates"
       ],
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-logical-type": "attribute"
     },
     "OrganisationReference": {
       "title": "Organisation reference",
@@ -1431,12 +1408,7 @@
           "title": "Local identifier",
           "description": "The local identifier of the organisation being referenced.",
           "type": "string",
-          "minLength": 1,
-          "x-references": {
-            "definition": "#/definitions/Organisation",
-            "collection": "#/properties/organisations",
-            "property": "id"
-          }
+          "minLength": 1
         },
         "name": {
           "title": "Name",
@@ -1449,7 +1421,13 @@
         "id"
       ],
       "minProperties": 1,
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-references": {
+        "from": "id",
+        "definition": "#/$defs/Organisation",
+        "collection": "#/properties/organisations",
+        "property": "id"
+      }
     },
     "PhaseReference": {
       "title": "Phase reference",
@@ -1460,12 +1438,7 @@
           "title": "Identifier",
           "description": "The identifier of the phase being referenced.",
           "type": "string",
-          "minLength": 1,
-          "x-references": {
-            "definition": "#/definitions/Phase",
-            "collection": "#/properties/phases",
-            "property": "id"
-          }
+          "minLength": 1
         },
         "name": {
           "title": "Name",
@@ -1478,7 +1451,13 @@
         "id"
       ],
       "minProperties": 1,
-      "additionalProperties": false
+      "additionalProperties": false,
+      "x-references": {
+        "from": "id",
+        "definition": "#/$defs/Phase",
+        "collection": "#/properties/phases",
+        "property": "id"
+      }
     },
     "Address": {
       "title": "Address",
@@ -1804,7 +1783,8 @@
           "minLength": 1
         }
       },
-      "minProperties": 1
+      "minProperties": 1,
+      "x-logical-type": "entity"
     },
     "CoordinateReferenceSystem": {
       "title": "Coordinate reference system",
@@ -2271,7 +2251,8 @@
             }
           }
         }
-      }
+      },
+      "x-logical-type": "entity"
     },
     "CapacityDetails": {
       "title": "Capacity details",
@@ -2286,7 +2267,43 @@
         }
       },
       "minProperties": 1
+    },
+    "Identifier": {
+      "title": "Organisation identifier",
+      "description": "An identifier for this organisation.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "The identifier assigned to the organisation in the register identified in `.scheme`.",
+          "type": "string",
+          "minLength": 1
+        },
+        "scheme": {
+          "title": "Scheme",
+          "description": "The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#organisationidentifierscheme).",
+          "type": "string",
+          "codelist": "organisationIdentifierScheme.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "legalName": {
+          "title": "Legal name",
+          "description": "The legally registered name of the organisation",
+          "type": "string",
+          "minLength": 1
+        },
+        "uri": {
+          "title": "URI",
+          "description": "A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.",
+          "format": "iri",
+          "type": "string",
+          "$comment": ""
+        }
+      },
+      "minProperties": 1
     }
   },
-  "minProperties": 1
+  "minProperties": 1,
+  "x-logical-type": "entity"
 }
