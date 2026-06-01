@@ -94,7 +94,7 @@ The language codelist is used to provide the default language used in text attri
 
 This codelist is referenced by the following attributes:
 
-- [`language`](json,network-schema.json,,language)
+- [`Network/language`](data_model,network-schema.json,,language)
 
 This codelist has the following codes:
 
@@ -207,7 +207,8 @@ The organisation identifier scheme codelist uses the codes from [org-id.guide](h
 
 This codelist is referenced by the following attributes:
 
-- [`Identifier/scheme`](data_model,network-schema.json,/$defs/Organisation,identifier/scheme)
+- [`Network/publisher/identifier/scheme`](data_model,network-schema.json,,publisher/identifier/scheme)
+- [`Organisation/identifier/scheme`](data_model,network-schema.json,/$defs/Organisation,identifier/scheme)
 
 This codelist has the following codes:
 
@@ -303,6 +304,7 @@ This codelist is referenced by the following attributes:
 - [`Span/countries`](data_model,network-schema.json,/$defs/Span,countries)
 - [`Organisation/country`](data_model,network-schema.json,/$defs/Organisation,country)
 - [`Node/address/country`](data_model,network-schema.json,/$defs/Node,address/country)
+- [`Node/internationalConnections/0/country`](data_model,network-schema.json,/$defs/Node,internationalConnections/0/country)
 
 This codelist has the following codes:
 
@@ -325,7 +327,8 @@ The currency codelist uses uppercase 3-letter codes from [ISO4217](https://www.i
 
 This codelist is referenced by the following attributes:
 
-- [`Value/currency`](data_model,network-schema.json,/$defs/Contract,value/currency)
+- [`Contract/value/currency`](data_model,network-schema.json,/$defs/Contract,value/currency)
+- [`Wayleave/cost/perMetre/currency`](data_model,network-schema.json,/$defs/Wayleave,cost/perMetre/currency)
 
 This codelist has the following codes:
 
