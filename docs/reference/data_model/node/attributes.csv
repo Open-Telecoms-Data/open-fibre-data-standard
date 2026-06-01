@@ -3,20 +3,20 @@ id,Identifier,A locally-unique identifier for this node.,string,
 name,Name,A name for this node. The name should be unique amongst the nodes belonging to a network.,string,
 status,Status,"The status of this node, from the closed [nodeStatus codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodestatus).",string,nodeStatus.csv
 location,Location,The physical location of this node.,,
-address/streetAddress,Street address,"The street address. For example, 1600 Amphitheatre Pkwy.",string,
-address/locality,Locality,"The locality. For example, Mountain View.",string,
-address/region,Region,"The region. For example, CA.",string,
-address/postalCode,Postal code,"The postal code. For example, 94043.",string,
-address/country,Country,"The country in which the address is physically located, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country).",string,country.csv
-type,Type,"This node's function, from the open [nodeType codelist]https://standard.ofds.info/en/{{version}}/reference/codelists#nodetype). For nodes with multiple network providers, the union of the node types for each provider. If a node's only function is to serve as a junction between spans, this attribute should be omitted. Junction nodes are identified by the existence of more than two spans that begin or end at the node.",array (string),nodeType.csv
+address/streetAddress,Address street address,"The physical address of this node. | The street address. For example, 1600 Amphitheatre Pkwy.",string,
+address/locality,Address locality,"The physical address of this node. | The locality. For example, Mountain View.",string,
+address/region,Address region,"The physical address of this node. | The region. For example, CA.",string,
+address/postalCode,Address postal code,"The physical address of this node. | The postal code. For example, 94043.",string,
+address/country,Address country,"The physical address of this node. | The country in which the address is physically located, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country).",string,country.csv
+type,Type,"This node's function, from the open [nodeType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodetype). For nodes with multiple network providers, the union of the node types for each provider. If a node's only function is to serve as a junction between spans, this attribute should be omitted. Junction nodes are identified by the existence of more than two spans that begin or end at the node.",array (string),nodeType.csv
 supportingInfrastructure/type,Type,"The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodesupportinginfrastructure).",string,nodeSupportingInfrastructure.csv
 supportingInfrastructure/description,Description,A description of the supporting infrastructure for this node.,string,
 supportingInfrastructure/spareCapacity,Spare capacity,Whether the supporting infrastructure has spare capacity for the installation of additional network equipment.,boolean,
 accessPoint,Access point,Whether active or passive transmission equipment is installed at this node which is capable of providing access to the network.,boolean,
-internationalConnections/0/streetAddress,Street address,"The street address. For example, 1600 Amphitheatre Pkwy.",string,
-internationalConnections/0/locality,Locality,"The locality. For example, Mountain View.",string,
-internationalConnections/0/region,Region,"The region. For example, CA.",string,
-internationalConnections/0/postalCode,Postal code,"The postal code. For example, 94043.",string,
-internationalConnections/0/country,Country,"The country in which the address is physically located, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country).",string,country.csv
+internationalConnections/0/streetAddress,International connections street address,"The international connections available at this node. For all connections, `.country` is required. | The street address. For example, 1600 Amphitheatre Pkwy.",string,
+internationalConnections/0/locality,International connections locality,"The international connections available at this node. For all connections, `.country` is required. | The locality. For example, Mountain View.",string,
+internationalConnections/0/region,International connections region,"The international connections available at this node. For all connections, `.country` is required. | The region. For example, CA.",string,
+internationalConnections/0/postalCode,International connections postal code,"The international connections available at this node. For all connections, `.country` is required. | The postal code. For example, 94043.",string,
+internationalConnections/0/country,International connections country,"The international connections available at this node. For all connections, `.country` is required. | The country in which the address is physically located, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country).",string,country.csv
 power,Power availability,Whether power for active network equipment is available at this node.,boolean,
 technologies,Technologies,"The active technologies used at this node, from the open [nodeTechnologies codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodetechnologies). For nodes with multiple network providers, the union of the active technologies used by each provider.",array (string),nodeTechnologies.csv

@@ -44,78 +44,116 @@ def get_relationship(entity, prop_schema, cardinality):
     }
 
 
-def get_attribute(path, prop_schema):
-    """Return a dict describing an attribute at path, sourced from prop_schema."""
+def get_attribute(path, prop_schema, parent_titles=None, parent_descriptions=None):
+    """Return a dict describing an attribute at path, sourced from prop_schema.
+
+    parent_titles is a list of ancestor property titles accumulated while flattening
+    non-entity $defs. When present, they are prepended to form a qualified title
+    (e.g. ['Address'] + 'Street address' → 'Address street address').
+
+    parent_descriptions is the corresponding list of ancestor property descriptions.
+    When present, they are prepended as separate paragraphs (joined with '\\n\\n')."""
+    if parent_titles:
+        title = " ".join([parent_titles[0]] + [t.lower() for t in parent_titles[1:]] + [prop_schema["title"].lower()])
+    else:
+        title = prop_schema["title"]
+    if parent_descriptions:
+        description = " | ".join(parent_descriptions + [prop_schema["description"]])
+    else:
+        description = prop_schema["description"]
     return {
         "path": '/'.join(path),
-        "title": prop_schema["title"],
-        "description": prop_schema["description"],
-        "type": prop_schema.get("type") + f" ({prop_schema.get("items", {}).get('type')})" if prop_schema.get("type") == "array" else prop_schema.get("type"),
+        "title": title,
+        "description": description,
+        "type": prop_schema.get("type") + f" ({prop_schema.get('items', {}).get('type')})" if prop_schema.get("type") == "array" else prop_schema.get("type"),
         "codelist": prop_schema.get("codelist")
     }
 
 
-def extract_model(schema, path=None, cardinality="1:1", result=None, prop_schema=None):
+def extract_model(schema, path=None, cardinality="1:1", result=None, parent_prop_schema=None, parent_titles=None, parent_descriptions=None):
     """
     Recursively walk schema, collecting attributes and relationships into result.
 
     result is a shared dict passed through all recursive calls so that attributes
     and relationships for an entity accumulate into the same lists.
 
-    prop_schema is the property schema that triggered the current recursive call. It is
-    needed when we recurse into a $def (e.g. PointGeometry or OrganisationReference),
-    where we want the originating property's title/description rather than the def's.
+    parent_prop_schema is the property schema that triggered the current recursive call,
+    needed in the x-logical-type: attribute and x-references branches where we want the
+    originating property's title/description rather than the def's.
+
+    parent_titles and parent_descriptions are lists of ancestor property titles/descriptions
+    accumulated while flattening non-entity $defs. Each grows by one entry each time we
+    recurse into a $ref to a non-entity def, and are used to build qualified attribute
+    titles and multi-paragraph descriptions.
     """
     if path is None:
         path = []
+    if parent_titles is None:
+        parent_titles = []
+    if parent_descriptions is None:
+        parent_descriptions = []
     if result is None:
         result = {"relationships": [], "attributes": [], "collapse": []}
 
     # x-logical-type: attribute → leaf node (e.g. a geometry), record and stop
+    # parent_prop_schema is already the last entry in parent_titles/parent_descriptions,
+    # so strip it before passing to avoid doubling the title and description.
     if schema.get("x-logical-type") == "attribute":
-        result["attributes"].append(get_attribute(path, prop_schema))
+        result["attributes"].append(get_attribute(path, parent_prop_schema, parent_titles[:-1], parent_descriptions[:-1]))
         result["collapse"].append("/".join(path))
 
     # x-references at def level → the whole def is a foreign-key reference (e.g. OrganisationReference)
     elif "x-references" in schema:
         definition = resolve_ref(schema["x-references"]["definition"])
         if is_entity(definition):
-            result["relationships"].append(get_relationship(definition, prop_schema, cardinality))
+            result["relationships"].append(get_relationship(definition, parent_prop_schema, cardinality))
 
     else:
-        for prop, prop_schema in schema.get("properties", {}).items():
-            if prop_schema.get("x-logical-type") == "exclude":
+        for child_prop_name, child_prop_schema in schema.get("properties", {}).items():
+            if child_prop_schema.get("x-logical-type") == "exclude":
                 continue
 
-            definition = resolve_definition(prop_schema)
+            definition = resolve_definition(child_prop_schema)
             if definition is not None:
                 if is_entity(definition):
                     # $ref to an entity → relationship
-                    result["relationships"].append(get_relationship(definition, prop_schema, cardinality))
+                    result["relationships"].append(get_relationship(definition, child_prop_schema, cardinality))
                 else:
-                    # $ref to a non-entity def (e.g. Address) → flatten into this entity
-                    extract_model(definition, path=path + [prop], cardinality=cardinality, result=result, prop_schema=prop_schema)
+                    # $ref to a non-entity def (e.g. Address) → flatten, accumulating title and description
+                    child_title = child_prop_schema.get("title")
+                    child_desc = child_prop_schema.get("description")
+                    new_titles = parent_titles + ([child_title] if child_title else [])
+                    new_descriptions = parent_descriptions + ([child_desc] if child_desc else [])
+                    extract_model(definition, path=path + [child_prop_name], cardinality=cardinality, result=result, parent_prop_schema=child_prop_schema, parent_titles=new_titles, parent_descriptions=new_descriptions)
 
-            elif prop_schema.get("type") == "object":
-                extract_model(prop_schema, path=path + [prop], cardinality=cardinality, result=result, prop_schema=prop_schema)
+            elif child_prop_schema.get("type") == "object":
+                extract_model(child_prop_schema, path=path + [child_prop_name], cardinality=cardinality, result=result, parent_titles=parent_titles, parent_descriptions=parent_descriptions)
 
-            elif prop_schema.get("type") == "array":
-                items = prop_schema.get("items", {})
+            elif child_prop_schema.get("type") == "array":
+                items = child_prop_schema.get("items", {})
                 items_definition = resolve_definition(items)
                 if items_definition is not None:
                     if is_entity(items_definition):
-                        result["relationships"].append(get_relationship(items_definition, prop_schema, "1:N"))
+                        result["relationships"].append(get_relationship(items_definition, child_prop_schema, "1:N"))
                     else:
-                        extract_model(items_definition, path=path + [prop, "0"], cardinality="1:N", result=result, prop_schema=prop_schema)
+                        child_title = child_prop_schema.get("title")
+                        child_desc = child_prop_schema.get("description")
+                        new_titles = parent_titles + ([child_title] if child_title else [])
+                        new_descriptions = parent_descriptions + ([child_desc] if child_desc else [])
+                        extract_model(items_definition, path=path + [child_prop_name, "0"], cardinality="1:N", result=result, parent_prop_schema=child_prop_schema, parent_titles=new_titles, parent_descriptions=new_descriptions)
                 elif items.get("type") == "object":
-                    extract_model(items, path=path + [prop, "0"], cardinality="1:N", result=result, prop_schema=prop_schema)
+                    child_title = child_prop_schema.get("title")
+                    child_desc = child_prop_schema.get("description")
+                    new_titles = parent_titles + ([child_title] if child_title else [])
+                    new_descriptions = parent_descriptions + ([child_desc] if child_desc else [])
+                    extract_model(items, path=path + [child_prop_name, "0"], cardinality="1:N", result=result, parent_prop_schema=child_prop_schema, parent_titles=new_titles, parent_descriptions=new_descriptions)
                 else:
                     # Array of primitives → record as attribute
-                    result["attributes"].append(get_attribute(path + [prop], prop_schema))
+                    result["attributes"].append(get_attribute(path + [child_prop_name], child_prop_schema, parent_titles, parent_descriptions))
 
             else:
                 # Leaf property
-                result["attributes"].append(get_attribute(path + [prop], prop_schema))
+                result["attributes"].append(get_attribute(path + [child_prop_name], child_prop_schema, parent_titles, parent_descriptions))
 
     return result
 
