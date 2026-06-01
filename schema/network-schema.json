@@ -232,9 +232,7 @@
           "description": "This node's function, from the open [nodeType codelist]https://standard.ofds.info/en/{{version}}/reference/codelists#nodetype). For nodes with multiple network providers, the union of the node types for each provider. If a node's only function is to serve as a junction between spans, this attribute should be omitted. Junction nodes are identified by the existence of more than two spans that begin or end at the node.",
           "type": "array",
           "items": {
-            "type": [
-              "string"
-            ],
+            "type": "string",
             "minLength": 1
           },
           "codelist": "nodeType.csv",
@@ -300,9 +298,7 @@
           "description": "The active technologies used at this node, from the open [nodeTechnologies codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodetechnologies). For nodes with multiple network providers, the union of the active technologies used by each provider.",
           "type": "array",
           "items": {
-            "type": [
-              "string"
-            ],
+            "type": "string",
             "minLength": 1
           },
           "codelist": "nodeTechnologies.csv",
@@ -441,9 +437,7 @@
           "description": "The physical media of this span, from the closed [transmissionMedium codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#transmissionmedium).",
           "type": "array",
           "items": {
-            "type": [
-              "string"
-            ],
+            "type": "string",
             "enum": [
               "fibre",
               "microwave",
@@ -462,9 +456,7 @@
           "description": "The physical deployment of this span, from the closed [deployment codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#deployment). Further details of this span's deployment can be provided in `.supportingInfrastructure`.",
           "type": "array",
           "items": {
-            "type": [
-              "string"
-            ],
+            "type": "string",
             "enum": [
               "aboveGround",
               "belowGround"
@@ -583,9 +575,7 @@
           "description": "The active technologies used on this span, from the open [spanTechnologies codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#spantechnologies). For spans with multiple network providers, the union of the active technologies used by each provider.",
           "type": "array",
           "items": {
-            "type": [
-              "string"
-            ],
+            "type": "string",
             "minLength": 1
           },
           "codelist": "spanTechnologies.csv",
@@ -634,9 +624,7 @@
           "description": "The countries in which this span is physically located, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country).",
           "type": "array",
           "items": {
-            "type": [
-              "string"
-            ],
+            "type": "string",
             "enum": [
               "AD",
               "AE",
@@ -1232,9 +1220,7 @@
           "description": "This organisation's roles in this network, from the open [organisationRole codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#organisationrole). Further details about this organisation's roles can be provided in `.roleDetails`.",
           "type": "array",
           "items": {
-            "type": [
-              "string"
-            ],
+            "type": "string",
             "minLength": 1
           },
           "codelist": "organisationRole.csv",
