@@ -7,6 +7,7 @@ The schema uses custom keywords to control extraction:
                               don't recurse, record as a single attribute
   x-logical-type: exclude   - property is omitted from the data model
   x-references              - property or $defs entry is a foreign-key reference to an entity
+  x-relationship-label       - human-friendly label for relationships, used in Mermaid diagram
 """
 
 import csv
@@ -39,6 +40,7 @@ def get_relationship(entity, prop_schema, cardinality):
         "entity": f"[{entity['title']}](#{entity['title'].lower()})",
         "cardinality": cardinality,
         "description": f"{prop_schema['title']}: {prop_schema['description']}",
+        "label": prop_schema.get("x-relationship-label", "")
     }
 
 
@@ -128,33 +130,60 @@ if __name__ == "__main__":
     for name, schema in SCHEMA.get("$defs", {}).items():
         if is_entity(schema):
             entities[schema["title"]] = extract_model(schema)
+    
+    with open("docs/reference/data_model/data_model.mmd", "w") as mermaid_file:
+        # Write Mermaid diagram frontmatter and header
+        mermaid_file.write("\n".join([
+            "---",
+            "config:",
+            "  layout: elk",
+            "---",
+            "erDiagram"
+        ]))
 
-    # Write relationships.csv, attributes.csv and directive.md for each entity
-    for entity, definition in entities.items():
+        # Write relationships.csv, attributes.csv and directive.md for each entity
+        for entity, definition in entities.items():
 
-        with open(f"docs/reference/data_model/{entity.lower()}/relationships.csv", "w") as f:
-            csv_writer = csv.writer(f)
-            csv_writer.writerow(["entity", "cardinality", "description"])
+            with open(f"docs/reference/data_model/{entity.lower()}/relationships.csv", "w") as f:
+                csv_writer = csv.writer(f)
+                csv_writer.writerow(["entity", "cardinality", "description"])
+                for relationship in definition["relationships"]:
+                    csv_writer.writerow([relationship["entity"], relationship["cardinality"], relationship["description"]])
+
+            with open(f"docs/reference/data_model/{entity.lower()}/attributes.csv", "w") as f:
+                csv_writer = csv.writer(f)
+                csv_writer.writerow(["path", "title", "description", "type"])
+                for attribute in definition["attributes"]:
+                    csv_writer.writerow([attribute["path"], attribute["title"], attribute["description"], attribute["type"]])
+
+            # directive.txt contains a MyST jsonschema directive that renders the entity's attributes
+            with open(f"docs/reference/data_model/{entity.lower()}/directive.txt", "w") as f:
+                include = ','.join(attr['path'] for attr in definition['attributes'])
+                collapse = ','.join(definition['collapse'])
+                f.write("\n".join(list(filter(None, [
+                    "```{jsonschema} ../../../_readthedocs/html/network-schema.json",
+                    f":pointer: /$defs/{entity}" if entity != "Network" else "",
+                    f":include: {include}",
+                    f":collapse: {collapse}" if len(collapse) > 0 else "",
+                    ":nocrossref:",
+                    ":addtargets:",
+                    ":prefix: data_model",
+                    "```",
+                ]))))
+            
+            # Write relationships to Mermaid diagram
             for relationship in definition["relationships"]:
-                csv_writer.writerow([relationship["entity"], relationship["cardinality"], relationship["description"]])
-
-        with open(f"docs/reference/data_model/{entity.lower()}/attributes.csv", "w") as f:
-            csv_writer = csv.writer(f)
-            csv_writer.writerow(["path", "title", "description", "type"])
-            for attribute in definition["attributes"]:
-                csv_writer.writerow([attribute["path"], attribute["title"], attribute["description"], attribute["type"]])
-
-        # directive.md contains a MyST jsonschema directive that renders the entity's attributes
-        with open(f"docs/reference/data_model/{entity.lower()}/directive.txt", "w") as f:
-            include = ','.join(attr['path'] for attr in definition['attributes'])
-            collapse = ','.join(definition['collapse'])
-            f.write("\n".join(list(filter(None, [
-                "```{jsonschema} ../../../_readthedocs/html/network-schema.json",
-                f":pointer: /$defs/{entity}" if entity != "Network" else "",
-                f":include: {include}",
-                f":collapse: {collapse}" if len(collapse) > 0 else "",
-                ":nocrossref:",
-                ":addtargets:",
-                ":prefix: data_model",
-                "```",
-            ]))))
+                target_entity = relationship["entity"].split("]")[0][1:]
+                cardinality = relationship["cardinality"]
+                if cardinality == "1:1":
+                    mermaid_file.write(f"\n{entity} ||--|| {target_entity}: \"{relationship['label']}\"")
+                elif cardinality == "1:N":
+                    mermaid_file.write(f"\n{entity} ||--o{{ {target_entity}: \"{relationship['label']}\"")
+        
+        mermaid_file.write("\n".join([
+            "classDef spatial fill:#f3ffa6ff,stroke:#bbd034",
+            "classDef non-spatial fill:#cec7ffff,stroke:#110e27",
+            "class Node,Span spatial",
+            "class Network,Organisation,Phase,Contract,Wayleave,Document non-spatial",
+            "direction LR"
+        ]))
