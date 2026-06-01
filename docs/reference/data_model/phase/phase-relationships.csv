@@ -1,2 +1,0 @@
-Entity,Cardinality,Description
-[Organisation](#organisation),1:N,"Funders: The organisations that provide financing for the development or operation of this phase, also known as investors or financers."

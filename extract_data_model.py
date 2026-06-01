@@ -51,6 +51,7 @@ def get_attribute(path, prop_schema):
         "title": prop_schema["title"],
         "description": prop_schema["description"],
         "type": prop_schema.get("type") + f" ({prop_schema.get("items", {}).get('type')})" if prop_schema.get("type") == "array" else prop_schema.get("type"),
+        "codelist": prop_schema.get("codelist")
     }
 
 
@@ -131,6 +132,12 @@ if __name__ == "__main__":
         if is_entity(schema):
             entities[schema["title"]] = extract_model(schema)
     
+    with open("docs/reference/data_model/entities.csv", "w", newline="") as f:
+        csv_writer = csv.writer(f, lineterminator="\n")
+        csv_writer.writerow(["name"])
+        for entity, definition in entities.items():
+            csv_writer.writerow([entity])
+
     with open("docs/reference/data_model/data_model.mmd", "w") as mermaid_file:
         # Write Mermaid diagram frontmatter and header
         mermaid_file.write("\n".join([
@@ -144,17 +151,17 @@ if __name__ == "__main__":
         # Write relationships.csv, attributes.csv and directive.md for each entity
         for entity, definition in entities.items():
 
-            with open(f"docs/reference/data_model/{entity.lower()}/relationships.csv", "w") as f:
-                csv_writer = csv.writer(f)
+            with open(f"docs/reference/data_model/{entity.lower()}/relationships.csv", "w", newline="") as f:
+                csv_writer = csv.writer(f, lineterminator="\n")
                 csv_writer.writerow(["entity", "cardinality", "description"])
                 for relationship in definition["relationships"]:
                     csv_writer.writerow([relationship["entity"], relationship["cardinality"], relationship["description"]])
 
-            with open(f"docs/reference/data_model/{entity.lower()}/attributes.csv", "w") as f:
-                csv_writer = csv.writer(f)
-                csv_writer.writerow(["path", "title", "description", "type"])
+            with open(f"docs/reference/data_model/{entity.lower()}/attributes.csv", "w", newline="") as f:
+                csv_writer = csv.writer(f, lineterminator="\n")
+                csv_writer.writerow(["path", "title", "description", "type", "codelist"])
                 for attribute in definition["attributes"]:
-                    csv_writer.writerow([attribute["path"], attribute["title"], attribute["description"], attribute["type"]])
+                    csv_writer.writerow([attribute["path"], attribute["title"], attribute["description"], attribute["type"], attribute.get("codelist", "")])
 
             # directive.txt contains a MyST jsonschema directive that renders the entity's attributes
             with open(f"docs/reference/data_model/{entity.lower()}/directive.txt", "w") as f:

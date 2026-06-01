@@ -1,8 +1,8 @@
-path,title,description,type
-id,Identifier,A locally-unique identifier for this wayleave.,string
-yearSigned,Year signed,The year in which this wayleave was signed.,integer
-term/indefinite,Indefinite,"Whether the term of wayleave is indefinite, i.e. without an end date.",boolean
-term/years,Years,"If the wayleave's term is definite, its duration in years.",integer
-cost/recurring,Recurring,Whether this is a recurring cost.,boolean
-cost/perMetre/amount,Amount,The amount of this value.,number
-cost/perMetre/currency,Currency,"The currency of this value, from the closed [currency codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#currency).",string
+path,title,description,type,codelist
+id,Identifier,A locally-unique identifier for this wayleave.,string,
+yearSigned,Year signed,The year in which this wayleave was signed.,integer,
+term/indefinite,Indefinite,"Whether the term of wayleave is indefinite, i.e. without an end date.",boolean,
+term/years,Years,"If the wayleave's term is definite, its duration in years.",integer,
+cost/recurring,Recurring,Whether this is a recurring cost.,boolean,
+cost/perMetre/amount,Amount,The amount of this value.,number,
+cost/perMetre/currency,Currency,"The currency of this value, from the closed [currency codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#currency).",string,currency.csv
