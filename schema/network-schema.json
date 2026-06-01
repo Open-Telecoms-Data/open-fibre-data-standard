@@ -527,7 +527,7 @@
         },
         "cableType": {
           "title": "Cable type",
-          "description": "The type of cable used in this span.",
+          "description": "The type of cable used in this span, from the open [cableType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#cabletype). Further details of this span's cable type can be provided in `.cableTypeDetails`.",
           "type": "string",
           "minLength": 1,
           "openCodelist": true,
