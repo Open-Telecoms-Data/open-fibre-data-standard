@@ -1,6 +1,7 @@
 ```{jsonschema} ../../../_readthedocs/html/network-schema.json
 :pointer: /$defs/Node
-:include: id,name,status,location,address/streetAddress,address/locality,address/region,address/postalCode,address/country,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity,accessPoint,internationalConnections/streetAddress,internationalConnections/locality,internationalConnections/region,internationalConnections/postalCode,internationalConnections/country,power
+:include: id,name,status,location,address/streetAddress,address/locality,address/region,address/postalCode,address/country,type,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity,accessPoint,internationalConnections/0/streetAddress,internationalConnections/0/locality,internationalConnections/0/region,internationalConnections/0/postalCode,internationalConnections/0/country,power,technologies
+:collapse: location/type,location/coordinates
 :nocrossref:
 :addtargets:
 :prefix: data_model

@@ -48,7 +48,7 @@ def get_attribute(path, prop_schema):
         "path": '/'.join(path),
         "title": prop_schema["title"],
         "description": prop_schema["description"],
-        "type": prop_schema.get("type"),
+        "type": prop_schema.get("type") + f" ({prop_schema.get("items", {}).get('type')})" if prop_schema.get("type") == "array" else prop_schema.get("type"),
     }
 
 
@@ -66,11 +66,13 @@ def extract_model(schema, path=None, cardinality="1:1", result=None, prop_schema
     if path is None:
         path = []
     if result is None:
-        result = {"relationships": [], "attributes": []}
+        result = {"relationships": [], "attributes": [], "collapse": []}
 
     # x-logical-type: attribute → leaf node (e.g. a geometry), record and stop
     if schema.get("x-logical-type") == "attribute":
         result["attributes"].append(get_attribute(path, prop_schema))
+        for prop in schema.get("properties", {}):
+            result["collapse"].append("/".join(path + [prop]))
 
     # x-references at def level → the whole def is a foreign-key reference (e.g. OrganisationReference)
     elif "x-references" in schema:
@@ -102,9 +104,12 @@ def extract_model(schema, path=None, cardinality="1:1", result=None, prop_schema
                     if is_entity(items_definition):
                         result["relationships"].append(get_relationship(items_definition, prop_schema, "1:N"))
                     else:
-                        extract_model(items_definition, path=path + [prop], cardinality="1:N", result=result, prop_schema=prop_schema)
+                        extract_model(items_definition, path=path + [prop, "0"], cardinality="1:N", result=result, prop_schema=prop_schema)
                 elif items.get("type") == "object":
-                    extract_model(items, path=path + [prop] + ["[]"], cardinality="1:N", result=result, prop_schema=prop_schema)
+                    extract_model(items, path=path + [prop, "0"], cardinality="1:N", result=result, prop_schema=prop_schema)
+                else:
+                    # Array of primitives → record as attribute
+                    result["attributes"].append(get_attribute(path + [prop], prop_schema))
 
             else:
                 # Leaf property
@@ -143,12 +148,14 @@ if __name__ == "__main__":
         # directive.md contains a MyST jsonschema directive that renders the entity's attributes
         with open(f"docs/reference/data_model/{entity.lower()}/directive.txt", "w") as f:
             include = ','.join(attr['path'] for attr in definition['attributes'])
-            f.write("\n".join([
+            collapse = ','.join(definition['collapse'])
+            f.write("\n".join(list(filter(None, [
                 "```{jsonschema} ../../../_readthedocs/html/network-schema.json",
                 f":pointer: /$defs/{entity}" if entity != "Network" else "",
                 f":include: {include}",
+                f":collapse: {collapse}" if len(collapse) > 0 else "",
                 ":nocrossref:",
                 ":addtargets:",
                 ":prefix: data_model",
                 "```",
-            ]))
+            ]))))

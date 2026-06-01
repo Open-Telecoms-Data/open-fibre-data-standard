@@ -6,6 +6,7 @@ identifier/scheme,Scheme,"The register from which the identifier in `.id` is dra
 identifier/legalName,Legal name,The legally registered name of the organisation,string
 identifier/uri,URI,"A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.",string
 country,Country,"The country in which this organisation is legally registered, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country).",string
+roles,Roles,"This organisation's roles in this network, from the open [organisationRole codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#organisationrole). Further details about this organisation's roles can be provided in `.roleDetails`.",array (string)
 roleDetails,Role details,Further details about this organisation's roles in the network,string
 website,Website,The URL of the website for this organisation.,string
 logo,Logo,The URL of the logo for this organisation.,string
