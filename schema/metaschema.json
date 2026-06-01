@@ -12,10 +12,17 @@
       "title": "Deprecated details",
       "type": "object",
       "additionalProperties": false,
-      "required": ["deprecatedVersion", "description"],
+      "required": [
+        "deprecatedVersion",
+        "description"
+      ],
       "properties": {
-        "deprecatedVersion": { "type": "string" },
-        "description": { "type": "string" }
+        "deprecatedVersion": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
       }
     },
     "codelist": {
