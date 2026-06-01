@@ -3,7 +3,7 @@ sphinx
 sphinxcontrib-mermaid
 sphinxcontrib-opencontracting
 sphinxcontrib-opendataservices
-sphinxcontrib-opendataservices-jsonschema @ git+https://github.com/OpenDataServices/sphinxcontrib-opendataservices-jsonschema@d3c8e861a55019278a8462b6edabd101e5fb5642
+sphinxcontrib-opendataservices-jsonschema @ git+https://github.com/OpenDataServices/sphinxcontrib-opendataservices-jsonschema@4c977ea04f79df464dac1600c49362bf0b4ac21b
 sphinx-intl
 myst-nb
 sphinx-autobuild

@@ -357,7 +357,7 @@ sphinxcontrib-opencontracting==0.0.10
     # via -r requirements.in
 sphinxcontrib-opendataservices==0.6.0
     # via -r requirements.in
-sphinxcontrib-opendataservices-jsonschema @ git+https://github.com/OpenDataServices/sphinxcontrib-opendataservices-jsonschema@d3c8e861a55019278a8462b6edabd101e5fb5642
+sphinxcontrib-opendataservices-jsonschema @ git+https://github.com/OpenDataServices/sphinxcontrib-opendataservices-jsonschema@4c977ea04f79df464dac1600c49362bf0b4ac21b
     # via
     #   -r requirements.in
     #   sphinxcontrib-opendataservices

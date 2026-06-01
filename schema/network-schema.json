@@ -236,7 +236,7 @@
         },
         "type": {
           "title": "Type",
-          "description": "This node's function, from the open [nodeType codelist]https://standard.ofds.info/en/{{version}}/reference/codelists#nodetype). For nodes with multiple network providers, the union of the node types for each provider. If a node's only function is to serve as a junction between spans, this attribute should be omitted. Junction nodes are identified by the existence of more than two spans that begin or end at the node.",
+          "description": "This node's function, from the open [nodeType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodetype). For nodes with multiple network providers, the union of the node types for each provider. If a node's only function is to serve as a junction between spans, this attribute should be omitted. Junction nodes are identified by the existence of more than two spans that begin or end at the node.",
           "type": "array",
           "items": {
             "type": "string",
