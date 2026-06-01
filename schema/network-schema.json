@@ -35,7 +35,8 @@
         "$ref": "#/$defs/Node"
       },
       "minItems": 1,
-      "uniqueItems": true
+      "uniqueItems": true,
+      "x-relationship-label": "Consists of"
     },
     "spans": {
       "title": "Spans",
@@ -45,7 +46,8 @@
         "$ref": "#/$defs/Span"
       },
       "minItems": 1,
-      "uniqueItems": true
+      "uniqueItems": true,
+      "x-relationship-label": "Consists of"
     },
     "phases": {
       "title": "Phases",
@@ -55,7 +57,8 @@
         "$ref": "#/$defs/Phase"
       },
       "minItems": 1,
-      "uniqueItems": true
+      "uniqueItems": true,
+      "x-relationship-label": "Deployed in"
     },
     "organisations": {
       "title": "Organisations",
@@ -65,7 +68,8 @@
         "$ref": "#/$defs/Organisation"
       },
       "minItems": 1,
-      "uniqueItems": true
+      "uniqueItems": true,
+      "x-logical-type": "exclude"
     },
     "wayleaves": {
       "title": "Wayleaves",
@@ -75,7 +79,8 @@
         "$ref": "#/$defs/Wayleave"
       },
       "minItems": 1,
-      "uniqueItems": true
+      "uniqueItems": true,
+      "x-logical-type": "exclude"
     },
     "contracts": {
       "title": "Contracts",
@@ -85,7 +90,8 @@
         "$ref": "#/$defs/Contract"
       },
       "minItems": 1,
-      "uniqueItems": true
+      "uniqueItems": true,
+      "x-logical-type": "exclude"
     },
     "website": {
       "title": "Website",
@@ -200,7 +206,8 @@
         "phase": {
           "title": "Phase",
           "description": "The phase to which this node belongs.",
-          "$ref": "#/$defs/PhaseReference"
+          "$ref": "#/$defs/PhaseReference",
+          "x-relationship-label": "Belongs to"
         },
         "status": {
           "title": "Status",
@@ -262,7 +269,8 @@
             "owner": {
               "title": "Owner",
               "description": "The organisation that owns the supporting infrastructure.",
-              "$ref": "#/$defs/OrganisationReference"
+              "$ref": "#/$defs/OrganisationReference",
+              "x-relationship-label": "Supporting infrastructure owned by"
             },
             "spareCapacity": {
               "title": "Spare capacity",
@@ -309,7 +317,8 @@
         "transmissionMediumOwner": {
           "title": "Transmission medium owner",
           "description": "The organisation that owns the transmission media for this node, i.e. the passive network equipment such as splitters, combiners and fibre distribution panels.",
-          "$ref": "#/$defs/OrganisationReference"
+          "$ref": "#/$defs/OrganisationReference",
+          "x-relationship-label": "Transmission medium owned by"
         },
         "networkProviders": {
           "title": "Network providers",
@@ -320,7 +329,8 @@
             "$ref": "#/$defs/OrganisationReference"
           },
           "minItems": 1,
-          "uniqueItems": true
+          "uniqueItems": true,
+          "x-relationship-label": "Active network infrastructure operated by"
         }
       },
       "required": [
@@ -354,7 +364,8 @@
         "phase": {
           "title": "Phase",
           "description": "The phase to which this span belongs.",
-          "$ref": "#/$defs/PhaseReference"
+          "$ref": "#/$defs/PhaseReference",
+          "x-relationship-label": "Belongs to"
         },
         "status": {
           "title": "Status",
@@ -387,7 +398,8 @@
             "definition": "#/$defs/Node",
             "property": "id",
             "collection": "#/properties/nodes"
-          }
+          },
+          "x-relationship-label": "Starts at"
         },
         "end": {
           "title": "End",
@@ -398,7 +410,8 @@
             "definition": "#/$defs/Node",
             "collection": "#/properties/nodes",
             "property": "id"
-          }
+          },
+          "x-relationship-label": "Ends at"
         },
         "directed": {
           "title": "Directed",
@@ -414,7 +427,8 @@
         "transmissionMediumOwner": {
           "title": "Transmission medium owner",
           "description": "The organisation that owns the transmission media for this span, i.e. the fibre cables.",
-          "$ref": "#/$defs/OrganisationReference"
+          "$ref": "#/$defs/OrganisationReference",
+          "x-relationship-label": "Transmission medium owned by"
         },
         "networkProviders": {
           "title": "Network providers",
@@ -425,12 +439,14 @@
             "$ref": "#/$defs/OrganisationReference"
           },
           "minItems": 1,
-          "uniqueItems": true
+          "uniqueItems": true,
+          "x-relationship-label": "Active network infrastructure operated by"
         },
         "supplier": {
           "title": "Supplier",
           "description": "The organisation responsible for installing the cable for this span.",
-          "$ref": "#/$defs/OrganisationReference"
+          "$ref": "#/$defs/OrganisationReference",
+          "x-relationship-label": "Installed by"
         },
         "transmissionMedium": {
           "title": "Transmission medium",
@@ -490,7 +506,8 @@
             "owner": {
               "title": "Owner",
               "description": "The organisation that owns the supporting infrastructure.",
-              "$ref": "#/$defs/OrganisationReference"
+              "$ref": "#/$defs/OrganisationReference",
+              "x-relationship-label": "Supporting infrastructure owned by"
             },
             "spareCapacity": {
               "title": "Spare capacity",
@@ -617,7 +634,8 @@
             }
           },
           "uniqueItems": true,
-          "minItems": 1
+          "minItems": 1,
+          "x-relationship-label": "Grants rights to install, maintain or operate infrastructure for"
         },
         "countries": {
           "title": "Countries",
@@ -927,7 +945,8 @@
             "$ref": "#/$defs/OrganisationReference"
           },
           "minItems": 1,
-          "uniqueItems": true
+          "uniqueItems": true,
+          "x-relationship-label": "Financed by"
         }
       },
       "required": [
@@ -1316,7 +1335,8 @@
             "$ref": "#/$defs/PhaseReference"
           },
           "minItems": 1,
-          "uniqueItems": true
+          "uniqueItems": true,
+          "x-relationship-label": "Agreement to develop"
         }
       },
       "required": [
@@ -2195,7 +2215,8 @@
         "grantor": {
           "title": "Grantor",
           "description": "The entity that grants a network operator the legal right to install, maintain, or operate telecommunications infrastructure on, over, or under property or assets.",
-          "$ref": "#/$defs/OrganisationReference"
+          "$ref": "#/$defs/OrganisationReference",
+          "x-relationship-label": "Granted by"
         },
         "yearSigned": {
           "title": "Year signed",
