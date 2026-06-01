@@ -71,8 +71,7 @@ def extract_model(schema, path=None, cardinality="1:1", result=None, prop_schema
     # x-logical-type: attribute → leaf node (e.g. a geometry), record and stop
     if schema.get("x-logical-type") == "attribute":
         result["attributes"].append(get_attribute(path, prop_schema))
-        for prop in schema.get("properties", {}):
-            result["collapse"].append("/".join(path + [prop]))
+        result["collapse"].append("/".join(path))
 
     # x-references at def level → the whole def is a foreign-key reference (e.g. OrganisationReference)
     elif "x-references" in schema:
