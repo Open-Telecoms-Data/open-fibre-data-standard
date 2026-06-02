@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Wayleave — OFDS Data Model Cards</title>
+  <style>
+    .card-page {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    @media print {
+      .card-page {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin: 0;
+        break-after: page;
+        page-break-after: always;
+      }
+      body { margin: 0; padding: 0.5cm; }
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body class="p-3">
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Wayleave</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Identifier</h6>
+<p class="card-text small">A locally-unique identifier for this wayleave.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Wayleave</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Year signed</h6>
+<p class="card-text small">The year in which this wayleave was signed.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Wayleave</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Indefinite</h6>
+<p class="card-text small">Whether the term of wayleave is indefinite, i.e. without an end date.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Wayleave</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Years</h6>
+<p class="card-text small">If the wayleave&#x27;s term is definite, its duration in years.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Wayleave</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Recurring</h6>
+<p class="card-text small">Whether this is a recurring cost.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Wayleave</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Cost per metre amount</h6>
+<p class="card-text small">The average cost per metre for this wayleave. Wayleave costs can include a mix of per length and per item fees, e.g. a fee per metre of cable and a fee per pole. The average cost per metre should be calculated by dividing the total cost of all fees by the total length in metres of cable covered by the wayleave. For recurring fees, the average cost per metre should be annualised.</p><p class="card-text small">The amount of this value.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Wayleave</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Cost per metre currency</h6>
+<p class="card-text small">The average cost per metre for this wayleave. Wayleave costs can include a mix of per length and per item fees, e.g. a fee per metre of cable and a fee per pole. The average cost per metre should be calculated by dividing the total cost of all fees by the total length in metres of cable covered by the wayleave. For recurring fees, the average cost per metre should be annualised.</p><p class="card-text small">The currency of this value, from the closed <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#currency">currency codelist</a>.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>AED</strong> — UAE Dirham</li>
+        <li class="list-group-item py-1 small"><strong>AFN</strong> — Afghani</li>
+        <li class="list-group-item py-1 small"><strong>ALL</strong> — Lek</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Wayleave <span class="badge bg-secondary">1:1</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Grantor</h6>
+<p class="card-text small">The entity that grants a network operator the legal right to install, maintain, or operate telecommunications infrastructure on, over, or under property or assets.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

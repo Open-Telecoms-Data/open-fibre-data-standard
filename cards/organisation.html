@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Organisation — OFDS Data Model Cards</title>
+  <style>
+    .card-page {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    @media print {
+      .card-page {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin: 0;
+        break-after: page;
+        page-break-after: always;
+      }
+      body { margin: 0; padding: 0.5cm; }
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body class="p-3">
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Organisation</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Local identifier</h6>
+<p class="card-text small">A locally-unique identifier for this organisation.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Organisation</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Name</h6>
+<p class="card-text small">A name for this organisation. The name should be unique amongst the organisations belonging to a network.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Organisation</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Identifier</h6>
+<p class="card-text small">The identifier assigned to the organisation in the register identified in `.scheme`.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Organisation</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Scheme</h6>
+<p class="card-text small">The register from which the identifier in `.id` is drawn, from the open <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#organisationidentifierscheme">organisationIdentifierScheme codelist</a>.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>AD-COA</strong> — Andorra Chart of Accounts</li>
+        <li class="list-group-item py-1 small"><strong>AE-ACCI</strong> — Ajman Chamber of Commerce and Industry</li>
+        <li class="list-group-item py-1 small"><strong>AE-ADCD</strong> — Abu Dhabi Commercial Directory</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Organisation</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Legal name</h6>
+<p class="card-text small">The legally registered name of the organisation</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Organisation</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">URI</h6>
+<p class="card-text small">A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Organisation</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Country</h6>
+<p class="card-text small">The country in which this organisation is legally registered, from the closed <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#country">country codelist</a>.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>AD</strong> — Andorra</li>
+        <li class="list-group-item py-1 small"><strong>AE</strong> — United Arab Emirates</li>
+        <li class="list-group-item py-1 small"><strong>AF</strong> — Afghanistan</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Organisation</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Roles</h6>
+<p class="card-text small">This organisation&#x27;s roles in this network, from the open <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#organisationrole">organisationRole codelist</a>. Further details about this organisation&#x27;s roles can be provided in `.roleDetails`.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>transmissionMediumOwner</strong> — Transmission medium owner</li>
+        <li class="list-group-item py-1 small"><strong>supportingInfrastructureOwner</strong> — Supporting infrastructure owner</li>
+        <li class="list-group-item py-1 small"><strong>networkProvider</strong> — Network provider</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Organisation</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Role details</h6>
+<p class="card-text small">Further details about this organisation&#x27;s roles in the network</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Organisation</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Website</h6>
+<p class="card-text small">The URL of the website for this organisation.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Organisation</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Logo</h6>
+<p class="card-text small">The URL of the logo for this organisation.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

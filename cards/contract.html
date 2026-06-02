@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Contract — OFDS Data Model Cards</title>
+  <style>
+    .card-page {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    @media print {
+      .card-page {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin: 0;
+        break-after: page;
+        page-break-after: always;
+      }
+      body { margin: 0; padding: 0.5cm; }
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body class="p-3">
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Contract</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Identifier</h6>
+<p class="card-text small">A locally-unique identifier for this contract.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Contract</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Title</h6>
+<p class="card-text small">A title for this contract.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Contract</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Description</h6>
+<p class="card-text small">A description for this contract.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Contract</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Type</h6>
+<p class="card-text small">The type of this contract, from the open <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#contracttype">contractType codelist</a>.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>ppp</strong> — Public Private Partnership (PPP)</li>
+        <li class="list-group-item py-1 small"><strong>private</strong> — Private</li>
+        <li class="list-group-item py-1 small"><strong>public</strong> — Public</li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Contract</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Value amount</h6>
+<p class="card-text small">The value of this contract.</p><p class="card-text small">The amount of this value.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Contract</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Value currency</h6>
+<p class="card-text small">The value of this contract.</p><p class="card-text small">The currency of this value, from the closed <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#currency">currency codelist</a>.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>AED</strong> — UAE Dirham</li>
+        <li class="list-group-item py-1 small"><strong>AFN</strong> — Afghani</li>
+        <li class="list-group-item py-1 small"><strong>ALL</strong> — Lek</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Contract</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Date signed</h6>
+<p class="card-text small">The date this contract was signed.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Contract <span class="badge bg-secondary">1:N</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Documents</h6>
+<p class="card-text small">The documents related to this contract.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Contract <span class="badge bg-secondary">1:N</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Related phases</h6>
+<p class="card-text small">The phases to which this contract relates.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

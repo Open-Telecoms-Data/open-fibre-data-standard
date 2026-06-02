@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Phase — OFDS Data Model Cards</title>
+  <style>
+    .card-page {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    @media print {
+      .card-page {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin: 0;
+        break-after: page;
+        page-break-after: always;
+      }
+      body { margin: 0; padding: 0.5cm; }
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body class="p-3">
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Phase</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Identifier</h6>
+<p class="card-text small">A locally-unique identifier for this phase.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Phase</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Name</h6>
+<p class="card-text small">A name for this phase. The name should be unique amongst the phases belonging to a network.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Phase</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Description</h6>
+<p class="card-text small">A description for this phase.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Phase <span class="badge bg-secondary">1:N</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Funders</h6>
+<p class="card-text small">The organisations that provide financing for the development or operation of this phase, also known as investors or financers.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

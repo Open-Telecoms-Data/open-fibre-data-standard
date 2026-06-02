@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Network — OFDS Data Model Cards</title>
+  <style>
+    .card-page {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    @media print {
+      .card-page {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin: 0;
+        break-after: page;
+        page-break-after: always;
+      }
+      body { margin: 0; padding: 0.5cm; }
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body class="p-3">
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">UUID</h6>
+<p class="card-text small">A universally unique identifier for this network, as defined by <a href="https://datatracker.ietf.org/doc/html/rfc4122">RFC 4122</a>. For more information, see the <a href="https://standard.ofds.info/en/{{version}}/reference/identifiers">identifier reference</a>.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Identifier</h6>
+<p class="card-text small">A local identifier for this network in an internal system.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Network name</h6>
+<p class="card-text small">A name for this network.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Website</h6>
+<p class="card-text small">The URL of the website for this network.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Name</h6>
+<p class="card-text small">A name for this organisation.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Organisation identifier identifier</h6>
+<p class="card-text small">An identifier for this organisation.</p><p class="card-text small">The identifier assigned to the organisation in the register identified in `.scheme`.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Organisation identifier scheme</h6>
+<p class="card-text small">An identifier for this organisation.</p><p class="card-text small">The register from which the identifier in `.id` is drawn, from the open <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#organisationidentifierscheme">organisationIdentifierScheme codelist</a>.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>AD-COA</strong> — Andorra Chart of Accounts</li>
+        <li class="list-group-item py-1 small"><strong>AE-ACCI</strong> — Ajman Chamber of Commerce and Industry</li>
+        <li class="list-group-item py-1 small"><strong>AE-ADCD</strong> — Abu Dhabi Commercial Directory</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Organisation identifier legal name</h6>
+<p class="card-text small">An identifier for this organisation.</p><p class="card-text small">The legally registered name of the organisation</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Organisation identifier uri</h6>
+<p class="card-text small">An identifier for this organisation.</p><p class="card-text small">A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Publication date</h6>
+<p class="card-text small">The date when this network was published.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Collection date</h6>
+<p class="card-text small">The date when the location data was collected. If a dataset was produced by digitising a map, the date that the data for the map was collected.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Accuracy</h6>
+<p class="card-text small">The horizontal uncertainty, in metres, of the coordinates in this dataset relative to the datum of the coordinate reference system specified in `crs`. Further details about the accuracy of coordinates in this dataset can be provided in `.accuracyDetails`.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Accuracy details</h6>
+<p class="card-text small">Further details about the accuracy specified in `accuracy`. For example, the confidence level of the accuracy measurement, the methodology used to calculate the accuracy, or a local classification of accuracy.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Language</h6>
+<p class="card-text small">The default language used in text attributes,from the open <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#language">language codelist</a>. A <a href="https://www.w3.org/International/articles/language-tags/">BCP47 language tag</a> is allowed, if there is a user need for the additional information.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>aa</strong> — Afar</li>
+        <li class="list-group-item py-1 small"><strong>ab</strong> — Abkhazian</li>
+        <li class="list-group-item py-1 small"><strong>ae</strong> — Avestan</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network <span class="badge bg-secondary">1:N</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Nodes</h6>
+<p class="card-text small">The nodes that belong to this network.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network <span class="badge bg-secondary">1:N</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Spans</h6>
+<p class="card-text small">The spans that belong to this network.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Network <span class="badge bg-secondary">1:N</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Phases</h6>
+<p class="card-text small">The phases in which this network was, or will be, deployed.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

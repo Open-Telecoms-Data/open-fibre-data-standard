@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Document — OFDS Data Model Cards</title>
+  <style>
+    .card-page {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    @media print {
+      .card-page {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin: 0;
+        break-after: page;
+        page-break-after: always;
+      }
+      body { margin: 0; padding: 0.5cm; }
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body class="p-3">
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Document</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Title</h6>
+<p class="card-text small">A title for this document.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Document</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Description</h6>
+<p class="card-text small">A description of this document. Descriptions should not exceed 250 words. If the document is not accessible online, the description should describe how to access a copy of the document.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Document</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">URL</h6>
+<p class="card-text small">A web address for accessing this document.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Document</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Format</h6>
+<p class="card-text small">The format of this document, from the open <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#mediatype">mediaType codelist</a>.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>application/1d-interleaved-parityfec</strong> — 1d-interleaved-parityfec</li>
+        <li class="list-group-item py-1 small"><strong>application/3gpdash-qoe-report+xml</strong> — 3gpdash-qoe-report+xml</li>
+        <li class="list-group-item py-1 small"><strong>application/3gpp-ims+xml</strong> — 3gpp-ims+xml</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

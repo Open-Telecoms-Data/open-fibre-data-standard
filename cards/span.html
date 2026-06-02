@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <title>Span — OFDS Data Model Cards</title>
+  <style>
+    .card-page {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    @media print {
+      .card-page {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+        margin: 0;
+        break-after: page;
+        page-break-after: always;
+      }
+      body { margin: 0; padding: 0.5cm; }
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+  </style>
+</head>
+<body class="p-3">
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Identifier</h6>
+<p class="card-text small">A locally-unique identifier for this span.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Name</h6>
+<p class="card-text small">A name for this span. The name should be unique amongst the spans belonging to a network.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Status</h6>
+<p class="card-text small">The status of the network infrastructure for this span, from the closed <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#spanstatus">spanStatus codelist</a>.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>proposed</strong> — Proposed</li>
+        <li class="list-group-item py-1 small"><strong>planned</strong> — Planned</li>
+        <li class="list-group-item py-1 small"><strong>underConstruction</strong> — Under construction</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Ready for service date</h6>
+<p class="card-text small">The date this span was ready to carry traffic. For spans with multiple network providers, the earliest of the dates at which each provider&#x27;s network was ready to carry traffic on this span.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Directed</h6>
+<p class="card-text small">Whether this span is directed. If the span is directed, the span begins at the node referenced in `.start` and ends at the node referenced in `.end`. Otherwise, the span connects the nodes referenced in `.start` and `.end` with no direction implied.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Route</h6>
+<p class="card-text small">The physical route that this span takes between the nodes that it connects.</p>
+        <p class="card-text text-muted fst-italic small">A linestring geometry (list of coordinate pairs).</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Transmission medium</h6>
+<p class="card-text small">The physical media of this span, from the closed <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#transmissionmedium">transmissionMedium codelist</a>.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>coaxial</strong> — Coaxial cable</li>
+        <li class="list-group-item py-1 small"><strong>copper</strong> — Copper wire</li>
+        <li class="list-group-item py-1 small"><strong>fibre</strong> — Fibre optic cable</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Deployment</h6>
+<p class="card-text small">The physical deployment of this span, from the closed <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#deployment">deployment codelist</a>. Further details of this span&#x27;s deployment can be provided in `.supportingInfrastructure`.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>aboveGround</strong> — Above ground</li>
+        <li class="list-group-item py-1 small"><strong>belowGround</strong> — Below ground</li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Type</h6>
+<p class="card-text small">The type of supporting infrastructure, from the open <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#spansupportinginfrastructure">spanSupportingInfrastructure codelist</a>.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>duct</strong> — Duct</li>
+        <li class="list-group-item py-1 small"><strong>none</strong> — None</li>
+        <li class="list-group-item py-1 small"><strong>pipe</strong> — Pipe</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Description</h6>
+<p class="card-text small">A description of the supporting infrastructure for this span.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Spare capacity</h6>
+<p class="card-text small">Whether the supporting infrastructure has spare capacity for the installation of additional fibre cables.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Codeployment</h6>
+<p class="card-text small">The type of utility or transport infrastrucutre with which this span is codeployed.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>wasteWater</strong> — Waste water</li>
+        <li class="list-group-item py-1 small"><strong>drinkingWater</strong> — Drinking water</li>
+        <li class="list-group-item py-1 small"><strong>stormWater</strong> — Storm water</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+  </div>
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Cable type</h6>
+<p class="card-text small">The type of cable used in this span, from the open <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#cabletype">cableType codelist</a>. Further details of this span&#x27;s cable type can be provided in `.cableTypeDetails`.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>opgw</strong> — Optical Groundwire</li>
+        <li class="list-group-item py-1 small"><strong>adss</strong> — All-Dielectric Self-Supporting</li>
+        <li class="list-group-item py-1 small"><strong>oppc</strong> — Optical Phase Conductor</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Dark fibre availability</h6>
+<p class="card-text small">Whether access to dark fibre is available on this span.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Fibre type</h6>
+<p class="card-text small">The type of fibre used in this span, from the closed <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#fibretype">fibreType codelist</a>. Further details of the span&#x27;s fibre type can be provided in `.fibreTypeDetails`.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>G.651.1</strong> — G.651.1</li>
+        <li class="list-group-item py-1 small"><strong>G.652</strong> — G.652</li>
+        <li class="list-group-item py-1 small"><strong>G.653</strong> — G.653</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Subtype</h6>
+<p class="card-text small">The sub-category of this span&#x27;s fibre type. For example, G.652.B.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Description</h6>
+<p class="card-text small">A description of this span&#x27;s fibre type.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Fibre count</h6>
+<p class="card-text small">The number of individual optical fibres in this span.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Fibre length</h6>
+<p class="card-text small">The physical length in kilometres, of fibre optic cable used in this span.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Technologies</h6>
+<p class="card-text small">The active technologies used on this span, from the open <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#spantechnologies">spanTechnologies codelist</a>. For spans with multiple network providers, the union of the active technologies used by each provider.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>dwdm</strong> — Dense Wavelength Division Multiplexing</li>
+        <li class="list-group-item py-1 small"><strong>sdh</strong> — Synchronous Digital Hierarchy</li>
+        <li class="list-group-item py-1 small"><strong>sonet</strong> — Synchronous Optical Networking</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Equipped capacity</h6>
+<p class="card-text small">The transmission rate, or throughput, of this span, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the span. For spans with multiple network providers, the sum of the capacity of each provider&#x27;s network on this span. Further details of this span&#x27;s capacity can be provided in `.capacityDetails`. For more information, see <a href="https://standard.ofds.info/en/{{version}}/reference/data_model/#equipped-capacity">equipped capacity</a>.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Description</h6>
+<p class="card-text small">A description of this span&#x27;s capacity.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span</div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Countries</h6>
+<p class="card-text small">The countries in which this span is physically located, from the closed <a href="https://standard.ofds.info/en/{{version}}/reference/codelists#country">country codelist</a>.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item py-1 small"><strong>AD</strong> — Andorra</li>
+        <li class="list-group-item py-1 small"><strong>AE</strong> — United Arab Emirates</li>
+        <li class="list-group-item py-1 small"><strong>AF</strong> — Afghanistan</li>
+        <li class="list-group-item py-1 small"><strong>...</strong></li>
+      </ul>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span <span class="badge bg-secondary">1:1</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Phase</h6>
+<p class="card-text small">The phase to which this span belongs.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span <span class="badge bg-secondary">1:1</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Start</h6>
+<p class="card-text small">The identifier of one of two nodes that this span connects. If the span is directed, it represents the starting point of the span.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span <span class="badge bg-secondary">1:1</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">End</h6>
+<p class="card-text small">The identifier of one of two nodes that this span connects. If the span is directed, it represents the end point of the span.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span <span class="badge bg-secondary">1:1</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Transmission medium owner</h6>
+<p class="card-text small">The organisation that owns the transmission media for this span, i.e. the fibre cables.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span <span class="badge bg-secondary">1:N</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Network providers</h6>
+<p class="card-text small">The organisations that operate the active network infrastructure for this span, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span <span class="badge bg-secondary">1:1</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Supplier</h6>
+<p class="card-text small">The organisation responsible for installing the cable for this span.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span <span class="badge bg-secondary">1:1</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Owner</h6>
+<p class="card-text small">The organisation that owns the supporting infrastructure.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+  <div class="card-page">
+    <div class="card h-100">
+      <div class="card-header py-1 small">Span <span class="badge bg-secondary">1:N</span></div>
+      <div class="card-body py-2">
+        <h6 class="card-title">Wayleaves</h6>
+<p class="card-text small">The identifiers of the formal agreements that grant network operators rights to install, maintain or operate this span&#x27;s infrastructure on, over, or under grantors&#x27; property or assets.</p>
+        <p class="card-text text-muted small">&nbsp;</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
