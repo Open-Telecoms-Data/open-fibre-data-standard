@@ -1,0 +1,15 @@
+FROM python:3.13
+
+WORKDIR /workspace
+
+RUN /bin/bash -c "echo \"export PATH=\$PATH:/root/.local/bin/\" >> /root/.bashrc"
+
+RUN apt-get update
+RUN apt-get install -y locales
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
+RUN dpkg-reconfigure --frontend=noninteractive locales
+
+COPY requirements.txt /workspace/
+RUN pip3 install --user -r /workspace/requirements.txt
+
+CMD ["bash"]

@@ -1,0 +1,16 @@
+{
+  "name": "OFDS Dev Container",
+  "build": {
+    "dockerfile": "Dockerfile.devcontainer",
+    "context": "."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        ""
+      ]
+    }
+  },
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+  "workspaceFolder": "/workspace"
+}
