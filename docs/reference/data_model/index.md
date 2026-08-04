@@ -10,7 +10,7 @@ OFDS also defines standardised representations of the data model in different [d
 
 ## Overview
 
-The following diagram provides an overview of the key entities and relationships in the OFDS data model.
+The following diagram provides an overview of the key entities and relationships in the OFDS data model. Spatial entities are shown in green, and non-spatial entities are shown in blue. The diagram is interactive, allowing you to zoom and pan to explore the model.
 
 ```{mermaid} data_model.mmd
 :zoom:
@@ -24,7 +24,7 @@ For an introduction to key concepts and relationships covered in the OFDS data m
 
 This section provides a definition for each entity in the data model, including a description, relationships to other entities, and attributes.
 
-Relationships are listed from the perspective of the entity that holds the reference. Inverse relationships are not shown separately.See the [#overview] diagram for a full view of how entities relate to each other.
+Relationships are listed from the perspective of the entity that holds the reference. Inverse relationships are not shown separately.See the [overview](#overview) diagram for a full view of how entities relate to each other.
 
 Some attributes refer to [codelists](../codelists.md) to limit and standardise the possible values of the attribute. In such cases, a link to the codelist is provided in the attribute's description.
 

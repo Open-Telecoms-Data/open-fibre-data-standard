@@ -6,7 +6,7 @@ The OFDS GeoPackage format is based on [GeoPackage 1.4.0](https://www.geopackage
 
 ## Template
 
-The [OFDS GeoPackage template](../../../../schema/geopackage/network-schema.gpkg) implements the structure described on this page.
+The [OFDS GeoPackage template](../../../../_readthedocs/html/network-schema.gpkg) implements the structure described on this page.
 
 ```{tip}
 You can explore the structure of the OFDS GeoPackage template in common GIS tools such as [QGIS](https://qgis.org/), or you can connect directly to the SQLite database using your preferred SQL client. 
@@ -320,14 +320,14 @@ Vector Feature User Data Tables represent [spatial entities](#features-spatial-e
 **Columns**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/nodes.csv
+:file: ../../../../_readthedocs/html/table_definitions/nodes.csv
 :header-rows: 1
 ```
 
 **Foreign keys**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/nodes_fks.csv
+:file: ../../../../_readthedocs/html/table_definitions/nodes_fks.csv
 :header-rows: 1
 ```
 
@@ -342,14 +342,14 @@ Vector Feature User Data Tables represent [spatial entities](#features-spatial-e
 **Columns**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/spans.csv
+:file: ../../../../_readthedocs/html/table_definitions/spans.csv
 :header-rows: 1
 ```
 
 **Foreign keys**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/spans_fks.csv
+:file: ../../../../_readthedocs/html/table_definitions/spans_fks.csv
 :header-rows: 1
 ```
 
@@ -369,14 +369,14 @@ Attributes User Data Tables represent [non-spatial entities](#non-spatial-entiti
 **Columns**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/networks.csv
+:file: ../../../../_readthedocs/html/table_definitions/networks.csv
 :header-rows: 1
 ```
 
 **Foreign keys**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/networks_fks.csv
+:file: ../../../../_readthedocs/html/table_definitions/networks_fks.csv
 :header-rows: 1
 ```
 
@@ -391,14 +391,14 @@ Attributes User Data Tables represent [non-spatial entities](#non-spatial-entiti
 **Columns**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/phases.csv
+:file: ../../../../_readthedocs/html/table_definitions/phases.csv
 :header-rows: 1
 ```
 
 **Foreign keys**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/phases_fks.csv
+:file: ../../../../_readthedocs/html/table_definitions/phases_fks.csv
 :header-rows: 1
 ```
 
@@ -413,14 +413,14 @@ Attributes User Data Tables represent [non-spatial entities](#non-spatial-entiti
 **Columns**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/organisations.csv
+:file: ../../../../_readthedocs/html/table_definitions/organisations.csv
 :header-rows: 1
 ```
 
 **Foreign keys**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/organisations_fks.csv
+:file: ../../../../_readthedocs/html/table_definitions/organisations_fks.csv
 :header-rows: 1
 ```
 
@@ -435,14 +435,14 @@ Attributes User Data Tables represent [non-spatial entities](#non-spatial-entiti
 **Columns**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/contracts.csv
+:file: ../../../../_readthedocs/html/table_definitions/contracts.csv
 :header-rows: 1
 ```
 
 **Foreign keys**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/contracts_fks.csv
+:file: ../../../../_readthedocs/html/table_definitions/contracts_fks.csv
 :header-rows: 1
 ```
 
@@ -457,14 +457,14 @@ Attributes User Data Tables represent [non-spatial entities](#non-spatial-entiti
 **Columns**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/wayleaves.csv
+:file: ../../../../_readthedocs/html/table_definitions/wayleaves.csv
 :header-rows: 1
 ```
 
 **Foreign keys**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/wayleaves_fks.csv
+:file: ../../../../_readthedocs/html/table_definitions/wayleaves_fks.csv
 :header-rows: 1
 ```
 
@@ -479,14 +479,14 @@ Attributes User Data Tables represent [non-spatial entities](#non-spatial-entiti
 **Columns**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/contracts_documents.csv
+:file: ../../../../_readthedocs/html/table_definitions/contracts_documents.csv
 :header-rows: 1
 ```
 
 **Foreign keys**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/contracts_documents_fks.csv
+:file: ../../../../_readthedocs/html/table_definitions/contracts_documents_fks.csv
 :header-rows: 1
 ```
 
@@ -501,14 +501,14 @@ Attributes User Data Tables represent [non-spatial entities](#non-spatial-entiti
 **Columns**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/nodes_internationalConnections.csv
+:file: ../../../../_readthedocs/html/table_definitions/nodes_internationalConnections.csv
 :header-rows: 1
 ```
 
 **Foreign keys**
 
 ```{csv-table}
-:file: ../../../../schema/geopackage/table_definitions/nodes_internationalConnections_fks.csv
+:file: ../../../../_readthedocs/html/table_definitions/nodes_internationalConnections_fks.csv
 :header-rows: 1
 ```
 
@@ -530,7 +530,7 @@ An OFDS GeoPackage includes the following codelist tables:
 
 ```{csv-table}
 :header: Table,Codelist
-:file: ../../../../schema/geopackage/table_definitions/codelist_tables.csv
+:file: ../../../../_readthedocs/html/table_definitions/codelist_tables.csv
 
 ```
 
@@ -550,7 +550,7 @@ An OFDS GeoPackage includes the following user-defined mapping tables:
 
 ```{csv-table}
 :header: Table,base_id FK,related_id FK
-:file: ../../../../schema/geopackage/table_definitions/mapping_tables.csv
+:file: ../../../../_readthedocs/html/table_definitions/mapping_tables.csv
 
 
 ```

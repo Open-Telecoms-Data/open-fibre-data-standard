@@ -28,7 +28,7 @@ This page presents the schema in an [interactive browser](#browser) and in [refe
 
 Click on schema elements to expand the tree, or use the '+' icon to expand all elements. Use { } to view the underlying schema for any section. Required properties are indicated in **bold**.
 
-<script src="../../../../_static/docson/widget.js" data-schema="../../_static/network-schema.json"></script>
+<script src="../../../../_static/docson/widget.js" data-schema="../../network-schema.json"></script>
 
 ## Reference tables
 
@@ -89,7 +89,6 @@ Each `Node` has the following properties:
 
 ```{jsonschema} ../../../../_readthedocs/html/network-schema.json
 :pointer: /$defs/Node
-:collapse: id,name,phase,status,location,address,type,accessPoint,internationalConnections,power,technologies,transmissionMediumOwner,networkProviders
 :addtargets:
 :prefix: json
 ```
