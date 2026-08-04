@@ -10,7 +10,7 @@ Use the canonical schema URL to make sure that your software, documentation or o
 
 ```
 
-This page presents the schema in an [interactive browser](#browser) and in [reference tables](#reference-tables) with additional information in paragraphs. You can also download the canonical version of the schema as [JSON Schema](../../../../_readthedocs/html/network-schema.json) or download it as a [CSV spreadsheet](../../../../schema/network-schema.csv).
+This page presents the schema in an [interactive browser](#browser) and in [reference tables](#reference-tables) with additional information in paragraphs. You can also download the canonical version of the schema as [JSON Schema](../../../../_readthedocs/html/network-schema.json) or download it as a [CSV spreadsheet](../../../../schema/data_formats/json/network-schema.csv).
 
 ```{note}
    If any conflicts are found between the text on this page and the text within the schema, the text within the schema takes precedence.
@@ -309,7 +309,7 @@ This section lists each sub-schema in the OFDS schema. Sub-schemas are reused in
 
 `PointGeometry` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../schema/data_formats/json/network-schema.json
 :jsonpointer: /$defs/PointGeometry/description
 ```
 
@@ -325,7 +325,7 @@ Each `PointGeometry` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../schema/data_formats/json/network-schema.json
 :pointer: /$defs/PointGeometry
 :collapse: type,coordinates
 :addtargets:
@@ -350,7 +350,7 @@ Each `PointGeometry` has the following properties:
 
 `LineStringGeometry` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../schema/data_formats/json/network-schema.json
 :jsonpointer: /$defs/LineStringGeometry/description
 ```
 
@@ -366,7 +366,7 @@ Each `LineStringGeometry` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../schema/data_formats/json/network-schema.json
 :pointer: /$defs/LineStringGeometry
 :collapse: type,coordinates
 :addtargets:
@@ -570,7 +570,7 @@ Each `Address` has the following properties:
 
 `Value` is defined as:
 
-```{jsoninclude-quote} ../../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../../schema/data_formats/json/network-schema.json
 :jsonpointer: /$defs/Value/description
 ```
 
@@ -585,7 +585,7 @@ Each `Value` has the following properties:
 
 :::{tab-item} Schema
 
-```{jsonschema} ../../../../schema/network-schema.json
+```{jsonschema} ../../../../schema/data_formats/json/network-schema.json
 :pointer: /$defs/Value
 :addtargets:
 :prefix: json

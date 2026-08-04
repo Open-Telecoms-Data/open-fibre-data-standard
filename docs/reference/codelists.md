@@ -37,7 +37,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/cableType.csv
+:file: ../../schema/codelists/open/cableType.csv
 ```
 
 ````
@@ -59,7 +59,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/codeployment.csv
+:file: ../../schema/codelists/open/codeployment.csv
 ```
 
 ````
@@ -83,7 +83,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/contractType.csv
+:file: ../../schema/codelists/open/contractType.csv
 ```
 
 ````
@@ -106,7 +106,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/language.csv
+:file: ../../schema/codelists/open/language.csv
 ```
 
 ````
@@ -129,7 +129,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/mediaType.csv
+:file: ../../schema/codelists/open/mediaType.csv
 ```
 ````
 
@@ -149,7 +149,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/nodeSupportingInfrastructure.csv
+:file: ../../schema/codelists/open/nodeSupportingInfrastructure.csv
 ```
 ````
 
@@ -172,7 +172,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/nodeTechnologies.csv
+:file: ../../schema/codelists/open/nodeTechnologies.csv
 ```
 
 ````
@@ -196,7 +196,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/nodeType.csv
+:file: ../../schema/codelists/open/nodeType.csv
 ```
 
 ````
@@ -220,7 +220,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/organisationIdentifierScheme.csv
+:file: ../../schema/codelists/open/organisationIdentifierScheme.csv
 ```
 
 ````
@@ -244,7 +244,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/organisationRole.csv
+:file: ../../schema/codelists/open/organisationRole.csv
 ```
 ````
 
@@ -265,7 +265,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/spanSupportingInfrastructure.csv
+:file: ../../schema/codelists/open/spanSupportingInfrastructure.csv
 ```
 ````
 
@@ -288,7 +288,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/spanTechnologies.csv
+:file: ../../schema/codelists/open/spanTechnologies.csv
 ```
 
 ````
@@ -316,7 +316,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/country.csv
+:file: ../../schema/codelists/closed/country.csv
 ```
 
 ````
@@ -340,7 +340,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/currency.csv
+:file: ../../schema/codelists/closed/currency.csv
 ```
 
 ````
@@ -364,7 +364,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/deployment.csv
+:file: ../../schema/codelists/closed/deployment.csv
 ```
 
 ````
@@ -388,7 +388,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/fibreType.csv
+:file: ../../schema/codelists/closed/fibreType.csv
 ```
 
 ````
@@ -412,7 +412,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/nodeStatus.csv
+:file: ../../schema/codelists/closed/nodeStatus.csv
 ```
 
 ````
@@ -436,7 +436,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/spanStatus.csv
+:file: ../../schema/codelists/closed/spanStatus.csv
 ```
 
 ````
@@ -460,7 +460,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/transmissionMedium.csv
+:file: ../../schema/codelists/closed/transmissionMedium.csv
 ```
 
 ````
@@ -490,7 +490,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/linkRelationType.csv
+:file: ../../schema/codelists/open/linkRelationType.csv
 ```
 
 ````

@@ -13,7 +13,7 @@ import json
 
 this_dir = os.path.dirname(os.path.realpath(__file__))
 absolute_source_schema_dir = this_dir + '/../schema/'
-absolute_source_codelist_dir = this_dir + '/../codelists/'
+absolute_source_codelist_dir = this_dir + '/../schema/codelists/'
 
 
 def test_empty():

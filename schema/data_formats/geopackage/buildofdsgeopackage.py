@@ -35,6 +35,7 @@ class Builder:
             self.output_directory = os.path.join(
                 self.root_directory,
                 "schema",
+                "data_formats",
                 "geopackage",
             )
         self.write_schema_information_json = write_schema_information_json
@@ -75,6 +76,7 @@ class Builder:
             with open(
                 os.path.join(
                     self.root_directory,
+                    "schema",
                     "codelists",
                     "open" if open_codelist else "closed",
                     codelist_name,
@@ -592,6 +594,8 @@ class Builder:
         jsonschema_filename = os.path.join(
             self.root_directory,
             "schema",
+            "data_formats",
+            "json",
             "network-schema.json",
         )
         with open(jsonschema_filename) as fp:
@@ -611,6 +615,9 @@ class Builder:
         shutil.copyfile(
             os.path.join(
                 self.root_directory,
+                "schema",
+                "data_formats",
+                "geopackage",
                 "empty.gpkg",
             ),
             sqlite_filename,
@@ -772,7 +779,7 @@ if __name__ == "__main__":
 
     builder = Builder(
         root_directory=os.path.realpath(
-            os.path.join(os.path.dirname(os.path.realpath(__file__)))
+            os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "..", "..")
         ),
         output_directory=args.output_directory,
         write_schema_information_json=args.write_schema_information_json,

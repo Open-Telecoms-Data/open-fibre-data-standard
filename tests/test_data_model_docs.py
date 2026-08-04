@@ -3,7 +3,8 @@ import pytest
 from pathlib import Path
 
 basedir = Path(__file__).resolve().parent.parent
-datamodeldir = basedir / 'docs' / 'reference' / 'data_model'
+datamodeldir = basedir / 'schema' / 'data_model'
+datamodeldocsdir = basedir / 'docs' / 'reference' / 'data_model'
 
 
 def _entity_names():
@@ -16,7 +17,7 @@ ENTITY_NAMES = _entity_names()
 
 @pytest.fixture(scope='module')
 def data_model_index_md():
-    return (datamodeldir / 'index.md').read_text()
+    return (datamodeldocsdir / 'index.md').read_text()
 
 
 @pytest.mark.parametrize("entity", ENTITY_NAMES)

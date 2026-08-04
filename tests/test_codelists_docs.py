@@ -7,7 +7,7 @@ from pathlib import Path
 
 basedir = Path(__file__).resolve().parent.parent
 codelistdir = basedir / 'codelists'
-datamodeldir = basedir / 'docs' / 'reference' / 'data_model'
+datamodeldir = basedir / 'schema' / 'data_model'
 referencedir = basedir / 'docs' / 'reference'
 
 

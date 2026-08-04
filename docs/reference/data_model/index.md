@@ -12,7 +12,7 @@ OFDS also defines standardised representations of the data model in different [d
 
 The following diagram provides an overview of the key entities and relationships in the OFDS data model. Spatial entities are shown in green, and non-spatial entities are shown in blue. The diagram is interactive, allowing you to zoom and pan to explore the model.
 
-```{mermaid} data_model.mmd
+```{mermaid} ../../../schema/data_model/data_model.mmd
 :zoom:
 ```
 
@@ -47,7 +47,7 @@ Some attributes refer to [codelists](../codelists.md) to limit and standardise t
 :icon: link
 :name: network-relationships
 ````{csv-table}
-:file: network/relationships.csv
+:file: ../../../schema/data_model/network/relationships.csv
 :header-rows: 1
 
 ````
@@ -59,7 +59,7 @@ Some attributes refer to [codelists](../codelists.md) to limit and standardise t
 :chevron: down-up
 :icon: rows
 :name: network-attributes
-```{include} network/directive.txt
+```{include} ../../../schema/data_model/network/directive.txt
 ```
 
 ````
@@ -83,7 +83,7 @@ Some attributes refer to [codelists](../codelists.md) to limit and standardise t
 :icon: link
 :name: phase-relationships
 ````{csv-table}
-:file: phase/relationships.csv
+:file: ../../../schema/data_model/phase/relationships.csv
 :header-rows: 1
 
 ````
@@ -95,7 +95,7 @@ Some attributes refer to [codelists](../codelists.md) to limit and standardise t
 :chevron: down-up
 :icon: rows
 :name: phase-attributes
-```{include} phase/directive.txt
+```{include} ../../../schema/data_model/phase/directive.txt
 ```
 
 ````
@@ -120,7 +120,7 @@ Some attributes refer to [codelists](../codelists.md) to limit and standardise t
 :name: node-relationships
 
 ````{csv-table}
-:file: node/relationships.csv
+:file: ../../../schema/data_model/node/relationships.csv
 :header-rows: 1
 
 ````
@@ -132,7 +132,7 @@ Some attributes refer to [codelists](../codelists.md) to limit and standardise t
 :chevron: down-up
 :icon: rows
 :name: node-attributes
-```{include} node/directive.txt
+```{include} ../../../schema/data_model/node/directive.txt
 ```
 
 ````
@@ -156,7 +156,7 @@ Some attributes refer to [codelists](../codelists.md) to limit and standardise t
 :icon: link
 :name: span-relationships
 ````{csv-table}
-:file: span/relationships.csv
+:file: ../../../schema/data_model/span/relationships.csv
 :header-rows: 1
 
 ````
@@ -168,7 +168,7 @@ Some attributes refer to [codelists](../codelists.md) to limit and standardise t
 :chevron: down-up
 :icon: rows
 :name: span-attributes
-```{include} span/directive.txt
+```{include} ../../../schema/data_model/span/directive.txt
 ```
 
 ````
@@ -221,7 +221,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :chevron: down-up
 :icon: rows
 :name: organisation-attributes
-```{include} organisation/directive.txt
+```{include} ../../../schema/data_model/organisation/directive.txt
 ```
 
 ````
@@ -245,7 +245,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :icon: link
 :name: contract-relationships
 ````{csv-table}
-:file: contract/relationships.csv
+:file: ../../../schema/data_model/contract/relationships.csv
 :header-rows: 1
 
 `````
@@ -255,7 +255,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :chevron: down-up
 :icon: rows
 :name: contract-attributes
-```{include} contract/directive.txt
+```{include} ../../../schema/data_model/contract/directive.txt
 ```
 
 ````
@@ -268,7 +268,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :chevron: down-up
 :icon: book
 :name: wayleave-description
-```{jsoninclude-quote} ../../../schema/network-schema.json
+```{jsoninclude-quote} ../../../schema/data_formats/json/network-schema.json
 :jsonpointer: /$defs/Wayleave/description
 ```
 ````
@@ -279,7 +279,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :icon: link
 :name: wayleave-relationships
 ````{csv-table}
-:file: wayleave/relationships.csv
+:file: ../../../schema/data_model/wayleave/relationships.csv
 :header-rows: 1
 
 ````
@@ -291,7 +291,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :chevron: down-up
 :icon: rows
 :name: wayleave-attributes
-```{include} wayleave/directive.txt
+```{include} ../../../schema/data_model/wayleave/directive.txt
 ```
 
 ````
@@ -314,7 +314,7 @@ There are several measures of capacity in fibre networks[^itu-attribution]:
 :chevron: down-up
 :icon: rows
 :name: document-attributes
-```{include} document/directive.txt
+```{include} ../../../schema/data_model/document/directive.txt
 ```
 
 ````

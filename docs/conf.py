@@ -623,7 +623,7 @@ def env_before_read_docs(app, env, docnames):
     # Copy schema to output directory
     target_path = os.path.join(outdir, 'network-schema.json')
     os.makedirs(os.path.dirname(target_path), exist_ok=True)
-    shutil.copyfile('../schema/network-schema.json', target_path)
+    shutil.copyfile('../schema/data_formats/json/network-schema.json', target_path)
 
     if rtd_version is not None:
         # Replace {{version}} placeholders
@@ -635,7 +635,7 @@ def env_before_read_docs(app, env, docnames):
     # Copy GeoPackage template to output directory
     gpkg_target_path = os.path.join(outdir, 'network-schema.gpkg')
     os.makedirs(os.path.dirname(gpkg_target_path), exist_ok=True)
-    shutil.copyfile('../schema/geopackage/network-schema.gpkg', gpkg_target_path)
+    shutil.copyfile('../schema/data_formats/geopackage/network-schema.gpkg', gpkg_target_path)
 
     if rtd_version is not None:
         # Replace {{version}} placeholders
@@ -648,5 +648,5 @@ def env_before_read_docs(app, env, docnames):
     export_metadata_to_csv(gpkg_target_path, os.path.join(outdir, 'table_definitions'))
 
     # Copy other schema and codelist files to output directory
-    shutil.copyfile('../schema/network-package-schema.json', os.path.join(outdir, 'network-package-schema.json'))
-    shutil.copytree('../codelists', os.path.join(outdir, 'codelists'), dirs_exist_ok=True)
+    shutil.copyfile('../schema/data_formats/json/network-package-schema.json', os.path.join(outdir, 'network-package-schema.json'))
+    shutil.copytree('../schema/codelists', os.path.join(outdir, 'codelists'), dirs_exist_ok=True)
