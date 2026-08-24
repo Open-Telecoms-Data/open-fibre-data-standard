@@ -43,7 +43,8 @@ extensions = [
     'sphinx_design',
     'sphinxcontrib.mermaid',
     'crate.sphinx.csv',
-    'sphinxcontrib.sqltable'
+    'sphinxcontrib.sqltable',
+    'sphinx.ext.imgconverter'
 ]
 
 #MyST extenions
@@ -308,8 +309,7 @@ latex_elements = {
      # 'pointsize': '10pt',
 
      # Additional stuff for the LaTeX preamble.
-     #
-     # 'preamble': '',
+     'preamble': r'\DeclareUnicodeCharacter{2009}{\,}',
 
      # Latex figure (float) alignment
      #
