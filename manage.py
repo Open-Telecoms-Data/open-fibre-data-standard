@@ -513,13 +513,14 @@ def cli():
 @cli.command()
 def pre_commit():
     """Update derivative schema files, examples and reference documentation:
-      - network-schema.csv
+      - schema/data_formats/json/network-schema.csv
       - schema/data_model
       - examples/csv/template
       - examples/csv
-      - reference/data_formats/csv.md
+      - docs/reference/data_formats/csv.md
       - examples/geojson/nodes.geojson
       - examples/geojson/spans.geojson
+      - schema/data_formats/geopackage/
       Also run:
       - mdformat
     """
