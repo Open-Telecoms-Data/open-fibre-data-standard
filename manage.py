@@ -21,6 +21,7 @@ from pathlib import Path
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.realpath(__file__)), 'schema', 'data_formats', 'geopackage'))
 import buildofdsgeopackage
+import populate_gpkg
 
 basedir = Path(__file__).resolve().parent
 codelistdir = basedir / 'schema' / 'codelists'
@@ -521,6 +522,7 @@ def pre_commit():
       - examples/geojson/nodes.geojson
       - examples/geojson/spans.geojson
       - schema/data_formats/geopackage/
+      - examples/geopackage/network.gpkg
       Also run:
       - mdformat
     """
@@ -549,6 +551,13 @@ def pre_commit():
         ),
     )
     builder.go()
+
+    # Update examples/geopackage/network.gpkg
+    gpkg_filename = examplesdir / 'geopackage' / 'network.gpkg'
+    shutil.copyfile(schemadir / 'data_formats' / 'geopackage' / 'network-schema.gpkg', gpkg_filename)
+    with open('examples/json/network-package.json') as f:
+        network_package = json.load(f)
+    populate_gpkg.populate_geopackage(gpkg_filename, builder.information_out, network_package)
 
     # Generate diagram from GeoPackage
     subprocess.run(["mermerd", "--runConfig", "docs/reference/data_formats/geopackage/geopackage.yaml"])
