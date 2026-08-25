@@ -24,6 +24,12 @@ def deref(obj, registry):
 
 
 class Builder:
+    # Fixed placeholder for gpkg_contents.last_change, used instead of the
+    # column's clock-based default so that rebuilding the template produces
+    # a byte-identical file when nothing else has changed. The GeoPackage
+    # spec notes this value is informative only, since it's impractical to
+    # maintain accurately, so we don't attempt to derive real timestamps.
+    LAST_CHANGE = "2026-03-30T00:00:00.000Z"
 
     def __init__(
         self, root_directory, output_directory=None, write_schema_information_json=False
@@ -120,12 +126,13 @@ class Builder:
 
                 self.cursor.execute(
                     """
-                    INSERT INTO gpkg_contents (table_name, data_type, identifier, srs_id)
-                    VALUES (?, "attributes", ?, 4326);
+                    INSERT INTO gpkg_contents (table_name, data_type, identifier, last_change, srs_id)
+                    VALUES (?, "attributes", ?, ?, 4326);
                     """,
                     [
                         table_name,
                         table_name,
+                        self.LAST_CHANGE,
                     ],
                 )
 
@@ -274,12 +281,13 @@ class Builder:
 
         self.cursor.execute(
             """
-            INSERT INTO gpkg_contents (table_name, data_type, identifier, srs_id)
-            VALUES ('{}', '{}', '{}', 4326);
+            INSERT INTO gpkg_contents (table_name, data_type, identifier, last_change, srs_id)
+            VALUES ('{}', '{}', '{}', '{}', 4326);
         """.format(
                 table_name,
                 "features" if geographic_type else "attributes",
                 table_name,
+                self.LAST_CHANGE,
             )
         )
 
@@ -459,11 +467,12 @@ class Builder:
             # Add to contents
             self.cursor.execute(
                 """
-                INSERT INTO gpkg_contents (table_name, data_type, identifier, srs_id)
-                VALUES ('{}', 'attributes', '{}', 4326);
+                INSERT INTO gpkg_contents (table_name, data_type, identifier, last_change, srs_id)
+                VALUES ('{}', 'attributes', '{}', '{}', 4326);
                 """.format(
                     relation["mapping_table"],
                     relation["mapping_table"],
+                    self.LAST_CHANGE,
                 )
             )
 
