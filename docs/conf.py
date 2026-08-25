@@ -422,9 +422,10 @@ def replace_substring_in_json(file_path, search_substring, replace_string, outpu
     output_dir = os.path.dirname(output_path)
     os.makedirs(output_dir, exist_ok=True)    
 
-    # Write the modified JSON data to the output file
+    # Write the modified JSON data to the output file, matching the source schema's formatting
     with open(output_path, 'w') as file:
-        json.dump(data, file, indent=4)
+        json.dump(data, file, indent=2, ensure_ascii=False)
+        file.write('\n')
 
 
 def _replace_substring_in_json(data, search_substring, replace_string):
