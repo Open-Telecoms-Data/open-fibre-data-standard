@@ -8,7 +8,7 @@ This page provides [examples](#examples) that demonstrate how to use OFDS data i
 
 ### Leaflet
 
-The [Leaflet example](leaflet.ipynb) shows how to use Python, Leaflet and Folium to visualise OFDS JSON data.
+The [Leaflet example](leaflet) shows how to use Python, Leaflet and Folium to visualise OFDS JSON data.
 
 ### QGIS
 

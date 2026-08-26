@@ -8,7 +8,7 @@ Read the [Primer](../primer/index.md).
 
 ```
 
-This section of the documentation contains guidance on how to publish and use OFDS data.
+This section of the documentation contains guidance on how to publish, use, and convert OFDS data.
 
 ```{eval-rst}
 .. toctree::
@@ -16,4 +16,5 @@ This section of the documentation contains guidance on how to publish and use OF
 
    publication
    use/index
+   geojson/index
 ```

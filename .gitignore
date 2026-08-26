@@ -6,3 +6,4 @@ _readthedocs
 .python-version
 .vscode
 tests/__pycache__
+__pycache__

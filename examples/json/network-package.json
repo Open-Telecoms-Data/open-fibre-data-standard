@@ -54,6 +54,10 @@
           },
           "networkProviders": [
             {
+              "id": "GH-RGD-CS111111111",
+              "name": "FibreCo"
+            },
+            {
               "id": "GH-RGD-CS222222222",
               "name": "FastWeb"
             }
@@ -347,7 +351,7 @@
         {
           "id": "1",
           "grantor": {
-            "id": "1",
+            "id": "4",
             "name": "Accra Municipal Council"
           },
           "yearSigned": 2022,
