@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "http://json-schema-extension.readthedocs.io/2__0__0/2020-12/metaschema.json",
+  "$vocabulary": {
+    "https://json-schema.org/draft/2020-12/vocab/core": true,
+    "https://json-schema.org/draft/2020-12/vocab/applicator": true,
+    "https://json-schema.org/draft/2020-12/vocab/unevaluated": true,
+    "https://json-schema.org/draft/2020-12/vocab/validation": true,
+    "https://json-schema.org/draft/2020-12/vocab/meta-data": true,
+    "https://json-schema.org/draft/2020-12/vocab/format-annotation": true,
+    "https://json-schema.org/draft/2020-12/vocab/content": true
+  },
+  "$dynamicAnchor": "meta",
+  "title": "Core and Validation specifications meta-schema",
+  "allOf": [
+    {
+      "$ref": "https://json-schema.org/draft/2020-12/meta/core"
+    },
+    {
+      "$ref": "https://json-schema.org/draft/2020-12/meta/applicator"
+    },
+    {
+      "$ref": "https://json-schema.org/draft/2020-12/meta/unevaluated"
+    },
+    {
+      "$ref": "https://json-schema.org/draft/2020-12/meta/validation"
+    },
+    {
+      "$ref": "https://json-schema.org/draft/2020-12/meta/meta-data"
+    },
+    {
+      "$ref": "https://json-schema.org/draft/2020-12/meta/format-annotation"
+    },
+    {
+      "$ref": "https://json-schema.org/draft/2020-12/meta/content"
+    }
+  ],
+  "type": [
+    "object",
+    "boolean"
+  ],
+  "$comment": "This meta-schema also defines keywords that have appeared in previous drafts in order to prevent incompatible extensions as they remain in common use.",
+  "properties": {
+    "definitions": {
+      "$comment": "\"definitions\" has been replaced by \"$defs\".",
+      "type": "object",
+      "additionalProperties": {
+        "$dynamicRef": "#meta"
+      },
+      "deprecated": true,
+      "default": {}
+    },
+    "dependencies": {
+      "$comment": "\"dependencies\" has been split and replaced by \"dependentSchemas\" and \"dependentRequired\" in order to serve their differing semantics.",
+      "type": "object",
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "$dynamicRef": "#meta"
+          },
+          {
+            "$ref": "meta/validation#/$defs/stringArray"
+          }
+        ]
+      },
+      "deprecated": true,
+      "default": {}
+    },
+    "$recursiveAnchor": {
+      "$comment": "\"$recursiveAnchor\" has been replaced by \"$dynamicAnchor\".",
+      "$ref": "meta/core#/$defs/anchorString",
+      "deprecated": true
+    },
+    "$recursiveRef": {
+      "$comment": "\"$recursiveRef\" has been replaced by \"$dynamicRef\".",
+      "$ref": "meta/core#/$defs/uriReferenceString",
+      "deprecated": true
+    },
+    "deprecatedDetails": {
+      "title": "Deprecated details",
+      "description": "Information about the deprecation of the field.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deprecatedVersion",
+        "description"
+      ],
+      "properties": {
+        "deprecatedVersion": {
+          "title": "Version",
+          "description": "The version in which the field was first deprecated.",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of the reason for the field's deprecation and information about its replacement, if any.",
+          "type": "string"
+        }
+      }
+    },
+    "codelist": {
+      "title": "Codelist",
+      "description": "The CSV file that defines the codes in the codelist that the field refers to.",
+      "type": "string"
+    },
+    "openCodelist": {
+      "title": "Open codelist",
+      "description": "Whether the codelist that the field refers to is an open codelist.",
+      "type": "boolean",
+      "default": false,
+      "deprecated": true,
+      "deprecatedDetails": {
+        "deprecatedVersion": "1.0",
+        "description": "This keyword is deprecated favour of using `enum` to indicate a closed codelist. An field refers to an open codelist when `codelist` is set without the presence of `enum`."
+      }
+    },
+    "x-references": {
+      "title": "References",
+      "description": "Marks a property or $defs entry as a foreign-key reference to an entity elsewhere in the schema.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "definition",
+        "collection",
+        "property"
+      ],
+      "properties": {
+        "definition": {
+          "title": "Definition",
+          "description": "The JSON Pointer to the $defs entry for the referenced entity.",
+          "type": "string",
+          "format": "json-pointer"
+        },
+        "collection": {
+          "title": "Collection",
+          "description": "The JSON Pointer to the property holding the array of instances of the referenced entity.",
+          "type": "string",
+          "format": "json-pointer"
+        },
+        "property": {
+          "title": "Property",
+          "description": "The name of the property, on the referenced entity, that this reference's value is matched against.",
+          "type": "string"
+        },
+        "from": {
+          "title": "From",
+          "description": "The name of the property, on the object where x-references is declared, whose value provides the reference. Used when x-references is declared on a $defs entry (e.g. OrganisationReference) rather than directly on the referencing property.",
+          "type": "string"
+        }
+      }
+    },
+    "x-logical-type": {
+      "title": "Logical type",
+      "description": "Marks how a $defs entry or property is treated when the schema's logical data model is extracted.",
+      "type": "string",
+      "enum": [
+        "entity",
+        "attribute",
+        "exclude"
+      ]
+    },
+    "x-relationship-label": {
+      "title": "Relationship label",
+      "description": "A human-friendly label describing the relationship represented by a property, used when documenting or diagramming the data model.",
+      "type": "string"
+    }
+  },
+  "unevaluatedProperties": false
+}

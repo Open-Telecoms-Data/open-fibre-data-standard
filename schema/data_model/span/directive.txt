@@ -1,0 +1,8 @@
+```{jsonschema} ../../../_readthedocs/html/network-schema.json
+:pointer: /$defs/Span
+:include: id,name,status,readyForServiceDate,directed,route,transmissionMedium,deployment,supportingInfrastructure/type,supportingInfrastructure/description,supportingInfrastructure/spareCapacity,codeployment,cableType,darkFibre,fibreType,fibreTypeDetails/fibreSubtype,fibreTypeDetails/description,fibreCount,fibreLength,technologies,capacity,capacityDetails/description,countries
+:collapse: route
+:nocrossref:
+:addtargets:
+:prefix: data_model
+```

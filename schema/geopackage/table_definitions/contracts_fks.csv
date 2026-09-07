@@ -1,3 +1,0 @@
-Column,References
-network_id,FK(`networks`.`id`)
-type,FK(`codelist_open_contractType`.`id`)

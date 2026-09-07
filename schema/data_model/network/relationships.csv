@@ -1,0 +1,4 @@
+entity,cardinality,description
+[Node](#node),1:N,Nodes: The nodes that belong to this network.
+[Span](#span),1:N,Spans: The spans that belong to this network.
+[Phase](#phase),1:N,"Phases: The phases in which this network was, or will be, deployed."

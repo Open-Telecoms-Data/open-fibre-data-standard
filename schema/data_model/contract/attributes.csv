@@ -1,0 +1,8 @@
+path,title,description,type,codelist
+id,Identifier,A locally-unique identifier for this contract.,string,
+title,Title,A title for this contract.,string,
+description,Description,A description for this contract.,string,
+type,Type,"The type of this contract, from the open [contractType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#contracttype).",string,contractType.csv
+value/amount,Value amount,The value of this contract. | The amount of this value.,number,
+value/currency,Value currency,"The value of this contract. | The currency of this value, from the closed [currency codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#currency).",string,currency.csv
+dateSigned,Date signed,The date this contract was signed.,string,

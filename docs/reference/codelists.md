@@ -2,7 +2,7 @@
 
 # Codelists
 
-Some attributes in the OFDS [data model](data_model.md) and [formats](data_formats/index.md) refer to codelists, to limit and standardise the possible values of the attribute, in order to promote data interoperability.
+Some attributes in the OFDS [data model](data_model/index.md) and [formats](data_formats/index.md) refer to codelists, to limit and standardise the possible values of the attribute, in order to promote data interoperability.
 
 Codelists can either be open or closed. [**Closed codelists**](#closed-codelists) are intended to be comprehensive; for example, the currency codelist covers all currencies in the world. [**Open codelists**](#open-codelists) are intended to be representative, but not comprehensive.
 
@@ -37,7 +37,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/cableType.csv
+:file: ../../schema/codelists/open/cableType.csv
 ```
 
 ````
@@ -59,7 +59,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/codeployment.csv
+:file: ../../schema/codelists/open/codeployment.csv
 ```
 
 ````
@@ -83,7 +83,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/contractType.csv
+:file: ../../schema/codelists/open/contractType.csv
 ```
 
 ````
@@ -94,7 +94,7 @@ The language codelist is used to provide the default language used in text attri
 
 This codelist is referenced by the following attributes:
 
-- [`language`](json,network-schema.json,,language)
+- [`Network/language`](data_model,network-schema.json,,language)
 
 This codelist has the following codes:
 
@@ -106,7 +106,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/language.csv
+:file: ../../schema/codelists/open/language.csv
 ```
 
 ````
@@ -129,7 +129,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/mediaType.csv
+:file: ../../schema/codelists/open/mediaType.csv
 ```
 ````
 
@@ -149,7 +149,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/nodeSupportingInfrastructure.csv
+:file: ../../schema/codelists/open/nodeSupportingInfrastructure.csv
 ```
 ````
 
@@ -172,7 +172,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/nodeTechnologies.csv
+:file: ../../schema/codelists/open/nodeTechnologies.csv
 ```
 
 ````
@@ -196,7 +196,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/nodeType.csv
+:file: ../../schema/codelists/open/nodeType.csv
 ```
 
 ````
@@ -207,7 +207,8 @@ The organisation identifier scheme codelist uses the codes from [org-id.guide](h
 
 This codelist is referenced by the following attributes:
 
-- [`Identifier/scheme`](data_model,network-schema.json,/$defs/Organisation,identifier/scheme)
+- [`Network/publisher/identifier/scheme`](data_model,network-schema.json,,publisher/identifier/scheme)
+- [`Organisation/identifier/scheme`](data_model,network-schema.json,/$defs/Organisation,identifier/scheme)
 
 This codelist has the following codes:
 
@@ -219,7 +220,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/organisationIdentifierScheme.csv
+:file: ../../schema/codelists/open/organisationIdentifierScheme.csv
 ```
 
 ````
@@ -243,7 +244,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/organisationRole.csv
+:file: ../../schema/codelists/open/organisationRole.csv
 ```
 ````
 
@@ -264,7 +265,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/spanSupportingInfrastructure.csv
+:file: ../../schema/codelists/open/spanSupportingInfrastructure.csv
 ```
 ````
 
@@ -287,7 +288,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/spanTechnologies.csv
+:file: ../../schema/codelists/open/spanTechnologies.csv
 ```
 
 ````
@@ -303,6 +304,7 @@ This codelist is referenced by the following attributes:
 - [`Span/countries`](data_model,network-schema.json,/$defs/Span,countries)
 - [`Organisation/country`](data_model,network-schema.json,/$defs/Organisation,country)
 - [`Node/address/country`](data_model,network-schema.json,/$defs/Node,address/country)
+- [`Node/internationalConnections/0/country`](data_model,network-schema.json,/$defs/Node,internationalConnections/0/country)
 
 This codelist has the following codes:
 
@@ -314,7 +316,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/country.csv
+:file: ../../schema/codelists/closed/country.csv
 ```
 
 ````
@@ -325,7 +327,8 @@ The currency codelist uses uppercase 3-letter codes from [ISO4217](https://www.i
 
 This codelist is referenced by the following attributes:
 
-- [`Value/currency`](data_model,network-schema.json,/$defs/Contract,value/currency)
+- [`Contract/value/currency`](data_model,network-schema.json,/$defs/Contract,value/currency)
+- [`Wayleave/cost/perMetre/currency`](data_model,network-schema.json,/$defs/Wayleave,cost/perMetre/currency)
 
 This codelist has the following codes:
 
@@ -337,7 +340,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/currency.csv
+:file: ../../schema/codelists/closed/currency.csv
 ```
 
 ````
@@ -361,7 +364,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/deployment.csv
+:file: ../../schema/codelists/closed/deployment.csv
 ```
 
 ````
@@ -385,7 +388,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/fibreType.csv
+:file: ../../schema/codelists/closed/fibreType.csv
 ```
 
 ````
@@ -409,7 +412,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/nodeStatus.csv
+:file: ../../schema/codelists/closed/nodeStatus.csv
 ```
 
 ````
@@ -433,7 +436,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/spanStatus.csv
+:file: ../../schema/codelists/closed/spanStatus.csv
 ```
 
 ````
@@ -457,7 +460,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/closed/transmissionMedium.csv
+:file: ../../schema/codelists/closed/transmissionMedium.csv
 ```
 
 ````
@@ -487,7 +490,7 @@ This codelist has the following codes:
 ```{csv-table-no-translate}
 :header-rows: 1
 :widths: auto
-:file: ../../codelists/open/linkRelationType.csv
+:file: ../../schema/codelists/open/linkRelationType.csv
 ```
 
 ````

@@ -1,0 +1,5 @@
+path,title,description,type,codelist
+title,Title,A title for this document.,string,
+description,Description,"A description of this document. Descriptions should not exceed 250 words. If the document is not accessible online, the description should describe how to access a copy of the document.",string,
+url,URL,A web address for accessing this document.,string,
+format,Format,"The format of this document, from the open [mediaType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#mediatype).",string,mediaType.csv
