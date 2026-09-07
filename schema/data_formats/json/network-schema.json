@@ -1,6 +1,6 @@
 {
   "$id": "https://standard.ofds.info/en/0__4__0/network-schema.json",
-  "$schema": "file:///home/ddewhurst/google_drive/Repositories/open_fibre/open-fibre-data-standard/schema/data_formats/json/metaschema.json",
+  "$schema": "http://json-schema-extension.readthedocs.io/2__0__0/2020-12/metaschema.json",
   "title": "Network",
   "description": "A telecommunication network. A network consists of a set of nodes interconnected by spans.",
   "type": "object",
