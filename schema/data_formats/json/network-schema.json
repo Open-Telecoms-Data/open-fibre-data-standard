@@ -337,7 +337,7 @@
         "id"
       ],
       "minProperties": 1,
-      "propertyName": {
+      "propertyNames": {
         "not": {
           "const": "network"
         }
@@ -907,7 +907,7 @@
         "id"
       ],
       "minProperties": 1,
-      "propertyName": {
+      "propertyNames": {
         "not": {
           "const": "network"
         }
