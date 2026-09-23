@@ -31,7 +31,7 @@ Node locations and span routes are represented using [well-known text (WKT)](htt
 
 ## Tables and relationships
 
-The CSV format consists of the following tables, reflecting the structure of the [data model](../data_model.md):
+The CSV format consists of the following tables, reflecting the structure of the [data model](../data_model/index.md):
 
 ```{contents}
 ---

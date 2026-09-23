@@ -10,7 +10,7 @@ The OFDS is a data standard for publishing, exchanging and storing data about fi
 
 The OFDS provides:
 
-- A [logical data model](../reference/data_model.md), that defines the entities, relationships and attributes needed to describe fibre infrastructure
+- A [logical data model](../reference/data_model/index.md), that defines the entities, relationships and attributes needed to describe fibre infrastructure
 - [Schemas](../reference/data_formats/index.md) for publishing, exchanging and storing data in GeoPackage, JSON and CSV format
 - [Guidance and tooling](../guidance/index.md) for producing and using OFDS data
 

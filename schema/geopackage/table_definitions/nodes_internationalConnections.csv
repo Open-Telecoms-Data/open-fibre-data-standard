@@ -1,9 +1,0 @@
-Name,Type,Constraints,Title,Description
-id,INTEGER,PK,,
-streetAddress,TEXT,,Street address,"The street address. For example, 1600 Amphitheatre Pkwy."
-locality,TEXT,,Locality,"The locality. For example, Mountain View."
-region,TEXT,,Region,"The region. For example, CA."
-postalCode,TEXT,,Postal code,"The postal code. For example, 94043."
-country,TEXT,,Country,"The country in which the address is physically located, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country)."
-network_id,INTEGER,FK,Network ID,
-node_id,INTEGER,FK,Nodes ID,

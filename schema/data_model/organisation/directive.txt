@@ -1,0 +1,7 @@
+```{jsonschema} ../../../_readthedocs/html/network-schema.json
+:pointer: /$defs/Organisation
+:include: id,name,identifier/id,identifier/scheme,identifier/legalName,identifier/uri,country,roles,roleDetails,website,logo
+:nocrossref:
+:addtargets:
+:prefix: data_model
+```

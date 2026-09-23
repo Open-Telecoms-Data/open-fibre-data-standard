@@ -2,7 +2,7 @@
 
 # Data formats
 
-OFDS defines schemas based on the [logical data model](../data_model.md) for publishing, storing and exchanging data in the following formats:
+OFDS defines schemas based on the [logical data model](../data_model/index.md) for publishing, storing and exchanging data in the following formats:
 
 ```{eval-rst}
 .. toctree::

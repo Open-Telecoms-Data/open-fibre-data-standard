@@ -1,3 +1,0 @@
-Column,References
-network_id,FK(`networks`.`id`)
-grantor,FK(`organisations`.`id`)

@@ -1,0 +1,12 @@
+path,title,description,type,codelist
+id,Local identifier,A locally-unique identifier for this organisation.,string,
+name,Name,A name for this organisation. The name should be unique amongst the organisations belonging to a network.,string,
+identifier/id,Identifier,The identifier assigned to the organisation in the register identified in `.scheme`.,string,
+identifier/scheme,Scheme,"The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#organisationidentifierscheme).",string,organisationIdentifierScheme.csv
+identifier/legalName,Legal name,The legally registered name of the organisation,string,
+identifier/uri,URI,"A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.",string,
+country,Country,"The country in which this organisation is legally registered, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country).",string,country.csv
+roles,Roles,"This organisation's roles in this network, from the open [organisationRole codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#organisationrole). Further details about this organisation's roles can be provided in `.roleDetails`.",array (string),organisationRole.csv
+roleDetails,Role details,Further details about this organisation's roles in the network,string,
+website,Website,The URL of the website for this organisation.,string,
+logo,Logo,The URL of the logo for this organisation.,string,

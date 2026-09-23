@@ -1,0 +1,4 @@
+path,title,description,type,codelist
+id,Identifier,A locally-unique identifier for this phase.,string,
+name,Name,A name for this phase. The name should be unique amongst the phases belonging to a network.,string,
+description,Description,A description for this phase.,string,

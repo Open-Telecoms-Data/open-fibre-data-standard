@@ -18,7 +18,7 @@ Use the canonical network package schema URL to make sure that your software, do
 
 ```
 
-This page presents the schema in an interactive browser. You can also download the canonical version of the schema as [JSON Schema](../../../../schema/network-package-schema.json).
+This page presents the schema in an interactive browser. You can also download the canonical version of the schema as [JSON Schema](../../../../schema/data_formats/json/network-package-schema.json).
 
 A network package is a JSON object that must include `.networks`: an array of `Network` objects as described by the [network object schema](network_schema.md). For data published via a paginated API, the optional `.links` object should be used to provide URLs for the next and previous pages of results.
 

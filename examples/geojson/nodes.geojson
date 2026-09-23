@@ -128,6 +128,27 @@
                             ]
                         }
                     ],
+                    "wayleaves": [
+                        {
+                            "id": "1",
+                            "grantor": {
+                                "id": "1",
+                                "name": "Accra Municipal Council"
+                            },
+                            "yearSigned": 2022,
+                            "term": {
+                                "indefinite": false,
+                                "years": 25
+                            },
+                            "cost": {
+                                "recurring": true,
+                                "perMetre": {
+                                    "amount": 1.75,
+                                    "currency": "GHS"
+                                }
+                            }
+                        }
+                    ],
                     "website": "http://example.com/network",
                     "publisher": {
                         "name": "FibreCo",
@@ -276,6 +297,27 @@
                                     ]
                                 }
                             ]
+                        }
+                    ],
+                    "wayleaves": [
+                        {
+                            "id": "1",
+                            "grantor": {
+                                "id": "1",
+                                "name": "Accra Municipal Council"
+                            },
+                            "yearSigned": 2022,
+                            "term": {
+                                "indefinite": false,
+                                "years": 25
+                            },
+                            "cost": {
+                                "recurring": true,
+                                "perMetre": {
+                                    "amount": 1.75,
+                                    "currency": "GHS"
+                                }
+                            }
                         }
                     ],
                     "website": "http://example.com/network",
