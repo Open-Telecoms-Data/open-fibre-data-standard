@@ -18,6 +18,7 @@ Iterative improvements are made outside of the release cycle. They do not involv
 - [#273](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/273) - Add OFDS Convert, Validate, Explore tool (CoVE) link to the left hand navigation
 - [#280](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/280) - Reorder codelist codes.
 - [#248](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/282) - Add comments declaring document mode to each markdown file in docs
+- [#362](https://github.com/Open-Telecoms-Data/open-fibre-data-standard/pull/362) - Update python and certifi versions due to eMudhra CA certificate incident
 
 ## 0.4.0 - 2026-03-30
 
