@@ -1,0 +1,2316 @@
+{
+  "$id": "https://standard.ofds.info/en/0__4__0/network-schema.json",
+  "$schema": "http://json-schema-extension.readthedocs.io/2__0__0/2020-12/metaschema.json",
+  "title": "Network",
+  "description": "A telecommunication network. A network consists of a set of nodes interconnected by spans.",
+  "type": "object",
+  "required": [
+    "id",
+    "links"
+  ],
+  "properties": {
+    "id": {
+      "title": "UUID",
+      "description": "A universally unique identifier for this network, as defined by [RFC 4122](https://datatracker.ietf.org/doc/html/rfc4122). For more information, see the [identifier reference](https://standard.ofds.info/en/{{version}}/reference/identifiers).",
+      "format": "uuid",
+      "type": "string"
+    },
+    "identifier": {
+      "title": "Identifier",
+      "description": "A local identifier for this network in an internal system.",
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "title": "Network name",
+      "description": "A name for this network.",
+      "type": "string",
+      "minLength": 1
+    },
+    "nodes": {
+      "title": "Nodes",
+      "description": "The nodes that belong to this network.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Node"
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "x-relationship-label": "Consists of"
+    },
+    "spans": {
+      "title": "Spans",
+      "description": "The spans that belong to this network.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Span"
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "x-relationship-label": "Consists of"
+    },
+    "phases": {
+      "title": "Phases",
+      "description": "The phases in which this network was, or will be, deployed.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Phase"
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "x-relationship-label": "Deployed in"
+    },
+    "organisations": {
+      "title": "Organisations",
+      "description": "The organisations involved in this network.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Organisation"
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "x-logical-type": "exclude"
+    },
+    "wayleaves": {
+      "title": "Wayleaves",
+      "description": "Formal agreements that grant network operators rights to install, maintain or operate this network's telecommunications infrastructure on, over, or under grantors' property or assets.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Wayleave"
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "x-logical-type": "exclude"
+    },
+    "contracts": {
+      "title": "Contracts",
+      "description": "Contracts related to this network.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Contract"
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "x-logical-type": "exclude"
+    },
+    "website": {
+      "title": "Website",
+      "description": "The URL of the website for this network.",
+      "format": "iri",
+      "type": "string",
+      "$comment": ""
+    },
+    "publisher": {
+      "title": "Publisher",
+      "description": "The publisher of this network.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "A name for this organisation.",
+          "type": "string",
+          "minLength": 1
+        },
+        "identifier": {
+          "title": "Organisation identifier",
+          "description": "An identifier for this organisation.",
+          "$ref": "#/$defs/Identifier"
+        }
+      },
+      "minProperties": 1
+    },
+    "publicationDate": {
+      "title": "Publication date",
+      "description": "The date when this network was published.",
+      "format": "date",
+      "type": "string",
+      "$comment": ""
+    },
+    "collectionDate": {
+      "title": "Collection date",
+      "description": "The date when the location data was collected. If a dataset was produced by digitising a map, the date that the data for the map was collected.",
+      "format": "date",
+      "type": "string",
+      "$comment": ""
+    },
+    "crs": {
+      "title": "Coordinate reference system",
+      "description": "The coordinate reference system used in this network. If this network includes any coordinate data (in `Node.location` or `Span.route`) then this field must be provided.",
+      "$ref": "#/$defs/CoordinateReferenceSystem",
+      "x-logical-type": "exclude"
+    },
+    "accuracy": {
+      "title": "Accuracy",
+      "description": "The horizontal uncertainty, in metres, of the coordinates in this dataset relative to the datum of the coordinate reference system specified in `crs`. Further details about the accuracy of coordinates in this dataset can be provided in `.accuracyDetails`.",
+      "type": "number"
+    },
+    "accuracyDetails": {
+      "title": "Accuracy details",
+      "description": "Further details about the accuracy specified in `accuracy`. For example, the confidence level of the accuracy measurement, the methodology used to calculate the accuracy, or a local classification of accuracy.",
+      "type": "string",
+      "minLength": 1
+    },
+    "language": {
+      "title": "Language",
+      "description": "The default language used in text attributes,from the open [language codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#language). A [BCP47 language tag](https://www.w3.org/International/articles/language-tags/) is allowed, if there is a user need for the additional information.",
+      "type": "string",
+      "codelist": "language.csv",
+      "openCodelist": true,
+      "minLength": 1
+    },
+    "links": {
+      "title": "Links",
+      "description": "Links to related resources. The first item in the links array must be a link to the canonical JSON schema that describes the structure of the data. Links to API endpoints for nodes and spans should be provided when a network is too large to return in a single API response and links to bulk files should be provided when a network is too large to load into memory, for more information, see [how to publish large networks](https://standard.ofds.info/en/{{version}}/guidance/publication#how-to-publish-large-networks).",
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "object",
+          "properties": {
+            "href": {
+              "type": "string",
+              "const": "https://standard.ofds.info/en/0__4__0/network-schema.json"
+            },
+            "rel": {
+              "type": "string",
+              "const": "describedby"
+            }
+          }
+        }
+      ],
+      "items": {
+        "$ref": "#/$defs/Link"
+      },
+      "minItems": 1,
+      "uniqueItems": true,
+      "x-logical-type": "exclude"
+    }
+  },
+  "$defs": {
+    "Node": {
+      "title": "Node",
+      "description": "A point within a network. A node may be an access point or may reflect a geographic point at which a span splits, aggregates or crosses a border. Nodes can allow for interconnections to other networks or connections to end users.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "A locally-unique identifier for this node.",
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "title": "Name",
+          "description": "A name for this node. The name should be unique amongst the nodes belonging to a network.",
+          "type": "string",
+          "minLength": 1
+        },
+        "phase": {
+          "title": "Phase",
+          "description": "The phase to which this node belongs.",
+          "$ref": "#/$defs/PhaseReference",
+          "x-relationship-label": "Belongs to"
+        },
+        "status": {
+          "title": "Status",
+          "description": "The status of this node, from the closed [nodeStatus codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodestatus).",
+          "type": "string",
+          "codelist": "nodeStatus.csv",
+          "openCodelist": false,
+          "enum": [
+            "proposed",
+            "planned",
+            "underConstruction",
+            "operational",
+            "decommissioned",
+            "inactive"
+          ]
+        },
+        "location": {
+          "title": "Location",
+          "description": "The physical location of this node.",
+          "$ref": "#/$defs/PointGeometry"
+        },
+        "address": {
+          "title": "Address",
+          "description": "The physical address of this node.",
+          "$ref": "#/$defs/Address"
+        },
+        "type": {
+          "title": "Type",
+          "description": "This node's function, from the open [nodeType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodetype). For nodes with multiple network providers, the union of the node types for each provider. If a node's only function is to serve as a junction between spans, this attribute should be omitted. Junction nodes are identified by the existence of more than two spans that begin or end at the node.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "codelist": "nodeType.csv",
+          "openCodelist": true,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "supportingInfrastructure": {
+          "title": "Supporting infrastructure",
+          "description": "The infrastructure that supports this node.",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Type",
+              "description": "The type of supporting infrastructure, from the open [nodeSupportingInfrastructure codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodesupportinginfrastructure).",
+              "type": "string",
+              "minLength": 1,
+              "openCodelist": true,
+              "codelist": "nodeSupportingInfrastructure.csv"
+            },
+            "description": {
+              "title": "Description",
+              "description": "A description of the supporting infrastructure for this node.",
+              "type": "string",
+              "minLength": 1
+            },
+            "owner": {
+              "title": "Owner",
+              "description": "The organisation that owns the supporting infrastructure.",
+              "$ref": "#/$defs/OrganisationReference",
+              "x-relationship-label": "Supporting infrastructure owned by"
+            },
+            "spareCapacity": {
+              "title": "Spare capacity",
+              "description": "Whether the supporting infrastructure has spare capacity for the installation of additional network equipment.",
+              "type": "boolean"
+            }
+          },
+          "minProperties": 1
+        },
+        "accessPoint": {
+          "title": "Access point",
+          "description": "Whether active or passive transmission equipment is installed at this node which is capable of providing access to the network.",
+          "type": "boolean"
+        },
+        "internationalConnections": {
+          "title": "International connections",
+          "description": "The international connections available at this node. For all connections, `.country` is required.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Address"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "power": {
+          "title": "Power availability",
+          "description": "Whether power for active network equipment is available at this node.",
+          "type": "boolean",
+          "$comment": ""
+        },
+        "technologies": {
+          "title": "Technologies",
+          "description": "The active technologies used at this node, from the open [nodeTechnologies codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#nodetechnologies). For nodes with multiple network providers, the union of the active technologies used by each provider.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "codelist": "nodeTechnologies.csv",
+          "openCodelist": true,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "transmissionMediumOwner": {
+          "title": "Transmission medium owner",
+          "description": "The organisation that owns the transmission media for this node, i.e. the passive network equipment such as splitters, combiners and fibre distribution panels.",
+          "$ref": "#/$defs/OrganisationReference",
+          "x-relationship-label": "Transmission medium owned by"
+        },
+        "networkProviders": {
+          "title": "Network providers",
+          "description": "The organisations that operate the active network infrastructure for this node, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrganisationReference"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "x-relationship-label": "Active network infrastructure operated by"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "minProperties": 1,
+      "propertyNames": {
+        "not": {
+          "const": "network"
+        }
+      },
+      "x-logical-type": "entity"
+    },
+    "Span": {
+      "title": "Span",
+      "description": "A physical connection between two nodes.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "A locally-unique identifier for this span.",
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "title": "Name",
+          "description": "A name for this span. The name should be unique amongst the spans belonging to a network.",
+          "type": "string",
+          "minLength": 1
+        },
+        "phase": {
+          "title": "Phase",
+          "description": "The phase to which this span belongs.",
+          "$ref": "#/$defs/PhaseReference",
+          "x-relationship-label": "Belongs to"
+        },
+        "status": {
+          "title": "Status",
+          "description": "The status of the network infrastructure for this span, from the closed [spanStatus codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#spanstatus).",
+          "type": "string",
+          "codelist": "spanStatus.csv",
+          "openCodelist": false,
+          "enum": [
+            "operational",
+            "underConstruction",
+            "planned",
+            "decommissioned",
+            "proposed",
+            "inactive"
+          ]
+        },
+        "readyForServiceDate": {
+          "title": "Ready for service date",
+          "description": "The date this span was ready to carry traffic. For spans with multiple network providers, the earliest of the dates at which each provider's network was ready to carry traffic on this span.",
+          "format": "date",
+          "type": "string",
+          "$comment": ""
+        },
+        "start": {
+          "title": "Start",
+          "description": "The identifier of one of two nodes that this span connects. If the span is directed, it represents the starting point of the span.",
+          "type": "string",
+          "minLength": 1,
+          "x-references": {
+            "definition": "#/$defs/Node",
+            "property": "id",
+            "collection": "#/properties/nodes"
+          },
+          "x-relationship-label": "Starts at"
+        },
+        "end": {
+          "title": "End",
+          "description": "The identifier of one of two nodes that this span connects. If the span is directed, it represents the end point of the span.",
+          "type": "string",
+          "minLength": 1,
+          "x-references": {
+            "definition": "#/$defs/Node",
+            "collection": "#/properties/nodes",
+            "property": "id"
+          },
+          "x-relationship-label": "Ends at"
+        },
+        "directed": {
+          "title": "Directed",
+          "description": "Whether this span is directed. If the span is directed, the span begins at the node referenced in `.start` and ends at the node referenced in `.end`. Otherwise, the span connects the nodes referenced in `.start` and `.end` with no direction implied.",
+          "type": "boolean",
+          "$comment": ""
+        },
+        "route": {
+          "title": "Route",
+          "description": "The physical route that this span takes between the nodes that it connects.",
+          "$ref": "#/$defs/LineStringGeometry"
+        },
+        "transmissionMediumOwner": {
+          "title": "Transmission medium owner",
+          "description": "The organisation that owns the transmission media for this span, i.e. the fibre cables.",
+          "$ref": "#/$defs/OrganisationReference",
+          "x-relationship-label": "Transmission medium owned by"
+        },
+        "networkProviders": {
+          "title": "Network providers",
+          "description": "The organisations that operate the active network infrastructure for this span, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure.",
+          "$comment": "https://github.com/Open-Telecoms-Data/open-fibre-data-standard/issues/47",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrganisationReference"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "x-relationship-label": "Active network infrastructure operated by"
+        },
+        "supplier": {
+          "title": "Supplier",
+          "description": "The organisation responsible for installing the cable for this span.",
+          "$ref": "#/$defs/OrganisationReference",
+          "x-relationship-label": "Installed by"
+        },
+        "transmissionMedium": {
+          "title": "Transmission medium",
+          "description": "The physical media of this span, from the closed [transmissionMedium codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#transmissionmedium).",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "fibre",
+              "microwave",
+              "copper",
+              "coaxial"
+            ],
+            "minLength": 1
+          },
+          "codelist": "transmissionMedium.csv",
+          "openCodelist": false,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "deployment": {
+          "title": "Deployment",
+          "description": "The physical deployment of this span, from the closed [deployment codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#deployment). Further details of this span's deployment can be provided in `.supportingInfrastructure`.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "aboveGround",
+              "belowGround"
+            ],
+            "minLength": 1
+          },
+          "codelist": "deployment.csv",
+          "openCodelist": false,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "supportingInfrastructure": {
+          "title": "Supporting infrastructure",
+          "description": "The infrastructure that supports this span.",
+          "type": "object",
+          "properties": {
+            "type": {
+              "title": "Type",
+              "description": "The type of supporting infrastructure, from the open [spanSupportingInfrastructure codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#spansupportinginfrastructure).",
+              "type": "string",
+              "minLength": 1,
+              "openCodelist": true,
+              "codelist": "spanSupportingInfrastructure.csv"
+            },
+            "description": {
+              "title": "Description",
+              "description": "A description of the supporting infrastructure for this span.",
+              "type": "string",
+              "minLength": 1
+            },
+            "owner": {
+              "title": "Owner",
+              "description": "The organisation that owns the supporting infrastructure.",
+              "$ref": "#/$defs/OrganisationReference",
+              "x-relationship-label": "Supporting infrastructure owned by"
+            },
+            "spareCapacity": {
+              "title": "Spare capacity",
+              "description": "Whether the supporting infrastructure has spare capacity for the installation of additional fibre cables.",
+              "type": "boolean"
+            }
+          },
+          "minProperties": 1
+        },
+        "codeployment": {
+          "title": "Codeployment",
+          "description": "The type of utility or transport infrastrucutre with which this span is codeployed.",
+          "type": "string",
+          "minLength": 1,
+          "openCodelist": true,
+          "codelist": "codeployment.csv"
+        },
+        "cableType": {
+          "title": "Cable type",
+          "description": "The type of cable used in this span, from the open [cableType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#cabletype). Further details of this span's cable type can be provided in `.cableTypeDetails`.",
+          "type": "string",
+          "minLength": 1,
+          "openCodelist": true,
+          "codelist": "cableType.csv"
+        },
+        "darkFibre": {
+          "title": "Dark fibre availability",
+          "description": "Whether access to dark fibre is available on this span.",
+          "type": "boolean",
+          "$comment": ""
+        },
+        "fibreType": {
+          "title": "Fibre type",
+          "description": "The type of fibre used in this span, from the closed [fibreType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#fibretype). Further details of the span's fibre type can be provided in `.fibreTypeDetails`.",
+          "type": "string",
+          "codelist": "fibreType.csv",
+          "openCodelist": false,
+          "enum": [
+            "G.651.1",
+            "G.652",
+            "G.653",
+            "G.654",
+            "G.655",
+            "G.656",
+            "G.657"
+          ]
+        },
+        "fibreTypeDetails": {
+          "title": "Fibre type details",
+          "description": "Further details about this span's fibre type.",
+          "type": "object",
+          "properties": {
+            "fibreSubtype": {
+              "title": "Subtype",
+              "description": "The sub-category of this span's fibre type. For example, G.652.B.",
+              "type": "string",
+              "minLength": 1
+            },
+            "description": {
+              "title": "Description",
+              "description": "A description of this span's fibre type.",
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "minProperties": 1
+        },
+        "fibreCount": {
+          "title": "Fibre count",
+          "description": "The number of individual optical fibres in this span.",
+          "type": "integer",
+          "$comment": ""
+        },
+        "fibreLength": {
+          "title": "Fibre length",
+          "description": "The physical length in kilometres, of fibre optic cable used in this span.",
+          "type": "number",
+          "$comment": ""
+        },
+        "technologies": {
+          "title": "Technologies",
+          "description": "The active technologies used on this span, from the open [spanTechnologies codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#spantechnologies). For spans with multiple network providers, the union of the active technologies used by each provider.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "codelist": "spanTechnologies.csv",
+          "openCodelist": true,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "capacity": {
+          "title": "Equipped capacity",
+          "description": "The transmission rate, or throughput, of this span, expressed in Gbit/sec (Gbps). The equipped capacity is the total capacity of the circuits (e.g. E1, DS3, STM-1 etc.) which have been activated in the network transmission equipment of the span. For spans with multiple network providers, the sum of the capacity of each provider's network on this span. Further details of this span's capacity can be provided in `.capacityDetails`. For more information, see [equipped capacity](https://standard.ofds.info/en/{{version}}/reference/data_model/#equipped-capacity).",
+          "type": "number",
+          "$comment": ""
+        },
+        "capacityDetails": {
+          "title": "Capacity details",
+          "description": "Further details about this span's capacity.",
+          "type": "object",
+          "properties": {
+            "description": {
+              "title": "Description",
+              "description": "A description of this span's capacity.",
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "minProperties": 1
+        },
+        "wayleaves": {
+          "title": "Wayleaves",
+          "description": "The identifiers of the formal agreements that grant network operators rights to install, maintain or operate this span's infrastructure on, over, or under grantors' property or assets.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "x-references": {
+              "definition": "#/$defs/Wayleave",
+              "collection": "#/properties/wayleaves",
+              "property": "id"
+            }
+          },
+          "uniqueItems": true,
+          "minItems": 1,
+          "x-relationship-label": "Grants rights to install, maintain or operate infrastructure for"
+        },
+        "countries": {
+          "title": "Countries",
+          "description": "The countries in which this span is physically located, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country).",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "AD",
+              "AE",
+              "AF",
+              "AG",
+              "AI",
+              "AL",
+              "AM",
+              "AO",
+              "AQ",
+              "AR",
+              "AS",
+              "AT",
+              "AU",
+              "AW",
+              "AX",
+              "AZ",
+              "BA",
+              "BB",
+              "BD",
+              "BE",
+              "BF",
+              "BG",
+              "BH",
+              "BI",
+              "BJ",
+              "BL",
+              "BM",
+              "BN",
+              "BO",
+              "BQ",
+              "BR",
+              "BS",
+              "BT",
+              "BV",
+              "BW",
+              "BY",
+              "BZ",
+              "CA",
+              "CC",
+              "CD",
+              "CF",
+              "CG",
+              "CH",
+              "CI",
+              "CK",
+              "CL",
+              "CM",
+              "CN",
+              "CO",
+              "CR",
+              "CU",
+              "CV",
+              "CW",
+              "CX",
+              "CY",
+              "CZ",
+              "DE",
+              "DJ",
+              "DK",
+              "DM",
+              "DO",
+              "DZ",
+              "EC",
+              "EE",
+              "EG",
+              "EH",
+              "ER",
+              "ES",
+              "ET",
+              "FI",
+              "FJ",
+              "FK",
+              "FM",
+              "FO",
+              "FR",
+              "GA",
+              "GB",
+              "GD",
+              "GE",
+              "GF",
+              "GG",
+              "GH",
+              "GI",
+              "GL",
+              "GM",
+              "GN",
+              "GP",
+              "GQ",
+              "GR",
+              "GS",
+              "GT",
+              "GU",
+              "GW",
+              "GY",
+              "HK",
+              "HM",
+              "HN",
+              "HR",
+              "HT",
+              "HU",
+              "ID",
+              "IE",
+              "IL",
+              "IM",
+              "IN",
+              "IO",
+              "IQ",
+              "IR",
+              "IS",
+              "IT",
+              "JE",
+              "JM",
+              "JO",
+              "JP",
+              "KE",
+              "KG",
+              "KH",
+              "KI",
+              "KM",
+              "KN",
+              "KP",
+              "KR",
+              "KW",
+              "KY",
+              "KZ",
+              "LA",
+              "LB",
+              "LC",
+              "LI",
+              "LK",
+              "LR",
+              "LS",
+              "LT",
+              "LU",
+              "LV",
+              "LY",
+              "MA",
+              "MC",
+              "MD",
+              "ME",
+              "MF",
+              "MG",
+              "MH",
+              "MK",
+              "ML",
+              "MM",
+              "MN",
+              "MO",
+              "MP",
+              "MQ",
+              "MR",
+              "MS",
+              "MT",
+              "MU",
+              "MV",
+              "MW",
+              "MX",
+              "MY",
+              "MZ",
+              "NA",
+              "NC",
+              "NE",
+              "NF",
+              "NG",
+              "NI",
+              "NL",
+              "NO",
+              "NP",
+              "NR",
+              "NU",
+              "NZ",
+              "OM",
+              "PA",
+              "PE",
+              "PF",
+              "PG",
+              "PH",
+              "PK",
+              "PL",
+              "PM",
+              "PN",
+              "PR",
+              "PS",
+              "PT",
+              "PW",
+              "PY",
+              "QA",
+              "RE",
+              "RO",
+              "RS",
+              "RU",
+              "RW",
+              "SA",
+              "SB",
+              "SC",
+              "SD",
+              "SE",
+              "SG",
+              "SH",
+              "SI",
+              "SJ",
+              "SK",
+              "SL",
+              "SM",
+              "SN",
+              "SO",
+              "SR",
+              "SS",
+              "ST",
+              "SV",
+              "SX",
+              "SY",
+              "SZ",
+              "TC",
+              "TD",
+              "TF",
+              "TG",
+              "TH",
+              "TJ",
+              "TK",
+              "TL",
+              "TM",
+              "TN",
+              "TO",
+              "TR",
+              "TT",
+              "TV",
+              "TW",
+              "TZ",
+              "UA",
+              "UG",
+              "UM",
+              "US",
+              "UY",
+              "UZ",
+              "VA",
+              "VC",
+              "VE",
+              "VG",
+              "VI",
+              "VN",
+              "VU",
+              "WF",
+              "WS",
+              "XK",
+              "YE",
+              "YT",
+              "ZA",
+              "ZM",
+              "ZW"
+            ],
+            "minLength": 1
+          },
+          "codelist": "country.csv",
+          "openCodelist": false,
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "minProperties": 1,
+      "propertyNames": {
+        "not": {
+          "const": "network"
+        }
+      },
+      "x-logical-type": "entity"
+    },
+    "Phase": {
+      "title": "Phase",
+      "description": "A set of nodes and/or spans deployed as a group.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "A locally-unique identifier for this phase.",
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "title": "Name",
+          "description": "A name for this phase. The name should be unique amongst the phases belonging to a network.",
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description for this phase.",
+          "type": "string",
+          "minLength": 1
+        },
+        "funders": {
+          "title": "Funders",
+          "description": "The organisations that provide financing for the development or operation of this phase, also known as investors or financers.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/OrganisationReference"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "x-relationship-label": "Financed by"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "minProperties": 1,
+      "x-logical-type": "entity"
+    },
+    "Organisation": {
+      "title": "Organisation",
+      "description": "An organisation.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Local identifier",
+          "description": "A locally-unique identifier for this organisation.",
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "title": "Name",
+          "description": "A name for this organisation. The name should be unique amongst the organisations belonging to a network.",
+          "type": "string",
+          "minLength": 1
+        },
+        "identifier": {
+          "$ref": "#/$defs/Identifier"
+        },
+        "country": {
+          "title": "Country",
+          "description": "The country in which this organisation is legally registered, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country).",
+          "type": "string",
+          "codelist": "country.csv",
+          "openCodelist": false,
+          "enum": [
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AI",
+            "AL",
+            "AM",
+            "AO",
+            "AQ",
+            "AR",
+            "AS",
+            "AT",
+            "AU",
+            "AW",
+            "AX",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BI",
+            "BJ",
+            "BL",
+            "BM",
+            "BN",
+            "BO",
+            "BQ",
+            "BR",
+            "BS",
+            "BT",
+            "BV",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CC",
+            "CD",
+            "CF",
+            "CG",
+            "CH",
+            "CI",
+            "CK",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CV",
+            "CW",
+            "CX",
+            "CY",
+            "CZ",
+            "DE",
+            "DJ",
+            "DK",
+            "DM",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "EH",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FK",
+            "FM",
+            "FO",
+            "FR",
+            "GA",
+            "GB",
+            "GD",
+            "GE",
+            "GF",
+            "GG",
+            "GH",
+            "GI",
+            "GL",
+            "GM",
+            "GN",
+            "GP",
+            "GQ",
+            "GR",
+            "GS",
+            "GT",
+            "GU",
+            "GW",
+            "GY",
+            "HK",
+            "HM",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IM",
+            "IN",
+            "IO",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JE",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KY",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MF",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MO",
+            "MP",
+            "MQ",
+            "MR",
+            "MS",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NC",
+            "NE",
+            "NF",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NR",
+            "NU",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PF",
+            "PG",
+            "PH",
+            "PK",
+            "PL",
+            "PM",
+            "PN",
+            "PR",
+            "PS",
+            "PT",
+            "PW",
+            "PY",
+            "QA",
+            "RE",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SH",
+            "SI",
+            "SJ",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "SS",
+            "ST",
+            "SV",
+            "SX",
+            "SY",
+            "SZ",
+            "TC",
+            "TD",
+            "TF",
+            "TG",
+            "TH",
+            "TJ",
+            "TK",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TR",
+            "TT",
+            "TV",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "UM",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VG",
+            "VI",
+            "VN",
+            "VU",
+            "WF",
+            "WS",
+            "XK",
+            "YE",
+            "YT",
+            "ZA",
+            "ZM",
+            "ZW"
+          ]
+        },
+        "roles": {
+          "title": "Roles",
+          "description": "This organisation's roles in this network, from the open [organisationRole codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#organisationrole). Further details about this organisation's roles can be provided in `.roleDetails`.",
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "codelist": "organisationRole.csv",
+          "openCodelist": true,
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "roleDetails": {
+          "title": "Role details",
+          "description": "Further details about this organisation's roles in the network",
+          "type": "string",
+          "minLength": 1
+        },
+        "website": {
+          "title": "Website",
+          "description": "The URL of the website for this organisation.",
+          "format": "iri",
+          "type": "string",
+          "$comment": ""
+        },
+        "logo": {
+          "title": "Logo",
+          "description": "The URL of the logo for this organisation.",
+          "format": "iri",
+          "type": "string",
+          "$comment": ""
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "minProperties": 1,
+      "x-logical-type": "entity"
+    },
+    "Contract": {
+      "title": "Contract",
+      "description": "An agreement between the public and private sectors to develop a network.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "A locally-unique identifier for this contract.",
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "title": "Title",
+          "description": "A title for this contract.",
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description for this contract.",
+          "type": "string",
+          "minLength": 1
+        },
+        "type": {
+          "title": "Type",
+          "description": "The type of this contract, from the open [contractType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#contracttype).",
+          "type": "string",
+          "codelist": "contractType.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "value": {
+          "title": "Value",
+          "description": "The value of this contract.",
+          "$ref": "#/$defs/Value"
+        },
+        "dateSigned": {
+          "title": "Date signed",
+          "description": "The date this contract was signed.",
+          "format": "date",
+          "type": "string",
+          "$comment": ""
+        },
+        "documents": {
+          "title": "Documents",
+          "description": "The documents related to this contract.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Document"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "relatedPhases": {
+          "title": "Related phases",
+          "description": "The phases to which this contract relates.",
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/PhaseReference"
+          },
+          "minItems": 1,
+          "uniqueItems": true,
+          "x-relationship-label": "Agreement to develop"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "minProperties": 1,
+      "x-logical-type": "entity"
+    },
+    "PointGeometry": {
+      "title": "Point geometry",
+      "description": "A [GeoJSON Geometry object](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1) of type [Point](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.2).",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Type",
+          "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`. For a point geometry, the value must be 'Point'.",
+          "type": "string",
+          "const": "Point"
+        },
+        "coordinates": {
+          "title": "Coordinates",
+          "description": "A single [GeoJSON position](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.1). A position is an array of numbers with two or more elements.  The first two elements are longitude and latitude, or easting and northing, precisely in that order. Longitude and latitude must be expressed using the World Geodetic System 1984 [WGS 84](https://datatracker.ietf.org/doc/html/rfc7946#ref-WGS84) datum in units of decimal degrees. Altitude or elevation may be included as an optional third element and must be expressed as the height in meters above or below the WGS 84 reference ellipsoid.",
+          "type": "array",
+          "items": {
+            "type": "number"
+          },
+          "minItems": 2
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "additionalProperties": false,
+      "x-logical-type": "attribute"
+    },
+    "LineStringGeometry": {
+      "title": "LineString geometry",
+      "description": "A [GeoJSON Geometry object](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1) of type [LineString](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.4).",
+      "type": "object",
+      "properties": {
+        "type": {
+          "title": "Type",
+          "description": "The [GeoJSON geometry type](https://datatracker.ietf.org/doc/html/rfc7946#section-1.4) that is described by `.coordinates`. For a linestring geometry, the value must be 'LineString'.",
+          "type": "string",
+          "const": "LineString"
+        },
+        "coordinates": {
+          "title": "Coordinates",
+          "description": "Two or more [GeoJSON positions](https://datatracker.ietf.org/doc/html/rfc7946#section-3.1.1). A position is an array of numbers with two or more elements.  The first two elements are longitude and latitude, or easting and northing, precisely in that order. Longitude and latitude must be expressed using the World Geodetic System 1984 [WGS 84](https://datatracker.ietf.org/doc/html/rfc7946#ref-WGS84) datum in units of decimal degrees. Altitude or elevation may be included as an optional third element and must be expressed as the height in meters above or below the WGS 84 reference ellipsoid.",
+          "type": "array",
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "number"
+            }
+          },
+          "minItems": 2
+        }
+      },
+      "required": [
+        "type",
+        "coordinates"
+      ],
+      "additionalProperties": false,
+      "x-logical-type": "attribute"
+    },
+    "OrganisationReference": {
+      "title": "Organisation reference",
+      "description": "The [local identifier](https://standard.ofds.info/en/{{version}}/reference/identifiers#local-identifiers) and name of the organisation being referenced. Used for cross-referencing within the dataset.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Local identifier",
+          "description": "The local identifier of the organisation being referenced.",
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "title": "Name",
+          "description": "The name of the organisation being referenced. This must match the name of the organisation referenced in `.id`.",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "minProperties": 1,
+      "additionalProperties": false,
+      "x-references": {
+        "from": "id",
+        "definition": "#/$defs/Organisation",
+        "collection": "#/properties/organisations",
+        "property": "id"
+      }
+    },
+    "PhaseReference": {
+      "title": "Phase reference",
+      "description": "The identifier and name of the phase being referenced. Used for cross-referencing.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "The identifier of the phase being referenced.",
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "title": "Name",
+          "description": "The name of the phase being referenced. This must match the name of the phase referenced in `.id`.",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "minProperties": 1,
+      "additionalProperties": false,
+      "x-references": {
+        "from": "id",
+        "definition": "#/$defs/Phase",
+        "collection": "#/properties/phases",
+        "property": "id"
+      }
+    },
+    "Address": {
+      "title": "Address",
+      "description": "An address.",
+      "type": "object",
+      "properties": {
+        "streetAddress": {
+          "title": "Street address",
+          "description": "The street address. For example, 1600 Amphitheatre Pkwy.",
+          "type": "string",
+          "minLength": 1
+        },
+        "locality": {
+          "title": "Locality",
+          "description": "The locality. For example, Mountain View.",
+          "type": "string",
+          "minLength": 1
+        },
+        "region": {
+          "title": "Region",
+          "description": "The region. For example, CA.",
+          "type": "string",
+          "minLength": 1
+        },
+        "postalCode": {
+          "title": "Postal code",
+          "description": "The postal code. For example, 94043.",
+          "type": "string",
+          "minLength": 1
+        },
+        "country": {
+          "title": "Country",
+          "description": "The country in which the address is physically located, from the closed [country codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#country).",
+          "type": "string",
+          "codelist": "country.csv",
+          "openCodelist": false,
+          "enum": [
+            "AD",
+            "AE",
+            "AF",
+            "AG",
+            "AI",
+            "AL",
+            "AM",
+            "AO",
+            "AQ",
+            "AR",
+            "AS",
+            "AT",
+            "AU",
+            "AW",
+            "AX",
+            "AZ",
+            "BA",
+            "BB",
+            "BD",
+            "BE",
+            "BF",
+            "BG",
+            "BH",
+            "BI",
+            "BJ",
+            "BL",
+            "BM",
+            "BN",
+            "BO",
+            "BQ",
+            "BR",
+            "BS",
+            "BT",
+            "BV",
+            "BW",
+            "BY",
+            "BZ",
+            "CA",
+            "CC",
+            "CD",
+            "CF",
+            "CG",
+            "CH",
+            "CI",
+            "CK",
+            "CL",
+            "CM",
+            "CN",
+            "CO",
+            "CR",
+            "CU",
+            "CV",
+            "CW",
+            "CX",
+            "CY",
+            "CZ",
+            "DE",
+            "DJ",
+            "DK",
+            "DM",
+            "DO",
+            "DZ",
+            "EC",
+            "EE",
+            "EG",
+            "EH",
+            "ER",
+            "ES",
+            "ET",
+            "FI",
+            "FJ",
+            "FK",
+            "FM",
+            "FO",
+            "FR",
+            "GA",
+            "GB",
+            "GD",
+            "GE",
+            "GF",
+            "GG",
+            "GH",
+            "GI",
+            "GL",
+            "GM",
+            "GN",
+            "GP",
+            "GQ",
+            "GR",
+            "GS",
+            "GT",
+            "GU",
+            "GW",
+            "GY",
+            "HK",
+            "HM",
+            "HN",
+            "HR",
+            "HT",
+            "HU",
+            "ID",
+            "IE",
+            "IL",
+            "IM",
+            "IN",
+            "IO",
+            "IQ",
+            "IR",
+            "IS",
+            "IT",
+            "JE",
+            "JM",
+            "JO",
+            "JP",
+            "KE",
+            "KG",
+            "KH",
+            "KI",
+            "KM",
+            "KN",
+            "KP",
+            "KR",
+            "KW",
+            "KY",
+            "KZ",
+            "LA",
+            "LB",
+            "LC",
+            "LI",
+            "LK",
+            "LR",
+            "LS",
+            "LT",
+            "LU",
+            "LV",
+            "LY",
+            "MA",
+            "MC",
+            "MD",
+            "ME",
+            "MF",
+            "MG",
+            "MH",
+            "MK",
+            "ML",
+            "MM",
+            "MN",
+            "MO",
+            "MP",
+            "MQ",
+            "MR",
+            "MS",
+            "MT",
+            "MU",
+            "MV",
+            "MW",
+            "MX",
+            "MY",
+            "MZ",
+            "NA",
+            "NC",
+            "NE",
+            "NF",
+            "NG",
+            "NI",
+            "NL",
+            "NO",
+            "NP",
+            "NR",
+            "NU",
+            "NZ",
+            "OM",
+            "PA",
+            "PE",
+            "PF",
+            "PG",
+            "PH",
+            "PK",
+            "PL",
+            "PM",
+            "PN",
+            "PR",
+            "PS",
+            "PT",
+            "PW",
+            "PY",
+            "QA",
+            "RE",
+            "RO",
+            "RS",
+            "RU",
+            "RW",
+            "SA",
+            "SB",
+            "SC",
+            "SD",
+            "SE",
+            "SG",
+            "SH",
+            "SI",
+            "SJ",
+            "SK",
+            "SL",
+            "SM",
+            "SN",
+            "SO",
+            "SR",
+            "SS",
+            "ST",
+            "SV",
+            "SX",
+            "SY",
+            "SZ",
+            "TC",
+            "TD",
+            "TF",
+            "TG",
+            "TH",
+            "TJ",
+            "TK",
+            "TL",
+            "TM",
+            "TN",
+            "TO",
+            "TR",
+            "TT",
+            "TV",
+            "TW",
+            "TZ",
+            "UA",
+            "UG",
+            "UM",
+            "US",
+            "UY",
+            "UZ",
+            "VA",
+            "VC",
+            "VE",
+            "VG",
+            "VI",
+            "VN",
+            "VU",
+            "WF",
+            "WS",
+            "XK",
+            "YE",
+            "YT",
+            "ZA",
+            "ZM",
+            "ZW"
+          ]
+        }
+      },
+      "minProperties": 1
+    },
+    "Document": {
+      "title": "Document",
+      "description": "A piece of electronic or physical matter that provides information or evidence or that serves as an official record.",
+      "type": "object",
+      "properties": {
+        "title": {
+          "title": "Title",
+          "description": "A title for this document.",
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of this document. Descriptions should not exceed 250 words. If the document is not accessible online, the description should describe how to access a copy of the document.",
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "title": "URL",
+          "description": "A web address for accessing this document.",
+          "format": "iri",
+          "type": "string",
+          "$comment": ""
+        },
+        "format": {
+          "title": "Format",
+          "description": "The format of this document, from the open [mediaType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#mediatype).",
+          "type": "string",
+          "codelist": "mediaType.csv",
+          "openCodelist": true,
+          "minLength": 1
+        }
+      },
+      "minProperties": 1,
+      "x-logical-type": "entity"
+    },
+    "CoordinateReferenceSystem": {
+      "title": "Coordinate reference system",
+      "description": "The coordinate reference system used in the data.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "title": "Name",
+          "description": "The name of the coordinate reference system.",
+          "format": "uri",
+          "type": "string",
+          "const": "urn:ogc:def:crs:OGC::CRS84",
+          "$comment": ""
+        },
+        "uri": {
+          "title": "Uniform Resource Identifier",
+          "description": "A URI for the coordinate reference system.",
+          "format": "uri",
+          "type": "string",
+          "const": "http://www.opengis.net/def/crs/OGC/1.3/CRS84",
+          "$comment": ""
+        }
+      },
+      "required": [
+        "name",
+        "uri"
+      ],
+      "minProperties": 1
+    },
+    "Link": {
+      "title": "Link",
+      "description": "A link to a related resource.",
+      "type": "object",
+      "properties": {
+        "href": {
+          "title": "Target",
+          "description": "The URL of this related resource.",
+          "format": "iri",
+          "type": "string",
+          "$comment": ""
+        },
+        "rel": {
+          "title": "Relation type",
+          "description": "The relationship with this related resource, from the open [linkRelationType codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#linkrelationtype). The 'describedby' code must only be used in the first item in the `links` array to link to the schema that describes the structure of the data.",
+          "type": "string",
+          "codelist": "linkRelationType.csv",
+          "openCodelist": true,
+          "minLength": 1,
+          "pattern": "^(?!(describedby))"
+        }
+      },
+      "required": [
+        "href",
+        "rel"
+      ],
+      "minProperties": 1
+    },
+    "Value": {
+      "title": "Value",
+      "description": "A financial value.",
+      "type": "object",
+      "properties": {
+        "amount": {
+          "title": "Amount",
+          "description": "The amount of this value.",
+          "type": "number",
+          "$comment": ""
+        },
+        "currency": {
+          "title": "Currency",
+          "description": "The currency of this value, from the closed [currency codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#currency).",
+          "type": "string",
+          "codelist": "currency.csv",
+          "openCodelist": false,
+          "enum": [
+            "ADP",
+            "AED",
+            "AFA",
+            "AFN",
+            "ALK",
+            "ALL",
+            "AMD",
+            "ANG",
+            "AOA",
+            "AOK",
+            "AON",
+            "AOR",
+            "ARA",
+            "ARP",
+            "ARS",
+            "ARY",
+            "ATS",
+            "AUD",
+            "AWG",
+            "AYM",
+            "AZM",
+            "AZN",
+            "BAD",
+            "BAM",
+            "BBD",
+            "BDT",
+            "BEC",
+            "BEF",
+            "BEL",
+            "BGJ",
+            "BGK",
+            "BGL",
+            "BGN",
+            "BHD",
+            "BIF",
+            "BMD",
+            "BND",
+            "BOB",
+            "BOP",
+            "BOV",
+            "BRB",
+            "BRC",
+            "BRE",
+            "BRL",
+            "BRN",
+            "BRR",
+            "BSD",
+            "BTN",
+            "BUK",
+            "BWP",
+            "BYB",
+            "BYN",
+            "BYR",
+            "BZD",
+            "CAD",
+            "CDF",
+            "CHC",
+            "CHE",
+            "CHF",
+            "CHW",
+            "CLF",
+            "CLP",
+            "CNY",
+            "COP",
+            "COU",
+            "CRC",
+            "CSD",
+            "CSJ",
+            "CSK",
+            "CUC",
+            "CUP",
+            "CVE",
+            "CYP",
+            "CZK",
+            "DDM",
+            "DEM",
+            "DJF",
+            "DKK",
+            "DOP",
+            "DZD",
+            "ECS",
+            "ECV",
+            "EEK",
+            "EGP",
+            "ERN",
+            "ESA",
+            "ESB",
+            "ESP",
+            "ETB",
+            "EUR",
+            "FIM",
+            "FJD",
+            "FKP",
+            "FRF",
+            "GBP",
+            "GEK",
+            "GEL",
+            "GHC",
+            "GHP",
+            "GHS",
+            "GIP",
+            "GMD",
+            "GNE",
+            "GNF",
+            "GNS",
+            "GQE",
+            "GRD",
+            "GTQ",
+            "GWE",
+            "GWP",
+            "GYD",
+            "HKD",
+            "HNL",
+            "HRD",
+            "HRK",
+            "HTG",
+            "HUF",
+            "IDR",
+            "IEP",
+            "ILP",
+            "ILR",
+            "ILS",
+            "INR",
+            "IQD",
+            "IRR",
+            "ISJ",
+            "ISK",
+            "ITL",
+            "JMD",
+            "JOD",
+            "JPY",
+            "KES",
+            "KGS",
+            "KHR",
+            "KMF",
+            "KPW",
+            "KRW",
+            "KWD",
+            "KYD",
+            "KZT",
+            "LAJ",
+            "LAK",
+            "LBP",
+            "LKR",
+            "LRD",
+            "LSL",
+            "LSM",
+            "LTL",
+            "LTT",
+            "LUC",
+            "LUF",
+            "LUL",
+            "LVL",
+            "LVR",
+            "LYD",
+            "MAD",
+            "MDL",
+            "MGA",
+            "MGF",
+            "MKD",
+            "MLF",
+            "MMK",
+            "MNT",
+            "MOP",
+            "MRO",
+            "MRU",
+            "MTL",
+            "MTP",
+            "MUR",
+            "MVQ",
+            "MVR",
+            "MWK",
+            "MXN",
+            "MXP",
+            "MXV",
+            "MYR",
+            "MZE",
+            "MZM",
+            "MZN",
+            "NAD",
+            "NGN",
+            "NIC",
+            "NIO",
+            "NLG",
+            "NOK",
+            "NPR",
+            "NZD",
+            "OMR",
+            "PAB",
+            "PEH",
+            "PEI",
+            "PEN",
+            "PES",
+            "PGK",
+            "PHP",
+            "PKR",
+            "PLN",
+            "PLZ",
+            "PTE",
+            "PYG",
+            "QAR",
+            "RHD",
+            "ROK",
+            "ROL",
+            "RON",
+            "RSD",
+            "RUB",
+            "RUR",
+            "RWF",
+            "SAR",
+            "SBD",
+            "SCR",
+            "SDD",
+            "SDG",
+            "SDP",
+            "SEK",
+            "SGD",
+            "SHP",
+            "SIT",
+            "SKK",
+            "SLE",
+            "SLL",
+            "SOS",
+            "SRD",
+            "SRG",
+            "SSP",
+            "STD",
+            "STN",
+            "SUR",
+            "SVC",
+            "SYP",
+            "SZL",
+            "THB",
+            "TJR",
+            "TJS",
+            "TMM",
+            "TMT",
+            "TND",
+            "TOP",
+            "TPE",
+            "TRL",
+            "TRY",
+            "TTD",
+            "TWD",
+            "TZS",
+            "UAH",
+            "UAK",
+            "UGS",
+            "UGW",
+            "UGX",
+            "USD",
+            "USN",
+            "USS",
+            "UYI",
+            "UYN",
+            "UYP",
+            "UYU",
+            "UYW",
+            "UZS",
+            "VEB",
+            "VED",
+            "VEF",
+            "VES",
+            "VNC",
+            "VND",
+            "VUV",
+            "WST",
+            "XAD",
+            "XAF",
+            "XAG",
+            "XAU",
+            "XBA",
+            "XBB",
+            "XBC",
+            "XBD",
+            "XCD",
+            "XCG",
+            "XDR",
+            "XEU",
+            "XFO",
+            "XFU",
+            "XOF",
+            "XPD",
+            "XPF",
+            "XPT",
+            "XRE",
+            "XSU",
+            "XTS",
+            "XUA",
+            "XXX",
+            "YDD",
+            "YER",
+            "YUD",
+            "YUM",
+            "YUN",
+            "ZAL",
+            "ZAR",
+            "ZMK",
+            "ZMW",
+            "ZRN",
+            "ZRZ",
+            "ZWC",
+            "ZWD",
+            "ZWG",
+            "ZWL",
+            "ZWN",
+            "ZWR"
+          ]
+        }
+      },
+      "minProperties": 1
+    },
+    "FibreTypeDetails": {
+      "title": "Fibre type details",
+      "description": "Further details about a span's fibre type.",
+      "type": "object",
+      "properties": {
+        "fibreSubtype": {
+          "title": "Fibre subtype",
+          "description": "The sub-category of the fibre type. For example, G.652.B.",
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "title": "Description",
+          "description": "A description of this span's fibre type.",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Wayleave": {
+      "title": "Wayleave",
+      "description": "A formal agreement that grants a network operator rights to install, maintain or operate telecommunications infrastructure on, over, or under the grantor's property or asset.",
+      "type": "object",
+      "required": [
+        "id"
+      ],
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "A locally-unique identifier for this wayleave.",
+          "type": "string",
+          "minLength": 1
+        },
+        "grantor": {
+          "title": "Grantor",
+          "description": "The entity that grants a network operator the legal right to install, maintain, or operate telecommunications infrastructure on, over, or under property or assets.",
+          "$ref": "#/$defs/OrganisationReference",
+          "x-relationship-label": "Granted by"
+        },
+        "yearSigned": {
+          "title": "Year signed",
+          "description": "The year in which this wayleave was signed.",
+          "type": "integer"
+        },
+        "term": {
+          "title": "Term",
+          "description": "Information about the duration of the wayleave.",
+          "type": "object",
+          "properties": {
+            "indefinite": {
+              "title": "Indefinite",
+              "description": "Whether the term of wayleave is indefinite, i.e. without an end date.",
+              "type": "boolean"
+            },
+            "years": {
+              "title": "Years",
+              "description": "If the wayleave's term is definite, its duration in years.",
+              "type": "integer"
+            }
+          },
+          "minProperties": 1
+        },
+        "cost": {
+          "title": "Cost",
+          "description": "Information about the cost of the wayleave.",
+          "type": "object",
+          "properties": {
+            "recurring": {
+              "title": "Recurring",
+              "description": "Whether this is a recurring cost.",
+              "type": "boolean"
+            },
+            "perMetre": {
+              "title": "Cost per metre",
+              "description": "The average cost per metre for this wayleave. Wayleave costs can include a mix of per length and per item fees, e.g. a fee per metre of cable and a fee per pole. The average cost per metre should be calculated by dividing the total cost of all fees by the total length in metres of cable covered by the wayleave. For recurring fees, the average cost per metre should be annualised.",
+              "$ref": "#/$defs/Value"
+            }
+          }
+        }
+      },
+      "x-logical-type": "entity"
+    },
+    "CapacityDetails": {
+      "title": "Capacity details",
+      "description": "Further details about a span's capacity.",
+      "type": "object",
+      "properties": {
+        "description": {
+          "title": "Description",
+          "description": "A description of this span's capacity.",
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "minProperties": 1
+    },
+    "Identifier": {
+      "title": "Organisation identifier",
+      "description": "An identifier for this organisation.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "title": "Identifier",
+          "description": "The identifier assigned to the organisation in the register identified in `.scheme`.",
+          "type": "string",
+          "minLength": 1
+        },
+        "scheme": {
+          "title": "Scheme",
+          "description": "The register from which the identifier in `.id` is drawn, from the open [organisationIdentifierScheme codelist](https://standard.ofds.info/en/{{version}}/reference/codelists#organisationidentifierscheme).",
+          "type": "string",
+          "codelist": "organisationIdentifierScheme.csv",
+          "openCodelist": true,
+          "minLength": 1
+        },
+        "legalName": {
+          "title": "Legal name",
+          "description": "The legally registered name of the organisation",
+          "type": "string",
+          "minLength": 1
+        },
+        "uri": {
+          "title": "URI",
+          "description": "A canonical URI for this identifier, such as those provided by Open Corporates. Do not use this field to provide the website of the organisation: instead, use `Organisation.website`.",
+          "format": "iri",
+          "type": "string",
+          "$comment": ""
+        }
+      },
+      "minProperties": 1
+    }
+  },
+  "minProperties": 1,
+  "x-logical-type": "entity"
+}

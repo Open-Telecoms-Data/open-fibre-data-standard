@@ -312,7 +312,9 @@ rpds-py==0.27.1
 schema==0.7.7
     # via flattentool
 shapely==2.1.2
-    # via flattentool
+    # via
+    #   -r requirements.in
+    #   flattentool
 six==1.17.0
     # via python-dateutil
 sniffio==1.3.1
@@ -357,7 +359,7 @@ sphinxcontrib-opencontracting==0.0.10
     # via -r requirements.in
 sphinxcontrib-opendataservices==0.6.0
     # via -r requirements.in
-sphinxcontrib-opendataservices-jsonschema @ git+https://github.com/OpenDataServices/sphinxcontrib-opendataservices-jsonschema@d3c8e861a55019278a8462b6edabd101e5fb5642
+sphinxcontrib-opendataservices-jsonschema @ git+https://github.com/OpenDataServices/sphinxcontrib-opendataservices-jsonschema@4c977ea04f79df464dac1600c49362bf0b4ac21b
     # via
     #   -r requirements.in
     #   sphinxcontrib-opendataservices

@@ -1,4 +1,0 @@
-Column,References
-contract_id,FK(`contracts`.`id`)
-network_id,FK(`networks`.`id`)
-format,FK(`codelist_open_mediaType`.`id`)

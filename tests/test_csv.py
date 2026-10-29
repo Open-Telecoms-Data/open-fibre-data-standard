@@ -98,7 +98,7 @@ def test_codelist():
     exceptions = {
     }
 
-    path = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'schema', 'codelist-schema.json')
+    path = os.path.join(os.path.dirname(os.path.realpath(__file__)), '..', 'schema', 'codelists', 'codelist-schema.json')
     with open(path) as f:
         codelist_schema = json.load(f)
 

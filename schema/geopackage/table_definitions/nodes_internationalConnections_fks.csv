@@ -1,3 +1,0 @@
-Column,References
-node_id,FK(`nodes`.`id`)
-network_id,FK(`networks`.`id`)

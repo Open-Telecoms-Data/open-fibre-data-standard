@@ -20,9 +20,11 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
+import csv
 import json
 import os
 import shutil
+import sqlite3
 
 # -- General configuration ------------------------------------------------
 
@@ -41,7 +43,8 @@ extensions = [
     'sphinx_design',
     'sphinxcontrib.mermaid',
     'crate.sphinx.csv',
-    'sphinxcontrib.sqltable'
+    'sphinxcontrib.sqltable',
+    'sphinx.ext.imgconverter'
 ]
 
 #MyST extenions
@@ -306,8 +309,7 @@ latex_elements = {
      # 'pointsize': '10pt',
 
      # Additional stuff for the LaTeX preamble.
-     #
-     # 'preamble': '',
+     'preamble': r'\DeclareUnicodeCharacter{2009}{\,}',
 
      # Latex figure (float) alignment
      #
@@ -406,7 +408,7 @@ linkcheck_ignore = [
     'https://linux.die.net/man/3/libuuid',  # 403 Client Error: Forbidden for url
 ]
 
-def replace_substring_in_json(file_path, search_substring, replace_string, output_path=None):
+def replace_substring_in_json(file_path, search_substring, replace_string):
     # Read the JSON file
     with open(file_path, 'r') as file:
         data = json.load(file)
@@ -414,18 +416,9 @@ def replace_substring_in_json(file_path, search_substring, replace_string, outpu
     # Recursively search and replace the substring in the JSON data
     _replace_substring_in_json(data, search_substring, replace_string)
 
-    # Set output path
-    if output_path is None:
-        output_path = file_path
-
-    # Create the directory if it does not exist
-    output_dir = os.path.dirname(output_path)
-    os.makedirs(output_dir, exist_ok=True)    
-
-    # Write the modified JSON data to the output file, matching the source schema's formatting
-    with open(output_path, 'w') as file:
-        json.dump(data, file, indent=2, ensure_ascii=False)
-        file.write('\n')
+    # Write the modified JSON data back to the same file
+    with open(file_path, 'w') as file:
+        json.dump(data, file, indent=4)
 
 
 def _replace_substring_in_json(data, search_substring, replace_string):
@@ -443,9 +436,182 @@ def _replace_substring_in_json(data, search_substring, replace_string):
                 _replace_substring_in_json(item, search_substring, replace_string)
 
 
+def replace_placeholder_in_gpkg(file_path, search_substring, replace_string):
+    # Replace the placeholder in the gpkg_data_columns description column
+    connection = sqlite3.connect(file_path)
+    try:
+        connection.execute(
+            "UPDATE gpkg_data_columns SET description = REPLACE(description, ?, ?) WHERE description LIKE ?",
+            (search_substring, replace_string, f"%{search_substring}%"),
+        )
+        connection.commit()
+    finally:
+        connection.close()
+
+
+def get_table_metadata(cursor, table_name):
+    """
+    Retrieves and combines structural and GeoPackage-specific metadata for a single table.
+    """
+    column_metadata = {}
+    foreign_keys = {}
+
+    # 1. Get Structural Metadata (Name, Type, Not Null, Auto Increment)
+    # PRAGMA table_info(table_name) returns: cid, name, type, notnull, dflt_value, pk
+    try:
+        cursor.execute(f"PRAGMA table_info('{table_name}');")
+        table_info = cursor.fetchall()
+        for col in table_info:
+            cid, name, col_type, notnull, dflt_value, pk = col
+            column_metadata[name] = {
+                'Name': name,
+                'Type': col_type,
+                'Constraints': [],
+                'Title': None,
+                'Description': None
+            }
+            if pk:
+              column_metadata[name]['Constraints'].append('PK')
+            if notnull:
+              column_metadata[name]['Constraints'].append('Not Null')
+    except sqlite3.Error as e:
+        print(f"Error querying table_info for {table_name}: {e}")
+        return []
+
+    # 2. Get Foreign Key Metadata (Reference Table, Reference Column)
+    # PRAGMA foreign_key_list(table_name) returns: id, seq, table, from, to, on_update, on_delete, match
+    try:
+        cursor.execute(f"PRAGMA foreign_key_list('{table_name}');")
+        fk_list = cursor.fetchall()
+        # The column names for the FK list are: id, seq, table, from, to, on_update, on_delete, match
+        fk_names = ["id", "seq", "table", "from", "to", "on_update", "on_delete", "match"]
+
+        for fk in fk_list:
+            fk_data = dict(zip(fk_names, fk))
+            col_name = fk_data['from']
+            if col_name in column_metadata:
+                column_metadata[col_name]['Constraints'].append('FK')
+                foreign_keys[col_name] = {
+                   'Column': col_name,
+                   'References':f'FK(`{fk_data["table"]}`.`{fk_data["to"]}`)'
+                }
+    except sqlite3.Error as e:
+        print(f"Error querying foreign_key_list for {table_name}: {e}")
+
+    # 3. Get GeoPackage Metadata (Title annd Description)
+    # SELECT column_name, title, description FROM gpkg_data_columns
+    try:
+        query = f"""
+        SELECT column_name, title, description
+        FROM gpkg_data_columns
+        WHERE table_name = '{table_name}';
+        """
+        cursor.execute(query)
+        gpkg_metadata = cursor.fetchall()
+        for col_name, title, description in gpkg_metadata:
+            if col_name in column_metadata:
+                column_metadata[col_name]['Title'] = title
+                column_metadata[col_name]['Description'] = description
+
+    except sqlite3.Error as e:
+        print(f"Error querying gpkg_data_columns for {table_name}: {e}")
+        # Note: If gpkg_data_columns is missing or the table is not registered, Title/Description will be NULL.
+
+    for metadata in column_metadata.values():
+        metadata['Constraints'] = ", ".join(metadata['Constraints'])
+
+    # Convert dictionary values to a list of structured dictionaries for CSV
+    return list(column_metadata.values()), list(foreign_keys.values())
+
+
+def export_metadata_to_csv(gpkg_path, output_dir):
+    """
+    Main function to connect to the GeoPackage and manage the export process.
+    """
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+
+    print(f"Connecting to GeoPackage: {gpkg_path}")
+
+    codelist_tables = []
+    mapping_tables = []
+
+    try:
+        conn = sqlite3.connect(gpkg_path)
+        cursor = conn.cursor()
+
+        # 1. Identify tables (data_type 'features' or 'attributes') from gpkg_contents
+        cursor.execute("SELECT table_name FROM gpkg_contents WHERE data_type IN ('features', 'attributes');")
+        table_names = [row[0] for row in cursor.fetchall()]
+
+        if not table_names:
+            print("No feature or attribute tables found in gpkg_contents.")
+            return
+
+        print(f"Found {len(table_names)} tables to process: {', '.join(table_names)}")
+
+        # 2. Process each table
+        for table_name in table_names:
+
+            metadata_rows, foreign_keys = get_table_metadata(cursor, table_name)
+
+            if not metadata_rows:
+                print(f"Skipping empty or error table: {table_name}")
+                continue
+
+            if table_name.startswith("codelist"):
+                codelist_name = table_name.split("_")[-1]
+                codelist_tables.append({
+                    "Table": f"`{table_name}`",
+                    "Codelist": f"[{codelist_name}](../../codelists.md#{codelist_name.lower()})"
+                })
+            elif table_name.startswith("relation"):
+                mapping_tables.append({
+                   "Table": f"`{table_name}`",
+                   "base_id FK": foreign_keys[1]['References'].removeprefix("FK(").removesuffix(")"),
+                   "related_id FK": foreign_keys[0]['References'].removeprefix("FK(").removesuffix(")")
+                })
+            else:
+                # 3. Write table definition and foreign keys to CSV file
+                output_file = os.path.join(output_dir, f"{table_name}.csv")
+                with open(output_file, 'w', encoding='utf-8') as csvfile:
+                    writer = csv.DictWriter(csvfile, fieldnames=['Name', 'Type', 'Constraints', 'Title', 'Description'], lineterminator='\n')
+                    writer.writeheader()
+                    writer.writerows(metadata_rows)
+
+                output_file = os.path.join(output_dir, f"{table_name}_fks.csv")
+                with open(output_file, 'w', encoding='utf-8') as csvfile:
+                    writer = csv.DictWriter(csvfile, fieldnames=['Column', 'References'], lineterminator='\n')
+                    writer.writeheader()
+                    writer.writerows(foreign_keys)
+
+                print(f"Successfully exported metadata for '{table_name}' to '{output_file}'")
+
+        # 4. Write list of codelist tables and mapping tables to CSV file
+        output_file = os.path.join(output_dir, "codelist_tables.csv")
+        with open(output_file, 'w', encoding='utf-8') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=["Table", "Codelist"], lineterminator='\n')
+            writer.writerows(codelist_tables)
+
+        output_file = os.path.join(output_dir, "mapping_tables.csv")
+        with open(output_file, 'w', encoding='utf-8') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=["Table", "base_id FK", "related_id FK"], lineterminator='\n')
+            writer.writerows(mapping_tables)
+
+        conn.close()
+        print("\nProcessing complete.")
+
+    except sqlite3.Error as e:
+        print(f"An SQLite error occurred: {e}")
+
+
 def setup(app):
     # Connect handlers to events
     app.connect('env-before-read-docs', env_before_read_docs)
+
+
+# Base URL that `make autobuild` (sphinx-autobuild, no --host/--port) serves docs on locally
+LOCAL_DOCS_BASE_URL = 'http://127.0.0.1:8000/'
 
 
 def env_before_read_docs(app, env, docnames):
@@ -453,18 +619,34 @@ def env_before_read_docs(app, env, docnames):
     outdir = app.outdir
     print(f"Output directory: {outdir}")
     rtd_version = os.getenv('READTHEDOCS_VERSION')
-    
-    # Define the final destination inside the build folder
-    target_path = os.path.join(outdir, 'network-schema.json')
 
-    # Process schema and write to output directory
+    # Copy schema to output directory
+    target_path = os.path.join(outdir, 'network-schema.json')
+    os.makedirs(os.path.dirname(target_path), exist_ok=True)
+    shutil.copyfile('../schema/data_formats/json/network-schema.json', target_path)
+
     if rtd_version is not None:
         # Replace {{version}} placeholders
-        replace_substring_in_json('../schema/network-schema.json', '{{version}}', rtd_version, output_path=target_path)
+        replace_substring_in_json(target_path, '{{version}}', rtd_version)
     else:
-        # Don't replace {{version}} placeholders
-        replace_substring_in_json('../schema/network-schema.json', 'https://standard.ofds.info/en/{{version}}/', 'https://standard.ofds.info/en/{{version}}/', output_path=target_path)
-    
+        # Point links at the local docs server instead of leaving a broken {{version}} placeholder
+        replace_substring_in_json(target_path, 'https://standard.ofds.info/en/{{version}}/', LOCAL_DOCS_BASE_URL)
+
+    # Copy GeoPackage template to output directory
+    gpkg_target_path = os.path.join(outdir, 'network-schema.gpkg')
+    os.makedirs(os.path.dirname(gpkg_target_path), exist_ok=True)
+    shutil.copyfile('../schema/data_formats/geopackage/network-schema.gpkg', gpkg_target_path)
+
+    if rtd_version is not None:
+        # Replace {{version}} placeholders
+        replace_placeholder_in_gpkg(gpkg_target_path, '{{version}}', rtd_version)
+    else:
+        # Point links at the local docs server instead of leaving a broken {{version}} placeholder
+        replace_placeholder_in_gpkg(gpkg_target_path, 'https://standard.ofds.info/en/{{version}}/', LOCAL_DOCS_BASE_URL)
+
+    # Generate GeoPackage table definition CSV files from the processed GeoPackage template
+    export_metadata_to_csv(gpkg_target_path, os.path.join(outdir, 'table_definitions'))
+
     # Copy other schema and codelist files to output directory
-    shutil.copyfile('../schema/network-package-schema.json', os.path.join(outdir, 'network-package-schema.json'))
-    shutil.copytree('../codelists', os.path.join(outdir, 'codelists'), dirs_exist_ok=True)
+    shutil.copyfile('../schema/data_formats/json/network-package-schema.json', os.path.join(outdir, 'network-package-schema.json'))
+    shutil.copytree('../schema/codelists', os.path.join(outdir, 'codelists'), dirs_exist_ok=True)

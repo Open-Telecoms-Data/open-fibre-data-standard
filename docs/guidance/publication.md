@@ -22,7 +22,7 @@ There are many [use cases](../primer/openfibredata.md#why-publish-fibre-data-as-
 
 #### Decide what data to publish
 
-Bearing in mind your priority use cases, you ought to review the OFDS [data model](../reference/data_model.md) and decide which entities and attributes you want to publish.
+Bearing in mind your priority use cases, you ought to review the OFDS [data model](../reference/data_model/index.md) and decide which entities and attributes you want to publish.
 
 OFDS is primarily designed for the public disclosure of open data. However, you can also use it to exchange data with specific partners and to store data within your own organisation. As such, this step can involve deciding which entities and attributes to make public, which to share with partners and which to keep private.
 
@@ -46,7 +46,7 @@ For more information, see [how to format data for publication](#how-to-format-da
 
 #### Map your data to OFDS
 
-Once you have identified your data sources and chosen your data formats, you ought to map your data to the schema for your chosen data formats, that is, identify which data elements within your data sources match which OFDS [attributes](../reference/data_model.md) and [codes](../reference/codelists.md). If there are data elements that you want to publish but for which you cannot identify a suitable mapping, you can [add additional attributes](#how-to-add-additional-attributes) to your OFDS data.
+Once you have identified your data sources and chosen your data formats, you ought to map your data to the schema for your chosen data formats, that is, identify which data elements within your data sources match which OFDS [attributes](../reference/data_model/index.md) and [codes](../reference/codelists.md). If there are data elements that you want to publish but for which you cannot identify a suitable mapping, you can [add additional attributes](#how-to-add-additional-attributes) to your OFDS data.
 
 Your mapping acts as a blueprint for preparing your data. It will help you to identify the steps involved in converting your data to OFDS format.
 
@@ -106,7 +106,7 @@ If you add an additional attribute, you ought to describe its structure, format 
 
 OFDS supports several [data formats](../reference/data_formats/index.md):
 
-- The [JSON format](../reference/data_formats/json/index.md) reflects the structure of the [data model](../reference/data_model.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
+- The [JSON format](../reference/data_formats/json/index.md) reflects the structure of the [data model](../reference/data_model/index.md), is useful to developers who want to use the data to build web apps, and offers a ‘base’ format that other publication formats can be converted to and from.
 - The [GeoPackage format](../reference/data_formats/geopackage/index.md) is useful to GIS analysts who want to import the data directly into GIS tools without any pre-processing.
 - The [CSV format](../reference/data_formats/csv.md) is useful to data analysts who want to import data directly into databases and other tabular analysis tools, and to users who want to explore the data in spreadsheet tools.
 

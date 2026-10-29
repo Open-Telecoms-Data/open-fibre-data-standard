@@ -6,7 +6,7 @@ This page explains the scope of the Open Fibre Data Standard (OFDS) data model i
 
 ```{seealso}
 
-* [Data model reference](../reference/data_model.md)
+* [Data model reference](../reference/data_model/index.md)
 ```
 
 ## Scope and focus

@@ -1,0 +1,5 @@
+entity,cardinality,description
+[Phase](#phase),1:1,Phase: The phase to which this node belongs.
+[Organisation](#organisation),1:1,Owner: The organisation that owns the supporting infrastructure.
+[Organisation](#organisation),1:1,"Transmission medium owner: The organisation that owns the transmission media for this node, i.e. the passive network equipment such as splitters, combiners and fibre distribution panels."
+[Organisation](#organisation),1:N,"Network providers: The organisations that operate the active network infrastructure for this node, i.e. the electrical elements, such as optical transceivers, switches and routers. In open business models, network providers provide wholesale access to service providers such as retail internet service providers. Network providers can own or lease the active network infrastructure."

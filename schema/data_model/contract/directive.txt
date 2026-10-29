@@ -1,0 +1,7 @@
+```{jsonschema} ../../../_readthedocs/html/network-schema.json
+:pointer: /$defs/Contract
+:include: id,title,description,type,value/amount,value/currency,dateSigned
+:nocrossref:
+:addtargets:
+:prefix: data_model
+```

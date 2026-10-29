@@ -1,5 +1,5 @@
 # Connection properties
-connectionString: "sqlite3://schema/geopackage/network-schema.gpkg"
+connectionString: "sqlite3://schema/data_formats/geopackage/network-schema.gpkg"
 
 # Define what tables should be used
 useAllTables: true

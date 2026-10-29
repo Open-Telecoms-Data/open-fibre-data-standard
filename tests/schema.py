@@ -14,8 +14,8 @@ class CurrentVersionOFDSSchema(OFDSSchema):
     """
 
     def __init__(self):
-        filename_package = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "schema", "network-package-schema.json")
-        filename_network = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "schema", "network-schema.json")
+        filename_package = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "schema", "data_formats", "json", "network-package-schema.json")
+        filename_network = os.path.join(os.path.dirname(os.path.realpath(__file__)), "..", "schema", "data_formats", "json", "network-schema.json")
         with open(filename_package) as fp:
             self.schema = json.load(fp)
         with open(filename_network) as fp:
